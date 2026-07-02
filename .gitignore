@@ -1,0 +1,19 @@
+# Node
+node_modules
+dist
+build
+npm-debug.log
+
+# Envs
+.env
+.env.local
+.env.*.local
+
+# Docker
+docker-compose.override.yml
+
+# Logs e outros
+*.log
+.DS_Store
+.idea
+.vscode
