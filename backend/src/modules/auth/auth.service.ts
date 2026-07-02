@@ -1,46 +1,55 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-// Importaremos o repositório de usuários quando o módulo de Users estiver completo
-// import { UsersService } from '../users/users.service';
+
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class AuthService {
+
   constructor(
-    // private usersService: UsersService,
-    private jwtService: JwtService
+    private readonly usersService: UsersService,
+    private readonly jwtService: JwtService,
   ) {}
 
-  async validateUser(email: string, pass: string): Promise<any> {
-    // MOCK: Substitua pela busca real no banco via usersService
-    const mockUser = {
-      id: 'uuid-do-funcionario',
-      tenantId: 'uuid-da-empresa',
-      email: 'colaborador@empresa.com',
-      passwordHash: await bcrypt.hash('Senha123', 10), // Apenas para teste
-      isActive: true,
-    };
+  async validateUser(email: string, password: string): Promise<any> {
 
-    if (mockUser && mockUser.isActive) {
-      const isMatch = await bcrypt.compare(pass, mockUser.passwordHash);
-      if (isMatch) {
-        const { passwordHash, ...result } = mockUser;
-        return result;
-      }
+    const user = await this.usersService.findByEmail(email);
+
+    if (!user) {
+      return null;
     }
-    return null;
+
+    if (!user.isActive) {
+      return null;
+    }
+
+    const isMatch = await bcrypt.compare(
+      password,
+      user.passwordHash,
+    );
+
+    if (!isMatch) {
+      return null;
+    }
+
+    const { passwordHash, ...result } = user;
+
+    return result;
   }
 
   async login(user: any) {
-    const payload = { 
-      email: user.email, 
-      sub: user.id, 
-      tenantId: user.tenantId 
+
+    const payload = {
+      sub: user.id,
+      email: user.email,
+      tenantId: user.tenantId,
+      role: user.role ?? 'EMPLOYEE',
     };
-    
+
     return {
       access_token: this.jwtService.sign(payload),
-      user_info: payload
+      user_info: payload,
     };
   }
 }

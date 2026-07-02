@@ -6,18 +6,39 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { EmployeeForm } from "@/components/EmployeeForm";
 
 export function EmployeesPage() {
-  const [employees, setEmployees] = useState([]);
+  // CORREÇÃO: Avisando ao TypeScript que a lista começa vazia, mas vai receber dados (any[])
+  const [employees, setEmployees] = useState<any[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const fetchEmployees = () => {
-    fetch("${import.meta.env.VITE_API_URL}/v1/employees", {
+    fetch(`${import.meta.env.VITE_API_URL}/v1/employees`, {
       headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }
     })
-    .then(res => res.json())
-    .then(data => setEmployees(data));
+    .then(res => {
+      // ESCUDO DE REDIRECIONAMENTO
+      if (res.status === 401) {
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.href = '/login';
+        throw new Error('Não autorizado. Redirecionando para login...');
+      }
+      return res.json();
+    })
+    .then(data => {
+      // ESCUDO DO .MAP
+      if (Array.isArray(data)) {
+        setEmployees(data);
+      } else {
+        console.warn("A API não retornou uma lista:", data);
+        setEmployees([]);
+      }
+    })
+    .catch(err => console.error("Erro na busca:", err));
   };
 
-  useEffect(fetchEmployees, []);
+  useEffect(() => {
+    fetchEmployees();
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -33,7 +54,7 @@ export function EmployeesPage() {
           </DialogContent>
         </Dialog>
       </div>
-      
+
       <Card>
         <CardContent className="pt-6">
           <table className="w-full text-sm">

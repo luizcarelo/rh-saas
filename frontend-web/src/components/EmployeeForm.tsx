@@ -10,7 +10,7 @@ export function EmployeeForm({ onSuccess }: { onSuccess: () => void }) {
 
   const onSubmit = async (data: EmployeeFormValues) => {
     try {
-      const response = await fetch("${import.meta.env.VITE_API_URL}/v1/employees", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/employees`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",

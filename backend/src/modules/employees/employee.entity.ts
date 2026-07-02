@@ -1,5 +1,16 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToOne,
+  JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+
 import { Tenant } from '../tenant/tenant.entity';
+import { User } from '../users/user.entity';
 
 @Entity('employees')
 export class Employee {
@@ -13,28 +24,53 @@ export class Employee {
   @Column({ name: 'tenant_id' })
   tenantId: string;
 
+  @OneToOne(() => User, {
+    nullable: true,
+    onDelete: 'SET NULL',
+  })
+  @JoinColumn({ name: 'user_id' })
+  user: User | null;
+
+  @Column({
+    name: 'user_id',
+    type: 'uuid',
+    nullable: true,
+  })
+  userId: string | null;
+
   @Column()
   firstName: string;
 
   @Column()
   lastName: string;
 
-  @Column({ unique: true, length: 11 })
+  @Column({
+    unique: true,
+    length: 11,
+  })
   cpf: string;
 
   @Column()
   email: string;
 
-  @Column({ nullable: true })
+  @Column({
+    nullable: true,
+  })
   department: string;
 
-  @Column({ nullable: true })
+  @Column({
+    nullable: true,
+  })
   jobTitle: string;
 
-  @Column({ type: 'date' })
+  @Column({
+    type: 'date',
+  })
   admissionDate: string;
 
-  @Column({ default: true })
+  @Column({
+    default: true,
+  })
   isActive: boolean;
 
   @CreateDateColumn()

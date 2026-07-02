@@ -12,15 +12,12 @@ import { EmployeeDashboard } from "./pages/EmployeeDashboard";
 import { EmployeeDocumentsPage } from "./pages/EmployeeDocumentsPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
-
-
-
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-        
+
         {/* Rotas do RH (Admin) */}
         <Route element={<ProtectedRoute />}>
           <Route element={<AdminLayout />}>
