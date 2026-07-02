@@ -1,0 +1,163 @@
+import {
+  BarChart3,
+  Clock3,
+  FileText,
+  LayoutDashboard,
+  LogOut,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { clearSession, getUserInfo } from "../lib/api";
+
+const menu = [
+  {
+    label: "Dashboard",
+    path: "/",
+    icon: LayoutDashboard,
+  },
+  {
+    label: "Colaboradores",
+    path: "/colaboradores",
+    icon: Users,
+  },
+  {
+    label: "Controle de ponto",
+    path: "/ponto",
+    icon: Clock3,
+  },
+  {
+    label: "Registrar ponto",
+    path: "/registrar-ponto",
+    icon: ShieldCheck,
+  },
+  {
+    label: "Auditoria",
+    path: "/audit",
+    icon: FileText,
+  },
+];
+
+export function AdminLayout() {
+  const navigate = useNavigate();
+  const user = getUserInfo();
+
+  function logout() {
+    clearSession();
+    navigate("/login", {
+      replace: true,
+    });
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.30),_transparent_34%),radial-gradient(circle_at_top_right,_rgba(34,197,94,0.18),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(249,115,22,0.16),_transparent_28%)]" />
+
+      <div className="relative flex min-h-screen">
+        <aside className="hidden w-72 shrink-0 border-r border-white/10 bg-slate-950/85 backdrop-blur-xl lg:flex lg:flex-col">
+          <div className="flex h-24 items-center gap-3 px-6">
+            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-xl shadow-cyan-500/20">
+              /assets/icone-app.png => {
+                  event.currentTarget.style.display = "none";
+                }}
+              />
+            </div>
+
+            <div>
+              <p className="text-sm font-medium text-cyan-200">RH SaaS</p>
+              <h1 className="text-lg font-bold tracking-tight text-white">
+                Gestão inteligente
+              </h1>
+            </div>
+          </div>
+
+          <nav className="flex-1 space-y-2 px-4 py-4">
+            {menu.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  end={item.path === "/"}
+                  className={({ isActive }) =>
+                    [
+                      "group flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition",
+                      isActive
+                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20"
+                        : "text-slate-300 hover:bg-white/10 hover:text-white",
+                    ].join(" ")
+                  }
+                >
+                  <Icon className="h-5 w-5" />
+                  {item.label}
+                </NavLink>
+              );
+            })}
+          </nav>
+
+          <div className="border-t border-white/10 p-4">
+            <div className="mb-4 rounded-2xl bg-white/5 p-4">
+              <p className="text-xs text-slate-400">Usuário conectado</p>
+              <p className="mt-1 truncate text-sm font-semibold text-white">
+                {user?.email || "admin@empresa.com"}
+              </p>
+              <p className="mt-1 text-xs text-orange-300">
+                Perfil: {user?.role || "ADMIN"}
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={logout}
+              className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 px-4 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/10"
+            >
+              <LogOut className="h-4 w-4" />
+              Sair
+            </button>
+          </div>
+        </aside>
+
+        <main className="flex min-h-screen flex-1 flex-col">
+          <header className="sticky top-0 z-20 border-b border-white/10 bg-slate-950/75 px-4 py-4 backdrop-blur-xl lg:px-8">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3 lg:hidden">
+                <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl bg-white">
+                  /assets/icone-app.png => {
+                      event.currentTarget.style.display = "none";
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <p className="text-sm text-cyan-200">RH SaaS</p>
+                  <p className="text-base font-bold text-white">
+                    Gestão inteligente
+                  </p>
+                </div>
+              </div>
+
+              <div className="hidden lg:block">
+                <p className="text-sm text-slate-400">Painel administrativo</p>
+                <h2 className="text-xl font-bold text-white">
+                  Bem-vindo ao sistema de RH
+                </h2>
+              </div>
+
+              <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-2">
+                <BarChart3 className="h-5 w-5 text-orange-300" />
+                <span className="text-sm font-medium text-slate-200">
+                  Online
+                </span>
+              </div>
+            </div>
+          </header>
+
+          <section className="flex-1 p-4 lg:p-8">
+            <Outlet />
+          </section>
+        </main>
+      </div>
+    </div>
+  );
+}
