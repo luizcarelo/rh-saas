@@ -1,0 +1,917 @@
+
+================================================================================
+ESTRUTURA SRC
+================================================================================
+
+/opt/rh-saas/backend/src/app.controller.spec.ts
+/opt/rh-saas/backend/src/app.controller.ts
+/opt/rh-saas/backend/src/app.module.ts
+/opt/rh-saas/backend/src/app.service.ts
+/opt/rh-saas/backend/src/main.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.module.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+/opt/rh-saas/backend/src/modules/audit/audit.module.ts
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts
+/opt/rh-saas/backend/src/modules/auth/decorators/roles.decorator.ts
+/opt/rh-saas/backend/src/modules/auth/dto/login.dto.ts
+/opt/rh-saas/backend/src/modules/auth/guards/jwt-auth.guard.ts
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts
+/opt/rh-saas/backend/src/modules/employees/dto/link-user.dto.ts
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.module.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.module.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts
+/opt/rh-saas/backend/src/modules/users/user.entity.ts
+/opt/rh-saas/backend/src/modules/users/user-role.enum.ts
+/opt/rh-saas/backend/src/modules/users/users.controller.ts
+/opt/rh-saas/backend/src/modules/users/users.module.ts
+/opt/rh-saas/backend/src/modules/users/users.service.ts
+
+
+================================================================================
+PACKAGE.JSON
+================================================================================
+
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.4",
+    "@nestjs/core": "^11.0.1",
+    "@nestjs/jwt": "^11.0.2",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/typeorm": "^11.0.3",
+    "bcrypt": "^6.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "helmet": "^8.2.0",
+    "ioredis": "^5.11.1",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "pg": "^8.22.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "typeorm": "^1.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.18.0",
+    "@nestjs/cli": "^11.0.0",
+    "@nestjs/schematics": "^11.0.0",
+    "@nestjs/testing": "^11.0.1",
+    "@types/bcrypt": "^6.0.0",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.13.2",
+    "@types/passport-jwt": "^4.0.1",
+    "@types/supertest": "^7.0.0",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.2",
+    "globals": "^17.0.0",
+    "jest": "^30.0.0",
+    "prettier": "^3.4.2",
+    "source-map-support": "^0.5.21",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}
+
+
+================================================================================
+VARIAVEIS .ENV (SOMENTE NOMES)
+================================================================================
+
+DB_DATABASE
+DB_HOST
+DB_PASSWORD
+DB_PORT
+DB_USERNAME
+JWT_EXPIRATION
+JWT_SECRET
+NODE_ENV
+PORT
+REDIS_HOST
+REDIS_PASSWORD
+REDIS_PORT
+
+================================================================================
+MAIN.TS
+================================================================================
+
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
+import helmet from 'helmet';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+  // Proteção contra vulnerabilidades web conhecidas (Headers HTTP seguros)
+  app.use(helmet());
+
+  // Ativa o CORS de forma controlada (Mudar em produção para os domínios do SaaS)
+  app.enableCors({ origin: '*' });
+
+  // Força a validação de todas as requisições baseadas nos DTOs com class-validator
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    }),
+  );
+
+  const port = process.env.PORT || 3000;
+  await app.listen(port, "0.0.0.0");
+  console.log(`🚀 API do SaaS de RH rodando com segurança na porta: ${port}`);
+}
+bootstrap();
+
+
+================================================================================
+APP.MODULE.TS
+================================================================================
+
+import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+// TODOS os Módulos do Sistema
+import { AnalyticsModule } from "./modules/analytics/analytics.module";
+import { AuthModule } from "./modules/auth/auth.module"; // <-- AQUI ESTAVA O PROBLEMA!
+import { DocumentsModule } from "./modules/documents/documents.module";
+import { EmployeesModule } from "./modules/employees/employees.module";
+import { SchedulesModule } from "./modules/schedules/schedules.module";
+import { TimeBankModule } from "./modules/time-bank/time-bank.module";
+import { TimeRecordsModule } from "./modules/time-records/time-records.module";
+
+// Entidades "soltas" (Sem módulo próprio)
+import { Tenant } from './modules/tenant/tenant.entity';
+import { ClockEvent } from './modules/clock-events/clock-event.entity';
+import { User } from './modules/users/user.entity';
+import { UsersModule } from './modules/users/users.module';
+import { AuditModule } from './modules/audit/audit.module';
+@Module({
+  imports: [
+    AuditModule,
+    AnalyticsModule,
+    AuthModule,
+    UsersModule,
+    DocumentsModule,
+    EmployeesModule,
+    SchedulesModule,
+    TimeBankModule,
+    TimeRecordsModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
+        host: configService.get<string>('DB_HOST'),
+        port: configService.get<number>('DB_PORT'),
+        username: configService.get<string>('DB_USERNAME'),
+        password: configService.get<string>('DB_PASSWORD'),
+        database: configService.get<string>('DB_DATABASE'),
+        
+        entities: [Tenant, ClockEvent, User], // Traz as soltas (User é crucial pro Auth)
+        autoLoadEntities: true, 
+        synchronize: configService.get<string>('NODE_ENV') === 'development',
+      }),
+    }),
+  ],
+})
+export class AppModule {}
+
+
+================================================================================
+MODULES
+================================================================================
+
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts:8:@Module({
+/opt/rh-saas/backend/src/modules/audit/audit.module.ts:4:@Module({
+/opt/rh-saas/backend/src/modules/analytics/analytics.module.ts:7:@Module({
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts:8:@Module({
+/opt/rh-saas/backend/src/modules/users/users.module.ts:8:@Module({
+/opt/rh-saas/backend/src/modules/schedules/schedules.module.ts:7:@Module({
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:13:@Module({
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts:7:@Module({
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.module.ts:8:@Module({
+/opt/rh-saas/backend/src/app.module.ts:20:@Module({
+
+
+================================================================================
+CONTROLLERS
+================================================================================
+
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:6:@Controller('v1/time-records')
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:3:@Controller('audit')
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:5:@Controller('v1/analytics')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:20:@Controller('v1/employees')
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:18:@Controller('v1/users')
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:5:@Controller('v1/auth')
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:6:@Controller('v1/documents')
+/opt/rh-saas/backend/src/app.controller.ts:4:@Controller()
+
+
+================================================================================
+SERVICES
+================================================================================
+
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:7:@Injectable()
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:6:@Injectable()
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts:4:@Injectable()
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:6:@Injectable()
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:13:@Injectable()
+/opt/rh-saas/backend/src/modules/users/users.service.ts:9:@Injectable()
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:7:@Injectable()
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:7:@Injectable()
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts:12:@Injectable()
+/opt/rh-saas/backend/src/modules/auth/guards/jwt-auth.guard.ts:4:@Injectable()
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts:6:@Injectable()
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:6:@Injectable()
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:7:@Injectable()
+/opt/rh-saas/backend/src/app.service.ts:3:@Injectable()
+
+
+================================================================================
+GUARDS
+================================================================================
+
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:1:import { Controller, Post, Get, Body, Req, Res, UseGuards } from '@nestjs/common';
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:4:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:7:@UseGuards(JwtAuthGuard)
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:1:import { Controller, Get, UseGuards, Req, Query } from '@nestjs/common';
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:3:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:6:@UseGuards(JwtAuthGuard)
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:10:  UseGuards,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:15:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:16:import { RolesGuard } from '../auth/guards/roles.guard';
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:21:@UseGuards(JwtAuthGuard, RolesGuard)
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:6:  UseGuards,
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:13:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:14:import { RolesGuard } from '../auth/guards/roles.guard';
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:19:@UseGuards(JwtAuthGuard, RolesGuard)
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts:13:export class RolesGuard implements CanActivate {
+/opt/rh-saas/backend/src/modules/auth/guards/jwt-auth.guard.ts:2:import { AuthGuard } from '@nestjs/passport';
+/opt/rh-saas/backend/src/modules/auth/guards/jwt-auth.guard.ts:5:export class JwtAuthGuard extends AuthGuard('jwt') {
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:9:import { RolesGuard } from './guards/roles.guard';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:35:    RolesGuard,
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:1:import { Controller, Post, Get, UseGuards, Req, UploadedFile, UseInterceptors } from '@nestjs/common';
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:4:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:7:@UseGuards(JwtAuthGuard)
+
+
+================================================================================
+JWT
+================================================================================
+
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:4:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:7:@UseGuards(JwtAuthGuard)
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:3:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:6:@UseGuards(JwtAuthGuard)
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:15:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:21:@UseGuards(JwtAuthGuard, RolesGuard)
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:13:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:19:@UseGuards(JwtAuthGuard, RolesGuard)
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:2:import { JwtService } from '@nestjs/jwt';
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:12:    private readonly jwtService: JwtService,
+/opt/rh-saas/backend/src/modules/auth/guards/jwt-auth.guard.ts:5:export class JwtAuthGuard extends AuthGuard('jwt') {
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:2:import { JwtModule } from '@nestjs/jwt';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:8:import { JwtStrategy } from './strategies/jwt.strategy';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:17:    JwtModule.registerAsync({
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:34:    JwtStrategy,
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts:1:import { ExtractJwt, Strategy } from 'passport-jwt';
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts:7:export class JwtStrategy extends PassportStrategy(Strategy) {
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts:12:      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:4:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:7:@UseGuards(JwtAuthGuard)
+
+
+================================================================================
+AUTH
+================================================================================
+
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:4:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:7:@UseGuards(JwtAuthGuard)
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:3:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:6:@UseGuards(JwtAuthGuard)
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:15:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:21:@UseGuards(JwtAuthGuard, RolesGuard)
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:13:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:19:@UseGuards(JwtAuthGuard, RolesGuard)
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:8:export class AuthService {
+/opt/rh-saas/backend/src/modules/auth/guards/jwt-auth.guard.ts:2:import { AuthGuard } from '@nestjs/passport';
+/opt/rh-saas/backend/src/modules/auth/guards/jwt-auth.guard.ts:5:export class JwtAuthGuard extends AuthGuard('jwt') {
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:6:import { AuthService } from './auth.service';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:7:import { AuthController } from './auth.controller';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:33:    AuthService,
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:38:    AuthController,
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:41:    AuthService,
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:44:export class AuthModule {}
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts:12:      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:2:import { AuthService } from './auth.service';
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:6:export class AuthController {
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:7:  constructor(private authService: AuthService) {}
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:4:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:7:@UseGuards(JwtAuthGuard)
+/opt/rh-saas/backend/src/app.module.ts:7:import { AuthModule } from "./modules/auth/auth.module"; // <-- AQUI ESTAVA O PROBLEMA!
+/opt/rh-saas/backend/src/app.module.ts:24:    AuthModule,
+/opt/rh-saas/backend/src/app.module.ts:45:        entities: [Tenant, ClockEvent, User], // Traz as soltas (User é crucial pro Auth)
+
+
+================================================================================
+PASSPORT
+================================================================================
+
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:3:import { PassportModule } from '@nestjs/passport';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:16:    PassportModule,
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts:2:import { PassportStrategy } from '@nestjs/passport';
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts:7:export class JwtStrategy extends PassportStrategy(Strategy) {
+
+
+================================================================================
+TYPEORM
+================================================================================
+
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts:3:import { TypeOrmModule } from '@nestjs/typeorm';
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts:9:  imports: [TypeOrmModule.forFeature([TimeRecord])],
+/opt/rh-saas/backend/src/modules/analytics/analytics.module.ts:2:import { TypeOrmModule } from '@nestjs/typeorm';
+/opt/rh-saas/backend/src/modules/analytics/analytics.module.ts:8:  imports: [TypeOrmModule.forFeature([TimeRecord])],
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts:2:import { TypeOrmModule } from '@nestjs/typeorm';
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts:10:    TypeOrmModule.forFeature([
+/opt/rh-saas/backend/src/modules/users/users.module.ts:2:import { TypeOrmModule } from '@nestjs/typeorm';
+/opt/rh-saas/backend/src/modules/users/users.module.ts:10:    TypeOrmModule.forFeature([
+/opt/rh-saas/backend/src/modules/schedules/schedules.module.ts:2:import { TypeOrmModule } from '@nestjs/typeorm';
+/opt/rh-saas/backend/src/modules/schedules/schedules.module.ts:8:  imports: [TypeOrmModule.forFeature([Schedule, EmployeeSchedule])],
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts:2:import { TypeOrmModule } from '@nestjs/typeorm';
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts:8:  imports: [TypeOrmModule.forFeature([Document])],
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.module.ts:2:import { TypeOrmModule } from '@nestjs/typeorm';
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.module.ts:9:  imports: [TypeOrmModule.forFeature([TimeBank, ClockEvent])],
+/opt/rh-saas/backend/src/app.module.ts:3:import { TypeOrmModule } from '@nestjs/typeorm';
+/opt/rh-saas/backend/src/app.module.ts:34:    TypeOrmModule.forRootAsync({
+
+
+================================================================================
+ENTITY
+================================================================================
+
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:12:@Entity('clock_events')
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:3:@Entity('time_records')
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:15:@Entity('employees')
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts:3:@Entity('tenants')
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:21:@Entity('users')
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts:4:@Entity('employee_schedules')
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts:8:@Entity('schedules')
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts:3:@Entity('documents')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts:3:@Entity('time_bank')
+
+
+================================================================================
+TENANT
+================================================================================
+
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:2:import { Tenant } from '../tenant/tenant.entity';
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:18:  @JoinColumn({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:19:  tenant: Tenant;
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:21:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:22:  tenantId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:37:    tenantId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:45:    const rawString = `${data.tenantId}|${data.employeeId}|${data.timestamp}|${data.eventType}|${data.latitude}|${data.longitude}`;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:53:    tenantId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:77:    // if (!isInsideGeofence && !tenantConfig.allowOutlyingClockIn) {
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:86:      tenantId: data.tenantId,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:96:      tenantId: data.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:13:  async clockIn(tenantId: string, employeeId: string, latitude: number, longitude: number) {
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:14:    const record = this.repo.create({ tenantId, employeeId, latitude, longitude });
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:18:  async findAll(tenantId: string) {
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:20:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:26:  async generateAfd(tenantId: string): Promise<string> {
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:27:    const records = await this.findAll(tenantId);
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:16:    return this.timeRecordsService.clockIn(req.user.tenantId, body.employeeId, body.latitude, body.longitude);
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:21:    const afdData = await this.timeRecordsService.generateAfd(req.user.tenantId);
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:8:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:9:  tenantId: string;
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:10:  async getDashboardStats(tenantId: string, startDate?: string, endDate?: string) {
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:11:    const where: any = { tenantId };
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:12:    return this.service.getDashboardStats(req.user.tenantId, start, end);
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:34:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:45:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:57:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:70:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:83:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:95:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:12:import { Tenant } from '../tenant/tenant.entity';
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:21:  @JoinColumn({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:22:  tenant: Tenant;
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:24:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:25:  tenantId: string;
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:23:  async create(tenantId: string, data: CreateEmployeeDto) {
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:26:      tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:32:  async findAll(tenantId: string) {
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:35:        tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:47:  async findOne(id: string, tenantId: string) {
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:51:        tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:67:    tenantId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:73:        tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:84:        tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:89:      throw new NotFoundException('Usuário não encontrado neste tenant.');
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:95:        tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:115:    tenantId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:120:        tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:133:  async remove(id: string, tenantId: string) {
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:136:      tenantId,
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts:3:@Entity('tenants')
+/opt/rh-saas/backend/src/modules/users/users.service.ts:37:      tenantId: data.tenantId,
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:11:import { Tenant } from '../tenant/tenant.entity';
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:27:  @JoinColumn({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:28:  tenant: Tenant;
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:30:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:31:  tenantId: string;
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts:6:  tenantId: string;
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:33:      tenantId: req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts:9:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts:10:  tenantId: string;
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:20:  async getExpectedMinutesForDate(tenantId: string, employeeId: string, targetDateStr: string): Promise<{ expected: number, tolerance: number }> {
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:26:      .where('es.tenantId = :tenantId', { tenantId })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts:13:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts:14:  tenantId: string;
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:46:      tenantId: user.tenantId,
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts:23:      tenantId: payload.tenantId,
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts:8:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts:9:  tenantId: string;
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:13:  async uploadDocument(tenantId: string, employeeId: string, filename: string, path: string) {
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:14:    const doc = this.repo.create({ tenantId, employeeId, filename, path });
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:18:  async listForEmployee(tenantId: string, employeeId: string) {
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:19:    return this.repo.find({ where: { tenantId, employeeId } });
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:14:    return this.docsService.uploadDocument(req.user.tenantId, req.body.employeeId, file.originalname, file.path);
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:19:    return this.docsService.listForEmployee(req.user.tenantId, req.user.employeeId);
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts:8:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts:9:  tenantId: string;
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:27:  async processDailyBalance(tenantId: string, employeeId: string, targetDate: string, expectedMinutes: number) {
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:35:        tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:63:      where: { tenantId, employeeId, date: targetDate }
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:68:        tenantId,
+/opt/rh-saas/backend/src/app.module.ts:15:import { Tenant } from './modules/tenant/tenant.entity';
+
+
+================================================================================
+ROLE
+================================================================================
+
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:16:import { RolesGuard } from '../auth/guards/roles.guard';
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:17:import { Roles } from '../auth/decorators/roles.decorator';
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:44:  role: UserRole;
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:14:import { RolesGuard } from '../auth/guards/roles.guard';
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:15:import { Roles } from '../auth/decorators/roles.decorator';
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:47:      role: user.role ?? 'EMPLOYEE',
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts:9:import { ROLES_KEY } from '../decorators/roles.decorator';
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts:34:    if (!user || !user.role) {
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts:38:    const allowed = requiredRoles.includes(user.role);
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:9:import { RolesGuard } from './guards/roles.guard';
+/opt/rh-saas/backend/src/modules/auth/decorators/roles.decorator.ts:4:export const ROLES_KEY = 'roles';
+/opt/rh-saas/backend/src/modules/auth/decorators/roles.decorator.ts:6:export const Roles = (...roles: UserRole[]) => SetMetadata(ROLES_KEY, roles);
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts:25:      role: payload.role,
+
+
+================================================================================
+RBAC
+================================================================================
+
+
+
+================================================================================
+ARQUIVOS IMPORTANTES
+================================================================================
+
+/opt/rh-saas/backend/src/app.controller.ts
+/opt/rh-saas/backend/src/app.module.ts
+/opt/rh-saas/backend/src/app.service.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.module.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+/opt/rh-saas/backend/src/modules/audit/audit.module.ts
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts
+/opt/rh-saas/backend/src/modules/auth/decorators/roles.decorator.ts
+/opt/rh-saas/backend/src/modules/auth/dto/login.dto.ts
+/opt/rh-saas/backend/src/modules/auth/guards/jwt-auth.guard.ts
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts
+/opt/rh-saas/backend/src/modules/employees/dto/link-user.dto.ts
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.module.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.module.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts
+/opt/rh-saas/backend/src/modules/users/user.entity.ts
+/opt/rh-saas/backend/src/modules/users/users.controller.ts
+/opt/rh-saas/backend/src/modules/users/users.module.ts
+/opt/rh-saas/backend/src/modules/users/users.service.ts
+
+
+================================================================================
+CONTAINER API
+================================================================================
+
+CONTAINER ID   IMAGE         COMMAND                  CREATED        STATUS       PORTS     NAMES
+10d9815715d5   rh-saas-api   "docker-entrypoint.s…"   12 hours ago   Up 2 hours             rh_saas_api
+
+
+================================================================================
+LOGS API
+================================================================================
+
+[32m[Nest] 1  - [39m07/02/2026, 10:17:47 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:17:47 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTimeRecordsController {/v1/time-records}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:17:48 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/clock-in, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:17:48 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/afd, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:17:48 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/simulate-math, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:17:48 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+🚀 API do SaaS de RH rodando com segurança na porta: 3000
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +20ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +33ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +89ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuditModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSchedulesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeBankModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAnalyticsModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDocumentsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEmployeesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeRecordsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAnalyticsController {/v1/analytics}:[39m[38;5;3m +10ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/analytics/overview, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/v1/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/v1/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mDocumentsController {/v1/documents}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/upload, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/my-docs, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEmployeesController {/v1/employees}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTimeRecordsController {/v1/time-records}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/clock-in, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/afd, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/simulate-math, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:19:07 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+🚀 API do SaaS de RH rodando com segurança na porta: 3000
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +21ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +67ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +124ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuditModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSchedulesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeBankModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAnalyticsModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDocumentsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEmployeesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeRecordsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAnalyticsController {/v1/analytics}:[39m[38;5;3m +36ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/analytics/overview, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/v1/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/v1/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mDocumentsController {/v1/documents}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/upload, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/my-docs, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEmployeesController {/v1/employees}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id/link-user, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id/link-user, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTimeRecordsController {/v1/time-records}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/clock-in, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/afd, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/simulate-math, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:22:00 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+🚀 API do SaaS de RH rodando com segurança na porta: 3000
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +20ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +34ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +95ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuditModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSchedulesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeBankModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAnalyticsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDocumentsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEmployeesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeRecordsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAnalyticsController {/v1/analytics}:[39m[38;5;3m +11ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/analytics/overview, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/v1/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/v1/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mDocumentsController {/v1/documents}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/upload, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/my-docs, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEmployeesController {/v1/employees}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id/link-user, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id/link-user, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTimeRecordsController {/v1/time-records}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/clock-in, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/afd, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/simulate-math, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:25:33 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+🚀 API do SaaS de RH rodando com segurança na porta: 3000
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +28ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +73ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +133ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuditModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSchedulesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeBankModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAnalyticsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDocumentsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEmployeesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeRecordsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAnalyticsController {/v1/analytics}:[39m[38;5;3m +27ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/analytics/overview, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/v1/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/v1/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mDocumentsController {/v1/documents}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/upload, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/my-docs, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEmployeesController {/v1/employees}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id/link-user, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id/link-user, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTimeRecordsController {/v1/time-records}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/clock-in, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/afd, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/simulate-math, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/02/2026, 10:33:11 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+🚀 API do SaaS de RH rodando com segurança na porta: 3000
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +24ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuditModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +125ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +191ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSchedulesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeBankModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAnalyticsModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDocumentsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEmployeesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeRecordsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuditController {/audit}:[39m[38;5;3m +25ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/audit, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAnalyticsController {/v1/analytics}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/analytics/overview, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/v1/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/v1/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mDocumentsController {/v1/documents}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/upload, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/my-docs, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEmployeesController {/v1/employees}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id/link-user, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id/link-user, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTimeRecordsController {/v1/time-records}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/clock-in, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/afd, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/simulate-math, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:16:44 AM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+🚀 API do SaaS de RH rodando com segurança na porta: 3000
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +21ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuditModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +39ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +97ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSchedulesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeBankModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAnalyticsModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDocumentsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEmployeesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeRecordsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuditController {/audit}:[39m[38;5;3m +13ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/audit, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAnalyticsController {/v1/analytics}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/analytics/overview, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/v1/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/v1/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mDocumentsController {/v1/documents}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/upload, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/my-docs, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEmployeesController {/v1/employees}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id/link-user, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id/link-user, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTimeRecordsController {/v1/time-records}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/clock-in, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/afd, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/simulate-math, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/03/2026, 12:18:58 AM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +4ms[39m
+🚀 API do SaaS de RH rodando com segurança na porta: 3000
+
