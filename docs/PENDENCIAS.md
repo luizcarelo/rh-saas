@@ -152,3 +152,10 @@ Concluída
 Próximo passo:
 Validar endpoints do módulo Super Admin.
 
+## Fase 2.2C
+
+Status:
+Concluída
+
+Próximo passo:
+Fase 2.3 - Detalhamento de clientes SaaS.

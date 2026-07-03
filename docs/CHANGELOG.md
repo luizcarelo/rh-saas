@@ -90,3 +90,9 @@ Fase 1 concluída com sucesso.
 - Remoção de caracteres inválidos.
 - Build validado com sucesso.
 
+## Fase 2.2C
+
+- Rebuild da imagem da API.
+- Publicação do módulo Super Admin.
+- Validação de rotas.
+- Testes iniciais dos endpoints.

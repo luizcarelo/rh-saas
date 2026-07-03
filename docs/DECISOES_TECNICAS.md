@@ -123,3 +123,10 @@ Motivo:
 
 Evitar publicação de arquivos inválidos.
 
+## DT-016
+
+Toda funcionalidade backend deve ser validada dentro do container após publicação.
+
+Motivo:
+
+Build local não garante atualização da imagem em execução.
