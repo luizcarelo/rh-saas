@@ -113,3 +113,13 @@ Evitar problemas de copiar/colar e erros manuais.
 A Fase 1 é considerada congelada.
 
 Novas alterações devem ocorrer em novas fases documentadas.
+
+
+## DT-015
+
+Scripts geradores de código devem ser validados por build antes da conclusão da fase.
+
+Motivo:
+
+Evitar publicação de arquivos inválidos.
+

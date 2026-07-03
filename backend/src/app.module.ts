@@ -17,9 +17,11 @@ import { ClockEvent } from './modules/clock-events/clock-event.entity';
 import { User } from './modules/users/user.entity';
 import { UsersModule } from './modules/users/users.module';
 import { AuditModule } from './modules/audit/audit.module';
+import { SuperAdminModule } from "./modules/super-admin/super-admin.module";
 @Module({
   imports: [
     AuditModule,
+    SuperAdminModule,
     AnalyticsModule,
     AuthModule,
     UsersModule,

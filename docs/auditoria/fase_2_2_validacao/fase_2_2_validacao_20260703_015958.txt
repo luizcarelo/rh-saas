@@ -1,0 +1,51 @@
+============================================================
+FASE 2.2A - VALIDACAO SUPER ADMIN
+============================================================
+OK: modulo super-admin encontrado
+OK: SuperAdminModule importado
+Executando build...
+
+$ npm run build
+
+> backend@0.0.1 build
+> nest build
+
+Found 8 error(s).
+
+
+[96msrc/modules/super-admin/dto/client-summary.dto.ts[0m:[93m7[0m:[93m2[0m - [91merror[0m[90m TS1127: [0mInvalid character.
+
+[7m7[0m }\n
+[7m [0m [91m [0m
+[96msrc/modules/super-admin/dto/client-summary.dto.ts[0m:[93m7[0m:[93m3[0m - [91merror[0m[90m TS2304: [0mCannot find name 'n'.
+
+[7m7[0m }\n
+[7m [0m [91m  ~[0m
+[96msrc/modules/super-admin/super-admin.controller.ts[0m:[93m32[0m:[93m2[0m - [91merror[0m[90m TS1127: [0mInvalid character.
+
+[7m32[0m }\n
+[7m  [0m [91m [0m
+[96msrc/modules/super-admin/super-admin.controller.ts[0m:[93m32[0m:[93m3[0m - [91merror[0m[90m TS2304: [0mCannot find name 'n'.
+
+[7m32[0m }\n
+[7m  [0m [91m  ~[0m
+[96msrc/modules/super-admin/super-admin.module.ts[0m:[93m14[0m:[93m33[0m - [91merror[0m[90m TS1127: [0mInvalid character.
+
+[7m14[0m export class SuperAdminModule {}\n
+[7m  [0m [91m                                [0m
+[96msrc/modules/super-admin/super-admin.module.ts[0m:[93m14[0m:[93m34[0m - [91merror[0m[90m TS2304: [0mCannot find name 'n'.
+
+[7m14[0m export class SuperAdminModule {}\n
+[7m  [0m [91m                                 ~[0m
+[96msrc/modules/super-admin/super-admin.service.ts[0m:[93m35[0m:[93m2[0m - [91merror[0m[90m TS1127: [0mInvalid character.
+
+[7m35[0m }\n
+[7m  [0m [91m [0m
+[96msrc/modules/super-admin/super-admin.service.ts[0m:[93m35[0m:[93m3[0m - [91merror[0m[90m TS2304: [0mCannot find name 'n'.
+
+[7m35[0m }\n
+[7m  [0m [91m  ~[0m
+
+
+ERRO:
+Falha: npm run build

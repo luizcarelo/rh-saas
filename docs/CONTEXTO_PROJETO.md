@@ -341,3 +341,14 @@ A definir
 ### Disaster Recovery
 
 A definir
+
+
+## Fase 2.2B
+
+Correção do módulo Super Admin.
+
+Motivo:
+
+Arquivos gerados continham caracteres inválidos '\n'
+gravados literalmente pelo gerador inicial.
+

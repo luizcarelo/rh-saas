@@ -142,3 +142,13 @@ A definir
 ### Disaster Recovery
 
 A definir
+
+
+## Fase 2.2B
+
+Status:
+Concluída
+
+Próximo passo:
+Validar endpoints do módulo Super Admin.
+
