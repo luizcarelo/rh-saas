@@ -1,0 +1,35 @@
+                  title                   | document_type |  status   | requires_signature | requires_selfie | requires_location | total_destinatarios 
+------------------------------------------+---------------+-----------+--------------------+-----------------+-------------------+---------------------
+ Termo de Ciencia de Ponto Mobile - Teste | TERMO_CIENCIA | PUBLISHED | t                  | f               | t                 |                   3
+(1 row)
+
+ employee_external_ref | first_name |     last_name      | document_status 
+-----------------------+------------+--------------------+-----------------
+ TESTE-001             | Ana        | Colaboradora Teste | PENDING
+ TESTE-002             | Bruno      | Tecnico Teste      | PENDING
+ TESTE-003             | Carla      | Dev Teste          | PENDING
+(3 rows)
+
+ employee_external_ref | first_name |     last_name      | reference_month | reference_year |            title             |                file_path                
+-----------------------+------------+--------------------+-----------------+----------------+------------------------------+-----------------------------------------
+ TESTE-001             | Ana        | Colaboradora Teste |               7 |           2026 | Holerite Ficticio Julho/2026 | /arquivos/teste/holerite_julho_2026.pdf
+(1 row)
+
+ employee_external_ref | first_name |     last_name      | reference_date | balance_minutes | credit_minutes | debit_minutes 
+-----------------------+------------+--------------------+----------------+-----------------+----------------+---------------
+ TESTE-001             | Ana        | Colaboradora Teste | 2026-07-01     |             120 |            120 |             0
+ TESTE-002             | Bruno      | Tecnico Teste      | 2026-07-01     |               0 |              0 |             0
+ TESTE-003             | Carla      | Dev Teste          | 2026-07-01     |             -45 |              0 |            45
+(3 rows)
+
+ employee_external_ref | first_name |   last_name   | justification_type | status  |                             description                              
+-----------------------+------------+---------------+--------------------+---------+----------------------------------------------------------------------
+ TESTE-002             | Bruno      | Tecnico Teste | PROBLEMA_GPS       | PENDING | Justificativa de teste criada para validar fluxo de problema de GPS.
+(1 row)
+
+               migration_key                |          executed_at          
+--------------------------------------------+-------------------------------
+ fase_1_2e_documentos_holerite_complementos | 2026-07-03 01:37:06.252116+00
+(1 row)
+
+

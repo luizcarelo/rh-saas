@@ -1,0 +1,38 @@
+     slug      |      trade_name       |           legal_name           | status |    plan_code    |              tenant_id               
+---------------+-----------------------+--------------------------------+--------+-----------------+--------------------------------------
+ empresa-teste | Empresa Teste RH SaaS | SAAS RH PRO EMPRESA TESTE LTDA | ACTIVE | ENTERPRISE_TEST | 54860ba6-a97b-409b-95c2-eed488a724df
+(1 row)
+
+      module_code      | enabled 
+-----------------------+---------
+ AFD_EXPORTACOES       | t
+ ASSINATURA_ELETRONICA | t
+ BANCO_HORAS           | t
+ DOCUMENTOS            | t
+ HOLERITES             | t
+ JUSTIFICATIVAS        | t
+ MAPA                  | t
+ PONTO_MOBILE          | t
+ SELFIE                | t
+ SUPER_ADMIN_TESTE     | t
+ TELEMETRIA            | t
+(11 rows)
+
+      code       |       name       | is_active 
+-----------------+------------------+-----------
+ ENTERPRISE      | Enterprise       | t
+ ENTERPRISE_TEST | Enterprise Teste | t
+ TRIAL           | Teste            | t
+(3 rows)
+
+          email           |     full_name     | is_active 
+--------------------------+-------------------+-----------
+ superadmin@rh-saas.local | Super Admin Teste | t
+(1 row)
+
+       migration_key       |         executed_at          
+---------------------------+------------------------------
+ fase_1_2a_cliente_modulos | 2026-07-03 01:29:40.15815+00
+(1 row)
+
+

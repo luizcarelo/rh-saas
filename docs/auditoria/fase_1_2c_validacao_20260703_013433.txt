@@ -1,0 +1,18 @@
+ employee_external_ref | first_name |     last_name      |     cpf     |              email              |   department   |      job_position       |     job_function      | admission_date | status 
+-----------------------+------------+--------------------+-------------+---------------------------------+----------------+-------------------------+-----------------------+----------------+--------
+ TESTE-001             | Ana        | Colaboradora Teste | 10000000001 | ana.teste@empresa-teste.local   | Administrativo | Analista Administrativo | Administrativo Padrao | 2026-07-01     | ACTIVE
+ TESTE-002             | Bruno      | Tecnico Teste      | 10000000002 | bruno.teste@empresa-teste.local | Operacoes      | Tecnico Externo         | Tecnico Externo       | 2026-07-01     | ACTIVE
+ TESTE-003             | Carla      | Dev Teste          | 10000000003 | carla.teste@empresa-teste.local | Tecnologia     | Desenvolvedor           | Administrativo Padrao | 2026-07-01     | ACTIVE
+(3 rows)
+
+ total_colaboradores_teste 
+---------------------------
+                         3
+(1 row)
+
+         migration_key         |          executed_at          
+-------------------------------+-------------------------------
+ fase_1_2c_colaboradores_teste | 2026-07-03 01:34:34.146029+00
+(1 row)
+
+

@@ -1,0 +1,62 @@
+     slug      |      trade_name       |           legal_name           | status 
+---------------+-----------------------+--------------------------------+--------
+ empresa-teste | Empresa Teste RH SaaS | SAAS RH PRO EMPRESA TESTE LTDA | ACTIVE
+(1 row)
+
+           legal_name           |      trade_name       | document_number 
+--------------------------------+-----------------------+-----------------
+ SAAS RH PRO EMPRESA TESTE LTDA | Empresa Teste RH SaaS | 11222333000181
+(1 row)
+
+      name      |              description              
+----------------+---------------------------------------
+ Administrativo | Departamento administrativo de teste.
+ Operacoes      | Departamento operacional de teste.
+ Operações      | Departamento operacional de teste
+ Tecnologia     | Departamento de tecnologia de teste.
+(4 rows)
+
+ code |      name      
+------+----------------
+ ADM  | Administrativo
+ OPS  | Operacoes
+ TEC  | Tecnologia
+(3 rows)
+
+          name           |          description           
+-------------------------+--------------------------------
+ Analista Administrativo | Cargo administrativo padrao.
+ Assistente de RH        | Cargo de apoio ao RH.
+ Desenvolvedor           | Cargo tecnico de tecnologia.
+ Gestor de Operacoes     | Cargo de gestao operacional.
+ Gestor de Operações     | Cargo de gestão operacional
+ Tecnico Externo         | Cargo com atividades externas.
+ Técnico Externo         | Cargo com atividades externas
+(7 rows)
+
+         name          | allows_external_visit | allows_travel | allows_overtime | allows_on_call | allows_shift_duty 
+-----------------------+-----------------------+---------------+-----------------+----------------+-------------------
+ Administrativo Padrao | f                     | f             | t               | f              | f
+ Administrativo Padrão | f                     | f             | t               | f              | f
+ Gestor                | t                     | t             | t               | t              | t
+ Plantonista           | f                     | f             | t               | t              | t
+ Tecnico Externo       | t                     | t             | t               | f              | f
+ Técnico Externo       | t                     | t             | t               | f              | f
+(6 rows)
+
+         name         |      city      | state |  latitude   |  longitude  
+----------------------+----------------+-------+-------------+-------------
+ Matriz Empresa Teste | Rio de Janeiro | RJ    | -22.9068000 | -43.1729000
+(1 row)
+
+             name              | radius_meters | is_active 
+-------------------------------+---------------+-----------
+ Geocerca Matriz Empresa Teste |           150 | t
+(1 row)
+
+     migration_key      |          executed_at          
+------------------------+-------------------------------
+ fase_1_2b_estrutura_rh | 2026-07-03 01:32:08.461775+00
+(1 row)
+
+

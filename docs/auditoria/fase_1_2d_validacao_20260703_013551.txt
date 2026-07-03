@@ -1,0 +1,46 @@
+         code         |            name             |      pair_code       | category | default_order | active_by_default 
+----------------------+-----------------------------+----------------------+----------+---------------+-------------------
+ ENTRY                | Entrada                     | EXIT                 | WORK     |            10 | t
+ EXIT                 | Saida                       | ENTRY                | WORK     |            20 | t
+ BREAK_START          | Inicio de Intervalo         | BREAK_END            | BREAK    |            30 | t
+ BREAK_END            | Fim de Intervalo            | BREAK_START          | BREAK    |            40 | t
+ OVERTIME_START       | Inicio de Hora Extra        | OVERTIME_END         | OVERTIME |            50 | f
+ OVERTIME_END         | Fim de Hora Extra           | OVERTIME_START       | OVERTIME |            60 | f
+ EXTERNAL_VISIT_START | Saida para Visita Externa   | EXTERNAL_VISIT_END   | EXTERNAL |            70 | f
+ EXTERNAL_VISIT_END   | Retorno de Visita Externa   | EXTERNAL_VISIT_START | EXTERNAL |            80 | f
+ ON_CALL_START        | Inicio de Sobreaviso        | ON_CALL_END          | ON_CALL  |            90 | f
+ ON_CALL_END          | Fim de Sobreaviso           | ON_CALL_START        | ON_CALL  |           100 | f
+ SHIFT_DUTY_START     | Inicio de Plantao           | SHIFT_DUTY_END       | SHIFT    |           110 | f
+ SHIFT_DUTY_END       | Fim de Plantao              | SHIFT_DUTY_START     | SHIFT    |           120 | f
+ TECH_PAUSE_START     | Pausa Tecnica               | TECH_PAUSE_END       | PAUSE    |           130 | f
+ TECH_PAUSE_END       | Retorno da Pausa Tecnica    | TECH_PAUSE_START     | PAUSE    |           140 | f
+ PERSONAL_EXIT_START  | Saida Particular            | PERSONAL_EXIT_END    | PERSONAL |           150 | f
+ PERSONAL_EXIT_END    | Retorno de Saida Particular | PERSONAL_EXIT_START  | PERSONAL |           160 | f
+ TRAVEL_START         | Inicio de Viagem            | TRAVEL_END           | TRAVEL   |           170 | f
+ TRAVEL_END           | Fim de Viagem               | TRAVEL_START         | TRAVEL   |           180 | f
+(18 rows)
+
+      policy_name       | gps_required | min_accuracy_meters | geofence_required | offline_allowed | max_offline_hours | selfie_required | telemetry_enabled | telemetry_interval_minutes | is_default 
+------------------------+--------------+---------------------+-------------------+-----------------+-------------------+-----------------+-------------------+----------------------------+------------
+ Politica Mobile Padrao | t            |                  30 | f                 | t               |                48 | f               | f                 |                         10 | t
+(1 row)
+
+      policy_name       |    code     |   event_type_name   | enabled | requires_selfie | requires_geofence | requires_justification | display_order 
+------------------------+-------------+---------------------+---------+-----------------+-------------------+------------------------+---------------
+ Politica Mobile Padrao | ENTRY       | Entrada             | t       | f               | f                 | f                      |            10
+ Politica Mobile Padrao | EXIT        | Saida               | t       | f               | f                 | f                      |            20
+ Politica Mobile Padrao | BREAK_START | Inicio de Intervalo | t       | f               | f                 | f                      |            30
+ Politica Mobile Padrao | BREAK_END   | Fim de Intervalo    | t       | f               | f                 | f                      |            40
+(4 rows)
+
+ min_supported_version | force_update | allow_offline | show_address_before_clock | show_pending_sync_count | privacy_notice_required |                                                                                                     settings                                                                                                     
+-----------------------+--------------+---------------+---------------------------+-------------------------+-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 1.0.0                 | f            | t             | t                         | t                       | t                       | {"tema": "frontend-web", "idioma": "pt-BR", "observacao": "Configuracao inicial criada na Fase 1.2D", "gpsPrecisaoMinimaMetros": 30, "exibirEnderecoAntesDaBatida": true, "exibirPendenciasSincronizacao": true}
+(1 row)
+
+             migration_key              |          executed_at          
+----------------------------------------+-------------------------------
+ fase_1_2d_tipos_batida_politica_mobile | 2026-07-03 01:35:51.829547+00
+(1 row)
+
+

@@ -1,0 +1,36 @@
+-- ROLLBACK DOCUMENTAL - FASE 1.1 V2
+-- NÃO EXECUTAR sem aceite formal.
+-- Esta fase adicionou colunas updated_at de forma segura nas tabelas existentes.
+-- A reversão normalmente NÃO é recomendada, pois updated_at será usado nas próximas fases.
+
+-- Backup completo antes da fase: /opt/rh-saas/backups/fase_1_1_diagnostico_normalizacao/rh_saas_db_backup_fase_1_1_v2_20260703_012357.sql
+
+-- ALTER TABLE IF EXISTS public."saas_plans" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."saas_clients" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."tenant_module_flags" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."super_admin_users" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."hr_companies" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."hr_branches" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."hr_departments" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."hr_cost_centers" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."hr_job_positions" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."hr_job_functions" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."hr_work_locations" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."hr_geofences" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."hr_employee_profiles" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."clock_event_types" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."clock_policies" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."clock_policy_event_types" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."mobile_app_settings" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."mobile_devices" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."mobile_sync_batches" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."clock_events_foundation" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."location_tracking_points" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."documents_foundation" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."document_recipients_foundation" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."payslips_foundation" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."time_bank_balances_foundation" DROP COLUMN IF EXISTS updated_at;
+-- ALTER TABLE IF EXISTS public."clock_justifications_foundation" DROP COLUMN IF EXISTS updated_at;
+
+-- Opcionalmente, remover registro da migration:
+-- DELETE FROM rh_saas_schema_migrations WHERE migration_key = 'fase_1_1_diagnostico_normalizacao_v2';

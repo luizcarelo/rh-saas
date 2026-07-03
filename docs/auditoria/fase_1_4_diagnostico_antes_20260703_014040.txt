@@ -1,0 +1,37 @@
+    grupo    |      name      | total 
+-------------+----------------+-------
+ departments | Administrativo |     1
+ departments | Operacoes      |     1
+ departments | Operações      |     1
+ departments | Tecnologia     |     1
+(4 rows)
+
+     grupo     |          name           | total 
+---------------+-------------------------+-------
+ job_positions | Analista Administrativo |     1
+ job_positions | Assistente de RH        |     1
+ job_positions | Desenvolvedor           |     1
+ job_positions | Gestor de Operacoes     |     1
+ job_positions | Gestor de Operações     |     1
+ job_positions | Tecnico Externo         |     1
+ job_positions | Técnico Externo         |     1
+(7 rows)
+
+     grupo     |         name          | total 
+---------------+-----------------------+-------
+ job_functions | Administrativo Padrao |     1
+ job_functions | Administrativo Padrão |     1
+ job_functions | Gestor                |     1
+ job_functions | Plantonista           |     1
+ job_functions | Tecnico Externo       |     1
+ job_functions | Técnico Externo       |     1
+(6 rows)
+
+ employee_external_ref | first_name |     last_name      |   department   |      job_position       |     job_function      
+-----------------------+------------+--------------------+----------------+-------------------------+-----------------------
+ TESTE-001             | Ana        | Colaboradora Teste | Administrativo | Analista Administrativo | Administrativo Padrao
+ TESTE-002             | Bruno      | Tecnico Teste      | Operacoes      | Tecnico Externo         | Tecnico Externo
+ TESTE-003             | Carla      | Dev Teste          | Tecnologia     | Desenvolvedor           | Administrativo Padrao
+(3 rows)
+
+

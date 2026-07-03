@@ -1,0 +1,222 @@
+============================================================
+1. CLIENTE E PLANO
+============================================================
+     slug      |      trade_name       |           legal_name           | document_number | status |    plan_code    |    plan_name     |              tenant_id               
+---------------+-----------------------+--------------------------------+-----------------+--------+-----------------+------------------+--------------------------------------
+ empresa-teste | Empresa Teste RH SaaS | SAAS RH PRO EMPRESA TESTE LTDA | 11222333000181  | ACTIVE | ENTERPRISE_TEST | Enterprise Teste | 54860ba6-a97b-409b-95c2-eed488a724df
+(1 row)
+
+============================================================
+2. MODULOS ATIVOS
+============================================================
+      module_code      | enabled 
+-----------------------+---------
+ AFD_EXPORTACOES       | t
+ ASSINATURA_ELETRONICA | t
+ BANCO_HORAS           | t
+ DOCUMENTOS            | t
+ HOLERITES             | t
+ JUSTIFICATIVAS        | t
+ MAPA                  | t
+ PONTO_MOBILE          | t
+ SELFIE                | t
+ SUPER_ADMIN_TESTE     | t
+ TELEMETRIA            | t
+(11 rows)
+
+============================================================
+3. EMPRESA JURIDICA
+============================================================
+           legal_name           |      trade_name       | document_number 
+--------------------------------+-----------------------+-----------------
+ SAAS RH PRO EMPRESA TESTE LTDA | Empresa Teste RH SaaS | 11222333000181
+(1 row)
+
+============================================================
+4. DEPARTAMENTOS
+============================================================
+      name      |              description              
+----------------+---------------------------------------
+ Administrativo | Departamento administrativo de teste.
+ Operacoes      | Departamento operacional de teste.
+ Operações      | Departamento operacional de teste
+ Tecnologia     | Departamento de tecnologia de teste.
+(4 rows)
+
+============================================================
+5. CENTROS DE CUSTO
+============================================================
+ code |      name      
+------+----------------
+ ADM  | Administrativo
+ OPS  | Operacoes
+ TEC  | Tecnologia
+(3 rows)
+
+============================================================
+6. CARGOS
+============================================================
+          name           |          description           
+-------------------------+--------------------------------
+ Analista Administrativo | Cargo administrativo padrao.
+ Assistente de RH        | Cargo de apoio ao RH.
+ Desenvolvedor           | Cargo tecnico de tecnologia.
+ Gestor de Operacoes     | Cargo de gestao operacional.
+ Gestor de Operações     | Cargo de gestão operacional
+ Tecnico Externo         | Cargo com atividades externas.
+ Técnico Externo         | Cargo com atividades externas
+(7 rows)
+
+============================================================
+7. FUNCOES
+============================================================
+         name          | allows_external_visit | allows_travel | allows_overtime | allows_on_call | allows_shift_duty 
+-----------------------+-----------------------+---------------+-----------------+----------------+-------------------
+ Administrativo Padrao | f                     | f             | t               | f              | f
+ Administrativo Padrão | f                     | f             | t               | f              | f
+ Gestor                | t                     | t             | t               | t              | t
+ Plantonista           | f                     | f             | t               | t              | t
+ Tecnico Externo       | t                     | t             | t               | f              | f
+ Técnico Externo       | t                     | t             | t               | f              | f
+(6 rows)
+
+============================================================
+8. LOCAL DE TRABALHO E GEOCERCA
+============================================================
+    work_location     |      city      | state |  latitude   |  longitude  |           geofence            | radius_meters | is_active 
+----------------------+----------------+-------+-------------+-------------+-------------------------------+---------------+-----------
+ Matriz Empresa Teste | Rio de Janeiro | RJ    | -22.9068000 | -43.1729000 | Geocerca Matriz Empresa Teste |           150 | t
+(1 row)
+
+============================================================
+9. COLABORADORES TESTE
+============================================================
+ employee_external_ref | first_name |     last_name      |     cpf     |              email              |   department   |      job_position       |     job_function      | admission_date | status 
+-----------------------+------------+--------------------+-------------+---------------------------------+----------------+-------------------------+-----------------------+----------------+--------
+ TESTE-001             | Ana        | Colaboradora Teste | 10000000001 | ana.teste@empresa-teste.local   | Administrativo | Analista Administrativo | Administrativo Padrao | 2026-07-01     | ACTIVE
+ TESTE-002             | Bruno      | Tecnico Teste      | 10000000002 | bruno.teste@empresa-teste.local | Operacoes      | Tecnico Externo         | Tecnico Externo       | 2026-07-01     | ACTIVE
+ TESTE-003             | Carla      | Dev Teste          | 10000000003 | carla.teste@empresa-teste.local | Tecnologia     | Desenvolvedor           | Administrativo Padrao | 2026-07-01     | ACTIVE
+(3 rows)
+
+============================================================
+10. TIPOS DE BATIDA
+============================================================
+         code         |            name             |      pair_code       | category | default_order | active_by_default 
+----------------------+-----------------------------+----------------------+----------+---------------+-------------------
+ ENTRY                | Entrada                     | EXIT                 | WORK     |            10 | t
+ EXIT                 | Saida                       | ENTRY                | WORK     |            20 | t
+ BREAK_START          | Inicio de Intervalo         | BREAK_END            | BREAK    |            30 | t
+ BREAK_END            | Fim de Intervalo            | BREAK_START          | BREAK    |            40 | t
+ OVERTIME_START       | Inicio de Hora Extra        | OVERTIME_END         | OVERTIME |            50 | f
+ OVERTIME_END         | Fim de Hora Extra           | OVERTIME_START       | OVERTIME |            60 | f
+ EXTERNAL_VISIT_START | Saida para Visita Externa   | EXTERNAL_VISIT_END   | EXTERNAL |            70 | f
+ EXTERNAL_VISIT_END   | Retorno de Visita Externa   | EXTERNAL_VISIT_START | EXTERNAL |            80 | f
+ ON_CALL_START        | Inicio de Sobreaviso        | ON_CALL_END          | ON_CALL  |            90 | f
+ ON_CALL_END          | Fim de Sobreaviso           | ON_CALL_START        | ON_CALL  |           100 | f
+ SHIFT_DUTY_START     | Inicio de Plantao           | SHIFT_DUTY_END       | SHIFT    |           110 | f
+ SHIFT_DUTY_END       | Fim de Plantao              | SHIFT_DUTY_START     | SHIFT    |           120 | f
+ TECH_PAUSE_START     | Pausa Tecnica               | TECH_PAUSE_END       | PAUSE    |           130 | f
+ TECH_PAUSE_END       | Retorno da Pausa Tecnica    | TECH_PAUSE_START     | PAUSE    |           140 | f
+ PERSONAL_EXIT_START  | Saida Particular            | PERSONAL_EXIT_END    | PERSONAL |           150 | f
+ PERSONAL_EXIT_END    | Retorno de Saida Particular | PERSONAL_EXIT_START  | PERSONAL |           160 | f
+ TRAVEL_START         | Inicio de Viagem            | TRAVEL_END           | TRAVEL   |           170 | f
+ TRAVEL_END           | Fim de Viagem               | TRAVEL_START         | TRAVEL   |           180 | f
+(18 rows)
+
+============================================================
+11. POLITICA MOBILE
+============================================================
+      policy_name       | gps_required | min_accuracy_meters | geofence_required | offline_allowed | max_offline_hours | selfie_required | telemetry_enabled | telemetry_interval_minutes | is_default 
+------------------------+--------------+---------------------+-------------------+-----------------+-------------------+-----------------+-------------------+----------------------------+------------
+ Politica Mobile Padrao | t            |                  30 | f                 | t               |                48 | f               | f                 |                         10 | t
+(1 row)
+
+============================================================
+12. BATIDAS VINCULADAS A POLITICA
+============================================================
+      policy_name       |    code     |   event_type_name   | enabled | requires_selfie | requires_geofence | requires_justification | display_order 
+------------------------+-------------+---------------------+---------+-----------------+-------------------+------------------------+---------------
+ Politica Mobile Padrao | ENTRY       | Entrada             | t       | f               | f                 | f                      |            10
+ Politica Mobile Padrao | EXIT        | Saida               | t       | f               | f                 | f                      |            20
+ Politica Mobile Padrao | BREAK_START | Inicio de Intervalo | t       | f               | f                 | f                      |            30
+ Politica Mobile Padrao | BREAK_END   | Fim de Intervalo    | t       | f               | f                 | f                      |            40
+(4 rows)
+
+============================================================
+13. CONFIGURACAO MOBILE
+============================================================
+ min_supported_version | force_update | allow_offline | show_address_before_clock | show_pending_sync_count | privacy_notice_required |                                                                                                     settings                                                                                                     
+-----------------------+--------------+---------------+---------------------------+-------------------------+-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 1.0.0                 | f            | t             | t                         | t                       | t                       | {"tema": "frontend-web", "idioma": "pt-BR", "observacao": "Configuracao inicial criada na Fase 1.2D", "gpsPrecisaoMinimaMetros": 30, "exibirEnderecoAntesDaBatida": true, "exibirPendenciasSincronizacao": true}
+(1 row)
+
+============================================================
+14. DOCUMENTOS E DESTINATARIOS
+============================================================
+                  title                   | document_type |  status   | requires_signature | requires_selfie | requires_location | total_destinatarios 
+------------------------------------------+---------------+-----------+--------------------+-----------------+-------------------+---------------------
+ Termo de Ciencia de Ponto Mobile - Teste | TERMO_CIENCIA | PUBLISHED | t                  | f               | t                 |                   3
+(1 row)
+
+============================================================
+15. DESTINATARIOS DO DOCUMENTO TESTE
+============================================================
+ employee_external_ref | first_name |     last_name      | document_status 
+-----------------------+------------+--------------------+-----------------
+ TESTE-001             | Ana        | Colaboradora Teste | PENDING
+ TESTE-002             | Bruno      | Tecnico Teste      | PENDING
+ TESTE-003             | Carla      | Dev Teste          | PENDING
+(3 rows)
+
+============================================================
+16. HOLERITES
+============================================================
+ employee_external_ref | first_name |     last_name      | reference_month | reference_year |            title             |                file_path                
+-----------------------+------------+--------------------+-----------------+----------------+------------------------------+-----------------------------------------
+ TESTE-001             | Ana        | Colaboradora Teste |               7 |           2026 | Holerite Ficticio Julho/2026 | /arquivos/teste/holerite_julho_2026.pdf
+(1 row)
+
+============================================================
+17. BANCO DE HORAS
+============================================================
+ employee_external_ref | first_name |     last_name      | reference_date | balance_minutes | credit_minutes | debit_minutes 
+-----------------------+------------+--------------------+----------------+-----------------+----------------+---------------
+ TESTE-001             | Ana        | Colaboradora Teste | 2026-07-01     |             120 |            120 |             0
+ TESTE-002             | Bruno      | Tecnico Teste      | 2026-07-01     |               0 |              0 |             0
+ TESTE-003             | Carla      | Dev Teste          | 2026-07-01     |             -45 |              0 |            45
+(3 rows)
+
+============================================================
+18. JUSTIFICATIVAS
+============================================================
+ employee_external_ref | first_name |   last_name   | justification_type | status  |                             description                              
+-----------------------+------------+---------------+--------------------+---------+----------------------------------------------------------------------
+ TESTE-002             | Bruno      | Tecnico Teste | PROBLEMA_GPS       | PENDING | Justificativa de teste criada para validar fluxo de problema de GPS.
+(1 row)
+
+============================================================
+19. MIGRATIONS DA FASE 1
+============================================================
+               migration_key                |          executed_at          
+--------------------------------------------+-------------------------------
+ fase_1_1_diagnostico_normalizacao_v2       | 2026-07-03 01:24:01.294279+00
+ fase_1_2a_cliente_modulos                  | 2026-07-03 01:29:40.15815+00
+ fase_1_2b_estrutura_rh                     | 2026-07-03 01:32:08.461775+00
+ fase_1_2c_colaboradores_teste              | 2026-07-03 01:34:34.146029+00
+ fase_1_2d_tipos_batida_politica_mobile     | 2026-07-03 01:35:51.829547+00
+ fase_1_2e_documentos_holerite_complementos | 2026-07-03 01:37:06.252116+00
+(6 rows)
+
+============================================================
+20. AUDITORIAS DA FASE 1
+============================================================
+                       action                        |          actor_email           | actor_role | entity_type |   entity_id   |          created_at           
+-----------------------------------------------------+--------------------------------+------------+-------------+---------------+-------------------------------
+ FASE_1_2A_CLIENTE_MODULOS_APLICADA                  | script-fase-1-2a@rh-saas.local | SYSTEM     | SAAS_CLIENT | empresa-teste | 2026-07-03 01:29:40.15815+00
+ FASE_1_2B_ESTRUTURA_RH_APLICADA                     | script-fase-1-2b@rh-saas.local | SYSTEM     | SAAS_CLIENT | empresa-teste | 2026-07-03 01:32:08.461775+00
+ FASE_1_2C_COLABORADORES_TESTE_APLICADA              | script-fase-1-2c@rh-saas.local | SYSTEM     | SAAS_CLIENT | empresa-teste | 2026-07-03 01:34:34.146029+00
+ FASE_1_2D_TIPOS_BATIDA_POLITICA_MOBILE_APLICADA     | script-fase-1-2d@rh-saas.local | SYSTEM     | SAAS_CLIENT | empresa-teste | 2026-07-03 01:35:51.829547+00
+ FASE_1_2E_DOCUMENTOS_HOLERITE_COMPLEMENTOS_APLICADA | script-fase-1-2e@rh-saas.local | SYSTEM     | SAAS_CLIENT | empresa-teste | 2026-07-03 01:37:06.252116+00
+(5 rows)
+
+
