@@ -1,0 +1,389 @@
+=================================================
+MOBILE CLOCK CONTRACT RAW
+Data: 20260704_224911
+=================================================
+
+## HomeScreen.tsx
+-------------------------------------------------
+     1	import React, { useState, useEffect } from 'react';
+     2	import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Alert, Image } from 'react-native';
+     3	import * as Location from 'expo-location';
+     4	import AsyncStorage from '@react-native-async-storage/async-storage';
+     5	import api from '../services/api';
+     6	import { LogOut, Clock, MapPin } from 'lucide-react-native';
+     7	
+     8	export default function HomeScreen({ navigation }: any) {
+     9	  const [loading, setLoading] = useState(false);
+    10	  const [currentTime, setCurrentTime] = useState(new Date());
+    11	
+    12	  useEffect(() => {
+    13	    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    14	    return () => clearInterval(timer);
+    15	  }, []);
+    16	
+    17	  const handleLogout = async () => {
+    18	    await AsyncStorage.removeItem('@LH_Token');
+    19	    navigation.replace('Login');
+    20	  };
+    21	
+    22	  const handleClockIn = async () => {
+    23	    setLoading(true);
+    24	    try {
+    25	      let { status } = await Location.requestForegroundPermissionsAsync();
+    26	      if (status !== 'granted') {
+    27	        Alert.alert('Erro', 'Acesso ao GPS é obrigatório.');
+    28	        setLoading(false);
+    29	        return;
+    30	      }
+    31	
+    32	      const location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High });
+    33	      const { latitude, longitude } = location.coords;
+    34	
+    35	      await api.post('/v1/time-records/clock-in', { latitude, longitude });
+    36	      
+    37	      Alert.alert('Sucesso', 'Ponto registrado com sucesso!');
+    38	    } catch (error) {
+    39	      Alert.alert('Erro', 'Não foi possível salvar o ponto.');
+    40	    } finally {
+    41	      setLoading(false);
+    42	    }
+    43	  };
+    44	
+    45	  return (
+    46	    <View style={styles.container}>
+    47	      <View style={styles.header}>
+    48	        <Image source={require('../../assets/logo_rh.png')} style={styles.miniLogo} resizeMode="contain" />
+    49	        <TouchableOpacity onPress={handleLogout}><LogOut color="#ef4444" size={24} /></TouchableOpacity>
+    50	      </View>
+    51	
+    52	      <View style={styles.clockContainer}>
+    53	        <Clock color="#059669" size={40} />
+    54	        <Text style={styles.timeText}>{currentTime.toLocaleTimeString('pt-BR')}</Text>
+    55	        <Text style={styles.dateText}>{currentTime.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })}</Text>
+    56	      </View>
+    57	
+    58	      <TouchableOpacity style={[styles.mainButton, loading && styles.disabled]} onPress={handleClockIn} disabled={loading}>
+    59	        {loading ? <ActivityIndicator color="#fff" size="large" /> : (
+    60	          <View style={{ alignItems: 'center' }}>
+    61	            <MapPin color="#fff" size={32} />
+    62	            <Text style={styles.mainButtonText}>REGISTRAR PONTO</Text>
+    63	          </View>
+    64	        )}
+    65	      </TouchableOpacity>
+    66	
+    67	      <TouchableOpacity
+    68	        style={styles.button}
+    69	        onPress={() => navigation.navigate('LiveTracking')}
+    70	      >
+    71	        <Text style={styles.buttonText}>Live Tracking</Text>
+    72	      </TouchableOpacity>
+    73	
+    74	    </View>
+    75	  );
+    76	}
+    77	
+    78	const styles = StyleSheet.create({
+    79	  container: { flex: 1, backgroundColor: '#f8fafc', padding: 20 },
+    80	  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 40, marginBottom: 40 },
+    81	  miniLogo: { width: 120, height: 40 },
+    82	  clockContainer: { alignItems: 'center', marginBottom: 60 },
+    83	  timeText: { fontSize: 54, fontWeight: 'bold', color: '#0f172a' },
+    84	  dateText: { fontSize: 16, color: '#64748b', textTransform: 'capitalize' },
+    85	  mainButton: { backgroundColor: '#059669', height: 200, borderRadius: 100, width: 200, alignSelf: 'center', justifyContent: 'center', alignItems: 'center', shadowColor: '#000', elevation: 10 },
+    86	  mainButtonText: { color: '#fff', fontSize: 18, fontWeight: 'bold', marginTop: 10 },
+    87	  disabled: { backgroundColor: '#94a3b8' },
+    88	
+    89	  button: {
+    90	    backgroundColor: '#0f172a',
+    91	    borderRadius: 12,
+    92	    padding: 14,
+    93	    alignItems: 'center',
+    94	    marginTop: 12,
+    95	  },
+    96	
+    97	  buttonText: {
+    98	    color: '#ffffff',
+    99	    fontSize: 15,
+   100	    fontWeight: '700',
+   101	  },
+   102	});
+
+## api.ts
+-------------------------------------------------
+     1	import axios from 'axios';
+     2	import AsyncStorage from '@react-native-async-storage/async-storage';
+     3	
+     4	declare const process: {
+     5	  env: {
+     6	    EXPO_PUBLIC_API_URL?: string;
+     7	  };
+     8	};
+     9	
+    10	const API_BASE_URL = (
+    11	  process.env.EXPO_PUBLIC_API_URL || 'https://rh.lhsolucao.com.br'
+    12	).replace(/\/$/, '');
+    13	
+    14	const api = axios.create({
+    15	  baseURL: API_BASE_URL,
+    16	});
+    17	
+    18	// Interceptor para injetar o Token em cada chamada automaticamente
+    19	api.interceptors.request.use(async (config) => {
+    20	  const token = await AsyncStorage.getItem('@LH_Token');
+    21	
+    22	  if (token) {
+    23	    config.headers.Authorization = `Bearer ${token}`;
+    24	  }
+    25	
+    26	  return config;
+    27	});
+    28	
+    29	export default api;
+
+## timePunchTypes.ts
+-------------------------------------------------
+     1	export type TimePunchCategory =
+     2	  | 'JORNADA'
+     3	  | 'INTERVALO'
+     4	  | 'HORA_EXTRA'
+     5	  | 'EXTERNO'
+     6	  | 'SOBREAVISO'
+     7	  | 'PLANTAO'
+     8	  | 'PAUSA_TECNICA'
+     9	  | 'PARTICULAR'
+    10	  | 'VIAGEM';
+    11	
+    12	export type TimePunchCode =
+    13	  | 'ENTRADA'
+    14	  | 'SAIDA'
+    15	  | 'INICIO_INTERVALO'
+    16	  | 'FIM_INTERVALO'
+    17	  | 'INICIO_HORA_EXTRA'
+    18	  | 'FIM_HORA_EXTRA'
+    19	  | 'SAIDA_VISITA_EXTERNA'
+    20	  | 'RETORNO_VISITA_EXTERNA'
+    21	  | 'INICIO_SOBREAVISO'
+    22	  | 'FIM_SOBREAVISO'
+    23	  | 'INICIO_PLANTAO'
+    24	  | 'FIM_PLANTAO'
+    25	  | 'PAUSA_TECNICA'
+    26	  | 'RETORNO_PAUSA_TECNICA'
+    27	  | 'SAIDA_PARTICULAR'
+    28	  | 'RETORNO_SAIDA_PARTICULAR'
+    29	  | 'INICIO_VIAGEM'
+    30	  | 'FIM_VIAGEM';
+    31	
+    32	export type TimePunchType = {
+    33	  code: TimePunchCode;
+    34	  label: string;
+    35	  description: string;
+    36	  category: TimePunchCategory;
+    37	  isPrimary: boolean;
+    38	  order: number;
+    39	};
+    40	
+    41	export const TIME_PUNCH_CATEGORY_LABELS: Record<TimePunchCategory, string> = {
+    42	  JORNADA: 'Jornada',
+    43	  INTERVALO: 'Intervalo',
+    44	  HORA_EXTRA: 'Hora Extra',
+    45	  EXTERNO: 'Atividade Externa',
+    46	  SOBREAVISO: 'Sobreaviso',
+    47	  PLANTAO: 'Plantão',
+    48	  PAUSA_TECNICA: 'Pausa Técnica',
+    49	  PARTICULAR: 'Saída Particular',
+    50	  VIAGEM: 'Viagem',
+    51	};
+    52	
+    53	export const TIME_PUNCH_TYPES: TimePunchType[] = [
+    54	  {
+    55	    code: 'ENTRADA',
+    56	    label: 'Entrada',
+    57	    description: 'Início da jornada de trabalho.',
+    58	    category: 'JORNADA',
+    59	    isPrimary: true,
+    60	    order: 10,
+    61	  },
+    62	  {
+    63	    code: 'SAIDA',
+    64	    label: 'Saída',
+    65	    description: 'Encerramento da jornada.',
+    66	    category: 'JORNADA',
+    67	    isPrimary: true,
+    68	    order: 20,
+    69	  },
+    70	  {
+    71	    code: 'INICIO_INTERVALO',
+    72	    label: 'Início de Intervalo',
+    73	    description: 'Saída para almoço, refeição ou descanso.',
+    74	    category: 'INTERVALO',
+    75	    isPrimary: true,
+    76	    order: 30,
+    77	  },
+    78	  {
+    79	    code: 'FIM_INTERVALO',
+    80	    label: 'Fim de Intervalo',
+    81	    description: 'Retorno do intervalo.',
+    82	    category: 'INTERVALO',
+    83	    isPrimary: true,
+    84	    order: 40,
+    85	  },
+    86	  {
+    87	    code: 'INICIO_HORA_EXTRA',
+    88	    label: 'Início de Hora Extra',
+    89	    description: 'Início de atividades além da jornada normal.',
+    90	    category: 'HORA_EXTRA',
+    91	    isPrimary: false,
+    92	    order: 50,
+    93	  },
+    94	  {
+    95	    code: 'FIM_HORA_EXTRA',
+    96	    label: 'Fim de Hora Extra',
+    97	    description: 'Encerramento das horas extras.',
+    98	    category: 'HORA_EXTRA',
+    99	    isPrimary: false,
+   100	    order: 60,
+   101	  },
+   102	  {
+   103	    code: 'SAIDA_VISITA_EXTERNA',
+   104	    label: 'Saída para Visita Externa',
+   105	    description: 'Saída para cliente, fornecedor ou atividade externa.',
+   106	    category: 'EXTERNO',
+   107	    isPrimary: false,
+   108	    order: 70,
+   109	  },
+   110	  {
+   111	    code: 'RETORNO_VISITA_EXTERNA',
+   112	    label: 'Retorno de Visita Externa',
+   113	    description: 'Retorno à empresa.',
+   114	    category: 'EXTERNO',
+   115	    isPrimary: false,
+   116	    order: 80,
+   117	  },
+   118	  {
+   119	    code: 'INICIO_SOBREAVISO',
+   120	    label: 'Início de Sobreaviso',
+   121	    description: 'Funcionário fica disponível para ser acionado.',
+   122	    category: 'SOBREAVISO',
+   123	    isPrimary: false,
+   124	    order: 90,
+   125	  },
+   126	  {
+   127	    code: 'FIM_SOBREAVISO',
+   128	    label: 'Fim de Sobreaviso',
+   129	    description: 'Encerramento do período de sobreaviso.',
+   130	    category: 'SOBREAVISO',
+   131	    isPrimary: false,
+   132	    order: 100,
+   133	  },
+   134	  {
+   135	    code: 'INICIO_PLANTAO',
+   136	    label: 'Início de Plantão',
+   137	    description: 'Início de turno especial ou plantão.',
+   138	    category: 'PLANTAO',
+   139	    isPrimary: false,
+   140	    order: 110,
+   141	  },
+   142	  {
+   143	    code: 'FIM_PLANTAO',
+   144	    label: 'Fim de Plantão',
+   145	    description: 'Encerramento do plantão.',
+   146	    category: 'PLANTAO',
+   147	    isPrimary: false,
+   148	    order: 120,
+   149	  },
+   150	  {
+   151	    code: 'PAUSA_TECNICA',
+   152	    label: 'Pausa Técnica',
+   153	    description: 'Parada para treinamentos, reuniões ou atividades específicas.',
+   154	    category: 'PAUSA_TECNICA',
+   155	    isPrimary: false,
+   156	    order: 130,
+   157	  },
+   158	  {
+   159	    code: 'RETORNO_PAUSA_TECNICA',
+   160	    label: 'Retorno da Pausa Técnica',
+   161	    description: 'Retorno às atividades normais.',
+   162	    category: 'PAUSA_TECNICA',
+   163	    isPrimary: false,
+   164	    order: 140,
+   165	  },
+   166	  {
+   167	    code: 'SAIDA_PARTICULAR',
+   168	    label: 'Saída Particular',
+   169	    description: 'Ausência temporária para assuntos pessoais autorizados.',
+   170	    category: 'PARTICULAR',
+   171	    isPrimary: false,
+   172	    order: 150,
+   173	  },
+   174	  {
+   175	    code: 'RETORNO_SAIDA_PARTICULAR',
+   176	    label: 'Retorno de Saída Particular',
+   177	    description: 'Retorno após a saída autorizada.',
+   178	    category: 'PARTICULAR',
+   179	    isPrimary: false,
+   180	    order: 160,
+   181	  },
+   182	  {
+   183	    code: 'INICIO_VIAGEM',
+   184	    label: 'Início de Viagem',
+   185	    description: 'Início de deslocamento a trabalho.',
+   186	    category: 'VIAGEM',
+   187	    isPrimary: false,
+   188	    order: 170,
+   189	  },
+   190	  {
+   191	    code: 'FIM_VIAGEM',
+   192	    label: 'Fim de Viagem',
+   193	    description: 'Retorno ou encerramento da viagem.',
+   194	    category: 'VIAGEM',
+   195	    isPrimary: false,
+   196	    order: 180,
+   197	  },
+   198	];
+   199	
+   200	export const PRIMARY_TIME_PUNCH_TYPES = TIME_PUNCH_TYPES.filter(
+   201	  (type) => type.isPrimary,
+   202	);
+   203	
+   204	export const SECONDARY_TIME_PUNCH_TYPES = TIME_PUNCH_TYPES.filter(
+   205	  (type) => !type.isPrimary,
+   206	);
+   207	
+   208	export function getTimePunchTypeByCode(code: TimePunchCode) {
+   209	  return TIME_PUNCH_TYPES.find((type) => type.code === code);
+   210	}
+   211	
+   212	export function getTimePunchTypesByCategory(category: TimePunchCategory) {
+   213	  return TIME_PUNCH_TYPES.filter((type) => type.category === category);
+   214	}
+   215	
+   216	export function getTimePunchCategoryLabel(category: TimePunchCategory) {
+   217	  return TIME_PUNCH_CATEGORY_LABELS[category];
+   218	}
+
+## Busca de endpoint de ponto no mobile
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:33:      const { latitude, longitude } = location.coords;
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:35:      await api.post('/v1/time-records/clock-in', { latitude, longitude });
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:39:      Alert.alert('Erro', 'Não foi possível salvar o ponto.');
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:52:      <View style={styles.clockContainer}>
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:82:  clockContainer: { alignItems: 'center', marginBottom: 60 },
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:94:    latitude: number;
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:95:    longitude: number;
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:233:      const latitude = current.coords.latitude;
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:234:      const longitude = current.coords.longitude;
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:238:        latitude,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:239:        longitude,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:243:      setMessage('Enviando ponto GPS para a Foundation...');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:248:        latitude,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:249:        longitude,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:272:            latitude: createdPoint.latitude,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:273:            longitude: createdPoint.longitude,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:393:              <Text style={styles.infoText}>Latitude: {lastLocation.latitude}</Text>
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:394:              <Text style={styles.infoText}>Longitude: {lastLocation.longitude}</Text>
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:440:                {point.latitude}, {point.longitude}
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:47:  latitude: number;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:48:  longitude: number;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:62:  latitude: string | number;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:63:  longitude: string | number;
+

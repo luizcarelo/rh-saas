@@ -1,0 +1,152 @@
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +21ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +49ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +159ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuditModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSuperAdminModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAnalyticsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDashboardModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mReportsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mFoundationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDocumentsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEmployeesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSchedulesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeBankModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTimeRecordsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTenantModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:49 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuditController {/audit}:[39m[38;5;3m +5ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/audit, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/audit/action/:action, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/audit/entity/:entityType, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/audit/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSuperAdminController {/v1/super-admin}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/health, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/clients, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/clients/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/clients/:id/modules, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/clients/:id/modules/:moduleCode, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/clients/:id/modules/audit, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/dashboard, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/clients/:id/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/plans, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/plans, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/plans/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/clients, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/clients/:id, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/clients/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/clients/:id/audit, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/system/health, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/system/database, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/system/storage, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/system/metrics, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/system/containers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/super-admin/system/services, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAnalyticsController {/v1/analytics}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/analytics/overview, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/analytics/workforce, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/v1/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/v1/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mDocumentsController {/v1/documents}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/upload, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/documents/my-docs, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEmployeesController {/v1/employees}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id/link-user, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id/link-user, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/employees/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mScheduleController {/v1/schedules}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/schedules, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/schedules/assign, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/schedules/employee/:employeeId, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/schedules/employee/:employeeId/active, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/schedules/assign/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/schedules/assign/:id/end, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/schedules/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/schedules, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/schedules/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/schedules/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTimeBankController {/v1/time-bank}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-bank, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-bank/:employeeId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-bank/:employeeId/details, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-bank/recalculate, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTimeRecordsController {/v1/time-records}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/clock-in, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/break-start, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/break-end, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/clock-out, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/afd, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/time-records/simulate-math, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTenantController {/v1/tenant}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/tenant, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/tenant, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mDashboardController {/v1/dashboard}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/dashboard/overview, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/dashboard/employees, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/dashboard/time-bank, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/dashboard/schedules, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/dashboard/time-records, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/dashboard/executive, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mReportsController {/v1/reports}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/reports/employees, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/reports/schedules, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/reports/time-bank, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/reports/afd, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/reports/executive, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/reports/productivity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/reports/time-bank-summary, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/reports/schedule-distribution, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mFoundationController {/v1/foundation}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/overview, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/hr/employees, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/hr/departments, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/hr/job-positions, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/hr/job-functions, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/hr/work-locations, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/hr/geofences, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/mobile/devices, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/mobile/settings, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/tracking/points, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/clock/overview, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/clock/events, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/clock/event-types, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/clock/policies, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/clock/policy-event-types, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/clock/justifications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/documents/overview, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/documents, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/documents/recipients, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/timebank/overview, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/timebank/balances, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/payroll/overview, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/payroll/payslips, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/live-tracking/device, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/live-tracking/location, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/live-tracking/points, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/v1/foundation/live-tracking/latest, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1  - [39m07/04/2026, 11:04:50 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +4ms[39m
+🚀 API do SaaS de RH rodando com segurança na porta: 3000

@@ -1,0 +1,7 @@
+name	method	url	http_status	response_file
+super_admin_clientes	GET	https://rh.lhsolucao.com.br/v1/super-admin/clientes	404	/opt/rh-saas/docs/super-admin/superadmin_A4_E2_diag_tenant_cliente_20260705_003419/api_super_admin_clientes.json
+super_admin_tenants	GET	https://rh.lhsolucao.com.br/v1/super-admin/tenants	404	/opt/rh-saas/docs/super-admin/superadmin_A4_E2_diag_tenant_cliente_20260705_003419/api_super_admin_tenants.json
+tenants	GET	https://rh.lhsolucao.com.br/v1/tenants	404	/opt/rh-saas/docs/super-admin/superadmin_A4_E2_diag_tenant_cliente_20260705_003419/api_tenants.json
+clients	GET	https://rh.lhsolucao.com.br/v1/clients	404	/opt/rh-saas/docs/super-admin/superadmin_A4_E2_diag_tenant_cliente_20260705_003419/api_clients.json
+plans	GET	https://rh.lhsolucao.com.br/v1/plans	404	/opt/rh-saas/docs/super-admin/superadmin_A4_E2_diag_tenant_cliente_20260705_003419/api_plans.json
+modules	GET	https://rh.lhsolucao.com.br/v1/modules	404	/opt/rh-saas/docs/super-admin/superadmin_A4_E2_diag_tenant_cliente_20260705_003419/api_modules.json

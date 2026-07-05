@@ -1,0 +1,24 @@
+=================================================
+FRONTEND EMPLOYEE SERVICES
+Data: 20260705_041443
+=================================================
+
+### /opt/rh-saas/frontend-web/src/lib/api.ts
+16:  employeeId?: string | null;
+93:  endpoint: string,
+107:  const response = await fetch(`${API_BASE}${endpoint}`, {
+
+### /opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+6:  employeeExternalRef?: string | null;
+21:  employeeProfileId?: string;
+31:  employeeProfileId?: string | null;
+43:  employeeProfileId: string;
+57:  employeeProfileId?: string | null;
+71:  return apiRequest<FoundationEmployee[]>("/v1/foundation/hr/employees");
+78:    "/v1/foundation/live-tracking/device",
+80:      method: "POST",
+90:    "/v1/foundation/live-tracking/location",
+92:      method: "POST",
+100:    "/v1/foundation/live-tracking/points",
+106:    "/v1/foundation/live-tracking/latest",
+

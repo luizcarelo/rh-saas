@@ -1,0 +1,3 @@
+endpoint	http_status	response_file
+/v1/foundation/payroll/overview	200	/opt/rh-saas/docs/foundation/respostas_fase4G_payroll_20260704_131252/v1-foundation-payroll-overview.json
+/v1/foundation/payroll/payslips	200	/opt/rh-saas/docs/foundation/respostas_fase4G_payroll_20260704_131252/v1-foundation-payroll-payslips.json

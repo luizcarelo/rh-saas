@@ -1,0 +1,4 @@
+IS_JSON=True
+ROLE=nao localizado
+EMAIL=nao localizado
+HAS_TOKEN=False

@@ -1,0 +1,935 @@
+=================================================
+BACKEND EMPLOYEE DTOS
+Data: 20260705_041811
+=================================================
+
+### /opt/rh-saas/backend/src/modules/auth/dto/login.dto.ts
+     1	import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
+     2	
+     3	export class LoginDto {
+     4	  @IsEmail({}, { message: 'Forneça um e-mail válido.' })
+     5	  @IsNotEmpty()
+     6	  email: string;
+     7	
+     8	  @IsNotEmpty()
+     9	  @MinLength(6, { message: 'A senha deve ter no mínimo 6 caracteres.' })
+    10	  password: string;
+    11	}
+
+### /opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts
+     1	import { IsString, IsEmail, IsNotEmpty, IsDateString, Length } from 'class-validator';
+     2	
+     3	export class CreateEmployeeDto {
+     4	  @IsString()
+     5	  @IsNotEmpty()
+     6	  firstName: string;
+     7	
+     8	  @IsString()
+     9	  @IsNotEmpty()
+    10	  lastName: string;
+    11	
+    12	  @IsString()
+    13	  @Length(11, 11)
+    14	  cpf: string;
+    15	
+    16	  @IsEmail()
+    17	  email: string;
+    18	
+    19	  @IsString()
+    20	  department: string;
+    21	
+    22	  @IsString()
+    23	  jobTitle: string;
+    24	
+    25	  @IsDateString()
+    26	  admissionDate: string;
+    27	}
+
+### /opt/rh-saas/backend/src/modules/employees/dto/link-user.dto.ts
+     1	import { IsUUID } from 'class-validator';
+     2	
+     3	export class LinkUserDto {
+     4	  @IsUUID()
+     5	  userId: string;
+     6	}
+
+### /opt/rh-saas/backend/src/modules/employees/employee.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  ManyToOne,
+     6	  OneToOne,
+     7	  JoinColumn,
+     8	  CreateDateColumn,
+     9	  UpdateDateColumn,
+    10	} from 'typeorm';
+    11	
+    12	import { Tenant } from '../tenant/tenant.entity';
+    13	import { User } from '../users/user.entity';
+    14	
+    15	@Entity('employees')
+    16	export class Employee {
+    17	  @PrimaryGeneratedColumn('uuid')
+    18	  id: string;
+    19	
+    20	  @ManyToOne(() => Tenant)
+    21	  @JoinColumn({ name: 'tenant_id' })
+    22	  tenant: Tenant;
+    23	
+    24	  @Column({ name: 'tenant_id' })
+    25	  tenantId: string;
+    26	
+    27	  @OneToOne(() => User, {
+    28	    nullable: true,
+    29	    onDelete: 'SET NULL',
+    30	  })
+    31	  @JoinColumn({ name: 'user_id' })
+    32	  user: User | null;
+    33	
+    34	  @Column({
+    35	    name: 'user_id',
+    36	    type: 'uuid',
+    37	    nullable: true,
+    38	  })
+    39	  userId: string | null;
+    40	
+    41	  @Column()
+    42	  firstName: string;
+    43	
+    44	  @Column()
+    45	  lastName: string;
+    46	
+    47	  @Column({
+    48	    unique: true,
+    49	    length: 11,
+    50	  })
+    51	  cpf: string;
+    52	
+    53	  @Column()
+    54	  email: string;
+    55	
+    56	  @Column({
+    57	    nullable: true,
+    58	  })
+    59	  department: string;
+    60	
+    61	  @Column({
+    62	    nullable: true,
+    63	  })
+    64	  jobTitle: string;
+    65	
+    66	  @Column({
+    67	    type: 'date',
+    68	  })
+    69	  admissionDate: string;
+    70	
+    71	  @Column({
+    72	    default: true,
+    73	  })
+    74	  isActive: boolean;
+    75	
+    76	  @CreateDateColumn()
+    77	  createdAt: Date;
+    78	
+    79	  @UpdateDateColumn()
+    80	  updatedAt: Date;
+    81	}
+
+### /opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+     1	import {
+     2	  Body,
+     3	  Controller,
+     4	  Delete,
+     5	  Get,
+     6	  Param,
+     7	  Post,
+     8	  Put,
+     9	  Req,
+    10	  UseGuards,
+    11	} from '@nestjs/common';
+    12	import { EmployeesService } from './employees.service';
+    13	import { CreateEmployeeDto } from './dto/create-employee.dto';
+    14	import { LinkUserDto } from './dto/link-user.dto';
+    15	import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+    16	import { RolesGuard } from '../auth/guards/roles.guard';
+    17	import { Roles } from '../auth/decorators/roles.decorator';
+    18	import { UserRole } from '../users/user.entity';
+    19	
+    20	@Controller('v1/employees')
+    21	@UseGuards(JwtAuthGuard, RolesGuard)
+    22	export class EmployeesController {
+    23	  constructor(
+    24	    private readonly employeesService: EmployeesService,
+    25	  ) {}
+    26	
+    27	  @Post()
+    28	  @Roles(UserRole.ADMIN, UserRole.RH)
+    29	  async create(
+    30	    @Body() createDto: CreateEmployeeDto,
+    31	    @Req() req: any,
+    32	  ) {
+    33	    return this.employeesService.create(
+    34	      req.user.tenantId,
+    35	      createDto,
+    36	    );
+    37	  }
+    38	
+    39	  @Get()
+    40	  @Roles(UserRole.ADMIN, UserRole.RH)
+    41	  async findAll(
+    42	    @Req() req: any,
+    43	  ) {
+    44	    return this.employeesService.findAll(
+    45	      req.user.tenantId,
+    46	    );
+    47	  }
+    48	
+    49	  @Get(':id')
+    50	  @Roles(UserRole.ADMIN, UserRole.RH)
+    51	  async findOne(
+    52	    @Param('id') id: string,
+    53	    @Req() req: any,
+    54	  ) {
+    55	    return this.employeesService.findOne(
+    56	      id,
+    57	      req.user.tenantId,
+    58	    );
+    59	  }
+    60	
+    61	  @Put(':id/link-user')
+    62	  @Roles(UserRole.ADMIN, UserRole.RH)
+    63	  async linkUser(
+    64	    @Param('id') id: string,
+    65	    @Body() dto: LinkUserDto,
+    66	    @Req() req: any,
+    67	  ) {
+    68	    return this.employeesService.linkUser(
+    69	      id,
+    70	      req.user.tenantId,
+    71	      dto.userId,
+    72	    );
+    73	  }
+    74	
+    75	  @Delete(':id/link-user')
+    76	  @Roles(UserRole.ADMIN, UserRole.RH)
+    77	  async unlinkUser(
+    78	    @Param('id') id: string,
+    79	    @Req() req: any,
+    80	  ) {
+    81	    return this.employeesService.unlinkUser(
+    82	      id,
+    83	      req.user.tenantId,
+    84	    );
+    85	  }
+    86	
+    87	  @Delete(':id')
+    88	  @Roles(UserRole.ADMIN, UserRole.RH)
+    89	  async remove(
+    90	    @Param('id') id: string,
+    91	    @Req() req: any,
+    92	  ) {
+    93	    return this.employeesService.remove(
+    94	      id,
+    95	      req.user.tenantId,
+    96	    );
+    97	  }
+    98	}
+
+### /opt/rh-saas/backend/src/modules/employees/employees.module.ts
+     1	import { AuditModule } from '../audit/audit.module';
+     2	import { Module } from '@nestjs/common';
+     3	import { TypeOrmModule } from '@nestjs/typeorm';
+     4	import { Employee } from './employee.entity';
+     5	import { EmployeesService } from './employees.service';
+     6	import { EmployeesController } from './employees.controller';
+     7	import { User } from '../users/user.entity';
+     8	
+     9	@Module({
+    10	  imports: [AuditModule, 
+    11	    TypeOrmModule.forFeature([
+    12	      Employee,
+    13	      User,
+    14	    ]),
+    15	  ],
+    16	  providers: [
+    17	    EmployeesService,
+    18	  ],
+    19	  controllers: [
+    20	    EmployeesController,
+    21	  ],
+    22	  exports: [
+    23	    EmployeesService,
+    24	  ],
+    25	})
+    26	export class EmployeesModule {}
+
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts
+     1	import { AuditService } from '../audit/audit.service';
+     2	import {
+     3	  BadRequestException,
+     4	  Injectable,
+     5	  NotFoundException,
+     6	} from '@nestjs/common';
+     7	import { InjectRepository } from '@nestjs/typeorm';
+     8	import { Repository } from 'typeorm';
+     9	
+    10	import { Employee } from './employee.entity';
+    11	import { CreateEmployeeDto } from './dto/create-employee.dto';
+    12	import { User } from '../users/user.entity';
+    13	
+    14	@Injectable()
+    15	export class EmployeesService {
+    16	  constructor(
+    17	    @InjectRepository(Employee)
+    18	    private readonly employeeRepo: Repository<Employee>,
+    19	
+    20	    @InjectRepository(User)
+    21	    private readonly userRepo: Repository<User>,
+    22	
+    23	    private readonly auditService: AuditService,
+    24	  ) {}
+    25	
+    26	  async create(
+    27	    tenantId: string,
+    28	    data: CreateEmployeeDto,
+    29	  ) {
+    30	    const employee = this.employeeRepo.create({
+    31	      ...data,
+    32	      tenantId,
+    33	    });
+    34	
+    35	    const savedEmployee =
+    36	      await this.employeeRepo.save(employee);
+    37	
+    38	    await this.auditService.create({
+    39	      tenantId,
+    40	      entityId: savedEmployee.id,
+    41	      action: 'EMPLOYEE_CREATED',
+    42	      entityType: 'Employee',
+    43	    });
+    44	
+    45	    return savedEmployee;
+    46	  }
+    47	
+    48	  async findAll(tenantId: string) {
+    49	    return this.employeeRepo.find({
+    50	      where: {
+    51	        tenantId,
+    52	      },
+    53	      relations: {
+    54	        user: true,
+    55	      },
+    56	      order: {
+    57	        firstName: 'ASC',
+    58	        lastName: 'ASC',
+    59	      },
+    60	    });
+    61	  }
+    62	
+    63	  async findOne(
+    64	    id: string,
+    65	    tenantId: string,
+    66	  ) {
+    67	    const employee =
+    68	      await this.employeeRepo.findOne({
+    69	        where: {
+    70	          id,
+    71	          tenantId,
+    72	        },
+    73	        relations: {
+    74	          user: true,
+    75	        },
+    76	      });
+    77	
+    78	    if (!employee) {
+    79	      throw new NotFoundException(
+    80	        'Colaborador não encontrado.',
+    81	      );
+    82	    }
+    83	
+    84	    return employee;
+    85	  }
+    86	
+    87	  async linkUser(
+    88	    employeeId: string,
+    89	    tenantId: string,
+    90	    userId: string,
+    91	  ) {
+    92	    const employee =
+    93	      await this.employeeRepo.findOne({
+    94	        where: {
+    95	          id: employeeId,
+    96	          tenantId,
+    97	        },
+    98	      });
+    99	
+   100	    if (!employee) {
+   101	      throw new NotFoundException(
+   102	        'Colaborador não encontrado.',
+   103	      );
+   104	    }
+   105	
+   106	    const user =
+   107	      await this.userRepo.findOne({
+   108	        where: {
+   109	          id: userId,
+   110	          tenantId,
+   111	        },
+   112	      });
+   113	
+   114	    if (!user) {
+   115	      throw new NotFoundException(
+   116	        'Usuário não encontrado neste tenant.',
+   117	      );
+   118	    }
+   119	
+   120	    const alreadyLinked =
+   121	      await this.employeeRepo.findOne({
+   122	        where: {
+   123	          userId,
+   124	          tenantId,
+   125	        },
+   126	      });
+   127	
+   128	    if (
+   129	      alreadyLinked &&
+   130	      alreadyLinked.id !== employee.id
+   131	    ) {
+   132	      throw new BadRequestException(
+   133	        'Este usuário já está vinculado a outro colaborador.',
+   134	      );
+   135	    }
+   136	
+   137	    employee.userId = user.id;
+   138	
+   139	    const savedEmployee =
+   140	      await this.employeeRepo.save(employee);
+   141	
+   142	    await this.auditService.create({
+   143	      tenantId,
+   144	      entityId: savedEmployee.id,
+   145	      action: 'USER_LINKED',
+   146	      entityType: 'Employee',
+   147	      details: user.id,
+   148	    });
+   149	
+   150	    return savedEmployee;
+   151	  }
+   152	
+   153	  async unlinkUser(
+   154	    employeeId: string,
+   155	    tenantId: string,
+   156	  ) {
+   157	    const employee =
+   158	      await this.employeeRepo.findOne({
+   159	        where: {
+   160	          id: employeeId,
+   161	          tenantId,
+   162	        },
+   163	      });
+   164	
+   165	    if (!employee) {
+   166	      throw new NotFoundException(
+   167	        'Colaborador não encontrado.',
+   168	      );
+   169	    }
+   170	
+   171	    employee.userId = null;
+   172	
+   173	    const savedEmployee =
+   174	      await this.employeeRepo.save(employee);
+   175	
+   176	    await this.auditService.create({
+   177	      tenantId,
+   178	      entityId: savedEmployee.id,
+   179	      action: 'USER_UNLINKED',
+   180	      entityType: 'Employee',
+   181	    });
+   182	
+   183	    return savedEmployee;
+   184	  }
+   185	
+   186	  async remove(
+   187	    id: string,
+   188	    tenantId: string,
+   189	  ) {
+   190	    await this.auditService.create({
+   191	      tenantId,
+   192	      entityId: id,
+   193	      action: 'EMPLOYEE_DELETED',
+   194	      entityType: 'Employee',
+   195	    });
+   196	
+   197	    return this.employeeRepo.delete({
+   198	      id,
+   199	      tenantId,
+   200	    });
+   201	  }
+   202	}
+
+### /opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts
+     1	import {
+     2	  IsISO8601,
+     3	  IsNumber,
+     4	  IsObject,
+     5	  IsOptional,
+     6	  IsString,
+     7	  IsUUID,
+     8	  Max,
+     9	  MaxLength,
+    10	  Min,
+    11	} from 'class-validator';
+    12	
+    13	import { Type } from 'class-transformer';
+    14	
+    15	export class CreateLocationTrackingPointDto {
+    16	  @IsUUID()
+    17	  employeeProfileId: string;
+    18	
+    19	  @IsOptional()
+    20	  @IsUUID()
+    21	  deviceId?: string;
+    22	
+    23	  @Type(() => Number)
+    24	  @IsNumber()
+    25	  @Min(-90)
+    26	  @Max(90)
+    27	  latitude: number;
+    28	
+    29	  @Type(() => Number)
+    30	  @IsNumber()
+    31	  @Min(-180)
+    32	  @Max(180)
+    33	  longitude: number;
+    34	
+    35	  @IsOptional()
+    36	  @Type(() => Number)
+    37	  @IsNumber()
+    38	  @Min(0)
+    39	  accuracyMeters?: number;
+    40	
+    41	  @IsOptional()
+    42	  @IsString()
+    43	  @MaxLength(500)
+    44	  address?: string;
+    45	
+    46	  @IsOptional()
+    47	  @IsString()
+    48	  @MaxLength(50)
+    49	  source?: string;
+    50	
+    51	  @IsOptional()
+    52	  @IsISO8601()
+    53	  trackedAt?: string;
+    54	
+    55	  @IsOptional()
+    56	  @IsObject()
+    57	  metadata?: Record<string, any>;
+    58	}
+
+### /opt/rh-saas/backend/src/modules/foundation/dto/register-mobile-device.dto.ts
+     1	import {
+     2	  IsOptional,
+     3	  IsString,
+     4	  IsUUID,
+     5	  MaxLength,
+     6	} from 'class-validator';
+     7	
+     8	export class RegisterMobileDeviceDto {
+     9	  @IsOptional()
+    10	  @IsUUID()
+    11	  employeeProfileId?: string;
+    12	
+    13	  @IsString()
+    14	  @MaxLength(255)
+    15	  deviceUid: string;
+    16	
+    17	  @IsOptional()
+    18	  @IsString()
+    19	  @MaxLength(80)
+    20	  platform?: string;
+    21	
+    22	  @IsOptional()
+    23	  @IsString()
+    24	  @MaxLength(255)
+    25	  model?: string;
+    26	
+    27	  @IsOptional()
+    28	  @IsString()
+    29	  @MaxLength(50)
+    30	  appVersion?: string;
+    31	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'hr_employee_profiles',
+    11	  synchronize: false,
+    12	})
+    13	export class HrEmployeeProfile {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'client_id',
+    19	    type: 'uuid',
+    20	  })
+    21	  clientId: string;
+    22	
+    23	  @Column({
+    24	    name: 'employee_external_ref',
+    25	    type: 'text',
+    26	    nullable: true,
+    27	  })
+    28	  employeeExternalRef: string;
+    29	
+    30	  @Column({
+    31	    name: 'first_name',
+    32	    type: 'text',
+    33	  })
+    34	  firstName: string;
+    35	
+    36	  @Column({
+    37	    name: 'last_name',
+    38	    type: 'text',
+    39	  })
+    40	  lastName: string;
+    41	
+    42	  @Column({
+    43	    type: 'text',
+    44	    nullable: true,
+    45	  })
+    46	  cpf: string;
+    47	
+    48	  @Column({
+    49	    type: 'text',
+    50	    nullable: true,
+    51	  })
+    52	  email: string;
+    53	
+    54	  @Column({
+    55	    name: 'department_id',
+    56	    type: 'uuid',
+    57	    nullable: true,
+    58	  })
+    59	  departmentId: string;
+    60	
+    61	  @Column({
+    62	    name: 'job_position_id',
+    63	    type: 'uuid',
+    64	    nullable: true,
+    65	  })
+    66	  jobPositionId: string;
+    67	
+    68	  @Column({
+    69	    name: 'job_function_id',
+    70	    type: 'uuid',
+    71	    nullable: true,
+    72	  })
+    73	  jobFunctionId: string;
+    74	
+    75	  @Column({
+    76	    name: 'admission_date',
+    77	    type: 'date',
+    78	    nullable: true,
+    79	  })
+    80	  admissionDate: string;
+    81	
+    82	  @Column({
+    83	    type: 'text',
+    84	    default: 'ACTIVE',
+    85	  })
+    86	  status: string;
+    87	
+    88	  @CreateDateColumn({
+    89	    name: 'created_at',
+    90	    type: 'timestamptz',
+    91	  })
+    92	  createdAt: Date;
+    93	
+    94	  @UpdateDateColumn({
+    95	    name: 'updated_at',
+    96	    type: 'timestamptz',
+    97	  })
+    98	  updatedAt: Date;
+    99	}
+
+### /opt/rh-saas/backend/src/modules/schedules/dto/assign-schedule.dto.ts
+     1	export class AssignScheduleDto {
+     2	  employeeId: string;
+     3	  scheduleId: string;
+     4	  startDate: string;
+     5	  endDate?: string;
+     6	}
+
+### /opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts
+     1	import { ScheduleType } from '../schedule.entity';
+     2	
+     3	export class CreateScheduleDto {
+     4	  name: string;
+     5	  type: ScheduleType;
+     6	  workDays?: number[];
+     7	  expectedMinutesPerDay?: number;
+     8	  dailyToleranceMinutes?: number;
+     9	  entry1?: string;
+    10	  exit1?: string;
+    11	  entry2?: string;
+    12	  exit2?: string;
+    13	  expectedMinutes?: number;
+    14	}
+
+### /opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts
+     1	import { CreateScheduleDto } from './create-schedule.dto';
+     2	
+     3	export class UpdateScheduleDto
+     4	  implements Partial<CreateScheduleDto> {
+     5	
+     6	  name?: string;
+     7	  type?: any;
+     8	  workDays?: number[];
+     9	  expectedMinutesPerDay?: number;
+    10	  dailyToleranceMinutes?: number;
+    11	  entry1?: string;
+    12	  exit1?: string;
+    13	  entry2?: string;
+    14	  exit2?: string;
+    15	  expectedMinutes?: number;
+    16	}
+
+### /opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts
+     1	import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+     2	import { Schedule } from './schedule.entity';
+     3	
+     4	@Entity('employee_schedules')
+     5	export class EmployeeSchedule {
+     6	  @PrimaryGeneratedColumn('uuid')
+     7	  id: string;
+     8	
+     9	  @Column({ name: 'tenant_id' })
+    10	  tenantId: string;
+    11	
+    12	  @Column({ name: 'employee_id' })
+    13	  employeeId: string;
+    14	
+    15	  @ManyToOne(() => Schedule)
+    16	  @JoinColumn({ name: 'schedule_id' })
+    17	  schedule: Schedule;
+    18	
+    19	  @Column({ name: 'schedule_id' })
+    20	  scheduleId: string;
+    21	
+    22	  // Data em que o funcionário começou nesta escala (Crucial para o cálculo do 12x36)
+    23	  @Column({ name: 'start_date', type: 'date' })
+    24	  startDate: string; 
+    25	
+    26	  @Column({ name: 'end_date', type: 'date', nullable: true })
+    27	  endDate: string;
+    28	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts
+     1	export class ClientDashboardDto {
+     2	  client: any;
+     3	  plan: any;
+     4	  users: any;
+     5	  employees: any;
+     6	  documents: any;
+     7	  modules: any;
+     8	  audit: any[];
+     9	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts
+     1	export class ClientDetailsDto {
+     2	  client: any;
+     3	  plan: any;
+     4	  company: any;
+     5	  modules: any[];
+     6	  statistics: {
+     7	    employees: number;
+     8	    documents: number;
+     9	    payslips: number;
+    10	  };
+    11	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/client-summary.dto.ts
+     1	export class ClientSummaryDto {
+     2	  id: string;
+     3	  slug: string;
+     4	  planCode: string | null;
+     5	  planName: string | null;
+     6	  status: string;
+     7	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts
+     1	import {
+     2	  IsString,
+     3	  IsUUID,
+     4	} from 'class-validator';
+     5	
+     6	export class CreateClientDto {
+     7	
+     8	  @IsString()
+     9	  slug: string;
+    10	
+    11	  @IsString()
+    12	  tradeName: string;
+    13	
+    14	  @IsString()
+    15	  legalName: string;
+    16	
+    17	  @IsString()
+    18	  documentNumber: string;
+    19	
+    20	  @IsUUID()
+    21	  planId: string;
+    22	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/create-plan.dto.ts
+     1	import {
+     2	  IsString,
+     3	  IsOptional,
+     4	} from 'class-validator';
+     5	
+     6	export class CreatePlanDto {
+     7	
+     8	  @IsString()
+     9	  code: string;
+    10	
+    11	  @IsString()
+    12	  name: string;
+    13	
+    14	  @IsOptional()
+    15	  @IsString()
+    16	  description?: string;
+    17	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts
+     1	export class DashboardDto {
+     2	  clients: any;
+     3	  plans: any;
+     4	  users: any;
+     5	  employees: any;
+     6	  documents: any;
+     7	  modules: any;
+     8	  audit: any[];
+     9	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts
+     1	
+     2	import {
+     3	  IsOptional,
+     4	  IsString,
+     5	} from 'class-validator';
+     6	
+     7	export class UpdateClientDto {
+     8	
+     9	  @IsOptional()
+    10	  @IsString()
+    11	  tradeName?: string;
+    12	
+    13	  @IsOptional()
+    14	  @IsString()
+    15	  legalName?: string;
+    16	
+    17	  @IsOptional()
+    18	  @IsString()
+    19	  documentNumber?: string;
+    20	
+    21	  @IsOptional()
+    22	  @IsString()
+    23	  timezone?: string;
+    24	
+    25	  @IsOptional()
+    26	  @IsString()
+    27	  defaultLocale?: string;
+    28	
+    29	  @IsOptional()
+    30	  @IsString()
+    31	  notes?: string;
+    32	
+    33	  @IsOptional()
+    34	  @IsString()
+    35	  planId?: string;
+    36	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/update-client-status.dto.ts
+     1	
+     2	import { IsString } from 'class-validator';
+     3	
+     4	export class UpdateClientStatusDto {
+     5	
+     6	  @IsString()
+     7	  status: string;
+     8	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/update-module.dto.ts
+     1	import { IsBoolean } from 'class-validator';
+     2	
+     3	export class UpdateModuleDto {
+     4	
+     5	  @IsBoolean()
+     6	  enabled: boolean;
+     7	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/update-plan.dto.ts
+     1	import {
+     2	  IsOptional,
+     3	  IsString,
+     4	  IsBoolean,
+     5	} from 'class-validator';
+     6	
+     7	export class UpdatePlanDto {
+     8	
+     9	  @IsOptional()
+    10	  @IsString()
+    11	  name?: string;
+    12	
+    13	  @IsOptional()
+    14	  @IsString()
+    15	  description?: string;
+    16	
+    17	  @IsOptional()
+    18	  @IsBoolean()
+    19	  is_active?: boolean;
+    20	}
+
+### /opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts
+     1	export class UpdateTenantDto {
+     2	  corporateName?: string;
+     3	  tradingName?: string;
+     4	  isActive?: boolean;
+     5	
+     6	  phone?: string;
+     7	  email?: string;
+     8	  address?: string;
+     9	  website?: string;
+    10	  hrManager?: string;
+    11	  logoUrl?: string;
+    12	}
+
+### /opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts
+     1	import { IsEmail, IsString, IsUUID } from 'class-validator';
+     2	
+     3	export class CreateUserDto {
+     4	
+     5	  @IsUUID()
+     6	  tenantId: string;
+     7	
+     8	  @IsUUID()
+     9	  employeeId: string;
+    10	
+    11	  @IsEmail()
+    12	  email: string;
+    13	
+    14	  @IsString()
+    15	  password: string;
+    16	
+    17	}
+

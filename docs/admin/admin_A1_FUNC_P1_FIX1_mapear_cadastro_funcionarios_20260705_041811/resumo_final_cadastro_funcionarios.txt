@@ -1,0 +1,35 @@
+CONCLUSAO=FUNCIONARIOS_MAPEADOS_COM_ENDPOINTS_E_DTO
+
+FRONTEND:
+- Rotas e arquivos mapeados na P2.
+- Endpoints candidatos: /v1/employees, /v1/employees/:id, /v1/employees/:id/link-user, /v1/users.
+
+BACKEND:
+- Controller: backend/src/modules/employees/employees.controller.ts
+- Service: backend/src/modules/employees/employees.service.ts
+- Module: backend/src/modules/employees/employees.module.ts
+- Entity: backend/src/modules/employees/employee.entity.ts
+- DTO criação: backend/src/modules/employees/dto/create-employee.dto.ts
+- DTO vínculo usuário: backend/src/modules/employees/dto/link-user.dto.ts
+
+ENDPOINTS PRINCIPAIS:
+- GET /v1/employees
+- POST /v1/employees
+- GET /v1/employees/:id
+- DELETE /v1/employees/:id
+- PUT /v1/employees/:id/link-user
+- DELETE /v1/employees/:id/link-user
+
+PAYLOAD CREATE:
+- firstName
+- lastName
+- cpf
+- email
+- department
+- jobTitle
+- admissionDate
+
+PONTOS DE ATENCAO:
+- Não foi identificado UpdateEmployeeDto.
+- Confirmar visualmente formulário atual antes de criar funcionário.
+- Confirmar se tenantId é inferido pelo token/sessão em teste controlado futuro.

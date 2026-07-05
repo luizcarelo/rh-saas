@@ -1,0 +1,1575 @@
+=================================================
+FRONTEND-B1 - AUDITORIA FRONTEND-WEB
+Data: 20260704_231234
+Frontend: /opt/rh-saas/frontend-web
+=================================================
+
+## Checks
+-------------------------------------------------
+NPM_LS_STATUS=NPM_LS_OK
+TSC_STATUS=TSC_OK
+
+## Estrutura raiz
+-------------------------------------------------
+/opt/rh-saas/frontend-web
+/opt/rh-saas/frontend-web/dist
+/opt/rh-saas/frontend-web/Dockerfile
+/opt/rh-saas/frontend-web/.env
+/opt/rh-saas/frontend-web/favicon.png
+/opt/rh-saas/frontend-web/.gitignore
+/opt/rh-saas/frontend-web/icone-app.png
+/opt/rh-saas/frontend-web/index.html
+/opt/rh-saas/frontend-web/logo_rh.png
+/opt/rh-saas/frontend-web/node_modules
+/opt/rh-saas/frontend-web/.oxlintrc.json
+/opt/rh-saas/frontend-web/package.json
+/opt/rh-saas/frontend-web/package-lock.json
+/opt/rh-saas/frontend-web/postcss.config.cjs
+/opt/rh-saas/frontend-web/public
+/opt/rh-saas/frontend-web/public/assets
+/opt/rh-saas/frontend-web/public/favicon.png
+/opt/rh-saas/frontend-web/public/favicon.svg
+/opt/rh-saas/frontend-web/public/icons.svg
+/opt/rh-saas/frontend-web/README.md
+/opt/rh-saas/frontend-web/rh_saas_web_default.conf
+/opt/rh-saas/frontend-web/src
+/opt/rh-saas/frontend-web/src/App.css
+/opt/rh-saas/frontend-web/src/App.tsx
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak
+/opt/rh-saas/frontend-web/src/assets
+/opt/rh-saas/frontend-web/src/components
+/opt/rh-saas/frontend-web/src/index.css
+/opt/rh-saas/frontend-web/src/layouts
+/opt/rh-saas/frontend-web/src/lib
+/opt/rh-saas/frontend-web/src/main.tsx
+/opt/rh-saas/frontend-web/src/pages
+/opt/rh-saas/frontend-web/src/utils
+/opt/rh-saas/frontend-web/src/vite-env.d.ts
+/opt/rh-saas/frontend-web/tailwind.config.cjs
+/opt/rh-saas/frontend-web/tsconfig.app.json
+/opt/rh-saas/frontend-web/tsconfig.app.tsbuildinfo
+/opt/rh-saas/frontend-web/tsconfig.json
+/opt/rh-saas/frontend-web/tsconfig.node.json
+/opt/rh-saas/frontend-web/vite.config.ts
+
+## Arquivos principais
+-------------------------------------------------
+/opt/rh-saas/frontend-web/dist/index.html
+/opt/rh-saas/frontend-web/.env
+/opt/rh-saas/frontend-web/index.html
+/opt/rh-saas/frontend-web/node_modules/anymatch/package.json
+/opt/rh-saas/frontend-web/node_modules/any-promise/package.json
+/opt/rh-saas/frontend-web/node_modules/arg/package.json
+/opt/rh-saas/frontend-web/node_modules/aria-hidden/package.json
+/opt/rh-saas/frontend-web/node_modules/autoprefixer/package.json
+/opt/rh-saas/frontend-web/node_modules/baseline-browser-mapping/package.json
+/opt/rh-saas/frontend-web/node_modules/binary-extensions/package.json
+/opt/rh-saas/frontend-web/node_modules/braces/package.json
+/opt/rh-saas/frontend-web/node_modules/browserslist/package.json
+/opt/rh-saas/frontend-web/node_modules/camelcase-css/package.json
+/opt/rh-saas/frontend-web/node_modules/caniuse-lite/package.json
+/opt/rh-saas/frontend-web/node_modules/chokidar/package.json
+/opt/rh-saas/frontend-web/node_modules/class-variance-authority/package.json
+/opt/rh-saas/frontend-web/node_modules/clsx/package.json
+/opt/rh-saas/frontend-web/node_modules/commander/package.json
+/opt/rh-saas/frontend-web/node_modules/cookie/package.json
+/opt/rh-saas/frontend-web/node_modules/cssesc/package.json
+/opt/rh-saas/frontend-web/node_modules/csstype/package.json
+/opt/rh-saas/frontend-web/node_modules/d3-array/package.json
+/opt/rh-saas/frontend-web/node_modules/d3-color/package.json
+/opt/rh-saas/frontend-web/node_modules/d3-ease/package.json
+/opt/rh-saas/frontend-web/node_modules/d3-format/package.json
+/opt/rh-saas/frontend-web/node_modules/d3-interpolate/package.json
+/opt/rh-saas/frontend-web/node_modules/d3-path/package.json
+/opt/rh-saas/frontend-web/node_modules/d3-scale/package.json
+/opt/rh-saas/frontend-web/node_modules/d3-shape/package.json
+/opt/rh-saas/frontend-web/node_modules/d3-time-format/package.json
+/opt/rh-saas/frontend-web/node_modules/d3-time/package.json
+/opt/rh-saas/frontend-web/node_modules/d3-timer/package.json
+/opt/rh-saas/frontend-web/node_modules/decimal.js-light/package.json
+/opt/rh-saas/frontend-web/node_modules/detect-libc/package.json
+/opt/rh-saas/frontend-web/node_modules/detect-node-es/package.json
+/opt/rh-saas/frontend-web/node_modules/didyoumean/package.json
+/opt/rh-saas/frontend-web/node_modules/dlv/package.json
+/opt/rh-saas/frontend-web/node_modules/electron-to-chromium/package.json
+/opt/rh-saas/frontend-web/node_modules/escalade/package.json
+/opt/rh-saas/frontend-web/node_modules/es-errors/package.json
+/opt/rh-saas/frontend-web/node_modules/es-errors/tsconfig.json
+/opt/rh-saas/frontend-web/node_modules/es-toolkit/package.json
+/opt/rh-saas/frontend-web/node_modules/eventemitter3/package.json
+/opt/rh-saas/frontend-web/node_modules/fast-glob/package.json
+/opt/rh-saas/frontend-web/node_modules/fastq/package.json
+/opt/rh-saas/frontend-web/node_modules/fdir/package.json
+/opt/rh-saas/frontend-web/node_modules/fill-range/package.json
+/opt/rh-saas/frontend-web/node_modules/fraction.js/package.json
+/opt/rh-saas/frontend-web/node_modules/function-bind/package.json
+/opt/rh-saas/frontend-web/node_modules/get-nonce/package.json
+/opt/rh-saas/frontend-web/node_modules/glob-parent/package.json
+/opt/rh-saas/frontend-web/node_modules/goober/package.json
+/opt/rh-saas/frontend-web/node_modules/hasown/package.json
+/opt/rh-saas/frontend-web/node_modules/hasown/tsconfig.json
+/opt/rh-saas/frontend-web/node_modules/immer/package.json
+/opt/rh-saas/frontend-web/node_modules/internmap/package.json
+/opt/rh-saas/frontend-web/node_modules/is-binary-path/package.json
+/opt/rh-saas/frontend-web/node_modules/is-core-module/package.json
+/opt/rh-saas/frontend-web/node_modules/is-extglob/package.json
+/opt/rh-saas/frontend-web/node_modules/is-glob/package.json
+/opt/rh-saas/frontend-web/node_modules/is-number/package.json
+/opt/rh-saas/frontend-web/node_modules/jiti/package.json
+/opt/rh-saas/frontend-web/node_modules/leaflet/package.json
+/opt/rh-saas/frontend-web/node_modules/lightningcss-linux-x64-gnu/package.json
+/opt/rh-saas/frontend-web/node_modules/lightningcss-linux-x64-musl/package.json
+/opt/rh-saas/frontend-web/node_modules/lightningcss/package.json
+/opt/rh-saas/frontend-web/node_modules/lilconfig/package.json
+/opt/rh-saas/frontend-web/node_modules/lines-and-columns/package.json
+/opt/rh-saas/frontend-web/node_modules/lucide-react/package.json
+/opt/rh-saas/frontend-web/node_modules/merge2/package.json
+/opt/rh-saas/frontend-web/node_modules/micromatch/package.json
+/opt/rh-saas/frontend-web/node_modules/mz/package.json
+/opt/rh-saas/frontend-web/node_modules/nanoid/package.json
+/opt/rh-saas/frontend-web/node_modules/node-releases/package.json
+/opt/rh-saas/frontend-web/node_modules/normalize-path/package.json
+/opt/rh-saas/frontend-web/node_modules/normalize-range/package.json
+/opt/rh-saas/frontend-web/node_modules/object-assign/package.json
+/opt/rh-saas/frontend-web/node_modules/object-hash/package.json
+/opt/rh-saas/frontend-web/node_modules/oxlint/package.json
+/opt/rh-saas/frontend-web/node_modules/path-parse/package.json
+/opt/rh-saas/frontend-web/node_modules/picocolors/package.json
+/opt/rh-saas/frontend-web/node_modules/picomatch/package.json
+/opt/rh-saas/frontend-web/node_modules/pify/package.json
+/opt/rh-saas/frontend-web/node_modules/pirates/package.json
+/opt/rh-saas/frontend-web/node_modules/postcss-import/package.json
+/opt/rh-saas/frontend-web/node_modules/postcss-js/package.json
+/opt/rh-saas/frontend-web/node_modules/postcss-load-config/package.json
+/opt/rh-saas/frontend-web/node_modules/postcss-nested/package.json
+/opt/rh-saas/frontend-web/node_modules/postcss/package.json
+/opt/rh-saas/frontend-web/node_modules/postcss-selector-parser/package.json
+/opt/rh-saas/frontend-web/node_modules/postcss-value-parser/package.json
+/opt/rh-saas/frontend-web/node_modules/queue-microtask/package.json
+/opt/rh-saas/frontend-web/node_modules/react-dom/package.json
+/opt/rh-saas/frontend-web/node_modules/react-hook-form/package.json
+/opt/rh-saas/frontend-web/node_modules/react-hot-toast/package.json
+/opt/rh-saas/frontend-web/node_modules/react-is/package.json
+/opt/rh-saas/frontend-web/node_modules/react-leaflet/package.json
+/opt/rh-saas/frontend-web/node_modules/react/package.json
+/opt/rh-saas/frontend-web/node_modules/react-redux/package.json
+/opt/rh-saas/frontend-web/node_modules/react-remove-scroll-bar/package.json
+/opt/rh-saas/frontend-web/node_modules/react-remove-scroll/package.json
+/opt/rh-saas/frontend-web/node_modules/react-router-dom/package.json
+/opt/rh-saas/frontend-web/node_modules/react-router/package.json
+/opt/rh-saas/frontend-web/node_modules/react-style-singleton/package.json
+/opt/rh-saas/frontend-web/node_modules/read-cache/package.json
+/opt/rh-saas/frontend-web/node_modules/readdirp/package.json
+/opt/rh-saas/frontend-web/node_modules/recharts/package.json
+/opt/rh-saas/frontend-web/node_modules/redux/package.json
+/opt/rh-saas/frontend-web/node_modules/redux-thunk/package.json
+/opt/rh-saas/frontend-web/node_modules/reselect/package.json
+/opt/rh-saas/frontend-web/node_modules/resolve/package.json
+/opt/rh-saas/frontend-web/node_modules/reusify/package.json
+/opt/rh-saas/frontend-web/node_modules/reusify/tsconfig.json
+/opt/rh-saas/frontend-web/node_modules/rolldown/package.json
+/opt/rh-saas/frontend-web/node_modules/run-parallel/package.json
+/opt/rh-saas/frontend-web/node_modules/scheduler/package.json
+/opt/rh-saas/frontend-web/node_modules/set-cookie-parser/package.json
+/opt/rh-saas/frontend-web/node_modules/source-map-js/package.json
+/opt/rh-saas/frontend-web/node_modules/sucrase/package.json
+/opt/rh-saas/frontend-web/node_modules/supports-preserve-symlinks-flag/package.json
+/opt/rh-saas/frontend-web/node_modules/tailwindcss-animate/package.json
+/opt/rh-saas/frontend-web/node_modules/tailwindcss/package.json
+/opt/rh-saas/frontend-web/node_modules/tailwind-merge/package.json
+/opt/rh-saas/frontend-web/node_modules/thenify-all/package.json
+/opt/rh-saas/frontend-web/node_modules/thenify/package.json
+/opt/rh-saas/frontend-web/node_modules/tinyglobby/package.json
+/opt/rh-saas/frontend-web/node_modules/tiny-invariant/package.json
+/opt/rh-saas/frontend-web/node_modules/to-regex-range/package.json
+/opt/rh-saas/frontend-web/node_modules/ts-interface-checker/package.json
+/opt/rh-saas/frontend-web/node_modules/tslib/package.json
+/opt/rh-saas/frontend-web/node_modules/typescript/package.json
+/opt/rh-saas/frontend-web/node_modules/undici-types/package.json
+/opt/rh-saas/frontend-web/node_modules/update-browserslist-db/package.json
+/opt/rh-saas/frontend-web/node_modules/use-callback-ref/package.json
+/opt/rh-saas/frontend-web/node_modules/use-sidecar/package.json
+/opt/rh-saas/frontend-web/node_modules/use-sync-external-store/package.json
+/opt/rh-saas/frontend-web/node_modules/util-deprecate/package.json
+/opt/rh-saas/frontend-web/node_modules/victory-vendor/package.json
+/opt/rh-saas/frontend-web/node_modules/vite/package.json
+/opt/rh-saas/frontend-web/node_modules/yaml/package.json
+/opt/rh-saas/frontend-web/node_modules/zod/package.json
+/opt/rh-saas/frontend-web/package.json
+/opt/rh-saas/frontend-web/package-lock.json
+/opt/rh-saas/frontend-web/src/App.tsx
+/opt/rh-saas/frontend-web/src/main.tsx
+/opt/rh-saas/frontend-web/tsconfig.app.json
+/opt/rh-saas/frontend-web/tsconfig.json
+/opt/rh-saas/frontend-web/tsconfig.node.json
+/opt/rh-saas/frontend-web/vite.config.ts
+
+## package.json
+-------------------------------------------------
+{
+  "name": "frontend-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
+    "@radix-ui/react-dialog": "^1.1.18",
+    "@radix-ui/react-label": "^2.1.11",
+    "@radix-ui/react-slot": "^1.3.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.23.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-hook-form": "^7.80.0",
+    "react-hot-toast": "^2.6.0",
+    "react-leaflet": "^5.0.0",
+    "react-router-dom": "^7.18.1",
+    "recharts": "^3.9.1",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.21",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "autoprefixer": "^10.4.17",
+    "oxlint": "^1.71.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1"
+  }
+}
+
+## .env sanitizado
+-------------------------------------------------
+### /opt/rh-saas/frontend-web/.env
+VITE_API_URL=https://rh.lhsolucao.com.br
+
+## Estrutura src
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src
+/opt/rh-saas/frontend-web/src/App.css
+/opt/rh-saas/frontend-web/src/App.tsx
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak
+/opt/rh-saas/frontend-web/src/assets
+/opt/rh-saas/frontend-web/src/assets/hero.png
+/opt/rh-saas/frontend-web/src/assets/react.svg
+/opt/rh-saas/frontend-web/src/assets/vite.svg
+/opt/rh-saas/frontend-web/src/components
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx
+/opt/rh-saas/frontend-web/src/components/MapComponent.tsx
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx
+/opt/rh-saas/frontend-web/src/components/ui
+/opt/rh-saas/frontend-web/src/components/ui/button.tsx
+/opt/rh-saas/frontend-web/src/components/ui/card.tsx
+/opt/rh-saas/frontend-web/src/components/ui/dialog.tsx
+/opt/rh-saas/frontend-web/src/components/ui/Skeleton.tsx
+/opt/rh-saas/frontend-web/src/components/ui/table.tsx
+/opt/rh-saas/frontend-web/src/index.css
+/opt/rh-saas/frontend-web/src/layouts
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx
+/opt/rh-saas/frontend-web/src/lib
+/opt/rh-saas/frontend-web/src/lib/api.ts
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+/opt/rh-saas/frontend-web/src/lib/utils.ts
+/opt/rh-saas/frontend-web/src/lib/validations
+/opt/rh-saas/frontend-web/src/lib/validations/employee.ts
+/opt/rh-saas/frontend-web/src/main.tsx
+/opt/rh-saas/frontend-web/src/pages
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Login.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx
+/opt/rh-saas/frontend-web/src/utils
+/opt/rh-saas/frontend-web/src/utils/export.ts
+/opt/rh-saas/frontend-web/src/vite-env.d.ts
+
+## Paginas detectadas
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Login.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx
+
+## Services detectados
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/lib/api.ts
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+
+## Rotas detectadas
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/App.tsx:1:import { BrowserRouter, Route, Routes } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/App.tsx:7:import { ProtectedRoute } from "./components/ProtectedRoute";
+/opt/rh-saas/frontend-web/src/App.tsx:8:import { LiveTrackingFoundationPage } from "./pages/LiveTrackingFoundationPage";
+/opt/rh-saas/frontend-web/src/App.tsx:38:    <BrowserRouter>
+/opt/rh-saas/frontend-web/src/App.tsx:39:      <Routes>
+/opt/rh-saas/frontend-web/src/App.tsx:41:        <Route
+/opt/rh-saas/frontend-web/src/App.tsx:42:          path="/login"
+/opt/rh-saas/frontend-web/src/App.tsx:46:        <Route element={<ProtectedRoute />}>
+/opt/rh-saas/frontend-web/src/App.tsx:47:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx:49:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:50:              path="/"
+/opt/rh-saas/frontend-web/src/App.tsx:54:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:55:              path="/colaboradores"
+/opt/rh-saas/frontend-web/src/App.tsx:59:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:60:            path="/colaboradores/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:65:<Route
+/opt/rh-saas/frontend-web/src/App.tsx:66:  path="/documentos"
+/opt/rh-saas/frontend-web/src/App.tsx:70:<Route
+/opt/rh-saas/frontend-web/src/App.tsx:71:  path="/usuarios"
+/opt/rh-saas/frontend-web/src/App.tsx:74:<Route
+/opt/rh-saas/frontend-web/src/App.tsx:75:  path="/analytics"
+/opt/rh-saas/frontend-web/src/App.tsx:79:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:80:              path="/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:84:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:85:              path="/ponto"
+/opt/rh-saas/frontend-web/src/App.tsx:89:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:90:              path="/registrar-ponto"
+/opt/rh-saas/frontend-web/src/App.tsx:95:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:96:              path="/live-tracking-foundation"
+/opt/rh-saas/frontend-web/src/App.tsx:97:              element={<LiveTrackingFoundationPage />}
+/opt/rh-saas/frontend-web/src/App.tsx:100:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:101:              path="/super-admin"
+/opt/rh-saas/frontend-web/src/App.tsx:109:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:110:              path="/super-admin/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx:118:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:119:              path="/super-admin/clientes/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:127:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:128:              path="/super-admin/clientes/:id/dashboard"
+/opt/rh-saas/frontend-web/src/App.tsx:136:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:137:              path="/super-admin/clientes/:id/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:145:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:146:              path="/super-admin/clientes/:id/modules"
+/opt/rh-saas/frontend-web/src/App.tsx:154:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:155:              path="/super-admin/clientes/:id/modules/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:163:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:164:              path="/super-admin/planos"
+/opt/rh-saas/frontend-web/src/App.tsx:172:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:173:              path="/super-admin/planos/novo"
+/opt/rh-saas/frontend-web/src/App.tsx:181:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:182:              path="/super-admin/planos/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:190:          </Route>
+/opt/rh-saas/frontend-web/src/App.tsx:191:        </Route>
+/opt/rh-saas/frontend-web/src/App.tsx:193:        <Route element={<ProtectedRoute />}>
+/opt/rh-saas/frontend-web/src/App.tsx:194:<Route element={<EmployeeLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx:195:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:196:              path="/meu-painel"
+/opt/rh-saas/frontend-web/src/App.tsx:199:          </Route>
+/opt/rh-saas/frontend-web/src/App.tsx:200:        </Route>
+/opt/rh-saas/frontend-web/src/App.tsx:202:      </Routes>
+/opt/rh-saas/frontend-web/src/App.tsx:205:    </BrowserRouter>
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:74:export async function registerLiveTrackingDevice(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:78:    "/v1/foundation/live-tracking/device",
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:86:export async function sendLiveTrackingLocation(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:90:    "/v1/foundation/live-tracking/location",
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:98:export async function getLiveTrackingPoints() {
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:100:    "/v1/foundation/live-tracking/points",
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:104:export async function getLatestLiveTrackingPoints() {
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:106:    "/v1/foundation/live-tracking/latest",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:10:import { NavLink, Outlet, useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:51:    path: "/live-tracking-foundation",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:76:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:1:import { Outlet, useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:17:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:2:import { useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:40:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:8:  getLatestLiveTrackingPoints,
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:9:  getLiveTrackingPoints,
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:11:  registerLiveTrackingDevice,
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:12:  sendLiveTrackingLocation,
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:48:export function LiveTrackingFoundationPage() {
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:93:        getLiveTrackingPoints(),
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:94:        getLatestLiveTrackingPoints(),
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:120:      const registeredDevice = await registerLiveTrackingDevice({
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:186:      await sendLiveTrackingLocation({
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:196:          tela: "LiveTrackingFoundationPage",
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:1:import { Navigate, Outlet } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:4:export function ProtectedRoute() {
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:8:    return <Navigate to="/login" replace />;
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:1:import { BrowserRouter, Route, Routes } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:7:import { ProtectedRoute } from "./components/ProtectedRoute";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:34:    <BrowserRouter>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:35:      <Routes>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:37:        <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:38:          path="/login"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:42:        <Route element={<ProtectedRoute />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:43:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:45:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:46:              path="/"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:50:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:51:              path="/colaboradores"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:55:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:56:            path="/colaboradores/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:61:<Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:62:  path="/documentos"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:67:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:68:              path="/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:72:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:73:              path="/ponto"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:77:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:78:              path="/registrar-ponto"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:82:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:83:              path="/super-admin"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:91:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:92:              path="/super-admin/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:100:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:101:              path="/super-admin/clientes/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:109:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:110:              path="/super-admin/clientes/:id/dashboard"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:118:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:119:              path="/super-admin/clientes/:id/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:127:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:128:              path="/super-admin/clientes/:id/modules"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:136:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:137:              path="/super-admin/clientes/:id/modules/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:145:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:146:              path="/super-admin/planos"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:154:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:155:              path="/super-admin/planos/novo"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:163:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:164:              path="/super-admin/planos/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:172:          </Route>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:173:        </Route>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:175:        <Route element={<ProtectedRoute />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:176:          <Route element={<EmployeeLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:177:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:178:              path="/meu-painel"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:181:          </Route>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:182:        </Route>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:184:      </Routes>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:187:    </BrowserRouter>
+
+## Menu/Layout detectado
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/App.tsx:4:import { AdminLayout } from "./layouts/AdminLayout";
+/opt/rh-saas/frontend-web/src/App.tsx:47:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:20:export type RegisterMobileDevicePayload = {
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:28:export type MobileDeviceFoundation = {
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:75:  payload: RegisterMobileDevicePayload,
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:77:  return apiRequest<MobileDeviceFoundation>(
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:12:const menu = [
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:14:    label: "Dashboard",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:15:    path: "/",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:19:    label: "Colaboradores",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:20:    path: "/colaboradores",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:24:    label: "Usuários",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:25:    path: "/usuarios",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:29:  label: "Analytics",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:30:  path: "/analytics",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:34:    label: "Controle de ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:35:    path: "/ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:39:    label: "Registrar ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:40:    path: "/registrar-ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:44:    label: "Auditoria",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:45:    path: "/audit",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:50:    label: "Live Tracking",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:51:    path: "/live-tracking-foundation",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:75:export function AdminLayout() {
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:79:const dynamicMenu = [
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:83:          label: "Dashboard SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:84:          path: "/super-admin",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:88:          label: "Clientes SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:89:          path: "/super-admin/clientes",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:93:          label: "Planos SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:94:          path: "/super-admin/planos",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:100:  ...menu,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:127:            {dynamicMenu.map((item) => {
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:70:        Documentos
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:71:      titulo: "Documentos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:219:              Documentos:
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:67:        {/* Card de Bater Ponto */}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:43:      titulo: "Documentos",
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx:13:      <h1 className="text-2xl font-bold text-slate-900">Meus Documentos</h1>
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:103:        <h1 className="text-3xl font-bold text-slate-900">Espelho de Ponto</h1>
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx:19:        <Card><CardHeader className="flex flex-row items-center justify-between pb-2"><CardTitle className="text-sm font-medium">Documentos</CardTitle><FileSignature className="h-4 w-4 text-primary" /></CardHeader><CardContent><div className="text-2xl font-bold">5</div></CardContent></Card>
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:96:          {/* Botão de Bater Ponto */}
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:107:             status === "success" ? <><CheckCircle2 className="mr-2 h-6 w-6" /> Ponto Registrado!</> : 
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:6:  MobileDeviceFoundation,
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:51:  const [device, setDevice] = useState<MobileDeviceFoundation | null>(null);
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:100:      setMessage("Pontos atualizados com sucesso.");
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:234:            Live Tracking
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:237:            Tela simples de validação do Live Tracking usando mobile_devices e
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:244:        {message || "Pronto para validar Live Tracking."}
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:406:          Pontos recentes
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:4:import { AdminLayout } from "./layouts/AdminLayout";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:43:          <Route element={<AdminLayout />}>
+
+## Chamadas API detectadas
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/lib/api.ts:8:  import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "";
+/opt/rh-saas/frontend-web/src/lib/api.ts:92:export async function apiRequest<T>(
+/opt/rh-saas/frontend-web/src/lib/api.ts:107:  const response = await fetch(`${API_BASE}${endpoint}`, {
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:1:import { apiRequest } from "./api";
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:71:  return apiRequest<FoundationEmployee[]>("/v1/foundation/hr/employees");
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:77:  return apiRequest<MobileDeviceFoundation>(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:78:    "/v1/foundation/live-tracking/device",
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:89:  return apiRequest<LocationTrackingPointFoundation>(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:90:    "/v1/foundation/live-tracking/location",
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:99:  return apiRequest<LocationTrackingPointFoundation[]>(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:100:    "/v1/foundation/live-tracking/points",
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:105:  return apiRequest<LocationTrackingPointFoundation[]>(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:106:    "/v1/foundation/live-tracking/latest",
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:40:    const data = await apiRequest<Employee>(
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:41:      `/v1/employees/${id}`
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:50:    apiRequest<User[]>("/v1/users")
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:68:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:69:      `/v1/employees/${id}/link-user`,
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:85:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:86:      `/v1/employees/${id}/link-user`,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:12:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:13:      "/v1/super-admin/plans",
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:25:      await apiRequest<DocumentItem[]>(
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:26:        "/v1/documents/my-docs"
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:50:    await fetch(
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:51:      "/v1/documents/upload",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:22:      apiRequest("/v1/super-admin/dashboard"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:23:      apiRequest("/v1/super-admin/system/health"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:24:      apiRequest("/v1/super-admin/system/database"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:25:      apiRequest("/v1/super-admin/system/storage"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:26:      apiRequest("/v1/super-admin/system/metrics"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:27:      apiRequest("/v1/super-admin/system/services"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:27:    apiRequest<Plan[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:28:      "/v1/super-admin/plans"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:60:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:61:      `/v1/super-admin/plans/${plan.id}`,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:54:    apiRequest<ClientDetailsResponse>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:55:      `/v1/super-admin/clients/${id}`
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:9:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:26:  "/v1/audit",
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:27:  "/v1/audit-logs",
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:28:  "/v1/audit/logs",
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:80:          const response = await apiRequest<unknown>(endpoint);
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:26:    apiRequest<Client[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:27:      "/v1/super-admin/clients"
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:25:            const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/time-records/clock-in`, {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:21:    apiRequest(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:22:      `/v1/super-admin/clients/${id}/dashboard`
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:3:import { apiRequest, setSession } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:54:      const response = await apiRequest<LoginResponse>("/v1/auth/login", {
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx:20:    const result = await apiRequest<AnalyticsData>(
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx:21:      `/v1/analytics/overview?start=${start}&end=${end}`
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:28:      await apiRequest<User[]>(
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:29:        "/v1/users"
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:41:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:42:      "/v1/users",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:24:    apiRequest<ModuleItem[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:25:      `/v1/super-admin/clients/${id}/modules`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:41:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:42:      `/v1/super-admin/clients/${id}/modules/${moduleCode}`,
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:5:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:16:    const response = await fetch(
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:17:      "/v1/time-records/afd",
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:60:    const result = await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:61:      "/v1/time-records/simulate-math",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:15:    apiRequest<any[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:16:      `/v1/super-admin/clients/${id}/modules/audit`
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:4:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:30:            await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:31:              "/v1/time-records/clock-in",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:21:    apiRequest<any[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:22:      `/v1/super-admin/clients/${id}/audit`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:4:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:27:    apiRequest<Plan[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:28:      "/v1/super-admin/plans"
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:10:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:46:      const data = await apiRequest<Employee[]>("/v1/employees");
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:65:      await apiRequest<Employee>("/v1/employees", {
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:100:      await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:101:        `/v1/employees/${id}`,
+/opt/rh-saas/frontend-web/.env:1:VITE_API_URL=https://rh.lhsolucao.com.br
+
+## App.tsx
+-------------------------------------------------
+     1	import { BrowserRouter, Route, Routes } from "react-router-dom";
+     2	import { Toaster } from "react-hot-toast";
+     3	
+     4	import { AdminLayout } from "./layouts/AdminLayout";
+     5	import { EmployeeLayout } from "./layouts/EmployeeLayout";
+     6	
+     7	import { ProtectedRoute } from "./components/ProtectedRoute";
+     8	import { LiveTrackingFoundationPage } from "./pages/LiveTrackingFoundationPage";
+     9	import { getUserInfo } from "./lib/api";
+    10	
+    11	import { Login } from "./pages/Login";
+    12	import { Dashboard } from "./pages/Dashboard";
+    13	import { EmployeesPage } from "./pages/EmployeesPage";
+    14	import { EmployeeDetailsPage } from "./pages/EmployeeDetailsPage";
+    15	import { DocumentsPage } from "./pages/DocumentsPage";
+    16	import { UsersPage } from "./pages/UsersPage";
+    17	import { AuditLogsPage } from "./pages/AuditLogsPage";
+    18	import { TimeTrackingPage } from "./pages/TimeTrackingPage";
+    19	import { ClockInPage } from "./pages/ClockInPage";
+    20	import { EmployeeDashboard } from "./pages/EmployeeDashboard";
+    21	
+    22	import { SuperAdminDashboard } from "./pages/SuperAdminDashboard";
+    23	import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+    24	import { SuperAdminClientDetailsPage } from "./pages/SuperAdminClientDetailsPage";
+    25	import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+    26	import { SuperAdminClientAuditPage } from "./pages/SuperAdminClientAuditPage";
+    27	import { SuperAdminClientModulesPage } from "./pages/SuperAdminClientModulesPage";
+    28	import { SuperAdminClientModulesAuditPage } from "./pages/SuperAdminClientModulesAuditPage";
+    29	
+    30	import { SuperAdminPlansPage } from "./pages/SuperAdminPlansPage";
+    31	import { SuperAdminPlanDetailsPage } from "./pages/SuperAdminPlanDetailsPage";
+    32	import { SuperAdminPlanCreatePage } from "./pages/SuperAdminPlanCreatePage";
+    33	
+    34	import { AnalyticsPage } from "./pages/AnalyticsPage";
+    35	
+    36	export default function App() {
+    37	  return (
+    38	    <BrowserRouter>
+    39	      <Routes>
+    40	
+    41	        <Route
+    42	          path="/login"
+    43	          element={<Login />}
+    44	        />
+    45	
+    46	        <Route element={<ProtectedRoute />}>
+    47	          <Route element={<AdminLayout />}>
+    48	
+    49	            <Route
+    50	              path="/"
+    51	              element={<Dashboard />}
+    52	            />
+    53	
+    54	            <Route
+    55	              path="/colaboradores"
+    56	              element={<EmployeesPage />}
+    57	            />
+    58	
+    59	            <Route
+    60	            path="/colaboradores/:id"
+    61	            element={<EmployeeDetailsPage />}
+    62	            />
+    63	
+    64	            
+    65	<Route
+    66	  path="/documentos"
+    67	  element={<DocumentsPage />}
+    68	/>
+    69	
+    70	<Route
+    71	  path="/usuarios"
+    72	    element={<UsersPage />}
+    73	/>
+    74	<Route
+    75	  path="/analytics"
+    76	  element={<AnalyticsPage />}
+    77	/>
+    78	
+    79	            <Route
+    80	              path="/audit"
+    81	              element={<AuditLogsPage />}
+    82	            />
+    83	
+    84	            <Route
+    85	              path="/ponto"
+    86	              element={<TimeTrackingPage />}
+    87	            />
+    88	
+    89	            <Route
+    90	              path="/registrar-ponto"
+    91	              element={<ClockInPage />}
+    92	            />
+    93	
+    94	
+    95	            <Route
+    96	              path="/live-tracking-foundation"
+    97	              element={<LiveTrackingFoundationPage />}
+    98	            />
+    99	
+   100	            <Route
+   101	              path="/super-admin"
+   102	              element={
+   103	                getUserInfo()?.role === "SUPER_ADMIN"
+   104	                  ? <SuperAdminDashboard />
+   105	                  : <Dashboard />
+   106	              }
+   107	            />
+   108	
+   109	            <Route
+   110	              path="/super-admin/clientes"
+   111	              element={
+   112	                getUserInfo()?.role === "SUPER_ADMIN"
+   113	                  ? <SuperAdminClientsPage />
+   114	                  : <Dashboard />
+   115	              }
+   116	            />
+   117	
+   118	            <Route
+   119	              path="/super-admin/clientes/:id"
+   120	              element={
+   121	                getUserInfo()?.role === "SUPER_ADMIN"
+   122	                  ? <SuperAdminClientDetailsPage />
+   123	                  : <Dashboard />
+   124	              }
+   125	            />
+   126	
+   127	            <Route
+   128	              path="/super-admin/clientes/:id/dashboard"
+   129	              element={
+   130	                getUserInfo()?.role === "SUPER_ADMIN"
+   131	                  ? <SuperAdminClientDashboardPage />
+   132	                  : <Dashboard />
+   133	              }
+   134	            />
+   135	
+   136	            <Route
+   137	              path="/super-admin/clientes/:id/audit"
+   138	              element={
+   139	                getUserInfo()?.role === "SUPER_ADMIN"
+   140	                  ? <SuperAdminClientAuditPage />
+   141	                  : <Dashboard />
+   142	              }
+   143	            />
+   144	
+   145	            <Route
+   146	              path="/super-admin/clientes/:id/modules"
+   147	              element={
+   148	                getUserInfo()?.role === "SUPER_ADMIN"
+   149	                  ? <SuperAdminClientModulesPage />
+   150	                  : <Dashboard />
+   151	              }
+   152	            />
+   153	
+   154	            <Route
+   155	              path="/super-admin/clientes/:id/modules/audit"
+   156	              element={
+   157	                getUserInfo()?.role === "SUPER_ADMIN"
+   158	                  ? <SuperAdminClientModulesAuditPage />
+   159	                  : <Dashboard />
+   160	              }
+   161	            />
+   162	
+   163	            <Route
+   164	              path="/super-admin/planos"
+   165	              element={
+   166	                getUserInfo()?.role === "SUPER_ADMIN"
+   167	                  ? <SuperAdminPlansPage />
+   168	                  : <Dashboard />
+   169	              }
+   170	            />
+   171	
+   172	            <Route
+   173	              path="/super-admin/planos/novo"
+   174	              element={
+   175	                getUserInfo()?.role === "SUPER_ADMIN"
+   176	                  ? <SuperAdminPlanCreatePage />
+   177	                  : <Dashboard />
+   178	              }
+   179	            />
+   180	
+   181	            <Route
+   182	              path="/super-admin/planos/:id"
+   183	              element={
+   184	                getUserInfo()?.role === "SUPER_ADMIN"
+   185	                  ? <SuperAdminPlanDetailsPage />
+   186	                  : <Dashboard />
+   187	              }
+   188	            />
+   189	
+   190	          </Route>
+   191	        </Route>
+   192	
+   193	        <Route element={<ProtectedRoute />}>
+   194	<Route element={<EmployeeLayout />}>
+   195	            <Route
+   196	              path="/meu-painel"
+   197	              element={<EmployeeDashboard />}
+   198	            />
+   199	          </Route>
+   200	        </Route>
+   201	
+   202	      </Routes>
+   203	
+   204	      <Toaster position="top-right" />
+   205	    </BrowserRouter>
+   206	  );
+   207	}
+
+## AdminLayout.tsx
+-------------------------------------------------
+     1	import {
+     2	  BarChart3,
+     3	  Clock3,
+     4	  FileText,
+     5	  LayoutDashboard,
+     6	  LogOut,
+     7	  ShieldCheck,
+     8	  Users,
+     9	} from "lucide-react";
+    10	import { NavLink, Outlet, useNavigate } from "react-router-dom";
+    11	import { clearSession, getUserInfo } from "../lib/api";
+    12	const menu = [
+    13	  {
+    14	    label: "Dashboard",
+    15	    path: "/",
+    16	    icon: LayoutDashboard,
+    17	  },
+    18	  {
+    19	    label: "Colaboradores",
+    20	    path: "/colaboradores",
+    21	    icon: Users,
+    22	  },
+    23	  {
+    24	    label: "Usuários",
+    25	    path: "/usuarios",
+    26	    icon: Users,
+    27	  },
+    28	  {
+    29	  label: "Analytics",
+    30	  path: "/analytics",
+    31	  icon: BarChart3,
+    32	},
+    33	  {
+    34	    label: "Controle de ponto",
+    35	    path: "/ponto",
+    36	    icon: Clock3,
+    37	  },
+    38	  {
+    39	    label: "Registrar ponto",
+    40	    path: "/registrar-ponto",
+    41	    icon: ShieldCheck,
+    42	  },
+    43	  {
+    44	    label: "Auditoria",
+    45	    path: "/audit",
+    46	    icon: FileText,
+    47	  },
+    48	
+    49	  {
+    50	    label: "Live Tracking",
+    51	    path: "/live-tracking-foundation",
+    52	    icon: LayoutDashboard,
+    53	  },
+    54	];
+    55	
+    56	function IconLogo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+    57	  const sizeClass =
+    58	    size === "lg"
+    59	      ? "h-24 w-24 rounded-3xl"
+    60	      : size === "sm"
+    61	        ? "h-11 w-11 rounded-xl"
+    62	        : "h-14 w-14 rounded-2xl";
+    63	
+    64	  return (
+    65	    <div
+    66	      className={`${sizeClass} bg-white bg-contain bg-center bg-no-repeat shadow-xl shadow-cyan-500/20`}
+    67	      style={{
+    68	        backgroundImage: "url('/assets/icone-app.png')",
+    69	      }}
+    70	      aria-label="Ícone LH Solução RH"
+    71	    />
+    72	  );
+    73	}
+    74	
+    75	export function AdminLayout() {
+    76	  const navigate = useNavigate();
+    77	  const user = getUserInfo();
+    78	
+    79	const dynamicMenu = [
+    80	  ...(user?.role === "SUPER_ADMIN"
+    81	    ? [
+    82	        {
+    83	          label: "Dashboard SaaS",
+    84	          path: "/super-admin",
+    85	          icon: ShieldCheck,
+    86	        },
+    87	        {
+    88	          label: "Clientes SaaS",
+    89	          path: "/super-admin/clientes",
+    90	          icon: Users,
+    91	        },
+    92	        {
+    93	          label: "Planos SaaS",
+    94	          path: "/super-admin/planos",
+    95	          icon: ShieldCheck,
+    96	        },
+    97	      ]
+    98	    : []),
+    99	
+   100	  ...menu,
+   101	];
+   102	  function logout() {
+   103	    clearSession();
+   104	    navigate("/login", {
+   105	      replace: true,
+   106	    });
+   107	  }
+   108	
+   109	  return (
+   110	    <div className="min-h-screen bg-slate-950 text-slate-100">
+   111	      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.30),_transparent_34%),radial-gradient(circle_at_top_right,_rgba(34,197,94,0.18),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(249,115,22,0.16),_transparent_28%)]" />
+   112	
+   113	      <div className="relative flex min-h-screen">
+   114	        <aside className="hidden w-72 shrink-0 border-r border-white/10 bg-slate-950/85 backdrop-blur-xl lg:flex lg:flex-col">
+   115	          <div className="flex h-24 items-center gap-3 px-6">
+   116	            <IconLogo />
+   117	
+   118	            <div>
+   119	              <p className="text-sm font-medium text-cyan-200">LH Solução RH</p>
+   120	              <h1 className="text-lg font-bold tracking-tight text-white">
+   121	                Gestão inteligente
+   122	              </h1>
+   123	            </div>
+   124	          </div>
+   125	
+   126	          <nav className="flex-1 space-y-2 px-4 py-4">
+   127	            {dynamicMenu.map((item) => {
+   128	              const Icon = item.icon;
+   129	
+   130	              return (
+   131	                <NavLink
+   132	                  key={item.path}
+   133	                  to={item.path}
+   134	                  end={item.path === "/"}
+   135	                  className={({ isActive }) =>
+   136	                    [
+   137	                      "group flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition",
+   138	                      isActive
+   139	                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20"
+   140	                        : "text-slate-300 hover:bg-white/10 hover:text-white",
+   141	                    ].join(" ")
+   142	                  }
+   143	                >
+   144	                  <Icon className="h-5 w-5" />
+   145	                  {item.label}
+   146	                </NavLink>
+   147	              );
+   148	            })}
+   149	          </nav>
+   150	
+   151	          <div className="border-t border-white/10 p-4">
+   152	            <div className="mb-4 rounded-2xl bg-white/5 p-4">
+   153	              <p className="text-xs text-slate-400">Usuário conectado</p>
+   154	              <p className="mt-1 truncate text-sm font-semibold text-white">
+   155	                {user?.email || "admin@empresa.com"}
+   156	              </p>
+   157	              <p className="mt-1 text-xs text-orange-300">
+   158	                Perfil: {user?.role || "ADMIN"}
+   159	              </p>
+   160	            </div>
+   161	
+   162	            <button
+   163	              type="button"
+   164	              onClick={logout}
+   165	              className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 px-4 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/10"
+   166	            >
+   167	              <LogOut className="h-4 w-4" />
+   168	              Sair
+   169	            </button>
+   170	          </div>
+   171	        </aside>
+   172	
+   173	        <main className="flex min-h-screen flex-1 flex-col">
+   174	          <header className="sticky top-0 z-20 border-b border-white/10 bg-slate-950/75 px-4 py-4 backdrop-blur-xl lg:px-8">
+   175	            <div className="flex items-center justify-between">
+   176	              <div className="flex items-center gap-3 lg:hidden">
+   177	                <IconLogo size="sm" />
+   178	
+   179	                <div>
+   180	                  <p className="text-sm text-cyan-200">LH Solução RH</p>
+   181	                  <p className="text-base font-bold text-white">
+   182	                    Gestão inteligente
+   183	                  </p>
+   184	                </div>
+   185	              </div>
+   186	
+   187	              <div className="hidden lg:block">
+   188	                <p className="text-sm text-slate-400">Painel administrativo</p>
+   189	                <h2 className="text-xl font-bold text-white">
+   190	                  Bem-vindo ao sistema de RH
+   191	                </h2>
+   192	              </div>
+   193	
+   194	              <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-2">
+   195	                <BarChart3 className="h-5 w-5 text-orange-300" />
+   196	                <span className="text-sm font-medium text-slate-200">
+   197	                  Online
+   198	                </span>
+   199	              </div>
+   200	            </div>
+   201	          </header>
+   202	
+   203	          <section className="flex-1 p-4 lg:p-8">
+   204	            <Outlet />
+   205	          </section>
+   206	        </main>
+   207	      </div>
+   208	    </div>
+   209	  );
+   210	}
+
+## Services completos
+-------------------------------------------------
+### /opt/rh-saas/frontend-web/src/lib/api.ts
+     1	export type ApiError = {
+     2	  message?: string | string[];
+     3	  error?: string;
+     4	  statusCode?: number;
+     5	};
+     6	
+     7	export const API_BASE =
+     8	  import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "";
+     9	
+    10	export type UserInfo = {
+    11	  sub?: string;
+    12	  userId?: string;
+    13	  tenantId?: string;
+    14	  email?: string;
+    15	  role?: string;
+    16	  employeeId?: string | null;
+    17	};
+    18	
+    19	export function getToken() {
+    20	  return (
+    21	    localStorage.getItem("rh_access_token") ||
+    22	    localStorage.getItem("token") ||
+    23	    ""
+    24	  );
+    25	}
+    26	
+    27	export function getUserInfo(): UserInfo | null {
+    28	  const raw =
+    29	    localStorage.getItem("rh_user_info") ||
+    30	    localStorage.getItem("user_info");
+    31	
+    32	  if (!raw) {
+    33	    return null;
+    34	  }
+    35	
+    36	  try {
+    37	    return JSON.parse(raw) as UserInfo;
+    38	  } catch {
+    39	    return null;
+    40	  }
+    41	}
+    42	
+    43	export function setSession(accessToken: string, userInfo: unknown) {
+    44	  localStorage.setItem("rh_access_token", accessToken);
+    45	  localStorage.setItem("rh_user_info", JSON.stringify(userInfo));
+    46	
+    47	  /*
+    48	   * Compatibilidade com páginas antigas que ainda usam:
+    49	   * localStorage.getItem("token")
+    50	   */
+    51	  localStorage.setItem("token", accessToken);
+    52	  localStorage.setItem("user_info", JSON.stringify(userInfo));
+    53	}
+    54	
+    55	export function clearSession() {
+    56	  localStorage.removeItem("rh_access_token");
+    57	  localStorage.removeItem("rh_user_info");
+    58	
+    59	  /*
+    60	   * Remove também chaves antigas.
+    61	   */
+    62	  localStorage.removeItem("token");
+    63	  localStorage.removeItem("user_info");
+    64	}
+    65	
+    66	export function getAuthHeaders() {
+    67	  const token = getToken();
+    68	
+    69	  if (!token) {
+    70	    return {};
+    71	  }
+    72	
+    73	  return {
+    74	    Authorization: `Bearer ${token}`,
+    75	  };
+    76	}
+    77	
+    78	function normalizeErrorMessage(data: unknown, fallback: string) {
+    79	  if (!data || typeof data !== "object") {
+    80	    return fallback;
+    81	  }
+    82	
+    83	  const apiError = data as ApiError;
+    84	
+    85	  if (Array.isArray(apiError.message)) {
+    86	    return apiError.message.join(", ");
+    87	  }
+    88	
+    89	  return apiError.message || apiError.error || fallback;
+    90	}
+    91	
+    92	export async function apiRequest<T>(
+    93	  endpoint: string,
+    94	  options: RequestInit = {},
+    95	): Promise<T> {
+    96	  const token = getToken();
+    97	
+    98	  const headers: Record<string, string> = {
+    99	    "Content-Type": "application/json",
+   100	    ...((options.headers as Record<string, string>) || {}),
+   101	  };
+   102	
+   103	  if (token) {
+   104	    headers.Authorization = `Bearer ${token}`;
+   105	  }
+   106	
+   107	  const response = await fetch(`${API_BASE}${endpoint}`, {
+   108	    ...options,
+   109	    headers,
+   110	  });
+   111	
+   112	  const text = await response.text();
+   113	
+   114	  let data: unknown = null;
+   115	
+   116	  if (text) {
+   117	    try {
+   118	      data = JSON.parse(text);
+   119	    } catch {
+   120	      data = text;
+   121	    }
+   122	  }
+   123	
+   124	  if (response.status === 401) {
+   125	    clearSession();
+   126	  }
+   127	
+   128	  if (!response.ok) {
+   129	    throw new Error(
+   130	      normalizeErrorMessage(data, `Erro HTTP ${response.status}`),
+   131	    );
+   132	  }
+   133	
+   134	  return data as T;
+   135	}
+
+### /opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+     1	import { apiRequest } from "./api";
+     2	
+     3	export type FoundationEmployee = {
+     4	  id: string;
+     5	  clientId?: string;
+     6	  employeeExternalRef?: string | null;
+     7	  firstName?: string;
+     8	  lastName?: string;
+     9	  cpf?: string | null;
+    10	  email?: string | null;
+    11	  departmentId?: string | null;
+    12	  jobPositionId?: string | null;
+    13	  jobFunctionId?: string | null;
+    14	  admissionDate?: string | null;
+    15	  status?: string;
+    16	  createdAt?: string;
+    17	  updatedAt?: string;
+    18	};
+    19	
+    20	export type RegisterMobileDevicePayload = {
+    21	  employeeProfileId?: string;
+    22	  deviceUid: string;
+    23	  platform?: string;
+    24	  model?: string;
+    25	  appVersion?: string;
+    26	};
+    27	
+    28	export type MobileDeviceFoundation = {
+    29	  id: string;
+    30	  clientId?: string;
+    31	  employeeProfileId?: string | null;
+    32	  deviceUid: string;
+    33	  platform?: string | null;
+    34	  model?: string | null;
+    35	  appVersion?: string | null;
+    36	  isActive?: boolean;
+    37	  lastSeenAt?: string | null;
+    38	  createdAt?: string;
+    39	  updatedAt?: string;
+    40	};
+    41	
+    42	export type CreateLocationTrackingPointPayload = {
+    43	  employeeProfileId: string;
+    44	  deviceId?: string;
+    45	  latitude: number;
+    46	  longitude: number;
+    47	  accuracyMeters?: number;
+    48	  address?: string;
+    49	  source?: string;
+    50	  trackedAt?: string;
+    51	  metadata?: Record<string, unknown>;
+    52	};
+    53	
+    54	export type LocationTrackingPointFoundation = {
+    55	  id: string;
+    56	  clientId?: string;
+    57	  employeeProfileId?: string | null;
+    58	  deviceId?: string | null;
+    59	  trackedAt?: string;
+    60	  latitude: string | number;
+    61	  longitude: string | number;
+    62	  accuracyMeters?: string | number | null;
+    63	  address?: string | null;
+    64	  source?: string;
+    65	  metadata?: Record<string, unknown>;
+    66	  createdAt?: string;
+    67	  updatedAt?: string;
+    68	};
+    69	
+    70	export async function getFoundationEmployees() {
+    71	  return apiRequest<FoundationEmployee[]>("/v1/foundation/hr/employees");
+    72	}
+    73	
+    74	export async function registerLiveTrackingDevice(
+    75	  payload: RegisterMobileDevicePayload,
+    76	) {
+    77	  return apiRequest<MobileDeviceFoundation>(
+    78	    "/v1/foundation/live-tracking/device",
+    79	    {
+    80	      method: "POST",
+    81	      body: JSON.stringify(payload),
+    82	    },
+    83	  );
+    84	}
+    85	
+    86	export async function sendLiveTrackingLocation(
+    87	  payload: CreateLocationTrackingPointPayload,
+    88	) {
+    89	  return apiRequest<LocationTrackingPointFoundation>(
+    90	    "/v1/foundation/live-tracking/location",
+    91	    {
+    92	      method: "POST",
+    93	      body: JSON.stringify(payload),
+    94	    },
+    95	  );
+    96	}
+    97	
+    98	export async function getLiveTrackingPoints() {
+    99	  return apiRequest<LocationTrackingPointFoundation[]>(
+   100	    "/v1/foundation/live-tracking/points",
+   101	  );
+   102	}
+   103	
+   104	export async function getLatestLiveTrackingPoints() {
+   105	  return apiRequest<LocationTrackingPointFoundation[]>(
+   106	    "/v1/foundation/live-tracking/latest",
+   107	  );
+   108	}
+   109	
+   110	export function getOrCreateBrowserDeviceUid() {
+   111	  const storageKey = "rh_live_tracking_device_uid";
+   112	  const existing = localStorage.getItem(storageKey);
+   113	
+   114	  if (existing) {
+   115	    return existing;
+   116	  }
+   117	
+   118	  const generated =
+   119	    "web-" +
+   120	    Date.now().toString(36) +
+   121	    "-" +
+   122	    Math.random().toString(36).slice(2, 10);
+   123	
+   124	  localStorage.setItem(storageKey, generated);
+   125	
+   126	  return generated;
+   127	}
+
+## Busca por modulos futuros
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/main.tsx:6:ReactDOM.createRoot(document.getElementById("root")!).render(
+/opt/rh-saas/frontend-web/src/App.tsx:55:              path="/colaboradores"
+/opt/rh-saas/frontend-web/src/App.tsx:60:            path="/colaboradores/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:66:  path="/documentos"
+/opt/rh-saas/frontend-web/src/App.tsx:85:              path="/ponto"
+/opt/rh-saas/frontend-web/src/App.tsx:90:              path="/registrar-ponto"
+/opt/rh-saas/frontend-web/src/App.tsx:96:              path="/live-tracking-foundation"
+/opt/rh-saas/frontend-web/src/lib/api.ts:16:  employeeId?: string | null;
+/opt/rh-saas/frontend-web/src/lib/api.ts:92:export async function apiRequest<T>(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:6:  employeeExternalRef?: string | null;
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:21:  employeeProfileId?: string;
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:31:  employeeProfileId?: string | null;
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:43:  employeeProfileId: string;
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:57:  employeeProfileId?: string | null;
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:70:export async function getFoundationEmployees() {
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:71:  return apiRequest<FoundationEmployee[]>("/v1/foundation/hr/employees");
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:74:export async function registerLiveTrackingDevice(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:78:    "/v1/foundation/live-tracking/device",
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:86:export async function sendLiveTrackingLocation(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:90:    "/v1/foundation/live-tracking/location",
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:98:export async function getLiveTrackingPoints() {
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:100:    "/v1/foundation/live-tracking/points",
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:104:export async function getLatestLiveTrackingPoints() {
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:106:    "/v1/foundation/live-tracking/latest",
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:111:  const storageKey = "rh_live_tracking_device_uid";
+/opt/rh-saas/frontend-web/src/lib/validations/employee.ts:3:export const employeeSchema = z.object({
+/opt/rh-saas/frontend-web/src/lib/validations/employee.ts:13:export type EmployeeFormValues = z.infer<typeof employeeSchema>;
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:20:    path: "/colaboradores",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:34:    label: "Controle de ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:35:    path: "/ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:39:    label: "Registrar ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:40:    path: "/registrar-ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:51:    path: "/live-tracking-foundation",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:120:              <h1 className="text-lg font-bold tracking-tight text-white">
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:35:              <p className="text-sm text-cyan-200">Portal do colaborador</p>
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:28:  const [employee, setEmployee] =
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:37:  async function loadEmployee() {
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:41:      `/v1/employees/${id}`
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:55:  async function desvincularUsuario() {
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:69:      `/v1/employees/${id}/link-user`,
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:80:  async function vincularUsuario() {
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:86:      `/v1/employees/${id}/link-user`,
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:100:  if (!employee) {
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:103:        Carregando colaborador...
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:119:          {employee.firstName} {employee.lastName}
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:124:          {employee.cpf}
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:129:          {employee.email}
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:134:          {employee.department || "-"}
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:139:          {employee.jobTitle || "-"}
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:144:          {employee.admissionDate}
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:149:          {employee.userId || "Nenhum"}
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:190:            {employee.userId && (
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:10:  async function salvar() {
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:13:  const [documents,setDocuments] =
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:16:  const [employeeId,setEmployeeId] =
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:22:  async function loadDocuments() {
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:26:        "/v1/documents/my-docs"
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:36:  async function upload() {
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:38:    if (!file || !employeeId) {
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:44:    formData.append("employeeId", employeeId);
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:51:      "/v1/documents/upload",
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:61:    alert("Documento enviado");
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:70:        Documentos
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:76:          value={employeeId}
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:114:          {documents.map(doc => (
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:68:      valor: dashboard?.employees?.total ?? 0,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:71:      titulo: "Documentos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:72:      valor: dashboard?.documents?.documents ?? 0,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:76:      valor: dashboard?.documents?.payslips ?? 0,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:54:  async function salvar() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:28:    document_number: string;
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:32:    employees: number;
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:33:    documents: number;
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:201:              {data.company.document_number}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:215:              {data.statistics.employees}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:219:              Documentos:
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:221:              {data.statistics.documents}
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:69:  async function loadAuditLogs() {
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:175:              <h1 className="text-3xl font-black tracking-tight text-white">
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:254:              <thead className="bg-slate-900/90 text-xs uppercase tracking-wide text-slate-400">
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:20:        async (position) => {
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:25:            const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/time-records/clock-in`, {
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:31:              body: JSON.stringify({ employeeId: "uuid-joao", latitude, longitude })
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:44:          setLocationMsg("Permita o GPS para bater ponto.");
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:75:              <div className="text-4xl font-extrabold text-slate-900 tracking-tight">
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:40:      valor: data.employees?.total ?? 0,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:43:      titulo: "Documentos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:44:      valor: data.documents?.documents ?? 0,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:48:      valor: data.documents?.payslips ?? 0,
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:47:  async function handleSubmit(event: FormEvent) {
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:90:              <h1 className="text-4xl font-black tracking-tight">
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:95:                Controle colaboradores, ponto, documentos e auditoria em uma
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:112:            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-orange-300">
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx:19:  async function loadAnalytics() {
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:16:  const [employeeId,setEmployeeId] =
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:25:  async function loadUsers() {
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:39:  async function createUser() {
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:46:          employeeId,
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:72:          value={employeeId}
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx:6:  const documents = [
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx:13:      <h1 className="text-2xl font-bold text-slate-900">Meus Documentos</h1>
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx:16:        {documents.map((doc) => (
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:34:  async function atualizarModulo(
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:9:  async function downloadAfd() {
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:17:      "/v1/time-records/afd",
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:33:      document.createElement("a");
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:38:    document.body.appendChild(a);
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:58:  async function simulateMath() {
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:61:      "/v1/time-records/simulate-math",
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx:12:      <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">Visão Geral</h1>
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx:19:        <Card><CardHeader className="flex flex-row items-center justify-between pb-2"><CardTitle className="text-sm font-medium">Documentos</CardTitle><FileSignature className="h-4 w-4 text-primary" /></CardHeader><CardContent><div className="text-2xl font-bold">5</div></CardContent></Card>
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx:24:        <MapComponent colaboradores={equipe} />
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:24:        async (position) => {
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:31:              "/v1/time-records/clock-in",
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:35:                  employeeId: "",
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:88:            <div className="text-5xl font-extrabold text-slate-900 tracking-tight">
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:17:function formatEmployeeName(employee: FoundationEmployee) {
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:18:  const firstName = employee.firstName || "";
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:19:  const lastName = employee.lastName || "";
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:26:  return employee.email || employee.id;
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:49:  const [employees, setEmployees] = useState<FoundationEmployee[]>([]);
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:63:    () => employees.find((employee) => employee.id === selectedEmployeeId),
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:64:    [employees, selectedEmployeeId],
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:67:  async function loadEmployees() {
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:69:    setMessage("Carregando colaboradores Foundation...");
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:83:      setMessage(error instanceof Error ? error.message : "Erro ao carregar colaboradores.");
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:87:  async function refreshPoints() {
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:89:    setMessage("Atualizando pontos de rastreamento...");
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:103:      setMessage(error instanceof Error ? error.message : "Erro ao atualizar pontos.");
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:107:  async function handleRegisterDevice() {
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:110:      setMessage("Selecione um colaborador antes de registrar o dispositivo.");
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:121:        employeeProfileId: selectedEmployeeId,
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:155:  async function handleSendCurrentLocation() {
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:158:      setMessage("Selecione um colaborador antes de enviar localização.");
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:184:      setMessage("Enviando ponto GPS para a Foundation...");
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:187:        employeeProfileId: selectedEmployeeId,
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:230:          <p className="text-sm font-medium uppercase tracking-wide text-slate-500">
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:237:            Tela simples de validação do Live Tracking usando mobile_devices e
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:238:            location_tracking_points. Esta fase não utiliza mapa.
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:267:                {employees.map((employee) => (
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:268:                  <option key={employee.id} value={employee.id}>
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:269:                    {formatEmployeeName(employee)} - {employee.status || "sem status"}
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:295:                Recarregar colaboradores
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:327:              O navegador solicitará permissão de localização. O ponto será enviado
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:328:              para location_tracking_points.
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:368:          Últimas localizações por colaborador
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:385:                  <td className="px-3 py-2">{point.employeeProfileId || "-"}</td>
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:425:                  <td className="px-3 py-2">{point.employeeProfileId || "-"}</td>
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:435:                    Nenhum ponto recente encontrado.
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:33:  const [employees, setEmployees] = useState<Employee[]>([]);
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:41:  async function loadEmployees() {
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:46:      const data = await apiRequest<Employee[]>("/v1/employees");
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:52:          : "Não foi possível carregar os colaboradores.",
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:59:  async function createEmployee(payload: EmployeePayload) {
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:65:      await apiRequest<Employee>("/v1/employees", {
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:78:          : "Não foi possível cadastrar o colaborador.",
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:85:  async function deleteEmployee(
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:91:        "Deseja realmente excluir este colaborador?"
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:101:        `/v1/employees/${id}`,
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:133:      return employees;
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:136:    return employees.filter((employee) => {
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:138:        employee.firstName,
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:139:        employee.lastName,
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:140:        employee.email,
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:141:        employee.cpf,
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:142:        employee.department,
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:143:        employee.jobTitle,
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:151:  }, [employees, search]);
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:166:              <h1 className="text-3xl font-black tracking-tight text-white">
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:171:                Cadastre, consulte e acompanhe os colaboradores da empresa.
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:197:                Novo colaborador
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:222:              Novo colaborador
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:240:              Lista de colaboradores
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:261:              <thead className="bg-slate-900/90 text-xs uppercase tracking-wide text-slate-400">
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:281:                      Carregando colaboradores...
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:292:                      Nenhum colaborador encontrado.
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:298:                  filteredEmployees.map((employee) => (
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:300:                      key={employee.id}
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:305:                          {employee.firstName} {employee.lastName}
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:308:                          ID: {employee.id}
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:313:                        {employee.cpf}
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:317:                        {employee.email}
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:321:                        {employee.department || "-"}
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:325:                        {employee.jobTitle || "-"}
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:329:                        {employee.userId ? (
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:341:                        {employee.isActive ? (
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:353:    to={`/colaboradores/${employee.id}`}
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:362:      deleteEmployee(employee.id)
+/opt/rh-saas/frontend-web/src/components/ui/card.tsx:15:  <h3 ref={ref} className={cn("text-2xl font-semibold leading-none tracking-tight", className)} {...props} />
+/opt/rh-saas/frontend-web/src/components/MapComponent.tsx:25:export function MapComponent({ colaboradores }: { colaboradores: Colaborador[] }) {
+/opt/rh-saas/frontend-web/src/components/MapComponent.tsx:33:        {colaboradores.map((colab) => (
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx:41:  async function handleSubmit(event: FormEvent) {
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx:104:          placeholder="colaborador@empresa.com"
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx:151:          {loading ? "Salvando..." : "Cadastrar colaborador"}
+/opt/rh-saas/frontend-web/src/utils/export.ts:9:  const a = document.createElement('a');
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:51:              path="/colaboradores"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:56:            path="/colaboradores/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:62:  path="/documentos"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:73:              path="/ponto"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:78:              path="/registrar-ponto"
+
+## npm ls
+-------------------------------------------------
+frontend-web@0.0.0 /opt/rh-saas/frontend-web
+├── @hookform/resolvers@5.4.0
+├── @radix-ui/react-dialog@1.1.18
+├── @radix-ui/react-label@2.1.11
+├── @radix-ui/react-slot@1.3.0
+├── @types/leaflet@1.9.21
+├── @types/node@24.13.2
+├── @types/react-dom@19.2.3
+├── @types/react@19.2.17
+├── @vitejs/plugin-react@6.0.3
+├── autoprefixer@10.4.17
+├── class-variance-authority@0.7.1
+├── clsx@2.1.1
+├── leaflet@1.9.4
+├── lucide-react@1.23.0
+├── oxlint@1.72.0
+├── postcss@8.4.35
+├── react-dom@19.2.7
+├── react-hook-form@7.80.0
+├── react-hot-toast@2.6.0
+├── react-leaflet@5.0.0
+├── react-router-dom@7.18.1
+├── react@19.2.7
+├── recharts@3.9.1
+├── tailwind-merge@3.6.0
+├── tailwindcss-animate@1.0.7
+├── tailwindcss@3.4.17
+├── typescript@6.0.3
+├── vite@8.1.2
+└── zod@4.4.3
+
+
+## TypeScript log
+-------------------------------------------------
+

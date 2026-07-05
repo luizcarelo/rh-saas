@@ -1,0 +1,32 @@
+DADOS PARA PREENCHER NA TELA NOVO CLIENTE SAAS
+
+Acesse:
+https://rh.lhsolucao.com.br
+
+Caminho:
+Clientes SaaS > Novo Cliente
+
+Preencha exatamente:
+
+Nome fantasia:
+Cliente Tela Homologação RH SaaS FIX3C 20260705_040638
+
+Razão social:
+Cliente Tela Homologação RH SaaS FIX3C LTDA 20260705_040638
+
+Slug:
+cliente-tela-homologacao-rh-saas-fix3c-20260705-040638
+
+CNPJ/documento:
+00000000000300
+
+Plano:
+Enterprise Teste (ENTERPRISE_TEST)
+
+PlanId de referência:
+de2acf21-fad0-4c57-9533-0258343dfb60
+
+IMPORTANTE:
+- A criação deve ser feita pela tela, clicando em "Criar Cliente SaaS".
+- Não altere o slug sugerido, para o script conseguir validar depois.
+- Esta validação confirma se Razão social e CNPJ/documento aceitam digitação após a correção updateField.

@@ -1,0 +1,13 @@
+ table_schema |     table_name      
+--------------+---------------------
+ public       | hr_branches
+ public       | saas_clients
+ public       | saas_plans
+ public       | super_admin_users
+ public       | tenant_client_audit
+ public       | tenant_module_audit
+ public       | tenant_module_flags
+ public       | tenants
+ public       | users
+(9 rows)
+

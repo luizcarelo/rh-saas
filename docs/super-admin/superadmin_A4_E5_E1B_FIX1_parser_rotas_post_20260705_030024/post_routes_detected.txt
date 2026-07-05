@@ -1,0 +1,612 @@
+POST	/v1/super-admin/plans	RELATIVE=/v1/super-admin/plans	SCORE=12	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=plans prefixCandidate=
+---
+POST	/v1/v1/super-admin/plans	RELATIVE=/v1/super-admin/plans	SCORE=12	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=plans prefixCandidate=/v1
+---
+POST	/v1/super-admin/clients	RELATIVE=/v1/super-admin/clients	SCORE=11	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients prefixCandidate=
+---
+POST	/v1/v1/super-admin/clients	RELATIVE=/v1/super-admin/clients	SCORE=11	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients prefixCandidate=/v1
+---
+POST	/v1/employees	RELATIVE=/v1/employees	SCORE=4	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath= prefixCandidate=
+---
+POST	/v1/foundation/live-tracking/device	RELATIVE=/v1/foundation/live-tracking/device	SCORE=4	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=live-tracking/device prefixCandidate=
+---
+POST	/v1/foundation/live-tracking/location	RELATIVE=/v1/foundation/live-tracking/location	SCORE=4	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=live-tracking/location prefixCandidate=
+---
+POST	/v1/schedules	RELATIVE=/v1/schedules	SCORE=4	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath= prefixCandidate=
+---
+POST	/v1/users	RELATIVE=/v1/users	SCORE=4	CLASS=UsersController	FILE=/opt/rh-saas/backend/src/modules/users/users.controller.ts
+  controller=v1/users methodPath= prefixCandidate=
+---
+POST	/v1/v1/employees	RELATIVE=/v1/employees	SCORE=4	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath= prefixCandidate=/v1
+---
+POST	/v1/v1/foundation/live-tracking/device	RELATIVE=/v1/foundation/live-tracking/device	SCORE=4	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=live-tracking/device prefixCandidate=/v1
+---
+POST	/v1/v1/foundation/live-tracking/location	RELATIVE=/v1/foundation/live-tracking/location	SCORE=4	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=live-tracking/location prefixCandidate=/v1
+---
+POST	/v1/v1/schedules	RELATIVE=/v1/schedules	SCORE=4	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath= prefixCandidate=/v1
+---
+POST	/v1/v1/users	RELATIVE=/v1/users	SCORE=4	CLASS=UsersController	FILE=/opt/rh-saas/backend/src/modules/users/users.controller.ts
+  controller=v1/users methodPath= prefixCandidate=/v1
+---
+POST	/v1/documents/upload	RELATIVE=/v1/documents/upload	SCORE=2	CLASS=DocumentsController	FILE=/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+  controller=v1/documents methodPath=upload prefixCandidate=
+---
+POST	/v1/schedules/assign	RELATIVE=/v1/schedules/assign	SCORE=2	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=assign prefixCandidate=
+---
+POST	/v1/time-bank/recalculate	RELATIVE=/v1/time-bank/recalculate	SCORE=2	CLASS=TimeBankController	FILE=/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+  controller=v1/time-bank methodPath=recalculate prefixCandidate=
+---
+POST	/v1/time-records/break-end	RELATIVE=/v1/time-records/break-end	SCORE=2	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=break-end prefixCandidate=
+---
+POST	/v1/time-records/break-start	RELATIVE=/v1/time-records/break-start	SCORE=2	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=break-start prefixCandidate=
+---
+POST	/v1/time-records/clock-in	RELATIVE=/v1/time-records/clock-in	SCORE=2	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=clock-in prefixCandidate=
+---
+POST	/v1/time-records/clock-out	RELATIVE=/v1/time-records/clock-out	SCORE=2	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=clock-out prefixCandidate=
+---
+POST	/v1/time-records/simulate-math	RELATIVE=/v1/time-records/simulate-math	SCORE=2	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=simulate-math prefixCandidate=
+---
+POST	/v1/v1/documents/upload	RELATIVE=/v1/documents/upload	SCORE=2	CLASS=DocumentsController	FILE=/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+  controller=v1/documents methodPath=upload prefixCandidate=/v1
+---
+POST	/v1/v1/schedules/assign	RELATIVE=/v1/schedules/assign	SCORE=2	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=assign prefixCandidate=/v1
+---
+POST	/v1/v1/time-bank/recalculate	RELATIVE=/v1/time-bank/recalculate	SCORE=2	CLASS=TimeBankController	FILE=/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+  controller=v1/time-bank methodPath=recalculate prefixCandidate=/v1
+---
+POST	/v1/v1/time-records/break-end	RELATIVE=/v1/time-records/break-end	SCORE=2	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=break-end prefixCandidate=/v1
+---
+POST	/v1/v1/time-records/break-start	RELATIVE=/v1/time-records/break-start	SCORE=2	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=break-start prefixCandidate=/v1
+---
+POST	/v1/v1/time-records/clock-in	RELATIVE=/v1/time-records/clock-in	SCORE=2	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=clock-in prefixCandidate=/v1
+---
+POST	/v1/v1/time-records/clock-out	RELATIVE=/v1/time-records/clock-out	SCORE=2	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=clock-out prefixCandidate=/v1
+---
+POST	/v1/v1/time-records/simulate-math	RELATIVE=/v1/time-records/simulate-math	SCORE=2	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=simulate-math prefixCandidate=/v1
+---
+POST	/v1/auth/login	RELATIVE=/v1/auth/login	SCORE=1	CLASS=AuthController	FILE=/opt/rh-saas/backend/src/modules/auth/auth.controller.ts
+  controller=v1/auth methodPath=login prefixCandidate=
+---
+POST	/v1/v1/auth/login	RELATIVE=/v1/auth/login	SCORE=1	CLASS=AuthController	FILE=/opt/rh-saas/backend/src/modules/auth/auth.controller.ts
+  controller=v1/auth methodPath=login prefixCandidate=/v1
+---
+GET	/v1/super-admin/clients/:id/dashboard	RELATIVE=/v1/super-admin/clients/:id/dashboard	SCORE=13	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id/dashboard prefixCandidate=
+---
+GET	/v1/super-admin/dashboard	RELATIVE=/v1/super-admin/dashboard	SCORE=13	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=dashboard prefixCandidate=
+---
+GET	/v1/v1/super-admin/clients/:id/dashboard	RELATIVE=/v1/super-admin/clients/:id/dashboard	SCORE=13	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id/dashboard prefixCandidate=/v1
+---
+GET	/v1/v1/super-admin/dashboard	RELATIVE=/v1/super-admin/dashboard	SCORE=13	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=dashboard prefixCandidate=/v1
+---
+GET	/v1/super-admin/plans	RELATIVE=/v1/super-admin/plans	SCORE=12	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=plans prefixCandidate=
+---
+GET	/v1/v1/super-admin/plans	RELATIVE=/v1/super-admin/plans	SCORE=12	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=plans prefixCandidate=/v1
+---
+GET	/v1/super-admin/clients/:id/modules/audit	RELATIVE=/v1/super-admin/clients/:id/modules/audit	SCORE=11	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id/modules/audit prefixCandidate=
+---
+PUT	/v1/super-admin/plans/:id	RELATIVE=/v1/super-admin/plans/:id	SCORE=11	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=plans/:id prefixCandidate=
+---
+GET	/v1/v1/super-admin/clients/:id/modules/audit	RELATIVE=/v1/super-admin/clients/:id/modules/audit	SCORE=11	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id/modules/audit prefixCandidate=/v1
+---
+PUT	/v1/v1/super-admin/plans/:id	RELATIVE=/v1/super-admin/plans/:id	SCORE=11	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=plans/:id prefixCandidate=/v1
+---
+PUT	/v1/super-admin/clients/:id	RELATIVE=/v1/super-admin/clients/:id	SCORE=10	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id prefixCandidate=
+---
+PUT	/v1/v1/super-admin/clients/:id	RELATIVE=/v1/super-admin/clients/:id	SCORE=10	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id prefixCandidate=/v1
+---
+GET	/v1/super-admin/clients	RELATIVE=/v1/super-admin/clients	SCORE=8	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients prefixCandidate=
+---
+GET	/v1/super-admin/clients/:id	RELATIVE=/v1/super-admin/clients/:id	SCORE=8	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id prefixCandidate=
+---
+GET	/v1/super-admin/clients/:id/modules	RELATIVE=/v1/super-admin/clients/:id/modules	SCORE=8	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id/modules prefixCandidate=
+---
+PUT	/v1/super-admin/clients/:id/modules/:moduleCode	RELATIVE=/v1/super-admin/clients/:id/modules/:moduleCode	SCORE=8	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id/modules/:moduleCode prefixCandidate=
+---
+GET	/v1/super-admin/health	RELATIVE=/v1/super-admin/health	SCORE=8	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=health prefixCandidate=
+---
+GET	/v1/v1/super-admin/clients	RELATIVE=/v1/super-admin/clients	SCORE=8	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients prefixCandidate=/v1
+---
+GET	/v1/v1/super-admin/clients/:id	RELATIVE=/v1/super-admin/clients/:id	SCORE=8	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id prefixCandidate=/v1
+---
+GET	/v1/v1/super-admin/clients/:id/modules	RELATIVE=/v1/super-admin/clients/:id/modules	SCORE=8	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id/modules prefixCandidate=/v1
+---
+PUT	/v1/v1/super-admin/clients/:id/modules/:moduleCode	RELATIVE=/v1/super-admin/clients/:id/modules/:moduleCode	SCORE=8	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id/modules/:moduleCode prefixCandidate=/v1
+---
+GET	/v1/v1/super-admin/health	RELATIVE=/v1/super-admin/health	SCORE=8	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=health prefixCandidate=/v1
+---
+GET	/v1/super-admin/clients/:id/audit	RELATIVE=/v1/super-admin/clients/:id/audit	SCORE=7	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id/audit prefixCandidate=
+---
+PATCH	/v1/super-admin/clients/:id/status	RELATIVE=/v1/super-admin/clients/:id/status	SCORE=7	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id/status prefixCandidate=
+---
+GET	/v1/super-admin/system/health	RELATIVE=/v1/super-admin/system/health	SCORE=7	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=system/health prefixCandidate=
+---
+GET	/v1/v1/super-admin/clients/:id/audit	RELATIVE=/v1/super-admin/clients/:id/audit	SCORE=7	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id/audit prefixCandidate=/v1
+---
+PATCH	/v1/v1/super-admin/clients/:id/status	RELATIVE=/v1/super-admin/clients/:id/status	SCORE=7	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=clients/:id/status prefixCandidate=/v1
+---
+GET	/v1/v1/super-admin/system/health	RELATIVE=/v1/super-admin/system/health	SCORE=7	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=system/health prefixCandidate=/v1
+---
+GET	/v1/super-admin/system/database	RELATIVE=/v1/super-admin/system/database	SCORE=6	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=system/database prefixCandidate=
+---
+GET	/v1/v1/super-admin/system/database	RELATIVE=/v1/super-admin/system/database	SCORE=6	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=system/database prefixCandidate=/v1
+---
+GET	/v1/super-admin/system/containers	RELATIVE=/v1/super-admin/system/containers	SCORE=5	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=system/containers prefixCandidate=
+---
+GET	/v1/super-admin/system/metrics	RELATIVE=/v1/super-admin/system/metrics	SCORE=5	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=system/metrics prefixCandidate=
+---
+GET	/v1/super-admin/system/services	RELATIVE=/v1/super-admin/system/services	SCORE=5	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=system/services prefixCandidate=
+---
+GET	/v1/super-admin/system/storage	RELATIVE=/v1/super-admin/system/storage	SCORE=5	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=system/storage prefixCandidate=
+---
+GET	/v1/v1/super-admin/system/containers	RELATIVE=/v1/super-admin/system/containers	SCORE=5	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=system/containers prefixCandidate=/v1
+---
+GET	/v1/v1/super-admin/system/metrics	RELATIVE=/v1/super-admin/system/metrics	SCORE=5	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=system/metrics prefixCandidate=/v1
+---
+GET	/v1/v1/super-admin/system/services	RELATIVE=/v1/super-admin/system/services	SCORE=5	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=system/services prefixCandidate=/v1
+---
+GET	/v1/v1/super-admin/system/storage	RELATIVE=/v1/super-admin/system/storage	SCORE=5	CLASS=SuperAdminController	FILE=/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+  controller=v1/super-admin methodPath=system/storage prefixCandidate=/v1
+---
+GET	/v1/employees	RELATIVE=/v1/employees	SCORE=4	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath= prefixCandidate=
+---
+GET	/v1/foundation/live-tracking/points	RELATIVE=/v1/foundation/live-tracking/points	SCORE=4	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=live-tracking/points prefixCandidate=
+---
+GET	/v1/foundation/payroll/payslips	RELATIVE=/v1/foundation/payroll/payslips	SCORE=4	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=payroll/payslips prefixCandidate=
+---
+GET	/v1/schedules/:id	RELATIVE=/v1/schedules/:id	SCORE=4	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=:id prefixCandidate=
+---
+PUT	/v1/schedules/:id	RELATIVE=/v1/schedules/:id	SCORE=4	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=:id prefixCandidate=
+---
+PATCH	/v1/schedules/assign/:id/end	RELATIVE=/v1/schedules/assign/:id/end	SCORE=4	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=assign/:id/end prefixCandidate=
+---
+GET	/v1/users	RELATIVE=/v1/users	SCORE=4	CLASS=UsersController	FILE=/opt/rh-saas/backend/src/modules/users/users.controller.ts
+  controller=v1/users methodPath= prefixCandidate=
+---
+GET	/v1/v1/employees	RELATIVE=/v1/employees	SCORE=4	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath= prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/live-tracking/points	RELATIVE=/v1/foundation/live-tracking/points	SCORE=4	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=live-tracking/points prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/payroll/payslips	RELATIVE=/v1/foundation/payroll/payslips	SCORE=4	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=payroll/payslips prefixCandidate=/v1
+---
+GET	/v1/v1/schedules/:id	RELATIVE=/v1/schedules/:id	SCORE=4	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=:id prefixCandidate=/v1
+---
+PUT	/v1/v1/schedules/:id	RELATIVE=/v1/schedules/:id	SCORE=4	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=:id prefixCandidate=/v1
+---
+PATCH	/v1/v1/schedules/assign/:id/end	RELATIVE=/v1/schedules/assign/:id/end	SCORE=4	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=assign/:id/end prefixCandidate=/v1
+---
+GET	/v1/v1/users	RELATIVE=/v1/users	SCORE=4	CLASS=UsersController	FILE=/opt/rh-saas/backend/src/modules/users/users.controller.ts
+  controller=v1/users methodPath= prefixCandidate=/v1
+---
+GET	/v1/employees/:id	RELATIVE=/v1/employees/:id	SCORE=3	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=:id prefixCandidate=
+---
+GET	/v1/foundation/live-tracking/latest	RELATIVE=/v1/foundation/live-tracking/latest	SCORE=3	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=live-tracking/latest prefixCandidate=
+---
+GET	/v1/tenant	RELATIVE=/v1/tenant	SCORE=3	CLASS=TenantController	FILE=/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts
+  controller=v1/tenant methodPath= prefixCandidate=
+---
+PUT	/v1/tenant	RELATIVE=/v1/tenant	SCORE=3	CLASS=TenantController	FILE=/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts
+  controller=v1/tenant methodPath= prefixCandidate=
+---
+GET	/v1/v1/employees/:id	RELATIVE=/v1/employees/:id	SCORE=3	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=:id prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/live-tracking/latest	RELATIVE=/v1/foundation/live-tracking/latest	SCORE=3	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=live-tracking/latest prefixCandidate=/v1
+---
+GET	/v1/v1/tenant	RELATIVE=/v1/tenant	SCORE=3	CLASS=TenantController	FILE=/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts
+  controller=v1/tenant methodPath= prefixCandidate=/v1
+---
+PUT	/v1/v1/tenant	RELATIVE=/v1/tenant	SCORE=3	CLASS=TenantController	FILE=/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts
+  controller=v1/tenant methodPath= prefixCandidate=/v1
+---
+GET	/v1/analytics/overview	RELATIVE=/v1/analytics/overview	SCORE=2	CLASS=AnalyticsController	FILE=/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts
+  controller=v1/analytics methodPath=overview prefixCandidate=
+---
+GET	/v1/analytics/workforce	RELATIVE=/v1/analytics/workforce	SCORE=2	CLASS=AnalyticsController	FILE=/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts
+  controller=v1/analytics methodPath=workforce prefixCandidate=
+---
+GET	/v1/dashboard/employees	RELATIVE=/v1/dashboard/employees	SCORE=2	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=employees prefixCandidate=
+---
+GET	/v1/dashboard/executive	RELATIVE=/v1/dashboard/executive	SCORE=2	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=executive prefixCandidate=
+---
+GET	/v1/dashboard/overview	RELATIVE=/v1/dashboard/overview	SCORE=2	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=overview prefixCandidate=
+---
+GET	/v1/dashboard/schedules	RELATIVE=/v1/dashboard/schedules	SCORE=2	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=schedules prefixCandidate=
+---
+GET	/v1/dashboard/time-bank	RELATIVE=/v1/dashboard/time-bank	SCORE=2	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=time-bank prefixCandidate=
+---
+GET	/v1/dashboard/time-records	RELATIVE=/v1/dashboard/time-records	SCORE=2	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=time-records prefixCandidate=
+---
+GET	/v1/documents/my-docs	RELATIVE=/v1/documents/my-docs	SCORE=2	CLASS=DocumentsController	FILE=/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+  controller=v1/documents methodPath=my-docs prefixCandidate=
+---
+DELETE	/v1/employees/:id	RELATIVE=/v1/employees/:id	SCORE=2	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=:id prefixCandidate=
+---
+PUT	/v1/employees/:id/link-user	RELATIVE=/v1/employees/:id/link-user	SCORE=2	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=:id/link-user prefixCandidate=
+---
+DELETE	/v1/employees/:id/link-user	RELATIVE=/v1/employees/:id/link-user	SCORE=2	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=:id/link-user prefixCandidate=
+---
+GET	/v1/foundation/clock/event-types	RELATIVE=/v1/foundation/clock/event-types	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/event-types prefixCandidate=
+---
+GET	/v1/foundation/clock/events	RELATIVE=/v1/foundation/clock/events	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/events prefixCandidate=
+---
+GET	/v1/foundation/clock/justifications	RELATIVE=/v1/foundation/clock/justifications	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/justifications prefixCandidate=
+---
+GET	/v1/foundation/clock/overview	RELATIVE=/v1/foundation/clock/overview	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/overview prefixCandidate=
+---
+GET	/v1/foundation/clock/policies	RELATIVE=/v1/foundation/clock/policies	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/policies prefixCandidate=
+---
+GET	/v1/foundation/clock/policy-event-types	RELATIVE=/v1/foundation/clock/policy-event-types	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/policy-event-types prefixCandidate=
+---
+GET	/v1/foundation/documents	RELATIVE=/v1/foundation/documents	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=documents prefixCandidate=
+---
+GET	/v1/foundation/documents/overview	RELATIVE=/v1/foundation/documents/overview	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=documents/overview prefixCandidate=
+---
+GET	/v1/foundation/documents/recipients	RELATIVE=/v1/foundation/documents/recipients	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=documents/recipients prefixCandidate=
+---
+GET	/v1/foundation/hr/departments	RELATIVE=/v1/foundation/hr/departments	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/departments prefixCandidate=
+---
+GET	/v1/foundation/hr/employees	RELATIVE=/v1/foundation/hr/employees	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/employees prefixCandidate=
+---
+GET	/v1/foundation/hr/geofences	RELATIVE=/v1/foundation/hr/geofences	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/geofences prefixCandidate=
+---
+GET	/v1/foundation/hr/job-functions	RELATIVE=/v1/foundation/hr/job-functions	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/job-functions prefixCandidate=
+---
+GET	/v1/foundation/hr/job-positions	RELATIVE=/v1/foundation/hr/job-positions	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/job-positions prefixCandidate=
+---
+GET	/v1/foundation/hr/work-locations	RELATIVE=/v1/foundation/hr/work-locations	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/work-locations prefixCandidate=
+---
+GET	/v1/foundation/mobile/devices	RELATIVE=/v1/foundation/mobile/devices	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=mobile/devices prefixCandidate=
+---
+GET	/v1/foundation/mobile/settings	RELATIVE=/v1/foundation/mobile/settings	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=mobile/settings prefixCandidate=
+---
+GET	/v1/foundation/overview	RELATIVE=/v1/foundation/overview	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=overview prefixCandidate=
+---
+GET	/v1/foundation/payroll/overview	RELATIVE=/v1/foundation/payroll/overview	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=payroll/overview prefixCandidate=
+---
+GET	/v1/foundation/timebank/balances	RELATIVE=/v1/foundation/timebank/balances	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=timebank/balances prefixCandidate=
+---
+GET	/v1/foundation/timebank/overview	RELATIVE=/v1/foundation/timebank/overview	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=timebank/overview prefixCandidate=
+---
+GET	/v1/foundation/tracking/points	RELATIVE=/v1/foundation/tracking/points	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=tracking/points prefixCandidate=
+---
+GET	/v1/reports/afd	RELATIVE=/v1/reports/afd	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=afd prefixCandidate=
+---
+GET	/v1/reports/employees	RELATIVE=/v1/reports/employees	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=employees prefixCandidate=
+---
+GET	/v1/reports/executive	RELATIVE=/v1/reports/executive	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=executive prefixCandidate=
+---
+GET	/v1/reports/productivity	RELATIVE=/v1/reports/productivity	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=productivity prefixCandidate=
+---
+GET	/v1/reports/schedule-distribution	RELATIVE=/v1/reports/schedule-distribution	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=schedule-distribution prefixCandidate=
+---
+GET	/v1/reports/schedules	RELATIVE=/v1/reports/schedules	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=schedules prefixCandidate=
+---
+GET	/v1/reports/time-bank	RELATIVE=/v1/reports/time-bank	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=time-bank prefixCandidate=
+---
+GET	/v1/reports/time-bank-summary	RELATIVE=/v1/reports/time-bank-summary	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=time-bank-summary prefixCandidate=
+---
+GET	/v1/schedules	RELATIVE=/v1/schedules	SCORE=2	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath= prefixCandidate=
+---
+DELETE	/v1/schedules/:id	RELATIVE=/v1/schedules/:id	SCORE=2	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=:id prefixCandidate=
+---
+DELETE	/v1/schedules/assign/:id	RELATIVE=/v1/schedules/assign/:id	SCORE=2	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=assign/:id prefixCandidate=
+---
+GET	/v1/schedules/employee/:employeeId	RELATIVE=/v1/schedules/employee/:employeeId	SCORE=2	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=employee/:employeeId prefixCandidate=
+---
+GET	/v1/schedules/employee/:employeeId/active	RELATIVE=/v1/schedules/employee/:employeeId/active	SCORE=2	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=employee/:employeeId/active prefixCandidate=
+---
+GET	/v1/time-bank	RELATIVE=/v1/time-bank	SCORE=2	CLASS=TimeBankController	FILE=/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+  controller=v1/time-bank methodPath= prefixCandidate=
+---
+GET	/v1/time-bank/:employeeId	RELATIVE=/v1/time-bank/:employeeId	SCORE=2	CLASS=TimeBankController	FILE=/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+  controller=v1/time-bank methodPath=:employeeId prefixCandidate=
+---
+GET	/v1/time-bank/:employeeId/details	RELATIVE=/v1/time-bank/:employeeId/details	SCORE=2	CLASS=TimeBankController	FILE=/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+  controller=v1/time-bank methodPath=:employeeId/details prefixCandidate=
+---
+GET	/v1/time-records/afd	RELATIVE=/v1/time-records/afd	SCORE=2	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=afd prefixCandidate=
+---
+GET	/v1/v1/analytics/overview	RELATIVE=/v1/analytics/overview	SCORE=2	CLASS=AnalyticsController	FILE=/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts
+  controller=v1/analytics methodPath=overview prefixCandidate=/v1
+---
+GET	/v1/v1/analytics/workforce	RELATIVE=/v1/analytics/workforce	SCORE=2	CLASS=AnalyticsController	FILE=/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts
+  controller=v1/analytics methodPath=workforce prefixCandidate=/v1
+---
+GET	/v1/v1/dashboard/employees	RELATIVE=/v1/dashboard/employees	SCORE=2	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=employees prefixCandidate=/v1
+---
+GET	/v1/v1/dashboard/executive	RELATIVE=/v1/dashboard/executive	SCORE=2	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=executive prefixCandidate=/v1
+---
+GET	/v1/v1/dashboard/overview	RELATIVE=/v1/dashboard/overview	SCORE=2	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=overview prefixCandidate=/v1
+---
+GET	/v1/v1/dashboard/schedules	RELATIVE=/v1/dashboard/schedules	SCORE=2	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=schedules prefixCandidate=/v1
+---
+GET	/v1/v1/dashboard/time-bank	RELATIVE=/v1/dashboard/time-bank	SCORE=2	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=time-bank prefixCandidate=/v1
+---
+GET	/v1/v1/dashboard/time-records	RELATIVE=/v1/dashboard/time-records	SCORE=2	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=time-records prefixCandidate=/v1
+---
+GET	/v1/v1/documents/my-docs	RELATIVE=/v1/documents/my-docs	SCORE=2	CLASS=DocumentsController	FILE=/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+  controller=v1/documents methodPath=my-docs prefixCandidate=/v1
+---
+DELETE	/v1/v1/employees/:id	RELATIVE=/v1/employees/:id	SCORE=2	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=:id prefixCandidate=/v1
+---
+PUT	/v1/v1/employees/:id/link-user	RELATIVE=/v1/employees/:id/link-user	SCORE=2	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=:id/link-user prefixCandidate=/v1
+---
+DELETE	/v1/v1/employees/:id/link-user	RELATIVE=/v1/employees/:id/link-user	SCORE=2	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=:id/link-user prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/clock/event-types	RELATIVE=/v1/foundation/clock/event-types	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/event-types prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/clock/events	RELATIVE=/v1/foundation/clock/events	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/events prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/clock/justifications	RELATIVE=/v1/foundation/clock/justifications	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/justifications prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/clock/overview	RELATIVE=/v1/foundation/clock/overview	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/overview prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/clock/policies	RELATIVE=/v1/foundation/clock/policies	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/policies prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/clock/policy-event-types	RELATIVE=/v1/foundation/clock/policy-event-types	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/policy-event-types prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/documents	RELATIVE=/v1/foundation/documents	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=documents prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/documents/overview	RELATIVE=/v1/foundation/documents/overview	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=documents/overview prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/documents/recipients	RELATIVE=/v1/foundation/documents/recipients	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=documents/recipients prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/hr/departments	RELATIVE=/v1/foundation/hr/departments	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/departments prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/hr/employees	RELATIVE=/v1/foundation/hr/employees	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/employees prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/hr/geofences	RELATIVE=/v1/foundation/hr/geofences	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/geofences prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/hr/job-functions	RELATIVE=/v1/foundation/hr/job-functions	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/job-functions prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/hr/job-positions	RELATIVE=/v1/foundation/hr/job-positions	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/job-positions prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/hr/work-locations	RELATIVE=/v1/foundation/hr/work-locations	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/work-locations prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/mobile/devices	RELATIVE=/v1/foundation/mobile/devices	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=mobile/devices prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/mobile/settings	RELATIVE=/v1/foundation/mobile/settings	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=mobile/settings prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/overview	RELATIVE=/v1/foundation/overview	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=overview prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/payroll/overview	RELATIVE=/v1/foundation/payroll/overview	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=payroll/overview prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/timebank/balances	RELATIVE=/v1/foundation/timebank/balances	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=timebank/balances prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/timebank/overview	RELATIVE=/v1/foundation/timebank/overview	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=timebank/overview prefixCandidate=/v1
+---
+GET	/v1/v1/foundation/tracking/points	RELATIVE=/v1/foundation/tracking/points	SCORE=2	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=tracking/points prefixCandidate=/v1
+---
+GET	/v1/v1/reports/afd	RELATIVE=/v1/reports/afd	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=afd prefixCandidate=/v1
+---
+GET	/v1/v1/reports/employees	RELATIVE=/v1/reports/employees	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=employees prefixCandidate=/v1
+---
+GET	/v1/v1/reports/executive	RELATIVE=/v1/reports/executive	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=executive prefixCandidate=/v1
+---
+GET	/v1/v1/reports/productivity	RELATIVE=/v1/reports/productivity	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=productivity prefixCandidate=/v1
+---
+GET	/v1/v1/reports/schedule-distribution	RELATIVE=/v1/reports/schedule-distribution	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=schedule-distribution prefixCandidate=/v1
+---
+GET	/v1/v1/reports/schedules	RELATIVE=/v1/reports/schedules	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=schedules prefixCandidate=/v1
+---
+GET	/v1/v1/reports/time-bank	RELATIVE=/v1/reports/time-bank	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=time-bank prefixCandidate=/v1
+---
+GET	/v1/v1/reports/time-bank-summary	RELATIVE=/v1/reports/time-bank-summary	SCORE=2	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=time-bank-summary prefixCandidate=/v1
+---
+GET	/v1/v1/schedules	RELATIVE=/v1/schedules	SCORE=2	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath= prefixCandidate=/v1
+---
+DELETE	/v1/v1/schedules/:id	RELATIVE=/v1/schedules/:id	SCORE=2	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=:id prefixCandidate=/v1
+---
+DELETE	/v1/v1/schedules/assign/:id	RELATIVE=/v1/schedules/assign/:id	SCORE=2	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=assign/:id prefixCandidate=/v1
+---
+GET	/v1/v1/schedules/employee/:employeeId	RELATIVE=/v1/schedules/employee/:employeeId	SCORE=2	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=employee/:employeeId prefixCandidate=/v1
+---
+GET	/v1/v1/schedules/employee/:employeeId/active	RELATIVE=/v1/schedules/employee/:employeeId/active	SCORE=2	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=employee/:employeeId/active prefixCandidate=/v1
+---
+GET	/v1/v1/time-bank	RELATIVE=/v1/time-bank	SCORE=2	CLASS=TimeBankController	FILE=/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+  controller=v1/time-bank methodPath= prefixCandidate=/v1
+---
+GET	/v1/v1/time-bank/:employeeId	RELATIVE=/v1/time-bank/:employeeId	SCORE=2	CLASS=TimeBankController	FILE=/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+  controller=v1/time-bank methodPath=:employeeId prefixCandidate=/v1
+---
+GET	/v1/v1/time-bank/:employeeId/details	RELATIVE=/v1/time-bank/:employeeId/details	SCORE=2	CLASS=TimeBankController	FILE=/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+  controller=v1/time-bank methodPath=:employeeId/details prefixCandidate=/v1
+---
+GET	/v1/v1/time-records/afd	RELATIVE=/v1/time-records/afd	SCORE=2	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=afd prefixCandidate=/v1
+---
+GET	/audit	RELATIVE=/audit	SCORE=1	CLASS=AuditController	FILE=/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+  controller=audit methodPath= prefixCandidate=
+---
+GET	/audit/:id	RELATIVE=/audit/:id	SCORE=1	CLASS=AuditController	FILE=/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+  controller=audit methodPath=:id prefixCandidate=
+---
+GET	/audit/action/:action	RELATIVE=/audit/action/:action	SCORE=1	CLASS=AuditController	FILE=/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+  controller=audit methodPath=action/:action prefixCandidate=
+---
+GET	/audit/entity/:entityType	RELATIVE=/audit/entity/:entityType	SCORE=1	CLASS=AuditController	FILE=/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+  controller=audit methodPath=entity/:entityType prefixCandidate=
+---
+GET	/v1/audit	RELATIVE=/audit	SCORE=1	CLASS=AuditController	FILE=/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+  controller=audit methodPath= prefixCandidate=/v1
+---
+GET	/v1/audit/:id	RELATIVE=/audit/:id	SCORE=1	CLASS=AuditController	FILE=/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+  controller=audit methodPath=:id prefixCandidate=/v1
+---
+GET	/v1/audit/action/:action	RELATIVE=/audit/action/:action	SCORE=1	CLASS=AuditController	FILE=/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+  controller=audit methodPath=action/:action prefixCandidate=/v1
+---
+GET	/v1/audit/entity/:entityType	RELATIVE=/audit/entity/:entityType	SCORE=1	CLASS=AuditController	FILE=/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+  controller=audit methodPath=entity/:entityType prefixCandidate=/v1
+---
+GET	/	RELATIVE=/	SCORE=0	CLASS=AppController	FILE=/opt/rh-saas/backend/src/app.controller.ts
+  controller= methodPath= prefixCandidate=
+---
+GET	/v1	RELATIVE=/	SCORE=0	CLASS=AppController	FILE=/opt/rh-saas/backend/src/app.controller.ts
+  controller= methodPath= prefixCandidate=/v1
+---

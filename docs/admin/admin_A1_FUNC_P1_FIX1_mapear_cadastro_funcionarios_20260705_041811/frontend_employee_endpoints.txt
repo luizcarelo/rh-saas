@@ -1,0 +1,70 @@
+=================================================
+FRONTEND EMPLOYEE ENDPOINTS
+Data: 20260705_041811
+=================================================
+
+### /opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+71:"/v1/foundation/hr/employees"
+78:"/v1/foundation/live-tracking/device"
+90:"/v1/foundation/live-tracking/location"
+100:"/v1/foundation/live-tracking/points"
+106:"/v1/foundation/live-tracking/latest"
+
+### /opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx
+31:"/v1/time-records/clock-in"
+
+### /opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx
+26:"/v1/documents/my-docs"
+51:"/v1/documents/upload"
+
+### /opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx
+41:`/v1/employees/${id}`
+50:"/v1/users"
+69:`/v1/employees/${id}/link-user`
+86:`/v1/employees/${id}/link-user`
+
+### /opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx
+46:"/v1/employees"
+65:"/v1/employees"
+101:`/v1/employees/${id}`
+
+### /opt/rh-saas/frontend-web/src/pages/Login.tsx
+54:"/v1/auth/login"
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+22:`/v1/super-admin/clients/${id}/dashboard`
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx
+55:`/v1/super-admin/clients/${id}`
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+22:"/v1/super-admin/dashboard"
+23:"/v1/super-admin/system/health"
+24:"/v1/super-admin/system/database"
+25:"/v1/super-admin/system/storage"
+26:"/v1/super-admin/system/metrics"
+27:"/v1/super-admin/system/services"
+
+### /opt/rh-saas/frontend-web/src/pages/UsersPage.tsx
+29:"/v1/users"
+42:"/v1/users"
+
+### /opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+71:"/v1/foundation/hr/employees"
+78:"/v1/foundation/live-tracking/device"
+90:"/v1/foundation/live-tracking/location"
+100:"/v1/foundation/live-tracking/points"
+106:"/v1/foundation/live-tracking/latest"
+
+### /opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts
+59:'/v1/super-admin/clients'
+60:'/v1/super-admin/clientes'
+61:'/v1/super-admin/tenants'
+62:'/v1/tenants'
+63:'/v1/clients'
+249:'/v1/super-admin/clients'
+250:'/v1/super-admin/clientes'
+251:'/v1/super-admin/tenants'
+252:'/v1/tenants'
+253:'/v1/clients'
+

@@ -1,0 +1,2830 @@
+=================================================
+MOBILE-B3-A - AUDITORIA FUNCIONAL APP PROFISSIONAL
+Data: 20260704_224142
+Mobile: /opt/rh-saas/mobile-app
+Backend: /opt/rh-saas/backend
+Frontend-web: /opt/rh-saas/frontend-web
+=================================================
+
+## Checks
+-------------------------------------------------
+TSC_STATUS=TSC_OK
+NPM_LS_STATUS=NPM_LS_OK
+
+## Documentacao existente relacionada
+-------------------------------------------------
+/opt/rh-saas/docs/04-Regras-de-Negocio/banco-de-horas.md
+/opt/rh-saas/docs/04-Regras-de-Negocio/documentos.md
+/opt/rh-saas/docs/06-frontend-web.md
+/opt/rh-saas/docs/07-mobile-app.md
+/opt/rh-saas/docs/09-ponto-e-afd.md
+/opt/rh-saas/docs/auditoria/fase_1_2d_tipos_batida_politica_mobile_20260703_013551.sql
+/opt/rh-saas/docs/auditoria/fase_1_2e_documentos_holerite_complementos_20260703_013705.sql
+/opt/rh-saas/docs/foundation/API_LOG_FASE_4_6B_F_D_LIVE_TRACKING_20260704_160138.log
+/opt/rh-saas/docs/foundation/BUILD_DOCKER_FASE_4_6B_F_D_LIVE_TRACKING_20260704_160138.log
+/opt/rh-saas/docs/foundation/BUILD_FASE_2A_FOUNDATION_MODULE_20260704_114429.log
+/opt/rh-saas/docs/foundation/BUILD_FASE_4_6B_F_B_LIVE_TRACKING_SERVICE_20260704_132156.log
+/opt/rh-saas/docs/foundation/BUILD_FASE_4_6B_F_C_LIVE_TRACKING_CONTROLLER_20260704_132314.log
+/opt/rh-saas/docs/foundation/CLOCK_FOUNDATION_READONLY.md
+/opt/rh-saas/docs/foundation/diagnostico_foundation_404_20260704_122743/RELATORIO_DIAGNOSTICO_FOUNDATION_404.md
+/opt/rh-saas/docs/foundation/diagnostico_foundation_404_20260704_122819/direct_api_foundation_overview.json
+/opt/rh-saas/docs/foundation/diagnostico_foundation_404_20260704_122819/nginx_foundation_overview.headers
+/opt/rh-saas/docs/foundation/diagnostico_foundation_404_20260704_122819/nginx_foundation_overview.json
+/opt/rh-saas/docs/foundation/diagnostico_foundation_404_20260704_122819/RELATORIO_DIAGNOSTICO_FOUNDATION_404.md
+/opt/rh-saas/docs/foundation/DOCUMENTS_FOUNDATION_READONLY.md
+/opt/rh-saas/docs/foundation/FOUNDATION_READONLY_INTEGRATION.md
+/opt/rh-saas/docs/foundation/GAP_ANALYSIS_FOUNDATION.json
+/opt/rh-saas/docs/foundation/GAP_ANALYSIS_FOUNDATION.md
+/opt/rh-saas/docs/foundation/LIVE_TRACKING_FOUNDATION.md
+/opt/rh-saas/docs/foundation/LIVE_TRACKING_FRONTEND_VALIDATION.md
+/opt/rh-saas/docs/foundation/LIVE_TRACKING_MOBILE_APP.md
+/opt/rh-saas/docs/foundation/LIVE_TRACKING_MOBILE_VALIDATION.md
+/opt/rh-saas/docs/foundation/PAYROLL_FOUNDATION_READONLY.md
+/opt/rh-saas/docs/foundation/RELATORIO_FASE_1_CRIACAO_FOUNDATION_20260704_114223.md
+/opt/rh-saas/docs/foundation/RELATORIO_FASE_2A_FOUNDATION_MODULE_20260704_114429.md
+/opt/rh-saas/docs/foundation/RELATORIO_FASE_2B_DOCUMENTACAO_FOUNDATION_20260704_121956.md
+/opt/rh-saas/docs/foundation/RELATORIO_FASE_3_VALIDACAO_ENDPOINTS_FOUNDATION_20260704_122151.md
+/opt/rh-saas/docs/foundation/RELATORIO_FASE_3_VALIDACAO_ENDPOINTS_FOUNDATION_20260704_122628.md
+/opt/rh-saas/docs/foundation/RELATORIO_FASE_3_VALIDACAO_ENDPOINTS_FOUNDATION_20260704_123246.md
+/opt/rh-saas/docs/foundation/RELATORIO_FASE_4_6B_F_A_LIVE_TRACKING_DTOS_20260704_132024.md
+/opt/rh-saas/docs/foundation/RELATORIO_FASE_4_6B_F_B_LIVE_TRACKING_SERVICE_20260704_132156.md
+/opt/rh-saas/docs/foundation/RELATORIO_FASE_4_6B_F_C_LIVE_TRACKING_CONTROLLER_20260704_132314.md
+/opt/rh-saas/docs/foundation/RELATORIO_FASE_4_6B_F_D_LIVE_TRACKING_VALIDACAO_20260704_160138.md
+/opt/rh-saas/docs/foundation/RELATORIO_FINAL_FASE_3_FOUNDATION_ENDPOINTS_20260704_123506.md
+/opt/rh-saas/docs/foundation/RELATORIO_FINAL_FASE_4_CLOCK_FOUNDATION_20260704_124456.md
+/opt/rh-saas/docs/foundation/RELATORIO_FINAL_FASE_4E_DOCUMENTS_FOUNDATION_20260704_125604.md
+/opt/rh-saas/docs/foundation/RELATORIO_FINAL_FASE_4F_TIMEBANK_FOUNDATION_20260704_130325.md
+/opt/rh-saas/docs/foundation/RELATORIO_FINAL_FASE_4G_PAYROLL_FOUNDATION_20260704_131533.md
+/opt/rh-saas/docs/foundation/RELATORIO_FINAL_SPRINT_4_6B_F_LIVE_TRACKING_20260704_162651.md
+/opt/rh-saas/docs/foundation/RELATORIO_ROADMAP_MIGRACAO_FOUNDATION_20260704_131705.md
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-hr-departments.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-hr-departments.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-hr-employees.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-hr-employees.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-hr-geofences.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-hr-geofences.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-hr-job-functions.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-hr-job-functions.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-hr-job-positions.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-hr-job-positions.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-hr-work-locations.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-hr-work-locations.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-mobile-devices.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-mobile-devices.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-mobile-settings.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-mobile-settings.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-overview.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-overview.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-tracking-points.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122151/v1-foundation-tracking-points.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-departments.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-departments.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-employees.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-employees.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-geofences.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-geofences.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-job-functions.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-job-functions.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-job-positions.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-job-positions.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-work-locations.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-work-locations.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-mobile-devices.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-mobile-devices.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-mobile-settings.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-mobile-settings.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-overview.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-overview.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-tracking-points.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-tracking-points.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-hr-departments.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-hr-departments.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-hr-employees.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-hr-employees.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-hr-geofences.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-hr-geofences.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-hr-job-functions.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-hr-job-functions.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-hr-job-positions.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-hr-job-positions.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-hr-work-locations.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-hr-work-locations.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-mobile-devices.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-mobile-devices.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-mobile-settings.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-mobile-settings.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-overview.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-overview.status
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-tracking-points.json
+/opt/rh-saas/docs/foundation/respostas_fase3_20260704_123246/v1-foundation-tracking-points.status
+/opt/rh-saas/docs/foundation/respostas_fase4_6B_F_D_live_tracking_20260704_160138/live_tracking_latest_response.json
+/opt/rh-saas/docs/foundation/respostas_fase4_6B_F_D_live_tracking_20260704_160138/live_tracking_points_response.json
+/opt/rh-saas/docs/foundation/respostas_fase4_6B_F_D_live_tracking_20260704_160138/rollback_fase4_6B_F_D_live_tracking_20260704_160138.sql
+/opt/rh-saas/docs/foundation/respostas_fase4C_clock_20260704_124003/dist_foundation_files.txt
+/opt/rh-saas/docs/foundation/respostas_fase4C_clock_20260704_124003/v1-foundation-clock-events.json
+/opt/rh-saas/docs/foundation/respostas_fase4C_clock_20260704_124003/v1-foundation-clock-event-types.json
+/opt/rh-saas/docs/foundation/respostas_fase4C_clock_20260704_124003/v1-foundation-clock-justifications.json
+/opt/rh-saas/docs/foundation/respostas_fase4C_clock_20260704_124003/v1-foundation-clock-overview.json
+/opt/rh-saas/docs/foundation/respostas_fase4C_clock_20260704_124003/v1-foundation-clock-policies.json
+/opt/rh-saas/docs/foundation/respostas_fase4C_clock_20260704_124003/v1-foundation-clock-policy-event-types.json
+/opt/rh-saas/docs/foundation/respostas_fase4E_documents_20260704_125028/dist_foundation_files.txt
+/opt/rh-saas/docs/foundation/respostas_fase4E_documents_20260704_125028/v1-foundation-documents.json
+/opt/rh-saas/docs/foundation/respostas_fase4E_documents_20260704_125028/v1-foundation-documents-overview.json
+/opt/rh-saas/docs/foundation/respostas_fase4E_documents_20260704_125028/v1-foundation-documents-recipients.json
+/opt/rh-saas/docs/foundation/respostas_fase4F_timebank_20260704_130028/dist_foundation_files.txt
+/opt/rh-saas/docs/foundation/respostas_fase4F_timebank_20260704_130028/v1-foundation-timebank-balances.json
+/opt/rh-saas/docs/foundation/respostas_fase4F_timebank_20260704_130028/v1-foundation-timebank-overview.json
+/opt/rh-saas/docs/foundation/respostas_fase4G_payroll_20260704_131252/dist_foundation_files.txt
+/opt/rh-saas/docs/foundation/respostas_fase4G_payroll_20260704_131252/v1-foundation-payroll-overview.json
+/opt/rh-saas/docs/foundation/respostas_fase4G_payroll_20260704_131252/v1-foundation-payroll-payslips.json
+/opt/rh-saas/docs/foundation/ROADMAP_MIGRACAO_FOUNDATION.md
+/opt/rh-saas/docs/foundation/TIMEBANK_FOUNDATION_READONLY.md
+/opt/rh-saas/docs/foundation/UP_DOCKER_FASE_4_6B_F_D_LIVE_TRACKING_20260704_160138.log
+/opt/rh-saas/docs/frontend/BUILD_FRONTEND_A3_LIVE_TRACKING_PAGE_20260704_163926.log
+/opt/rh-saas/docs/frontend/BUILD_FRONTEND_A4_FIX_ROTA_MENU_20260704_164356.log
+/opt/rh-saas/docs/frontend/BUILD_FRONTEND_A4_ROTA_MENU_20260704_164154.log
+/opt/rh-saas/docs/frontend/BUILD_FRONTEND_A5_WEB_20260704_164531.log
+/opt/rh-saas/docs/frontend/HEADERS_FRONTEND_A5_LIVE_TRACKING_20260704_164531.txt
+/opt/rh-saas/docs/frontend/HEADERS_FRONTEND_A6_20260704_164806.txt
+/opt/rh-saas/docs/frontend/HTML_FRONTEND_A5_LIVE_TRACKING_20260704_164531.html
+/opt/rh-saas/docs/frontend/HTML_FRONTEND_A6_20260704_164806.html
+/opt/rh-saas/docs/frontend/RELATORIO_FRONTEND_A1_DIAGNOSTICO_20260704_162941.md
+/opt/rh-saas/docs/frontend/RELATORIO_FRONTEND_A1_RAW_20260704_162941.txt
+/opt/rh-saas/docs/frontend/RELATORIO_FRONTEND_A2_LIVE_TRACKING_SERVICE_20260704_163552.md
+/opt/rh-saas/docs/frontend/RELATORIO_FRONTEND_A3_LIVE_TRACKING_PAGE_20260704_163926.md
+/opt/rh-saas/docs/frontend/RELATORIO_FRONTEND_A4_FIX_ROTA_MENU_20260704_164356.md
+/opt/rh-saas/docs/frontend/RELATORIO_FRONTEND_A4_ROTA_MENU_20260704_164154.md
+/opt/rh-saas/docs/frontend/RELATORIO_FRONTEND_A5_PUBLICACAO_WEB_20260704_164531.md
+/opt/rh-saas/docs/frontend/RELATORIO_FRONTEND_A6_VALIDACAO_FINAL_20260704_164806.md
+/opt/rh-saas/docs/frontend/RELATORIO_REVISAO_DETALHADA_FRONTEND_WEB_20260704_163353.md
+/opt/rh-saas/docs/frontend/REVISAO_DETALHADA_FRONTEND_WEB_RAW_20260704_163353.txt
+/opt/rh-saas/docs/frontend/UP_FRONTEND_A5_WEB_20260704_164531.log
+/opt/rh-saas/docs/frontend/WEB_LOG_FRONTEND_A5_20260704_164531.log
+/opt/rh-saas/docs/mobile/location_diag_20260704_174447/liveTrackingApi_snippet.txt
+/opt/rh-saas/docs/mobile/location_diag_20260704_174447/LiveTrackingScreen_snippet.txt
+/opt/rh-saas/docs/mobile/MOBILE_A5_DIAG_EXPO_CONFIG_20260704_171717.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_DIAG_EXPO_START_20260704_171717.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_DIAG_EXPO_VERSION_20260704_171717.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_DIAG_NPM_LS_20260704_171717.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_DIAG_STATIC_20260704_171717.txt
+/opt/rh-saas/docs/mobile/MOBILE_A5_DIAG_TSC_20260704_171717.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_FIX_TUNNEL_EXPO_START_20260704_172318.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_FIX_TUNNEL_EXPO_START_20260704_172515.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_FIX_TUNNEL_EXPO_VERSION_20260704_172318.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_FIX_TUNNEL_EXPO_VERSION_20260704_172515.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_FIX_TUNNEL_NPM_INSTALL_20260704_172318.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_FIX_TUNNEL_NPM_INSTALL_20260704_172515.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_FIX_TUNNEL_NPM_LS_20260704_172318.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_FIX_TUNNEL_NPM_LS_20260704_172515.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_FIX_TUNNEL_PROCESSOS_20260704_172318.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_FIX_TUNNEL_PROCESSOS_20260704_172515.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_FIX_TUNNEL_TSC_20260704_172318.log
+/opt/rh-saas/docs/mobile/MOBILE_A5_FIX_TUNNEL_TSC_20260704_172515.log
+/opt/rh-saas/docs/mobile/MOBILE_B1_DIAGNOSTICO_UX_PRODUCAO_RAW_20260704_222527.txt
+/opt/rh-saas/docs/mobile/MOBILE_B1_EXPO_CONFIG_20260704_222527.log
+/opt/rh-saas/docs/mobile/MOBILE_B1_NPM_LS_20260704_222527.log
+/opt/rh-saas/docs/mobile/MOBILE_B1_RECOMENDACOES_20260704_222527.md
+/opt/rh-saas/docs/mobile/MOBILE_B1_TSC_20260704_222527.log
+/opt/rh-saas/docs/mobile/MOBILE_B3_A_AUDITORIA_APP_PROFISSIONAL_RAW_20260704_224142.txt
+/opt/rh-saas/docs/mobile/MOBILE_B3_A_NPM_LS_20260704_224142.log
+/opt/rh-saas/docs/mobile/MOBILE_B3_A_TSC_20260704_224142.log
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A1_DIAGNOSTICO_20260704_165146.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A1_RAW_20260704_165146.txt
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A2_LIVE_TRACKING_SERVICE_20260704_165420.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A3_LIVE_TRACKING_SCREEN_20260704_165609.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A4_FIX2_STYLES_COMMA_20260704_170100.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A4_FIX3_DISABLED_COMMA_20260704_170414.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A4_FIX_BUTTON_STYLES_20260704_165913.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A4_NAVIGATION_20260704_165750.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_DIAG_ABERTURA_APP_20260704_171717.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_FIX_TUNNEL_20260704_172318.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_FIX_TUNNEL_20260704_172515.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_LOCATION_DIAG_20260704_174447.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_LOCATION_FIX_UI_20260704_174633.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_LOGIN_DIAG_20260704_173404.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_LOGIN_FIX_20260704_173549.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_RETEST_TUNNEL_20260704_173037.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_RETEST_TUNNEL_20260704_173826.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_RETEST_TUNNEL_20260704_174811.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_VALIDACAO_FUNCIONAL_20260704_171256.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A6_DOCUMENTACAO_FINAL_20260704_175308.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A6_FIX_DOC_20260704_175417.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_B1_DIAGNOSTICO_UX_PRODUCAO_20260704_222527.md
+/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_B2_A_API_ENV_LOGIN_UX_20260704_222706.md
+/opt/rh-saas/docs/mobile/VALIDACAO_MOBILE_A3_LIVE_TRACKING_SCREEN_20260704_165609.log
+/opt/rh-saas/docs/mobile/VALIDACAO_MOBILE_A4_FIX2_STYLES_COMMA_20260704_170100.log
+/opt/rh-saas/docs/mobile/VALIDACAO_MOBILE_A4_FIX3_DISABLED_COMMA_20260704_170414.log
+/opt/rh-saas/docs/mobile/VALIDACAO_MOBILE_A4_FIX_BUTTON_STYLES_20260704_165913.log
+/opt/rh-saas/docs/mobile/VALIDACAO_MOBILE_A4_NAVIGATION_20260704_165750.log
+/opt/rh-saas/docs/mobile/VALIDACAO_MOBILE_A5_LOCATION_FIX_UI_20260704_174633.log
+/opt/rh-saas/docs/mobile/VALIDACAO_MOBILE_A5_LOGIN_FIX_20260704_173549.log
+/opt/rh-saas/docs/mobile/VALIDACAO_MOBILE_A5_RETEST_TSC_20260704_173037.log
+/opt/rh-saas/docs/mobile/VALIDACAO_MOBILE_A5_RETEST_TSC_20260704_173826.log
+/opt/rh-saas/docs/mobile/VALIDACAO_MOBILE_A5_RETEST_TSC_20260704_174811.log
+/opt/rh-saas/docs/mobile/VALIDACAO_MOBILE_A5_TSC_20260704_171256.log
+/opt/rh-saas/docs/mobile/VALIDACAO_MOBILE_B2_A_TSC_20260704_222706.log
+
+## Conteudo resumido de documentos-chave
+-------------------------------------------------
+### /opt/rh-saas/docs/00-visao-geral.md
+# RH SaaS Brasil — Visão Geral
+
+Esta documentação descreve a evolução do RH SaaS para uma plataforma completa de gestão de recursos humanos, ponto eletrônico, documentos, holerites, banco de horas, justificativas, telemetria e app mobile offline-first.
+
+## Objetivos
+
+- Manter arquitetura multitenant.
+- Criar ambiente Super Admin para gestão de clientes SaaS.
+- Evoluir frontend-web sem quebrar funções existentes.
+- Evoluir backend em fases.
+- Evoluir mobile app com funcionamento offline, GPS preciso e sincronização posterior.
+- Manter rastreabilidade e auditoria.
+- Preparar base futura para compatibilidade AFD/REP-P.
+- Manter documentação atualizada a cada fase.
+
+## Ordem de implementação
+
+1. Banco de dados.
+2. Backend.
+3. Frontend-web.
+4. Mobile app.
+5. Testes e auditoria.
+
+### /opt/rh-saas/docs/01-arquitetura.md
+# Arquitetura
+
+## Componentes
+
+- Backend NestJS.
+- Frontend-web React.
+- Mobile app Expo/React Native.
+- PostgreSQL/PostGIS.
+- Redis.
+- Nginx web container.
+- Nginx principal externo.
+
+## Princípios
+
+- Multitenant por `tenantId`.
+- Permissões por perfil.
+- Auditoria em ações críticas.
+- Dados brutos de ponto imutáveis.
+- Alterações por eventos de ajuste/justificativa.
+- Mobile offline-first.
+- Sincronização posterior com controle de duplicidade.
+
+### /opt/rh-saas/docs/04-Regras-de-Negocio/documentos.md
+# Módulo de Documentos e Assinaturas
+
+## Objetivo
+Gerenciar o upload de arquivos (atestados médicos, contratos, advertências e holerites) e garantir a validade jurídica das assinaturas eletrônicas.
+
+## Regras de Negócio
+1. **Uploads:** Documentos enviados pelo App (Atestados) devem ser vinculados ao `tenantId` e `employeeId`. O armazenamento físico deve ser feito em Cloud Storage (ex: AWS S3) e o banco guarda a URL (`fileUrl`).
+2. **Assinatura Eletrônica:**
+   - Apenas documentos marcados com `requiresSignature = true` podem ser assinados.
+   - A assinatura gera um **Hash SHA-256** irrevogável que usa o ID do documento, o ID do colaborador e a data/hora exata UTC.
+   - Uma vez assinado (`isSigned = true`), o documento não pode ter sua assinatura alterada.
+
+### /opt/rh-saas/docs/04-Regras-de-Negocio/banco-de-horas.md
+# Módulo de Banco de Horas e Compensação
+
+## Regras de Negócio e Cálculos
+Este módulo é responsável por cruzar as marcações brutas de ponto (`ClockEvents`) com as jornadas de trabalho estipuladas.
+
+### 1. Cálculo Base (em Minutos)
+Para garantir precisão e evitar erros de arredondamento fracionário (ex: 1.5 horas = 1h e 30m), todo o processamento de tempo do sistema é feito usando a grandeza de **minutos**.
+- `Saldo (minutos) = Trabalhado (minutos) - Previsto (minutos)`
+
+### 2. Fluxo de Pareamento (Matching)
+O sistema lê o dia de forma cronológica, pareando eventos complementares:
+- `ENTRADA` faz par com `SAIDA_INTERVALO`
+- `RETORNO_INTERVALO` faz par com `SAIDA`
+
+Se faltar uma batida (ex: o funcionário esqueceu de bater o retorno do almoço), o pareamento é quebrado. A empresa será notificada via dashboard para que o RH realize um ajuste manual no ponto (gerando um novo `ClockEvent` de correção, conforme exigência do MTE).
+
+### 3. Fechamento de Folha
+O campo `status` no Banco de Horas indica se aquele dia já foi fechado e enviado para a folha de pagamento (`CLOSED`). Dias fechados não sofrem recálculo automático se houver um ajuste de ponto retroativo, exigindo aprovação superior.
+
+### /opt/rh-saas/docs/04-Regras-de-Negocio/escalas-e-jornadas.md
+# Módulo de Escalas e Jornadas de Trabalho
+
+## Objetivo
+Este módulo define os horários esperados de trabalho para cada funcionário, permitindo que o sistema automatize o cálculo de horas extras e faltas, cumprindo as regras da CLT.
+
+## Regras Implementadas
+1. **Jornadas Fixas (FIXED):**
+   - Baseia-se nos dias da semana. Exemplo: Segunda a Sexta. O sistema verifica a função `getUTCDay()` para determinar se o dia atual é um dia útil para aquele colaborador.
+2. **Jornada de Revezamento (12x36):**
+   - O cálculo é feito matematicamente medindo a diferença de dias entre a data de início da escala (`startDate`) e o dia atual. Se a diferença for par, o funcionário tem plantão. Se for ímpar, está de folga. Isso garante o funcionamento infinito da escala sem precisar cadastrar dia a dia.
+3. **Tolerância (Art. 58 da CLT):**
+   - O sistema embute a `dailyToleranceMinutes` (padrão 10). O módulo de Banco de Horas deve usar esse valor para ignorar variações ínfimas (ex: saldo de -7 minutos será zerado, mas um saldo de -12 minutos será registrado integralmente).
+
+### /opt/rh-saas/docs/foundation/LIVE_TRACKING_MOBILE_APP.md
+# Live Tracking Mobile App
+
+## Sprint 4.6B-F-Mobile
+
+## Objetivo
+
+Documentar a integração manual do Live Tracking no app mobile, usando a Foundation já existente.
+
+## Escopo técnico
+
+- App: `/opt/rh-saas/mobile-app`
+- Backend: NestJS API
+- Banco: Foundation PostgreSQL
+- Tabelas envolvidas:
+  - `mobile_devices`
+  - `location_tracking_points`
+  - `hr_employee_profiles`
+
+## Arquivos mobile criados ou alterados nas fases anteriores
+
+- `src/services/liveTrackingApi.ts`
+- `src/screens/LiveTrackingScreen.tsx`
+- `App.tsx`
+- `src/screens/HomeScreen.tsx`
+- `src/screens/LoginScreen.tsx`
+
+## Funcionalidades validadas
+
+- Login no app mobile usando JWT.
+- Abertura do app via Expo Tunnel.
+- Abertura da HomeScreen.
+- Acesso à tela Live Tracking.
+- Carregamento de colaboradores Foundation.
+- Seleção de colaborador.
+- Registro de dispositivo mobile.
+- Solicitação de permissão de localização.
+- Captura da localização atual.
+- Envio manual do ponto GPS.
+- Exibição de Device ID e Point ID.
+- Atualização das últimas localizações no app.
+- Visualização do ponto no frontend-web.
+
+## Validação final
+
+Documento de validação:
+
+`/opt/rh-saas/docs/foundation/LIVE_TRACKING_MOBILE_VALIDATION.md`
+
+Relatório de reteste final:
+
+`/opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_RETEST_TUNNEL_20260704_174811.md`
+
+## IDs finais registrados no painel mobile
+
+Device ID:
+
+`983229a2-a788-4f21-9abe-9e286688859c`
+
+Point ID:
+
+`4a6bba8f-79b7-4754-a5de-729e1bfbb311`
+
+Status exibido no painel:
+
+`Não informado no reteste final`
+
+Erro detalhado exibido:
+
+`Nenhum erro detalhado informado no reteste final`
+
+## Histórico das fases
+
+| Fase | Relatório |
+|---|---|
+| A1 Diagnostico | /opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A1_DIAGNOSTICO_20260704_165146.md |
+| A2 Service | /opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A2_LIVE_TRACKING_SERVICE_20260704_165420.md |
+| A3 Tela | /opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A3_LIVE_TRACKING_SCREEN_20260704_165609.md |
+| A4 Navegacao | /opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A4_NAVIGATION_20260704_165750.md |
+| A4 FIX3 | /opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A4_FIX3_DISABLED_COMMA_20260704_170414.md |
+| A5 Diagnostico abertura | /opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_DIAG_ABERTURA_APP_20260704_171717.md |
+| A5 Tunnel | /opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_FIX_TUNNEL_20260704_172515.md |
+| A5 Login DIAG | /opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_LOGIN_DIAG_20260704_173404.md |
+| A5 Login FIX | /opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_LOGIN_FIX_20260704_173549.md |
+| A5 Location DIAG | /opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_LOCATION_DIAG_20260704_174447.md |
+| A5 Location FIX UI | /opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_LOCATION_FIX_UI_20260704_174633.md |
+| A5 RETEST final | /opt/rh-saas/docs/mobile/RELATORIO_MOBILE_A5_RETEST_TUNNEL_20260704_174811.md |
+
+## Decisões técnicas
+
+- O Live Tracking mobile foi validado inicialmente em modo manual.
+- O envio é feito sob ação explícita do usuário.
+- O app usa `expo-location` para capturar a localização atual.
+- O app usa `AsyncStorage` para armazenar o token em `@LH_Token`.
+- O app usa `AsyncStorage` para persistir o `@LH_LiveTrackingDeviceUid`.
+- O login mobile foi ajustado para aceitar `access_token`, `accessToken`, `token` ou `jwt`.
+- O app mobile não implementa background tracking nesta sprint.
+
+## Endpoints utilizados
+
+- `POST /v1/auth/login`
+- `GET /v1/foundation/hr/employees`
+- `POST /v1/foundation/live-tracking/device`
+- `POST /v1/foundation/live-tracking/location`
+- `GET /v1/foundation/live-tracking/latest`
+- `GET /v1/foundation/live-tracking/points`
+
+## Regras preservadas
+
+- Nenhuma tabela foi criada.
+- Nenhuma estrutura de banco foi alterada.
+- Nenhum backend foi alterado nesta fase final.
+- Nenhum background tracking foi implementado.
+- A validação mobile foi manual e sob ação do usuário.
+
+## Status
+
+Integração mobile manual do Live Tracking concluída e documentada.
+
+## Próximas recomendações
+
+- Planejar background tracking em sprint futura, somente após definir política de intervalo, bateria e consentimento.
+- Planejar integração com geofence.
+- Planejar mapa operacional no frontend-web.
+- Avaliar limpeza dos registros de diagnóstico quando não forem mais necessários.
+
+
+### /opt/rh-saas/docs/foundation/LIVE_TRACKING_MOBILE_VALIDATION.md
+# Live Tracking Mobile Validation
+
+## Sprint 4.6B-F-Mobile-A5-RETEST
+
+Data: 20260704_174811
+
+## Objetivo
+
+Registrar o reteste funcional do Live Tracking no app mobile após instrumentação visual do envio.
+
+## Expo Tunnel
+
+```text
+exp://lqbnkre-luizcarelo-8083.exp.direct
+```
+
+## Validacao TypeScript
+
+```text
+TSC_OK
+/opt/rh-saas/docs/mobile/VALIDACAO_MOBILE_A5_RETEST_TSC_20260704_174811.log
+```
+
+## Checklist funcional informado
+
+| Item | Resultado |
+|---|---|
+| Expo Tunnel abriu e exibiu QR Code | OK |
+| App abriu no Expo Go pelo QR Code | OK |
+| Login funcionou | OK |
+| HomeScreen abriu corretamente | OK |
+| Botao Live Tracking apareceu | OK |
+| Tela Live Tracking abriu | OK |
+| Colaboradores Foundation carregaram | OK |
+| Foi possivel selecionar colaborador | OK |
+| Dispositivo mobile foi registrado | OK |
+| Permissao de localizacao foi solicitada | OK |
+| Localizacao atual foi capturada | OK |
+| Painel mostrou LOCATION_SENT | OK |
+| Painel mostrou Device ID | OK |
+| Painel mostrou Point ID | OK |
+| Painel mostrou erro detalhado | OK |
+| Ultimas localizacoes atualizaram no app | OK |
+| Ponto apareceu no frontend-web Live Tracking | OK |
+
+## Dados exibidos no painel
+
+Device ID:
+
+```text
+983229a2-a788-4f21-9abe-9e286688859c
+```
+
+Point ID:
+
+```text
+4a6bba8f-79b7-4754-a5de-729e1bfbb311
+```
+
+Status:
+
+```text
+
+```
+
+Erro detalhado:
+
+```text
+
+```
+
+## Observacoes
+
+```text
+
+```
+
+## Escopo validado
+
+- mobile-app
+- Expo Tunnel
+- Expo Go
+- LoginScreen
+- HomeScreen
+- LiveTrackingScreen
+- Painel Diagnóstico do envio
+- Service liveTrackingApi
+- API Foundation Live Tracking
+
+## Endpoints envolvidos
+
+- POST /v1/auth/login
+- GET /v1/foundation/hr/employees
+- POST /v1/foundation/live-tracking/device
+- POST /v1/foundation/live-tracking/location
+- GET /v1/foundation/live-tracking/latest
+
+## Regras
+
+- Nenhum backend foi alterado nesta fase.
+- Nenhum banco foi alterado nesta fase.
+- Nenhum pacote foi instalado nesta fase.
+- Nenhum codigo mobile foi alterado nesta fase.
+- Nenhum background tracking foi implementado nesta fase.
+- A validacao foi manual e sob acao do usuario.
+
+## Proximas recomendacoes
+
+- Se todos os itens estiverem OK, considerar a validacao mobile manual concluida.
+- Se o painel exibir erro, usar o erro detalhado como base para correcao.
+- Planejar background tracking somente em sprint futura.
+
+## Estrutura mobile-app
+-------------------------------------------------
+/opt/rh-saas/mobile-app
+/opt/rh-saas/mobile-app/AGENTS.md
+/opt/rh-saas/mobile-app/app.json
+/opt/rh-saas/mobile-app/app.json.tmp
+/opt/rh-saas/mobile-app/App.tsx
+/opt/rh-saas/mobile-app/assets
+/opt/rh-saas/mobile-app/assets/adaptive-icon.png
+/opt/rh-saas/mobile-app/assets/favicon.png
+/opt/rh-saas/mobile-app/assets/icone-app.png
+/opt/rh-saas/mobile-app/assets/icon.png
+/opt/rh-saas/mobile-app/assets/logo_rh.png
+/opt/rh-saas/mobile-app/assets/splash-icon.png
+/opt/rh-saas/mobile-app/.claude
+/opt/rh-saas/mobile-app/CLAUDE.md
+/opt/rh-saas/mobile-app/.claude/settings.json
+/opt/rh-saas/mobile-app/dist
+/opt/rh-saas/mobile-app/eas.json
+/opt/rh-saas/mobile-app/.env
+/opt/rh-saas/mobile-app/.expo
+/opt/rh-saas/mobile-app/expo.log
+/opt/rh-saas/mobile-app/.git
+/opt/rh-saas/mobile-app/.git/branches
+/opt/rh-saas/mobile-app/.git/COMMIT_EDITMSG
+/opt/rh-saas/mobile-app/.git/config
+/opt/rh-saas/mobile-app/.git/description
+/opt/rh-saas/mobile-app/.git/FETCH_HEAD
+/opt/rh-saas/mobile-app/.git/HEAD
+/opt/rh-saas/mobile-app/.git/hooks
+/opt/rh-saas/mobile-app/.git/hooks/applypatch-msg.sample
+/opt/rh-saas/mobile-app/.git/hooks/commit-msg.sample
+/opt/rh-saas/mobile-app/.git/hooks/fsmonitor-watchman.sample
+/opt/rh-saas/mobile-app/.git/hooks/post-update.sample
+/opt/rh-saas/mobile-app/.git/hooks/pre-applypatch.sample
+/opt/rh-saas/mobile-app/.git/hooks/pre-commit.sample
+/opt/rh-saas/mobile-app/.git/hooks/pre-merge-commit.sample
+/opt/rh-saas/mobile-app/.git/hooks/prepare-commit-msg.sample
+/opt/rh-saas/mobile-app/.git/hooks/pre-push.sample
+/opt/rh-saas/mobile-app/.git/hooks/pre-rebase.sample
+/opt/rh-saas/mobile-app/.git/hooks/pre-receive.sample
+/opt/rh-saas/mobile-app/.git/hooks/push-to-checkout.sample
+/opt/rh-saas/mobile-app/.git/hooks/sendemail-validate.sample
+/opt/rh-saas/mobile-app/.git/hooks/update.sample
+/opt/rh-saas/mobile-app/.gitignore
+/opt/rh-saas/mobile-app/.git/index
+/opt/rh-saas/mobile-app/.git/info
+/opt/rh-saas/mobile-app/.git/info/exclude
+/opt/rh-saas/mobile-app/.git/logs
+/opt/rh-saas/mobile-app/.git/logs/HEAD
+/opt/rh-saas/mobile-app/.git/logs/refs
+/opt/rh-saas/mobile-app/.git/logs/refs/heads
+/opt/rh-saas/mobile-app/.git/logs/refs/heads/master
+/opt/rh-saas/mobile-app/.git/objects
+/opt/rh-saas/mobile-app/.git/objects/03
+/opt/rh-saas/mobile-app/.git/objects/03/29d0c93c3a2f575e4d87faeea9b6029d400ef1
+/opt/rh-saas/mobile-app/.git/objects/03/d6f6b6c6727954aec1d8206222769afd178d8d
+/opt/rh-saas/mobile-app/.git/objects/09
+/opt/rh-saas/mobile-app/.git/objects/09/dbe3ee6885a3e1ab0c82fed4fd32fd2e953051
+/opt/rh-saas/mobile-app/.git/objects/0c
+/opt/rh-saas/mobile-app/.git/objects/0c/e009d84a9275e71845e5f0aef41a323f414afb
+/opt/rh-saas/mobile-app/.git/objects/12
+/opt/rh-saas/mobile-app/.git/objects/12/55e644daec1ce04ff450c47143a342fb5c2ae8
+/opt/rh-saas/mobile-app/.git/objects/17
+/opt/rh-saas/mobile-app/.git/objects/17/6e6a5a759d0caef81821729f349bfd7b88babb
+/opt/rh-saas/mobile-app/.git/objects/1c
+/opt/rh-saas/mobile-app/.git/objects/1c/735386cf968a45b33c41d68ec2b2b29dfa2391
+/opt/rh-saas/mobile-app/.git/objects/1c/acf0556fd8da32921bf94af8fbdb1f8d2da6b1
+/opt/rh-saas/mobile-app/.git/objects/1d
+/opt/rh-saas/mobile-app/.git/objects/1d/6e981ef6c4ea336e6fe8f3fbce9487221a075c
+/opt/rh-saas/mobile-app/.git/objects/23
+/opt/rh-saas/mobile-app/.git/objects/23/444d9b814b33ff44cc5f7545dc850220ac942c
+/opt/rh-saas/mobile-app/.git/objects/23/5cf54ce0c87b4979d00a2469d79b2372e4c2b8
+/opt/rh-saas/mobile-app/.git/objects/25
+/opt/rh-saas/mobile-app/.git/objects/25/8087d73a37bc37e167cfbfd2b147c977417b88
+/opt/rh-saas/mobile-app/.git/objects/28
+/opt/rh-saas/mobile-app/.git/objects/28/cbc595c844561945229caba316ecaf52154438
+/opt/rh-saas/mobile-app/.git/objects/32
+/opt/rh-saas/mobile-app/.git/objects/32/259ff41b9fb016f4eea1cbdbf5b704cb306334
+/opt/rh-saas/mobile-app/.git/objects/3a
+/opt/rh-saas/mobile-app/.git/objects/3a/c4dc7505216a62ca26106860501ab071a35e64
+/opt/rh-saas/mobile-app/.git/objects/43
+/opt/rh-saas/mobile-app/.git/objects/43/c994c2d3617f947bcb5adf1933e21dabe46bb5
+/opt/rh-saas/mobile-app/.git/objects/49
+/opt/rh-saas/mobile-app/.git/objects/49/fb91de76dda6f3e7d8e46ff5a26a702ca2b4a0
+/opt/rh-saas/mobile-app/.git/objects/58
+/opt/rh-saas/mobile-app/.git/objects/58/50f257b206006a3bb4e07a0b443190fcddff7c
+/opt/rh-saas/mobile-app/.git/objects/5d
+/opt/rh-saas/mobile-app/.git/objects/5d/cd8463a821c1eb3e68c529aa708af095d7b9fc
+/opt/rh-saas/mobile-app/.git/objects/60
+/opt/rh-saas/mobile-app/.git/objects/60/47d39d0a2b0a64fc190b3ef276409d545d9180
+/opt/rh-saas/mobile-app/.git/objects/60/590f42982d7083dd9b27a129c0e03bda96ae9a
+/opt/rh-saas/mobile-app/.git/objects/66
+/opt/rh-saas/mobile-app/.git/objects/66/6ab2ae9bd742da6f95efffaa581f29969ca651
+/opt/rh-saas/mobile-app/.git/objects/73
+/opt/rh-saas/mobile-app/.git/objects/73/cda463352de07b3b269ff0892ea4a24fe7c343
+/opt/rh-saas/mobile-app/.git/objects/75
+/opt/rh-saas/mobile-app/.git/objects/75/bc665f5eb7268993351446c22573ed650b1bfb
+/opt/rh-saas/mobile-app/.git/objects/76
+/opt/rh-saas/mobile-app/.git/objects/76/a6831d7a47ae64c82552cc6b79dd1b7f6d7d8e
+/opt/rh-saas/mobile-app/.git/objects/84
+/opt/rh-saas/mobile-app/.git/objects/84/b908d51b620a1653df25d40c0876952490fc6b
+/opt/rh-saas/mobile-app/.git/objects/85
+/opt/rh-saas/mobile-app/.git/objects/85/307cfbc977d8e1a1f18be121856eb65a22ebbc
+/opt/rh-saas/mobile-app/.git/objects/a0
+/opt/rh-saas/mobile-app/.git/objects/a0/b1526fc7b78680fd8d733dbc6113e1af695487
+/opt/rh-saas/mobile-app/.git/objects/aa
+/opt/rh-saas/mobile-app/.git/objects/aa/d39544c1d07dd5d572a37f391ef4133eb34825
+/opt/rh-saas/mobile-app/.git/objects/b5
+/opt/rh-saas/mobile-app/.git/objects/b5/01e8319db50bdd55b9a35750bc78119330f2b9
+/opt/rh-saas/mobile-app/.git/objects/b9
+/opt/rh-saas/mobile-app/.git/objects/b9/567f6052d70ca2c9035e33667fded3cc4ed71f
+/opt/rh-saas/mobile-app/.git/objects/b9/ced3698e8dd4b2a0a8fc65aed13a00c7f2cc03
+/opt/rh-saas/mobile-app/.git/objects/c7
+/opt/rh-saas/mobile-app/.git/objects/c7/b3e919a11ac45a5f386d43667627a896656f6f
+/opt/rh-saas/mobile-app/.git/objects/ca
+/opt/rh-saas/mobile-app/.git/objects/ca/574fa3b4f058225d72fbd7c82e2c2217b2078f
+/opt/rh-saas/mobile-app/.git/objects/d0
+/opt/rh-saas/mobile-app/.git/objects/d0/b274fa4f20c81983639ff8c4b1f18340f1a2c8
+/opt/rh-saas/mobile-app/.git/objects/d9
+/opt/rh-saas/mobile-app/.git/objects/d9/14c328fe1d7c235283f985f1679a330b40b565
+/opt/rh-saas/mobile-app/.git/objects/e6
+/opt/rh-saas/mobile-app/.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+/opt/rh-saas/mobile-app/.git/objects/e7
+/opt/rh-saas/mobile-app/.git/objects/e7/5f697b1801871ad8cd9309b05e8ffe8c6b6d01
+/opt/rh-saas/mobile-app/.git/objects/ee
+/opt/rh-saas/mobile-app/.git/objects/ee/697f09045041277cdae3f3491466df965659a9
+/opt/rh-saas/mobile-app/.git/objects/info
+/opt/rh-saas/mobile-app/.git/objects/pack
+/opt/rh-saas/mobile-app/.git/refs
+/opt/rh-saas/mobile-app/.git/refs/heads
+/opt/rh-saas/mobile-app/.git/refs/heads/master
+/opt/rh-saas/mobile-app/.git/refs/tags
+/opt/rh-saas/mobile-app/index.ts
+/opt/rh-saas/mobile-app/node_modules
+/opt/rh-saas/mobile-app/package.json
+/opt/rh-saas/mobile-app/package-lock.json
+/opt/rh-saas/mobile-app/set_env.sh
+/opt/rh-saas/mobile-app/src
+/opt/rh-saas/mobile-app/src/components
+/opt/rh-saas/mobile-app/src/screens
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx
+/opt/rh-saas/mobile-app/src/services
+/opt/rh-saas/mobile-app/src/services/api.ts
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts
+/opt/rh-saas/mobile-app/tsconfig.json
+
+## package.json mobile
+-------------------------------------------------
+{
+  "name": "mobile-app",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-navigation/native": "^7.3.5",
+    "@react-navigation/native-stack": "^7.17.7",
+    "axios": "^1.18.1",
+    "expo": "~54.0.34",
+    "expo-location": "~19.0.8",
+    "expo-status-bar": "~3.0.9",
+    "lucide-react-native": "^1.23.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
+    "react-native-web": "^0.21.0"
+  },
+  "devDependencies": {
+    "@expo/ngrok": "^4.1.3",
+    "@types/react": "~19.1.0",
+    "typescript": "~5.9.2"
+  },
+  "private": true
+}
+
+## app.json mobile
+-------------------------------------------------
+{
+  "expo": {
+    "name": "LH Solução RH",
+    "slug": "lh-rh",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icone-app.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/logo_rh.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      "expo-location"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icone-app.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.luizcarelo.lhrh"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d2933a18-0ca2-4799-bd2e-6ebc07bc923f"
+      }
+    }
+  }
+}
+
+## .env mobile sanitizado
+-------------------------------------------------
+### /opt/rh-saas/mobile-app/.env
+EXPO_PUBLIC_API_URL=https://rh.lhsolucao.com.br
+
+## App.tsx
+-------------------------------------------------
+     1	import React from 'react';
+     2	import { NavigationContainer } from '@react-navigation/native';
+     3	import { createNativeStackNavigator } from '@react-navigation/native-stack';
+     4	import LoginScreen from './src/screens/LoginScreen';
+     5	import HomeScreen from './src/screens/HomeScreen';
+     6	import LiveTrackingScreen from './src/screens/LiveTrackingScreen';
+     7	
+     8	const Stack = createNativeStackNavigator();
+     9	
+    10	export default function App() {
+    11	  return (
+    12	    <NavigationContainer>
+    13	      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Login">
+    14	        <Stack.Screen name="Login" component={LoginScreen} />
+    15	        <Stack.Screen name="Home" component={HomeScreen} />
+    16	        <Stack.Screen name="LiveTracking" component={LiveTrackingScreen} />
+    17	      </Stack.Navigator>
+    18	    </NavigationContainer>
+    19	  );
+    20	}
+
+## LoginScreen
+-------------------------------------------------
+     1	import React, { useState } from 'react';
+     2	import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, ActivityIndicator } from 'react-native';
+     3	import AsyncStorage from '@react-native-async-storage/async-storage';
+     4	import api from '../services/api';
+     5	
+     6	function getLoginErrorMessage(error: unknown) {
+     7	  const possibleError = error as {
+     8	    response?: {
+     9	      status?: number;
+    10	      data?: {
+    11	        message?: string | string[];
+    12	        error?: string;
+    13	      };
+    14	    };
+    15	    request?: unknown;
+    16	    message?: string;
+    17	  };
+    18	
+    19	  const status = possibleError.response?.status;
+    20	  const data = possibleError.response?.data;
+    21	
+    22	  if (possibleError.message === 'Token não retornado pela API.') {
+    23	    return 'Login realizado, mas a API não retornou um token válido.';
+    24	  }
+    25	
+    26	  if (status === 401 || status === 403) {
+    27	    return 'E-mail ou senha inválidos.';
+    28	  }
+    29	
+    30	  if (status && status >= 500) {
+    31	    return 'API indisponível no momento. Tente novamente em instantes.';
+    32	  }
+    33	
+    34	  if (data?.message) {
+    35	    return Array.isArray(data.message) ? data.message.join(', ') : data.message;
+    36	  }
+    37	
+    38	  if (data?.error) {
+    39	    return data.error;
+    40	  }
+    41	
+    42	  if (possibleError.request && !possibleError.response) {
+    43	    return 'Não foi possível conectar à API. Verifique sua internet e tente novamente.';
+    44	  }
+    45	
+    46	  return possibleError.message || 'Não foi possível efetuar login.';
+    47	}
+    48	
+    49	export default function LoginScreen({ navigation }: any) {
+    50	  const [email, setEmail] = useState('');
+    51	  const [password, setPassword] = useState('');
+    52	  const [loading, setLoading] = useState(false);
+    53	
+    54	  const handleLogin = async () => {
+    55	    if (!email || !password) {
+    56	      Alert.alert('Erro', 'Preencha todos os campos.');
+    57	      return;
+    58	    }
+    59	    setLoading(true);
+    60	    try {
+    61	      const response = await api.post('/v1/auth/login', { email, password });
+    62	
+    63	      const accessToken =
+    64	        response.data?.access_token ||
+    65	        response.data?.accessToken ||
+    66	        response.data?.token ||
+    67	        response.data?.jwt;
+    68	
+    69	      if (!accessToken) {
+    70	        throw new Error('Token não retornado pela API.');
+    71	      }
+    72	
+    73	      await AsyncStorage.setItem('@LH_Token', accessToken);
+    74	      navigation.replace('Home');
+    75	    } catch (error) {
+    76	      Alert.alert('Falha no Login', getLoginErrorMessage(error));
+    77	    } finally {
+    78	      setLoading(false);
+    79	    }
+    80	  };
+    81	
+    82	  return (
+    83	    <View style={styles.container}>
+    84	      <Image source={require('../../assets/logo_rh.png')} style={styles.logo} resizeMode="contain" />
+    85	      <Text style={styles.title}>Acesse sua conta</Text>
+    86	      
+    87	      <TextInput 
+    88	        style={styles.input} 
+    89	        placeholder="E-mail" 
+    90	        value={email} 
+    91	        onChangeText={setEmail}
+    92	        autoCapitalize="none"
+    93	        keyboardType="email-address"
+    94	      />
+    95	      
+    96	      <TextInput 
+    97	        style={styles.input} 
+    98	        placeholder="Senha" 
+    99	        secureTextEntry 
+   100	        value={password} 
+   101	        onChangeText={setPassword}
+   102	      />
+   103	
+   104	      <TouchableOpacity style={styles.button} onPress={handleLogin} disabled={loading}>
+   105	        {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>ENTRAR</Text>}
+   106	      </TouchableOpacity>
+   107	    </View>
+   108	  );
+   109	}
+   110	
+   111	const styles = StyleSheet.create({
+   112	  container: { flex: 1, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center', padding: 30 },
+   113	  logo: { width: 250, height: 100, marginBottom: 40 },
+   114	  title: { fontSize: 18, fontWeight: 'bold', color: '#334155', marginBottom: 20 },
+   115	  input: { width: '100%', height: 55, backgroundColor: '#f1f5f9', borderRadius: 10, paddingHorizontal: 15, marginBottom: 15, borderWidth: 1, borderColor: '#e2e8f0' },
+   116	  button: { width: '100%', height: 55, backgroundColor: '#0284c7', borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginTop: 10 },
+   117	  buttonText: { color: '#fff', fontSize: 16, fontWeight: 'bold' }
+   118	});
+
+## HomeScreen
+-------------------------------------------------
+     1	import React, { useState, useEffect } from 'react';
+     2	import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Alert, Image } from 'react-native';
+     3	import * as Location from 'expo-location';
+     4	import AsyncStorage from '@react-native-async-storage/async-storage';
+     5	import api from '../services/api';
+     6	import { LogOut, Clock, MapPin } from 'lucide-react-native';
+     7	
+     8	export default function HomeScreen({ navigation }: any) {
+     9	  const [loading, setLoading] = useState(false);
+    10	  const [currentTime, setCurrentTime] = useState(new Date());
+    11	
+    12	  useEffect(() => {
+    13	    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    14	    return () => clearInterval(timer);
+    15	  }, []);
+    16	
+    17	  const handleLogout = async () => {
+    18	    await AsyncStorage.removeItem('@LH_Token');
+    19	    navigation.replace('Login');
+    20	  };
+    21	
+    22	  const handleClockIn = async () => {
+    23	    setLoading(true);
+    24	    try {
+    25	      let { status } = await Location.requestForegroundPermissionsAsync();
+    26	      if (status !== 'granted') {
+    27	        Alert.alert('Erro', 'Acesso ao GPS é obrigatório.');
+    28	        setLoading(false);
+    29	        return;
+    30	      }
+    31	
+    32	      const location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High });
+    33	      const { latitude, longitude } = location.coords;
+    34	
+    35	      await api.post('/v1/time-records/clock-in', { latitude, longitude });
+    36	      
+    37	      Alert.alert('Sucesso', 'Ponto registrado com sucesso!');
+    38	    } catch (error) {
+    39	      Alert.alert('Erro', 'Não foi possível salvar o ponto.');
+    40	    } finally {
+    41	      setLoading(false);
+    42	    }
+    43	  };
+    44	
+    45	  return (
+    46	    <View style={styles.container}>
+    47	      <View style={styles.header}>
+    48	        <Image source={require('../../assets/logo_rh.png')} style={styles.miniLogo} resizeMode="contain" />
+    49	        <TouchableOpacity onPress={handleLogout}><LogOut color="#ef4444" size={24} /></TouchableOpacity>
+    50	      </View>
+    51	
+    52	      <View style={styles.clockContainer}>
+    53	        <Clock color="#059669" size={40} />
+    54	        <Text style={styles.timeText}>{currentTime.toLocaleTimeString('pt-BR')}</Text>
+    55	        <Text style={styles.dateText}>{currentTime.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })}</Text>
+    56	      </View>
+    57	
+    58	      <TouchableOpacity style={[styles.mainButton, loading && styles.disabled]} onPress={handleClockIn} disabled={loading}>
+    59	        {loading ? <ActivityIndicator color="#fff" size="large" /> : (
+    60	          <View style={{ alignItems: 'center' }}>
+    61	            <MapPin color="#fff" size={32} />
+    62	            <Text style={styles.mainButtonText}>REGISTRAR PONTO</Text>
+    63	          </View>
+    64	        )}
+    65	      </TouchableOpacity>
+    66	
+    67	      <TouchableOpacity
+    68	        style={styles.button}
+    69	        onPress={() => navigation.navigate('LiveTracking')}
+    70	      >
+    71	        <Text style={styles.buttonText}>Live Tracking</Text>
+    72	      </TouchableOpacity>
+    73	
+    74	    </View>
+    75	  );
+    76	}
+    77	
+    78	const styles = StyleSheet.create({
+    79	  container: { flex: 1, backgroundColor: '#f8fafc', padding: 20 },
+    80	  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 40, marginBottom: 40 },
+    81	  miniLogo: { width: 120, height: 40 },
+    82	  clockContainer: { alignItems: 'center', marginBottom: 60 },
+    83	  timeText: { fontSize: 54, fontWeight: 'bold', color: '#0f172a' },
+    84	  dateText: { fontSize: 16, color: '#64748b', textTransform: 'capitalize' },
+    85	  mainButton: { backgroundColor: '#059669', height: 200, borderRadius: 100, width: 200, alignSelf: 'center', justifyContent: 'center', alignItems: 'center', shadowColor: '#000', elevation: 10 },
+    86	  mainButtonText: { color: '#fff', fontSize: 18, fontWeight: 'bold', marginTop: 10 },
+    87	  disabled: { backgroundColor: '#94a3b8' },
+    88	
+    89	  button: {
+    90	    backgroundColor: '#0f172a',
+    91	    borderRadius: 12,
+    92	    padding: 14,
+    93	    alignItems: 'center',
+    94	    marginTop: 12,
+    95	  },
+    96	
+    97	  buttonText: {
+    98	    color: '#ffffff',
+    99	    fontSize: 15,
+   100	    fontWeight: '700',
+   101	  },
+   102	});
+
+## LiveTrackingScreen
+-------------------------------------------------
+     1	import React, { useEffect, useMemo, useState } from 'react';
+     2	import {
+     3	  ActivityIndicator,
+     4	  Alert,
+     5	  Platform,
+     6	  SafeAreaView,
+     7	  ScrollView,
+     8	  StyleSheet,
+     9	  Text,
+    10	  TouchableOpacity,
+    11	  View,
+    12	} from 'react-native';
+    13	
+    14	import * as Location from 'expo-location';
+    15	import { AxiosError } from 'axios';
+    16	
+    17	import {
+    18	  FoundationEmployee,
+    19	  LocationTrackingPointFoundation,
+    20	  MobileDeviceFoundation,
+    21	  getFoundationEmployees,
+    22	  getLatestLiveTrackingPoints,
+    23	  getOrCreateMobileDeviceUid,
+    24	  registerLiveTrackingDevice,
+    25	  sendLiveTrackingLocation,
+    26	} from '../services/liveTrackingApi';
+    27	
+    28	type UiStatus = 'idle' | 'loading' | 'success' | 'error';
+    29	
+    30	
+    31	function formatApiError(error: unknown) {
+    32	  if (error instanceof AxiosError) {
+    33	    const status = error.response?.status;
+    34	    const data = error.response?.data;
+    35	
+    36	    if (data && typeof data === 'object') {
+    37	      const apiData = data as {
+    38	        message?: string | string[];
+    39	        error?: string;
+    40	        statusCode?: number;
+    41	      };
+    42	
+    43	      const message = Array.isArray(apiData.message)
+    44	        ? apiData.message.join(', ')
+    45	        : apiData.message;
+    46	
+    47	      return [
+    48	        status ? `HTTP ${status}` : 'Erro HTTP',
+    49	        message || apiData.error || error.message,
+    50	      ].filter(Boolean).join(' - ');
+    51	    }
+    52	
+    53	    return status ? `HTTP ${status} - ${error.message}` : error.message;
+    54	  }
+    55	
+    56	  return error instanceof Error ? error.message : 'Erro inesperado.';
+    57	}
+    58	
+    59	function formatEmployeeName(employee: FoundationEmployee) {
+    60	  const firstName = employee.firstName || '';
+    61	  const lastName = employee.lastName || '';
+    62	  const fullName = `${firstName} ${lastName}`.trim();
+    63	
+    64	  if (fullName) {
+    65	    return fullName;
+    66	  }
+    67	
+    68	  return employee.email || employee.id;
+    69	}
+    70	
+    71	function formatDate(value?: string) {
+    72	  if (!value) {
+    73	    return '-';
+    74	  }
+    75	
+    76	  try {
+    77	    return new Intl.DateTimeFormat('pt-BR', {
+    78	      dateStyle: 'short',
+    79	      timeStyle: 'medium',
+    80	    }).format(new Date(value));
+    81	  } catch {
+    82	    return value;
+    83	  }
+    84	}
+    85	
+    86	export default function LiveTrackingScreen() {
+    87	  const [employees, setEmployees] = useState<FoundationEmployee[]>([]);
+    88	  const [selectedEmployeeId, setSelectedEmployeeId] = useState('');
+    89	  const [device, setDevice] = useState<MobileDeviceFoundation | null>(null);
+    90	  const [latestPoints, setLatestPoints] = useState<LocationTrackingPointFoundation[]>([]);
+    91	  const [status, setStatus] = useState<UiStatus>('idle');
+    92	  const [message, setMessage] = useState('Pronto para validar Live Tracking.');
+    93	  const [lastLocation, setLastLocation] = useState<{
+    94	    latitude: number;
+    95	    longitude: number;
+    96	    accuracy?: number | null;
+    97	  } | null>(null);
+    98	  const [lastDeviceId, setLastDeviceId] = useState('');
+    99	  const [lastPointId, setLastPointId] = useState('');
+   100	  const [lastApiStatus, setLastApiStatus] = useState('');
+   101	  const [lastApiError, setLastApiError] = useState('');
+   102	  const [lastApiResponse, setLastApiResponse] = useState('');
+   103	
+   104	
+   105	  const selectedEmployee = useMemo(
+   106	    () => employees.find((employee) => employee.id === selectedEmployeeId),
+   107	    [employees, selectedEmployeeId],
+   108	  );
+   109	
+   110	  async function loadEmployees() {
+   111	    setStatus('loading');
+   112	    setMessage('Carregando colaboradores Foundation...');
+   113	
+   114	    try {
+   115	      const data = await getFoundationEmployees();
+   116	
+   117	      setEmployees(data);
+   118	
+   119	      if (!selectedEmployeeId && data.length > 0) {
+   120	        setSelectedEmployeeId(data[0].id);
+   121	      }
+   122	
+   123	      setStatus('success');
+   124	      setMessage('Colaboradores carregados com sucesso.');
+   125	    } catch (error) {
+   126	      setStatus('error');
+   127	      setMessage(error instanceof Error ? error.message : 'Erro ao carregar colaboradores.');
+   128	    }
+   129	  }
+   130	
+   131	  async function refreshLatestPoints() {
+   132	    setStatus('loading');
+   133	    setMessage('Atualizando últimas localizações...');
+   134	
+   135	    try {
+   136	      const data = await getLatestLiveTrackingPoints();
+   137	
+   138	      setLatestPoints(data);
+   139	      setStatus('success');
+   140	      setMessage('Últimas localizações atualizadas.');
+   141	    } catch (error) {
+   142	      setStatus('error');
+   143	      setMessage(error instanceof Error ? error.message : 'Erro ao atualizar localizações.');
+   144	    }
+   145	  }
+   146	
+   147	  async function handleRegisterDevice() {
+   148	    if (!selectedEmployeeId) {
+   149	      setStatus('error');
+   150	      setMessage('Selecione um colaborador antes de registrar o dispositivo.');
+   151	      return null;
+   152	    }
+   153	
+   154	    setStatus('loading');
+   155	    setMessage('Registrando dispositivo mobile...');
+   156	
+   157	    try {
+   158	      const deviceUid = await getOrCreateMobileDeviceUid();
+   159	
+   160	      const registeredDevice = await registerLiveTrackingDevice({
+   161	        employeeProfileId: selectedEmployeeId,
+   162	        deviceUid,
+   163	        platform: Platform.OS,
+   164	        model: String(Platform.Version || 'mobile'),
+   165	        appVersion: 'mobile-validation',
+   166	      });
+   167	
+   168	      setDevice(registeredDevice);
+   169	      setLastDeviceId(registeredDevice.id);
+   170	      setLastApiStatus('DEVICE_REGISTERED');
+   171	      setLastApiError('');
+   172	      setLastApiResponse(
+   173	        JSON.stringify(
+   174	          {
+   175	            deviceId: registeredDevice.id,
+   176	            deviceUid: registeredDevice.deviceUid,
+   177	            employeeProfileId: registeredDevice.employeeProfileId,
+   178	          },
+   179	          null,
+   180	          2,
+   181	        ),
+   182	      );
+   183	
+   184	      setStatus('success');
+   185	      setMessage('Dispositivo mobile registrado com sucesso.');
+   186	
+   187	      return registeredDevice;
+   188	    } catch (error) {
+   189	      const detailedError = formatApiError(error);
+   190	
+   191	      setLastApiStatus('DEVICE_ERROR');
+   192	      setLastApiError(detailedError);
+   193	      setStatus('error');
+   194	      setMessage(detailedError || 'Erro ao registrar dispositivo.');
+   195	
+   196	      return null;
+   197	    }
+   198	  }
+   199	
+   200	  async function requestLocationPermission() {
+   201	    const permission = await Location.requestForegroundPermissionsAsync();
+   202	
+   203	    if (permission.status !== 'granted') {
+   204	      throw new Error('Permissão de localização não concedida.');
+   205	    }
+   206	  }
+   207	
+   208	  async function handleSendCurrentLocation() {
+   209	    if (!selectedEmployeeId) {
+   210	      setStatus('error');
+   211	      setMessage('Selecione um colaborador antes de enviar localização.');
+   212	      return;
+   213	    }
+   214	
+   215	    setStatus('loading');
+   216	    setMessage('Solicitando permissão de localização...');
+   217	
+   218	    try {
+   219	      await requestLocationPermission();
+   220	
+   221	      const activeDevice = device || (await handleRegisterDevice());
+   222	
+   223	      if (!activeDevice) {
+   224	        return;
+   225	      }
+   226	
+   227	      setMessage('Capturando localização atual...');
+   228	
+   229	      const current = await Location.getCurrentPositionAsync({
+   230	        accuracy: Location.Accuracy.High,
+   231	      });
+   232	
+   233	      const latitude = current.coords.latitude;
+   234	      const longitude = current.coords.longitude;
+   235	      const accuracy = current.coords.accuracy;
+   236	
+   237	      setLastLocation({
+   238	        latitude,
+   239	        longitude,
+   240	        accuracy,
+   241	      });
+   242	
+   243	      setMessage('Enviando ponto GPS para a Foundation...');
+   244	
+   245	      const createdPoint = await sendLiveTrackingLocation({
+   246	        employeeProfileId: selectedEmployeeId,
+   247	        deviceId: activeDevice.id,
+   248	        latitude,
+   249	        longitude,
+   250	        accuracyMeters: accuracy || undefined,
+   251	        source: 'MOBILE',
+   252	        trackedAt: new Date().toISOString(),
+   253	        metadata: {
+   254	          origem: 'mobile-app',
+   255	          tela: 'LiveTrackingScreen',
+   256	          platform: Platform.OS,
+   257	        },
+   258	      });
+   259	
+   260	      setLastDeviceId(activeDevice.id);
+   261	      setLastPointId(createdPoint.id);
+   262	      setLastApiStatus('LOCATION_SENT');
+   263	      setLastApiError('');
+   264	      setLastApiResponse(
+   265	        JSON.stringify(
+   266	          {
+   267	            pointId: createdPoint.id,
+   268	            employeeProfileId: createdPoint.employeeProfileId,
+   269	            deviceId: createdPoint.deviceId,
+   270	            trackedAt: createdPoint.trackedAt,
+   271	            source: createdPoint.source,
+   272	            latitude: createdPoint.latitude,
+   273	            longitude: createdPoint.longitude,
+   274	          },
+   275	          null,
+   276	          2,
+   277	        ),
+   278	      );
+   279	
+   280	      setStatus('success');
+   281	      setMessage(`Localização enviada com sucesso. Point ID: ${createdPoint.id}`);
+   282	
+   283	      await refreshLatestPoints();
+   284	    } catch (error) {
+   285	      const detailedError = formatApiError(error);
+   286	
+   287	      setLastApiStatus('LOCATION_ERROR');
+   288	      setLastApiError(detailedError);
+   289	      setStatus('error');
+   290	      setMessage(detailedError || 'Erro ao enviar localização.');
+   291	
+   292	      Alert.alert(
+   293	        'Live Tracking',
+   294	        detailedError || 'Erro ao enviar localização.',
+   295	      );
+   296	    }
+   297	  }
+   298	
+   299	  useEffect(() => {
+   300	    loadEmployees();
+   301	    refreshLatestPoints();
+   302	    // eslint-disable-next-line react-hooks/exhaustive-deps
+   303	  }, []);
+   304	
+   305	  const statusStyle =
+   306	    status === 'error'
+   307	      ? styles.statusError
+   308	      : status === 'success'
+   309	        ? styles.statusSuccess
+   310	        : status === 'loading'
+   311	          ? styles.statusLoading
+   312	          : styles.statusIdle;
+   313	
+   314	  return (
+   315	    <SafeAreaView style={styles.safe}>
+   316	      <ScrollView contentContainerStyle={styles.container}>
+   317	        <View style={styles.header}>
+   318	          <Text style={styles.kicker}>Foundation</Text>
+   319	          <Text style={styles.title}>Live Tracking</Text>
+   320	          <Text style={styles.subtitle}>
+   321	            Tela manual de validação mobile sem rastreamento em segundo plano.
+   322	          </Text>
+   323	        </View>
+   324	
+   325	        <View style={[styles.statusBox, statusStyle]}>
+   326	          {status === 'loading' ? <ActivityIndicator /> : null}
+   327	          <Text style={styles.statusText}>{message}</Text>
+   328	        </View>
+   329	
+   330	        <View style={styles.card}>
+   331	          <Text style={styles.cardTitle}>1. Selecionar colaborador</Text>
+   332	
+   333	          <TouchableOpacity style={styles.secondaryButton} onPress={loadEmployees}>
+   334	            <Text style={styles.secondaryButtonText}>Recarregar colaboradores</Text>
+   335	          </TouchableOpacity>
+   336	
+   337	          {employees.length === 0 ? (
+   338	            <Text style={styles.muted}>Nenhum colaborador carregado.</Text>
+   339	          ) : null}
+   340	
+   341	          {employees.map((employee) => {
+   342	            const selected = employee.id === selectedEmployeeId;
+   343	
+   344	            return (
+   345	              <TouchableOpacity
+   346	                key={employee.id}
+   347	                style={[styles.employeeItem, selected ? styles.employeeItemSelected : null]}
+   348	                onPress={() => {
+   349	                  setSelectedEmployeeId(employee.id);
+   350	                  setDevice(null);
+   351	                }}
+   352	              >
+   353	                <Text style={styles.employeeName}>{formatEmployeeName(employee)}</Text>
+   354	                <Text style={styles.employeeMeta}>{employee.email || employee.id}</Text>
+   355	                <Text style={styles.employeeMeta}>Status: {employee.status || '-'}</Text>
+   356	              </TouchableOpacity>
+   357	            );
+   358	          })}
+   359	        </View>
+   360	
+   361	        <View style={styles.card}>
+   362	          <Text style={styles.cardTitle}>2. Dispositivo</Text>
+   363	
+   364	          {selectedEmployee ? (
+   365	            <Text style={styles.muted}>
+   366	              Colaborador selecionado: {formatEmployeeName(selectedEmployee)}
+   367	            </Text>
+   368	          ) : (
+   369	            <Text style={styles.muted}>Selecione um colaborador.</Text>
+   370	          )}
+   371	
+   372	          <TouchableOpacity style={styles.primaryButton} onPress={handleRegisterDevice}>
+   373	            <Text style={styles.primaryButtonText}>Registrar dispositivo mobile</Text>
+   374	          </TouchableOpacity>
+   375	
+   376	          {device ? (
+   377	            <View style={styles.infoBox}>
+   378	              <Text style={styles.infoText}>Device ID: {device.id}</Text>
+   379	              <Text style={styles.infoText}>Device UID: {device.deviceUid}</Text>
+   380	            </View>
+   381	          ) : null}
+   382	        </View>
+   383	
+   384	        <View style={styles.card}>
+   385	          <Text style={styles.cardTitle}>3. Localização atual</Text>
+   386	
+   387	          <TouchableOpacity style={styles.dangerButton} onPress={handleSendCurrentLocation}>
+   388	            <Text style={styles.primaryButtonText}>Capturar e enviar localização</Text>
+   389	          </TouchableOpacity>
+   390	
+   391	          {lastLocation ? (
+   392	            <View style={styles.infoBox}>
+   393	              <Text style={styles.infoText}>Latitude: {lastLocation.latitude}</Text>
+   394	              <Text style={styles.infoText}>Longitude: {lastLocation.longitude}</Text>
+   395	              <Text style={styles.infoText}>Precisão: {lastLocation.accuracy ?? '-'} m</Text>
+   396	            </View>
+   397	          ) : null}
+   398	        </View>
+   399	
+   400	
+   401	        <View style={styles.card}>
+   402	          <Text style={styles.cardTitle}>Diagnóstico do envio</Text>
+   403	
+   404	          <View style={styles.infoBox}>
+   405	            <Text style={styles.infoText}>Status: {lastApiStatus || '-'}</Text>
+   406	            <Text style={styles.infoText}>Device ID: {lastDeviceId || '-'}</Text>
+   407	            <Text style={styles.infoText}>Point ID: {lastPointId || '-'}</Text>
+   408	          </View>
+   409	
+   410	          {lastApiError ? (
+   411	            <View style={styles.errorBox}>
+   412	              <Text style={styles.errorTitle}>Erro detalhado</Text>
+   413	              <Text style={styles.errorText}>{lastApiError}</Text>
+   414	            </View>
+   415	          ) : null}
+   416	
+   417	          {lastApiResponse ? (
+   418	            <View style={styles.responseBox}>
+   419	              <Text style={styles.responseTitle}>Última resposta</Text>
+   420	              <Text style={styles.responseText}>{lastApiResponse}</Text>
+   421	            </View>
+   422	          ) : null}
+   423	        </View>
+   424	
+   425	        <View style={styles.card}>
+   426	          <Text style={styles.cardTitle}>4. Últimas localizações</Text>
+   427	
+   428	          <TouchableOpacity style={styles.secondaryButton} onPress={refreshLatestPoints}>
+   429	            <Text style={styles.secondaryButtonText}>Atualizar últimas localizações</Text>
+   430	          </TouchableOpacity>
+   431	
+   432	          {latestPoints.length === 0 ? (
+   433	            <Text style={styles.muted}>Nenhuma localização encontrada.</Text>
+   434	          ) : null}
+   435	
+   436	          {latestPoints.map((point) => (
+   437	            <View key={point.id} style={styles.pointItem}>
+   438	              <Text style={styles.pointTitle}>{point.employeeProfileId || '-'}</Text>
+   439	              <Text style={styles.pointMeta}>
+   440	                {point.latitude}, {point.longitude}
+   441	              </Text>
+   442	              <Text style={styles.pointMeta}>Origem: {point.source || '-'}</Text>
+   443	              <Text style={styles.pointMeta}>Data: {formatDate(point.trackedAt)}</Text>
+   444	            </View>
+   445	          ))}
+   446	        </View>
+   447	      </ScrollView>
+   448	    </SafeAreaView>
+   449	  );
+   450	}
+   451	
+   452	const styles = StyleSheet.create({
+   453	  safe: {
+   454	    flex: 1,
+   455	    backgroundColor: '#0f172a',
+   456	  },
+   457	  container: {
+   458	    padding: 18,
+   459	    gap: 16,
+   460	  },
+   461	  header: {
+   462	    backgroundColor: '#ffffff',
+   463	    borderRadius: 18,
+   464	    padding: 18,
+   465	  },
+   466	  kicker: {
+   467	    color: '#64748b',
+   468	    fontSize: 12,
+   469	    fontWeight: '700',
+   470	    letterSpacing: 1,
+   471	    textTransform: 'uppercase',
+   472	  },
+   473	  title: {
+   474	    color: '#0f172a',
+   475	    fontSize: 26,
+   476	    fontWeight: '800',
+   477	    marginTop: 4,
+   478	  },
+   479	  subtitle: {
+   480	    color: '#475569',
+   481	    fontSize: 14,
+   482	    marginTop: 6,
+   483	  },
+   484	  statusBox: {
+   485	    borderRadius: 14,
+   486	    padding: 14,
+   487	    gap: 8,
+   488	  },
+   489	  statusIdle: {
+   490	    backgroundColor: '#f8fafc',
+   491	  },
+   492	  statusLoading: {
+   493	    backgroundColor: '#dbeafe',
+   494	  },
+   495	  statusSuccess: {
+   496	    backgroundColor: '#dcfce7',
+   497	  },
+   498	  statusError: {
+   499	    backgroundColor: '#fee2e2',
+   500	  },
+   501	  statusText: {
+   502	    color: '#0f172a',
+   503	    fontSize: 14,
+   504	    fontWeight: '600',
+   505	  },
+   506	  card: {
+   507	    backgroundColor: '#ffffff',
+   508	    borderRadius: 18,
+   509	    padding: 16,
+   510	    gap: 12,
+   511	  },
+   512	  cardTitle: {
+   513	    color: '#0f172a',
+   514	    fontSize: 18,
+   515	    fontWeight: '800',
+   516	  },
+   517	  muted: {
+   518	    color: '#64748b',
+   519	    fontSize: 13,
+   520	  },
+   521	  employeeItem: {
+   522	    borderColor: '#e2e8f0',
+   523	    borderRadius: 14,
+   524	    borderWidth: 1,
+   525	    padding: 12,
+   526	  },
+   527	  employeeItemSelected: {
+   528	    backgroundColor: '#e0f2fe',
+   529	    borderColor: '#0284c7',
+   530	  },
+   531	  employeeName: {
+   532	    color: '#0f172a',
+   533	    fontSize: 15,
+   534	    fontWeight: '800',
+   535	  },
+   536	  employeeMeta: {
+   537	    color: '#64748b',
+   538	    fontSize: 12,
+   539	    marginTop: 2,
+   540	  },
+   541	  primaryButton: {
+   542	    alignItems: 'center',
+   543	    backgroundColor: '#0f172a',
+   544	    borderRadius: 14,
+   545	    padding: 14,
+   546	  },
+   547	  dangerButton: {
+   548	    alignItems: 'center',
+   549	    backgroundColor: '#dc2626',
+   550	    borderRadius: 14,
+   551	    padding: 14,
+   552	  },
+   553	  primaryButtonText: {
+   554	    color: '#ffffff',
+   555	    fontSize: 14,
+   556	    fontWeight: '800',
+   557	  },
+   558	  secondaryButton: {
+   559	    alignItems: 'center',
+   560	    borderColor: '#cbd5e1',
+   561	    borderRadius: 14,
+   562	    borderWidth: 1,
+   563	    padding: 12,
+   564	  },
+   565	  secondaryButtonText: {
+   566	    color: '#0f172a',
+   567	    fontSize: 14,
+   568	    fontWeight: '700',
+   569	  },
+   570	  infoBox: {
+   571	    backgroundColor: '#f8fafc',
+   572	    borderRadius: 12,
+   573	    padding: 12,
+   574	  },
+   575	  infoText: {
+   576	    color: '#334155',
+   577	    fontSize: 12,
+   578	    marginBottom: 4,
+   579	  },
+   580	  pointItem: {
+   581	    borderTopColor: '#e2e8f0',
+   582	    borderTopWidth: 1,
+   583	    paddingTop: 10,
+   584	  },
+   585	  pointTitle: {
+   586	    color: '#0f172a',
+   587	    fontSize: 13,
+   588	    fontWeight: '800',
+   589	  },
+   590	  pointMeta: {
+   591	    color: '#64748b',
+   592	    fontSize: 12,
+   593	    marginTop: 2,
+   594	  },
+   595	
+   596	  errorBox: {
+   597	    backgroundColor: '#fee2e2',
+   598	    borderRadius: 12,
+   599	    padding: 12,
+   600	  },
+   601	  errorTitle: {
+   602	    color: '#991b1b',
+   603	    fontSize: 13,
+   604	    fontWeight: '800',
+   605	    marginBottom: 4,
+   606	  },
+   607	  errorText: {
+   608	    color: '#7f1d1d',
+   609	    fontSize: 12,
+   610	  },
+   611	  responseBox: {
+   612	    backgroundColor: '#ecfeff',
+   613	    borderRadius: 12,
+   614	    padding: 12,
+   615	  },
+   616	  responseTitle: {
+   617	    color: '#155e75',
+   618	    fontSize: 13,
+   619	    fontWeight: '800',
+   620	    marginBottom: 4,
+   621	  },
+   622	  responseText: {
+   623	    color: '#164e63',
+   624	    fontSize: 11,
+   625	  },
+   626	});
+
+## Services mobile
+-------------------------------------------------
+### /opt/rh-saas/mobile-app/src/services/api.ts
+     1	import axios from 'axios';
+     2	import AsyncStorage from '@react-native-async-storage/async-storage';
+     3	
+     4	declare const process: {
+     5	  env: {
+     6	    EXPO_PUBLIC_API_URL?: string;
+     7	  };
+     8	};
+     9	
+    10	const API_BASE_URL = (
+    11	  process.env.EXPO_PUBLIC_API_URL || 'https://rh.lhsolucao.com.br'
+    12	).replace(/\/$/, '');
+    13	
+    14	const api = axios.create({
+    15	  baseURL: API_BASE_URL,
+    16	});
+    17	
+    18	// Interceptor para injetar o Token em cada chamada automaticamente
+    19	api.interceptors.request.use(async (config) => {
+    20	  const token = await AsyncStorage.getItem('@LH_Token');
+    21	
+    22	  if (token) {
+    23	    config.headers.Authorization = `Bearer ${token}`;
+    24	  }
+    25	
+    26	  return config;
+    27	});
+    28	
+    29	export default api;
+
+### /opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts
+     1	import AsyncStorage from '@react-native-async-storage/async-storage';
+     2	
+     3	import api from './api';
+     4	
+     5	export type FoundationEmployee = {
+     6	  id: string;
+     7	  clientId?: string;
+     8	  employeeExternalRef?: string | null;
+     9	  firstName?: string;
+    10	  lastName?: string;
+    11	  cpf?: string | null;
+    12	  email?: string | null;
+    13	  departmentId?: string | null;
+    14	  jobPositionId?: string | null;
+    15	  jobFunctionId?: string | null;
+    16	  admissionDate?: string | null;
+    17	  status?: string;
+    18	  createdAt?: string;
+    19	  updatedAt?: string;
+    20	};
+    21	
+    22	export type RegisterMobileDevicePayload = {
+    23	  employeeProfileId?: string;
+    24	  deviceUid: string;
+    25	  platform?: string;
+    26	  model?: string;
+    27	  appVersion?: string;
+    28	};
+    29	
+    30	export type MobileDeviceFoundation = {
+    31	  id: string;
+    32	  clientId?: string;
+    33	  employeeProfileId?: string | null;
+    34	  deviceUid: string;
+    35	  platform?: string | null;
+    36	  model?: string | null;
+    37	  appVersion?: string | null;
+    38	  isActive?: boolean;
+    39	  lastSeenAt?: string | null;
+    40	  createdAt?: string;
+    41	  updatedAt?: string;
+    42	};
+    43	
+    44	export type CreateLocationTrackingPointPayload = {
+    45	  employeeProfileId: string;
+    46	  deviceId?: string;
+    47	  latitude: number;
+    48	  longitude: number;
+    49	  accuracyMeters?: number;
+    50	  address?: string;
+    51	  source?: string;
+    52	  trackedAt?: string;
+    53	  metadata?: Record<string, unknown>;
+    54	};
+    55	
+    56	export type LocationTrackingPointFoundation = {
+    57	  id: string;
+    58	  clientId?: string;
+    59	  employeeProfileId?: string | null;
+    60	  deviceId?: string | null;
+    61	  trackedAt?: string;
+    62	  latitude: string | number;
+    63	  longitude: string | number;
+    64	  accuracyMeters?: string | number | null;
+    65	  address?: string | null;
+    66	  source?: string;
+    67	  metadata?: Record<string, unknown>;
+    68	  createdAt?: string;
+    69	  updatedAt?: string;
+    70	};
+    71	
+    72	const LIVE_TRACKING_DEVICE_UID_KEY = '@LH_LiveTrackingDeviceUid';
+    73	
+    74	function generateDeviceUid() {
+    75	  return (
+    76	    'mobile-' +
+    77	    Date.now().toString(36) +
+    78	    '-' +
+    79	    Math.random().toString(36).slice(2, 10)
+    80	  );
+    81	}
+    82	
+    83	export async function getOrCreateMobileDeviceUid() {
+    84	  const existing = await AsyncStorage.getItem(LIVE_TRACKING_DEVICE_UID_KEY);
+    85	
+    86	  if (existing) {
+    87	    return existing;
+    88	  }
+    89	
+    90	  const generated = generateDeviceUid();
+    91	
+    92	  await AsyncStorage.setItem(LIVE_TRACKING_DEVICE_UID_KEY, generated);
+    93	
+    94	  return generated;
+    95	}
+    96	
+    97	export async function getFoundationEmployees() {
+    98	  const response = await api.get<FoundationEmployee[]>(
+    99	    '/v1/foundation/hr/employees',
+   100	  );
+   101	
+   102	  return response.data;
+   103	}
+   104	
+   105	export async function registerLiveTrackingDevice(
+   106	  payload: RegisterMobileDevicePayload,
+   107	) {
+   108	  const response = await api.post<MobileDeviceFoundation>(
+   109	    '/v1/foundation/live-tracking/device',
+   110	    payload,
+   111	  );
+   112	
+   113	  return response.data;
+   114	}
+   115	
+   116	export async function sendLiveTrackingLocation(
+   117	  payload: CreateLocationTrackingPointPayload,
+   118	) {
+   119	  const response = await api.post<LocationTrackingPointFoundation>(
+   120	    '/v1/foundation/live-tracking/location',
+   121	    payload,
+   122	  );
+   123	
+   124	  return response.data;
+   125	}
+   126	
+   127	export async function getLiveTrackingPoints() {
+   128	  const response = await api.get<LocationTrackingPointFoundation[]>(
+   129	    '/v1/foundation/live-tracking/points',
+   130	  );
+   131	
+   132	  return response.data;
+   133	}
+   134	
+   135	export async function getLatestLiveTrackingPoints() {
+   136	  const response = await api.get<LocationTrackingPointFoundation[]>(
+   137	    '/v1/foundation/live-tracking/latest',
+   138	  );
+   139	
+   140	  return response.data;
+   141	}
+
+## Assets mobile
+-------------------------------------------------
+-rw-r--r-- 1 root root 18K jul  2 01:39 /opt/rh-saas/mobile-app/assets/adaptive-icon.png
+-rw-r--r-- 1 root root 126K jul  2 01:42 /opt/rh-saas/mobile-app/assets/favicon.png
+-rw-r--r-- 1 root root 255K jul  2 01:42 /opt/rh-saas/mobile-app/assets/icone-app.png
+-rw-r--r-- 1 root root 22K jul  2 01:39 /opt/rh-saas/mobile-app/assets/icon.png
+-rw-r--r-- 1 root root 122K jul  2 01:42 /opt/rh-saas/mobile-app/assets/logo_rh.png
+-rw-r--r-- 1 root root 18K jul  2 01:39 /opt/rh-saas/mobile-app/assets/splash-icon.png
+
+## Busca mobile - ponto/batida
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:35:      await api.post('/v1/time-records/clock-in', { latitude, longitude });
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:39:      Alert.alert('Erro', 'Não foi possível salvar o ponto.');
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:52:      <View style={styles.clockContainer}>
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:82:  clockContainer: { alignItems: 'center', marginBottom: 60 },
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:243:      setMessage('Enviando ponto GPS para a Foundation...');
+
+## Busca mobile - documentos/assinatura/justificativa
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:161:        employeeProfileId: selectedEmployeeId,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:177:            employeeProfileId: registeredDevice.employeeProfileId,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:246:        employeeProfileId: selectedEmployeeId,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:268:            employeeProfileId: createdPoint.employeeProfileId,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:438:              <Text style={styles.pointTitle}>{point.employeeProfileId || '-'}</Text>
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:23:  employeeProfileId?: string;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:33:  employeeProfileId?: string | null;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:45:  employeeProfileId: string;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:59:  employeeProfileId?: string | null;
+
+## Busca mobile - offline/fila/sync
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:4:import AsyncStorage from '@react-native-async-storage/async-storage';
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:17:  const handleLogout = async () => {
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:18:    await AsyncStorage.removeItem('@LH_Token');
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:22:  const handleClockIn = async () => {
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:25:      let { status } = await Location.requestForegroundPermissionsAsync();
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:32:      const location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High });
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:110:  async function loadEmployees() {
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:131:  async function refreshLatestPoints() {
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:147:  async function handleRegisterDevice() {
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:200:  async function requestLocationPermission() {
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:201:    const permission = await Location.requestForegroundPermissionsAsync();
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:208:  async function handleSendCurrentLocation() {
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:229:      const current = await Location.getCurrentPositionAsync({
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:3:import AsyncStorage from '@react-native-async-storage/async-storage';
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:54:  const handleLogin = async () => {
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:73:      await AsyncStorage.setItem('@LH_Token', accessToken);
+/opt/rh-saas/mobile-app/src/services/api.ts:2:import AsyncStorage from '@react-native-async-storage/async-storage';
+/opt/rh-saas/mobile-app/src/services/api.ts:19:api.interceptors.request.use(async (config) => {
+/opt/rh-saas/mobile-app/src/services/api.ts:20:  const token = await AsyncStorage.getItem('@LH_Token');
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:1:import AsyncStorage from '@react-native-async-storage/async-storage';
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:83:export async function getOrCreateMobileDeviceUid() {
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:84:  const existing = await AsyncStorage.getItem(LIVE_TRACKING_DEVICE_UID_KEY);
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:92:  await AsyncStorage.setItem(LIVE_TRACKING_DEVICE_UID_KEY, generated);
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:97:export async function getFoundationEmployees() {
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:105:export async function registerLiveTrackingDevice(
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:116:export async function sendLiveTrackingLocation(
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:127:export async function getLiveTrackingPoints() {
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:135:export async function getLatestLiveTrackingPoints() {
+
+## Busca mobile - versão/atualização
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:140:      setMessage('Últimas localizações atualizadas.');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:143:      setMessage(error instanceof Error ? error.message : 'Erro ao atualizar localizações.');
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:19:  updatedAt?: string;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:41:  updatedAt?: string;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:69:  updatedAt?: string;
+/opt/rh-saas/mobile-app/app.json:5:    "version": "1.0.0",
+/opt/rh-saas/mobile-app/package.json:3:  "version": "1.0.0",
+
+## Busca mobile - localização/endereço/GPS
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:3:import * as Location from 'expo-location';
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:25:      let { status } = await Location.requestForegroundPermissionsAsync();
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:27:        Alert.alert('Erro', 'Acesso ao GPS é obrigatório.');
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:32:      const location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High });
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:33:      const { latitude, longitude } = location.coords;
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:35:      await api.post('/v1/time-records/clock-in', { latitude, longitude });
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:14:import * as Location from 'expo-location';
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:19:  LocationTrackingPointFoundation,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:25:  sendLiveTrackingLocation,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:90:  const [latestPoints, setLatestPoints] = useState<LocationTrackingPointFoundation[]>([]);
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:93:  const [lastLocation, setLastLocation] = useState<{
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:94:    latitude: number;
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:95:    longitude: number;
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:200:  async function requestLocationPermission() {
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:201:    const permission = await Location.requestForegroundPermissionsAsync();
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:208:  async function handleSendCurrentLocation() {
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:219:      await requestLocationPermission();
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:229:      const current = await Location.getCurrentPositionAsync({
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:230:        accuracy: Location.Accuracy.High,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:233:      const latitude = current.coords.latitude;
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:234:      const longitude = current.coords.longitude;
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:237:      setLastLocation({
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:238:        latitude,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:239:        longitude,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:243:      setMessage('Enviando ponto GPS para a Foundation...');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:245:      const createdPoint = await sendLiveTrackingLocation({
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:248:        latitude,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:249:        longitude,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:272:            latitude: createdPoint.latitude,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:273:            longitude: createdPoint.longitude,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:387:          <TouchableOpacity style={styles.dangerButton} onPress={handleSendCurrentLocation}>
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:391:          {lastLocation ? (
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:393:              <Text style={styles.infoText}>Latitude: {lastLocation.latitude}</Text>
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:394:              <Text style={styles.infoText}>Longitude: {lastLocation.longitude}</Text>
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:395:              <Text style={styles.infoText}>Precisão: {lastLocation.accuracy ?? '-'} m</Text>
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:440:                {point.latitude}, {point.longitude}
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:93:        keyboardType="email-address"
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:44:export type CreateLocationTrackingPointPayload = {
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:47:  latitude: number;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:48:  longitude: number;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:50:  address?: string;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:56:export type LocationTrackingPointFoundation = {
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:62:  latitude: string | number;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:63:  longitude: string | number;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:65:  address?: string | null;
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:116:export async function sendLiveTrackingLocation(
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:117:  payload: CreateLocationTrackingPointPayload,
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:119:  const response = await api.post<LocationTrackingPointFoundation>(
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:128:  const response = await api.get<LocationTrackingPointFoundation[]>(
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:136:  const response = await api.get<LocationTrackingPointFoundation[]>(
+/opt/rh-saas/mobile-app/app.json:18:      "expo-location"
+
+## Backend - módulos e controllers
+-------------------------------------------------
+/opt/rh-saas/backend/src/app.controller.ts
+/opt/rh-saas/backend/src/app.module.ts
+/opt/rh-saas/backend/src/app.service.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.module.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts
+/opt/rh-saas/backend/src/modules/audit/audit.module.ts
+/opt/rh-saas/backend/src/modules/audit/audit.service.ts
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts
+/opt/rh-saas/backend/src/modules/auth/dto/login.dto.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.module.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts
+/opt/rh-saas/backend/src/modules/employees/dto/link-user.dto.ts
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts
+/opt/rh-saas/backend/src/modules/foundation/dto/register-mobile-device.dto.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-type.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy-event-type.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-app-settings.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+/opt/rh-saas/backend/src/modules/reports/reports.module.ts
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts
+/opt/rh-saas/backend/src/modules/schedules/dto/assign-schedule.dto.ts
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.module.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-summary.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-plan.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client-status.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-module.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-plan.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.module.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.module.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.module.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts
+/opt/rh-saas/backend/src/modules/users/user.entity.ts
+/opt/rh-saas/backend/src/modules/users/users.controller.ts
+/opt/rh-saas/backend/src/modules/users/users.module.ts
+/opt/rh-saas/backend/src/modules/users/users.service.ts
+
+## Backend - endpoints provaveis
+-------------------------------------------------
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:15:@Controller('v1/foundation')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:22:  @Get('overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:29:  @Get('hr/employees')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:36:  @Get('hr/departments')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:43:  @Get('hr/job-positions')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:50:  @Get('hr/job-functions')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:57:  @Get('hr/work-locations')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:64:  @Get('hr/geofences')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:71:  @Get('mobile/devices')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:78:  @Get('mobile/settings')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:85:  @Get('tracking/points')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:92:  @Get('clock/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:99:  @Get('clock/events')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:106:  @Get('clock/event-types')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:111:  @Get('clock/policies')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:118:  @Get('clock/policy-event-types')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:123:  @Get('clock/justifications')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:130:  @Get('documents/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:137:  @Get('documents')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:144:  @Get('documents/recipients')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:150:  @Get('timebank/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:157:  @Get('timebank/balances')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:165:  @Get('payroll/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:172:  @Get('payroll/payslips')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:180:  @Post('live-tracking/device')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:191:  @Post('live-tracking/location')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:202:  @Get('live-tracking/points')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:211:  @Get('live-tracking/latest')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:11:@Controller('v1/reports')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:18:  @Get('employees')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:25:  @Get('schedules')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:32:  @Get('time-bank')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:39:  @Get('afd')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:46:  @Get('executive')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:53:  @Get('productivity')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:60:  @Get('time-bank-summary')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:67:  @Get('schedule-distribution')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:15:@Controller('v1/time-records')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:23:  @Post('clock-in')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:36:  @Post('break-start')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:49:  @Post('break-end')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:62:  @Post('clock-out')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:75:  @Get('afd')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:98:  @Post('simulate-math')
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:9:@Controller('audit')
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:16:  @Get()
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:21:  @Get('action/:action')
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:30:  @Get('entity/:entityType')
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:40:  @Get(':id')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:11:@Controller('v1/dashboard')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:19:  @Get('overview')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:26:  @Get('employees')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:33:  @Get('time-bank')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:40:  @Get('schedules')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:47:  @Get('time-records')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:54:  @Get('executive')
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:5:@Controller('v1/analytics')
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:10:  @Get('overview')
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:15:  @Get('workforce')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:20:@Controller('v1/employees')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:27:  @Post()
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:39:  @Get()
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:49:  @Get(':id')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:61:  @Put(':id/link-user')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:75:  @Delete(':id/link-user')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:87:  @Delete(':id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:167:  @Get('clients/:id/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:177:  @Get('system/health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:183:  @Get('system/database')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:192:  @Get('system/storage')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:198:  @Get('system/metrics')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:207:  @Get('system/containers')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:213:  @Get('system/services')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:21:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:30:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:36:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:42:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:51:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:59:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:75:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:85:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:93:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:103:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:109:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:117:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:128:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:20:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:29:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:35:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:41:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:50:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:58:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:74:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:84:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:92:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:102:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:108:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:116:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:167:  @Get('clients/:id/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:177:  @Get('system/health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:183:  @Get('system/database')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:192:  @Get('system/storage')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:198:  @Get('system/metrics')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:167:  @Get('clients/:id/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:167:  @Get('clients/:id/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:177:  @Get('system/health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:183:  @Get('system/database')
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:14:@Controller('v1/tenant')
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:22:  @Get()
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:31:  @Put()
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:18:@Controller('v1/users')
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:26:  @Post()
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:37:  @Get()
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:21:@Controller('v1/schedules')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:29:  @Get()
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:38:  @Post('assign')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:49:  @Get('employee/:employeeId')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:59:@Get('employee/:employeeId/active')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:70:@Delete('assign/:id')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:81:@Patch('assign/:id/end')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:94:  @Get(':id')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:105:  @Post()
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:116:  @Put(':id')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:129:  @Delete(':id')
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:5:@Controller('v1/auth')
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:9:  @Post('login')
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:6:@Controller('v1/documents')
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:11:  @Post('upload')
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:17:  @Get('my-docs')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:14:@Controller('v1/time-bank')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:22:  @Get()
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:31:  @Get(':employeeId')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:42:  @Get(':employeeId/details')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:53:  @Post('recalculate')
+/opt/rh-saas/backend/src/app.controller.ts:4:@Controller()
+/opt/rh-saas/backend/src/app.controller.ts:8:  @Get()
+
+## Backend - termos profissionais desejados
+-------------------------------------------------
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:15:import { HrWorkLocation } from './entities/hr-work-location.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:18:import { MobileDevice } from './entities/mobile-device.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:19:import { MobileAppSettings } from './entities/mobile-app-settings.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:20:import { LocationTrackingPoint } from './entities/location-tracking-point.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:22:import { ClockEventFoundation } from './entities/clock-event-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:23:import { ClockEventType } from './entities/clock-event-type.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:24:import { ClockPolicy } from './entities/clock-policy.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:25:import { ClockPolicyEventType } from './entities/clock-policy-event-type.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:26:import { ClockJustificationFoundation } from './entities/clock-justification-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:27:import { DocumentFoundation } from './entities/document-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:28:import { DocumentRecipientFoundation } from './entities/document-recipient-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:32:import { RegisterMobileDeviceDto } from './dto/register-mobile-device.dto';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:33:import { CreateLocationTrackingPointDto } from './dto/create-location-tracking-point.dto';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:59:    private readonly mobileDeviceRepo: Repository<MobileDevice>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:62:    private readonly mobileSettingsRepo: Repository<MobileAppSettings>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:65:    private readonly trackingPointRepo: Repository<LocationTrackingPoint>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:68:    private readonly clockEventRepo: Repository<ClockEventFoundation>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:71:    private readonly clockEventTypeRepo: Repository<ClockEventType>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:74:    private readonly clockPolicyRepo: Repository<ClockPolicy>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:77:    private readonly clockPolicyEventTypeRepo: Repository<ClockPolicyEventType>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:80:    private readonly clockJustificationRepo: Repository<ClockJustificationFoundation>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:83:    private readonly documentFoundationRepo: Repository<DocumentFoundation>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:86:    private readonly documentRecipientFoundationRepo: Repository<DocumentRecipientFoundation>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:127:      mobileDevices,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:128:      mobileSettings,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:129:      trackingPoints,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:130:      clockEvents,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:131:      clockEventTypes,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:132:      clockPolicies,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:133:      clockPolicyEventTypes,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:134:      clockJustifications,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:154:      this.mobileDeviceRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:157:      this.mobileSettingsRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:160:      this.trackingPointRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:163:      this.clockEventRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:166:      this.clockEventTypeRepo.count(),
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:167:      this.clockPolicyRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:170:      this.clockPolicyEventTypeRepo.count(),
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:171:      this.clockJustificationRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:184:      mobileDevices,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:185:      mobileSettings,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:186:      trackingPoints,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:187:      clockEvents,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:188:      clockEventTypes,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:189:      clockPolicies,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:190:      clockPolicyEventTypes,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:191:      clockJustifications,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:282:  async mobileDevices(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:290:    return this.mobileDeviceRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:296:  async mobileSettings(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:304:    return this.mobileSettingsRepo.findOne({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:309:  async trackingPoints(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:317:    return this.trackingPointRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:324:  async clockOverview(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:337:      justifications,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:339:      this.clockEventRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:342:      this.clockEventTypeRepo.count(),
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:343:      this.clockPolicyRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:346:      this.clockPolicyEventTypeRepo.count(),
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:347:      this.clockJustificationRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:358:      justifications,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:362:  async clockEvents(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:370:    return this.clockEventRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:377:  async clockEventTypes() {
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:378:    return this.clockEventTypeRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:383:  async clockPolicies(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:391:    return this.clockPolicyRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:397:  async clockPolicyEventTypes() {
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:398:    return this.clockPolicyEventTypeRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:403:  async clockJustifications(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:411:    return this.clockJustificationRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:418:  async documentsOverview(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:427:      documents,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:430:      this.documentFoundationRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:433:      this.documentRecipientFoundationRepo.count(),
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:438:      documents,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:443:  async documents(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:451:    return this.documentFoundationRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:458:  async documentRecipients() {
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:459:    return this.documentRecipientFoundationRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:501:  async payrollOverview(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:520:  async payrollPayslips(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:568:      await this.mobileDeviceRepo.findOne({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:577:        this.mobileDeviceRepo.create({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:597:    return this.mobileDeviceRepo.save(device);
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:625:        await this.mobileDeviceRepo.findOne({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:640:      this.trackingPointRepo.create({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:658:    return this.trackingPointRepo.save(point);
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:669:    return this.trackingPointRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:684:    return this.trackingPointRepo
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:13:import { HrWorkLocation } from './entities/hr-work-location.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:16:import { MobileDevice } from './entities/mobile-device.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:17:import { MobileAppSettings } from './entities/mobile-app-settings.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:18:import { LocationTrackingPoint } from './entities/location-tracking-point.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:20:import { ClockEventFoundation } from './entities/clock-event-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:21:import { ClockEventType } from './entities/clock-event-type.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:22:import { ClockPolicy } from './entities/clock-policy.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:23:import { ClockPolicyEventType } from './entities/clock-policy-event-type.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:24:import { ClockJustificationFoundation } from './entities/clock-justification-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:25:import { DocumentFoundation } from './entities/document-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:26:import { DocumentRecipientFoundation } from './entities/document-recipient-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:11:import { RegisterMobileDeviceDto } from './dto/register-mobile-device.dto';
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:12:import { CreateLocationTrackingPointDto } from './dto/create-location-tracking-point.dto';
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:57:  @Get('hr/work-locations')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:71:  @Get('mobile/devices')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:72:  mobileDevices(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:73:    return this.foundationService.mobileDevices(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:78:  @Get('mobile/settings')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:79:  mobileSettings(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:80:    return this.foundationService.mobileSettings(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:85:  @Get('tracking/points')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:86:  trackingPoints(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:87:    return this.foundationService.trackingPoints(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:92:  @Get('clock/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:93:  clockOverview(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:94:    return this.foundationService.clockOverview(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:99:  @Get('clock/events')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:100:  clockEvents(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:101:    return this.foundationService.clockEvents(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:106:  @Get('clock/event-types')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:107:  clockEventTypes() {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:108:    return this.foundationService.clockEventTypes();
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:111:  @Get('clock/policies')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:112:  clockPolicies(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:113:    return this.foundationService.clockPolicies(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:118:  @Get('clock/policy-event-types')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:119:  clockPolicyEventTypes() {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:120:    return this.foundationService.clockPolicyEventTypes();
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:123:  @Get('clock/justifications')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:124:  clockJustifications(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:125:    return this.foundationService.clockJustifications(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:130:  @Get('documents/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:131:  documentsOverview(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:132:    return this.foundationService.documentsOverview(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:137:  @Get('documents')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:138:  documents(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:139:    return this.foundationService.documents(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:144:  @Get('documents/recipients')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:145:  documentRecipients() {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:146:    return this.foundationService.documentRecipients();
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:165:  @Get('payroll/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:166:  payrollOverview(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:167:    return this.foundationService.payrollOverview(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:172:  @Get('payroll/payslips')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:173:  payrollPayslips(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:174:    return this.foundationService.payrollPayslips(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:180:  @Post('live-tracking/device')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:191:  @Post('live-tracking/location')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:202:  @Get('live-tracking/points')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:211:  @Get('live-tracking/latest')
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:10:  name: 'clock_events_foundation',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy-event-type.entity.ts:9:  name: 'clock_policy_event_types',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy-event-type.entity.ts:43:    name: 'requires_justification',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:10:  name: 'hr_work_locations',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:10:  name: 'clock_justifications_foundation',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:31:    name: 'clock_event_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:35:  clockEventId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:38:    name: 'justification_type',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:41:  justificationType: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:52:    name: 'document_number',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:56:  documentNumber: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-type.entity.ts:10:  name: 'clock_event_types',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:10:  name: 'mobile_devices',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:50:    name: 'app_version',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:10:  name: 'clock_policies',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:54:    name: 'allow_outside_geofence_with_justification',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:60:    name: 'offline_allowed',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:63:  offlineAllowed: boolean;
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:66:    name: 'max_offline_hours',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-app-settings.entity.ts:10:  name: 'mobile_app_settings',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-app-settings.entity.ts:24:    name: 'min_supported_version',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-app-settings.entity.ts:37:    name: 'allow_offline',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-app-settings.entity.ts:43:    name: 'show_address_before_clock',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:10:  name: 'location_tracking_points',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts:24:    name: 'work_location_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:10:  name: 'documents_foundation',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:29:    name: 'document_type',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:33:  documentType: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:42:    name: 'requires_signature',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:54:    name: 'requires_location',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:10:  name: 'document_recipients_foundation',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:18:    name: 'document_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:21:  documentId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:44:    name: 'signed_at',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:48:  signedAt: Date;
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:12:@Entity('clock_events')
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:4:import { ClockEvent, ClockEventType } from './clock-event.entity';
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:11:    private readonly clockEventRepository: Repository<ClockEvent>,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:95:    const newEvent = this.clockEventRepository.create({
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:108:    return this.clockEventRepository.save(newEvent);
+/opt/rh-saas/backend/src/modules/reports/reports.module.ts:10:import { TimeRecord } from '../time-records/time-record.entity';
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:8:import { TimeRecord } from '../time-records/time-record.entity';
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts:5:import { TimeRecord } from './time-record.entity';
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts:6:import { TimeRecordsService } from './time-records.service';
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts:7:import { TimeRecordsController } from './time-records.controller';
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:8:} from './time-record.entity';
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:54:  async clockIn(
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:99:  async clockOut(
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:11:import { TimeRecordsService } from './time-records.service';
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:15:@Controller('v1/time-records')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:23:  @Post('clock-in')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:24:  async clockIn(
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:28:    return this.timeRecordsService.clockIn(
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:62:  @Post('clock-out')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:63:  async clockOut(
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:67:    return this.timeRecordsService.clockOut(
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts:2:import { TimeRecord } from './time-record.entity';
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts:16:    const sign = totalMinutes >= 0 ? '+' : '-';
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts:20:    return `${sign}${hours}:${mins}`;
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.module.ts:11:import { TimeRecord } from '../time-records/time-record.entity';
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:47:  @Get('time-records')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:9:import { TimeRecord } from '../time-records/time-record.entity';
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:4:import { TimeRecord } from '../time-records/time-record.entity';
+/opt/rh-saas/backend/src/modules/analytics/analytics.module.ts:3:import { TimeRecord } from '../time-records/time-record.entity';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:84:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:86:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:103:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:227:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:230:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:264:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:265:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:316:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:319:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:365:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:366:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:479:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:494:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:506:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:516:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:525:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:576:             document_number = $4,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:588:        dto.documentNumber ?? current.document_number,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:600:      ['document_number', current.document_number, result.document_number],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:84:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:86:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:103:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:227:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:230:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:264:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:265:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:316:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:319:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:365:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:366:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:479:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:494:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:506:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:516:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:525:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:576:             document_number = $4,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:588:        dto.documentNumber ?? current.document_number,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:600:      ['document_number', current.document_number, result.document_number],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:82:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:84:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:101:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:225:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:228:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:262:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:263:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:314:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:317:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:363:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:364:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:82:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:84:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:101:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:225:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:228:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:262:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:263:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:314:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:317:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:363:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:364:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:477:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:492:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:504:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:514:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:523:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:82:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:84:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:101:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:225:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:228:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:262:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:263:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:314:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:317:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:363:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:364:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:477:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:492:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:504:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:514:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:523:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:574:             document_number = $4,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:586:        dto.documentNumber ?? current.document_number,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:82:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:84:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:101:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:225:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:228:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:262:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:263:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:314:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:317:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:363:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:364:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:477:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:492:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:504:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:514:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:523:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:574:             document_number = $4,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:586:        dto.documentNumber ?? current.document_number,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:598:      ['document_number', current.document_number, result.document_number],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:82:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:84:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:101:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:225:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:228:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:262:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:263:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:314:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:317:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:363:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:364:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:477:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:492:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:504:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:514:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:523:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:574:             document_number = $4,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:586:        dto.documentNumber ?? current.document_number,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:598:      ['document_number', current.document_number, result.document_number],
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts:6:  documents: any;
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts:18:  documentNumber: string;
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts:6:  documents: any;
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts:8:    documents: number;
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts:19:  documentNumber?: string;
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:82:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:84:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:101:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:225:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:228:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:262:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:263:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:314:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:317:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:363:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:364:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:477:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:492:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:504:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:514:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:523:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:574:             document_number = $4,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:586:        dto.documentNumber ?? current.document_number,
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:43:    Object.assign(
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:18:import { AssignScheduleDto } from './dto/assign-schedule.dto';
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:38:  @Post('assign')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:39:  assign(
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:41:    @Body() dto: AssignScheduleDto,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:43:    return this.schedulesService.assign(
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:70:@Delete('assign/:id')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:71:unassign(
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:75:  return this.schedulesService.unassign(
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:81:@Patch('assign/:id/end')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:82:endAssignment(
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:87:  return this.schedulesService.endAssignment(
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:9:import { AssignScheduleDto } from './dto/assign-schedule.dto';
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:88:    Object.assign(
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:131:  async assign(
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:133:    dto: AssignScheduleDto,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:210:async unassign(
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:212:  assignmentId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:218:        id: assignmentId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:231:    entityId: assignmentId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:237:    id: assignmentId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:241:async endAssignment(
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:243:  assignmentId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:250:        id: assignmentId,
+/opt/rh-saas/backend/src/modules/schedules/dto/assign-schedule.dto.ts:1:export class AssignScheduleDto {
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:62:      access_token: this.jwtService.sign(payload),
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:25:        signOptions: {
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak:24:        signOptions: {
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:51:      access_token: this.jwtService.sign(payload),
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts:3:@Entity('documents')
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:5:import { Document } from './document.entity';
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:3:import { DocumentsService } from './documents.service';
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:6:@Controller('v1/documents')
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts:4:import { Document } from './document.entity';
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts:5:import { DocumentsService } from './documents.service';
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts:6:import { DocumentsController } from './documents.controller';
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.module.ts:8:import { ClockEvent } from '../clock-events/clock-event.entity';
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:5:import { ClockEvent, ClockEventType } from '../clock-events/clock-event.entity';
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:15:  private clockEventRepo: Repository<ClockEvent>,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:88:    const events = await this.clockEventRepo.find({
+/opt/rh-saas/backend/src/app.module.ts:8:import { DocumentsModule } from "./modules/documents/documents.module";
+/opt/rh-saas/backend/src/app.module.ts:12:import { TimeRecordsModule } from "./modules/time-records/time-records.module";
+/opt/rh-saas/backend/src/app.module.ts:16:import { ClockEvent } from './modules/clock-events/clock-event.entity';
+
+## Frontend-web - páginas existentes relacionadas
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+/opt/rh-saas/frontend-web/src/lib/validations/employee.ts
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx
+
+## Frontend-web - endpoints usados
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/lib/api.ts:92:export async function apiRequest<T>(
+/opt/rh-saas/frontend-web/src/lib/api.ts:107:  const response = await fetch(`${API_BASE}${endpoint}`, {
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:1:import { apiRequest } from "./api";
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:71:  return apiRequest<FoundationEmployee[]>("/v1/foundation/hr/employees");
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:77:  return apiRequest<MobileDeviceFoundation>(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:78:    "/v1/foundation/live-tracking/device",
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:89:  return apiRequest<LocationTrackingPointFoundation>(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:90:    "/v1/foundation/live-tracking/location",
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:99:  return apiRequest<LocationTrackingPointFoundation[]>(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:100:    "/v1/foundation/live-tracking/points",
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:105:  return apiRequest<LocationTrackingPointFoundation[]>(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:106:    "/v1/foundation/live-tracking/latest",
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:40:    const data = await apiRequest<Employee>(
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:41:      `/v1/employees/${id}`
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:50:    apiRequest<User[]>("/v1/users")
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:68:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:69:      `/v1/employees/${id}/link-user`,
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:85:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:86:      `/v1/employees/${id}/link-user`,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:12:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:13:      "/v1/super-admin/plans",
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:25:      await apiRequest<DocumentItem[]>(
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:26:        "/v1/documents/my-docs"
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:50:    await fetch(
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:51:      "/v1/documents/upload",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:22:      apiRequest("/v1/super-admin/dashboard"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:23:      apiRequest("/v1/super-admin/system/health"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:24:      apiRequest("/v1/super-admin/system/database"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:25:      apiRequest("/v1/super-admin/system/storage"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:26:      apiRequest("/v1/super-admin/system/metrics"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:27:      apiRequest("/v1/super-admin/system/services"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:27:    apiRequest<Plan[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:28:      "/v1/super-admin/plans"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:60:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:61:      `/v1/super-admin/plans/${plan.id}`,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:54:    apiRequest<ClientDetailsResponse>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:55:      `/v1/super-admin/clients/${id}`
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:9:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:26:  "/v1/audit",
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:27:  "/v1/audit-logs",
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:28:  "/v1/audit/logs",
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:80:          const response = await apiRequest<unknown>(endpoint);
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:26:    apiRequest<Client[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:27:      "/v1/super-admin/clients"
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:25:            const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/time-records/clock-in`, {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:21:    apiRequest(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:22:      `/v1/super-admin/clients/${id}/dashboard`
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:3:import { apiRequest, setSession } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:54:      const response = await apiRequest<LoginResponse>("/v1/auth/login", {
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx:20:    const result = await apiRequest<AnalyticsData>(
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx:21:      `/v1/analytics/overview?start=${start}&end=${end}`
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:28:      await apiRequest<User[]>(
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:29:        "/v1/users"
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:41:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:42:      "/v1/users",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:24:    apiRequest<ModuleItem[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:25:      `/v1/super-admin/clients/${id}/modules`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:41:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:42:      `/v1/super-admin/clients/${id}/modules/${moduleCode}`,
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:5:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:16:    const response = await fetch(
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:17:      "/v1/time-records/afd",
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:60:    const result = await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:61:      "/v1/time-records/simulate-math",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:15:    apiRequest<any[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:16:      `/v1/super-admin/clients/${id}/modules/audit`
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:4:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:30:            await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:31:              "/v1/time-records/clock-in",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:21:    apiRequest<any[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:22:      `/v1/super-admin/clients/${id}/audit`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:4:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:27:    apiRequest<Plan[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:28:      "/v1/super-admin/plans"
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:10:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:46:      const data = await apiRequest<Employee[]>("/v1/employees");
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:65:      await apiRequest<Employee>("/v1/employees", {
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:100:      await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:101:        `/v1/employees/${id}`,
+
+## TypeScript log
+-------------------------------------------------
+
+## npm ls log
+-------------------------------------------------
+mobile-app@1.0.0 /opt/rh-saas/mobile-app
+├── @expo/ngrok@4.1.3
+├── @react-native-async-storage/async-storage@2.2.0
+├── @react-navigation/native-stack@7.17.7
+├── @react-navigation/native@7.3.5
+├── @types/react@19.1.17
+├── axios@1.18.1
+├── expo-location@19.0.8
+├── expo-status-bar@3.0.9
+├── expo@54.0.35
+├── lucide-react-native@1.23.0
+├── react-dom@19.1.0
+├── react-native-safe-area-context@5.6.2
+├── react-native-screens@4.16.0
+├── react-native-web@0.21.2
+├── react-native@0.81.5
+├── react@19.1.0
+└── typescript@5.9.3
+
+

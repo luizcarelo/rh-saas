@@ -1,0 +1,1605 @@
+=================================================
+BACKEND CANDIDATE CONTENT
+Data: 20260705_003419
+=================================================
+
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+     1	import {
+     2	  Controller,
+     3	  Get,
+     4	  Param,
+     5	  Post,
+     6	  Put,
+     7	  Patch,
+     8	  Body,
+     9	  UseGuards,
+    10	} from '@nestjs/common';
+    11	
+    12	import { Roles } from '../auth/decorators/roles.decorator';
+    13	import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+    14	import { RolesGuard } from '../auth/guards/roles.guard';
+    15	
+    16	import { SuperAdminService } from './super-admin.service';
+    17	import { CreatePlanDto } from './dto/create-plan.dto';
+    18	import { UpdatePlanDto } from './dto/update-plan.dto';
+    19	import { UpdateModuleDto } from './dto/update-module.dto';
+    20	import { CreateClientDto } from './dto/create-client.dto';
+    21	import { UpdateClientDto } from './dto/update-client.dto';
+    22	import { UpdateClientStatusDto } from './dto/update-client-status.dto';
+    23	
+    24	@Controller('v1/super-admin')
+    25	@UseGuards(JwtAuthGuard, RolesGuard)
+    26	export class SuperAdminController {
+    27	
+    28	  constructor(
+    29	    private readonly service: SuperAdminService,
+    30	  ) {}
+    31	
+    32	  @Roles('SUPER_ADMIN' as any)
+    33	  @Get('health')
+    34	  health() {
+    35	    return this.service.health();
+    36	  }
+    37	
+    38	  @Roles('SUPER_ADMIN' as any)
+    39	  @Get('clients')
+    40	  clients() {
+    41	    return this.service.listClients();
+    42	  }
+    43	
+    44	  @Roles('SUPER_ADMIN' as any)
+    45	  @Get('clients/:id')
+    46	  details(
+    47	    @Param('id') id: string,
+    48	  ) {
+    49	    return this.service.getClientDetails(id);
+    50	  }
+    51	
+    52	
+    53	  @Roles('SUPER_ADMIN' as any)
+    54	  @Get('clients/:id/modules')
+    55	  modules(
+    56	    @Param('id') id: string,
+    57	  ) {
+    58	    return this.service.getModules(id);
+    59	  }
+    60	
+    61	  @Roles('SUPER_ADMIN' as any)
+    62	  @Put('clients/:id/modules/:moduleCode')
+    63	  updateModule(
+    64	    @Param('id') id: string,
+    65	    @Param('moduleCode') moduleCode: string,
+    66	    @Body() body: UpdateModuleDto,
+    67	  ) {
+    68	    return this.service.updateModule(
+    69	      id,
+    70	      moduleCode,
+    71	      body.enabled,
+    72	    );
+    73	  }
+    74	
+    75	
+    76	
+    77	  @Roles('SUPER_ADMIN' as any)
+    78	  @Get('clients/:id/modules/audit')
+    79	  moduleAudit(
+    80	    @Param('id') id: string,
+    81	  ) {
+    82	    return this.service.getModuleAudit(id);
+    83	  }
+    84	
+    85	
+    86	
+    87	  @Roles('SUPER_ADMIN' as any)
+    88	  @Get('dashboard')
+    89	  dashboard() {
+    90	    return this.service.getDashboard();
+    91	  }
+    92	
+    93	
+    94	
+    95	  @Roles('SUPER_ADMIN' as any)
+    96	  @Get('clients/:id/dashboard')
+    97	  tenantDashboard(
+    98	    @Param('id') id: string,
+    99	  ) {
+   100	    return this.service.getClientDashboard(id);
+   101	  }
+   102	
+   103	
+   104	
+   105	  @Roles('SUPER_ADMIN' as any)
+   106	  @Get('plans')
+   107	  plans() {
+   108	    return this.service.listPlans();
+   109	  }
+   110	
+   111	  @Roles('SUPER_ADMIN' as any)
+   112	  @Post('plans')
+   113	  createPlan(
+   114	    @Body() dto: CreatePlanDto,
+   115	  ) {
+   116	    return this.service.createPlan(dto);
+   117	  }
+   118	
+   119	  @Roles('SUPER_ADMIN' as any)
+   120	  @Put('plans/:id')
+   121	  updatePlan(
+   122	    @Param('id') id: string,
+   123	    @Body() dto: UpdatePlanDto,
+   124	  ) {
+   125	    return this.service.updatePlan(id,dto);
+   126	  }
+   127	
+   128	
+   129	
+   130	  @Roles('SUPER_ADMIN' as any)
+   131	  @Post('clients')
+   132	  createClient(
+   133	    @Body() dto: CreateClientDto,
+   134	  ) {
+   135	    return this.service.createClient(dto);
+   136	  }
+   137	
+   138	
+   139	
+   140	  @Roles('SUPER_ADMIN' as any)
+   141	  @Put('clients/:id')
+   142	  updateClient(
+   143	    @Param('id') id: string,
+   144	    @Body() dto: UpdateClientDto,
+   145	  ) {
+   146	    return this.service.updateClient(
+   147	      id,
+   148	      dto,
+   149	    );
+   150	  }
+   151	
+   152	  @Roles('SUPER_ADMIN' as any)
+   153	  @Patch('clients/:id/status')
+   154	  updateClientStatus(
+   155	    @Param('id') id: string,
+   156	    @Body() dto: UpdateClientStatusDto,
+   157	  ) {
+   158	    return this.service.updateClientStatus(
+   159	      id,
+   160	      dto.status,
+   161	    );
+   162	  }
+   163	
+   164	
+   165	
+   166	  @Roles('SUPER_ADMIN' as any)
+   167	  @Get('clients/:id/audit')
+   168	  clientAudit(
+   169	    @Param('id') id: string,
+   170	  ) {
+   171	    return this.service.getClientAudit(id);
+   172	  }
+   173	
+   174	
+   175	
+   176	  @Roles('SUPER_ADMIN' as any)
+   177	  @Get('system/health')
+   178	  systemHealth() {
+   179	    return this.service.systemHealth();
+   180	  }
+   181	
+   182	  @Roles('SUPER_ADMIN' as any)
+   183	  @Get('system/database')
+   184	  systemDatabase() {
+   185	    return this.service.databaseStatus();
+   186	  }
+   187	
+   188	
+   189	
+   190	
+   191	  @Roles('SUPER_ADMIN' as any)
+   192	  @Get('system/storage')
+   193	  systemStorage() {
+   194	    return this.service.systemStorage();
+   195	  }
+   196	
+   197	  @Roles('SUPER_ADMIN' as any)
+   198	  @Get('system/metrics')
+   199	  systemMetrics() {
+   200	    return this.service.systemMetrics();
+   201	  }
+   202	
+   203	
+   204	
+   205	
+   206	  @Roles('SUPER_ADMIN' as any)
+   207	  @Get('system/containers')
+   208	  systemContainers() {
+   209	    return this.service.systemContainers();
+   210	  }
+   211	
+   212	  @Roles('SUPER_ADMIN' as any)
+   213	  @Get('system/services')
+   214	  systemServices() {
+   215	    return this.service.systemServices();
+   216	  }
+   217	
+   218	
+   219	}
+
+### /opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts
+     1	import {
+     2	  Controller,
+     3	  Get,
+     4	  Put,
+     5	  Body,
+     6	  Req,
+     7	  UseGuards,
+     8	} from '@nestjs/common';
+     9	
+    10	import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+    11	import { TenantService } from './tenant.service';
+    12	import { UpdateTenantDto } from './dto/update-tenant.dto';
+    13	
+    14	@Controller('v1/tenant')
+    15	@UseGuards(JwtAuthGuard)
+    16	export class TenantController {
+    17	
+    18	  constructor(
+    19	    private readonly tenantService: TenantService,
+    20	  ) {}
+    21	
+    22	  @Get()
+    23	  async getTenant(
+    24	    @Req() req: any,
+    25	  ) {
+    26	    return this.tenantService.findOne(
+    27	      req.user.tenantId,
+    28	    );
+    29	  }
+    30	
+    31	  @Put()
+    32	  async updateTenant(
+    33	    @Req() req: any,
+    34	    @Body() dto: UpdateTenantDto,
+    35	  ) {
+    36	    return this.tenantService.update(
+    37	      req.user.tenantId,
+    38	      dto,
+    39	    );
+    40	  }
+    41	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts
+     1	import {
+     2	  Injectable,
+     3	  NotFoundException,
+     4	} from '@nestjs/common';
+     5	
+     6	import { DataSource } from 'typeorm';
+     7	import * as os from 'os';
+     8	import { execSync } from 'child_process';
+     9	
+    10	@Injectable()
+    11	export class SuperAdminService {
+    12	
+    13	  constructor(
+    14	    private readonly dataSource: DataSource,
+    15	  ) {}
+    16	
+    17	  async health() {
+    18	    return {
+    19	      status: 'ok',
+    20	      module: 'super-admin',
+    21	    };
+    22	  }
+    23	
+    24	  async listClients() {
+    25	
+    26	    return this.dataSource.query(`
+    27	      SELECT
+    28	        sc.id,
+    29	        sc.slug,
+    30	        sc.status,
+    31	        sp.code as "planCode",
+    32	        sp.name as "planName"
+    33	      FROM saas_clients sc
+    34	      LEFT JOIN saas_plans sp
+    35	        ON sp.id = sc.plan_id
+    36	      ORDER BY sc.slug
+    37	    `);
+    38	  }
+    39	
+    40	  async getClientDetails(id: string) {
+    41	
+    42	    const clientRows = await this.dataSource.query(`
+    43	      SELECT *
+    44	      FROM saas_clients
+    45	      WHERE id = $1
+    46	    `,[id]);
+    47	
+    48	    if (!clientRows.length) {
+    49	      throw new NotFoundException(
+    50	        'Cliente não encontrado'
+    51	      );
+    52	    }
+    53	
+    54	    const client = clientRows[0];
+    55	
+    56	    const plan = await this.dataSource.query(`
+    57	      SELECT *
+    58	      FROM saas_plans
+    59	      WHERE id = $1
+    60	    `,[client.plan_id]);
+    61	
+    62	    const modules = await this.dataSource.query(`
+    63	      SELECT
+    64	        module_code,
+    65	        enabled
+    66	      FROM tenant_module_flags
+    67	      WHERE client_id = $1
+    68	      ORDER BY module_code
+    69	    `,[id]);
+    70	
+    71	    const company = await this.dataSource.query(`
+    72	      SELECT *
+    73	      FROM hr_companies
+    74	      WHERE client_id = $1
+    75	      LIMIT 1
+    76	    `,[id]);
+    77	
+    78	    const employees = await this.dataSource.query(`
+    79	      SELECT COUNT(*)::int total
+    80	      FROM hr_employee_profiles
+    81	      WHERE client_id = $1
+    82	    `,[id]);
+    83	
+    84	    const documents = await this.dataSource.query(`
+    85	      SELECT COUNT(*)::int total
+    86	      FROM documents_foundation
+    87	      WHERE client_id = $1
+    88	    `,[id]);
+    89	
+    90	    const payslips = await this.dataSource.query(`
+    91	      SELECT COUNT(*)::int total
+    92	      FROM payslips_foundation
+    93	      WHERE client_id = $1
+    94	    `,[id]);
+    95	
+    96	    return {
+    97	      client,
+    98	      plan: plan[0] ?? null,
+    99	      company: company[0] ?? null,
+   100	      modules,
+   101	      statistics: {
+   102	        employees: employees[0]?.total ?? 0,
+   103	        documents: documents[0]?.total ?? 0,
+   104	        payslips: payslips[0]?.total ?? 0,
+   105	      },
+   106	    };
+   107	  }
+   108	
+   109	  async getModules(clientId: string) {
+   110	
+   111	    return this.dataSource.query(`
+   112	      SELECT
+   113	        module_code,
+   114	        enabled
+   115	      FROM tenant_module_flags
+   116	      WHERE client_id = $1
+   117	      ORDER BY module_code
+   118	    `,[clientId]);
+   119	  }
+   120	
+   121	  
+   122	
+   123	  async getModuleAudit(clientId: string) {
+   124	
+   125	    return this.dataSource.query(`
+   126	      SELECT
+   127	        module_code,
+   128	        old_enabled,
+   129	        new_enabled,
+   130	        changed_by_email,
+   131	        created_at
+   132	      FROM tenant_module_audit
+   133	      WHERE client_id = $1
+   134	      ORDER BY created_at DESC
+   135	    `,[clientId]);
+   136	  }
+   137	
+   138	
+   139	  async updateModule(
+   140	    clientId: string,
+   141	    moduleCode: string,
+   142	    enabled: boolean,
+   143	  ) {
+   144	
+   145	    const currentRows =
+   146	      await this.dataSource.query(`
+   147	        SELECT enabled
+   148	        FROM tenant_module_flags
+   149	        WHERE client_id = $1
+   150	        AND module_code = $2
+   151	      `,[clientId,moduleCode]);
+   152	
+   153	    const oldEnabled =
+   154	      currentRows.length
+   155	        ? currentRows[0].enabled
+   156	        : null;
+   157	
+   158	    await this.dataSource.query(`
+   159	      UPDATE tenant_module_flags
+   160	         SET enabled = $3
+   161	       WHERE client_id = $1
+   162	         AND module_code = $2
+   163	    `,[clientId,moduleCode,enabled]);
+   164	
+   165	    await this.dataSource.query(`
+   166	      INSERT INTO tenant_module_audit(
+   167	        client_id,
+   168	        module_code,
+   169	        old_enabled,
+   170	        new_enabled,
+   171	        changed_by_email
+   172	      )
+   173	      VALUES(
+   174	        $1,$2,$3,$4,$5
+   175	      )
+   176	    `,[
+   177	      clientId,
+   178	      moduleCode,
+   179	      oldEnabled,
+   180	      enabled,
+   181	      'SUPER_ADMIN'
+   182	    ]);
+   183	
+   184	    return {
+   185	      clientId,
+   186	      moduleCode,
+   187	      oldEnabled,
+   188	      enabled,
+   189	    };
+   190	  }
+   191	
+   192	
+   193	
+   194	  async getDashboard() {
+   195	
+   196	    const clients =
+   197	      await this.dataSource.query(`
+   198	        SELECT
+   199	          COUNT(*)::int total,
+   200	          COUNT(*) FILTER (
+   201	            WHERE status = 'ACTIVE'
+   202	          )::int active,
+   203	          COUNT(*) FILTER (
+   204	            WHERE status <> 'ACTIVE'
+   205	          )::int inactive
+   206	        FROM saas_clients
+   207	      `);
+   208	
+   209	    const plans =
+   210	      await this.dataSource.query(`
+   211	        SELECT COUNT(*)::int total
+   212	        FROM saas_plans
+   213	      `);
+   214	
+   215	    const users =
+   216	      await this.dataSource.query(`
+   217	        SELECT COUNT(*)::int total
+   218	        FROM users
+   219	      `);
+   220	
+   221	    const employees =
+   222	      await this.dataSource.query(`
+   223	        SELECT COUNT(*)::int total
+   224	        FROM hr_employee_profiles
+   225	      `);
+   226	
+   227	    const documents =
+   228	      await this.dataSource.query(`
+   229	        SELECT COUNT(*)::int total
+   230	        FROM documents_foundation
+   231	      `);
+   232	
+   233	    const payslips =
+   234	      await this.dataSource.query(`
+   235	        SELECT COUNT(*)::int total
+   236	        FROM payslips_foundation
+   237	      `);
+   238	
+   239	    const modules =
+   240	      await this.dataSource.query(`
+   241	        SELECT COUNT(*)::int total
+   242	        FROM tenant_module_flags
+   243	        WHERE enabled = true
+   244	      `);
+   245	
+   246	    const audit =
+   247	      await this.dataSource.query(`
+   248	        SELECT
+   249	          module_code,
+   250	          old_enabled,
+   251	          new_enabled,
+   252	          changed_by_email,
+   253	          created_at
+   254	        FROM tenant_module_audit
+   255	        ORDER BY created_at DESC
+   256	        LIMIT 10
+   257	      `);
+   258	
+   259	    return {
+   260	      clients: clients[0],
+   261	      plans: plans[0],
+   262	      users: users[0],
+   263	      employees: employees[0],
+   264	      documents: {
+   265	        documents: documents[0]?.total ?? 0,
+   266	        payslips: payslips[0]?.total ?? 0,
+   267	      },
+   268	      modules: {
+   269	        enabled: modules[0]?.total ?? 0,
+   270	      },
+   271	      audit,
+   272	    };
+   273	  }
+   274	
+   275	
+   276	
+   277	
+   278	  async getClientDashboard(clientId: string) {
+   279	
+   280	    const clientRows =
+   281	      await this.dataSource.query(`
+   282	        SELECT *
+   283	        FROM saas_clients
+   284	        WHERE id = $1
+   285	      `,[clientId]);
+   286	
+   287	    if (!clientRows.length) {
+   288	      throw new NotFoundException(
+   289	        'Cliente não encontrado'
+   290	      );
+   291	    }
+   292	
+   293	    const client = clientRows[0];
+   294	
+   295	    const plan =
+   296	      await this.dataSource.query(`
+   297	        SELECT *
+   298	        FROM saas_plans
+   299	        WHERE id = $1
+   300	      `,[client.plan_id]);
+   301	
+   302	    const users =
+   303	      await this.dataSource.query(`
+   304	        SELECT COUNT(*)::int total
+   305	        FROM users
+   306	        WHERE tenant_id = $1
+   307	      `,[client.tenant_id]);
+   308	
+   309	    const employees =
+   310	      await this.dataSource.query(`
+   311	        SELECT COUNT(*)::int total
+   312	        FROM hr_employee_profiles
+   313	        WHERE client_id = $1
+   314	      `,[clientId]);
+   315	
+   316	    const documents =
+   317	      await this.dataSource.query(`
+   318	        SELECT COUNT(*)::int total
+   319	        FROM documents_foundation
+   320	        WHERE client_id = $1
+   321	      `,[clientId]);
+   322	
+   323	    const payslips =
+   324	      await this.dataSource.query(`
+   325	        SELECT COUNT(*)::int total
+   326	        FROM payslips_foundation
+   327	        WHERE client_id = $1
+   328	      `,[clientId]);
+   329	
+   330	    const enabledModules =
+   331	      await this.dataSource.query(`
+   332	        SELECT COUNT(*)::int total
+   333	        FROM tenant_module_flags
+   334	        WHERE client_id = $1
+   335	        AND enabled = true
+   336	      `,[clientId]);
+   337	
+   338	    const disabledModules =
+   339	      await this.dataSource.query(`
+   340	        SELECT COUNT(*)::int total
+   341	        FROM tenant_module_flags
+   342	        WHERE client_id = $1
+   343	        AND enabled = false
+   344	      `,[clientId]);
+   345	
+   346	    const audit =
+   347	      await this.dataSource.query(`
+   348	        SELECT
+   349	          module_code,
+   350	          old_enabled,
+   351	          new_enabled,
+   352	          changed_by_email,
+   353	          created_at
+   354	        FROM tenant_module_audit
+   355	        WHERE client_id = $1
+   356	        ORDER BY created_at DESC
+   357	        LIMIT 20
+   358	      `,[clientId]);
+   359	
+   360	    return {
+   361	      client,
+   362	      plan: plan[0] ?? null,
+   363	      users: users[0],
+   364	      employees: employees[0],
+   365	      documents: {
+   366	        documents: documents[0]?.total ?? 0,
+   367	        payslips: payslips[0]?.total ?? 0,
+   368	      },
+   369	      modules: {
+   370	        enabled: enabledModules[0]?.total ?? 0,
+   371	        disabled: disabledModules[0]?.total ?? 0,
+   372	      },
+   373	      audit,
+   374	    };
+   375	  }
+   376	
+   377	
+   378	
+   379	
+   380	  async listPlans() {
+   381	
+   382	    return this.dataSource.query(`
+   383	      SELECT *
+   384	      FROM saas_plans
+   385	      ORDER BY code
+   386	    `);
+   387	  }
+   388	
+   389	  async createPlan(dto: any) {
+   390	
+   391	    const rows =
+   392	      await this.dataSource.query(`
+   393	        INSERT INTO saas_plans(
+   394	          code,
+   395	          name,
+   396	          description,
+   397	          is_active,
+   398	          created_at,
+   399	          updated_at
+   400	        )
+   401	        VALUES(
+   402	          $1,$2,$3,true,NOW(),NOW()
+   403	        )
+   404	        RETURNING *
+   405	      `,[
+   406	        dto.code,
+   407	        dto.name,
+   408	        dto.description ?? null
+   409	      ]);
+   410	
+   411	    return rows[0];
+   412	  }
+   413	
+   414	  async updatePlan(
+   415	    id: string,
+   416	    dto: any,
+   417	  ) {
+   418	
+   419	    const current =
+   420	      await this.dataSource.query(`
+   421	        SELECT *
+   422	        FROM saas_plans
+   423	        WHERE id = $1
+   424	      `,[id]);
+   425	
+   426	    if (!current.length) {
+   427	      throw new NotFoundException(
+   428	        'Plano não encontrado'
+   429	      );
+   430	    }
+   431	
+   432	    const plan = current[0];
+   433	
+   434	    const rows =
+   435	      await this.dataSource.query(`
+   436	        UPDATE saas_plans
+   437	           SET
+   438	             name = $2,
+   439	             description = $3,
+   440	             is_active = $4,
+   441	             updated_at = NOW()
+   442	         WHERE id = $1
+   443	     RETURNING *
+   444	      `,[
+   445	        id,
+   446	        dto.name ?? plan.name,
+   447	        dto.description ?? plan.description,
+   448	        dto.is_active ?? plan.is_active
+   449	      ]);
+   450	
+   451	    return rows[0];
+   452	  }
+   453	
+   454	
+   455	
+   456	
+   457	  async createClient(dto: any) {
+   458	
+   459	    const queryRunner =
+   460	      this.dataSource.createQueryRunner();
+   461	
+   462	    await queryRunner.connect();
+   463	    await queryRunner.startTransaction();
+   464	
+   465	    try {
+   466	
+   467	      const tenantRows =
+   468	        await queryRunner.query(`
+   469	          INSERT INTO tenants(
+   470	            cnpj,
+   471	            corporate_name,
+   472	            trading_name
+   473	          )
+   474	          VALUES(
+   475	            $1,$2,$3
+   476	          )
+   477	          RETURNING *
+   478	        `,[
+   479	          dto.documentNumber,
+   480	          dto.legalName,
+   481	          dto.tradeName
+   482	        ]);
+   483	
+   484	      const tenant = tenantRows[0];
+   485	
+   486	      const clientRows =
+   487	        await queryRunner.query(`
+   488	          INSERT INTO saas_clients(
+   489	            tenant_id,
+   490	            plan_id,
+   491	            slug,
+   492	            trade_name,
+   493	            legal_name,
+   494	            document_number
+   495	          )
+   496	          VALUES(
+   497	            $1,$2,$3,$4,$5,$6
+   498	          )
+   499	          RETURNING *
+   500	        `,[
+   501	          tenant.id,
+   502	          dto.planId,
+   503	          dto.slug,
+   504	          dto.tradeName,
+   505	          dto.legalName,
+   506	          dto.documentNumber
+   507	        ]);
+   508	
+   509	      const client = clientRows[0];
+   510	
+   511	      await queryRunner.query(`
+   512	        INSERT INTO hr_companies(
+   513	          client_id,
+   514	          legal_name,
+   515	          trade_name,
+   516	          document_number
+   517	        )
+   518	        VALUES(
+   519	          $1,$2,$3,$4
+   520	        )
+   521	      `,[
+   522	        client.id,
+   523	        dto.legalName,
+   524	        dto.tradeName,
+   525	        dto.documentNumber
+   526	      ]);
+   527	
+   528	      await queryRunner.commitTransaction();
+   529	
+   530	      return {
+   531	        tenant,
+   532	        client
+   533	      };
+   534	
+   535	    } catch(error) {
+   536	
+   537	      await queryRunner.rollbackTransaction();
+   538	
+   539	      throw error;
+   540	
+   541	    } finally {
+   542	
+   543	      await queryRunner.release();
+   544	
+   545	    }
+   546	  }
+   547	
+   548	
+   549	
+   550	  async updateClient(
+   551	    id: string,
+   552	    dto: any,
+   553	  ) {
+   554	
+   555	    const rows =
+   556	      await this.dataSource.query(`
+   557	        SELECT *
+   558	        FROM saas_clients
+   559	        WHERE id = $1
+   560	      `,[id]);
+   561	
+   562	    if (!rows.length) {
+   563	      throw new NotFoundException(
+   564	        'Cliente não encontrado'
+   565	      );
+   566	    }
+   567	
+   568	    const current = rows[0];
+   569	
+   570	    const updated =
+   571	      await this.dataSource.query(`
+   572	        UPDATE saas_clients
+   573	           SET
+   574	             trade_name = $2,
+   575	             legal_name = $3,
+   576	             document_number = $4,
+   577	             timezone = $5,
+   578	             default_locale = $6,
+   579	             notes = $7,
+   580	             plan_id = $8,
+   581	             updated_at = NOW()
+   582	         WHERE id = $1
+   583	     RETURNING *
+   584	      `,[
+   585	        id,
+   586	        dto.tradeName ?? current.trade_name,
+   587	        dto.legalName ?? current.legal_name,
+   588	        dto.documentNumber ?? current.document_number,
+   589	        dto.timezone ?? current.timezone,
+   590	        dto.defaultLocale ?? current.default_locale,
+   591	        dto.notes ?? current.notes,
+   592	        dto.planId ?? current.plan_id
+   593	      ]);
+   594	
+   595	    const result = updated[0];
+   596	
+   597	    const auditFields = [
+   598	      ['trade_name', current.trade_name, result.trade_name],
+   599	      ['legal_name', current.legal_name, result.legal_name],
+   600	      ['document_number', current.document_number, result.document_number],
+   601	      ['timezone', current.timezone, result.timezone],
+   602	      ['default_locale', current.default_locale, result.default_locale],
+   603	      ['notes', current.notes, result.notes],
+   604	      ['plan_id', current.plan_id, result.plan_id],
+   605	    ];
+   606	
+   607	    for (const [field, oldValue, newValue] of auditFields) {
+   608	
+   609	      if ((oldValue ?? '') !== (newValue ?? '')) {
+   610	
+   611	        await this.dataSource.query(`
+   612	          INSERT INTO tenant_client_audit(
+   613	            client_id,
+   614	            field_name,
+   615	            old_value,
+   616	            new_value,
+   617	            changed_by
+   618	          )
+   619	          VALUES(
+   620	            $1,$2,$3,$4,$5
+   621	          )
+   622	        `,[
+   623	          id,
+   624	          field,
+   625	          String(oldValue ?? ''),
+   626	          String(newValue ?? ''),
+   627	          'SUPER_ADMIN'
+   628	        ]);
+   629	      }
+   630	    }
+   631	
+   632	    return result;
+   633	  }
+   634	
+   635	  async updateClientStatus(
+   636	    id: string,
+   637	    status: string,
+   638	  ) {
+   639	
+   640	    const currentRows =
+   641	      await this.dataSource.query(`
+   642	        SELECT *
+   643	        FROM saas_clients
+   644	        WHERE id = $1
+   645	      `,[id]);
+   646	
+   647	    if (!currentRows.length) {
+   648	      throw new NotFoundException(
+   649	        'Cliente não encontrado'
+   650	      );
+   651	    }
+   652	
+   653	    const current = currentRows[0];
+   654	
+   655	    const rows =
+   656	      await this.dataSource.query(`
+   657	        UPDATE saas_clients
+   658	           SET
+   659	             status = $2,
+   660	             updated_at = NOW()
+   661	         WHERE id = $1
+   662	     RETURNING *
+   663	      `,[id,status]);
+   664	
+   665	    await this.dataSource.query(`
+   666	      INSERT INTO tenant_client_audit(
+   667	        client_id,
+   668	        field_name,
+   669	        old_value,
+   670	        new_value,
+   671	        changed_by
+   672	      )
+   673	      VALUES(
+   674	        $1,$2,$3,$4,$5
+   675	      )
+   676	    `,[
+   677	      id,
+   678	      'status',
+   679	      current.status,
+   680	      status,
+   681	      'SUPER_ADMIN'
+   682	    ]);
+   683	
+   684	    return rows[0];
+   685	  }
+   686	
+   687	
+   688	
+   689	
+   690	  async getClientAudit(
+   691	    clientId: string,
+   692	  ) {
+   693	
+   694	    return this.dataSource.query(`
+   695	      SELECT
+   696	        field_name,
+   697	        old_value,
+   698	        new_value,
+   699	        changed_by,
+   700	        created_at
+   701	      FROM tenant_client_audit
+   702	      WHERE client_id = $1
+   703	      ORDER BY created_at DESC
+   704	    `,[clientId]);
+   705	  }
+   706	
+   707	
+   708	
+   709	
+   710	  async systemHealth() {
+   711	
+   712	    await this.dataSource.query(
+   713	      'SELECT 1'
+   714	    );
+   715	
+   716	    return {
+   717	      api: 'UP',
+   718	      database: 'UP',
+   719	      timestamp: new Date().toISOString(),
+   720	    };
+   721	  }
+   722	
+   723	  async databaseStatus() {
+   724	
+   725	    const rows =
+   726	      await this.dataSource.query(`
+   727	        SELECT
+   728	          COUNT(*)::int as connections
+   729	        FROM pg_stat_activity
+   730	      `);
+   731	
+   732	    return {
+   733	      status: 'UP',
+   734	      connections:
+   735	        rows[0]?.connections ?? 0,
+   736	    };
+   737	  }
+   738	
+   739	
+   740	
+   741	
+   742	  async systemStorage() {
+   743	
+   744	    const raw =
+   745	      execSync('df -k /')
+   746	        .toString()
+   747	        .split('\n')[1]
+   748	        .trim()
+   749	        .split(/\s+/);
+   750	
+   751	    return {
+   752	      filesystem: raw[0],
+   753	      usedPercent: Number(
+   754	        raw[4].replace('%','')
+   755	      ),
+   756	      availableGb:
+   757	        Number(raw[3]) /
+   758	        1024 /
+   759	        1024,
+   760	    };
+   761	  }
+   762	
+   763	  async systemMetrics() {
+   764	
+   765	    const totalMem =
+   766	      os.totalmem();
+   767	
+   768	    const freeMem =
+   769	      os.freemem();
+   770	
+   771	    const usedMem =
+   772	      totalMem - freeMem;
+   773	
+   774	    return {
+   775	      memoryUsedMb:
+   776	        Math.round(
+   777	          usedMem / 1024 / 1024
+   778	        ),
+   779	
+   780	      memoryTotalMb:
+   781	        Math.round(
+   782	          totalMem / 1024 / 1024
+   783	        ),
+   784	
+   785	      memoryPercent:
+   786	        Math.round(
+   787	          (usedMem / totalMem) * 100
+   788	        ),
+   789	
+   790	      uptimeSeconds:
+   791	        Math.round(
+   792	          os.uptime()
+   793	        ),
+   794	    };
+   795	  }
+   796	
+   797	
+   798	
+   799	
+   800	  async systemContainers() {
+   801	
+   802	    return {
+   803	      rh_saas_api: 'running',
+   804	      rh_saas_postgres: 'running',
+   805	      rh_saas_redis: 'running',
+   806	      rh_saas_web: 'running',
+   807	    };
+   808	  }
+   809	
+   810	  async systemServices() {
+   811	
+   812	    await this.dataSource.query(
+   813	      'SELECT 1'
+   814	    );
+   815	
+   816	    return {
+   817	      api: 'UP',
+   818	      postgres: 'UP',
+   819	      redis: 'UP',
+   820	      web: 'UP',
+   821	    };
+   822	  }
+   823	
+   824	
+   825	}
+
+### /opt/rh-saas/backend/src/modules/tenant/tenant.service.ts
+     1	import { Injectable, NotFoundException } from '@nestjs/common';
+     2	import { InjectRepository } from '@nestjs/typeorm';
+     3	import { Repository } from 'typeorm';
+     4	
+     5	import { Tenant } from './tenant.entity';
+     6	import { UpdateTenantDto } from './dto/update-tenant.dto';
+     7	import { AuditService } from '../audit/audit.service';
+     8	
+     9	@Injectable()
+    10	export class TenantService {
+    11	
+    12	  constructor(
+    13	    @InjectRepository(Tenant)
+    14	    private readonly tenantRepo: Repository<Tenant>,
+    15	
+    16	    private readonly auditService: AuditService,
+    17	  ) {}
+    18	
+    19	  async findOne(tenantId: string) {
+    20	
+    21	    const tenant =
+    22	      await this.tenantRepo.findOne({
+    23	        where: { id: tenantId },
+    24	      });
+    25	
+    26	    if (!tenant) {
+    27	      throw new NotFoundException(
+    28	        'Tenant não encontrado.',
+    29	      );
+    30	    }
+    31	
+    32	    return tenant;
+    33	  }
+    34	
+    35	  async update(
+    36	    tenantId: string,
+    37	    data: UpdateTenantDto,
+    38	  ) {
+    39	
+    40	    const tenant =
+    41	      await this.findOne(tenantId);
+    42	
+    43	    Object.assign(
+    44	      tenant,
+    45	      data,
+    46	    );
+    47	
+    48	    const updated =
+    49	      await this.tenantRepo.save(tenant);
+    50	
+    51	    await this.auditService.create({
+    52	      tenantId,
+    53	      entityId: tenantId,
+    54	      action: 'TENANT_UPDATED',
+    55	      entityType: 'Tenant',
+    56	      details: JSON.stringify(data),
+    57	    });
+    58	
+    59	    return updated;
+    60	  }
+    61	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts
+     1	export class ClientDashboardDto {
+     2	  client: any;
+     3	  plan: any;
+     4	  users: any;
+     5	  employees: any;
+     6	  documents: any;
+     7	  modules: any;
+     8	  audit: any[];
+     9	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts
+     1	export class ClientDetailsDto {
+     2	  client: any;
+     3	  plan: any;
+     4	  company: any;
+     5	  modules: any[];
+     6	  statistics: {
+     7	    employees: number;
+     8	    documents: number;
+     9	    payslips: number;
+    10	  };
+    11	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/client-summary.dto.ts
+     1	export class ClientSummaryDto {
+     2	  id: string;
+     3	  slug: string;
+     4	  planCode: string | null;
+     5	  planName: string | null;
+     6	  status: string;
+     7	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts
+     1	import {
+     2	  IsString,
+     3	  IsUUID,
+     4	} from 'class-validator';
+     5	
+     6	export class CreateClientDto {
+     7	
+     8	  @IsString()
+     9	  slug: string;
+    10	
+    11	  @IsString()
+    12	  tradeName: string;
+    13	
+    14	  @IsString()
+    15	  legalName: string;
+    16	
+    17	  @IsString()
+    18	  documentNumber: string;
+    19	
+    20	  @IsUUID()
+    21	  planId: string;
+    22	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/create-plan.dto.ts
+     1	import {
+     2	  IsString,
+     3	  IsOptional,
+     4	} from 'class-validator';
+     5	
+     6	export class CreatePlanDto {
+     7	
+     8	  @IsString()
+     9	  code: string;
+    10	
+    11	  @IsString()
+    12	  name: string;
+    13	
+    14	  @IsOptional()
+    15	  @IsString()
+    16	  description?: string;
+    17	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts
+     1	export class DashboardDto {
+     2	  clients: any;
+     3	  plans: any;
+     4	  users: any;
+     5	  employees: any;
+     6	  documents: any;
+     7	  modules: any;
+     8	  audit: any[];
+     9	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts
+     1	
+     2	import {
+     3	  IsOptional,
+     4	  IsString,
+     5	} from 'class-validator';
+     6	
+     7	export class UpdateClientDto {
+     8	
+     9	  @IsOptional()
+    10	  @IsString()
+    11	  tradeName?: string;
+    12	
+    13	  @IsOptional()
+    14	  @IsString()
+    15	  legalName?: string;
+    16	
+    17	  @IsOptional()
+    18	  @IsString()
+    19	  documentNumber?: string;
+    20	
+    21	  @IsOptional()
+    22	  @IsString()
+    23	  timezone?: string;
+    24	
+    25	  @IsOptional()
+    26	  @IsString()
+    27	  defaultLocale?: string;
+    28	
+    29	  @IsOptional()
+    30	  @IsString()
+    31	  notes?: string;
+    32	
+    33	  @IsOptional()
+    34	  @IsString()
+    35	  planId?: string;
+    36	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/update-client-status.dto.ts
+     1	
+     2	import { IsString } from 'class-validator';
+     3	
+     4	export class UpdateClientStatusDto {
+     5	
+     6	  @IsString()
+     7	  status: string;
+     8	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/update-module.dto.ts
+     1	import { IsBoolean } from 'class-validator';
+     2	
+     3	export class UpdateModuleDto {
+     4	
+     5	  @IsBoolean()
+     6	  enabled: boolean;
+     7	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/dto/update-plan.dto.ts
+     1	import {
+     2	  IsOptional,
+     3	  IsString,
+     4	  IsBoolean,
+     5	} from 'class-validator';
+     6	
+     7	export class UpdatePlanDto {
+     8	
+     9	  @IsOptional()
+    10	  @IsString()
+    11	  name?: string;
+    12	
+    13	  @IsOptional()
+    14	  @IsString()
+    15	  description?: string;
+    16	
+    17	  @IsOptional()
+    18	  @IsBoolean()
+    19	  is_active?: boolean;
+    20	}
+
+### /opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts
+     1	export class UpdateTenantDto {
+     2	  corporateName?: string;
+     3	  tradingName?: string;
+     4	  isActive?: boolean;
+     5	
+     6	  phone?: string;
+     7	  email?: string;
+     8	  address?: string;
+     9	  website?: string;
+    10	  hrManager?: string;
+    11	  logoUrl?: string;
+    12	}
+
+### /opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts
+     1	import { IsEmail, IsString, IsUUID } from 'class-validator';
+     2	
+     3	export class CreateUserDto {
+     4	
+     5	  @IsUUID()
+     6	  tenantId: string;
+     7	
+     8	  @IsUUID()
+     9	  employeeId: string;
+    10	
+    11	  @IsEmail()
+    12	  email: string;
+    13	
+    14	  @IsString()
+    15	  password: string;
+    16	
+    17	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'saas_clients',
+    11	  synchronize: false,
+    12	})
+    13	export class SaasClient {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'tenant_id',
+    19	    type: 'uuid',
+    20	    nullable: true,
+    21	  })
+    22	  tenantId: string;
+    23	
+    24	  @Column({
+    25	    name: 'plan_id',
+    26	    type: 'uuid',
+    27	    nullable: true,
+    28	  })
+    29	  planId: string;
+    30	
+    31	  @Column({
+    32	    type: 'text',
+    33	    nullable: true,
+    34	  })
+    35	  slug: string;
+    36	
+    37	  @Column({
+    38	    name: 'trade_name',
+    39	    type: 'text',
+    40	    nullable: true,
+    41	  })
+    42	  tradeName: string;
+    43	
+    44	  @Column({
+    45	    name: 'legal_name',
+    46	    type: 'text',
+    47	    nullable: true,
+    48	  })
+    49	  legalName: string;
+    50	
+    51	  @Column({
+    52	    name: 'document_number',
+    53	    type: 'text',
+    54	    nullable: true,
+    55	  })
+    56	  documentNumber: string;
+    57	
+    58	  @Column({
+    59	    type: 'text',
+    60	    nullable: true,
+    61	  })
+    62	  status: string;
+    63	
+    64	  @Column({
+    65	    type: 'text',
+    66	    nullable: true,
+    67	  })
+    68	  timezone: string;
+    69	
+    70	  @Column({
+    71	    name: 'default_locale',
+    72	    type: 'text',
+    73	    nullable: true,
+    74	  })
+    75	  defaultLocale: string;
+    76	
+    77	  @Column({
+    78	    type: 'text',
+    79	    nullable: true,
+    80	  })
+    81	  notes: string;
+    82	
+    83	  @CreateDateColumn({
+    84	    name: 'created_at',
+    85	    type: 'timestamptz',
+    86	  })
+    87	  createdAt: Date;
+    88	
+    89	  @UpdateDateColumn({
+    90	    name: 'updated_at',
+    91	    type: 'timestamptz',
+    92	  })
+    93	  updatedAt: Date;
+    94	}
+
+### /opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity('tenants')
+    10	export class Tenant {
+    11	  @PrimaryGeneratedColumn('uuid')
+    12	  id: string;
+    13	
+    14	  @Column({ unique: true, length: 14 })
+    15	  cnpj: string;
+    16	
+    17	  @Column({
+    18	    name: 'corporate_name',
+    19	    length: 255,
+    20	  })
+    21	  corporateName: string;
+    22	
+    23	  @Column({
+    24	    name: 'trading_name',
+    25	    length: 255,
+    26	    nullable: true,
+    27	  })
+    28	  tradingName: string;
+    29	
+    30	  @Column({
+    31	    name: 'is_active',
+    32	    default: true,
+    33	  })
+    34	  isActive: boolean;
+    35	
+    36	  @Column({
+    37	    nullable: true,
+    38	    length: 50,
+    39	  })
+    40	  phone?: string;
+    41	
+    42	  @Column({
+    43	    nullable: true,
+    44	    length: 255,
+    45	  })
+    46	  email?: string;
+    47	
+    48	  @Column({
+    49	    nullable: true,
+    50	    type: 'text',
+    51	  })
+    52	  address?: string;
+    53	
+    54	  @Column({
+    55	    nullable: true,
+    56	    length: 255,
+    57	  })
+    58	  website?: string;
+    59	
+    60	  @Column({
+    61	    nullable: true,
+    62	    name: 'hr_manager',
+    63	    length: 255,
+    64	  })
+    65	  hrManager?: string;
+    66	
+    67	  @Column({
+    68	    nullable: true,
+    69	    name: 'logo_url',
+    70	    type: 'text',
+    71	  })
+    72	  logoUrl?: string;
+    73	
+    74	  @CreateDateColumn({
+    75	    name: 'created_at',
+    76	  })
+    77	  createdAt: Date;
+    78	
+    79	  @UpdateDateColumn({
+    80	    name: 'updated_at',
+    81	  })
+    82	  updatedAt: Date;
+    83	}
+
+### /opt/rh-saas/backend/src/modules/users/user.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  ManyToOne,
+     6	  JoinColumn,
+     7	  CreateDateColumn,
+     8	  UpdateDateColumn,
+     9	} from 'typeorm';
+    10	
+    11	import { Tenant } from '../tenant/tenant.entity';
+    12	
+    13	export enum UserRole {
+    14	  SUPER_ADMIN = 'SUPER_ADMIN',
+    15	  ADMIN = 'ADMIN',
+    16	  RH = 'RH',
+    17	  MANAGER = 'MANAGER',
+    18	  EMPLOYEE = 'EMPLOYEE',
+    19	}
+    20	
+    21	@Entity('users')
+    22	export class User {
+    23	  @PrimaryGeneratedColumn('uuid')
+    24	  id: string;
+    25	
+    26	  @ManyToOne(() => Tenant)
+    27	  @JoinColumn({ name: 'tenant_id' })
+    28	  tenant: Tenant;
+    29	
+    30	  @Column({ name: 'tenant_id' })
+    31	  tenantId: string;
+    32	
+    33	  @Column()
+    34	  email: string;
+    35	
+    36	  @Column()
+    37	  passwordHash: string;
+    38	
+    39	  @Column({
+    40	    type: 'varchar',
+    41	    length: 30,
+    42	    default: UserRole.EMPLOYEE,
+    43	  })
+    44	  role: UserRole;
+    45	
+    46	  @Column({ default: true })
+    47	  isActive: boolean;
+    48	
+    49	  @Column({
+    50	    name: 'last_login_at',
+    51	    type: 'timestamp',
+    52	    nullable: true,
+    53	  })
+    54	  lastLoginAt: Date;
+    55	
+    56	  @CreateDateColumn({
+    57	    name: 'created_at',
+    58	  })
+    59	  createdAt: Date;
+    60	
+    61	  @UpdateDateColumn({
+    62	    name: 'updated_at',
+    63	  })
+    64	  updatedAt: Date;
+    65	}

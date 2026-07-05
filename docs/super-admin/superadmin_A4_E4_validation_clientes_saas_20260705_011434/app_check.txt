@@ -1,0 +1,20 @@
+Arquivo: /opt/rh-saas/frontend-web/src/App.tsx
+
+## Imports e rotas relevantes
+10:import { Login as LoginPage } from "./pages/Login";
+15:import { TimeTrackingPage as TimeRecordsPage } from "./pages/TimeTrackingPage";
+16:import { ClockInPage as RegisterTimePage } from "./pages/ClockInPage";
+17:import { AuditLogsPage as AuditPage } from "./pages/AuditLogsPage";
+23:import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+25:import { SuperAdminClientAuditPage } from "./pages/SuperAdminClientAuditPage";
+27:import { SuperAdminClientModulesAuditPage } from "./pages/SuperAdminClientModulesAuditPage";
+94:        <Route path="/login" element={<LoginPage />} />
+106:            <Route path="/ponto" element={<TimeRecordsPage />} />
+108:            <Route path="/registrar-ponto" element={<RegisterTimePage />} />
+110:            <Route path="/audit" element={<AuditPage />} />
+123:              path="/super-admin/clientes"
+124:              element={superAdminOnly(<SuperAdminClientsPage />)}
+178:              element={superAdminOnly(<SuperAdminClientAuditPage />)}
+188:              element={superAdminOnly(<SuperAdminClientModulesAuditPage />)}
+
+## Possivel contaminacao

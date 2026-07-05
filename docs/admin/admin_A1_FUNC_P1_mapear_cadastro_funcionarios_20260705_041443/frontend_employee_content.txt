@@ -1,0 +1,214 @@
+=================================================
+FRONTEND EMPLOYEE CONTENT
+Data: 20260705_041443
+=================================================
+
+### /opt/rh-saas/frontend-web/src/App.tsx
+101:            <Route path="/colaboradores" element={<EmployeesPage />} />
+
+### /opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak
+8:import { getUserInfo } from "./lib/api";
+51:              path="/colaboradores"
+56:            path="/colaboradores/:id"
+
+### /opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx
+104:          placeholder="colaborador@empresa.com"
+151:          {loading ? "Salvando..." : "Cadastrar colaborador"}
+
+### /opt/rh-saas/frontend-web/src/components/MapComponent.tsx
+25:export function MapComponent({ colaboradores }: { colaboradores: Colaborador[] }) {
+33:        {colaboradores.map((colab) => (
+
+### /opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx
+11:import { clearSession, getUserInfo } from "../lib/api";
+20:    path: "/colaboradores",
+
+### /opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx
+2:import { clearSession, getUserInfo } from "../lib/api";
+35:              <p className="text-sm text-cyan-200">Portal do colaborador</p>
+
+### /opt/rh-saas/frontend-web/src/lib/api.ts
+16:  employeeId?: string | null;
+83:  const apiError = data as ApiError;
+85:  if (Array.isArray(apiError.message)) {
+86:    return apiError.message.join(", ");
+89:  return apiError.message || apiError.error || fallback;
+92:export async function apiRequest<T>(
+107:  const response = await fetch(`${API_BASE}${endpoint}`, {
+
+### /opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+1:import { apiRequest } from "./api";
+6:  employeeExternalRef?: string | null;
+16:  createdAt?: string;
+21:  employeeProfileId?: string;
+31:  employeeProfileId?: string | null;
+38:  createdAt?: string;
+43:  employeeProfileId: string;
+57:  employeeProfileId?: string | null;
+66:  createdAt?: string;
+71:  return apiRequest<FoundationEmployee[]>("/v1/foundation/hr/employees");
+77:  return apiRequest<MobileDeviceFoundation>(
+80:      method: "POST",
+89:  return apiRequest<LocationTrackingPointFoundation>(
+92:      method: "POST",
+99:  return apiRequest<LocationTrackingPointFoundation[]>(
+105:  return apiRequest<LocationTrackingPointFoundation[]>(
+
+### /opt/rh-saas/frontend-web/src/lib/validations/employee.ts
+3:export const employeeSchema = z.object({
+13:export type EmployeeFormValues = z.infer<typeof employeeSchema>;
+
+### /opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx
+4:import { apiRequest } from "../lib/api";
+30:            await apiRequest(
+33:                method: "POST",
+35:                  employeeId: "",
+
+### /opt/rh-saas/frontend-web/src/pages/Dashboard.tsx
+24:        <MapComponent colaboradores={equipe} />
+
+### /opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx
+2:import { apiRequest } from "../lib/api";
+8:  createdAt: string;
+16:  const [employeeId,setEmployeeId] =
+25:      await apiRequest<DocumentItem[]>(
+38:    if (!file || !employeeId) {
+44:    formData.append("employeeId", employeeId);
+50:    await fetch(
+53:        method: "POST",
+76:          value={employeeId}
+122:              <td>{doc.createdAt}</td>
+
+### /opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx
+25:            const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/time-records/clock-in`, {
+26:              method: "POST",
+31:              body: JSON.stringify({ employeeId: "uuid-joao", latitude, longitude })
+
+### /opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx
+3:import { apiRequest } from "../lib/api";
+28:  const [employee, setEmployee] =
+40:    const data = await apiRequest<Employee>(
+41:      `/v1/employees/${id}`
+50:    apiRequest<User[]>("/v1/users")
+68:    await apiRequest(
+69:      `/v1/employees/${id}/link-user`,
+85:    await apiRequest(
+86:      `/v1/employees/${id}/link-user`,
+100:  if (!employee) {
+103:        Carregando colaborador...
+119:          {employee.firstName} {employee.lastName}
+124:          {employee.cpf}
+129:          {employee.email}
+134:          {employee.department || "-"}
+139:          {employee.jobTitle || "-"}
+144:          {employee.admissionDate}
+149:          {employee.userId || "Nenhum"}
+190:            {employee.userId && (
+
+### /opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx
+
+### /opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx
+10:import { apiRequest } from "../lib/api";
+33:  const [employees, setEmployees] = useState<Employee[]>([]);
+46:      const data = await apiRequest<Employee[]>("/v1/employees");
+52:          : "Não foi possível carregar os colaboradores.",
+59:  async function createEmployee(payload: EmployeePayload) {
+65:      await apiRequest<Employee>("/v1/employees", {
+66:        method: "POST",
+78:          : "Não foi possível cadastrar o colaborador.",
+91:        "Deseja realmente excluir este colaborador?"
+100:      await apiRequest(
+101:        `/v1/employees/${id}`,
+133:      return employees;
+136:    return employees.filter((employee) => {
+138:        employee.firstName,
+139:        employee.lastName,
+140:        employee.email,
+141:        employee.cpf,
+142:        employee.department,
+143:        employee.jobTitle,
+151:  }, [employees, search]);
+171:                Cadastre, consulte e acompanhe os colaboradores da empresa.
+197:                Novo colaborador
+222:              Novo colaborador
+231:            onSubmit={createEmployee}
+240:              Lista de colaboradores
+281:                      Carregando colaboradores...
+292:                      Nenhum colaborador encontrado.
+298:                  filteredEmployees.map((employee) => (
+300:                      key={employee.id}
+305:                          {employee.firstName} {employee.lastName}
+308:                          ID: {employee.id}
+313:                        {employee.cpf}
+317:                        {employee.email}
+321:                        {employee.department || "-"}
+325:                        {employee.jobTitle || "-"}
+329:                        {employee.userId ? (
+341:                        {employee.isActive ? (
+353:    to={`/colaboradores/${employee.id}`}
+362:      deleteEmployee(employee.id)
+
+### /opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx
+17:function formatEmployeeName(employee: FoundationEmployee) {
+18:  const firstName = employee.firstName || "";
+19:  const lastName = employee.lastName || "";
+26:  return employee.email || employee.id;
+49:  const [employees, setEmployees] = useState<FoundationEmployee[]>([]);
+63:    () => employees.find((employee) => employee.id === selectedEmployeeId),
+64:    [employees, selectedEmployeeId],
+69:    setMessage("Carregando colaboradores Foundation...");
+83:      setMessage(error instanceof Error ? error.message : "Erro ao carregar colaboradores.");
+110:      setMessage("Selecione um colaborador antes de registrar o dispositivo.");
+121:        employeeProfileId: selectedEmployeeId,
+158:      setMessage("Selecione um colaborador antes de enviar localização.");
+187:        employeeProfileId: selectedEmployeeId,
+267:                {employees.map((employee) => (
+268:                  <option key={employee.id} value={employee.id}>
+269:                    {formatEmployeeName(employee)} - {employee.status || "sem status"}
+295:                Recarregar colaboradores
+368:          Últimas localizações por colaborador
+385:                  <td className="px-3 py-2">{point.employeeProfileId || "-"}</td>
+425:                  <td className="px-3 py-2">{point.employeeProfileId || "-"}</td>
+
+### /opt/rh-saas/frontend-web/src/pages/Login.tsx
+3:import { apiRequest, setSession } from "../lib/api";
+54:      const response = await apiRequest<LoginResponse>("/v1/auth/login", {
+55:        method: "POST",
+95:                Controle colaboradores, ponto, documentos e auditoria em uma
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+3:import { apiRequest } from "../lib/api";
+21:    apiRequest(
+39:      titulo: "Funcionários",
+40:      valor: data.employees?.total ?? 0,
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx
+3:import { apiRequest } from "../lib/api";
+32:    employees: number;
+54:    apiRequest<ClientDetailsResponse>(
+213:              Funcionários:
+215:              {data.statistics.employees}
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+2:import { apiRequest } from "../lib/api";
+22:      apiRequest("/v1/super-admin/dashboard"),
+23:      apiRequest("/v1/super-admin/system/health"),
+24:      apiRequest("/v1/super-admin/system/database"),
+25:      apiRequest("/v1/super-admin/system/storage"),
+26:      apiRequest("/v1/super-admin/system/metrics"),
+27:      apiRequest("/v1/super-admin/system/services"),
+67:      titulo: "Funcionários",
+68:      valor: dashboard?.employees?.total ?? 0,
+120:          <div>API: {health?.api}</div>
+
+### /opt/rh-saas/frontend-web/src/pages/UsersPage.tsx
+2:import { apiRequest } from "../lib/api";
+16:  const [employeeId,setEmployeeId] =
+28:      await apiRequest<User[]>(
+39:  async function createUser() {
+41:    await apiRequest(
+44:        method: "POST",
+46:          employeeId,
+72:          value={employeeId}
+100:          onClick={createUser}
+

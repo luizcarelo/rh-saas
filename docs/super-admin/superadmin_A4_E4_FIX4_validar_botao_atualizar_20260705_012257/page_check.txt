@@ -1,0 +1,11 @@
+Arquivo: /opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx
+
+6:  listSuperAdminClients,
+51:  async function loadClients() {
+56:      const result = await listSuperAdminClients();
+74:    void loadClients();
+135:              onClick={() => void loadClients()}
+138:              Atualizar
+171:              Endpoint usado
+205:          Carregando clientes SaaS...
+215:            Nenhum cliente encontrado

@@ -1,0 +1,17 @@
+DO
+           table_name            | total 
+---------------------------------+-------
+ audit_events                    |    24
+ clock_events                    |     0
+ clock_events_foundation         |     0
+ clock_event_types               |    18
+ clock_justifications_foundation |     1
+ clock_policies                  |     1
+ clock_policy_event_types        |     4
+ location_tracking_points        |    29
+ time_bank                       |     0
+ time_bank_balances_foundation   |     3
+ time_records                    |     3
+ tmp_clock_counts                |    11
+(12 rows)
+

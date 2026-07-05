@@ -1,0 +1,1648 @@
+# FICHA_TECNICA_SISTEMA.md
+
+Ficha técnica do sistema RH SaaS.
+
+
+---
+
+# Módulo Funcionário — Escopo oficial
+
+## Escopo
+
+O módulo Funcionário será o núcleo operacional do RH SaaS.
+
+Nesta etapa, o trabalho será restrito a:
+
+- backend;
+- app admin web;
+- banco de dados.
+
+O app mobile não será implementado agora, mas o backend e o banco deverão ser preparados para consumo futuro pelo mobile.
+
+## Direção de produto
+
+O cadastro de funcionário deverá ser progressivo e modular.
+
+Não deverá ser criado um formulário único gigante.
+
+## Áreas futuras do módulo
+
+- cadastro mínimo;
+- dados pessoais;
+- endereço;
+- contrato;
+- jornada e ponto;
+- documentos;
+- dependentes;
+- benefícios;
+- financeiro e bancário;
+- saúde e segurança;
+- vínculo com usuário;
+- auditoria;
+- pendências e notificações.
+
+---
+
+# Módulo Funcionário — Cadastro progressivo
+
+## Regra principal
+
+O cadastro de funcionário deverá ser progressivo.
+
+O sistema não deverá exigir todos os dados da ficha completa no primeiro momento.
+
+O funcionário deverá nascer com um cadastro mínimo operacional e depois ser complementado por etapas.
+
+## Cadastro mínimo operacional
+
+O cadastro mínimo atual identificado para criação do funcionário é:
+
+- firstName;
+- lastName;
+- cpf;
+- email;
+- department;
+- jobTitle;
+- admissionDate.
+
+Esse cadastro mínimo permite criar o registro inicial do funcionário.
+
+## Ficha completa por etapas
+
+Após o pré-cadastro, a ficha deverá ser completada em etapas:
+
+- dados pessoais;
+- endereço;
+- contrato;
+- jornada e ponto;
+- documentos;
+- dependentes;
+- benefícios;
+- financeiro e bancário;
+- saúde e segurança;
+- vínculo com usuário;
+- auditoria;
+- pendências e notificações.
+
+## Status sugeridos
+
+O módulo deverá prever status de ciclo de vida do funcionário:
+
+- DRAFT;
+- PENDING_COMPLETION;
+- ACTIVE;
+- INACTIVE;
+- TERMINATED.
+
+## Regras de ativação
+
+O funcionário só deverá ser considerado ativo quando os requisitos mínimos definidos para o tenant e módulos ativos forem atendidos.
+
+Exemplos de requisitos futuros:
+
+- cadastro mínimo preenchido;
+- CPF válido;
+- e-mail informado;
+- departamento definido;
+- cargo/função definidos;
+- data de admissão preenchida;
+- contrato completo, quando exigido;
+- endereço completo, quando exigido;
+- documentos obrigatórios aprovados, quando exigido;
+- jornada configurada, quando módulo de ponto estiver ativo;
+- usuário vinculado, quando acesso ao app/portal for necessário.
+
+## Checklist de completude
+
+O admin web deverá futuramente exibir um checklist de completude da ficha do funcionário.
+
+O checklist deve indicar:
+
+- dados completos;
+- dados pendentes;
+- documentos pendentes;
+- documentos vencidos;
+- pendências de aprovação;
+- pendências que bloqueiam ativação.
+
+## Direção de interface
+
+A tela de cadastro não deve ser um formulário único gigante.
+
+A interface deverá usar:
+
+- etapas;
+- abas;
+- cards de pendência;
+- checklist;
+- salvamento parcial;
+- validação por etapa.
+
+## Fora de escopo nesta parte
+
+Esta parte não implementa:
+
+- novas tabelas;
+- novos endpoints;
+- alteração no admin web;
+- alteração no backend;
+- alteração no banco;
+- criação de funcionário;
+- validação operacional.
+
+Esta parte registra apenas a regra de cadastro progressivo.
+
+---
+
+# Módulo Funcionário — Módulos funcionais da ficha
+
+## Regra principal
+
+A ficha do funcionário deverá ser organizada em módulos funcionais.
+
+Cada módulo deverá ter sua própria finalidade, permissões, campos, validações e evolução técnica.
+
+## Módulos funcionais previstos
+
+### 1. Resumo
+
+Objetivo:
+
+- apresentar visão geral do funcionário;
+- exibir status;
+- exibir pendências;
+- exibir alertas;
+- exibir checklist de completude.
+
+### 2. Dados pessoais
+
+Objetivo:
+
+- armazenar dados de identificação pessoal;
+- manter informações básicas do colaborador;
+- apoiar admissão, documentos, benefícios e folha.
+
+Exemplos de campos:
+
+- nome completo;
+- nome social;
+- CPF;
+- RG;
+- data de nascimento;
+- e-mail;
+- telefone;
+- nacionalidade;
+- estado civil.
+
+### 3. Endereço
+
+Objetivo:
+
+- registrar endereço residencial;
+- permitir integração futura com consulta de CEP;
+- apoiar admissão, benefícios, documentos e folha.
+
+Exemplos de campos:
+
+- CEP;
+- logradouro;
+- número;
+- complemento;
+- bairro;
+- cidade;
+- UF;
+- país.
+
+### 4. Contrato
+
+Objetivo:
+
+- registrar informações da relação de trabalho;
+- apoiar admissão, folha, gestão e relatórios.
+
+Exemplos de campos:
+
+- matrícula;
+- data de admissão;
+- tipo de contrato;
+- cargo;
+- função;
+- departamento;
+- centro de custo;
+- gestor;
+- filial/unidade;
+- regime de trabalho.
+
+### 5. Jornada e ponto
+
+Objetivo:
+
+- preparar o funcionário para módulos de ponto, jornada, banco de horas e escalas.
+
+Exemplos de campos:
+
+- jornada;
+- escala;
+- carga horária;
+- tolerância;
+- local de trabalho;
+- regime presencial, híbrido ou remoto.
+
+### 6. Documentos
+
+Objetivo:
+
+- armazenar documentos físicos/digitais do funcionário;
+- permitir upload;
+- controlar validade;
+- controlar aprovação;
+- gerar pendências;
+- preparar avisos futuros no app mobile.
+
+Exemplos de documentos:
+
+- RG;
+- CPF;
+- CNH;
+- certidões;
+- comprovante de residência;
+- contrato;
+- ASO;
+- certificados;
+- termos assinados.
+
+### 7. Dependentes
+
+Objetivo:
+
+- registrar dependentes e familiares quando necessário;
+- apoiar benefícios, folha, imposto e plano de saúde.
+
+Exemplos de campos:
+
+- nome;
+- CPF;
+- data de nascimento;
+- grau de parentesco;
+- vínculo com benefício.
+
+### 8. Benefícios
+
+Objetivo:
+
+- registrar benefícios concedidos ao funcionário;
+- permitir controle de início, fim, custo e status.
+
+Exemplos:
+
+- vale transporte;
+- vale refeição;
+- vale alimentação;
+- plano de saúde;
+- plano odontológico;
+- seguro de vida;
+- auxílio home office;
+- auxílio combustível.
+
+### 9. Financeiro e bancário
+
+Objetivo:
+
+- registrar dados bancários e informações financeiras de RH;
+- manter acesso restrito por permissão.
+
+Exemplos:
+
+- banco;
+- agência;
+- conta;
+- tipo de conta;
+- PIX;
+- salário;
+- histórico salarial;
+- reajustes.
+
+### 10. Saúde e segurança
+
+Objetivo:
+
+- controlar dados de SST e saúde ocupacional com acesso restrito.
+
+Exemplos:
+
+- ASO;
+- exames ocupacionais;
+- restrições médicas;
+- EPI;
+- treinamentos obrigatórios;
+- CAT;
+- PCMSO.
+
+### 11. Usuário vinculado
+
+Objetivo:
+
+- controlar vínculo entre funcionário e usuário do sistema;
+- permitir acesso futuro ao portal/app.
+
+Fluxo previsto:
+
+- funcionário pode existir sem usuário;
+- usuário pode ser criado separadamente;
+- vínculo é realizado depois;
+- vínculo pode ser removido.
+
+### 12. Auditoria
+
+Objetivo:
+
+- registrar eventos relevantes da ficha do funcionário;
+- manter histórico de alterações;
+- apoiar LGPD, segurança e rastreabilidade.
+
+Eventos sugeridos:
+
+- funcionário criado;
+- dados alterados;
+- documento enviado;
+- documento aprovado;
+- documento rejeitado;
+- usuário vinculado;
+- usuário desvinculado;
+- funcionário inativado.
+
+### 13. Pendências e notificações
+
+Objetivo:
+
+- registrar pendências operacionais do funcionário;
+- preparar notificações futuras para app mobile.
+
+Exemplos:
+
+- documento pendente;
+- documento vencido;
+- documento a vencer;
+- documento rejeitado;
+- completar dados cadastrais;
+- completar endereço;
+- configurar jornada;
+- vincular usuário.
+
+## Regra de interface
+
+A tela de detalhes do funcionário deverá ser organizada em abas ou seções, evitando formulário único gigante.
+
+## Regra de permissão
+
+Nem todos os módulos devem ficar disponíveis para todos os perfis.
+
+Exemplos de áreas restritas:
+
+- financeiro;
+- bancário;
+- saúde e segurança;
+- documentos sensíveis;
+- auditoria.
+
+## Fora de escopo nesta parte
+
+Esta parte não implementa:
+
+- tabelas;
+- endpoints;
+- telas;
+- upload;
+- notificações;
+- validação operacional.
+
+Esta parte registra apenas os módulos funcionais previstos para a ficha do funcionário.
+
+---
+
+# Módulo Funcionário — Responsabilidades por camada
+
+## Regra principal
+
+O módulo Funcionário deverá separar claramente as responsabilidades entre:
+
+- backend;
+- banco de dados;
+- app admin web;
+- preparação futura para app mobile.
+
+Nesta etapa do projeto, a implementação efetiva ficará restrita a backend, app admin web e banco de dados.
+
+O app mobile será preparado por contratos, dados, endpoints futuros e estrutura de pendências, mas não será implementado agora.
+
+---
+
+## 1. Responsabilidades do backend
+
+O backend será a fonte oficial das regras do módulo Funcionário.
+
+Responsabilidades do backend:
+
+- validar campos obrigatórios;
+- validar formato de CPF, e-mail e datas;
+- controlar tenantId;
+- aplicar regras de permissão;
+- aplicar regras de status do funcionário;
+- aplicar regras de ativação;
+- centralizar regras de documentos;
+- controlar upload e metadados de documentos;
+- controlar status de documentos;
+- controlar validade e vencimento de documentos;
+- gerar pendências operacionais;
+- preparar dados para notificações futuras;
+- registrar auditoria;
+- expor endpoints para o app admin web;
+- preparar endpoints futuros para app mobile.
+
+O backend não deve depender exclusivamente do frontend para validar regras importantes.
+
+---
+
+## 2. Responsabilidades do banco de dados
+
+O banco deverá representar o módulo Funcionário de forma modular.
+
+Responsabilidades do banco:
+
+- manter o núcleo do funcionário;
+- manter dados complementares em tabelas próprias;
+- evitar concentração de todos os dados em uma única tabela gigante;
+- preservar tenantId nas entidades relacionadas;
+- permitir auditoria e histórico;
+- permitir versionamento de documentos;
+- permitir controle de documentos vencidos;
+- permitir pendências para o funcionário;
+- permitir integração futura com app mobile.
+
+Estrutura modular futura sugerida:
+
+- employees;
+- employee_personal_data;
+- employee_addresses;
+- employee_contracts;
+- employee_documents;
+- employee_document_types;
+- employee_dependents;
+- employee_benefits;
+- employee_bank_accounts;
+- employee_salary_history;
+- employee_health_records;
+- employee_user_links;
+- employee_audit_logs;
+- employee_notifications;
+- employee_pending_actions.
+
+---
+
+## 3. Responsabilidades do app admin web
+
+O app admin web será a interface principal de gestão do módulo Funcionário nesta etapa.
+
+Responsabilidades do app admin web:
+
+- listar funcionários;
+- criar pré-cadastro;
+- visualizar detalhes do funcionário;
+- completar ficha por etapas;
+- exibir checklist de completude;
+- exibir pendências;
+- gerenciar documentos;
+- enviar documentos pelo RH;
+- aprovar documentos;
+- rejeitar documentos com motivo;
+- visualizar documentos vencidos ou a vencer;
+- vincular usuário ao funcionário;
+- desvincular usuário;
+- consultar histórico e auditoria;
+- respeitar permissões por perfil.
+
+O admin web não deverá concentrar todas as regras de negócio. Regras críticas deverão permanecer no backend.
+
+---
+
+## 4. Preparação para app mobile
+
+O app mobile não será implementado nesta etapa.
+
+Mesmo assim, backend e banco deverão ficar preparados para recursos futuros:
+
+- consulta do perfil do funcionário;
+- consulta de documentos do funcionário;
+- consulta de pendências;
+- documentos vencidos;
+- documentos a vencer;
+- upload futuro de documentos;
+- envio de nova versão;
+- notificações in-app;
+- push notification futura;
+- histórico de pendências.
+
+Endpoints futuros sugeridos:
+
+- GET /v1/me/profile;
+- GET /v1/me/documents;
+- POST /v1/me/documents/:documentTypeId/upload;
+- GET /v1/me/document-pendencies;
+- GET /v1/me/pending-actions.
+
+---
+
+## 5. Responsabilidades de permissões
+
+O módulo deverá separar dados por nível de acesso.
+
+Dados comuns:
+
+- nome;
+- e-mail;
+- departamento;
+- cargo;
+- data de admissão.
+
+Dados restritos:
+
+- CPF;
+- RG;
+- endereço;
+- documentos pessoais;
+- dependentes;
+- dados bancários;
+- salário.
+
+Dados sensíveis/restritos especiais:
+
+- saúde;
+- ASO;
+- restrições médicas;
+- exames ocupacionais;
+- biometria, se houver.
+
+Perfis futuros poderão incluir:
+
+- SUPER_ADMIN;
+- TENANT_ADMIN;
+- RH_ADMIN;
+- MANAGER;
+- EMPLOYEE;
+- SST_ADMIN;
+- FINANCE_ADMIN.
+
+---
+
+## 6. Responsabilidades de auditoria
+
+Eventos relevantes deverão gerar auditoria.
+
+Eventos sugeridos:
+
+- funcionário criado;
+- funcionário atualizado;
+- funcionário ativado;
+- funcionário inativado;
+- documento enviado;
+- documento aprovado;
+- documento rejeitado;
+- documento substituído;
+- documento vencido;
+- usuário vinculado;
+- usuário desvinculado;
+- dados sensíveis acessados;
+- dados financeiros acessados;
+- pendência criada;
+- pendência resolvida.
+
+---
+
+## 7. Responsabilidades de LGPD e segurança
+
+O módulo Funcionário deverá respeitar princípios de necessidade, finalidade, segurança e rastreabilidade.
+
+Regras recomendadas:
+
+- coletar apenas dados necessários por etapa;
+- separar dados sensíveis;
+- controlar acesso por perfil;
+- registrar auditoria de acesso a documentos;
+- evitar exposição de documentos em URLs públicas;
+- usar storage privado;
+- usar URLs temporárias para download;
+- mascarar dados sensíveis em listagens;
+- manter logs de acesso;
+- permitir rastreabilidade de alterações.
+
+---
+
+## 8. Fora de escopo nesta parte
+
+Esta parte não implementa:
+
+- tabelas;
+- migrations;
+- endpoints;
+- telas;
+- upload;
+- validação operacional;
+- app mobile;
+- alteração de permissões reais.
+
+Esta parte registra apenas as responsabilidades por camada do módulo Funcionário.
+
+---
+
+# Resumo consolidado — Visão macro do módulo Funcionário
+
+## Escopo consolidado
+
+O módulo Funcionário será tratado como núcleo operacional do RH SaaS.
+
+Nesta etapa, o trabalho de implementação ficará restrito a:
+
+- backend;
+- app admin web;
+- banco de dados.
+
+O app mobile não será implementado agora, mas o backend e o banco deverão deixar estrutura preparada para consumo futuro.
+
+## Direção de produto
+
+O cadastro de funcionário será progressivo e modular.
+
+Não será adotado formulário único gigante.
+
+## Cadastro progressivo
+
+O funcionário poderá nascer com cadastro mínimo operacional e ter sua ficha complementada por etapas.
+
+Cadastro mínimo atual identificado:
+
+- firstName;
+- lastName;
+- cpf;
+- email;
+- department;
+- jobTitle;
+- admissionDate.
+
+## Status sugeridos
+
+- DRAFT;
+- PENDING_COMPLETION;
+- ACTIVE;
+- INACTIVE;
+- TERMINATED.
+
+## Módulos funcionais previstos
+
+- resumo;
+- dados pessoais;
+- endereço;
+- contrato;
+- jornada e ponto;
+- documentos;
+- dependentes;
+- benefícios;
+- financeiro e bancário;
+- saúde e segurança;
+- usuário vinculado;
+- auditoria;
+- pendências e notificações.
+
+## Responsabilidades por camada
+
+Backend:
+
+- validações;
+- regras de negócio;
+- permissões;
+- auditoria;
+- documentos;
+- pendências;
+- preparação mobile.
+
+Banco:
+
+- estrutura modular;
+- tenantId;
+- histórico;
+- documentos;
+- pendências;
+- preparação mobile.
+
+Admin web:
+
+- listagem;
+- pré-cadastro;
+- detalhes;
+- abas/seções;
+- documentos;
+- pendências;
+- vínculo com usuário;
+- auditoria.
+
+Mobile futuro:
+
+- perfil;
+- documentos;
+- pendências;
+- upload futuro;
+- notificações futuras.
+
+---
+
+# Decisão técnica — P1B Visão macro do módulo Funcionário
+
+Data: 20260705_154204
+
+## Decisão
+
+A visão macro do módulo Funcionário fica consolidada na ficha técnica do sistema.
+
+## Premissas oficiais
+
+- O módulo Funcionário é núcleo operacional do RH SaaS.
+- O foco atual é backend, app admin web e banco de dados.
+- O app mobile será preparado por estrutura e contrato, mas não implementado nesta etapa.
+- O cadastro será progressivo e modular.
+- A ficha do funcionário será organizada por módulos.
+- Dados sensíveis, financeiros e documentos exigirão permissões e auditoria.
+- Implementações futuras deverão ocorrer em fases pequenas.
+
+## Próximo bloco documental
+
+Após esta consolidação, o próximo passo será:
+
+```text
+Admin-A1-FUNC-RULES-P1C — Registrar modelo de dados do módulo Funcionário
+```
+
+---
+
+# Módulo Funcionário — Modelo de dados conceitual
+
+## Regra principal
+
+O módulo Funcionário deverá evoluir com modelo de dados modular.
+
+A tabela `employees` deverá ser o núcleo do funcionário, mas dados especializados devem ficar em estruturas próprias.
+
+O objetivo é evitar uma tabela única gigante e permitir evolução por módulo, plano SaaS, permissão e finalidade.
+
+---
+
+## 1. Núcleo: employees
+
+Finalidade:
+
+- identificar o funcionário;
+- manter vínculo com tenant;
+- armazenar campos mínimos operacionais;
+- controlar status principal;
+- servir como raiz para os módulos complementares.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- firstName;
+- lastName;
+- cpf;
+- email;
+- department;
+- jobTitle;
+- admissionDate;
+- isActive;
+- status futuro;
+- createdAt;
+- updatedAt.
+
+Contrato atual mapeado para criação:
+
+- firstName;
+- lastName;
+- cpf;
+- email;
+- department;
+- jobTitle;
+- admissionDate.
+
+---
+
+## 2. Dados pessoais: employee_personal_data
+
+Finalidade:
+
+- guardar dados pessoais complementares;
+- separar dados cadastrais do núcleo operacional.
+
+Campos conceituais:
+
+- employeeId;
+- fullName;
+- socialName;
+- birthDate;
+- gender;
+- maritalStatus;
+- nationality;
+- birthCity;
+- birthState;
+- motherName;
+- fatherName;
+- personalEmail;
+- mobilePhone;
+- secondaryPhone;
+- photoFileId.
+
+---
+
+## 3. Endereço: employee_addresses
+
+Finalidade:
+
+- registrar endereço residencial;
+- permitir integração com CEP;
+- apoiar admissão, documentos, benefícios e folha.
+
+Campos conceituais:
+
+- employeeId;
+- cep;
+- street;
+- number;
+- complement;
+- district;
+- city;
+- state;
+- country;
+- ibgeCode;
+- isPrimary;
+- createdAt;
+- updatedAt.
+
+---
+
+## 4. Contrato: employee_contracts
+
+Finalidade:
+
+- registrar dados contratuais e vínculo de trabalho.
+
+Campos conceituais:
+
+- employeeId;
+- registrationNumber;
+- contractType;
+- admissionDate;
+- terminationDate;
+- department;
+- jobTitle;
+- jobFunction;
+- costCenterId;
+- branchId;
+- managerEmployeeId;
+- workMode;
+- status;
+- createdAt;
+- updatedAt.
+
+---
+
+## 5. Jornada e ponto: employee_work_settings
+
+Finalidade:
+
+- armazenar configurações necessárias para ponto, jornada, escala e banco de horas.
+
+Campos conceituais:
+
+- employeeId;
+- scheduleId;
+- workJourneyId;
+- expectedMinutesPerDay;
+- toleranceMinutes;
+- workLocationId;
+- geofenceId;
+- timeTrackingEnabled;
+- liveTrackingEnabled;
+- createdAt;
+- updatedAt.
+
+---
+
+## 6. Tipos de documentos: employee_document_types
+
+Finalidade:
+
+- configurar tipos de documentos exigidos pelo tenant;
+- definir obrigatoriedade, validade, aprovação e visibilidade mobile.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- code;
+- name;
+- description;
+- category;
+- isRequired;
+- requiresExpirationDate;
+- defaultValidityMonths;
+- allowMultipleVersions;
+- requiresApproval;
+- employeeCanUpload;
+- mobileVisible;
+- blocksAdmission;
+- blocksAppAccess;
+- isSensitive;
+- isActive;
+- createdAt;
+- updatedAt.
+
+---
+
+## 7. Documentos: employee_documents
+
+Finalidade:
+
+- armazenar metadados de arquivos enviados;
+- controlar versão, validade, aprovação e substituição.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- employeeId;
+- documentTypeId;
+- fileId;
+- storageKey;
+- originalFileName;
+- mimeType;
+- fileSize;
+- documentNumber;
+- issueDate;
+- expirationDate;
+- status;
+- version;
+- uploadedByUserId;
+- approvedByUserId;
+- approvedAt;
+- rejectedByUserId;
+- rejectedAt;
+- rejectionReason;
+- replacedByDocumentId;
+- createdAt;
+- updatedAt.
+
+Status sugeridos:
+
+- PENDING;
+- UPLOADED;
+- UNDER_REVIEW;
+- APPROVED;
+- REJECTED;
+- EXPIRED;
+- REPLACED;
+- CANCELED.
+
+---
+
+## 8. Dependentes: employee_dependents
+
+Finalidade:
+
+- registrar dependentes e familiares necessários para benefícios, folha e documentos.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- employeeId;
+- name;
+- cpf;
+- birthDate;
+- relationship;
+- isIncomeTaxDependent;
+- isHealthPlanDependent;
+- documentFileId;
+- createdAt;
+- updatedAt.
+
+---
+
+## 9. Benefícios: employee_benefits
+
+Finalidade:
+
+- controlar benefícios concedidos ao funcionário.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- employeeId;
+- benefitType;
+- provider;
+- startDate;
+- endDate;
+- employeeCost;
+- companyCost;
+- status;
+- notes;
+- createdAt;
+- updatedAt.
+
+---
+
+## 10. Dados bancários: employee_bank_accounts
+
+Finalidade:
+
+- registrar dados bancários com acesso restrito.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- employeeId;
+- bankCode;
+- bankName;
+- agency;
+- accountNumber;
+- accountDigit;
+- accountType;
+- pixKey;
+- holderName;
+- holderDocument;
+- isPrimary;
+- createdAt;
+- updatedAt.
+
+---
+
+## 11. Histórico salarial: employee_salary_history
+
+Finalidade:
+
+- controlar salário e reajustes com acesso restrito.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- employeeId;
+- salaryAmount;
+- salaryType;
+- effectiveDate;
+- reason;
+- approvedByUserId;
+- createdAt;
+- updatedAt.
+
+---
+
+## 12. Saúde e segurança: employee_health_records
+
+Finalidade:
+
+- registrar dados de SST e saúde ocupacional com permissão especial.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- employeeId;
+- recordType;
+- documentId;
+- issueDate;
+- expirationDate;
+- status;
+- notes;
+- restrictedAccess;
+- createdAt;
+- updatedAt.
+
+---
+
+## 13. Vínculo com usuário: employee_user_links
+
+Finalidade:
+
+- registrar vínculo entre funcionário e usuário do sistema;
+- preparar acesso ao portal/app.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- employeeId;
+- userId;
+- linkedAt;
+- unlinkedAt;
+- status;
+- createdAt;
+- updatedAt.
+
+Observação:
+
+O contrato atual já possui endpoints para vínculo:
+
+- PUT /v1/employees/:id/link-user;
+- DELETE /v1/employees/:id/link-user.
+
+---
+
+## 14. Auditoria: employee_audit_logs
+
+Finalidade:
+
+- registrar eventos relevantes da ficha do funcionário.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- employeeId;
+- actorUserId;
+- action;
+- entityType;
+- entityId;
+- beforeData;
+- afterData;
+- metadata;
+- createdAt.
+
+Eventos sugeridos:
+
+- EMPLOYEE_CREATED;
+- EMPLOYEE_UPDATED;
+- EMPLOYEE_ACTIVATED;
+- EMPLOYEE_INACTIVATED;
+- DOCUMENT_UPLOADED;
+- DOCUMENT_APPROVED;
+- DOCUMENT_REJECTED;
+- DOCUMENT_EXPIRED;
+- USER_LINKED;
+- USER_UNLINKED;
+- SENSITIVE_DATA_VIEWED.
+
+---
+
+## 15. Pendências: employee_pending_actions
+
+Finalidade:
+
+- registrar pendências operacionais para admin web e app mobile futuro.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- employeeId;
+- type;
+- title;
+- description;
+- severity;
+- dueDate;
+- relatedEntityType;
+- relatedEntityId;
+- status;
+- resolvedAt;
+- createdAt;
+- updatedAt.
+
+Tipos sugeridos:
+
+- COMPLETE_PROFILE;
+- COMPLETE_ADDRESS;
+- UPLOAD_DOCUMENT;
+- DOCUMENT_EXPIRED;
+- DOCUMENT_EXPIRING_SOON;
+- DOCUMENT_REJECTED;
+- CONFIGURE_SCHEDULE;
+- LINK_USER;
+- REVIEW_REQUIRED.
+
+---
+
+## 16. Notificações: employee_notifications
+
+Finalidade:
+
+- preparar notificações futuras para admin web e app mobile.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- employeeId;
+- userId;
+- type;
+- channel;
+- title;
+- message;
+- status;
+- readAt;
+- sentAt;
+- createdAt.
+
+Canais futuros:
+
+- in_app;
+- push;
+- email.
+
+---
+
+## 17. Regras gerais do modelo
+
+- Toda tabela operacional deve possuir tenantId quando aplicável.
+- Dados sensíveis devem ficar separados e protegidos por permissão.
+- Documentos devem usar storage privado.
+- Arquivos devem ser versionados.
+- Alterações críticas devem gerar auditoria.
+- Pendências devem ser armazenadas no backend/banco, mesmo antes do app mobile.
+- O modelo deve permitir evolução por módulo e por plano SaaS.
+
+---
+
+## Fora de escopo nesta parte
+
+Esta parte não cria tabelas reais, migrations, endpoints ou telas.
+
+Esta parte registra apenas o modelo de dados conceitual do módulo Funcionário.
+
+---
+
+# Módulo Funcionário — Regra de documentos, upload, validade e avisos
+
+## Regra principal
+
+O módulo Funcionário deverá possuir um sistema próprio para gestão de documentos do colaborador.
+
+Esse sistema deverá permitir:
+
+- cadastro de tipos de documentos;
+- upload de arquivos;
+- versionamento;
+- controle de validade;
+- aprovação e rejeição pelo RH;
+- histórico de substituição;
+- pendências;
+- avisos para o app mobile futuro;
+- auditoria;
+- permissões por perfil.
+
+Nesta etapa, a regra será registrada na ficha técnica. Nenhuma tabela, endpoint, tela ou migration será criada nesta parte.
+
+---
+
+## 1. Tipos de documentos previstos
+
+O sistema deverá permitir configurar tipos de documentos por tenant.
+
+Tipos iniciais recomendados:
+
+- RG;
+- CPF;
+- CNH;
+- certidão de nascimento;
+- certidão de casamento;
+- comprovante de residência;
+- Carteira de Trabalho Digital;
+- PIS/PASEP;
+- título de eleitor;
+- certificado militar;
+- comprovante de escolaridade;
+- certificados profissionais;
+- contrato de trabalho;
+- ASO admissional;
+- ASO periódico;
+- ASO demissional;
+- exames ocupacionais;
+- termos assinados;
+- outros documentos.
+
+---
+
+## 2. Configuração do tipo de documento
+
+Cada tipo de documento deverá possuir configurações próprias.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- code;
+- name;
+- description;
+- category;
+- isRequired;
+- requiresExpirationDate;
+- defaultValidityMonths;
+- allowMultipleVersions;
+- requiresApproval;
+- employeeCanUpload;
+- mobileVisible;
+- blocksAdmission;
+- blocksAppAccess;
+- isSensitive;
+- isActive;
+- createdAt;
+- updatedAt.
+
+---
+
+## 3. Categorias de documentos
+
+Categorias sugeridas:
+
+- identificação;
+- endereço;
+- contratação;
+- escolaridade;
+- benefícios;
+- saúde e segurança;
+- certificações;
+- termos;
+- outros.
+
+---
+
+## 4. Status do documento
+
+Status sugeridos para documentos do funcionário:
+
+- PENDING;
+- UPLOADED;
+- UNDER_REVIEW;
+- APPROVED;
+- REJECTED;
+- EXPIRED;
+- REPLACED;
+- CANCELED.
+
+Regra geral:
+
+- PENDING: documento exigido, mas ainda não enviado.
+- UPLOADED: arquivo enviado, aguardando regra interna.
+- UNDER_REVIEW: documento enviado e aguardando aprovação do RH.
+- APPROVED: documento aprovado.
+- REJECTED: documento rejeitado, exigindo novo envio.
+- EXPIRED: documento vencido.
+- REPLACED: documento substituído por versão mais nova.
+- CANCELED: documento cancelado administrativamente.
+
+---
+
+## 5. Dados do documento enviado
+
+Cada documento enviado deverá guardar metadados e não apenas o arquivo.
+
+Campos conceituais:
+
+- id;
+- tenantId;
+- employeeId;
+- documentTypeId;
+- fileId;
+- storageKey;
+- originalFileName;
+- mimeType;
+- fileSize;
+- documentNumber;
+- issueDate;
+- expirationDate;
+- status;
+- version;
+- uploadedByUserId;
+- approvedByUserId;
+- approvedAt;
+- rejectedByUserId;
+- rejectedAt;
+- rejectionReason;
+- replacedByDocumentId;
+- createdAt;
+- updatedAt.
+
+---
+
+## 6. Upload pelo app admin web
+
+O app admin web deverá permitir que o RH envie documentos em nome do funcionário.
+
+Fluxo:
+
+- RH acessa Funcionário > Documentos.
+- Seleciona o tipo de documento.
+- Envia arquivo.
+- Informa número, data de emissão e validade, quando aplicável.
+- O documento entra em APPROVED ou UNDER_REVIEW conforme regra do tipo.
+- O sistema registra auditoria.
+
+---
+
+## 7. Upload futuro pelo app mobile
+
+O app mobile não será implementado agora.
+
+Mesmo assim, o módulo deve ser preparado para o funcionário enviar documentos futuramente.
+
+Fluxo futuro:
+
+- funcionário acessa Minhas pendências;
+- visualiza documento pendente, rejeitado, vencido ou a vencer;
+- toca em Enviar nova versão;
+- tira foto ou seleciona arquivo;
+- envia para o backend;
+- documento entra como UNDER_REVIEW;
+- RH aprova ou rejeita;
+- versão anterior vira REPLACED quando a nova for aprovada.
+
+---
+
+## 8. Validade e vencimento
+
+Documentos com validade deverão possuir expirationDate.
+
+Classificações futuras:
+
+- vencido: expirationDate menor que a data atual;
+- a vencer: expirationDate dentro da janela de aviso;
+- crítico: expirationDate dentro de janela curta de alerta.
+
+Janelas sugeridas:
+
+- aviso padrão: 30 dias antes do vencimento;
+- aviso crítico: 7 dias antes do vencimento.
+
+---
+
+## 9. Pendências automáticas
+
+O sistema deverá gerar pendências quando houver documentos:
+
+- obrigatórios pendentes;
+- rejeitados;
+- vencidos;
+- próximos do vencimento;
+- aguardando aprovação;
+- bloqueando ativação;
+- bloqueando acesso ao app, quando configurado.
+
+Tipos sugeridos de pendência:
+
+- DOCUMENT_PENDING_UPLOAD;
+- DOCUMENT_PENDING_REVIEW;
+- DOCUMENT_REJECTED;
+- DOCUMENT_EXPIRED;
+- DOCUMENT_EXPIRING_SOON;
+- DOCUMENT_BLOCKS_ADMISSION;
+- DOCUMENT_BLOCKS_APP_ACCESS.
+
+---
+
+## 10. Avisos para o app mobile futuro
+
+O backend e o banco deverão preparar dados para alertas no app mobile.
+
+Exemplos de mensagens futuras:
+
+- Sua CNH está vencida. Envie uma nova versão válida.
+- Seu comprovante de residência vence em breve.
+- Seu documento foi rejeitado pelo RH. Verifique o motivo e envie novamente.
+- Existe documento obrigatório pendente para completar sua ficha.
+
+Canais futuros:
+
+- notificação in-app;
+- push notification;
+- e-mail opcional;
+- badge no menu Documentos.
+
+---
+
+## 11. Versionamento de documentos
+
+Quando um funcionário enviar nova versão de um documento:
+
+- a nova versão deve ser registrada com version incrementado;
+- a versão anterior deve ser preservada;
+- a versão anterior deve virar REPLACED quando a nova for aprovada;
+- o histórico deve ser mantido;
+- o vínculo replacedByDocumentId deve indicar substituição.
+
+---
+
+## 12. Aprovação e rejeição
+
+Documentos que exigem aprovação deverão seguir fluxo:
+
+- upload;
+- UNDER_REVIEW;
+- aprovação ou rejeição pelo RH;
+- se aprovado: APPROVED;
+- se rejeitado: REJECTED com rejectionReason;
+- gerar pendência de novo envio quando rejeitado.
+
+---
+
+## 13. Segurança de arquivos
+
+Regras recomendadas:
+
+- storage privado;
+- não expor arquivo por URL pública permanente;
+- usar URL temporária para visualização/download;
+- limitar tamanho do arquivo;
+- aceitar inicialmente PDF, JPG e PNG;
+- registrar auditoria de upload;
+- registrar auditoria de download/visualização;
+- controlar permissão por perfil;
+- separar documentos sensíveis;
+- mascarar informações em listagens quando necessário.
+
+---
+
+## 14. Documentos sensíveis
+
+Documentos de saúde e segurança deverão ter permissão especial.
+
+Exemplos:
+
+- ASO;
+- exames ocupacionais;
+- restrições médicas;
+- CAT;
+- PCMSO;
+- documentos de saúde.
+
+Esses documentos deverão ficar visíveis apenas para perfis autorizados.
+
+---
+
+## 15. Endpoints futuros sugeridos
+
+Admin web:
+
+- GET /v1/employees/:employeeId/documents;
+- POST /v1/employees/:employeeId/documents;
+- GET /v1/employees/:employeeId/documents/:documentId;
+- PUT /v1/employees/:employeeId/documents/:documentId/approve;
+- PUT /v1/employees/:employeeId/documents/:documentId/reject;
+- DELETE /v1/employees/:employeeId/documents/:documentId.
+
+App mobile futuro:
+
+- GET /v1/me/documents;
+- POST /v1/me/documents/:documentTypeId/upload;
+- GET /v1/me/document-pendencies.
+
+Tipos de documentos:
+
+- GET /v1/document-types;
+- POST /v1/document-types;
+- PUT /v1/document-types/:id;
+- DELETE /v1/document-types/:id.
+
+---
+
+## 16. Regra de implementação futura
+
+A implementação do módulo de documentos deverá ocorrer em fases separadas:
+
+- auditar módulo documents existente;
+- auditar storage atual;
+- definir tabelas;
+- criar migrations;
+- criar entities;
+- criar DTOs;
+- criar services;
+- criar controllers;
+- criar admin web;
+- validar upload admin;
+- validar aprovação/rejeição;
+- validar vencimentos;
+- preparar pendências mobile.
+
+---
+
+## Fora de escopo nesta parte
+
+Esta parte não implementa:
+
+- tabelas;
+- migrations;
+- entities;
+- DTOs;
+- controllers;
+- services;
+- telas;
+- upload real;
+- notificações reais;
+- app mobile.
+
+Esta parte registra apenas a regra técnica de documentos do funcionário.

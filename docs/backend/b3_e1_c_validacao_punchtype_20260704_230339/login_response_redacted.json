@@ -1,0 +1,9 @@
+{
+  "access_token": "[REDACTED length=312]",
+  "user_info": {
+    "sub": "5ee2bff9-27d9-42bc-aef5-d82147ced930",
+    "email": "admin@empresa.com",
+    "tenantId": "11446a8f-ed2c-468e-9be1-3409beb12d3c",
+    "role": "ADMIN"
+  }
+}

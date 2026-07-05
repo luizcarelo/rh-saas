@@ -1,0 +1,49 @@
+Arquivo: /opt/rh-saas/frontend-web/src/pages/SuperAdminClientCreatePage.tsx
+
+6:  listSuperAdminClientPlans,
+12:  tradeName: string;
+13:  legalName: string;
+14:  slug: string;
+15:  documentNumber: string;
+16:  planId: string;
+20:  tradeName: '',
+21:  legalName: '',
+22:  slug: '',
+23:  documentNumber: '',
+24:  planId: '',
+31:function slugify(value: string) {
+81:    return plans.find((plan) => plan.id === form.planId);
+82:  }, [form.planId, plans]);
+94:      tradeName: value,
+95:      slug: current.slug || slugify(value),
+104:      const loadedPlans = await listSuperAdminClientPlans();
+112:          planId: current.planId || defaultPlan.id,
+131:      tradeName: form.tradeName.trim(),
+132:      legalName: form.legalName.trim(),
+133:      slug: form.slug.trim(),
+134:      documentNumber: onlyDigits(form.documentNumber),
+135:      planId: form.planId,
+147:    if (!payload.tradeName) {
+152:    if (!payload.legalName) {
+157:    if (!payload.slug) {
+158:      setError('Informe o slug do cliente SaaS.');
+162:    if (!payload.documentNumber) {
+163:      setError('Informe o CNPJ/documento do cliente SaaS.');
+167:    if (!payload.planId) {
+231:            slug, documento e plano.
+238:              Nome fantasia *
+241:              value={form.tradeName}
+250:              Razão social *
+253:              value={form.legalName}
+254:              onChange={(event) => updateField('legalName', event.target.value)}
+265:              value={form.slug}
+267:                updateField('slug', slugify(event.target.value))
+279:              CNPJ/documento *
+282:              value={form.documentNumber}
+284:                updateField('documentNumber', onlyDigits(event.target.value))
+297:                value={form.planId}
+298:                onChange={(event) => updateField('planId', event.target.value)}
+318:                Atualizar planos
+359:            {submitting ? 'Criando cliente...' : 'Criar Cliente SaaS'}
+367:          Esta tela já usa o DTO real confirmado no teste controlado: tradeName,
+368:          legalName, slug, documentNumber e planId.

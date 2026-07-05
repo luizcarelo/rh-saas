@@ -1,0 +1,129 @@
+/opt/rh-saas/frontend-web/src/App.tsx:1:import { BrowserRouter, Route, Routes } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/App.tsx:7:import { ProtectedRoute } from "./components/ProtectedRoute";
+/opt/rh-saas/frontend-web/src/App.tsx:38:    <BrowserRouter>
+/opt/rh-saas/frontend-web/src/App.tsx:39:      <Routes>
+/opt/rh-saas/frontend-web/src/App.tsx:41:        <Route
+/opt/rh-saas/frontend-web/src/App.tsx:42:          path="/login"
+/opt/rh-saas/frontend-web/src/App.tsx:46:        <Route element={<ProtectedRoute />}>
+/opt/rh-saas/frontend-web/src/App.tsx:47:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx:49:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:50:              path="/"
+/opt/rh-saas/frontend-web/src/App.tsx:54:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:55:              path="/colaboradores"
+/opt/rh-saas/frontend-web/src/App.tsx:59:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:60:            path="/colaboradores/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:65:<Route
+/opt/rh-saas/frontend-web/src/App.tsx:66:  path="/documentos"
+/opt/rh-saas/frontend-web/src/App.tsx:70:<Route
+/opt/rh-saas/frontend-web/src/App.tsx:71:  path="/usuarios"
+/opt/rh-saas/frontend-web/src/App.tsx:74:<Route
+/opt/rh-saas/frontend-web/src/App.tsx:75:  path="/analytics"
+/opt/rh-saas/frontend-web/src/App.tsx:79:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:80:              path="/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:84:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:85:              path="/ponto"
+/opt/rh-saas/frontend-web/src/App.tsx:89:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:90:              path="/registrar-ponto"
+/opt/rh-saas/frontend-web/src/App.tsx:95:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:96:              path="/live-tracking-foundation"
+/opt/rh-saas/frontend-web/src/App.tsx:100:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:101:              path="/super-admin"
+/opt/rh-saas/frontend-web/src/App.tsx:109:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:110:              path="/super-admin/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx:118:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:119:              path="/super-admin/clientes/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:127:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:128:              path="/super-admin/clientes/:id/dashboard"
+/opt/rh-saas/frontend-web/src/App.tsx:136:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:137:              path="/super-admin/clientes/:id/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:145:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:146:              path="/super-admin/clientes/:id/modules"
+/opt/rh-saas/frontend-web/src/App.tsx:154:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:155:              path="/super-admin/clientes/:id/modules/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:163:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:164:              path="/super-admin/planos"
+/opt/rh-saas/frontend-web/src/App.tsx:172:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:173:              path="/super-admin/planos/novo"
+/opt/rh-saas/frontend-web/src/App.tsx:181:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:182:              path="/super-admin/planos/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:190:          </Route>
+/opt/rh-saas/frontend-web/src/App.tsx:191:        </Route>
+/opt/rh-saas/frontend-web/src/App.tsx:193:        <Route element={<ProtectedRoute />}>
+/opt/rh-saas/frontend-web/src/App.tsx:194:<Route element={<EmployeeLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx:195:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:196:              path="/meu-painel"
+/opt/rh-saas/frontend-web/src/App.tsx:199:          </Route>
+/opt/rh-saas/frontend-web/src/App.tsx:200:        </Route>
+/opt/rh-saas/frontend-web/src/App.tsx:202:      </Routes>
+/opt/rh-saas/frontend-web/src/App.tsx:205:    </BrowserRouter>
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:10:import { NavLink, Outlet, useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:76:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:1:import { Outlet, useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:17:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:2:import { useParams } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:2:import { useParams } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:2:import { Link, useParams } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:2:import { Link } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:2:import { useParams } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:2:import { useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:40:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:2:import { Link, useParams } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:2:import { useParams } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:2:import { useParams } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:3:import { Link } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:12:import { Link } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:1:import { Navigate, Outlet } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:4:export function ProtectedRoute() {
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:8:    return <Navigate to="/login" replace />;
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:1:import { BrowserRouter, Route, Routes } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:7:import { ProtectedRoute } from "./components/ProtectedRoute";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:34:    <BrowserRouter>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:35:      <Routes>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:37:        <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:38:          path="/login"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:42:        <Route element={<ProtectedRoute />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:43:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:45:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:46:              path="/"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:50:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:51:              path="/colaboradores"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:55:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:56:            path="/colaboradores/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:61:<Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:62:  path="/documentos"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:67:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:68:              path="/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:72:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:73:              path="/ponto"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:77:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:78:              path="/registrar-ponto"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:82:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:83:              path="/super-admin"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:91:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:92:              path="/super-admin/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:100:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:101:              path="/super-admin/clientes/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:109:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:110:              path="/super-admin/clientes/:id/dashboard"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:118:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:119:              path="/super-admin/clientes/:id/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:127:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:128:              path="/super-admin/clientes/:id/modules"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:136:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:137:              path="/super-admin/clientes/:id/modules/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:145:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:146:              path="/super-admin/planos"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:154:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:155:              path="/super-admin/planos/novo"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:163:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:164:              path="/super-admin/planos/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:172:          </Route>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:173:        </Route>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:175:        <Route element={<ProtectedRoute />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:176:          <Route element={<EmployeeLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:177:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:178:              path="/meu-painel"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:181:          </Route>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:182:        </Route>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:184:      </Routes>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:187:    </BrowserRouter>

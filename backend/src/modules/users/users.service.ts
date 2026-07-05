@@ -1,3 +1,4 @@
+import { AuditService } from '../audit/audit.service';
 import { Injectable, ConflictException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -12,6 +13,8 @@ export class UsersService {
   constructor(
     @InjectRepository(User)
     private readonly userRepo: Repository<User>,
+
+    private readonly auditService: AuditService,
   ) {}
 
   async create(data: CreateUserDto) {
@@ -40,7 +43,18 @@ export class UsersService {
       isActive: true,
     });
 
-    return this.userRepo.save(user);
+    const savedUser =
+      await this.userRepo.save(user);
+
+    await this.auditService.create({
+      tenantId: savedUser.tenantId,
+      entityId: savedUser.id,
+      action: 'USER_CREATED',
+      entityType: 'User',
+      details: savedUser.email,
+    });
+
+    return savedUser;
   }
 
   async findByEmail(email: string) {
@@ -56,11 +70,15 @@ export class UsersService {
   }
 
   async findAll() {
-    return this.userRepo.find({
+
+    const users = await this.userRepo.find({
       order: {
         email: 'ASC',
       },
     });
-  }
 
+    return users.map(
+      ({ passwordHash, ...user }) => user,
+    );
+  }
 }

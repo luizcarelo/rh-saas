@@ -1,0 +1,22 @@
+=================================================
+BACKUPS APP CHECK
+Data: 20260705_005944
+=================================================
+
+## Backups candidatos
+-------------------------------------------------
+/opt/rh-saas/backups/sprint_superadmin_A4_E4_listagem_real_clientes_20260705_004706/App.tsx.bak
+/opt/rh-saas/backups/sprint_superadmin_A4_D_validation_publicar_placeholders_20260705_002817/App.tsx.bak
+/opt/rh-saas/backups/sprint_superadmin_A4_D_validation_publicar_placeholders_20260705_002725/App.tsx.bak
+/opt/rh-saas/backups/sprint_superadmin_A4_D_placeholders_rotas_20260705_001217/App.tsx.bak
+/opt/rh-saas/backups/sprint_superadmin_A4_D_fix_placeholders_rotas_20260705_001324/App.tsx.bak
+/opt/rh-saas/backups/sprint_superadmin_A4_D_fix2_build_placeholders_20260705_001639/App.tsx.bak
+
+## Backups com rotas Super Admin e sem contaminação
+-------------------------------------------------
+/opt/rh-saas/backups/sprint_superadmin_A4_E4_listagem_real_clientes_20260705_004706/App.tsx.bak | HAS_BROWSER=SIM | HAS_SUPER=SIM | HAS_CONTAMINATION=NAO
+/opt/rh-saas/backups/sprint_superadmin_A4_D_validation_publicar_placeholders_20260705_002817/App.tsx.bak | HAS_BROWSER=SIM | HAS_SUPER=SIM | HAS_CONTAMINATION=NAO
+/opt/rh-saas/backups/sprint_superadmin_A4_D_validation_publicar_placeholders_20260705_002725/App.tsx.bak | HAS_BROWSER=SIM | HAS_SUPER=SIM | HAS_CONTAMINATION=NAO
+/opt/rh-saas/backups/sprint_superadmin_A4_D_placeholders_rotas_20260705_001217/App.tsx.bak | HAS_BROWSER=SIM | HAS_SUPER=SIM | HAS_CONTAMINATION=NAO
+/opt/rh-saas/backups/sprint_superadmin_A4_D_fix_placeholders_rotas_20260705_001324/App.tsx.bak | HAS_BROWSER=SIM | HAS_SUPER=SIM | HAS_CONTAMINATION=NAO
+/opt/rh-saas/backups/sprint_superadmin_A4_D_fix2_build_placeholders_20260705_001639/App.tsx.bak | HAS_BROWSER=SIM | HAS_SUPER=SIM | HAS_CONTAMINATION=NAO

@@ -1,0 +1,7 @@
+endpoint	http_status	response_file
+/v1/foundation/clock/overview	200	/opt/rh-saas/docs/foundation/respostas_fase4C_clock_20260704_124003/v1-foundation-clock-overview.json
+/v1/foundation/clock/events	200	/opt/rh-saas/docs/foundation/respostas_fase4C_clock_20260704_124003/v1-foundation-clock-events.json
+/v1/foundation/clock/event-types	200	/opt/rh-saas/docs/foundation/respostas_fase4C_clock_20260704_124003/v1-foundation-clock-event-types.json
+/v1/foundation/clock/policies	200	/opt/rh-saas/docs/foundation/respostas_fase4C_clock_20260704_124003/v1-foundation-clock-policies.json
+/v1/foundation/clock/policy-event-types	200	/opt/rh-saas/docs/foundation/respostas_fase4C_clock_20260704_124003/v1-foundation-clock-policy-event-types.json
+/v1/foundation/clock/justifications	200	/opt/rh-saas/docs/foundation/respostas_fase4C_clock_20260704_124003/v1-foundation-clock-justifications.json

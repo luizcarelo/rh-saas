@@ -1,0 +1,34 @@
+Arquivo: /opt/rh-saas/frontend-web/src/pages/SuperAdminClientCreatePage.tsx
+
+12:  tradeName: string;
+13:  legalName: string;
+15:  documentNumber: string;
+16:  planId: string;
+20:  tradeName: '',
+21:  legalName: '',
+23:  documentNumber: '',
+24:  planId: '',
+81:    return plans.find((plan) => plan.id === form.planId);
+82:  }, [form.planId, plans]);
+84:  function updateField<K extends keyof FormState>(field: K, value: FormState[K]) {
+87:      value,
+94:      tradeName: value,
+112:          planId: current.planId || defaultPlan.id,
+131:      tradeName: form.tradeName.trim(),
+132:      legalName: form.legalName.trim(),
+134:      documentNumber: onlyDigits(form.documentNumber),
+135:      planId: form.planId,
+147:    if (!payload.tradeName) {
+152:    if (!payload.legalName) {
+162:    if (!payload.documentNumber) {
+167:    if (!payload.planId) {
+241:              value={form.tradeName}
+253:              value={form.legalName}
+254:              onChange={(event) => updateField('legalName', event.target.value)}
+282:              value={form.documentNumber}
+284:                updateField('documentNumber', onlyDigits(event.target.value))
+297:                value={form.planId}
+298:                onChange={(event) => updateField('planId', event.target.value)}
+359:            {submitting ? 'Criando cliente...' : 'Criar Cliente SaaS'}
+367:          Esta tela já usa o DTO real confirmado no teste controlado: tradeName,
+368:          legalName, slug, documentNumber e planId.

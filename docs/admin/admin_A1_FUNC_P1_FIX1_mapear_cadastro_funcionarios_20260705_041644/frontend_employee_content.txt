@@ -1,0 +1,402 @@
+=================================================
+FRONTEND EMPLOYEE CONTENT
+Data: 20260705_041644
+=================================================
+
+### /opt/rh-saas/frontend-web/src/App.tsx
+6:import { EmployeeLayout } from "./layouts/EmployeeLayout";
+12:import { EmployeesPage } from "./pages/EmployeesPage";
+20:import { EmployeeDashboard } from "./pages/EmployeeDashboard";
+29:import { SuperAdminPlanCreatePage } from "./pages/SuperAdminPlanCreatePage";
+33:import { SuperAdminClientCreatePage } from "./pages/SuperAdminClientCreatePage";
+57:function getUserInfo() {
+69:    const localUser = readUserInfoFromStorageValue(localStorage.getItem(key));
+76:      sessionStorage.getItem(key),
+88:  return getUserInfo()?.role === "SUPER_ADMIN" ? element : <Dashboard />;
+101:            <Route path="/colaboradores" element={<EmployeesPage />} />
+152:              element={superAdminOnly(<SuperAdminClientCreatePage />)}
+205:              element={superAdminOnly(<SuperAdminPlanCreatePage />)}
+356:          <Route element={<EmployeeLayout />}>
+357:            <Route path="/meu-painel" element={<EmployeeDashboard />} />
+
+### /opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak
+5:import { EmployeeLayout } from "./layouts/EmployeeLayout";
+8:import { getUserInfo } from "./lib/api";
+12:import { EmployeesPage } from "./pages/EmployeesPage";
+13:import { EmployeeDetailsPage } from "./pages/EmployeeDetailsPage";
+18:import { EmployeeDashboard } from "./pages/EmployeeDashboard";
+30:import { SuperAdminPlanCreatePage } from "./pages/SuperAdminPlanCreatePage";
+51:              path="/colaboradores"
+52:              element={<EmployeesPage />}
+56:            path="/colaboradores/:id"
+57:            element={<EmployeeDetailsPage />}
+85:                getUserInfo()?.role === "SUPER_ADMIN"
+94:                getUserInfo()?.role === "SUPER_ADMIN"
+103:                getUserInfo()?.role === "SUPER_ADMIN"
+112:                getUserInfo()?.role === "SUPER_ADMIN"
+121:                getUserInfo()?.role === "SUPER_ADMIN"
+130:                getUserInfo()?.role === "SUPER_ADMIN"
+139:                getUserInfo()?.role === "SUPER_ADMIN"
+148:                getUserInfo()?.role === "SUPER_ADMIN"
+157:                getUserInfo()?.role === "SUPER_ADMIN"
+158:                  ? <SuperAdminPlanCreatePage />
+166:                getUserInfo()?.role === "SUPER_ADMIN"
+176:          <Route element={<EmployeeLayout />}>
+179:              element={<EmployeeDashboard />}
+
+### /opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx
+3:export type EmployeePayload = {
+15:  onSubmit: (data: EmployeePayload) => Promise<void> | void;
+18:const initialData: EmployeePayload = {
+28:export function EmployeeForm({ loading = false, onSubmit }: Props) {
+29:  const [form, setForm] = useState<EmployeePayload>(initialData);
+31:  function update<K extends keyof EmployeePayload>(
+33:    value: EmployeePayload[K],
+58:        <input
+61:          onChange={(event) => update("firstName", event.target.value)}
+71:        <input
+74:          onChange={(event) => update("lastName", event.target.value)}
+84:        <input
+87:          onChange={(event) => update("cpf", event.target.value)}
+98:        <input
+102:          onChange={(event) => update("email", event.target.value)}
+104:          placeholder="colaborador@empresa.com"
+112:        <input
+114:          onChange={(event) => update("department", event.target.value)}
+124:        <input
+126:          onChange={(event) => update("jobTitle", event.target.value)}
+136:        <input
+140:          onChange={(event) => update("admissionDate", event.target.value)}
+151:          {loading ? "Salvando..." : "Cadastrar colaborador"}
+
+### /opt/rh-saas/frontend-web/src/components/MapComponent.tsx
+17:interface Colaborador {
+25:export function MapComponent({ colaboradores }: { colaboradores: Colaborador[] }) {
+33:        {colaboradores.map((colab) => (
+
+### /opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx
+11:import { clearSession, getUserInfo } from "../lib/api";
+19:    label: "Colaboradores",
+20:    path: "/colaboradores",
+86:function getLoggedUserRole() {
+98:    const localRole = readRoleFromStoredValue(localStorage.getItem(key));
+104:    const sessionRole = readRoleFromStoredValue(sessionStorage.getItem(key));
+204:  const user = getUserInfo();
+206:const userRoleForMenu = getLoggedUserRole();
+
+### /opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx
+2:import { clearSession, getUserInfo } from "../lib/api";
+16:export function EmployeeLayout() {
+18:  const user = getUserInfo();
+35:              <p className="text-sm text-cyan-200">Portal do colaborador</p>
+
+### /opt/rh-saas/frontend-web/src/lib/api.ts
+1:export type ApiError = {
+7:export const API_BASE =
+8:  import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "";
+16:  employeeId?: string | null;
+19:export function getToken() {
+21:    localStorage.getItem("rh_access_token") ||
+22:    localStorage.getItem("token") ||
+27:export function getUserInfo(): UserInfo | null {
+29:    localStorage.getItem("rh_user_info") ||
+30:    localStorage.getItem("user_info");
+49:   * localStorage.getItem("token")
+66:export function getAuthHeaders() {
+67:  const token = getToken();
+83:  const apiError = data as ApiError;
+85:  if (Array.isArray(apiError.message)) {
+86:    return apiError.message.join(", ");
+89:  return apiError.message || apiError.error || fallback;
+92:export async function apiRequest<T>(
+96:  const token = getToken();
+107:  const response = await fetch(`${API_BASE}${endpoint}`, {
+
+### /opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+1:import { apiRequest } from "./api";
+3:export type FoundationEmployee = {
+6:  employeeExternalRef?: string | null;
+16:  createdAt?: string;
+21:  employeeProfileId?: string;
+31:  employeeProfileId?: string | null;
+38:  createdAt?: string;
+42:export type CreateLocationTrackingPointPayload = {
+43:  employeeProfileId: string;
+57:  employeeProfileId?: string | null;
+66:  createdAt?: string;
+70:export async function getFoundationEmployees() {
+71:  return apiRequest<FoundationEmployee[]>("/v1/foundation/hr/employees");
+77:  return apiRequest<MobileDeviceFoundation>(
+78:    "/v1/foundation/live-tracking/device",
+80:      method: "POST",
+87:  payload: CreateLocationTrackingPointPayload,
+89:  return apiRequest<LocationTrackingPointFoundation>(
+90:    "/v1/foundation/live-tracking/location",
+92:      method: "POST",
+98:export async function getLiveTrackingPoints() {
+99:  return apiRequest<LocationTrackingPointFoundation[]>(
+100:    "/v1/foundation/live-tracking/points",
+104:export async function getLatestLiveTrackingPoints() {
+105:  return apiRequest<LocationTrackingPointFoundation[]>(
+106:    "/v1/foundation/live-tracking/latest",
+110:export function getOrCreateBrowserDeviceUid() {
+112:  const existing = localStorage.getItem(storageKey);
+
+### /opt/rh-saas/frontend-web/src/lib/validations/employee.ts
+3:export const employeeSchema = z.object({
+13:export type EmployeeFormValues = z.infer<typeof employeeSchema>;
+
+### /opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx
+4:import { apiRequest } from "../lib/api";
+21:    // API nativa do HTML5 para capturar o GPS
+23:      navigator.geolocation.getCurrentPosition(
+30:            await apiRequest(
+31:              "/v1/time-records/clock-in",
+33:                method: "POST",
+35:                  employeeId: "",
+81:          <p className="text-slate-500 text-sm mt-1">Colaborador: João Silva</p>
+
+### /opt/rh-saas/frontend-web/src/pages/Dashboard.tsx
+16:        <Card><CardHeader className="flex flex-row items-center justify-between pb-2"><CardTitle className="text-sm font-medium">Colaboradores</CardTitle><Users className="h-4 w-4 text-primary" /></CardHeader><CardContent><div className="text-2xl font-bold">128</div></CardContent></Card>
+24:        <MapComponent colaboradores={equipe} />
+
+### /opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx
+2:import { apiRequest } from "../lib/api";
+8:  createdAt: string;
+16:  const [employeeId,setEmployeeId] =
+25:      await apiRequest<DocumentItem[]>(
+26:        "/v1/documents/my-docs"
+38:    if (!file || !employeeId) {
+44:    formData.append("employeeId", employeeId);
+48:      localStorage.getItem("rh_access_token");
+50:    await fetch(
+51:      "/v1/documents/upload",
+53:        method: "POST",
+75:        <input
+76:          value={employeeId}
+78:            setEmployeeId(e.target.value)
+80:          placeholder="Employee ID"
+84:        <input
+88:              e.target.files?.[0] || null
+122:              <td>{doc.createdAt}</td>
+
+### /opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx
+6:export function EmployeeDashboard() {
+19:      navigator.geolocation.getCurrentPosition(
+25:            const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/time-records/clock-in`, {
+26:              method: "POST",
+29:                "Authorization": `Bearer ${localStorage.getItem("token")}`
+31:              body: JSON.stringify({ employeeId: "uuid-joao", latitude, longitude })
+35:            else throw new Error("API Error");
+
+### /opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx
+3:import { apiRequest } from "../lib/api";
+5:type Employee = {
+25:export function EmployeeDetailsPage() {
+28:  const [employee, setEmployee] =
+29:    useState<Employee | null>(null);
+37:  async function loadEmployee() {
+40:    const data = await apiRequest<Employee>(
+41:      `/v1/employees/${id}`
+44:    setEmployee(data);
+48:    loadEmployee();
+50:    apiRequest<User[]>("/v1/users")
+68:    await apiRequest(
+69:      `/v1/employees/${id}/link-user`,
+71:        method: "DELETE",
+77:    await loadEmployee();
+85:    await apiRequest(
+86:      `/v1/employees/${id}/link-user`,
+88:        method: "PUT",
+97:    await loadEmployee();
+100:  if (!employee) {
+103:        Carregando colaborador...
+112:        Detalhes do Colaborador
+119:          {employee.firstName} {employee.lastName}
+124:          {employee.cpf}
+129:          {employee.email}
+134:          {employee.department || "-"}
+139:          {employee.jobTitle || "-"}
+144:          {employee.admissionDate}
+149:          {employee.userId || "Nenhum"}
+163:              setSelectedUser(e.target.value)
+190:            {employee.userId && (
+
+### /opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx
+5:export function EmployeeDocumentsPage() {
+
+### /opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx
+10:import { apiRequest } from "../lib/api";
+11:import { EmployeeForm, EmployeePayload } from "../components/EmployeeForm";
+14:type Employee = {
+32:export function EmployeesPage() {
+33:  const [employees, setEmployees] = useState<Employee[]>([]);
+41:  async function loadEmployees() {
+46:      const data = await apiRequest<Employee[]>("/v1/employees");
+47:      setEmployees(Array.isArray(data) ? data : []);
+52:          : "Não foi possível carregar os colaboradores.",
+59:  async function createEmployee(payload: EmployeePayload) {
+65:      await apiRequest<Employee>("/v1/employees", {
+66:        method: "POST",
+70:      setSuccess("Colaborador cadastrado com sucesso.");
+73:      await loadEmployees();
+78:          : "Não foi possível cadastrar o colaborador.",
+85:  async function deleteEmployee(
+91:        "Deseja realmente excluir este colaborador?"
+100:      await apiRequest(
+101:        `/v1/employees/${id}`,
+103:          method: "DELETE",
+108:        "Colaborador removido com sucesso."
+111:      await loadEmployees();
+126:    loadEmployees();
+129:  const filteredEmployees = useMemo(() => {
+133:      return employees;
+136:    return employees.filter((employee) => {
+138:        employee.firstName,
+139:        employee.lastName,
+140:        employee.email,
+141:        employee.cpf,
+142:        employee.department,
+143:        employee.jobTitle,
+151:  }, [employees, search]);
+167:                Colaboradores
+171:                Cadastre, consulte e acompanhe os colaboradores da empresa.
+179:                onClick={loadEmployees}
+197:                Novo colaborador
+222:              Novo colaborador
+229:          <EmployeeForm
+231:            onSubmit={createEmployee}
+240:              Lista de colaboradores
+243:              {filteredEmployees.length} registro(s) encontrado(s)
+249:            <input
+251:              onChange={(event) => setSearch(event.target.value)}
+281:                      Carregando colaboradores...
+286:                {!loadingList && filteredEmployees.length === 0 && (
+292:                      Nenhum colaborador encontrado.
+298:                  filteredEmployees.map((employee) => (
+300:                      key={employee.id}
+305:                          {employee.firstName} {employee.lastName}
+308:                          ID: {employee.id}
+313:                        {employee.cpf}
+317:                        {employee.email}
+321:                        {employee.department || "-"}
+325:                        {employee.jobTitle || "-"}
+329:                        {employee.userId ? (
+341:                        {employee.isActive ? (
+353:    to={`/colaboradores/${employee.id}`}
+362:      deleteEmployee(employee.id)
+
+### /opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx
+4:  FoundationEmployee,
+7:  getFoundationEmployees,
+8:  getLatestLiveTrackingPoints,
+9:  getLiveTrackingPoints,
+10:  getOrCreateBrowserDeviceUid,
+13:} from "../lib/liveTrackingApi";
+17:function formatEmployeeName(employee: FoundationEmployee) {
+18:  const firstName = employee.firstName || "";
+19:  const lastName = employee.lastName || "";
+26:  return employee.email || employee.id;
+49:  const [employees, setEmployees] = useState<FoundationEmployee[]>([]);
+50:  const [selectedEmployeeId, setSelectedEmployeeId] = useState("");
+62:  const selectedEmployee = useMemo(
+63:    () => employees.find((employee) => employee.id === selectedEmployeeId),
+64:    [employees, selectedEmployeeId],
+67:  async function loadEmployees() {
+69:    setMessage("Carregando colaboradores Foundation...");
+72:      const data = await getFoundationEmployees();
+73:      setEmployees(data);
+75:      if (!selectedEmployeeId && data.length > 0) {
+76:        setSelectedEmployeeId(data[0].id);
+80:      setMessage("Colaboradores carregados com sucesso.");
+83:      setMessage(error instanceof Error ? error.message : "Erro ao carregar colaboradores.");
+93:        getLiveTrackingPoints(),
+94:        getLatestLiveTrackingPoints(),
+108:    if (!selectedEmployeeId) {
+110:      setMessage("Selecione um colaborador antes de registrar o dispositivo.");
+118:      const deviceUid = getOrCreateBrowserDeviceUid();
+121:        employeeProfileId: selectedEmployeeId,
+140:  function getBrowserLocation() {
+147:      navigator.geolocation.getCurrentPosition(resolve, reject, {
+156:    if (!selectedEmployeeId) {
+158:      setMessage("Selecione um colaborador antes de enviar localização.");
+172:      const position = await getBrowserLocation();
+187:        employeeProfileId: selectedEmployeeId,
+212:    loadEmployees();
+250:            1. Colaborador e dispositivo
+256:                Colaborador Foundation
+260:                value={selectedEmployeeId}
+262:                  setSelectedEmployeeId(event.target.value);
+267:                {employees.map((employee) => (
+268:                  <option key={employee.id} value={employee.id}>
+269:                    {formatEmployeeName(employee)} - {employee.status || "sem status"}
+275:            {selectedEmployee ? (
+278:                  <strong>ID:</strong> {selectedEmployee.id}
+281:                  <strong>E-mail:</strong> {selectedEmployee.email || "-"}
+284:                  <strong>Status:</strong> {selectedEmployee.status || "-"}
+292:                onClick={loadEmployees}
+295:                Recarregar colaboradores
+368:          Últimas localizações por colaborador
+375:                <th className="px-3 py-2">Employee Profile</th>
+385:                  <td className="px-3 py-2">{point.employeeProfileId || "-"}</td>
+414:                <th className="px-3 py-2">Employee Profile</th>
+425:                  <td className="px-3 py-2">{point.employeeProfileId || "-"}</td>
+
+### /opt/rh-saas/frontend-web/src/pages/Login.tsx
+3:import { apiRequest, setSession } from "../lib/api";
+54:      const response = await apiRequest<LoginResponse>("/v1/auth/login", {
+55:        method: "POST",
+95:                Controle colaboradores, ponto, documentos e auditoria em uma
+136:              <input
+138:                onChange={(event) => setEmail(event.target.value)}
+149:              <input
+151:                onChange={(event) => setPassword(event.target.value)}
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+3:import { apiRequest } from "../lib/api";
+21:    apiRequest(
+22:      `/v1/super-admin/clients/${id}/dashboard`
+39:      titulo: "Funcionários",
+40:      valor: data.employees?.total ?? 0,
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx
+3:import { apiRequest } from "../lib/api";
+32:    employees: number;
+54:    apiRequest<ClientDetailsResponse>(
+55:      `/v1/super-admin/clients/${id}`
+213:              Funcionários:
+215:              {data.statistics.employees}
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+2:import { apiRequest } from "../lib/api";
+22:      apiRequest("/v1/super-admin/dashboard"),
+23:      apiRequest("/v1/super-admin/system/health"),
+24:      apiRequest("/v1/super-admin/system/database"),
+25:      apiRequest("/v1/super-admin/system/storage"),
+26:      apiRequest("/v1/super-admin/system/metrics"),
+27:      apiRequest("/v1/super-admin/system/services"),
+67:      titulo: "Funcionários",
+68:      valor: dashboard?.employees?.total ?? 0,
+120:          <div>API: {health?.api}</div>
+
+### /opt/rh-saas/frontend-web/src/pages/UsersPage.tsx
+2:import { apiRequest } from "../lib/api";
+16:  const [employeeId,setEmployeeId] =
+28:      await apiRequest<User[]>(
+29:        "/v1/users"
+39:  async function createUser() {
+41:    await apiRequest(
+42:      "/v1/users",
+44:        method: "POST",
+46:          employeeId,
+53:    setEmployeeId("");
+71:        <input
+72:          value={employeeId}
+74:            setEmployeeId(e.target.value)
+76:          placeholder="Employee ID"
+80:        <input
+83:            setEmail(e.target.value)
+89:        <input
+93:            setPassword(e.target.value)
+100:          onClick={createUser}
+

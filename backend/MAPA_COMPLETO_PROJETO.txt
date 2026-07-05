@@ -1,0 +1,485 @@
+GERADO EM: sáb 04 jul 2026 10:52:23 UTC
+
+=======================================
+=======================================
+/opt/rh-saas/backend/BUILD_LOG.txt
+/opt/rh-saas/backend/database/001_live_tracking.sql
+/opt/rh-saas/backend/Dockerfile
+/opt/rh-saas/backend/.env
+/opt/rh-saas/backend/eslint.config.mjs
+/opt/rh-saas/backend/MAPA_COMPLETO_PROJETO.txt
+/opt/rh-saas/backend/nest-cli.json
+/opt/rh-saas/backend/package.json
+/opt/rh-saas/backend/package-lock.json
+/opt/rh-saas/backend/.prettierrc
+/opt/rh-saas/backend/README.md
+/opt/rh-saas/backend/src/app.controller.spec.ts
+/opt/rh-saas/backend/src/app.controller.ts
+/opt/rh-saas/backend/src/app.module.ts
+/opt/rh-saas/backend/src/app.service.ts
+/opt/rh-saas/backend/src/main.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.module.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts
+/opt/rh-saas/backend/src/modules/audit/audit.module.ts
+/opt/rh-saas/backend/src/modules/audit/audit.service.ts
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak
+/opt/rh-saas/backend/src/modules/auth/decorators/roles.decorator.ts
+/opt/rh-saas/backend/src/modules/auth/dto/login.dto.ts
+/opt/rh-saas/backend/src/modules/auth/guards/jwt-auth.guard.ts
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.module.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts
+/opt/rh-saas/backend/src/modules/employees/dto/link-user.dto.ts
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+/opt/rh-saas/backend/src/modules/reports/reports.module.ts
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts
+/opt/rh-saas/backend/src/modules/schedules/dto/assign-schedule.dto.ts
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.module.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-summary.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-plan.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client-status.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-module.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-plan.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.module.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.module.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.module.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts
+/opt/rh-saas/backend/src/modules/users/user.entity.ts
+/opt/rh-saas/backend/src/modules/users/user-role.enum.ts
+/opt/rh-saas/backend/src/modules/users/users.controller.ts
+/opt/rh-saas/backend/src/modules/users/users.module.ts
+/opt/rh-saas/backend/src/modules/users/users.service.ts
+/opt/rh-saas/backend/test/app.e2e-spec.ts
+/opt/rh-saas/backend/test/jest-e2e.json
+/opt/rh-saas/backend/tsconfig.build.json
+/opt/rh-saas/backend/tsconfig.json
+
+=======================================
+=======================================
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.module.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts
+/opt/rh-saas/backend/src/modules/audit/audit.module.ts
+/opt/rh-saas/backend/src/modules/audit/audit.service.ts
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.module.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+/opt/rh-saas/backend/src/modules/reports/reports.module.ts
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.module.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.module.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.module.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.module.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts
+/opt/rh-saas/backend/src/modules/users/user.entity.ts
+/opt/rh-saas/backend/src/modules/users/user-role.enum.ts
+/opt/rh-saas/backend/src/modules/users/users.controller.ts
+/opt/rh-saas/backend/src/modules/users/users.module.ts
+/opt/rh-saas/backend/src/modules/users/users.service.ts
+
+=======================================
+=======================================
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts
+/opt/rh-saas/backend/src/modules/users/user.entity.ts
+
+=======================================
+=======================================
+/opt/rh-saas/backend/src/app.controller.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+/opt/rh-saas/backend/src/modules/users/users.controller.ts
+
+=======================================
+=======================================
+/opt/rh-saas/backend/src/app.service.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts
+/opt/rh-saas/backend/src/modules/audit/audit.service.ts
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts
+/opt/rh-saas/backend/src/modules/users/users.service.ts
+
+=======================================
+=======================================
+/opt/rh-saas/backend/src/app.module.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.module.ts
+/opt/rh-saas/backend/src/modules/audit/audit.module.ts
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.module.ts
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts
+/opt/rh-saas/backend/src/modules/reports/reports.module.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.module.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.module.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.module.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.module.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts
+/opt/rh-saas/backend/src/modules/users/users.module.ts
+
+=======================================
+=======================================
+/opt/rh-saas/backend/src/modules/auth/dto/login.dto.ts
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts
+/opt/rh-saas/backend/src/modules/employees/dto/link-user.dto.ts
+/opt/rh-saas/backend/src/modules/schedules/dto/assign-schedule.dto.ts
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-summary.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-plan.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client-status.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-module.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-plan.dto.ts
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts
+
+=======================================
+=======================================
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak
+
+=======================================
+=======================================
+import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+// TODOS os Módulos do Sistema
+import { AnalyticsModule } from "./modules/analytics/analytics.module";
+import { AuthModule } from "./modules/auth/auth.module"; // <-- AQUI ESTAVA O PROBLEMA!
+import { DocumentsModule } from "./modules/documents/documents.module";
+import { EmployeesModule } from "./modules/employees/employees.module";
+import { SchedulesModule } from "./modules/schedules/schedules.module";
+import { TimeBankModule } from "./modules/time-bank/time-bank.module";
+import { TimeRecordsModule } from "./modules/time-records/time-records.module";
+import { TenantModule } from './modules/tenant/tenant.module';
+// Entidades "soltas" (Sem módulo próprio)
+import { Tenant } from './modules/tenant/tenant.entity';
+import { ClockEvent } from './modules/clock-events/clock-event.entity';
+import { User } from './modules/users/user.entity';
+import { UsersModule } from './modules/users/users.module';
+import { AuditModule } from './modules/audit/audit.module';
+import { SuperAdminModule } from "./modules/super-admin/super-admin.module";
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { ReportsModule } from './modules/reports/reports.module';
+@Module({
+  imports: [
+    AuditModule,
+    SuperAdminModule,
+    AnalyticsModule,
+    AuthModule,
+    UsersModule,
+    DocumentsModule,
+    EmployeesModule,
+    SchedulesModule,
+    TimeBankModule,
+    TimeRecordsModule,
+    TenantModule,
+    DashboardModule,
+    ReportsModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
+        host: configService.get<string>('DB_HOST'),
+        port: configService.get<number>('DB_PORT'),
+        username: configService.get<string>('DB_USERNAME'),
+        password: configService.get<string>('DB_PASSWORD'),
+        database: configService.get<string>('DB_DATABASE'),
+        
+        entities: [Tenant, ClockEvent, User], // Traz as soltas (User é crucial pro Auth)
+        autoLoadEntities: true, 
+        synchronize: configService.get<string>('NODE_ENV') === 'development',
+      }),
+    }),
+  ],
+})
+export class AppModule {}
+
+=======================================
+=======================================
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "resolvePackageJsonExports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2023",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false,
+    "types": [
+      "node",
+      "jest"
+    ],
+    "strictPropertyInitialization": false
+  }
+}
+
+=======================================
+=======================================
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "test",
+    "dist",
+    "backup",
+    "**/backup/**",
+    "**/*.bak",
+    "**/*spec.ts"
+  ]
+}
+=======================================
+=======================================
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.4",
+    "@nestjs/core": "^11.0.1",
+    "@nestjs/jwt": "^11.0.2",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/typeorm": "^11.0.3",
+    "bcrypt": "^6.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "helmet": "^8.2.0",
+    "ioredis": "^5.11.1",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "pg": "^8.22.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "typeorm": "^1.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.18.0",
+    "@nestjs/cli": "^11.0.0",
+    "@nestjs/schematics": "^11.0.0",
+    "@nestjs/testing": "^11.0.1",
+    "@types/bcrypt": "^6.0.0",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.13.2",
+    "@types/passport-jwt": "^4.0.1",
+    "@types/supertest": "^7.0.0",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.2",
+    "globals": "^17.0.0",
+    "jest": "^30.0.0",
+    "prettier": "^3.4.2",
+    "source-map-support": "^0.5.21",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}

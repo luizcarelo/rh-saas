@@ -1,0 +1,7 @@
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx
+/opt/rh-saas/frontend-web/src/lib/validations/employee.ts
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx

@@ -1,0 +1,15 @@
+Arquivo: /opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts
+
+59:  '/v1/super-admin/clients',
+231:export type CreateSuperAdminClientPayload = {
+232:  tradeName: string;
+233:  legalName: string;
+234:  slug: string;
+235:  documentNumber: string;
+236:  planId: string;
+249:  '/v1/super-admin/clients',
+258:  payload: CreateSuperAdminClientPayload,
+308:  payload: CreateSuperAdminClientPayload,
+368:export async function listSuperAdminClientPlans(): Promise<
+378:  const response = await fetch(`${baseUrl}/v1/super-admin/plans`, {
+410:  plans: listSuperAdminClientPlans,

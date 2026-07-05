@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { clearSession, getUserInfo } from "../lib/api";
-
 const menu = [
   {
     label: "Dashboard",
@@ -21,6 +20,16 @@ const menu = [
     path: "/colaboradores",
     icon: Users,
   },
+  {
+    label: "Usuários",
+    path: "/usuarios",
+    icon: Users,
+  },
+  {
+  label: "Analytics",
+  path: "/analytics",
+  icon: BarChart3,
+},
   {
     label: "Controle de ponto",
     path: "/ponto",
@@ -36,7 +45,140 @@ const menu = [
     path: "/audit",
     icon: FileText,
   },
+
+  {
+    label: "Live Tracking",
+    path: "/live-tracking-foundation",
+    icon: LayoutDashboard,
+  },
 ];
+
+// SUPERADMIN_A3_B_ROLE_MENU
+type StoredUserInfo = {
+  role?: string;
+  user?: {
+    role?: string;
+  };
+  user_info?: {
+    role?: string;
+  };
+};
+
+function readRoleFromStoredValue(value: string | null) {
+  if (!value) {
+    return '';
+  }
+
+  try {
+    const parsed = JSON.parse(value) as StoredUserInfo;
+
+    return (
+      parsed.role ||
+      parsed.user?.role ||
+      parsed.user_info?.role ||
+      ''
+    );
+  } catch {
+    return '';
+  }
+}
+
+function getLoggedUserRole() {
+  const keys = [
+    'user_info',
+    'userInfo',
+    'user',
+    'auth_user',
+    'authUser',
+    '@RH_USER',
+    '@LH_User',
+  ];
+
+  for (const key of keys) {
+    const localRole = readRoleFromStoredValue(localStorage.getItem(key));
+
+    if (localRole) {
+      return localRole;
+    }
+
+    const sessionRole = readRoleFromStoredValue(sessionStorage.getItem(key));
+
+    if (sessionRole) {
+      return sessionRole;
+    }
+  }
+
+  return '';
+}
+
+const superAdminMenu = [
+  {
+    label: "Dashboard SaaS",
+    path: "/super-admin",
+    icon: ShieldCheck,
+  },
+  {
+    label: "Dashboard de Clientes",
+    path: "/super-admin/clientes/dashboard",
+    icon: LayoutDashboard,
+  },
+  {
+    label: "Clientes SaaS",
+    path: "/super-admin/clientes",
+    icon: Users,
+  },
+  {
+    label: "Novo Cliente",
+    path: "/super-admin/clientes/novo",
+    icon: Users,
+  },
+  {
+    label: "Empresas / Filiais",
+    path: "/super-admin/empresas",
+    icon: Users,
+  },
+  {
+    label: "Planos SaaS",
+    path: "/super-admin/planos",
+    icon: ShieldCheck,
+  },
+  {
+    label: "Novo Plano",
+    path: "/super-admin/planos/novo",
+    icon: ShieldCheck,
+  },
+  {
+    label: "Recursos dos Planos",
+    path: "/super-admin/planos/recursos",
+    icon: ShieldCheck,
+  },
+  {
+    label: "Módulos SaaS",
+    path: "/super-admin/modulos",
+    icon: LayoutDashboard,
+  },
+  {
+    label: "Módulos por Cliente",
+    path: "/super-admin/modulos/clientes",
+    icon: LayoutDashboard,
+  },
+  {
+    label: "Usuários Admin",
+    path: "/super-admin/usuarios",
+    icon: Users,
+  },
+  {
+    label: "Auditoria SaaS",
+    path: "/super-admin/auditoria",
+    icon: FileText,
+  },
+  {
+    label: "Configurações SaaS",
+    path: "/super-admin/configuracoes",
+    icon: ShieldCheck,
+  },
+];
+
 
 function IconLogo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   const sizeClass =
@@ -61,6 +203,10 @@ export function AdminLayout() {
   const navigate = useNavigate();
   const user = getUserInfo();
 
+const userRoleForMenu = getLoggedUserRole();
+
+  // SUPERADMIN_A3_B_DYNAMIC_MENU_FILTER
+  const dynamicMenu = userRoleForMenu === 'SUPER_ADMIN' ? superAdminMenu : menu;
   function logout() {
     clearSession();
     navigate("/login", {
@@ -86,7 +232,7 @@ export function AdminLayout() {
           </div>
 
           <nav className="flex-1 space-y-2 px-4 py-4">
-            {menu.map((item) => {
+            {dynamicMenu.map((item) => {
               const Icon = item.icon;
 
               return (

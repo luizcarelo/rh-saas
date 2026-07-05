@@ -1,0 +1,129 @@
+=================================================
+SUPERADMIN-A1 - BANCO
+Data: 20260704_232158
+Container: rh_saas_postgres
+Database: rh_saas_db
+=================================================
+
+## Tabelas candidatas
+-------------------------------------------------
+ table_schema |     table_name      
+--------------+---------------------
+ public       | saas_clients
+ public       | saas_plans
+ public       | super_admin_users
+ public       | tenant_client_audit
+ public       | tenant_module_audit
+ public       | tenant_module_flags
+ public       | tenants
+ public       | users
+(8 rows)
+
+
+## Colunas candidatas
+-------------------------------------------------
+ table_schema |      table_name      |    column_name     |          data_type          | is_nullable |        column_default         
+--------------+----------------------+--------------------+-----------------------------+-------------+-------------------------------
+ public       | audit_events         | tenant_id          | character varying           | YES         | 
+ public       | audit_logs_unified   | tenant_id          | uuid                        | YES         | 
+ public       | audit_logs_unified   | actor_email        | text                        | YES         | 
+ public       | audit_logs_unified   | actor_role         | text                        | YES         | 
+ public       | clock_events         | tenant_id          | uuid                        | NO          | 
+ public       | documents            | tenant_id          | character varying           | NO          | 
+ public       | employee_schedules   | tenant_id          | character varying           | NO          | 
+ public       | employees            | tenant_id          | uuid                        | NO          | 
+ public       | employees            | email              | character varying           | NO          | 
+ public       | hr_employee_profiles | email              | text                        | YES         | 
+ public       | saas_clients         | id                 | uuid                        | NO          | gen_random_uuid()
+ public       | saas_clients         | tenant_id          | uuid                        | NO          | gen_random_uuid()
+ public       | saas_clients         | plan_id            | uuid                        | YES         | 
+ public       | saas_clients         | slug               | text                        | NO          | 
+ public       | saas_clients         | trade_name         | text                        | NO          | 
+ public       | saas_clients         | legal_name         | text                        | NO          | 
+ public       | saas_clients         | document_number    | text                        | YES         | 
+ public       | saas_clients         | status             | text                        | NO          | 'ACTIVE'::text
+ public       | saas_clients         | timezone           | text                        | NO          | 'America/Sao_Paulo'::text
+ public       | saas_clients         | default_locale     | text                        | NO          | 'pt-BR'::text
+ public       | saas_clients         | notes              | text                        | YES         | 
+ public       | saas_clients         | created_at         | timestamp with time zone    | NO          | now()
+ public       | saas_clients         | updated_at         | timestamp with time zone    | NO          | now()
+ public       | saas_plans           | id                 | uuid                        | NO          | gen_random_uuid()
+ public       | saas_plans           | code               | text                        | NO          | 
+ public       | saas_plans           | name               | text                        | NO          | 
+ public       | saas_plans           | description        | text                        | YES         | 
+ public       | saas_plans           | is_active          | boolean                     | NO          | true
+ public       | saas_plans           | created_at         | timestamp with time zone    | NO          | now()
+ public       | saas_plans           | updated_at         | timestamp with time zone    | NO          | now()
+ public       | schedules            | tenant_id          | character varying           | NO          | 
+ public       | super_admin_users    | id                 | uuid                        | NO          | gen_random_uuid()
+ public       | super_admin_users    | email              | text                        | NO          | 
+ public       | super_admin_users    | full_name          | text                        | NO          | 
+ public       | super_admin_users    | is_active          | boolean                     | NO          | true
+ public       | super_admin_users    | notes              | text                        | YES         | 
+ public       | super_admin_users    | created_at         | timestamp with time zone    | NO          | now()
+ public       | super_admin_users    | updated_at         | timestamp with time zone    | NO          | now()
+ public       | tenant_client_audit  | id                 | uuid                        | NO          | gen_random_uuid()
+ public       | tenant_client_audit  | client_id          | uuid                        | NO          | 
+ public       | tenant_client_audit  | field_name         | character varying           | NO          | 
+ public       | tenant_client_audit  | old_value          | text                        | YES         | 
+ public       | tenant_client_audit  | new_value          | text                        | YES         | 
+ public       | tenant_client_audit  | changed_by         | character varying           | YES         | 
+ public       | tenant_client_audit  | created_at         | timestamp with time zone    | NO          | now()
+ public       | tenant_module_audit  | id                 | uuid                        | NO          | uuid_generate_v4()
+ public       | tenant_module_audit  | client_id          | uuid                        | NO          | 
+ public       | tenant_module_audit  | module_code        | character varying           | NO          | 
+ public       | tenant_module_audit  | old_enabled        | boolean                     | YES         | 
+ public       | tenant_module_audit  | new_enabled        | boolean                     | YES         | 
+ public       | tenant_module_audit  | changed_by_user_id | uuid                        | YES         | 
+ public       | tenant_module_audit  | changed_by_email   | character varying           | YES         | 
+ public       | tenant_module_audit  | created_at         | timestamp without time zone | NO          | now()
+ public       | tenant_module_flags  | client_id          | uuid                        | NO          | 
+ public       | tenant_module_flags  | module_code        | text                        | NO          | 
+ public       | tenant_module_flags  | enabled            | boolean                     | NO          | true
+ public       | tenant_module_flags  | settings           | jsonb                       | NO          | '{}'::jsonb
+ public       | tenant_module_flags  | created_at         | timestamp with time zone    | NO          | now()
+ public       | tenant_module_flags  | updated_at         | timestamp with time zone    | NO          | now()
+ public       | tenants              | id                 | uuid                        | NO          | uuid_generate_v4()
+ public       | tenants              | cnpj               | character varying           | NO          | 
+ public       | tenants              | corporate_name     | character varying           | NO          | 
+ public       | tenants              | trading_name       | character varying           | YES         | 
+ public       | tenants              | is_active          | boolean                     | NO          | true
+ public       | tenants              | created_at         | timestamp without time zone | NO          | now()
+ public       | tenants              | updated_at         | timestamp without time zone | NO          | now()
+ public       | tenants              | phone              | character varying           | YES         | 
+ public       | tenants              | email              | character varying           | YES         | 
+ public       | tenants              | address            | text                        | YES         | 
+ public       | tenants              | website            | character varying           | YES         | 
+ public       | tenants              | hr_manager         | character varying           | YES         | 
+ public       | tenants              | logo_url           | text                        | YES         | 
+ public       | time_bank            | tenant_id          | character varying           | NO          | 
+ public       | time_records         | tenant_id          | character varying           | NO          | 
+ public       | users                | id                 | uuid                        | NO          | uuid_generate_v4()
+ public       | users                | tenant_id          | uuid                        | NO          | 
+ public       | users                | email              | character varying           | NO          | 
+ public       | users                | passwordHash       | character varying           | NO          | 
+ public       | users                | isActive           | boolean                     | NO          | true
+ public       | users                | last_login_at      | timestamp without time zone | YES         | 
+ public       | users                | created_at         | timestamp without time zone | NO          | now()
+ public       | users                | updated_at         | timestamp without time zone | NO          | now()
+ public       | users                | role               | character varying           | NO          | 'EMPLOYEE'::character varying
+(83 rows)
+
+
+## Roles distintas em tabelas com coluna role
+-------------------------------------------------
+### public.users
+    role     | total 
+-------------+-------
+ ADMIN       |     1
+ SUPER_ADMIN |     1
+(2 rows)
+
+
+## Usuários sem senha exposta
+-------------------------------------------------
+### public.employees
+ERROR:  column "role" does not exist
+LINE 10:   ) THEN role::text ELSE NULL END AS role,
+                  ^
+

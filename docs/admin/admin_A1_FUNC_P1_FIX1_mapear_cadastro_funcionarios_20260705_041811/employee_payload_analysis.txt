@@ -1,0 +1,467 @@
+# Employee payload / DTO analysis
+
+## /opt/rh-saas/backend/src/modules/auth/dto/login.dto.ts
+
+Classes: LoginDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| email | string | NAO | @IsEmail({}, { message: 'Forneça um e-mail válido.' }) @IsNotEmpty() |
+| password | string | NAO | @IsNotEmpty() @MinLength(6, { message: 'A senha deve ter no mínimo 6 caracteres.' }) |
+
+---
+
+## /opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts
+
+Classes: CreateEmployeeDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| firstName | string | NAO | @IsString() @IsNotEmpty() |
+| lastName | string | NAO | @IsString() @IsNotEmpty() |
+| cpf | string | NAO | @IsString() @Length(11, 11) |
+| email | string | NAO | @IsEmail() |
+| department | string | NAO | @IsString() |
+| jobTitle | string | NAO | @IsString() |
+| admissionDate | string | NAO | @IsDateString() |
+
+---
+
+## /opt/rh-saas/backend/src/modules/employees/dto/link-user.dto.ts
+
+Classes: LinkUserDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| userId | string | NAO | @IsUUID() |
+
+---
+
+## /opt/rh-saas/backend/src/modules/employees/employee.entity.ts
+
+Classes: Employee
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| id | string | NAO | @PrimaryGeneratedColumn('uuid') |
+| tenant | Tenant | NAO | @ManyToOne(() => Tenant) @JoinColumn({ name: 'tenant_id' }) |
+| tenantId | string | NAO | @Column({ name: 'tenant_id' }) |
+| nullable | true, | NAO | @OneToOne(() => User, { |
+| onDelete | 'SET NULL', | NAO | - |
+| user | User | null | NAO | @JoinColumn({ name: 'user_id' }) |
+| name | 'user_id', | NAO | @Column({ |
+| type | 'uuid', | NAO | - |
+| nullable | true, | NAO | - |
+| userId | string | null | NAO | - |
+| firstName | string | NAO | @Column() |
+| lastName | string | NAO | @Column() |
+| unique | true, | NAO | @Column({ |
+| length | 11, | NAO | - |
+| cpf | string | NAO | - |
+| email | string | NAO | @Column() |
+| nullable | true, | NAO | @Column({ |
+| department | string | NAO | - |
+| nullable | true, | NAO | @Column({ |
+| jobTitle | string | NAO | - |
+| type | 'date', | NAO | @Column({ |
+| admissionDate | string | NAO | - |
+| default | true, | NAO | @Column({ |
+| isActive | boolean | NAO | - |
+| createdAt | Date | NAO | @CreateDateColumn() |
+| updatedAt | Date | NAO | @UpdateDateColumn() |
+
+---
+
+## /opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+
+Classes: EmployeesController
+
+Nenhuma propriedade DTO detectada por parser simples.
+
+---
+
+## /opt/rh-saas/backend/src/modules/employees/employees.module.ts
+
+Classes: EmployeesModule
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| imports | [AuditModule, | NAO | @Module({ |
+| providers | [ | NAO | - |
+| controllers | [ | NAO | - |
+| exports | [ | NAO | - |
+
+---
+
+## /opt/rh-saas/backend/src/modules/employees/employees.service.ts
+
+Classes: EmployeesService
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| tenantId | string, | NAO | - |
+| data | CreateEmployeeDto, | NAO | - |
+| entityId | savedEmployee.id, | NAO | - |
+| action | 'EMPLOYEE_CREATED', | NAO | - |
+| entityType | 'Employee', | NAO | - |
+| where | { | NAO | - |
+| relations | { | NAO | - |
+| user | true, | NAO | - |
+| order | { | NAO | - |
+| firstName | 'ASC', | NAO | - |
+| lastName | 'ASC', | NAO | - |
+| id | string, | NAO | - |
+| tenantId | string, | NAO | - |
+| where | { | NAO | - |
+| relations | { | NAO | - |
+| user | true, | NAO | - |
+| employeeId | string, | NAO | - |
+| tenantId | string, | NAO | - |
+| userId | string, | NAO | - |
+| where | { | NAO | - |
+| id | employeeId, | NAO | - |
+| where | { | NAO | - |
+| id | userId, | NAO | - |
+| where | { | NAO | - |
+| entityId | savedEmployee.id, | NAO | - |
+| action | 'USER_LINKED', | NAO | - |
+| entityType | 'Employee', | NAO | - |
+| details | user.id, | NAO | - |
+| employeeId | string, | NAO | - |
+| tenantId | string, | NAO | - |
+| where | { | NAO | - |
+| id | employeeId, | NAO | - |
+| entityId | savedEmployee.id, | NAO | - |
+| action | 'USER_UNLINKED', | NAO | - |
+| entityType | 'Employee', | NAO | - |
+| id | string, | NAO | - |
+| tenantId | string, | NAO | - |
+| entityId | id, | NAO | - |
+| action | 'EMPLOYEE_DELETED', | NAO | - |
+| entityType | 'Employee', | NAO | - |
+
+---
+
+## /opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts
+
+Classes: CreateLocationTrackingPointDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| employeeProfileId | string | NAO | @IsUUID() |
+| deviceId | string | SIM | @IsOptional() @IsUUID() |
+| latitude | number | NAO | @Type(() => Number) @IsNumber() @Min(-90) @Max(90) |
+| longitude | number | NAO | @Type(() => Number) @IsNumber() @Min(-180) @Max(180) |
+| accuracyMeters | number | SIM | @IsOptional() @Type(() => Number) @IsNumber() @Min(0) |
+| address | string | SIM | @IsOptional() @IsString() @MaxLength(500) |
+| source | string | SIM | @IsOptional() @IsString() @MaxLength(50) |
+| trackedAt | string | SIM | @IsOptional() @IsISO8601() |
+| metadata | Record<string, any> | SIM | @IsOptional() @IsObject() |
+
+---
+
+## /opt/rh-saas/backend/src/modules/foundation/dto/register-mobile-device.dto.ts
+
+Classes: RegisterMobileDeviceDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| employeeProfileId | string | SIM | @IsOptional() @IsUUID() |
+| deviceUid | string | NAO | @IsString() @MaxLength(255) |
+| platform | string | SIM | @IsOptional() @IsString() @MaxLength(80) |
+| model | string | SIM | @IsOptional() @IsString() @MaxLength(255) |
+| appVersion | string | SIM | @IsOptional() @IsString() @MaxLength(50) |
+
+---
+
+## /opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts
+
+Classes: HrEmployeeProfile
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| name | 'hr_employee_profiles', | NAO | @Entity({ |
+| synchronize | false, | NAO | - |
+| id | string | NAO | @PrimaryGeneratedColumn('uuid') |
+| name | 'client_id', | NAO | @Column({ |
+| type | 'uuid', | NAO | - |
+| clientId | string | NAO | - |
+| name | 'employee_external_ref', | NAO | @Column({ |
+| type | 'text', | NAO | - |
+| nullable | true, | NAO | - |
+| employeeExternalRef | string | NAO | - |
+| name | 'first_name', | NAO | @Column({ |
+| type | 'text', | NAO | - |
+| firstName | string | NAO | - |
+| name | 'last_name', | NAO | @Column({ |
+| type | 'text', | NAO | - |
+| lastName | string | NAO | - |
+| type | 'text', | NAO | @Column({ |
+| nullable | true, | NAO | - |
+| cpf | string | NAO | - |
+| type | 'text', | NAO | @Column({ |
+| nullable | true, | NAO | - |
+| email | string | NAO | - |
+| name | 'department_id', | NAO | @Column({ |
+| type | 'uuid', | NAO | - |
+| nullable | true, | NAO | - |
+| departmentId | string | NAO | - |
+| name | 'job_position_id', | NAO | @Column({ |
+| type | 'uuid', | NAO | - |
+| nullable | true, | NAO | - |
+| jobPositionId | string | NAO | - |
+| name | 'job_function_id', | NAO | @Column({ |
+| type | 'uuid', | NAO | - |
+| nullable | true, | NAO | - |
+| jobFunctionId | string | NAO | - |
+| name | 'admission_date', | NAO | @Column({ |
+| type | 'date', | NAO | - |
+| nullable | true, | NAO | - |
+| admissionDate | string | NAO | - |
+| type | 'text', | NAO | @Column({ |
+| default | 'ACTIVE', | NAO | - |
+| status | string | NAO | - |
+| name | 'created_at', | NAO | @CreateDateColumn({ |
+| type | 'timestamptz', | NAO | - |
+| createdAt | Date | NAO | - |
+| name | 'updated_at', | NAO | @UpdateDateColumn({ |
+| type | 'timestamptz', | NAO | - |
+| updatedAt | Date | NAO | - |
+
+---
+
+## /opt/rh-saas/backend/src/modules/schedules/dto/assign-schedule.dto.ts
+
+Classes: AssignScheduleDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| employeeId | string | NAO | - |
+| scheduleId | string | NAO | - |
+| startDate | string | NAO | - |
+| endDate | string | SIM | - |
+
+---
+
+## /opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts
+
+Classes: CreateScheduleDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| name | string | NAO | - |
+| type | ScheduleType | NAO | - |
+| workDays | number[] | SIM | - |
+| expectedMinutesPerDay | number | SIM | - |
+| dailyToleranceMinutes | number | SIM | - |
+| entry1 | string | SIM | - |
+| exit1 | string | SIM | - |
+| entry2 | string | SIM | - |
+| exit2 | string | SIM | - |
+| expectedMinutes | number | SIM | - |
+
+---
+
+## /opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts
+
+Classes: UpdateScheduleDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| name | string | SIM | - |
+| type | any | SIM | - |
+| workDays | number[] | SIM | - |
+| expectedMinutesPerDay | number | SIM | - |
+| dailyToleranceMinutes | number | SIM | - |
+| entry1 | string | SIM | - |
+| exit1 | string | SIM | - |
+| entry2 | string | SIM | - |
+| exit2 | string | SIM | - |
+| expectedMinutes | number | SIM | - |
+
+---
+
+## /opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts
+
+Classes: EmployeeSchedule
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| id | string | NAO | @PrimaryGeneratedColumn('uuid') |
+| tenantId | string | NAO | @Column({ name: 'tenant_id' }) |
+| employeeId | string | NAO | @Column({ name: 'employee_id' }) |
+| schedule | Schedule | NAO | @ManyToOne(() => Schedule) @JoinColumn({ name: 'schedule_id' }) |
+| scheduleId | string | NAO | @Column({ name: 'schedule_id' }) |
+| startDate | string | NAO | @Column({ name: 'start_date', type: 'date' }) |
+| endDate | string | NAO | @Column({ name: 'end_date', type: 'date', nullable: true }) |
+
+---
+
+## /opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts
+
+Classes: ClientDashboardDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| client | any | NAO | - |
+| plan | any | NAO | - |
+| users | any | NAO | - |
+| employees | any | NAO | - |
+| documents | any | NAO | - |
+| modules | any | NAO | - |
+| audit | any[] | NAO | - |
+
+---
+
+## /opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts
+
+Classes: ClientDetailsDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| client | any | NAO | - |
+| plan | any | NAO | - |
+| company | any | NAO | - |
+| modules | any[] | NAO | - |
+| statistics | { | NAO | - |
+| employees | number | NAO | - |
+| documents | number | NAO | - |
+| payslips | number | NAO | - |
+
+---
+
+## /opt/rh-saas/backend/src/modules/super-admin/dto/client-summary.dto.ts
+
+Classes: ClientSummaryDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| id | string | NAO | - |
+| slug | string | NAO | - |
+| planCode | string | null | NAO | - |
+| planName | string | null | NAO | - |
+| status | string | NAO | - |
+
+---
+
+## /opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts
+
+Classes: CreateClientDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| slug | string | NAO | @IsString() |
+| tradeName | string | NAO | @IsString() |
+| legalName | string | NAO | @IsString() |
+| documentNumber | string | NAO | @IsString() |
+| planId | string | NAO | @IsUUID() |
+
+---
+
+## /opt/rh-saas/backend/src/modules/super-admin/dto/create-plan.dto.ts
+
+Classes: CreatePlanDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| code | string | NAO | @IsString() |
+| name | string | NAO | @IsString() |
+| description | string | SIM | @IsOptional() @IsString() |
+
+---
+
+## /opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts
+
+Classes: DashboardDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| clients | any | NAO | - |
+| plans | any | NAO | - |
+| users | any | NAO | - |
+| employees | any | NAO | - |
+| documents | any | NAO | - |
+| modules | any | NAO | - |
+| audit | any[] | NAO | - |
+
+---
+
+## /opt/rh-saas/backend/src/modules/super-admin/dto/update-client-status.dto.ts
+
+Classes: UpdateClientStatusDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| status | string | NAO | @IsString() |
+
+---
+
+## /opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts
+
+Classes: UpdateClientDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| tradeName | string | SIM | @IsOptional() @IsString() |
+| legalName | string | SIM | @IsOptional() @IsString() |
+| documentNumber | string | SIM | @IsOptional() @IsString() |
+| timezone | string | SIM | @IsOptional() @IsString() |
+| defaultLocale | string | SIM | @IsOptional() @IsString() |
+| notes | string | SIM | @IsOptional() @IsString() |
+| planId | string | SIM | @IsOptional() @IsString() |
+
+---
+
+## /opt/rh-saas/backend/src/modules/super-admin/dto/update-module.dto.ts
+
+Classes: UpdateModuleDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| enabled | boolean | NAO | @IsBoolean() |
+
+---
+
+## /opt/rh-saas/backend/src/modules/super-admin/dto/update-plan.dto.ts
+
+Classes: UpdatePlanDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| name | string | SIM | @IsOptional() @IsString() |
+| description | string | SIM | @IsOptional() @IsString() |
+| is_active | boolean | SIM | @IsOptional() @IsBoolean() |
+
+---
+
+## /opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts
+
+Classes: UpdateTenantDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| corporateName | string | SIM | - |
+| tradingName | string | SIM | - |
+| isActive | boolean | SIM | - |
+| phone | string | SIM | - |
+| email | string | SIM | - |
+| address | string | SIM | - |
+| website | string | SIM | - |
+| hrManager | string | SIM | - |
+| logoUrl | string | SIM | - |
+
+---
+
+## /opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts
+
+Classes: CreateUserDto
+
+| Campo | Tipo | Opcional | Decorators |
+|---|---|---|---|
+| tenantId | string | NAO | @IsUUID() |
+| employeeId | string | NAO | @IsUUID() |
+| email | string | NAO | @IsEmail() |
+| password | string | NAO | @IsString() |
+
+---
+

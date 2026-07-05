@@ -1,0 +1,2 @@
+endpoint	http_status	response_file
+/v1/super-admin/clients	201	/opt/rh-saas/docs/super-admin/superadmin_A4_E5_D3_payload_final_slug_20260705_032638/create_response__v1_super-admin_clients.json

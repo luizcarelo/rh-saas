@@ -1,0 +1,4 @@
+endpoint	http_status	response_file
+/v1/foundation/documents/overview	200	/opt/rh-saas/docs/foundation/respostas_fase4E_documents_20260704_125028/v1-foundation-documents-overview.json
+/v1/foundation/documents	200	/opt/rh-saas/docs/foundation/respostas_fase4E_documents_20260704_125028/v1-foundation-documents.json
+/v1/foundation/documents/recipients	200	/opt/rh-saas/docs/foundation/respostas_fase4E_documents_20260704_125028/v1-foundation-documents-recipients.json

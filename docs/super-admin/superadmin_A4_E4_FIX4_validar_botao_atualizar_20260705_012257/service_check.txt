@@ -1,0 +1,9 @@
+Arquivo: /opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts
+
+58:const CLIENT_LIST_ENDPOINT_CANDIDATES = [
+130:  if (Array.isArray(payload)) {
+143:    if (Array.isArray(candidate)) {
+175:  if (response.status === 401) {
+204:export async function listSuperAdminClients(): Promise<ListSuperAdminClientsResult> {
+207:  for (const endpoint of CLIENT_LIST_ENDPOINT_CANDIDATES) {
+230:  list: listSuperAdminClients,

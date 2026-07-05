@@ -1,0 +1,208 @@
+=================================================
+SUPERADMIN-A4-A - DB RAW
+Data: 20260704_235939
+=================================================
+
+## Tabelas
+-------------------------------------------------
+ table_schema |     table_name      
+--------------+---------------------
+ public       | audit_events
+ public       | audit_logs
+ public       | audit_logs_unified
+ public       | hr_branches
+ public       | saas_clients
+ public       | saas_plans
+ public       | super_admin_users
+ public       | tenant_client_audit
+ public       | tenant_module_audit
+ public       | tenant_module_flags
+ public       | tenants
+ public       | users
+ topology     | topology
+(13 rows)
+
+
+## Colunas
+-------------------------------------------------
+ table_schema |           table_name            |    column_name     |          data_type          | is_nullable |            column_default            
+--------------+---------------------------------+--------------------+-----------------------------+-------------+--------------------------------------
+ public       | audit_events                    | id                 | uuid                        | NO          | uuid_generate_v4()
+ public       | audit_events                    | tenant_id          | character varying           | YES         | 
+ public       | audit_events                    | user_id            | character varying           | YES         | 
+ public       | audit_events                    | action             | character varying           | NO          | 
+ public       | audit_events                    | entity_type        | character varying           | YES         | 
+ public       | audit_events                    | entity_id          | character varying           | YES         | 
+ public       | audit_events                    | details            | text                        | YES         | 
+ public       | audit_events                    | created_at         | timestamp without time zone | NO          | now()
+ public       | audit_logs                      | id                 | uuid                        | NO          | uuid_generate_v4()
+ public       | audit_logs                      | userId             | character varying           | NO          | 
+ public       | audit_logs                      | action             | character varying           | NO          | 
+ public       | audit_logs                      | resource           | character varying           | NO          | 
+ public       | audit_logs                      | payload            | jsonb                       | YES         | 
+ public       | audit_logs                      | ipAddress          | character varying           | NO          | 
+ public       | audit_logs                      | timestamp          | timestamp without time zone | NO          | now()
+ public       | audit_logs_unified              | id                 | uuid                        | NO          | gen_random_uuid()
+ public       | audit_logs_unified              | tenant_id          | uuid                        | YES         | 
+ public       | audit_logs_unified              | client_id          | uuid                        | YES         | 
+ public       | audit_logs_unified              | actor_user_id      | uuid                        | YES         | 
+ public       | audit_logs_unified              | actor_email        | text                        | YES         | 
+ public       | audit_logs_unified              | actor_role         | text                        | YES         | 
+ public       | audit_logs_unified              | action             | text                        | NO          | 
+ public       | audit_logs_unified              | entity_type        | text                        | YES         | 
+ public       | audit_logs_unified              | entity_id          | text                        | YES         | 
+ public       | audit_logs_unified              | ip_address         | text                        | YES         | 
+ public       | audit_logs_unified              | user_agent         | text                        | YES         | 
+ public       | audit_logs_unified              | metadata           | jsonb                       | NO          | '{}'::jsonb
+ public       | audit_logs_unified              | created_at         | timestamp with time zone    | NO          | now()
+ public       | clock_events                    | tenant_id          | uuid                        | NO          | 
+ public       | clock_events                    | client_ip          | character varying           | YES         | 
+ public       | clock_events_foundation         | client_id          | uuid                        | NO          | 
+ public       | clock_justifications_foundation | client_id          | uuid                        | NO          | 
+ public       | clock_policies                  | client_id          | uuid                        | NO          | 
+ public       | documents                       | tenant_id          | character varying           | NO          | 
+ public       | documents_foundation            | client_id          | uuid                        | NO          | 
+ public       | employee_schedules              | tenant_id          | character varying           | NO          | 
+ public       | employees                       | tenant_id          | uuid                        | NO          | 
+ public       | hr_branches                     | id                 | uuid                        | NO          | gen_random_uuid()
+ public       | hr_branches                     | client_id          | uuid                        | NO          | 
+ public       | hr_branches                     | company_id         | uuid                        | YES         | 
+ public       | hr_branches                     | name               | text                        | NO          | 
+ public       | hr_branches                     | document_number    | text                        | YES         | 
+ public       | hr_branches                     | address_line       | text                        | YES         | 
+ public       | hr_branches                     | city               | text                        | YES         | 
+ public       | hr_branches                     | state              | text                        | YES         | 
+ public       | hr_branches                     | postal_code        | text                        | YES         | 
+ public       | hr_branches                     | created_at         | timestamp with time zone    | NO          | now()
+ public       | hr_branches                     | updated_at         | timestamp with time zone    | NO          | now()
+ public       | hr_companies                    | client_id          | uuid                        | NO          | 
+ public       | hr_cost_centers                 | client_id          | uuid                        | NO          | 
+ public       | hr_departments                  | client_id          | uuid                        | NO          | 
+ public       | hr_employee_profiles            | client_id          | uuid                        | NO          | 
+ public       | hr_geofences                    | client_id          | uuid                        | NO          | 
+ public       | hr_job_functions                | client_id          | uuid                        | NO          | 
+ public       | hr_job_positions                | client_id          | uuid                        | NO          | 
+ public       | hr_work_locations               | client_id          | uuid                        | NO          | 
+ public       | location_tracking_points        | client_id          | uuid                        | NO          | 
+ public       | mobile_app_settings             | client_id          | uuid                        | NO          | 
+ public       | mobile_devices                  | client_id          | uuid                        | YES         | 
+ public       | mobile_sync_batches             | client_id          | uuid                        | YES         | 
+ public       | payslips_foundation             | client_id          | uuid                        | NO          | 
+ public       | saas_clients                    | id                 | uuid                        | NO          | gen_random_uuid()
+ public       | saas_clients                    | tenant_id          | uuid                        | NO          | gen_random_uuid()
+ public       | saas_clients                    | plan_id            | uuid                        | YES         | 
+ public       | saas_clients                    | slug               | text                        | NO          | 
+ public       | saas_clients                    | trade_name         | text                        | NO          | 
+ public       | saas_clients                    | legal_name         | text                        | NO          | 
+ public       | saas_clients                    | document_number    | text                        | YES         | 
+ public       | saas_clients                    | status             | text                        | NO          | 'ACTIVE'::text
+ public       | saas_clients                    | timezone           | text                        | NO          | 'America/Sao_Paulo'::text
+ public       | saas_clients                    | default_locale     | text                        | NO          | 'pt-BR'::text
+ public       | saas_clients                    | notes              | text                        | YES         | 
+ public       | saas_clients                    | created_at         | timestamp with time zone    | NO          | now()
+ public       | saas_clients                    | updated_at         | timestamp with time zone    | NO          | now()
+ public       | saas_plans                      | id                 | uuid                        | NO          | gen_random_uuid()
+ public       | saas_plans                      | code               | text                        | NO          | 
+ public       | saas_plans                      | name               | text                        | NO          | 
+ public       | saas_plans                      | description        | text                        | YES         | 
+ public       | saas_plans                      | is_active          | boolean                     | NO          | true
+ public       | saas_plans                      | created_at         | timestamp with time zone    | NO          | now()
+ public       | saas_plans                      | updated_at         | timestamp with time zone    | NO          | now()
+ public       | schedules                       | tenant_id          | character varying           | NO          | 
+ public       | super_admin_users               | id                 | uuid                        | NO          | gen_random_uuid()
+ public       | super_admin_users               | email              | text                        | NO          | 
+ public       | super_admin_users               | full_name          | text                        | NO          | 
+ public       | super_admin_users               | is_active          | boolean                     | NO          | true
+ public       | super_admin_users               | notes              | text                        | YES         | 
+ public       | super_admin_users               | created_at         | timestamp with time zone    | NO          | now()
+ public       | super_admin_users               | updated_at         | timestamp with time zone    | NO          | now()
+ public       | tenant_client_audit             | id                 | uuid                        | NO          | gen_random_uuid()
+ public       | tenant_client_audit             | client_id          | uuid                        | NO          | 
+ public       | tenant_client_audit             | field_name         | character varying           | NO          | 
+ public       | tenant_client_audit             | old_value          | text                        | YES         | 
+ public       | tenant_client_audit             | new_value          | text                        | YES         | 
+ public       | tenant_client_audit             | changed_by         | character varying           | YES         | 
+ public       | tenant_client_audit             | created_at         | timestamp with time zone    | NO          | now()
+ public       | tenant_module_audit             | id                 | uuid                        | NO          | uuid_generate_v4()
+ public       | tenant_module_audit             | client_id          | uuid                        | NO          | 
+ public       | tenant_module_audit             | module_code        | character varying           | NO          | 
+ public       | tenant_module_audit             | old_enabled        | boolean                     | YES         | 
+ public       | tenant_module_audit             | new_enabled        | boolean                     | YES         | 
+ public       | tenant_module_audit             | changed_by_user_id | uuid                        | YES         | 
+ public       | tenant_module_audit             | changed_by_email   | character varying           | YES         | 
+ public       | tenant_module_audit             | created_at         | timestamp without time zone | NO          | now()
+ public       | tenant_module_flags             | client_id          | uuid                        | NO          | 
+ public       | tenant_module_flags             | module_code        | text                        | NO          | 
+ public       | tenant_module_flags             | enabled            | boolean                     | NO          | true
+ public       | tenant_module_flags             | settings           | jsonb                       | NO          | '{}'::jsonb
+ public       | tenant_module_flags             | created_at         | timestamp with time zone    | NO          | now()
+ public       | tenant_module_flags             | updated_at         | timestamp with time zone    | NO          | now()
+ public       | tenants                         | id                 | uuid                        | NO          | uuid_generate_v4()
+ public       | tenants                         | cnpj               | character varying           | NO          | 
+ public       | tenants                         | corporate_name     | character varying           | NO          | 
+ public       | tenants                         | trading_name       | character varying           | YES         | 
+ public       | tenants                         | is_active          | boolean                     | NO          | true
+ public       | tenants                         | created_at         | timestamp without time zone | NO          | now()
+ public       | tenants                         | updated_at         | timestamp without time zone | NO          | now()
+ public       | tenants                         | phone              | character varying           | YES         | 
+ public       | tenants                         | email              | character varying           | YES         | 
+ public       | tenants                         | address            | text                        | YES         | 
+ public       | tenants                         | website            | character varying           | YES         | 
+ public       | tenants                         | hr_manager         | character varying           | YES         | 
+ public       | tenants                         | logo_url           | text                        | YES         | 
+ public       | time_bank                       | tenant_id          | character varying           | NO          | 
+ public       | time_bank_balances_foundation   | client_id          | uuid                        | NO          | 
+ public       | time_records                    | tenant_id          | character varying           | NO          | 
+ public       | users                           | id                 | uuid                        | NO          | uuid_generate_v4()
+ public       | users                           | tenant_id          | uuid                        | NO          | 
+ public       | users                           | email              | character varying           | NO          | 
+ public       | users                           | passwordHash       | character varying           | NO          | 
+ public       | users                           | isActive           | boolean                     | NO          | true
+ public       | users                           | last_login_at      | timestamp without time zone | YES         | 
+ public       | users                           | created_at         | timestamp without time zone | NO          | now()
+ public       | users                           | updated_at         | timestamp without time zone | NO          | now()
+ public       | users                           | role               | character varying           | NO          | 'EMPLOYEE'::character varying
+ topology     | layer                           | feature_column     | character varying           | NO          | 
+ topology     | layer                           | feature_type       | integer                     | NO          | 
+ topology     | topology                        | id                 | integer                     | NO          | nextval('topology_id_seq'::regclass)
+ topology     | topology                        | name               | character varying           | NO          | 
+ topology     | topology                        | srid               | integer                     | NO          | 
+ topology     | topology                        | precision          | double precision            | NO          | 
+ topology     | topology                        | hasz               | boolean                     | NO          | false
+(142 rows)
+
+
+## Contagens
+-------------------------------------------------
+=================================================
+SUPERADMIN-A4-A - DB COUNTS
+Data: 20260704_235939
+=================================================
+
+### public.audit_events
+ total 
+-------
+    44
+(1 row)
+
+
+
+## Amostras redigidas
+-------------------------------------------------
+=================================================
+SUPERADMIN-A4-A - DB SAMPLE REDIGIDO
+Data: 20260704_235939
+=================================================
+
+### public.audit_events
+                  id                  |              tenant_id               |               user_id                | action | entity_type |              entity_id               |      details      |         created_at         
+--------------------------------------+--------------------------------------+--------------------------------------+--------+-------------+--------------------------------------+-------------------+----------------------------
+ d11859a3-905c-4b79-9bfa-9fe7cd0bd775 | 11446a8f-ed2c-468e-9be1-3409beb12d3c | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | LOGIN  | User        | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | [EMAIL_REDACTED] | 2026-07-04 01:33:37.087578
+ abe28b76-d06d-48d6-8516-b506d2af0682 | 11446a8f-ed2c-468e-9be1-3409beb12d3c | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | LOGIN  | User        | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | [EMAIL_REDACTED] | 2026-07-04 01:33:43.821018
+ 744f98b1-1187-42e4-a482-c16d593eb085 | 11446a8f-ed2c-468e-9be1-3409beb12d3c | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | LOGIN  | User        | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | [EMAIL_REDACTED] | 2026-07-04 12:22:12.727583
+ fbb9d6fb-9941-4ac8-84d2-4141c80692e9 | 11446a8f-ed2c-468e-9be1-3409beb12d3c | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | LOGIN  | User        | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | [EMAIL_REDACTED] | 2026-07-04 12:22:58.107689
+ d2248280-6529-40df-aa21-c2e3ec57e675 | 11446a8f-ed2c-468e-9be1-3409beb12d3c | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | LOGIN  | User        | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | [EMAIL_REDACTED] | 2026-07-04 12:26:43.366057
+(5 rows)
+
+
+

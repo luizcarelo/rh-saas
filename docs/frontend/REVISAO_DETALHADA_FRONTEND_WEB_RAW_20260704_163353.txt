@@ -1,0 +1,689 @@
+=================================================
+REVISAO DETALHADA FRONTEND-WEB
+Data: 20260704_163353
+Pasta: /opt/rh-saas/frontend-web
+=================================================
+
+## Arquivos principais
+-------------------------------------------------
+/opt/rh-saas/frontend-web/dist/index.html
+/opt/rh-saas/frontend-web/.env
+/opt/rh-saas/frontend-web/index.html
+/opt/rh-saas/frontend-web/package.json
+/opt/rh-saas/frontend-web/postcss.config.cjs
+/opt/rh-saas/frontend-web/tailwind.config.cjs
+/opt/rh-saas/frontend-web/tsconfig.app.json
+/opt/rh-saas/frontend-web/tsconfig.json
+/opt/rh-saas/frontend-web/tsconfig.node.json
+/opt/rh-saas/frontend-web/vite.config.ts
+
+## package.json
+-------------------------------------------------
+{
+  "name": "frontend-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
+    "@radix-ui/react-dialog": "^1.1.18",
+    "@radix-ui/react-label": "^2.1.11",
+    "@radix-ui/react-slot": "^1.3.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.23.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-hook-form": "^7.80.0",
+    "react-hot-toast": "^2.6.0",
+    "react-leaflet": "^5.0.0",
+    "react-router-dom": "^7.18.1",
+    "recharts": "^3.9.1",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.21",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "autoprefixer": "^10.4.17",
+    "oxlint": "^1.71.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1"
+  }
+}
+
+## Resumo package.json
+-------------------------------------------------
+name: frontend-web
+version: 0.0.0
+type: module
+scripts:
+   build = tsc -b && vite build
+   dev = vite
+   lint = oxlint
+   preview = vite preview
+
+dependencies importantes:
+   leaflet ^1.9.4
+   lucide-react ^1.23.0
+   react ^19.2.7
+   react-dom ^19.2.7
+   react-leaflet ^5.0.0
+   react-router-dom ^7.18.1
+   recharts ^3.9.1
+   zod ^4.4.3
+
+devDependencies importantes:
+   @vitejs/plugin-react ^6.0.3
+   tailwindcss ^3.4.17
+   typescript ~6.0.2
+   vite ^8.1.1
+
+## Estrutura sem node_modules/dist/build
+-------------------------------------------------
+/opt/rh-saas/frontend-web
+/opt/rh-saas/frontend-web/dist
+/opt/rh-saas/frontend-web/Dockerfile
+/opt/rh-saas/frontend-web/.env
+/opt/rh-saas/frontend-web/favicon.png
+/opt/rh-saas/frontend-web/.gitignore
+/opt/rh-saas/frontend-web/icone-app.png
+/opt/rh-saas/frontend-web/index.html
+/opt/rh-saas/frontend-web/logo_rh.png
+/opt/rh-saas/frontend-web/node_modules
+/opt/rh-saas/frontend-web/.oxlintrc.json
+/opt/rh-saas/frontend-web/package.json
+/opt/rh-saas/frontend-web/package-lock.json
+/opt/rh-saas/frontend-web/postcss.config.cjs
+/opt/rh-saas/frontend-web/public
+/opt/rh-saas/frontend-web/public/assets
+/opt/rh-saas/frontend-web/public/assets/favicon.png
+/opt/rh-saas/frontend-web/public/assets/icone-app.png
+/opt/rh-saas/frontend-web/public/assets/logo_rh.png
+/opt/rh-saas/frontend-web/public/favicon.png
+/opt/rh-saas/frontend-web/public/favicon.svg
+/opt/rh-saas/frontend-web/public/icons.svg
+/opt/rh-saas/frontend-web/README.md
+/opt/rh-saas/frontend-web/rh_saas_web_default.conf
+/opt/rh-saas/frontend-web/src
+/opt/rh-saas/frontend-web/src/App.css
+/opt/rh-saas/frontend-web/src/App.tsx
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak
+/opt/rh-saas/frontend-web/src/assets
+/opt/rh-saas/frontend-web/src/assets/hero.png
+/opt/rh-saas/frontend-web/src/assets/react.svg
+/opt/rh-saas/frontend-web/src/assets/vite.svg
+/opt/rh-saas/frontend-web/src/components
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx
+/opt/rh-saas/frontend-web/src/components/MapComponent.tsx
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx
+/opt/rh-saas/frontend-web/src/components/ui
+/opt/rh-saas/frontend-web/src/components/ui/button.tsx
+/opt/rh-saas/frontend-web/src/components/ui/card.tsx
+/opt/rh-saas/frontend-web/src/components/ui/dialog.tsx
+/opt/rh-saas/frontend-web/src/components/ui/Skeleton.tsx
+/opt/rh-saas/frontend-web/src/components/ui/table.tsx
+/opt/rh-saas/frontend-web/src/index.css
+/opt/rh-saas/frontend-web/src/layouts
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx
+/opt/rh-saas/frontend-web/src/lib
+/opt/rh-saas/frontend-web/src/lib/api.ts
+/opt/rh-saas/frontend-web/src/lib/utils.ts
+/opt/rh-saas/frontend-web/src/lib/validations
+/opt/rh-saas/frontend-web/src/lib/validations/employee.ts
+/opt/rh-saas/frontend-web/src/main.tsx
+/opt/rh-saas/frontend-web/src/pages
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Login.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx
+/opt/rh-saas/frontend-web/src/utils
+/opt/rh-saas/frontend-web/src/utils/export.ts
+/opt/rh-saas/frontend-web/src/vite-env.d.ts
+/opt/rh-saas/frontend-web/tailwind.config.cjs
+/opt/rh-saas/frontend-web/tsconfig.app.json
+/opt/rh-saas/frontend-web/tsconfig.app.tsbuildinfo
+/opt/rh-saas/frontend-web/tsconfig.json
+/opt/rh-saas/frontend-web/tsconfig.node.json
+/opt/rh-saas/frontend-web/vite.config.ts
+
+## Diretórios src relevantes
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src
+/opt/rh-saas/frontend-web/src/assets
+/opt/rh-saas/frontend-web/src/components
+/opt/rh-saas/frontend-web/src/components/ui
+/opt/rh-saas/frontend-web/src/layouts
+/opt/rh-saas/frontend-web/src/lib
+/opt/rh-saas/frontend-web/src/lib/validations
+/opt/rh-saas/frontend-web/src/pages
+/opt/rh-saas/frontend-web/src/utils
+
+## Arquivos src relevantes
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/App.css
+/opt/rh-saas/frontend-web/src/App.tsx
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx
+/opt/rh-saas/frontend-web/src/components/MapComponent.tsx
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx
+/opt/rh-saas/frontend-web/src/components/ui/button.tsx
+/opt/rh-saas/frontend-web/src/components/ui/card.tsx
+/opt/rh-saas/frontend-web/src/components/ui/dialog.tsx
+/opt/rh-saas/frontend-web/src/components/ui/Skeleton.tsx
+/opt/rh-saas/frontend-web/src/components/ui/table.tsx
+/opt/rh-saas/frontend-web/src/index.css
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx
+/opt/rh-saas/frontend-web/src/lib/api.ts
+/opt/rh-saas/frontend-web/src/lib/utils.ts
+/opt/rh-saas/frontend-web/src/lib/validations/employee.ts
+/opt/rh-saas/frontend-web/src/main.tsx
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Login.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx
+/opt/rh-saas/frontend-web/src/utils/export.ts
+/opt/rh-saas/frontend-web/src/vite-env.d.ts
+
+## Conteudo de src/lib/api.ts
+-------------------------------------------------
+     1	export type ApiError = {
+     2	  message?: string | string[];
+     3	  error?: string;
+     4	  statusCode?: number;
+     5	};
+     6	
+     7	export const API_BASE =
+     8	  import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "";
+     9	
+    10	export type UserInfo = {
+    11	  sub?: string;
+    12	  userId?: string;
+    13	  tenantId?: string;
+    14	  email?: string;
+    15	  role?: string;
+    16	  employeeId?: string | null;
+    17	};
+    18	
+    19	export function getToken() {
+    20	  return (
+    21	    localStorage.getItem("rh_access_token") ||
+    22	    localStorage.getItem("token") ||
+    23	    ""
+    24	  );
+    25	}
+    26	
+    27	export function getUserInfo(): UserInfo | null {
+    28	  const raw =
+    29	    localStorage.getItem("rh_user_info") ||
+    30	    localStorage.getItem("user_info");
+    31	
+    32	  if (!raw) {
+    33	    return null;
+    34	  }
+    35	
+    36	  try {
+    37	    return JSON.parse(raw) as UserInfo;
+    38	  } catch {
+    39	    return null;
+    40	  }
+    41	}
+    42	
+    43	export function setSession(accessToken: string, userInfo: unknown) {
+    44	  localStorage.setItem("rh_access_token", accessToken);
+    45	  localStorage.setItem("rh_user_info", JSON.stringify(userInfo));
+    46	
+    47	  /*
+    48	   * Compatibilidade com páginas antigas que ainda usam:
+    49	   * localStorage.getItem("token")
+    50	   */
+    51	  localStorage.setItem("token", accessToken);
+    52	  localStorage.setItem("user_info", JSON.stringify(userInfo));
+    53	}
+    54	
+    55	export function clearSession() {
+    56	  localStorage.removeItem("rh_access_token");
+    57	  localStorage.removeItem("rh_user_info");
+    58	
+    59	  /*
+    60	   * Remove também chaves antigas.
+    61	   */
+    62	  localStorage.removeItem("token");
+    63	  localStorage.removeItem("user_info");
+    64	}
+    65	
+    66	export function getAuthHeaders() {
+    67	  const token = getToken();
+    68	
+    69	  if (!token) {
+    70	    return {};
+    71	  }
+    72	
+    73	  return {
+    74	    Authorization: `Bearer ${token}`,
+    75	  };
+    76	}
+    77	
+    78	function normalizeErrorMessage(data: unknown, fallback: string) {
+    79	  if (!data || typeof data !== "object") {
+    80	    return fallback;
+    81	  }
+    82	
+    83	  const apiError = data as ApiError;
+    84	
+    85	  if (Array.isArray(apiError.message)) {
+    86	    return apiError.message.join(", ");
+    87	  }
+    88	
+    89	  return apiError.message || apiError.error || fallback;
+    90	}
+    91	
+    92	export async function apiRequest<T>(
+    93	  endpoint: string,
+    94	  options: RequestInit = {},
+    95	): Promise<T> {
+    96	  const token = getToken();
+    97	
+    98	  const headers: Record<string, string> = {
+    99	    "Content-Type": "application/json",
+   100	    ...((options.headers as Record<string, string>) || {}),
+   101	  };
+   102	
+   103	  if (token) {
+   104	    headers.Authorization = `Bearer ${token}`;
+   105	  }
+   106	
+   107	  const response = await fetch(`${API_BASE}${endpoint}`, {
+   108	    ...options,
+   109	    headers,
+   110	  });
+   111	
+   112	  const text = await response.text();
+   113	
+   114	  let data: unknown = null;
+   115	
+   116	  if (text) {
+   117	    try {
+   118	      data = JSON.parse(text);
+   119	    } catch {
+   120	      data = text;
+   121	    }
+   122	  }
+   123	
+   124	  if (response.status === 401) {
+   125	    clearSession();
+   126	  }
+   127	
+   128	  if (!response.ok) {
+   129	    throw new Error(
+   130	      normalizeErrorMessage(data, `Erro HTTP ${response.status}`),
+   131	    );
+   132	  }
+   133	
+   134	  return data as T;
+   135	}
+
+## Arquivos App/main/router/routes
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/App.css
+/opt/rh-saas/frontend-web/src/App.tsx
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx
+/opt/rh-saas/frontend-web/src/main.tsx
+
+## Trechos com react-router
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/App.tsx:1:import { BrowserRouter, Route, Routes } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/App.tsx:7:import { ProtectedRoute } from "./components/ProtectedRoute";
+/opt/rh-saas/frontend-web/src/App.tsx:37:    <BrowserRouter>
+/opt/rh-saas/frontend-web/src/App.tsx:38:      <Routes>
+/opt/rh-saas/frontend-web/src/App.tsx:40:        <Route
+/opt/rh-saas/frontend-web/src/App.tsx:45:        <Route element={<ProtectedRoute />}>
+/opt/rh-saas/frontend-web/src/App.tsx:46:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx:48:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:53:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:58:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:64:<Route
+/opt/rh-saas/frontend-web/src/App.tsx:69:<Route
+/opt/rh-saas/frontend-web/src/App.tsx:73:<Route
+/opt/rh-saas/frontend-web/src/App.tsx:78:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:83:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:88:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:93:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:102:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:111:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:120:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:129:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:138:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:147:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:156:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:165:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:174:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:183:          </Route>
+/opt/rh-saas/frontend-web/src/App.tsx:184:        </Route>
+/opt/rh-saas/frontend-web/src/App.tsx:186:        <Route element={<ProtectedRoute />}>
+/opt/rh-saas/frontend-web/src/App.tsx:187:          <Route element={<EmployeeLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx:188:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx:192:          </Route>
+/opt/rh-saas/frontend-web/src/App.tsx:193:        </Route>
+/opt/rh-saas/frontend-web/src/App.tsx:195:      </Routes>
+/opt/rh-saas/frontend-web/src/App.tsx:198:    </BrowserRouter>
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:10:import { NavLink, Outlet, useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:70:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:125:                <NavLink
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:140:                </NavLink>
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:1:import { Outlet, useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:17:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:2:import { Link, useParams } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:67:<Link
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:72:</Link>
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:90:<Link
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:95:</Link>
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:113:<Link
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:118:</Link>
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:2:import { Link } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:90:                        <Link
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:95:                        </Link>
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:2:import { useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:40:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:2:import { Link, useParams } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:77:  <Link
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:82:  </Link>
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:3:import { Link } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:45:  <Link
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:50:  </Link>
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:125:  <Link
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:130:  </Link>
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:12:import { Link } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:352:  <Link
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:357:  </Link>
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:1:import { Navigate, Outlet } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:4:export function ProtectedRoute() {
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:8:    return <Navigate to="/login" replace />;
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:1:import { BrowserRouter, Route, Routes } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:7:import { ProtectedRoute } from "./components/ProtectedRoute";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:34:    <BrowserRouter>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:35:      <Routes>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:37:        <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:42:        <Route element={<ProtectedRoute />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:43:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:45:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:50:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:55:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:61:<Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:67:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:72:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:77:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:82:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:91:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:100:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:109:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:118:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:127:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:136:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:145:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:154:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:163:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:172:          </Route>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:173:        </Route>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:175:        <Route element={<ProtectedRoute />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:176:          <Route element={<EmployeeLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:177:            <Route
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:181:          </Route>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:182:        </Route>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:184:      </Routes>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:187:    </BrowserRouter>
+
+## Páginas existentes
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Login.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx
+
+## Componentes existentes
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx
+/opt/rh-saas/frontend-web/src/components/MapComponent.tsx
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx
+/opt/rh-saas/frontend-web/src/components/ui/button.tsx
+/opt/rh-saas/frontend-web/src/components/ui/card.tsx
+/opt/rh-saas/frontend-web/src/components/ui/dialog.tsx
+/opt/rh-saas/frontend-web/src/components/ui/Skeleton.tsx
+/opt/rh-saas/frontend-web/src/components/ui/table.tsx
+
+## Menus/sidebar/layout
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx
+
+/opt/rh-saas/frontend-web/src/App.tsx:11:import { Dashboard } from "./pages/Dashboard";
+/opt/rh-saas/frontend-web/src/App.tsx:19:import { EmployeeDashboard } from "./pages/EmployeeDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx:21:import { SuperAdminDashboard } from "./pages/SuperAdminDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx:24:import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+/opt/rh-saas/frontend-web/src/App.tsx:50:              element={<Dashboard />}
+/opt/rh-saas/frontend-web/src/App.tsx:97:                  ? <SuperAdminDashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:98:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:107:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:116:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:124:                  ? <SuperAdminClientDashboardPage />
+/opt/rh-saas/frontend-web/src/App.tsx:125:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:134:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:143:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:152:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:161:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:170:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:179:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:190:              element={<EmployeeDashboard />}
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:5:  LayoutDashboard,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:12:const menu = [
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:14:    label: "Dashboard",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:16:    icon: LayoutDashboard,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:70:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:73:const dynamicMenu = [
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:77:          label: "Dashboard SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:94:  ...menu,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:98:    navigate("/login", {
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:120:          <nav className="flex-1 space-y-2 px-4 py-4">
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:121:            {dynamicMenu.map((item) => {
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:143:          </nav>
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:17:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:22:    navigate("/login", {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:10:export function SuperAdminDashboard() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:12:  const [dashboard,setDashboard] = useState<any>({});
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:32:        setDashboard(d);
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:88:        Dashboard SUPER ADMIN
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:71:  Dashboard Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:94:  Dashboard Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:117:  Dashboard Cliente
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:6:export function EmployeeDashboard() {
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:18:    if ("geolocation" in navigator) {
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:19:      navigator.geolocation.getCurrentPosition(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:11:export function SuperAdminClientDashboardPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:64:        Dashboard do Cliente
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:40:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:64:      navigate("/", {
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx:5:export function Dashboard() {
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:22:    if ("geolocation" in navigator) {
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:23:      navigator.geolocation.getCurrentPosition(
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:64:          setLocationMsg("Por favor, permita o acesso à localização no navegador.");
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:11:import { Dashboard } from "./pages/Dashboard";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:18:import { EmployeeDashboard } from "./pages/EmployeeDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:20:import { SuperAdminDashboard } from "./pages/SuperAdminDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:23:import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:47:              element={<Dashboard />}
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:86:                  ? <SuperAdminDashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:87:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:96:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:105:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:113:                  ? <SuperAdminClientDashboardPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:114:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:123:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:132:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:141:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:150:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:159:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:168:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:179:              element={<EmployeeDashboard />}
+
+## Auth/token/localStorage
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/lib/api.ts:21:    localStorage.getItem("rh_access_token") ||
+/opt/rh-saas/frontend-web/src/lib/api.ts:22:    localStorage.getItem("token") ||
+/opt/rh-saas/frontend-web/src/lib/api.ts:29:    localStorage.getItem("rh_user_info") ||
+/opt/rh-saas/frontend-web/src/lib/api.ts:30:    localStorage.getItem("user_info");
+/opt/rh-saas/frontend-web/src/lib/api.ts:43:export function setSession(accessToken: string, userInfo: unknown) {
+/opt/rh-saas/frontend-web/src/lib/api.ts:44:  localStorage.setItem("rh_access_token", accessToken);
+/opt/rh-saas/frontend-web/src/lib/api.ts:45:  localStorage.setItem("rh_user_info", JSON.stringify(userInfo));
+/opt/rh-saas/frontend-web/src/lib/api.ts:49:   * localStorage.getItem("token")
+/opt/rh-saas/frontend-web/src/lib/api.ts:51:  localStorage.setItem("token", accessToken);
+/opt/rh-saas/frontend-web/src/lib/api.ts:52:  localStorage.setItem("user_info", JSON.stringify(userInfo));
+/opt/rh-saas/frontend-web/src/lib/api.ts:56:  localStorage.removeItem("rh_access_token");
+/opt/rh-saas/frontend-web/src/lib/api.ts:57:  localStorage.removeItem("rh_user_info");
+/opt/rh-saas/frontend-web/src/lib/api.ts:62:  localStorage.removeItem("token");
+/opt/rh-saas/frontend-web/src/lib/api.ts:63:  localStorage.removeItem("user_info");
+/opt/rh-saas/frontend-web/src/lib/api.ts:67:  const token = getToken();
+/opt/rh-saas/frontend-web/src/lib/api.ts:69:  if (!token) {
+/opt/rh-saas/frontend-web/src/lib/api.ts:74:    Authorization: `Bearer ${token}`,
+/opt/rh-saas/frontend-web/src/lib/api.ts:96:  const token = getToken();
+/opt/rh-saas/frontend-web/src/lib/api.ts:103:  if (token) {
+/opt/rh-saas/frontend-web/src/lib/api.ts:104:    headers.Authorization = `Bearer ${token}`;
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:47:    const token =
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:48:      localStorage.getItem("rh_access_token");
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:55:          Authorization: `Bearer ${token}`,
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:29:                "Authorization": `Bearer ${localStorage.getItem("token")}`
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:6:  access_token: string;
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:62:      setSession(response.access_token, response.user_info);
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:11:    const token =
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:12:      localStorage.getItem(
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:13:        "rh_access_token"
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:20:          Authorization:
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:21:            `Bearer ${token}`,
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:5:  const token = getToken();
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:7:  if (!token) {
+
+## API base e chamadas HTTP
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/lib/api.ts:7:export const API_BASE =
+/opt/rh-saas/frontend-web/src/lib/api.ts:8:  import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "";
+/opt/rh-saas/frontend-web/src/lib/api.ts:107:  const response = await fetch(`${API_BASE}${endpoint}`, {
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:50:    await fetch(
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:25:            const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/time-records/clock-in`, {
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:16:    const response = await fetch(
+/opt/rh-saas/frontend-web/.env:1:VITE_API_URL=https://rh.lhsolucao.com.br
+
+## Arquivos .env sanitizados
+-------------------------------------------------
+### /opt/rh-saas/frontend-web/.env
+VITE_API_URL=https://rh.lhsolucao.com.br
+
+## Imports de API/lib
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/App.tsx:8:import { getUserInfo } from "./lib/api";
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:11:import { clearSession, getUserInfo } from "../lib/api";
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:2:import { clearSession, getUserInfo } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:9:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:3:import { apiRequest, setSession } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:5:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:4:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:4:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:10:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:2:import { getToken } from "../lib/api";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:8:import { getUserInfo } from "./lib/api";
+
+## Possíveis telas atuais de ponto, dashboard, documentos
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx
+/opt/rh-saas/frontend-web/src/lib/validations/employee.ts
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx
+

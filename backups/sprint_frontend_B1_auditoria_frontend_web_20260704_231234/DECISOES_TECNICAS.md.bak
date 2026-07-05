@@ -1,0 +1,623 @@
+# DECISOES_TECNICAS
+
+## DT-001
+
+Idioma oficial:
+
+PT-BR
+
+---
+
+## DT-002
+
+Toda implementação deve ser dividida em fases pequenas.
+
+Objetivos:
+
+- Menor risco
+- Melhor rollback
+- Auditoria simplificada
+
+---
+
+## DT-003
+
+Toda fase deve gerar:
+
+- Backup
+- Manifesto
+- Relatório de validação
+- Rollback documental
+
+---
+
+## DT-004
+
+Tabela oficial de controle de versões:
+
+rh_saas_schema_migrations
+
+---
+
+## DT-005
+
+Cliente oficial de homologação:
+
+empresa-teste
+
+Plano:
+
+ENTERPRISE_TEST
+
+---
+
+## DT-006
+
+Nomes operacionais serão mantidos sem acentuação.
+
+Exemplos:
+
+- Operacoes
+- Tecnico Externo
+- Gestor de Operacoes
+- Administrativo Padrao
+
+Motivo:
+
+Evitar inconsistências entre:
+
+- Banco
+- Scripts
+- APIs
+- Integrações
+- Ambientes Linux
+
+---
+
+## DT-007
+
+Toda alteração futura deve atualizar:
+
+- CONTEXTO_PROJETO.md
+- CHANGELOG.md
+- DECISOES_TECNICAS.md
+- PENDENCIAS.md
+
+Obrigatoriamente.
+
+---
+
+## DT-008
+
+Antes de qualquer alteração relevante:
+
+1. Apresentar proposta.
+2. Aguardar aprovação.
+3. Executar.
+4. Atualizar documentação.
+
+---
+
+## DT-009
+
+Scripts devem ser fornecidos completos sempre que possível.
+
+Motivo:
+
+Evitar problemas de copiar/colar e erros manuais.
+
+---
+
+## DT-010
+
+A Fase 1 é considerada congelada.
+
+Novas alterações devem ocorrer em novas fases documentadas.
+
+
+## DT-015
+
+Scripts geradores de código devem ser validados por build antes da conclusão da fase.
+
+Motivo:
+
+Evitar publicação de arquivos inválidos.
+
+## DT-016
+
+Toda funcionalidade backend deve ser validada dentro do container após publicação.
+
+Motivo:
+
+Build local não garante atualização da imagem em execução.
+
+## DT-017
+
+O Super Admin deverá consumir visões consolidadas
+de múltiplas tabelas para reduzir consultas no frontend.
+
+Motivo:
+Melhor desempenho e menor complexidade.
+
+## DT-019
+
+Tenant_module_flags passou a ser a fonte oficial
+de ativação de módulos por cliente.
+
+Motivo:
+Centralizar governança de licenciamento.
+
+## DT-020
+
+Toda alteração em módulos SaaS deve ser auditada.
+
+Motivo:
+Rastreabilidade de licenciamento.
+
+## DT-021
+
+Dashboard SUPER_ADMIN consolidando múltiplas tabelas.
+
+Motivo:
+Visão executiva centralizada.
+
+## DT-022
+
+Cada tenant possui dashboard operacional próprio.
+
+Motivo:
+Facilitar diagnóstico e governança SaaS.
+
+
+---
+
+## Fase 3.1A.1
+
+Dashboard SUPER_ADMIN inicial.
+
+Entregas:
+
+- Rota /super-admin
+- Menu Dashboard SaaS
+- Dashboard inicial
+- Integração dashboard
+- Integração health
+- Integração database
+
+
+---
+
+## Fase 3.1A.3
+
+Controle de acesso SUPER_ADMIN.
+
+Implementações:
+
+- Menu Dashboard SaaS apenas para SUPER_ADMIN
+- Proteção da rota /super-admin
+- Ocultação visual para ADMIN e EMPLOYEE
+- Redirecionamento para Dashboard padrão quando não autorizado
+
+
+---
+
+## Fase 3.1B.1
+
+Gestão de Clientes SaaS.
+
+Entregas:
+
+- Menu Clientes SaaS
+- Rota /super-admin/clientes
+- SuperAdminClientsPage
+- Listagem de clientes
+- Integração GET /v1/super-admin/clients
+
+
+---
+
+## Fase 3.1C.1
+
+Gestão de Planos SaaS.
+
+Entregas:
+
+- Menu Planos SaaS
+- Rota /super-admin/planos
+- SuperAdminPlansPage
+- Listagem de planos
+- Integração GET /v1/super-admin/plans
+
+
+---
+
+## Fase 3.1C.3
+
+Cadastro de Plano SaaS.
+
+Entregas:
+
+- SuperAdminPlanCreatePage
+- Rota /super-admin/planos/novo
+- Botão Novo Plano
+- POST /v1/super-admin/plans
+\n
+
+## Fase 3.2C
+
+Implementada gestão de usuários.
+
+Entregas:
+
+- UsersPage
+- Rota /usuarios
+- GET /v1/users
+- POST /v1/users
+
+## Sprint 4.6B-R - Foundation Read-Only - Fase 2B - 20260704_121956
+
+A Foundation existente no PostgreSQL passa a ser considerada arquitetura-alvo para produção.
+
+Regras:
+- Não criar tabelas paralelas para recursos já existentes na Foundation.
+- Entities Foundation devem usar `synchronize: false`.
+- A integração inicial deve ser read-only.
+- Módulos legacy serão migrados gradualmente.
+- Live Tracking deve usar `location_tracking_points`, `mobile_devices`, `mobile_app_settings`, `hr_geofences` e `hr_employee_profiles`.
+
+## Sprint 4.6B-R - Fase 3A - Correção Tenant x SaaS Client - 20260704_123141
+
+### Decisão
+
+Para a fase de homologação, o único  existente foi vinculado ao tenant utilizado pelos usuários atuais.
+
+### Justificativa
+
+A Foundation utiliza  como , enquanto a autenticação JWT fornece .
+O serviço Foundation converte  em  usando .
+
+Antes da correção, não havia  para o tenant autenticado, causando HTTP 404 nos endpoints Foundation.
+
+### Regra
+
+Manter consistência entre:
+
+- 
+- 
+-
+
+## Sprint 4.6B-R - Fase 3 - Validacao endpoints Foundation - 20260704_123506
+
+A camada Foundation Read-Only foi validada tecnicamente.
+
+Resultado:
+- Endpoints Foundation responderam HTTP 200.
+- Autenticacao JWT funcionou.
+- Tenant autenticado conseguiu resolver o client_id via saas_clients.
+- NestJS consegue consumir a primeira camada da Foundation em modo somente leitura.
+
+Proxima etapa recomendada:
+- Iniciar Clock Foundation Read-Only.
+
+## Sprint 4.6B-R - Fase 4D - Registro final Clock Foundation - 20260704_124456
+
+A camada Clock Foundation foi validada como base recomendada para futura evolucao do ponto eletronico.
+
+Regras:
+- Manter time_records ate existir migracao funcional validada.
+- Consumir Clock Foundation inicialmente em modo read-only.
+- Nao criar tabelas paralelas para ponto eletronico.
+- Planejar migracao gradual para clock_events_foundation.
+
+## Sprint 4.6B-R - Fase 4E-D - Documents Foundation - 20260704_125604
+
+Documents Foundation passa a ser base recomendada para futura migracao do modulo documents legado.
+
+## Sprint 4.6B-R - Fase 4F-D - TimeBank Foundation - 20260704_130325
+
+TimeBank Foundation passa a ser base recomendada para futura migracao do modulo time-bank legado.
+
+## Sprint 4.6B-R - Fase 4G-D - Payroll Foundation - 20260704_131533
+
+Payroll Foundation passa a ser base recomendada para futura evolucao de holerites e contracheques.
+
+## Roadmap de Migracao Foundation - 20260704_131705
+
+Decisao: adotar a Foundation como arquitetura-alvo para producao.
+
+Regras:
+- Nao criar tabelas paralelas quando ja existir equivalente Foundation.
+- Manter modulos legados ate migracao funcional validada.
+- Priorizar Live Tracking sobre location_tracking_points e mobile_devices.
+- Planejar migracao gradual de time_records para clock_events_foundation.
+
+## Sprint 4.6B-F-A - DTOs Live Tracking Foundation - 20260704_132024
+
+Decisao tecnica:
+- Iniciar Live Tracking Foundation criando primeiro os DTOs de entrada.
+- Manter a sprint em pequenas fases com backup, validacao e documentacao.
+- Usar as tabelas Foundation existentes: mobile_devices e location_tracking_points.
+- Nao criar employee_locations nem employee_device_status.
+
+## Sprint 4.6B-F-B - Service Live Tracking Foundation - 20260704_132156
+
+Decisao tecnica:
+- Implementar a lógica de Live Tracking sobre as tabelas Foundation existentes.
+- Usar mobile_devices para identificar dispositivos móveis.
+- Usar location_tracking_points como tabela oficial de rastreamento GPS.
+- Validar employee_profile_id contra hr_employee_profiles antes de registrar localização.
+- Não criar employee_locations nem employee_device_status.
+
+## Sprint 4.6B-F-C - Controller Live Tracking Foundation - 20260704_132314
+
+Decisao tecnica:
+- Expor Live Tracking usando endpoints no FoundationController.
+- Manter a persistencia nas tabelas Foundation existentes.
+- Usar mobile_devices para dispositivos.
+- Usar location_tracking_points para pontos GPS.
+- Nao criar employee_locations nem employee_device_status.
+
+## Sprint 4.6B-F-D - Validacao Live Tracking Foundation - 20260704_160138
+
+Decisao tecnica:
+- Live Tracking deve persistir em mobile_devices e location_tracking_points.
+- Validacao deve usar employee_profile_id da Foundation.
+- Nao criar employee_locations nem employee_device_status.
+- Registros criados nesta fase sao de validacao e possuem rollback documentado.
+
+## Sprint 4.6B-F-E - Documentacao final Live Tracking Foundation - 20260704_162651
+
+Decisao tecnica:
+- Live Tracking passa a usar a Foundation.
+- Dispositivos moveis usam mobile_devices.
+- Pontos GPS usam location_tracking_points.
+- Colaboradores usam hr_employee_profiles.
+- Nao criar employee_locations nem employee_device_status.
+
+## Sprint 4.6B-F-Frontend-A1 - Diagnostico frontend - 20260704_162941
+
+Decisao tecnica:
+- Antes de criar service ou tela do Live Tracking, mapear a estrutura real do frontend.
+- Evitar assumir caminhos incorretos para services, pages, rotas ou armazenamento de JWT.
+
+## Revisao detalhada frontend-web - 20260704_163353
+
+Decisao tecnica:
+- Separar frontend-web do mobile-app.
+- Usar frontend-web para validacao administrativa/web do Live Tracking.
+- Usar mobile-app posteriormente para rastreamento real no celular.
+
+## Sprint 4.6B-F-Frontend-A2 - Service Live Tracking - 20260704_163552
+
+Decisao tecnica:
+- Usar frontend-web para validacao web/admin do Live Tracking.
+- Criar o service em src/lib para seguir o padrao existente do projeto.
+- Reutilizar apiRequest, getToken e VITE_API_URL ja existentes em src/lib/api.ts.
+- Nao usar axios e nao criar novo cliente HTTP.
+
+## Sprint 4.6B-F-Frontend-A3 - Pagina Live Tracking sem mapa - 20260704_163926
+
+Decisao tecnica:
+- Criar primeiro uma tela simples sem mapa para validar o fluxo Live Tracking.
+- Usar o service liveTrackingApi criado na fase A2.
+- Manter rota e menu para fase separada.
+- Nao instalar bibliotecas de mapa nesta fase.
+
+## Sprint 4.6B-F-Frontend-A4 - Rota e menu Live Tracking - 20260704_164154
+
+Decisao tecnica:
+- Registrar a tela Live Tracking Foundation dentro do layout administrativo.
+- Manter validacao web separada do app mobile.
+- Nao instalar bibliotecas de mapa nesta fase.
+
+## Sprint 4.6B-F-Frontend-A4-FIX - Correcao rota e menu Live Tracking - 20260704_164356
+
+Decisao tecnica:
+- Manter o padrao de menu do AdminLayout usando a propriedade path.
+- A rota Live Tracking deve pertencer ao layout administrativo.
+
+## Sprint 4.6B-F-Frontend-A5 - Publicacao frontend-web - 20260704_164531
+
+Decisao tecnica:
+- Publicar o frontend-web via servico web do docker-compose.prod.yml.
+- Validar a rota Live Tracking no frontend publicado antes de evoluir para mapa operacional.
+
+## Sprint 4.6B-F-Frontend-A6 - Validacao final frontend Live Tracking - 20260704_164806
+
+Decisao tecnica:
+- Considerar frontend-web como camada de validacao administrativa do Live Tracking.
+- Manter mobile-app separado para a futura integracao real de rastreamento no celular.
+- Planejar mapa operacional em fase posterior.
+
+## Sprint 4.6B-F-Mobile-A1 - Diagnostico mobile-app - 20260704_165146
+
+Decisao tecnica:
+- Iniciar a integracao mobile do Live Tracking com diagnostico antes de alterar codigo.
+- Separar frontend-web de mobile-app.
+- Evitar background tracking na primeira fase mobile.
+
+## Sprint 4.6B-F-Mobile-A2 - Service Live Tracking - 20260704_165420
+
+Decisao tecnica:
+- Reutilizar api.ts do mobile-app para chamadas HTTP.
+- Reutilizar o token @LH_Token ja usado pelo interceptor Axios.
+- Persistir deviceUid do Live Tracking em AsyncStorage.
+- Nao instalar pacote novo para identificador de dispositivo nesta fase.
+- Nao implementar background tracking nesta fase.
+
+## Sprint 4.6B-F-Mobile-A3 - Tela manual Live Tracking - 20260704_165609
+
+Decisao tecnica:
+- Criar primeiro uma tela manual para validar Live Tracking no app mobile.
+- Usar expo-location apenas sob acao do usuario.
+- Nao implementar rastreamento em segundo plano nesta fase.
+- Manter registro de navegacao para fase separada.
+
+## Sprint 4.6B-F-Mobile-A4 - Navegacao Live Tracking - 20260704_165750
+
+Decisao tecnica:
+- Registrar a tela Live Tracking como tela manual de validacao no app mobile.
+- Manter o fluxo sem background tracking.
+- Manter navegacao simples pelo Stack Navigator existente.
+
+## Sprint 4.6B-F-Mobile-A4-FIX - Estilos botao Live Tracking - 20260704_165913
+
+Decisao tecnica:
+- Manter o botao Live Tracking na HomeScreen usando estilos locais do proprio StyleSheet.
+- Corrigir apenas o erro de tipagem causado por estilos inexistentes.
+
+## Sprint 4.6B-F-Mobile-A4-FIX2 - Correcao virgula StyleSheet - 20260704_170100
+
+Decisao tecnica:
+- Corrigir apenas a sintaxe do StyleSheet da HomeScreen.
+- Manter a navegacao LiveTracking registrada na fase anterior.
+- Nao alterar backend, banco ou dependencias.
+
+## Sprint 4.6B-F-Mobile-A4-FIX3 - Virgula apos disabled - 20260704_170414
+
+Decisao tecnica:
+- Aplicar correcao cirurgica apenas na sintaxe do StyleSheet da HomeScreen.
+- Preservar a navegacao LiveTracking registrada anteriormente.
+
+## Sprint 4.6B-F-Mobile-A5 - Validacao funcional mobile - 20260704_171256
+
+Decisao tecnica:
+- Validar primeiro o fluxo manual no app mobile.
+- Manter background tracking fora desta fase.
+- Confirmar o uso de expo-location apenas sob acao do usuario.
+
+## Sprint 4.6B-F-Mobile-A5-DIAG - Diagnostico abertura app - 20260704_171717
+
+Decisao tecnica:
+- Diagnosticar a falha de abertura do app antes de alterar codigo.
+- Manter o fluxo mobile manual sem background tracking.
+- Evitar instalacao de pacotes durante diagnostico.
+
+## Sprint 4.6B-F-Mobile-A5-FIX-TUNNEL - @expo/ngrok local - 20260704_172318
+
+Decisao tecnica:
+- Instalar @expo/ngrok localmente no mobile-app para reduzir dependencia de instalacao global.
+- Manter validacao via tunnel apenas para desenvolvimento/teste.
+- Nao alterar fluxo do app nem implementar background tracking nesta fase.
+
+## Sprint 4.6B-F-Mobile-A5-RETEST - Validacao via Expo Tunnel - 20260704_173037
+
+Decisao tecnica:
+- Usar Expo Tunnel apenas para validacao mobile em desenvolvimento.
+- Manter rastreamento mobile manual nesta etapa.
+- Nao implementar background tracking sem politica especifica de intervalo, bateria e consentimento.
+
+## Sprint 4.6B-F-Mobile-A5-LOGIN-DIAG - Diagnostico login mobile - 20260704_173404
+
+Decisao tecnica:
+- Diagnosticar o login antes de corrigir LoginScreen.
+- Nao registrar token em claro nos relatorios.
+- Confirmar se a API retorna token, access_token, accessToken ou jwt.
+
+## Sprint 4.6B-F-Mobile-A5-LOGIN-FIX - Corrigir access_token - 20260704_173549
+
+Decisao tecnica:
+- Ajustar o app mobile ao contrato real da API de login.
+- A API retorna access_token e user_info.
+- O app deve aceitar access_token, mantendo compatibilidade com token, accessToken e jwt.
+- Nao alterar backend nem contrato da API nesta fase.
+
+## Sprint 4.6B-F-Mobile-A5-RETEST - Validacao via Expo Tunnel apos login fix - 20260704_173826
+
+Decisao tecnica:
+- Usar Expo Tunnel apenas para validacao mobile em desenvolvimento.
+- Manter rastreamento mobile manual nesta etapa.
+- Nao implementar background tracking sem politica especifica de intervalo, bateria e consentimento.
+
+## Sprint 4.6B-F-Mobile-A5-LOCATION-DIAG - Diagnostico envio localizacao - 20260704_174447
+
+Decisao tecnica:
+- Diagnosticar o endpoint de localizacao por API antes de alterar o app.
+- Comparar comportamento via curl com comportamento observado no app mobile.
+- Gerar rollback para registros de diagnostico.
+
+## Sprint 4.6B-F-Mobile-A5-LOCATION-FIX-UI - Diagnostico visual envio - 20260704_174633
+
+Decisao tecnica:
+- Diagnosticar o problema de envio diretamente na UI mobile antes de alterar backend.
+- Exibir dados retornados pela API para confirmar se o POST criou location_tracking_points.
+- Manter rastreamento manual e sem background tracking nesta fase.
+
+## Sprint 4.6B-F-Mobile-A5-RETEST - Validacao via Expo Tunnel apos instrumentacao - 20260704_174811
+
+Decisao tecnica:
+- Usar painel visual de diagnostico para validar o envio manual de localizacao no app.
+- Manter rastreamento mobile manual nesta etapa.
+- Nao implementar background tracking sem politica especifica de intervalo, bateria e consentimento.
+
+## Sprint 4.6B-F-Mobile-A6 - Documentacao final Live Tracking Mobile - 20260704_175308
+
+Decisão técnica:
+- Considerar concluída a integração manual do Live Tracking no mobile-app.
+- Manter background tracking para sprint futura.
+- Exigir política específica de intervalo, bateria, consentimento e geofence antes de rastreamento contínuo.
+
+## Sprint 4.6B-F-Mobile-A6-FIX-DOC - Correcao formatacao documento final - 20260704_175417
+
+Decisão técnica:
+- Corrigir apenas a documentação final da integração mobile.
+- Preservar a validação funcional já registrada como concluída.
+- Manter background tracking fora desta sprint.
+
+## Sprint Mobile-B1 - Diagnostico UX producao mobile-app - 20260704_222527
+
+Decisao tecnica:
+- Iniciar evolucao de producao do mobile-app por diagnostico, sem alterar codigo.
+- Priorizar configuracao de API por variavel de ambiente e melhorias de UX antes de background tracking.
+- Manter registros de validacao Live Tracking ate a finalizacao do app para producao.
+
+## Sprint Mobile-B2-A - API por EXPO_PUBLIC_API_URL e Login UX - 20260704_222706
+
+Decisao tecnica:
+- Usar EXPO_PUBLIC_API_URL como fonte primaria da API no app mobile.
+- Manter fallback para https://rh.lhsolucao.com.br.
+- Diferenciar erros de credencial, API indisponivel, erro de rede e token ausente.
+- Nao alterar backend nem contrato da API.
+
+## Sprint Mobile-B3-A - Auditoria funcional app profissional - 20260704_224142
+
+Decisao tecnica:
+- Antes de redesenhar a HomeScreen, auditar recursos existentes e lacunas.
+- Evoluir o app profissional em fases pequenas.
+- Comecar pela formalizacao dos tipos de batida antes de alterar fluxos de envio.
+
+## Sprint Mobile-B3-B - Catalogo oficial tipos de batida - 20260704_224455
+
+Decisao tecnica:
+- Formalizar os tipos de batida no app mobile antes de redesenhar a HomeScreen.
+- Manter o catalogo local nesta fase, sem alterar backend ou banco.
+- Preparar a base para regras por funcionario em fases futuras.
+
+## Sprint Mobile-B3-E-DIAG - Contrato endpoint batida - 20260704_224911
+
+Decisao tecnica:
+- Validar contrato do endpoint antes de enviar tipo de batida pela HomeScreen.
+- Nao alterar mobile, backend ou banco nesta fase.
+- Gerar evidencias e notas de rollback para registros criados em diagnostico.
+
+## Sprint Backend-B3-E1-A - Diagnostico endpoint ponto - 20260704_225416
+
+Decisao tecnica:
+- Diagnosticar estrutura real antes de implementar punchType no backend.
+- Nao alterar endpoint, entidade ou banco nesta fase.
+- Preparar base para Backend-B3-E1-B.
+
+## Sprint Backend-B3-E1-B1 - Suporte punchType tipos principais - 20260704_230152
+
+Decisao tecnica:
+- Implementar suporte inicial apenas para os quatro tipos principais de batida.
+- Mapear ENTRADA para clockIn, INICIO_INTERVALO para breakStart, FIM_INTERVALO para breakEnd e SAIDA para clockOut.
+- Rejeitar tipos avancados nesta fase para evitar gravacao inconsistente.
+- Nao alterar banco nesta fase, pois o TimeRecordsService ja grava eventType existente.
+
+## Sprint Backend-B3-E1-C - Validacao contrato punchType publicado - 20260704_230339
+
+Decisao tecnica:
+- Validar contrato real da API em execucao antes de liberar envio de punchType pelo app mobile.
+- Manter suporte apenas aos quatro tipos principais nesta etapa.
+- Rejeitar tipos invalidos e avancados ate Backend-B3-E1-B2.

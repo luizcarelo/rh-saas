@@ -1,3 +1,4 @@
+import { AuditModule } from '../audit/audit.module';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Employee } from './employee.entity';
@@ -6,7 +7,7 @@ import { EmployeesController } from './employees.controller';
 import { User } from '../users/user.entity';
 
 @Module({
-  imports: [
+  imports: [AuditModule, 
     TypeOrmModule.forFeature([
       Employee,
       User,

@@ -1,0 +1,6 @@
+FICHA=/opt/rh-saas/docs/FICHA_TECNICA_SISTEMA.md
+SECTION=/opt/rh-saas/docs/admin/admin_A1_FUNC_RULES_P1C_modelo_dados_funcionario_20260705_154303/MODELO_DADOS_MODULO_FUNCIONARIO.md
+REPORT=/opt/rh-saas/docs/admin/RELATORIO_ADMIN_A1_FUNC_RULES_P1C_MODELO_DADOS_FUNCIONARIO_20260705_154303.md
+OUTDIR=/opt/rh-saas/docs/admin/admin_A1_FUNC_RULES_P1C_modelo_dados_funcionario_20260705_154303
+BACKUP=/opt/rh-saas/backups/admin_A1_FUNC_RULES_P1C_modelo_dados_funcionario_20260705_154303
+CONCLUSION=ADMIN_A1_FUNC_RULES_P1C_MODELO_DADOS_REGISTRADO

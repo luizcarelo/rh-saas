@@ -1,0 +1,4 @@
+IS_JSON=True
+ROLE=ADMIN
+EMAIL=admin@empresa.com
+HAS_TOKEN=True

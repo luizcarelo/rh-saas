@@ -1,0 +1,5 @@
+endpoint	http_status	response_file
+/v1/foundation/live-tracking/device	201	/opt/rh-saas/docs/foundation/respostas_fase4_6B_F_D_live_tracking_20260704_160138/device_response.json
+/v1/foundation/live-tracking/location	201	/opt/rh-saas/docs/foundation/respostas_fase4_6B_F_D_live_tracking_20260704_160138/location_response.json
+/v1/foundation/live-tracking/points	200	/opt/rh-saas/docs/foundation/respostas_fase4_6B_F_D_live_tracking_20260704_160138/live_tracking_points_response.json
+/v1/foundation/live-tracking/latest	200	/opt/rh-saas/docs/foundation/respostas_fase4_6B_F_D_live_tracking_20260704_160138/live_tracking_latest_response.json

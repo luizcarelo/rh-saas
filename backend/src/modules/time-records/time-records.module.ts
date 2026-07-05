@@ -1,3 +1,4 @@
+import { AuditModule } from '../audit/audit.module';
 import { TimeCalculatorService } from "./time-calculator.service";
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -6,7 +7,7 @@ import { TimeRecordsService } from './time-records.service';
 import { TimeRecordsController } from './time-records.controller';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([TimeRecord])],
+  imports: [AuditModule, TypeOrmModule.forFeature([TimeRecord])],
   controllers: [TimeRecordsController],
   providers: [TimeRecordsService, TimeCalculatorService],
 })

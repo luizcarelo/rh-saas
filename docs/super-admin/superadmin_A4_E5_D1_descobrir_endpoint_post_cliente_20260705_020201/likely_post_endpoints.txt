@@ -1,0 +1,5 @@
+# Candidatos com sinal de rota existente por OPTIONS/GET/HEAD
+
+
+# Top candidato por score estático
+

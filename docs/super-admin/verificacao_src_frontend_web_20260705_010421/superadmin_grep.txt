@@ -1,0 +1,174 @@
+/opt/rh-saas/frontend-web/src/App.tsx:21:import { SuperAdminDashboardPage } from "./pages/super-admin/SuperAdminDashboardPage";
+/opt/rh-saas/frontend-web/src/App.tsx:22:import { SuperAdminClientsPage } from "./pages/super-admin/SuperAdminClientsPage";
+/opt/rh-saas/frontend-web/src/App.tsx:23:import { SuperAdminClientDashboardPage } from "./pages/super-admin/SuperAdminClientDashboardPage";
+/opt/rh-saas/frontend-web/src/App.tsx:24:import { SuperAdminClientAuditPage } from "./pages/super-admin/SuperAdminClientAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx:25:import { SuperAdminClientModulesPage } from "./pages/super-admin/SuperAdminClientModulesPage";
+/opt/rh-saas/frontend-web/src/App.tsx:26:import { SuperAdminClientModulesAuditPage } from "./pages/super-admin/SuperAdminClientModulesAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx:27:import { SuperAdminPlansPage } from "./pages/super-admin/SuperAdminPlansPage";
+/opt/rh-saas/frontend-web/src/App.tsx:28:import { SuperAdminPlanCreatePage } from "./pages/super-admin/SuperAdminPlanCreatePage";
+/opt/rh-saas/frontend-web/src/App.tsx:29:import { SuperAdminPlanDetailsPage } from "./pages/super-admin/SuperAdminPlanDetailsPage";
+/opt/rh-saas/frontend-web/src/App.tsx:30:import { SuperAdminPlaceholderPage } from "./pages/super-admin/SuperAdminPlaceholderPage";
+/opt/rh-saas/frontend-web/src/App.tsx:85:  return getUserInfo()?.role === "SUPER_ADMIN" ? element : <Dashboard />;
+/opt/rh-saas/frontend-web/src/App.tsx:116:              path="/super-admin"
+/opt/rh-saas/frontend-web/src/App.tsx:117:              element={superAdminOnly(<SuperAdminDashboardPage />)}
+/opt/rh-saas/frontend-web/src/App.tsx:121:              path="/super-admin/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx:122:              element={superAdminOnly(<SuperAdminClientsPage />)}
+/opt/rh-saas/frontend-web/src/App.tsx:126:              path="/super-admin/clientes/dashboard"
+/opt/rh-saas/frontend-web/src/App.tsx:128:                <SuperAdminPlaceholderPage
+/opt/rh-saas/frontend-web/src/App.tsx:148:              path="/super-admin/clientes/novo"
+/opt/rh-saas/frontend-web/src/App.tsx:150:                <SuperAdminPlaceholderPage
+/opt/rh-saas/frontend-web/src/App.tsx:170:              path="/super-admin/clientes/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:171:              element={superAdminOnly(<SuperAdminClientDashboardPage />)}
+/opt/rh-saas/frontend-web/src/App.tsx:175:              path="/super-admin/clientes/:id/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:176:              element={superAdminOnly(<SuperAdminClientAuditPage />)}
+/opt/rh-saas/frontend-web/src/App.tsx:180:              path="/super-admin/clientes/:id/modules"
+/opt/rh-saas/frontend-web/src/App.tsx:181:              element={superAdminOnly(<SuperAdminClientModulesPage />)}
+/opt/rh-saas/frontend-web/src/App.tsx:185:              path="/super-admin/clientes/:id/modules/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:186:              element={superAdminOnly(<SuperAdminClientModulesAuditPage />)}
+/opt/rh-saas/frontend-web/src/App.tsx:190:              path="/super-admin/empresas"
+/opt/rh-saas/frontend-web/src/App.tsx:192:                <SuperAdminPlaceholderPage
+/opt/rh-saas/frontend-web/src/App.tsx:213:              path="/super-admin/planos"
+/opt/rh-saas/frontend-web/src/App.tsx:214:              element={superAdminOnly(<SuperAdminPlansPage />)}
+/opt/rh-saas/frontend-web/src/App.tsx:218:              path="/super-admin/planos/novo"
+/opt/rh-saas/frontend-web/src/App.tsx:219:              element={superAdminOnly(<SuperAdminPlanCreatePage />)}
+/opt/rh-saas/frontend-web/src/App.tsx:223:              path="/super-admin/planos/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:224:              element={superAdminOnly(<SuperAdminPlanDetailsPage />)}
+/opt/rh-saas/frontend-web/src/App.tsx:228:              path="/super-admin/planos/recursos"
+/opt/rh-saas/frontend-web/src/App.tsx:230:                <SuperAdminPlaceholderPage
+/opt/rh-saas/frontend-web/src/App.tsx:252:              path="/super-admin/modulos"
+/opt/rh-saas/frontend-web/src/App.tsx:254:                <SuperAdminPlaceholderPage
+/opt/rh-saas/frontend-web/src/App.tsx:255:                  title="Módulos SaaS"
+/opt/rh-saas/frontend-web/src/App.tsx:276:              path="/super-admin/modulos/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx:278:                <SuperAdminPlaceholderPage
+/opt/rh-saas/frontend-web/src/App.tsx:299:              path="/super-admin/usuarios"
+/opt/rh-saas/frontend-web/src/App.tsx:301:                <SuperAdminPlaceholderPage
+/opt/rh-saas/frontend-web/src/App.tsx:302:                  title="Usuários Administrativos"
+/opt/rh-saas/frontend-web/src/App.tsx:306:                    "SUPER_ADMIN",
+/opt/rh-saas/frontend-web/src/App.tsx:322:              path="/super-admin/auditoria"
+/opt/rh-saas/frontend-web/src/App.tsx:324:                <SuperAdminPlaceholderPage
+/opt/rh-saas/frontend-web/src/App.tsx:346:              path="/super-admin/configuracoes"
+/opt/rh-saas/frontend-web/src/App.tsx:348:                <SuperAdminPlaceholderPage
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:24:    label: "Usuários",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:117:    path: "/super-admin",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:122:    path: "/super-admin/clientes/dashboard",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:126:    label: "Clientes SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:127:    path: "/super-admin/clientes",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:132:    path: "/super-admin/clientes/novo",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:137:    path: "/super-admin/empresas",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:141:    label: "Planos SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:142:    path: "/super-admin/planos",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:147:    path: "/super-admin/planos/novo",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:152:    path: "/super-admin/planos/recursos",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:156:    label: "Módulos SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:157:    path: "/super-admin/modulos",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:162:    path: "/super-admin/modulos/clientes",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:166:    label: "Usuários Admin",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:167:    path: "/super-admin/usuarios",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:172:    path: "/super-admin/auditoria",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:177:    path: "/super-admin/configuracoes",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:209:  const dynamicMenu = userRoleForMenu === 'SUPER_ADMIN' ? superAdminMenu : menu;
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:4:export function SuperAdminPlanCreatePage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:13:      "/v1/super-admin/plans",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:10:export function SuperAdminDashboard() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:22:      apiRequest("/v1/super-admin/dashboard"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:23:      apiRequest("/v1/super-admin/system/health"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:24:      apiRequest("/v1/super-admin/system/database"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:25:      apiRequest("/v1/super-admin/system/storage"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:26:      apiRequest("/v1/super-admin/system/metrics"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:27:      apiRequest("/v1/super-admin/system/services"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:63:      titulo: "Usuários",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:13:export function SuperAdminPlanDetailsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:28:      "/v1/super-admin/plans"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:61:      `/v1/super-admin/plans/${plan.id}`,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:43:export function SuperAdminClientDetailsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:55:      `/v1/super-admin/clients/${id}`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:68:  to={`/super-admin/clientes/${id}/dashboard`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:91:  to={`/super-admin/clientes/${id}/dashboard`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:114:  to={`/super-admin/clientes/${id}/dashboard`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:19:export function SuperAdminClientsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:27:      "/v1/super-admin/clients"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:38:        Clientes SaaS
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:91:                          to={`/super-admin/clientes/${client.id}`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:11:export function SuperAdminClientDashboardPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:22:      `/v1/super-admin/clients/${id}/dashboard`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:35:      titulo: "Usuários",
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:66:        Usuários
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:10:export function SuperAdminClientModulesPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:25:      `/v1/super-admin/clients/${id}/modules`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:42:      `/v1/super-admin/clients/${id}/modules/${moduleCode}`,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:78:    to={`/super-admin/clientes/${id}/modules/audit`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:5:export function SuperAdminClientModulesAuditPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:16:      `/v1/super-admin/clients/${id}/modules/audit`
+/opt/rh-saas/frontend-web/src/pages/super-admin/SuperAdminPlaceholderPage.tsx:1:type SuperAdminPlaceholderPageProps = {
+/opt/rh-saas/frontend-web/src/pages/super-admin/SuperAdminPlaceholderPage.tsx:10:export function SuperAdminPlaceholderPage({
+/opt/rh-saas/frontend-web/src/pages/super-admin/SuperAdminPlaceholderPage.tsx:17:}: SuperAdminPlaceholderPageProps) {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:11:export function SuperAdminClientAuditPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:22:      `/v1/super-admin/clients/${id}/audit`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:20:export function SuperAdminPlansPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:28:      "/v1/super-admin/plans"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:42:    Planos SaaS
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:46:    to="/super-admin/planos/novo"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:126:    to={`/super-admin/planos/${plan.id}`}
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:1:export type SuperAdminClientStatus =
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:8:export type SuperAdminClientPlan = {
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:15:export type SuperAdminClientModule = {
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:22:export type SuperAdminClient = {
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:27:  status?: SuperAdminClientStatus;
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:33:  plan?: SuperAdminClientPlan | null;
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:34:  modules?: SuperAdminClientModule[];
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:44:  | SuperAdminClient[]
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:46:      data?: SuperAdminClient[];
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:47:      items?: SuperAdminClient[];
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:48:      results?: SuperAdminClient[];
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:49:      clients?: SuperAdminClient[];
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:50:      tenants?: SuperAdminClient[];
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:53:export type ListSuperAdminClientsResult = {
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:55:  clients: SuperAdminClient[];
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:59:  '/v1/super-admin/clientes',
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:60:  '/v1/super-admin/tenants',
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:96:export function getSuperAdminAuthToken() {
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:129:function normalizeClientList(payload: ListResponseShape): SuperAdminClient[] {
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:158:  const token = getSuperAdminAuthToken();
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:204:export async function listSuperAdminClients(): Promise<ListSuperAdminClientsResult> {
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:225:    `Nenhum endpoint de Clientes SaaS respondeu com sucesso. ${errors.join(' | ')}`,
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:230:  list: listSuperAdminClients,
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:20:import { SuperAdminDashboard } from "./pages/SuperAdminDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:21:import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:22:import { SuperAdminClientDetailsPage } from "./pages/SuperAdminClientDetailsPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:23:import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:24:import { SuperAdminClientAuditPage } from "./pages/SuperAdminClientAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:25:import { SuperAdminClientModulesPage } from "./pages/SuperAdminClientModulesPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:26:import { SuperAdminClientModulesAuditPage } from "./pages/SuperAdminClientModulesAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:28:import { SuperAdminPlansPage } from "./pages/SuperAdminPlansPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:29:import { SuperAdminPlanDetailsPage } from "./pages/SuperAdminPlanDetailsPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:30:import { SuperAdminPlanCreatePage } from "./pages/SuperAdminPlanCreatePage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:83:              path="/super-admin"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:85:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:86:                  ? <SuperAdminDashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:92:              path="/super-admin/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:94:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:95:                  ? <SuperAdminClientsPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:101:              path="/super-admin/clientes/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:103:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:104:                  ? <SuperAdminClientDetailsPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:110:              path="/super-admin/clientes/:id/dashboard"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:112:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:113:                  ? <SuperAdminClientDashboardPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:119:              path="/super-admin/clientes/:id/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:121:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:122:                  ? <SuperAdminClientAuditPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:128:              path="/super-admin/clientes/:id/modules"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:130:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:131:                  ? <SuperAdminClientModulesPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:137:              path="/super-admin/clientes/:id/modules/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:139:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:140:                  ? <SuperAdminClientModulesAuditPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:146:              path="/super-admin/planos"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:148:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:149:                  ? <SuperAdminPlansPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:155:              path="/super-admin/planos/novo"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:157:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:158:                  ? <SuperAdminPlanCreatePage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:164:              path="/super-admin/planos/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:166:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:167:                  ? <SuperAdminPlanDetailsPage />

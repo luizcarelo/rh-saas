@@ -1,0 +1,593 @@
+{
+  "generated_at": "2026-07-04 11:37:06.703017",
+  "database_metadata_available": true,
+  "database_metadata_error": null,
+  "nestjs": {
+    "entities_count": 10,
+    "controllers_count": 13,
+    "services_count": 15,
+    "modules_count": 13
+  },
+  "foundation_tables": [
+    {
+      "table": "saas_clients",
+      "domain": "saas",
+      "legacy_equivalent": null,
+      "rows": "1",
+      "columns_count": 13,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": true,
+      "service_files": [
+        "src/modules/super-admin/super-admin.service.ts"
+      ],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "saas_plans",
+      "domain": "saas",
+      "legacy_equivalent": null,
+      "rows": "3",
+      "columns_count": 7,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": true,
+      "service_files": [
+        "src/modules/super-admin/super-admin.service.ts"
+      ],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "tenant_module_flags",
+      "domain": "saas",
+      "legacy_equivalent": null,
+      "rows": "11",
+      "columns_count": 6,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": true,
+      "service_files": [
+        "src/modules/super-admin/super-admin.service.ts"
+      ],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "tenant_module_audit",
+      "domain": "saas",
+      "legacy_equivalent": null,
+      "rows": "2",
+      "columns_count": 8,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": true,
+      "service_files": [
+        "src/modules/super-admin/super-admin.service.ts"
+      ],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "tenant_client_audit",
+      "domain": "saas",
+      "legacy_equivalent": null,
+      "rows": "0",
+      "columns_count": 7,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": true,
+      "service_files": [
+        "src/modules/super-admin/super-admin.service.ts"
+      ],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "hr_companies",
+      "domain": "hr",
+      "legacy_equivalent": null,
+      "rows": "1",
+      "columns_count": 9,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": true,
+      "service_files": [
+        "src/modules/super-admin/super-admin.service.ts"
+      ],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "hr_branches",
+      "domain": "hr",
+      "legacy_equivalent": null,
+      "rows": "0",
+      "columns_count": 11,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "hr_departments",
+      "domain": "hr",
+      "legacy_equivalent": null,
+      "rows": "3",
+      "columns_count": 6,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "hr_cost_centers",
+      "domain": "hr",
+      "legacy_equivalent": null,
+      "rows": "3",
+      "columns_count": 6,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "hr_job_positions",
+      "domain": "hr",
+      "legacy_equivalent": null,
+      "rows": "5",
+      "columns_count": 6,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "hr_job_functions",
+      "domain": "hr",
+      "legacy_equivalent": null,
+      "rows": "4",
+      "columns_count": 11,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "hr_employee_profiles",
+      "domain": "hr",
+      "legacy_equivalent": "employees",
+      "rows": "3",
+      "columns_count": 14,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": true,
+      "service_files": [
+        "src/modules/super-admin/super-admin.service.ts"
+      ],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "hr_work_locations",
+      "domain": "geofence",
+      "legacy_equivalent": "sem equivalente direto",
+      "rows": "1",
+      "columns_count": 10,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "hr_geofences",
+      "domain": "geofence",
+      "legacy_equivalent": "sem equivalente direto",
+      "rows": "1",
+      "columns_count": 10,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "clock_event_types",
+      "domain": "clock",
+      "legacy_equivalent": "parcialmente relacionado a time-records",
+      "rows": "18",
+      "columns_count": 10,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": true,
+      "service_files": [
+        "src/modules/time-bank/time-bank.service.ts"
+      ],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "clock_policies",
+      "domain": "clock",
+      "legacy_equivalent": "sem equivalente direto",
+      "rows": "1",
+      "columns_count": 16,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "clock_policy_event_types",
+      "domain": "clock",
+      "legacy_equivalent": null,
+      "rows": "4",
+      "columns_count": 8,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "clock_events_foundation",
+      "domain": "clock",
+      "legacy_equivalent": "time_records",
+      "rows": "0",
+      "columns_count": 22,
+      "has_entity": true,
+      "entity_file": "src/modules/clock-events/clock-event.entity.ts",
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": true,
+      "service_files": [
+        "src/modules/clock-events/clock-events.service.ts",
+        "src/modules/time-bank/time-bank.service.ts"
+      ],
+      "has_module": true,
+      "module_files": [
+        "src/modules/time-bank/time-bank.module.ts"
+      ],
+      "registered_in_app_module": true
+    },
+    {
+      "table": "clock_justifications_foundation",
+      "domain": "clock",
+      "legacy_equivalent": null,
+      "rows": "1",
+      "columns_count": 13,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "mobile_devices",
+      "domain": "mobile",
+      "legacy_equivalent": "sem equivalente direto",
+      "rows": "0",
+      "columns_count": 11,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "mobile_app_settings",
+      "domain": "mobile",
+      "legacy_equivalent": "sem equivalente direto",
+      "rows": "1",
+      "columns_count": 11,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "mobile_sync_batches",
+      "domain": "mobile",
+      "legacy_equivalent": "sem equivalente direto",
+      "rows": "0",
+      "columns_count": 9,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "location_tracking_points",
+      "domain": "tracking",
+      "legacy_equivalent": "sem equivalente direto",
+      "rows": "0",
+      "columns_count": 13,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "documents_foundation",
+      "domain": "documents",
+      "legacy_equivalent": "documents",
+      "rows": "1",
+      "columns_count": 12,
+      "has_entity": true,
+      "entity_file": "src/modules/documents/document.entity.ts",
+      "has_controller": true,
+      "controller_files": [
+        "src/modules/documents/documents.controller.ts"
+      ],
+      "has_service": true,
+      "service_files": [
+        "src/modules/documents/documents.service.ts",
+        "src/modules/super-admin/super-admin.service.ts"
+      ],
+      "has_module": true,
+      "module_files": [
+        "src/modules/documents/documents.module.ts"
+      ],
+      "registered_in_app_module": true
+    },
+    {
+      "table": "document_recipients_foundation",
+      "domain": "documents",
+      "legacy_equivalent": null,
+      "rows": "3",
+      "columns_count": 9,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "time_bank_balances_foundation",
+      "domain": "timebank",
+      "legacy_equivalent": "time_bank",
+      "rows": "3",
+      "columns_count": 9,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": false,
+      "service_files": [],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    },
+    {
+      "table": "payslips_foundation",
+      "domain": "payroll",
+      "legacy_equivalent": null,
+      "rows": "1",
+      "columns_count": 11,
+      "has_entity": false,
+      "entity_file": null,
+      "has_controller": false,
+      "controller_files": [],
+      "has_service": true,
+      "service_files": [
+        "src/modules/super-admin/super-admin.service.ts"
+      ],
+      "has_module": false,
+      "module_files": [],
+      "registered_in_app_module": false
+    }
+  ],
+  "summary": {
+    "total_foundation_tables": 27,
+    "with_entity": 2,
+    "without_entity": 25,
+    "with_controller": 1,
+    "with_service": 11,
+    "with_module": 2,
+    "registered_in_app_module": 2
+  },
+  "legacy_candidates": [
+    {
+      "legacy": "employees",
+      "foundation": "hr_employee_profiles",
+      "foundation_has_entity": false
+    },
+    {
+      "legacy": "sem equivalente direto",
+      "foundation": "hr_work_locations",
+      "foundation_has_entity": false
+    },
+    {
+      "legacy": "sem equivalente direto",
+      "foundation": "hr_geofences",
+      "foundation_has_entity": false
+    },
+    {
+      "legacy": "parcialmente relacionado a time-records",
+      "foundation": "clock_event_types",
+      "foundation_has_entity": false
+    },
+    {
+      "legacy": "sem equivalente direto",
+      "foundation": "clock_policies",
+      "foundation_has_entity": false
+    },
+    {
+      "legacy": "time_records",
+      "foundation": "clock_events_foundation",
+      "foundation_has_entity": true
+    },
+    {
+      "legacy": "sem equivalente direto",
+      "foundation": "mobile_devices",
+      "foundation_has_entity": false
+    },
+    {
+      "legacy": "sem equivalente direto",
+      "foundation": "mobile_app_settings",
+      "foundation_has_entity": false
+    },
+    {
+      "legacy": "sem equivalente direto",
+      "foundation": "mobile_sync_batches",
+      "foundation_has_entity": false
+    },
+    {
+      "legacy": "sem equivalente direto",
+      "foundation": "location_tracking_points",
+      "foundation_has_entity": false
+    },
+    {
+      "legacy": "documents",
+      "foundation": "documents_foundation",
+      "foundation_has_entity": true
+    },
+    {
+      "legacy": "time_bank",
+      "foundation": "time_bank_balances_foundation",
+      "foundation_has_entity": false
+    }
+  ],
+  "domain_summary": {
+    "saas": {
+      "tables": 5,
+      "with_entity": 0,
+      "without_entity": 5
+    },
+    "hr": {
+      "tables": 7,
+      "with_entity": 0,
+      "without_entity": 7
+    },
+    "geofence": {
+      "tables": 2,
+      "with_entity": 0,
+      "without_entity": 2
+    },
+    "clock": {
+      "tables": 5,
+      "with_entity": 1,
+      "without_entity": 4
+    },
+    "mobile": {
+      "tables": 3,
+      "with_entity": 0,
+      "without_entity": 3
+    },
+    "tracking": {
+      "tables": 1,
+      "with_entity": 0,
+      "without_entity": 1
+    },
+    "documents": {
+      "tables": 2,
+      "with_entity": 1,
+      "without_entity": 1
+    },
+    "timebank": {
+      "tables": 1,
+      "with_entity": 0,
+      "without_entity": 1
+    },
+    "payroll": {
+      "tables": 1,
+      "with_entity": 0,
+      "without_entity": 1
+    }
+  }
+}

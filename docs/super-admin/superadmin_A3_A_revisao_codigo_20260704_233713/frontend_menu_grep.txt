@@ -1,0 +1,185 @@
+/opt/rh-saas/frontend-web/src/App.tsx:4:import { AdminLayout } from "./layouts/AdminLayout";
+/opt/rh-saas/frontend-web/src/App.tsx:5:import { EmployeeLayout } from "./layouts/EmployeeLayout";
+/opt/rh-saas/frontend-web/src/App.tsx:12:import { Dashboard } from "./pages/Dashboard";
+/opt/rh-saas/frontend-web/src/App.tsx:20:import { EmployeeDashboard } from "./pages/EmployeeDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx:22:import { SuperAdminDashboard } from "./pages/SuperAdminDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx:25:import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+/opt/rh-saas/frontend-web/src/App.tsx:47:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx:51:              element={<Dashboard />}
+/opt/rh-saas/frontend-web/src/App.tsx:104:                  ? <SuperAdminDashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:105:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:114:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:123:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:131:                  ? <SuperAdminClientDashboardPage />
+/opt/rh-saas/frontend-web/src/App.tsx:132:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:141:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:150:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:159:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:168:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:177:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:186:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:194:<Route element={<EmployeeLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx:197:              element={<EmployeeDashboard />}
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:5:  LayoutDashboard,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:10:import { NavLink, Outlet, useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:12:const menu = [
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:14:    label: "Dashboard",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:15:    path: "/",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:16:    icon: LayoutDashboard,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:19:    label: "Colaboradores",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:20:    path: "/colaboradores",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:21:    icon: Users,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:24:    label: "Usuários",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:25:    path: "/usuarios",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:26:    icon: Users,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:29:  label: "Analytics",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:30:  path: "/analytics",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:31:  icon: BarChart3,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:34:    label: "Controle de ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:35:    path: "/ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:36:    icon: Clock3,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:39:    label: "Registrar ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:40:    path: "/registrar-ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:41:    icon: ShieldCheck,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:44:    label: "Auditoria",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:45:    path: "/audit",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:46:    icon: FileText,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:50:    label: "Live Tracking",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:51:    path: "/live-tracking-foundation",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:52:    icon: LayoutDashboard,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:75:export function AdminLayout() {
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:76:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:79:const dynamicMenu = [
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:83:          label: "Dashboard SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:84:          path: "/super-admin",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:85:          icon: ShieldCheck,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:88:          label: "Clientes SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:89:          path: "/super-admin/clientes",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:90:          icon: Users,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:93:          label: "Planos SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:94:          path: "/super-admin/planos",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:95:          icon: ShieldCheck,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:100:  ...menu,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:104:    navigate("/login", {
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:115:          <div className="flex h-24 items-center gap-3 px-6">
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:126:          <nav className="flex-1 space-y-2 px-4 py-4">
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:127:            {dynamicMenu.map((item) => {
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:131:                <NavLink
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:137:                      "group flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:146:                </NavLink>
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:149:          </nav>
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:165:              className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 px-4 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/10"
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:175:            <div className="flex items-center justify-between">
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:176:              <div className="flex items-center gap-3 lg:hidden">
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:194:              <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-2">
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:1:import { Outlet, useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:16:export function EmployeeLayout() {
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:17:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:22:    navigate("/login", {
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:30:        <div className="mx-auto flex max-w-6xl items-center justify-between">
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:31:          <div className="flex items-center gap-3">
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:70:        Documentos
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:10:export function SuperAdminDashboard() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:12:  const [dashboard,setDashboard] = useState<any>({});
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:32:        setDashboard(d);
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:71:      titulo: "Documentos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:88:        Dashboard SUPER ADMIN
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:71:  Dashboard Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:94:  Dashboard Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:117:  Dashboard Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:219:              Documentos:
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:168:          <div className="relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:170:              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-sm font-medium text-cyan-100">
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:195:              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:210:        <div className="flex items-start gap-3 rounded-2xl border border-orange-400/30 bg-orange-500/10 px-4 py-3 text-sm text-orange-100">
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:220:        <div className="flex items-start gap-3 rounded-2xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:230:        <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:283:                      <div className="flex flex-col items-center gap-3">
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:6:export function EmployeeDashboard() {
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:18:    if ("geolocation" in navigator) {
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:19:      navigator.geolocation.getCurrentPosition(
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:67:        {/* Card de Bater Ponto */}
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:73:            <div className="flex flex-col items-center">
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:95:            <div className="flex items-center justify-center text-xs text-slate-500">
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:121:                  <div key={idx} className="flex justify-between items-center text-sm border-b border-slate-50 pb-2 last:border-0">
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:11:export function SuperAdminClientDashboardPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:43:      titulo: "Documentos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:64:        Dashboard do Cliente
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:2:import { useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:40:  const navigate = useNavigate();
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:64:      navigate("/", {
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:79:    <div className="flex min-h-screen items-center justify-center bg-slate-950 p-4 text-white">
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx:13:      <h1 className="text-2xl font-bold text-slate-900">Meus Documentos</h1>
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx:17:          <Card key={doc.id} className="flex items-center justify-between p-4 shadow-sm">
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx:18:            <div className="flex items-center gap-4">
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx:30:                <span className="flex items-center text-emerald-600 text-sm font-bold bg-emerald-50 px-3 py-1 rounded-full">
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:14:  const [items,setItems] =
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:71:<div className="flex justify-between items-center">
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:103:          {items.map(item => (
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:102:      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:103:        <h1 className="text-3xl font-bold text-slate-900">Espelho de Ponto</h1>
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:9:  const [items,setItems] = useState<any[]>([]);
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:42:          {items.length === 0 ? (
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:49:            items.map((item,index) => (
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx:5:export function Dashboard() {
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx:16:        <Card><CardHeader className="flex flex-row items-center justify-between pb-2"><CardTitle className="text-sm font-medium">Colaboradores</CardTitle><Users className="h-4 w-4 text-primary" /></CardHeader><CardContent><div className="text-2xl font-bold">128</div></CardContent></Card>
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx:17:        <Card><CardHeader className="flex flex-row items-center justify-between pb-2"><CardTitle className="text-sm font-medium">Em Campo</CardTitle><Clock className="h-4 w-4 text-primary" /></CardHeader><CardContent><div className="text-2xl font-bold">14</div></CardContent></Card>
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx:18:        <Card><CardHeader className="flex flex-row items-center justify-between pb-2"><CardTitle className="text-sm font-medium">Atrasos</CardTitle><AlertCircle className="h-4 w-4 text-primary" /></CardHeader><CardContent><div className="text-2xl font-bold text-emerald-600">3</div></CardContent></Card>
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx:19:        <Card><CardHeader className="flex flex-row items-center justify-between pb-2"><CardTitle className="text-sm font-medium">Documentos</CardTitle><FileSignature className="h-4 w-4 text-primary" /></CardHeader><CardContent><div className="text-2xl font-bold">5</div></CardContent></Card>
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:22:    if ("geolocation" in navigator) {
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:23:      navigator.geolocation.getCurrentPosition(
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:64:          setLocationMsg("Por favor, permita o acesso à localização no navegador.");
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:77:    <div className="flex min-h-[80vh] items-center justify-center p-4">
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:86:          <div className="flex flex-col items-center justify-center">
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:96:          {/* Botão de Bater Ponto */}
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:107:             status === "success" ? <><CheckCircle2 className="mr-2 h-6 w-6" /> Ponto Registrado!</> : 
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:113:          <div className="flex items-center justify-center text-sm text-slate-500 bg-slate-50 p-3 rounded-lg">
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:100:      setMessage("Pontos atualizados com sucesso.");
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:124:        model: navigator.userAgent.slice(0, 200),
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:142:      if (!("geolocation" in navigator)) {
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:143:        reject(new Error("Geolocalização não disponível neste navegador."));
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:147:      navigator.geolocation.getCurrentPosition(resolve, reject, {
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:163:    setMessage("Capturando localização do navegador...");
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:197:          userAgent: navigator.userAgent,
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:234:            Live Tracking
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:237:            Tela simples de validação do Live Tracking usando mobile_devices e
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:244:        {message || "Pronto para validar Live Tracking."}
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:327:              O navegador solicitará permissão de localização. O ponto será enviado
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:406:          Pontos recentes
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:39:<div className="flex justify-between items-center">
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:159:          <div className="relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:161:              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-sm font-medium text-cyan-100">
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:180:                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:194:                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-500 via-blue-600 to-orange-500 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-cyan-500/20 transition hover:scale-[1.01]"
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:205:        <div className="flex items-center gap-3 rounded-2xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:212:        <div className="flex items-center gap-3 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:237:        <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+/opt/rh-saas/frontend-web/src/components/ui/button.tsx:7:  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+/opt/rh-saas/frontend-web/src/components/ui/button.tsx:22:        icon: "h-10 w-10",
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:1:import { Navigate, Outlet } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:8:    return <Navigate to="/login" replace />;
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx:145:      <div className="flex items-end">
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:4:import { AdminLayout } from "./layouts/AdminLayout";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:5:import { EmployeeLayout } from "./layouts/EmployeeLayout";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:11:import { Dashboard } from "./pages/Dashboard";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:18:import { EmployeeDashboard } from "./pages/EmployeeDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:20:import { SuperAdminDashboard } from "./pages/SuperAdminDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:23:import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:43:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:47:              element={<Dashboard />}
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:86:                  ? <SuperAdminDashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:87:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:96:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:105:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:113:                  ? <SuperAdminClientDashboardPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:114:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:123:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:132:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:141:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:150:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:159:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:168:                  : <Dashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:176:          <Route element={<EmployeeLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:179:              element={<EmployeeDashboard />}
+/opt/rh-saas/frontend-web/src/App.css:64:  place-items: center;
+/opt/rh-saas/frontend-web/src/App.css:125:    align-items: center;

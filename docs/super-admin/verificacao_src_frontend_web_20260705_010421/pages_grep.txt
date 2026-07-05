@@ -1,0 +1,36 @@
+/opt/rh-saas/frontend-web/src/App.tsx:19:import { EmployeeDashboard } from "./pages/employee/EmployeeDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx:22:import { SuperAdminClientsPage } from "./pages/super-admin/SuperAdminClientsPage";
+/opt/rh-saas/frontend-web/src/App.tsx:88:export default function App() {
+/opt/rh-saas/frontend-web/src/App.tsx:122:              element={superAdminOnly(<SuperAdminClientsPage />)}
+/opt/rh-saas/frontend-web/src/App.tsx:371:            <Route path="/meu-painel" element={<EmployeeDashboard />} />
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:126:    label: "Clientes SaaS",
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:25:export function EmployeeDetailsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:4:export function SuperAdminPlanCreatePage() {
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:11:export function DocumentsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:13:export function SuperAdminPlanDetailsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:43:export function SuperAdminClientDetailsPage() {
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:61:export function AuditLogsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:19:export function SuperAdminClientsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:38:        Clientes SaaS
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:6:export function EmployeeDashboard() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:11:export function SuperAdminClientDashboardPage() {
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:39:export function Login() {
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx:11:export function AnalyticsPage() {
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:11:export function UsersPage() {
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx:5:export function EmployeeDocumentsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:10:export function SuperAdminClientModulesPage() {
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:7:export function TimeTrackingPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:5:export function SuperAdminClientModulesAuditPage() {
+/opt/rh-saas/frontend-web/src/pages/super-admin/SuperAdminPlaceholderPage.tsx:10:export function SuperAdminPlaceholderPage({
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx:5:export function Dashboard() {
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:7:export function ClockInPage() {
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:48:export function LiveTrackingFoundationPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:11:export function SuperAdminClientAuditPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:20:export function SuperAdminPlansPage() {
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:32:export function EmployeesPage() {
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:225:    `Nenhum endpoint de Clientes SaaS respondeu com sucesso. ${errors.join(' | ')}`,
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:18:import { EmployeeDashboard } from "./pages/EmployeeDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:21:import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:32:export default function App() {
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:95:                  ? <SuperAdminClientsPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:179:              element={<EmployeeDashboard />}

@@ -1,6 +1,11 @@
 import {
   Controller,
   Get,
+  Param,
+  Post,
+  Put,
+  Patch,
+  Body,
   UseGuards,
 } from '@nestjs/common';
 
@@ -9,6 +14,12 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
 
 import { SuperAdminService } from './super-admin.service';
+import { CreatePlanDto } from './dto/create-plan.dto';
+import { UpdatePlanDto } from './dto/update-plan.dto';
+import { UpdateModuleDto } from './dto/update-module.dto';
+import { CreateClientDto } from './dto/create-client.dto';
+import { UpdateClientDto } from './dto/update-client.dto';
+import { UpdateClientStatusDto } from './dto/update-client-status.dto';
 
 @Controller('v1/super-admin')
 @UseGuards(JwtAuthGuard, RolesGuard)
@@ -18,15 +29,191 @@ export class SuperAdminController {
     private readonly service: SuperAdminService,
   ) {}
 
-  @Get('health')
   @Roles('SUPER_ADMIN' as any)
+  @Get('health')
   health() {
     return this.service.health();
   }
 
-  @Get('clients')
   @Roles('SUPER_ADMIN' as any)
-  async clients() {
+  @Get('clients')
+  clients() {
     return this.service.listClients();
   }
+
+  @Roles('SUPER_ADMIN' as any)
+  @Get('clients/:id')
+  details(
+    @Param('id') id: string,
+  ) {
+    return this.service.getClientDetails(id);
+  }
+
+
+  @Roles('SUPER_ADMIN' as any)
+  @Get('clients/:id/modules')
+  modules(
+    @Param('id') id: string,
+  ) {
+    return this.service.getModules(id);
+  }
+
+  @Roles('SUPER_ADMIN' as any)
+  @Put('clients/:id/modules/:moduleCode')
+  updateModule(
+    @Param('id') id: string,
+    @Param('moduleCode') moduleCode: string,
+    @Body() body: UpdateModuleDto,
+  ) {
+    return this.service.updateModule(
+      id,
+      moduleCode,
+      body.enabled,
+    );
+  }
+
+
+
+  @Roles('SUPER_ADMIN' as any)
+  @Get('clients/:id/modules/audit')
+  moduleAudit(
+    @Param('id') id: string,
+  ) {
+    return this.service.getModuleAudit(id);
+  }
+
+
+
+  @Roles('SUPER_ADMIN' as any)
+  @Get('dashboard')
+  dashboard() {
+    return this.service.getDashboard();
+  }
+
+
+
+  @Roles('SUPER_ADMIN' as any)
+  @Get('clients/:id/dashboard')
+  tenantDashboard(
+    @Param('id') id: string,
+  ) {
+    return this.service.getClientDashboard(id);
+  }
+
+
+
+  @Roles('SUPER_ADMIN' as any)
+  @Get('plans')
+  plans() {
+    return this.service.listPlans();
+  }
+
+  @Roles('SUPER_ADMIN' as any)
+  @Post('plans')
+  createPlan(
+    @Body() dto: CreatePlanDto,
+  ) {
+    return this.service.createPlan(dto);
+  }
+
+  @Roles('SUPER_ADMIN' as any)
+  @Put('plans/:id')
+  updatePlan(
+    @Param('id') id: string,
+    @Body() dto: UpdatePlanDto,
+  ) {
+    return this.service.updatePlan(id,dto);
+  }
+
+
+
+  @Roles('SUPER_ADMIN' as any)
+  @Post('clients')
+  createClient(
+    @Body() dto: CreateClientDto,
+  ) {
+    return this.service.createClient(dto);
+  }
+
+
+
+  @Roles('SUPER_ADMIN' as any)
+  @Put('clients/:id')
+  updateClient(
+    @Param('id') id: string,
+    @Body() dto: UpdateClientDto,
+  ) {
+    return this.service.updateClient(
+      id,
+      dto,
+    );
+  }
+
+  @Roles('SUPER_ADMIN' as any)
+  @Patch('clients/:id/status')
+  updateClientStatus(
+    @Param('id') id: string,
+    @Body() dto: UpdateClientStatusDto,
+  ) {
+    return this.service.updateClientStatus(
+      id,
+      dto.status,
+    );
+  }
+
+
+
+  @Roles('SUPER_ADMIN' as any)
+  @Get('clients/:id/audit')
+  clientAudit(
+    @Param('id') id: string,
+  ) {
+    return this.service.getClientAudit(id);
+  }
+
+
+
+  @Roles('SUPER_ADMIN' as any)
+  @Get('system/health')
+  systemHealth() {
+    return this.service.systemHealth();
+  }
+
+  @Roles('SUPER_ADMIN' as any)
+  @Get('system/database')
+  systemDatabase() {
+    return this.service.databaseStatus();
+  }
+
+
+
+
+  @Roles('SUPER_ADMIN' as any)
+  @Get('system/storage')
+  systemStorage() {
+    return this.service.systemStorage();
+  }
+
+  @Roles('SUPER_ADMIN' as any)
+  @Get('system/metrics')
+  systemMetrics() {
+    return this.service.systemMetrics();
+  }
+
+
+
+
+  @Roles('SUPER_ADMIN' as any)
+  @Get('system/containers')
+  systemContainers() {
+    return this.service.systemContainers();
+  }
+
+  @Roles('SUPER_ADMIN' as any)
+  @Get('system/services')
+  systemServices() {
+    return this.service.systemServices();
+  }
+
+
 }

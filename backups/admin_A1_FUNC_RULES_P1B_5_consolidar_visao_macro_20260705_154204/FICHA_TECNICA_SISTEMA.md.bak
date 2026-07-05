@@ -1,0 +1,653 @@
+# FICHA_TECNICA_SISTEMA.md
+
+Ficha técnica do sistema RH SaaS.
+
+
+---
+
+# Módulo Funcionário — Escopo oficial
+
+## Escopo
+
+O módulo Funcionário será o núcleo operacional do RH SaaS.
+
+Nesta etapa, o trabalho será restrito a:
+
+- backend;
+- app admin web;
+- banco de dados.
+
+O app mobile não será implementado agora, mas o backend e o banco deverão ser preparados para consumo futuro pelo mobile.
+
+## Direção de produto
+
+O cadastro de funcionário deverá ser progressivo e modular.
+
+Não deverá ser criado um formulário único gigante.
+
+## Áreas futuras do módulo
+
+- cadastro mínimo;
+- dados pessoais;
+- endereço;
+- contrato;
+- jornada e ponto;
+- documentos;
+- dependentes;
+- benefícios;
+- financeiro e bancário;
+- saúde e segurança;
+- vínculo com usuário;
+- auditoria;
+- pendências e notificações.
+
+---
+
+# Módulo Funcionário — Cadastro progressivo
+
+## Regra principal
+
+O cadastro de funcionário deverá ser progressivo.
+
+O sistema não deverá exigir todos os dados da ficha completa no primeiro momento.
+
+O funcionário deverá nascer com um cadastro mínimo operacional e depois ser complementado por etapas.
+
+## Cadastro mínimo operacional
+
+O cadastro mínimo atual identificado para criação do funcionário é:
+
+- firstName;
+- lastName;
+- cpf;
+- email;
+- department;
+- jobTitle;
+- admissionDate.
+
+Esse cadastro mínimo permite criar o registro inicial do funcionário.
+
+## Ficha completa por etapas
+
+Após o pré-cadastro, a ficha deverá ser completada em etapas:
+
+- dados pessoais;
+- endereço;
+- contrato;
+- jornada e ponto;
+- documentos;
+- dependentes;
+- benefícios;
+- financeiro e bancário;
+- saúde e segurança;
+- vínculo com usuário;
+- auditoria;
+- pendências e notificações.
+
+## Status sugeridos
+
+O módulo deverá prever status de ciclo de vida do funcionário:
+
+- DRAFT;
+- PENDING_COMPLETION;
+- ACTIVE;
+- INACTIVE;
+- TERMINATED.
+
+## Regras de ativação
+
+O funcionário só deverá ser considerado ativo quando os requisitos mínimos definidos para o tenant e módulos ativos forem atendidos.
+
+Exemplos de requisitos futuros:
+
+- cadastro mínimo preenchido;
+- CPF válido;
+- e-mail informado;
+- departamento definido;
+- cargo/função definidos;
+- data de admissão preenchida;
+- contrato completo, quando exigido;
+- endereço completo, quando exigido;
+- documentos obrigatórios aprovados, quando exigido;
+- jornada configurada, quando módulo de ponto estiver ativo;
+- usuário vinculado, quando acesso ao app/portal for necessário.
+
+## Checklist de completude
+
+O admin web deverá futuramente exibir um checklist de completude da ficha do funcionário.
+
+O checklist deve indicar:
+
+- dados completos;
+- dados pendentes;
+- documentos pendentes;
+- documentos vencidos;
+- pendências de aprovação;
+- pendências que bloqueiam ativação.
+
+## Direção de interface
+
+A tela de cadastro não deve ser um formulário único gigante.
+
+A interface deverá usar:
+
+- etapas;
+- abas;
+- cards de pendência;
+- checklist;
+- salvamento parcial;
+- validação por etapa.
+
+## Fora de escopo nesta parte
+
+Esta parte não implementa:
+
+- novas tabelas;
+- novos endpoints;
+- alteração no admin web;
+- alteração no backend;
+- alteração no banco;
+- criação de funcionário;
+- validação operacional.
+
+Esta parte registra apenas a regra de cadastro progressivo.
+
+---
+
+# Módulo Funcionário — Módulos funcionais da ficha
+
+## Regra principal
+
+A ficha do funcionário deverá ser organizada em módulos funcionais.
+
+Cada módulo deverá ter sua própria finalidade, permissões, campos, validações e evolução técnica.
+
+## Módulos funcionais previstos
+
+### 1. Resumo
+
+Objetivo:
+
+- apresentar visão geral do funcionário;
+- exibir status;
+- exibir pendências;
+- exibir alertas;
+- exibir checklist de completude.
+
+### 2. Dados pessoais
+
+Objetivo:
+
+- armazenar dados de identificação pessoal;
+- manter informações básicas do colaborador;
+- apoiar admissão, documentos, benefícios e folha.
+
+Exemplos de campos:
+
+- nome completo;
+- nome social;
+- CPF;
+- RG;
+- data de nascimento;
+- e-mail;
+- telefone;
+- nacionalidade;
+- estado civil.
+
+### 3. Endereço
+
+Objetivo:
+
+- registrar endereço residencial;
+- permitir integração futura com consulta de CEP;
+- apoiar admissão, benefícios, documentos e folha.
+
+Exemplos de campos:
+
+- CEP;
+- logradouro;
+- número;
+- complemento;
+- bairro;
+- cidade;
+- UF;
+- país.
+
+### 4. Contrato
+
+Objetivo:
+
+- registrar informações da relação de trabalho;
+- apoiar admissão, folha, gestão e relatórios.
+
+Exemplos de campos:
+
+- matrícula;
+- data de admissão;
+- tipo de contrato;
+- cargo;
+- função;
+- departamento;
+- centro de custo;
+- gestor;
+- filial/unidade;
+- regime de trabalho.
+
+### 5. Jornada e ponto
+
+Objetivo:
+
+- preparar o funcionário para módulos de ponto, jornada, banco de horas e escalas.
+
+Exemplos de campos:
+
+- jornada;
+- escala;
+- carga horária;
+- tolerância;
+- local de trabalho;
+- regime presencial, híbrido ou remoto.
+
+### 6. Documentos
+
+Objetivo:
+
+- armazenar documentos físicos/digitais do funcionário;
+- permitir upload;
+- controlar validade;
+- controlar aprovação;
+- gerar pendências;
+- preparar avisos futuros no app mobile.
+
+Exemplos de documentos:
+
+- RG;
+- CPF;
+- CNH;
+- certidões;
+- comprovante de residência;
+- contrato;
+- ASO;
+- certificados;
+- termos assinados.
+
+### 7. Dependentes
+
+Objetivo:
+
+- registrar dependentes e familiares quando necessário;
+- apoiar benefícios, folha, imposto e plano de saúde.
+
+Exemplos de campos:
+
+- nome;
+- CPF;
+- data de nascimento;
+- grau de parentesco;
+- vínculo com benefício.
+
+### 8. Benefícios
+
+Objetivo:
+
+- registrar benefícios concedidos ao funcionário;
+- permitir controle de início, fim, custo e status.
+
+Exemplos:
+
+- vale transporte;
+- vale refeição;
+- vale alimentação;
+- plano de saúde;
+- plano odontológico;
+- seguro de vida;
+- auxílio home office;
+- auxílio combustível.
+
+### 9. Financeiro e bancário
+
+Objetivo:
+
+- registrar dados bancários e informações financeiras de RH;
+- manter acesso restrito por permissão.
+
+Exemplos:
+
+- banco;
+- agência;
+- conta;
+- tipo de conta;
+- PIX;
+- salário;
+- histórico salarial;
+- reajustes.
+
+### 10. Saúde e segurança
+
+Objetivo:
+
+- controlar dados de SST e saúde ocupacional com acesso restrito.
+
+Exemplos:
+
+- ASO;
+- exames ocupacionais;
+- restrições médicas;
+- EPI;
+- treinamentos obrigatórios;
+- CAT;
+- PCMSO.
+
+### 11. Usuário vinculado
+
+Objetivo:
+
+- controlar vínculo entre funcionário e usuário do sistema;
+- permitir acesso futuro ao portal/app.
+
+Fluxo previsto:
+
+- funcionário pode existir sem usuário;
+- usuário pode ser criado separadamente;
+- vínculo é realizado depois;
+- vínculo pode ser removido.
+
+### 12. Auditoria
+
+Objetivo:
+
+- registrar eventos relevantes da ficha do funcionário;
+- manter histórico de alterações;
+- apoiar LGPD, segurança e rastreabilidade.
+
+Eventos sugeridos:
+
+- funcionário criado;
+- dados alterados;
+- documento enviado;
+- documento aprovado;
+- documento rejeitado;
+- usuário vinculado;
+- usuário desvinculado;
+- funcionário inativado.
+
+### 13. Pendências e notificações
+
+Objetivo:
+
+- registrar pendências operacionais do funcionário;
+- preparar notificações futuras para app mobile.
+
+Exemplos:
+
+- documento pendente;
+- documento vencido;
+- documento a vencer;
+- documento rejeitado;
+- completar dados cadastrais;
+- completar endereço;
+- configurar jornada;
+- vincular usuário.
+
+## Regra de interface
+
+A tela de detalhes do funcionário deverá ser organizada em abas ou seções, evitando formulário único gigante.
+
+## Regra de permissão
+
+Nem todos os módulos devem ficar disponíveis para todos os perfis.
+
+Exemplos de áreas restritas:
+
+- financeiro;
+- bancário;
+- saúde e segurança;
+- documentos sensíveis;
+- auditoria.
+
+## Fora de escopo nesta parte
+
+Esta parte não implementa:
+
+- tabelas;
+- endpoints;
+- telas;
+- upload;
+- notificações;
+- validação operacional.
+
+Esta parte registra apenas os módulos funcionais previstos para a ficha do funcionário.
+
+---
+
+# Módulo Funcionário — Responsabilidades por camada
+
+## Regra principal
+
+O módulo Funcionário deverá separar claramente as responsabilidades entre:
+
+- backend;
+- banco de dados;
+- app admin web;
+- preparação futura para app mobile.
+
+Nesta etapa do projeto, a implementação efetiva ficará restrita a backend, app admin web e banco de dados.
+
+O app mobile será preparado por contratos, dados, endpoints futuros e estrutura de pendências, mas não será implementado agora.
+
+---
+
+## 1. Responsabilidades do backend
+
+O backend será a fonte oficial das regras do módulo Funcionário.
+
+Responsabilidades do backend:
+
+- validar campos obrigatórios;
+- validar formato de CPF, e-mail e datas;
+- controlar tenantId;
+- aplicar regras de permissão;
+- aplicar regras de status do funcionário;
+- aplicar regras de ativação;
+- centralizar regras de documentos;
+- controlar upload e metadados de documentos;
+- controlar status de documentos;
+- controlar validade e vencimento de documentos;
+- gerar pendências operacionais;
+- preparar dados para notificações futuras;
+- registrar auditoria;
+- expor endpoints para o app admin web;
+- preparar endpoints futuros para app mobile.
+
+O backend não deve depender exclusivamente do frontend para validar regras importantes.
+
+---
+
+## 2. Responsabilidades do banco de dados
+
+O banco deverá representar o módulo Funcionário de forma modular.
+
+Responsabilidades do banco:
+
+- manter o núcleo do funcionário;
+- manter dados complementares em tabelas próprias;
+- evitar concentração de todos os dados em uma única tabela gigante;
+- preservar tenantId nas entidades relacionadas;
+- permitir auditoria e histórico;
+- permitir versionamento de documentos;
+- permitir controle de documentos vencidos;
+- permitir pendências para o funcionário;
+- permitir integração futura com app mobile.
+
+Estrutura modular futura sugerida:
+
+- employees;
+- employee_personal_data;
+- employee_addresses;
+- employee_contracts;
+- employee_documents;
+- employee_document_types;
+- employee_dependents;
+- employee_benefits;
+- employee_bank_accounts;
+- employee_salary_history;
+- employee_health_records;
+- employee_user_links;
+- employee_audit_logs;
+- employee_notifications;
+- employee_pending_actions.
+
+---
+
+## 3. Responsabilidades do app admin web
+
+O app admin web será a interface principal de gestão do módulo Funcionário nesta etapa.
+
+Responsabilidades do app admin web:
+
+- listar funcionários;
+- criar pré-cadastro;
+- visualizar detalhes do funcionário;
+- completar ficha por etapas;
+- exibir checklist de completude;
+- exibir pendências;
+- gerenciar documentos;
+- enviar documentos pelo RH;
+- aprovar documentos;
+- rejeitar documentos com motivo;
+- visualizar documentos vencidos ou a vencer;
+- vincular usuário ao funcionário;
+- desvincular usuário;
+- consultar histórico e auditoria;
+- respeitar permissões por perfil.
+
+O admin web não deverá concentrar todas as regras de negócio. Regras críticas deverão permanecer no backend.
+
+---
+
+## 4. Preparação para app mobile
+
+O app mobile não será implementado nesta etapa.
+
+Mesmo assim, backend e banco deverão ficar preparados para recursos futuros:
+
+- consulta do perfil do funcionário;
+- consulta de documentos do funcionário;
+- consulta de pendências;
+- documentos vencidos;
+- documentos a vencer;
+- upload futuro de documentos;
+- envio de nova versão;
+- notificações in-app;
+- push notification futura;
+- histórico de pendências.
+
+Endpoints futuros sugeridos:
+
+- GET /v1/me/profile;
+- GET /v1/me/documents;
+- POST /v1/me/documents/:documentTypeId/upload;
+- GET /v1/me/document-pendencies;
+- GET /v1/me/pending-actions.
+
+---
+
+## 5. Responsabilidades de permissões
+
+O módulo deverá separar dados por nível de acesso.
+
+Dados comuns:
+
+- nome;
+- e-mail;
+- departamento;
+- cargo;
+- data de admissão.
+
+Dados restritos:
+
+- CPF;
+- RG;
+- endereço;
+- documentos pessoais;
+- dependentes;
+- dados bancários;
+- salário.
+
+Dados sensíveis/restritos especiais:
+
+- saúde;
+- ASO;
+- restrições médicas;
+- exames ocupacionais;
+- biometria, se houver.
+
+Perfis futuros poderão incluir:
+
+- SUPER_ADMIN;
+- TENANT_ADMIN;
+- RH_ADMIN;
+- MANAGER;
+- EMPLOYEE;
+- SST_ADMIN;
+- FINANCE_ADMIN.
+
+---
+
+## 6. Responsabilidades de auditoria
+
+Eventos relevantes deverão gerar auditoria.
+
+Eventos sugeridos:
+
+- funcionário criado;
+- funcionário atualizado;
+- funcionário ativado;
+- funcionário inativado;
+- documento enviado;
+- documento aprovado;
+- documento rejeitado;
+- documento substituído;
+- documento vencido;
+- usuário vinculado;
+- usuário desvinculado;
+- dados sensíveis acessados;
+- dados financeiros acessados;
+- pendência criada;
+- pendência resolvida.
+
+---
+
+## 7. Responsabilidades de LGPD e segurança
+
+O módulo Funcionário deverá respeitar princípios de necessidade, finalidade, segurança e rastreabilidade.
+
+Regras recomendadas:
+
+- coletar apenas dados necessários por etapa;
+- separar dados sensíveis;
+- controlar acesso por perfil;
+- registrar auditoria de acesso a documentos;
+- evitar exposição de documentos em URLs públicas;
+- usar storage privado;
+- usar URLs temporárias para download;
+- mascarar dados sensíveis em listagens;
+- manter logs de acesso;
+- permitir rastreabilidade de alterações.
+
+---
+
+## 8. Fora de escopo nesta parte
+
+Esta parte não implementa:
+
+- tabelas;
+- migrations;
+- endpoints;
+- telas;
+- upload;
+- validação operacional;
+- app mobile;
+- alteração de permissões reais.
+
+Esta parte registra apenas as responsabilidades por camada do módulo Funcionário.

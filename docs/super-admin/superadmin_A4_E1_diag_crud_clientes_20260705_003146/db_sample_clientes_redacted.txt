@@ -1,0 +1,11 @@
+=================================================
+SUPERADMIN-A4-E1 - DB SAMPLE CLIENTES REDIGIDO
+Data: 20260705_003146
+=================================================
+
+### public.hr_branches
+ id | client_id | company_id | name | document_number | address_line | city | state | postal_code | created_at | updated_at 
+----+-----------+------------+------+-----------------+--------------+------+-------+-------------+------------+------------
+(0 rows)
+
+

@@ -1,0 +1,9 @@
+VERIFY_FOUND=NAO
+CLIENT_NAME=Cliente Homologação RH SaaS 20260705_031947
+CLIENT_SLUG=cliente-homologacao-rh-saas-20260705_031947
+CLIENT_EMAIL=homologacao+20260705_031947@rh-saas.local
+CREATED_ID=nao localizado
+CREATED_SLUG=nao localizado
+CREATED_EMAIL=nao localizado
+SELECTED_ENDPOINT=
+CREATE_STATUS=

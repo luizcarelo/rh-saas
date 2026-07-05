@@ -1,0 +1,69 @@
+=================================================
+SUPERADMIN-A2-A - SCHEMA USUARIOS
+Data: 20260704_232412
+=================================================
+
+## Tabelas candidatas
+ table_schema |      table_name      
+--------------+----------------------
+ public       | hr_employee_profiles
+ public       | super_admin_users
+ public       | users
+(3 rows)
+
+
+## Colunas candidatas
+ table_schema |       table_name        |      column_name      |          data_type          | is_nullable |        column_default         
+--------------+-------------------------+-----------------------+-----------------------------+-------------+-------------------------------
+ public       | audit_events            | tenant_id             | character varying           | YES         | 
+ public       | audit_logs_unified      | tenant_id             | uuid                        | YES         | 
+ public       | audit_logs_unified      | actor_email           | text                        | YES         | 
+ public       | audit_logs_unified      | actor_role            | text                        | YES         | 
+ public       | clock_events            | tenant_id             | uuid                        | NO          | 
+ public       | clock_events            | rowHash               | character varying           | NO          | 
+ public       | clock_events_foundation | local_hash            | text                        | YES         | 
+ public       | clock_events_foundation | server_hash           | text                        | YES         | 
+ public       | documents               | tenant_id             | character varying           | NO          | 
+ public       | documents_foundation    | hash_sha256           | text                        | YES         | 
+ public       | employee_schedules      | tenant_id             | character varying           | NO          | 
+ public       | employees               | tenant_id             | uuid                        | NO          | 
+ public       | employees               | email                 | character varying           | NO          | 
+ public       | hr_employee_profiles    | id                    | uuid                        | NO          | gen_random_uuid()
+ public       | hr_employee_profiles    | client_id             | uuid                        | NO          | 
+ public       | hr_employee_profiles    | employee_external_ref | text                        | YES         | 
+ public       | hr_employee_profiles    | first_name            | text                        | NO          | 
+ public       | hr_employee_profiles    | last_name             | text                        | NO          | 
+ public       | hr_employee_profiles    | cpf                   | text                        | YES         | 
+ public       | hr_employee_profiles    | email                 | text                        | YES         | 
+ public       | hr_employee_profiles    | department_id         | uuid                        | YES         | 
+ public       | hr_employee_profiles    | job_position_id       | uuid                        | YES         | 
+ public       | hr_employee_profiles    | job_function_id       | uuid                        | YES         | 
+ public       | hr_employee_profiles    | admission_date        | date                        | YES         | 
+ public       | hr_employee_profiles    | status                | text                        | NO          | 'ACTIVE'::text
+ public       | hr_employee_profiles    | created_at            | timestamp with time zone    | NO          | now()
+ public       | hr_employee_profiles    | updated_at            | timestamp with time zone    | NO          | now()
+ public       | payslips_foundation     | hash_sha256           | text                        | YES         | 
+ public       | saas_clients            | tenant_id             | uuid                        | NO          | gen_random_uuid()
+ public       | schedules               | tenant_id             | character varying           | NO          | 
+ public       | super_admin_users       | id                    | uuid                        | NO          | gen_random_uuid()
+ public       | super_admin_users       | email                 | text                        | NO          | 
+ public       | super_admin_users       | full_name             | text                        | NO          | 
+ public       | super_admin_users       | is_active             | boolean                     | NO          | true
+ public       | super_admin_users       | notes                 | text                        | YES         | 
+ public       | super_admin_users       | created_at            | timestamp with time zone    | NO          | now()
+ public       | super_admin_users       | updated_at            | timestamp with time zone    | NO          | now()
+ public       | tenant_module_audit     | changed_by_email      | character varying           | YES         | 
+ public       | tenants                 | email                 | character varying           | YES         | 
+ public       | time_bank               | tenant_id             | character varying           | NO          | 
+ public       | time_records            | tenant_id             | character varying           | NO          | 
+ public       | users                   | id                    | uuid                        | NO          | uuid_generate_v4()
+ public       | users                   | tenant_id             | uuid                        | NO          | 
+ public       | users                   | email                 | character varying           | NO          | 
+ public       | users                   | passwordHash          | character varying           | NO          | 
+ public       | users                   | isActive              | boolean                     | NO          | true
+ public       | users                   | last_login_at         | timestamp without time zone | YES         | 
+ public       | users                   | created_at            | timestamp without time zone | NO          | now()
+ public       | users                   | updated_at            | timestamp without time zone | NO          | now()
+ public       | users                   | role                  | character varying           | NO          | 'EMPLOYEE'::character varying
+(50 rows)
+

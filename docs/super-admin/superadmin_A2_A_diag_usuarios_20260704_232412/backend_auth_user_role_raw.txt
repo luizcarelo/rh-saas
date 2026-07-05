@@ -1,0 +1,525 @@
+=================================================
+SUPERADMIN-A2-A - BACKEND AUTH/USERS/ROLES
+Data: 20260704_232412
+=================================================
+
+## Arquivos candidatos
+/opt/rh-saas/backend/src/app.controller.ts
+/opt/rh-saas/backend/src/app.service.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts
+/opt/rh-saas/backend/src/modules/audit/audit.service.ts
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak
+/opt/rh-saas/backend/src/modules/auth/decorators/roles.decorator.ts
+/opt/rh-saas/backend/src/modules/auth/dto/login.dto.ts
+/opt/rh-saas/backend/src/modules/auth/guards/jwt-auth.guard.ts
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts
+/opt/rh-saas/backend/src/modules/employees/dto/link-user.dto.ts
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts
+/opt/rh-saas/backend/src/modules/foundation/dto/register-mobile-device.dto.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-type.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy-event-type.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-app-settings.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts
+/opt/rh-saas/backend/src/modules/schedules/dto/assign-schedule.dto.ts
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-summary.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-plan.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client-status.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-module.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-plan.dto.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.module.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.module.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts
+/opt/rh-saas/backend/src/modules/users/user.entity.ts
+/opt/rh-saas/backend/src/modules/users/user-role.enum.ts
+/opt/rh-saas/backend/src/modules/users/users.controller.ts
+/opt/rh-saas/backend/src/modules/users/users.module.ts
+/opt/rh-saas/backend/src/modules/users/users.service.ts
+
+## Busca auth/password/role
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:120:    name: 'local_hash',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:127:    name: 'server_hash',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:42:    name: 'requires_signature',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:67:    name: 'hash_sha256',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:71:  hashSha256: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:44:    name: 'signed_at',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:48:  signedAt: Date;
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:55:    name: 'hash_sha256',
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:59:  hashSha256: string;
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts:16:    const sign = totalMinutes >= 0 ? '+' : '-';
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts:20:    return `${sign}${hours}:${mins}`;
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.module.ts:8:import { User } from '../users/user.entity';
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.module.ts:17:      User,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:6:import { User } from '../users/user.entity';
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:19:    @InjectRepository(User)
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:20:    private userRepo: Repository<User>,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:14:import { LinkUserDto } from './dto/link-user.dto';
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:16:import { RolesGuard } from '../auth/guards/roles.guard';
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:17:import { Roles } from '../auth/decorators/roles.decorator';
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:18:import { UserRole } from '../users/user.entity';
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:28:  @Roles(UserRole.ADMIN, UserRole.RH)
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:40:  @Roles(UserRole.ADMIN, UserRole.RH)
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:50:  @Roles(UserRole.ADMIN, UserRole.RH)
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:62:  @Roles(UserRole.ADMIN, UserRole.RH)
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:63:  async linkUser(
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:65:    @Body() dto: LinkUserDto,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:68:    return this.employeesService.linkUser(
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:76:  @Roles(UserRole.ADMIN, UserRole.RH)
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:77:  async unlinkUser(
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:81:    return this.employeesService.unlinkUser(
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:88:  @Roles(UserRole.ADMIN, UserRole.RH)
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:13:import { User } from '../users/user.entity';
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:27:  @OneToOne(() => User, {
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:32:  user: User | null;
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts:7:import { User } from '../users/user.entity';
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts:13:      User,
+/opt/rh-saas/backend/src/modules/employees/dto/link-user.dto.ts:3:export class LinkUserDto {
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:12:import { User } from '../users/user.entity';
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:20:    @InjectRepository(User)
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:21:    private readonly userRepo: Repository<User>,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:87:  async linkUser(
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:153:  async unlinkUser(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:181:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:627:          'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:681:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:12:import { Roles } from '../auth/decorators/roles.decorator';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:14:import { RolesGuard } from '../auth/guards/roles.guard';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:32:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:38:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:44:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:53:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:61:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:77:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:87:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:95:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:105:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:111:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:119:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:130:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:140:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:152:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:166:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:176:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:182:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:191:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:197:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:206:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:212:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:181:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:627:          'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:681:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:11:import { Roles } from '../auth/decorators/roles.decorator';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:13:import { RolesGuard } from '../auth/guards/roles.guard';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:29:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:35:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:41:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:50:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:58:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:74:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:84:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:92:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:102:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:108:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:116:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:127:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:179:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:11:import { Roles } from '../auth/decorators/roles.decorator';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:13:import { RolesGuard } from '../auth/guards/roles.guard';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:28:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:34:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:40:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:49:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:57:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:73:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:83:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:91:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:101:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:107:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:115:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:179:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:12:import { Roles } from '../auth/decorators/roles.decorator';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:14:import { RolesGuard } from '../auth/guards/roles.guard';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:32:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:38:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:44:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:53:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:61:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:77:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:87:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:95:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:105:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:111:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:119:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:130:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:140:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:152:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:166:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:176:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:182:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:191:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:197:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:12:import { Roles } from '../auth/decorators/roles.decorator';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:14:import { RolesGuard } from '../auth/guards/roles.guard';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:32:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:38:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:44:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:53:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:61:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:77:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:87:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:95:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:105:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:111:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:119:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:130:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:140:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:152:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:179:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:179:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:625:          'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:679:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:179:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:625:          'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:679:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:12:import { Roles } from '../auth/decorators/roles.decorator';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:14:import { RolesGuard } from '../auth/guards/roles.guard';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:32:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:38:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:44:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:53:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:61:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:77:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:87:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:95:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:105:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:111:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:119:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:130:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:140:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:152:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:166:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:12:import { Roles } from '../auth/decorators/roles.decorator';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:14:import { RolesGuard } from '../auth/guards/roles.guard';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:32:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:38:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:44:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:53:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:61:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:77:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:87:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:95:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:105:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:111:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:119:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:130:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:140:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:152:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:166:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:176:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:182:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:179:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:43:    Object.assign(
+/opt/rh-saas/backend/src/modules/users/users.service.ts:5:import * as bcrypt from 'bcrypt';
+/opt/rh-saas/backend/src/modules/users/users.service.ts:7:import { User } from './user.entity';
+/opt/rh-saas/backend/src/modules/users/users.service.ts:8:import { CreateUserDto } from './dto/create-user.dto';
+/opt/rh-saas/backend/src/modules/users/users.service.ts:11:export class UsersService {
+/opt/rh-saas/backend/src/modules/users/users.service.ts:14:    @InjectRepository(User)
+/opt/rh-saas/backend/src/modules/users/users.service.ts:15:    private readonly userRepo: Repository<User>,
+/opt/rh-saas/backend/src/modules/users/users.service.ts:20:  async create(data: CreateUserDto) {
+/opt/rh-saas/backend/src/modules/users/users.service.ts:34:    const passwordHash = await bcrypt.hash(
+/opt/rh-saas/backend/src/modules/users/users.service.ts:35:      data.password,
+/opt/rh-saas/backend/src/modules/users/users.service.ts:42:      passwordHash,
+/opt/rh-saas/backend/src/modules/users/users.service.ts:46:    const savedUser =
+/opt/rh-saas/backend/src/modules/users/users.service.ts:50:      tenantId: savedUser.tenantId,
+/opt/rh-saas/backend/src/modules/users/users.service.ts:51:      entityId: savedUser.id,
+/opt/rh-saas/backend/src/modules/users/users.service.ts:53:      entityType: 'User',
+/opt/rh-saas/backend/src/modules/users/users.service.ts:54:      details: savedUser.email,
+/opt/rh-saas/backend/src/modules/users/users.service.ts:57:    return savedUser;
+/opt/rh-saas/backend/src/modules/users/users.service.ts:81:      ({ passwordHash, ...user }) => user,
+/opt/rh-saas/backend/src/modules/users/users.module.ts:5:import { User } from './user.entity';
+/opt/rh-saas/backend/src/modules/users/users.module.ts:6:import { UsersService } from './users.service';
+/opt/rh-saas/backend/src/modules/users/users.module.ts:7:import { UsersController } from './users.controller';
+/opt/rh-saas/backend/src/modules/users/users.module.ts:12:      User
+/opt/rh-saas/backend/src/modules/users/users.module.ts:16:    UsersService
+/opt/rh-saas/backend/src/modules/users/users.module.ts:19:    UsersService
+/opt/rh-saas/backend/src/modules/users/users.module.ts:22:    UsersController
+/opt/rh-saas/backend/src/modules/users/users.module.ts:25:export class UsersModule {}
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:13:export enum UserRole {
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:14:  SUPER_ADMIN = 'SUPER_ADMIN',
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:15:  ADMIN = 'ADMIN',
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:22:export class User {
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:37:  passwordHash: string;
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:42:    default: UserRole.EMPLOYEE,
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:44:  role: UserRole;
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:50:    name: 'last_login_at',
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts:3:export class CreateUserDto {
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts:15:  password: string;
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:10:import { UsersService } from './users.service';
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:11:import { CreateUserDto } from './dto/create-user.dto';
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:14:import { RolesGuard } from '../auth/guards/roles.guard';
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:15:import { Roles } from '../auth/decorators/roles.decorator';
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:16:import { UserRole } from './user.entity';
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:20:@Roles(UserRole.ADMIN)
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:21:export class UsersController {
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:23:    private readonly usersService: UsersService,
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:28:    @Body() dto: CreateUserDto,
+/opt/rh-saas/backend/src/modules/users/user-role.enum.ts:1:export enum UserRole {
+/opt/rh-saas/backend/src/modules/users/user-role.enum.ts:2:  SUPER_ADMIN = 'SUPER_ADMIN',
+/opt/rh-saas/backend/src/modules/users/user-role.enum.ts:3:  ADMIN = 'ADMIN',
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:18:import { AssignScheduleDto } from './dto/assign-schedule.dto';
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:38:  @Post('assign')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:39:  assign(
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:41:    @Body() dto: AssignScheduleDto,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:43:    return this.schedulesService.assign(
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:70:@Delete('assign/:id')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:71:unassign(
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:75:  return this.schedulesService.unassign(
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:81:@Patch('assign/:id/end')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:82:endAssignment(
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:87:  return this.schedulesService.endAssignment(
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:9:import { AssignScheduleDto } from './dto/assign-schedule.dto';
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:88:    Object.assign(
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:131:  async assign(
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:133:    dto: AssignScheduleDto,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:210:async unassign(
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:212:  assignmentId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:218:        id: assignmentId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:231:    entityId: assignmentId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:237:    id: assignmentId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:241:async endAssignment(
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:243:  assignmentId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:250:        id: assignmentId,
+/opt/rh-saas/backend/src/modules/schedules/dto/assign-schedule.dto.ts:1:export class AssignScheduleDto {
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:2:import { JwtService } from '@nestjs/jwt';
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:3:import * as bcrypt from 'bcrypt';
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:5:import { UsersService } from '../users/users.service';
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:9:export class AuthService {
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:12:    private readonly usersService: UsersService,
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:13:    private readonly jwtService: JwtService,
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:17:  async validateUser(email: string, password: string): Promise<any> {
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:29:    const isMatch = await bcrypt.compare(
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:30:      password,
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:31:      user.passwordHash,
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:38:    const { passwordHash, ...result } = user;
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:43:  async login(user: any) {
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:49:      role: user.role ?? 'EMPLOYEE',
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:57:      entityType: 'User',
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:62:      access_token: this.jwtService.sign(payload),
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts:9:import { ROLES_KEY } from '../decorators/roles.decorator';
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts:10:import { UserRole } from '../../users/user.entity';
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts:19:    const requiredRoles = this.reflector.getAllAndOverride<UserRole[]>(
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts:34:    if (!user || !user.role) {
+/opt/rh-saas/backend/src/modules/auth/guards/roles.guard.ts:38:    const allowed = requiredRoles.includes(user.role);
+/opt/rh-saas/backend/src/modules/auth/guards/jwt-auth.guard.ts:13:      throw err || new UnauthorizedException('Token inválido ou expirado. Faça login novamente.');
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:7:import { AuthService } from './auth.service';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:8:import { AuthController } from './auth.controller';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:10:import { RolesGuard } from './guards/roles.guard';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:12:import { UsersModule } from '../users/users.module';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:16:    UsersModule,
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:25:        signOptions: {
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:34:    AuthService,
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:39:    AuthController,
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts:42:    AuthService,
+/opt/rh-saas/backend/src/modules/auth/dto/login.dto.ts:10:  password: string;
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak:6:import { AuthService } from './auth.service';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak:7:import { AuthController } from './auth.controller';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak:9:import { RolesGuard } from './guards/roles.guard';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak:11:import { UsersModule } from '../users/users.module';
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak:15:    UsersModule,
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak:24:        signOptions: {
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak:33:    AuthService,
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak:38:    AuthController,
+/opt/rh-saas/backend/src/modules/auth/auth.module.ts.20260704_002144.bak:41:    AuthService,
+/opt/rh-saas/backend/src/modules/auth/decorators/roles.decorator.ts:2:import { UserRole } from '../../users/user.entity';
+/opt/rh-saas/backend/src/modules/auth/decorators/roles.decorator.ts:4:export const ROLES_KEY = 'roles';
+/opt/rh-saas/backend/src/modules/auth/decorators/roles.decorator.ts:6:export const Roles = (...roles: UserRole[]) => SetMetadata(ROLES_KEY, roles);
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts:25:      role: payload.role,
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:2:import { AuthService } from './auth.service';
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:3:import { LoginDto } from './dto/login.dto';
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:6:export class AuthController {
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:7:  constructor(private authService: AuthService) {}
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:9:  @Post('login')
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:11:  async login(@Body() loginDto: LoginDto) {
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:12:    const user = await this.authService.validateUser(loginDto.email, loginDto.password);
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:16:    return this.authService.login(user);
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:2:import { JwtService } from '@nestjs/jwt';
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:3:import * as bcrypt from 'bcrypt';
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:5:import { UsersService } from '../users/users.service';
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:8:export class AuthService {
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:11:    private readonly usersService: UsersService,
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:12:    private readonly jwtService: JwtService,
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:15:  async validateUser(email: string, password: string): Promise<any> {
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:27:    const isMatch = await bcrypt.compare(
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:28:      password,
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:29:      user.passwordHash,
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:36:    const { passwordHash, ...result } = user;
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:41:  async login(user: any) {
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:47:      role: user.role ?? 'EMPLOYEE',
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:51:      access_token: this.jwtService.sign(payload),
+/opt/rh-saas/backend/src/app.module.ts:17:import { User } from './modules/users/user.entity';
+/opt/rh-saas/backend/src/app.module.ts:18:import { UsersModule } from './modules/users/users.module';
+/opt/rh-saas/backend/src/app.module.ts:30:    UsersModule,
+/opt/rh-saas/backend/src/app.module.ts:51:        password: configService.get<string>('DB_PASSWORD'),
+/opt/rh-saas/backend/src/app.module.ts:54:        entities: [Tenant, ClockEvent, User], // Traz as soltas (User é crucial pro Auth)
+
+## package.json
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.4",
+    "@nestjs/core": "^11.0.1",
+    "@nestjs/jwt": "^11.0.2",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/typeorm": "^11.0.3",
+    "bcrypt": "^6.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "helmet": "^8.2.0",
+    "ioredis": "^5.11.1",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "pg": "^8.22.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "typeorm": "^1.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.18.0",
+    "@nestjs/cli": "^11.0.0",
+    "@nestjs/schematics": "^11.0.0",
+    "@nestjs/testing": "^11.0.1",
+    "@types/bcrypt": "^6.0.0",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.13.2",
+    "@types/passport-jwt": "^4.0.1",
+    "@types/supertest": "^7.0.0",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.2",
+    "globals": "^17.0.0",
+    "jest": "^30.0.0",
+    "prettier": "^3.4.2",
+    "source-map-support": "^0.5.21",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}
+

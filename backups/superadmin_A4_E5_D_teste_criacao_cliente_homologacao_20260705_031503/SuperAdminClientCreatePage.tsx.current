@@ -1,0 +1,339 @@
+import { FormEvent, useMemo, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+import {
+  createSuperAdminClient,
+  type CreateSuperAdminClientPayload,
+} from '../services/superAdminClientsService';
+
+type FormState = {
+  name: string;
+  slug: string;
+  email: string;
+  status: string;
+  isActive: boolean;
+  planId: string;
+  modulesText: string;
+  adminName: string;
+  adminEmail: string;
+  adminPassword: string;
+};
+
+const initialFormState: FormState = {
+  name: '',
+  slug: '',
+  email: '',
+  status: 'ACTIVE',
+  isActive: true,
+  planId: '',
+  modulesText: '',
+  adminName: '',
+  adminEmail: '',
+  adminPassword: '',
+};
+
+function splitModules(value: string) {
+  return value
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+export function SuperAdminClientCreatePage() {
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState<FormState>(initialFormState);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const modules = useMemo(() => splitModules(form.modulesText), [form.modulesText]);
+
+  function updateField<K extends keyof FormState>(field: K, value: FormState[K]) {
+    setForm((current) => ({
+      ...current,
+      value,
+    }));
+  }
+
+  function buildPayload(): CreateSuperAdminClientPayload {
+    return {
+      name: form.name.trim(),
+      slug: form.slug.trim() || undefined,
+      email: form.email.trim() || undefined,
+      status: form.status.trim() || undefined,
+      isActive: form.isActive,
+      planId: form.planId.trim() || undefined,
+      moduleIds: modules.length > 0 ? modules : undefined,
+      adminName: form.adminName.trim() || undefined,
+      adminEmail: form.adminEmail.trim() || undefined,
+      adminPassword: form.adminPassword || undefined,
+    };
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    setError('');
+    setSuccessMessage('');
+
+    if (!form.name.trim()) {
+      setError('Informe o nome do cliente SaaS.');
+      return;
+    }
+
+    setSubmitting(true);
+
+    try {
+      const createdClient = await createSuperAdminClient(buildPayload());
+
+      setSuccessMessage('Cliente SaaS criado com sucesso.');
+
+      if (createdClient?.id) {
+        navigate(`/super-admin/clientes/${createdClient.id}`);
+        return;
+      }
+
+      navigate('/super-admin/clientes');
+    } catch (err) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : 'Não foi possível criar o Cliente SaaS.';
+
+      setError(message);
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-sky-700">
+              Super Admin
+            </p>
+            <h1 className="mt-2 text-2xl font-bold text-slate-900">
+              Novo Cliente SaaS
+            </h1>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+              Formulário controlado para criação de cliente SaaS. O cadastro só
+              será enviado quando você confirmar a criação.
+            </p>
+          </div>
+
+          <Link
+            to="/super-admin/clientes"
+            className="rounded-2xl border border-slate-200 px-4 py-3 text-center text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+          >
+            Voltar para Clientes
+          </Link>
+        </div>
+      </div>
+
+      <form
+        onSubmit={(event) => void handleSubmit(event)}
+        className="space-y-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+      >
+        <div>
+          <h2 className="text-lg font-bold text-slate-900">Dados do cliente</h2>
+          <p className="mt-1 text-sm text-slate-600">
+            Informe os dados mínimos para criar o tenant/cliente SaaS.
+          </p>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-2">
+          <label className="space-y-2">
+            <span className="text-sm font-semibold text-slate-700">
+              Nome do cliente *
+            </span>
+            <input
+              value={form.name}
+              onChange={(event) => updateField('name', event.target.value)}
+              placeholder="Ex.: Empresa Exemplo Ltda"
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+            />
+          </label>
+
+          <label className="space-y-2">
+            <span className="text-sm font-semibold text-slate-700">
+              Slug / identificador
+            </span>
+            <input
+              value={form.slug}
+              onChange={(event) => updateField('slug', event.target.value)}
+              placeholder="ex.: empresa-exemplo"
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+            />
+          </label>
+
+          <label className="space-y-2">
+            <span className="text-sm font-semibold text-slate-700">
+              E-mail de contato
+            </span>
+            <input
+              type="email"
+              value={form.email}
+              onChange={(event) => updateField('email', event.target.value)}
+              placeholder="contato@empresa.com"
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+            />
+          </label>
+
+          <label className="space-y-2">
+            <span className="text-sm font-semibold text-slate-700">
+              Status
+            </span>
+            <select
+              value={form.status}
+              onChange={(event) => updateField('status', event.target.value)}
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+            >
+              <option value="ACTIVE">ACTIVE</option>
+              <option value="PENDING">PENDING</option>
+              <option value="INACTIVE">INACTIVE</option>
+              <option value="SUSPENDED">SUSPENDED</option>
+            </select>
+          </label>
+
+          <label className="space-y-2">
+            <span className="text-sm font-semibold text-slate-700">
+              ID do plano
+            </span>
+            <input
+              value={form.planId}
+              onChange={(event) => updateField('planId', event.target.value)}
+              placeholder="UUID ou código do plano"
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+            />
+          </label>
+
+          <label className="space-y-2">
+            <span className="text-sm font-semibold text-slate-700">
+              Módulos / features
+            </span>
+            <input
+              value={form.modulesText}
+              onChange={(event) =>
+                updateField('modulesText', event.target.value)
+              }
+              placeholder="Separe por vírgula"
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+            />
+            <span className="text-xs text-slate-500">
+              {modules.length > 0
+                ? `${modules.length} módulo(s) informado(s)`
+                : 'Nenhum módulo informado'}
+            </span>
+          </label>
+        </div>
+
+        <label className="flex items-center gap-3 rounded-2xl border border-slate-200 p-4">
+          <input
+            type="checkbox"
+            checked={form.isActive}
+            onChange={(event) => updateField('isActive', event.target.checked)}
+            className="h-4 w-4 rounded border-slate-300 text-sky-700"
+          />
+          <span className="text-sm font-semibold text-slate-700">
+            Criar cliente como ativo
+          </span>
+        </label>
+
+        <div className="border-t border-slate-200 pt-6">
+          <h2 className="text-lg font-bold text-slate-900">
+            Usuário administrador inicial
+          </h2>
+          <p className="mt-1 text-sm text-slate-600">
+            Preencha se o backend aceitar criação de usuário administrador junto
+            com o cliente.
+          </p>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-3">
+          <label className="space-y-2">
+            <span className="text-sm font-semibold text-slate-700">
+              Nome do admin
+            </span>
+            <input
+              value={form.adminName}
+              onChange={(event) => updateField('adminName', event.target.value)}
+              placeholder="Nome do administrador"
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+            />
+          </label>
+
+          <label className="space-y-2">
+            <span className="text-sm font-semibold text-slate-700">
+              E-mail do admin
+            </span>
+            <input
+              type="email"
+              value={form.adminEmail}
+              onChange={(event) =>
+                updateField('adminEmail', event.target.value)
+              }
+              placeholder="admin@empresa.com"
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+            />
+          </label>
+
+          <label className="space-y-2">
+            <span className="text-sm font-semibold text-slate-700">
+              Senha temporária
+            </span>
+            <input
+              type="password"
+              value={form.adminPassword}
+              onChange={(event) =>
+                updateField('adminPassword', event.target.value)
+              }
+              placeholder="Senha temporária"
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+            />
+          </label>
+        </div>
+
+        {error ? (
+          <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+            {error}
+          </div>
+        ) : null}
+
+        {successMessage ? (
+          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">
+            {successMessage}
+          </div>
+        ) : null}
+
+        <div className="flex flex-col-reverse gap-3 border-t border-slate-200 pt-6 sm:flex-row sm:justify-end">
+          <Link
+            to="/super-admin/clientes"
+            className="rounded-2xl border border-slate-200 px-5 py-3 text-center text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+          >
+            Cancelar
+          </Link>
+
+          <button
+            type="submit"
+            disabled={submitting}
+            className="rounded-2xl bg-sky-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-800 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {submitting ? 'Criando cliente...' : 'Criar Cliente SaaS'}
+          </button>
+        </div>
+      </form>
+
+      <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">
+        <p className="font-semibold">Atenção</p>
+        <p className="mt-2">
+          Esta tela depende do contrato do backend diagnosticado na E5-A e do
+          service de criação preparado na E5-B. Use primeiro em ambiente
+          controlado e confirme o payload aceito pelo backend.
+        </p>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,16 @@
+001 cria employee_document_types
+001 possui UK_DOCUMENT_TYPE_CODE
+001 possui IDX_DOCUMENT_TYPE_TENANT
+001 possui IDX_DOCUMENT_TYPE_ACTIVE
+001 possui down/dropTable
+002 converte tenant_id para uuid
+002 converte employee_id para uuid
+002 adiciona document_type_id
+002 adiciona status
+002 adiciona version
+002 adiciona expiration_date
+002 possui FK_DOCUMENT_EMPLOYEE
+002 possui FK_DOCUMENT_TYPE
+002 possui FK_DOCUMENT_REPLACED_BY
+002 possui indices documentais principais
+002 possui down/dropColumns

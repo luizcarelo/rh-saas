@@ -1,0 +1,2 @@
+endpoint	http_status	response_file
+/v1/super-admin/clients	400	/opt/rh-saas/docs/super-admin/superadmin_A4_E5_D2_payload_plano_valido_20260705_032318/create_response__v1_super-admin_clients.json

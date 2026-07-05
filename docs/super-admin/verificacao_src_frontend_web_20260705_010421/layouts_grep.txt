@@ -1,0 +1,16 @@
+/opt/rh-saas/frontend-web/src/App.tsx:4:import { AdminLayout } from "./layouts/AdminLayout";
+/opt/rh-saas/frontend-web/src/App.tsx:5:import { EmployeeLayout } from "./layouts/EmployeeLayout";
+/opt/rh-saas/frontend-web/src/App.tsx:95:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx:370:          <Route element={<EmployeeLayout />}>
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:10:import { NavLink, Outlet, useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:202:export function AdminLayout() {
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:312:            <Outlet />
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:1:import { Outlet, useNavigate } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:16:export function EmployeeLayout() {
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:51:        <Outlet />
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:1:import { Navigate, Outlet } from "react-router-dom";
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:11:  return <Outlet />;
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:4:import { AdminLayout } from "./layouts/AdminLayout";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:5:import { EmployeeLayout } from "./layouts/EmployeeLayout";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:43:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:176:          <Route element={<EmployeeLayout />}>

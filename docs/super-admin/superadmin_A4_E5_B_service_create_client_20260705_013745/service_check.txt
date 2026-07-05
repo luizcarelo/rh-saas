@@ -1,0 +1,10 @@
+175:  if (response.status === 401) {
+230:export type CreateSuperAdminClientPayload = {
+245:const CLIENT_CREATE_ENDPOINT_CANDIDATES = [
+254:  payload: CreateSuperAdminClientPayload,
+266:    method: 'POST',
+274:  if (response.status === 401) {
+303:export async function createSuperAdminClient(
+304:  payload: CreateSuperAdminClientPayload,
+308:  for (const endpoint of CLIENT_CREATE_ENDPOINT_CANDIDATES) {
+326:  create: createSuperAdminClient,

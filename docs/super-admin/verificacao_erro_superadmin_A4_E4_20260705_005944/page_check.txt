@@ -1,0 +1,7 @@
+=================================================
+PAGE CHECK
+Data: 20260705_005944
+Arquivo: /opt/rh-saas/frontend-web/src/pages/super-admin/SuperAdminClientsPage.tsx
+=================================================
+
+PAGE_EXISTS=NAO

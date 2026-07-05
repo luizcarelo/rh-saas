@@ -1,0 +1,270 @@
+=================================================
+FRONTEND SERVICES CONTENT
+Data: 20260705_003405
+=================================================
+
+### /opt/rh-saas/frontend-web/src/lib/api.ts
+     1	export type ApiError = {
+     2	  message?: string | string[];
+     3	  error?: string;
+     4	  statusCode?: number;
+     5	};
+     6	
+     7	export const API_BASE =
+     8	  import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "";
+     9	
+    10	export type UserInfo = {
+    11	  sub?: string;
+    12	  userId?: string;
+    13	  tenantId?: string;
+    14	  email?: string;
+    15	  role?: string;
+    16	  employeeId?: string | null;
+    17	};
+    18	
+    19	export function getToken() {
+    20	  return (
+    21	    localStorage.getItem("rh_access_token") ||
+    22	    localStorage.getItem("token") ||
+    23	    ""
+    24	  );
+    25	}
+    26	
+    27	export function getUserInfo(): UserInfo | null {
+    28	  const raw =
+    29	    localStorage.getItem("rh_user_info") ||
+    30	    localStorage.getItem("user_info");
+    31	
+    32	  if (!raw) {
+    33	    return null;
+    34	  }
+    35	
+    36	  try {
+    37	    return JSON.parse(raw) as UserInfo;
+    38	  } catch {
+    39	    return null;
+    40	  }
+    41	}
+    42	
+    43	export function setSession(accessToken: string, userInfo: unknown) {
+    44	  localStorage.setItem("rh_access_token", accessToken);
+    45	  localStorage.setItem("rh_user_info", JSON.stringify(userInfo));
+    46	
+    47	  /*
+    48	   * Compatibilidade com páginas antigas que ainda usam:
+    49	   * localStorage.getItem("token")
+    50	   */
+    51	  localStorage.setItem("token", accessToken);
+    52	  localStorage.setItem("user_info", JSON.stringify(userInfo));
+    53	}
+    54	
+    55	export function clearSession() {
+    56	  localStorage.removeItem("rh_access_token");
+    57	  localStorage.removeItem("rh_user_info");
+    58	
+    59	  /*
+    60	   * Remove também chaves antigas.
+    61	   */
+    62	  localStorage.removeItem("token");
+    63	  localStorage.removeItem("user_info");
+    64	}
+    65	
+    66	export function getAuthHeaders() {
+    67	  const token = getToken();
+    68	
+    69	  if (!token) {
+    70	    return {};
+    71	  }
+    72	
+    73	  return {
+    74	    Authorization: `Bearer ${token}`,
+    75	  };
+    76	}
+    77	
+    78	function normalizeErrorMessage(data: unknown, fallback: string) {
+    79	  if (!data || typeof data !== "object") {
+    80	    return fallback;
+    81	  }
+    82	
+    83	  const apiError = data as ApiError;
+    84	
+    85	  if (Array.isArray(apiError.message)) {
+    86	    return apiError.message.join(", ");
+    87	  }
+    88	
+    89	  return apiError.message || apiError.error || fallback;
+    90	}
+    91	
+    92	export async function apiRequest<T>(
+    93	  endpoint: string,
+    94	  options: RequestInit = {},
+    95	): Promise<T> {
+    96	  const token = getToken();
+    97	
+    98	  const headers: Record<string, string> = {
+    99	    "Content-Type": "application/json",
+   100	    ...((options.headers as Record<string, string>) || {}),
+   101	  };
+   102	
+   103	  if (token) {
+   104	    headers.Authorization = `Bearer ${token}`;
+   105	  }
+   106	
+   107	  const response = await fetch(`${API_BASE}${endpoint}`, {
+   108	    ...options,
+   109	    headers,
+   110	  });
+   111	
+   112	  const text = await response.text();
+   113	
+   114	  let data: unknown = null;
+   115	
+   116	  if (text) {
+   117	    try {
+   118	      data = JSON.parse(text);
+   119	    } catch {
+   120	      data = text;
+   121	    }
+   122	  }
+   123	
+   124	  if (response.status === 401) {
+   125	    clearSession();
+   126	  }
+   127	
+   128	  if (!response.ok) {
+   129	    throw new Error(
+   130	      normalizeErrorMessage(data, `Erro HTTP ${response.status}`),
+   131	    );
+   132	  }
+   133	
+   134	  return data as T;
+   135	}
+
+### /opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+     1	import { apiRequest } from "./api";
+     2	
+     3	export type FoundationEmployee = {
+     4	  id: string;
+     5	  clientId?: string;
+     6	  employeeExternalRef?: string | null;
+     7	  firstName?: string;
+     8	  lastName?: string;
+     9	  cpf?: string | null;
+    10	  email?: string | null;
+    11	  departmentId?: string | null;
+    12	  jobPositionId?: string | null;
+    13	  jobFunctionId?: string | null;
+    14	  admissionDate?: string | null;
+    15	  status?: string;
+    16	  createdAt?: string;
+    17	  updatedAt?: string;
+    18	};
+    19	
+    20	export type RegisterMobileDevicePayload = {
+    21	  employeeProfileId?: string;
+    22	  deviceUid: string;
+    23	  platform?: string;
+    24	  model?: string;
+    25	  appVersion?: string;
+    26	};
+    27	
+    28	export type MobileDeviceFoundation = {
+    29	  id: string;
+    30	  clientId?: string;
+    31	  employeeProfileId?: string | null;
+    32	  deviceUid: string;
+    33	  platform?: string | null;
+    34	  model?: string | null;
+    35	  appVersion?: string | null;
+    36	  isActive?: boolean;
+    37	  lastSeenAt?: string | null;
+    38	  createdAt?: string;
+    39	  updatedAt?: string;
+    40	};
+    41	
+    42	export type CreateLocationTrackingPointPayload = {
+    43	  employeeProfileId: string;
+    44	  deviceId?: string;
+    45	  latitude: number;
+    46	  longitude: number;
+    47	  accuracyMeters?: number;
+    48	  address?: string;
+    49	  source?: string;
+    50	  trackedAt?: string;
+    51	  metadata?: Record<string, unknown>;
+    52	};
+    53	
+    54	export type LocationTrackingPointFoundation = {
+    55	  id: string;
+    56	  clientId?: string;
+    57	  employeeProfileId?: string | null;
+    58	  deviceId?: string | null;
+    59	  trackedAt?: string;
+    60	  latitude: string | number;
+    61	  longitude: string | number;
+    62	  accuracyMeters?: string | number | null;
+    63	  address?: string | null;
+    64	  source?: string;
+    65	  metadata?: Record<string, unknown>;
+    66	  createdAt?: string;
+    67	  updatedAt?: string;
+    68	};
+    69	
+    70	export async function getFoundationEmployees() {
+    71	  return apiRequest<FoundationEmployee[]>("/v1/foundation/hr/employees");
+    72	}
+    73	
+    74	export async function registerLiveTrackingDevice(
+    75	  payload: RegisterMobileDevicePayload,
+    76	) {
+    77	  return apiRequest<MobileDeviceFoundation>(
+    78	    "/v1/foundation/live-tracking/device",
+    79	    {
+    80	      method: "POST",
+    81	      body: JSON.stringify(payload),
+    82	    },
+    83	  );
+    84	}
+    85	
+    86	export async function sendLiveTrackingLocation(
+    87	  payload: CreateLocationTrackingPointPayload,
+    88	) {
+    89	  return apiRequest<LocationTrackingPointFoundation>(
+    90	    "/v1/foundation/live-tracking/location",
+    91	    {
+    92	      method: "POST",
+    93	      body: JSON.stringify(payload),
+    94	    },
+    95	  );
+    96	}
+    97	
+    98	export async function getLiveTrackingPoints() {
+    99	  return apiRequest<LocationTrackingPointFoundation[]>(
+   100	    "/v1/foundation/live-tracking/points",
+   101	  );
+   102	}
+   103	
+   104	export async function getLatestLiveTrackingPoints() {
+   105	  return apiRequest<LocationTrackingPointFoundation[]>(
+   106	    "/v1/foundation/live-tracking/latest",
+   107	  );
+   108	}
+   109	
+   110	export function getOrCreateBrowserDeviceUid() {
+   111	  const storageKey = "rh_live_tracking_device_uid";
+   112	  const existing = localStorage.getItem(storageKey);
+   113	
+   114	  if (existing) {
+   115	    return existing;
+   116	  }
+   117	
+   118	  const generated =
+   119	    "web-" +
+   120	    Date.now().toString(36) +
+   121	    "-" +
+   122	    Math.random().toString(36).slice(2, 10);
+   123	
+   124	  localStorage.setItem(storageKey, generated);
+   125	
+   126	  return generated;
+   127	}

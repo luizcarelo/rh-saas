@@ -1,3 +1,4 @@
+import { AuditService } from '../audit/audit.service';
 import {
   BadRequestException,
   Injectable,
@@ -18,15 +19,30 @@ export class EmployeesService {
 
     @InjectRepository(User)
     private readonly userRepo: Repository<User>,
+
+    private readonly auditService: AuditService,
   ) {}
 
-  async create(tenantId: string, data: CreateEmployeeDto) {
+  async create(
+    tenantId: string,
+    data: CreateEmployeeDto,
+  ) {
     const employee = this.employeeRepo.create({
       ...data,
       tenantId,
     });
 
-    return this.employeeRepo.save(employee);
+    const savedEmployee =
+      await this.employeeRepo.save(employee);
+
+    await this.auditService.create({
+      tenantId,
+      entityId: savedEmployee.id,
+      action: 'EMPLOYEE_CREATED',
+      entityType: 'Employee',
+    });
+
+    return savedEmployee;
   }
 
   async findAll(tenantId: string) {
@@ -44,19 +60,25 @@ export class EmployeesService {
     });
   }
 
-  async findOne(id: string, tenantId: string) {
-    const employee = await this.employeeRepo.findOne({
-      where: {
-        id,
-        tenantId,
-      },
-      relations: {
-        user: true,
-      },
-    });
+  async findOne(
+    id: string,
+    tenantId: string,
+  ) {
+    const employee =
+      await this.employeeRepo.findOne({
+        where: {
+          id,
+          tenantId,
+        },
+        relations: {
+          user: true,
+        },
+      });
 
     if (!employee) {
-      throw new NotFoundException('Colaborador não encontrado.');
+      throw new NotFoundException(
+        'Colaborador não encontrado.',
+      );
     }
 
     return employee;
@@ -67,34 +89,41 @@ export class EmployeesService {
     tenantId: string,
     userId: string,
   ) {
-    const employee = await this.employeeRepo.findOne({
-      where: {
-        id: employeeId,
-        tenantId,
-      },
-    });
+    const employee =
+      await this.employeeRepo.findOne({
+        where: {
+          id: employeeId,
+          tenantId,
+        },
+      });
 
     if (!employee) {
-      throw new NotFoundException('Colaborador não encontrado.');
+      throw new NotFoundException(
+        'Colaborador não encontrado.',
+      );
     }
 
-    const user = await this.userRepo.findOne({
-      where: {
-        id: userId,
-        tenantId,
-      },
-    });
+    const user =
+      await this.userRepo.findOne({
+        where: {
+          id: userId,
+          tenantId,
+        },
+      });
 
     if (!user) {
-      throw new NotFoundException('Usuário não encontrado neste tenant.');
+      throw new NotFoundException(
+        'Usuário não encontrado neste tenant.',
+      );
     }
 
-    const alreadyLinked = await this.employeeRepo.findOne({
-      where: {
-        userId,
-        tenantId,
-      },
-    });
+    const alreadyLinked =
+      await this.employeeRepo.findOne({
+        where: {
+          userId,
+          tenantId,
+        },
+      });
 
     if (
       alreadyLinked &&
@@ -107,30 +136,64 @@ export class EmployeesService {
 
     employee.userId = user.id;
 
-    return this.employeeRepo.save(employee);
+    const savedEmployee =
+      await this.employeeRepo.save(employee);
+
+    await this.auditService.create({
+      tenantId,
+      entityId: savedEmployee.id,
+      action: 'USER_LINKED',
+      entityType: 'Employee',
+      details: user.id,
+    });
+
+    return savedEmployee;
   }
 
   async unlinkUser(
     employeeId: string,
     tenantId: string,
   ) {
-    const employee = await this.employeeRepo.findOne({
-      where: {
-        id: employeeId,
-        tenantId,
-      },
-    });
+    const employee =
+      await this.employeeRepo.findOne({
+        where: {
+          id: employeeId,
+          tenantId,
+        },
+      });
 
     if (!employee) {
-      throw new NotFoundException('Colaborador não encontrado.');
+      throw new NotFoundException(
+        'Colaborador não encontrado.',
+      );
     }
 
     employee.userId = null;
 
-    return this.employeeRepo.save(employee);
+    const savedEmployee =
+      await this.employeeRepo.save(employee);
+
+    await this.auditService.create({
+      tenantId,
+      entityId: savedEmployee.id,
+      action: 'USER_UNLINKED',
+      entityType: 'Employee',
+    });
+
+    return savedEmployee;
   }
 
-  async remove(id: string, tenantId: string) {
+  async remove(
+    id: string,
+    tenantId: string,
+  ) {
+    await this.auditService.create({
+      tenantId,
+      entityId: id,
+      action: 'EMPLOYEE_DELETED',
+      entityType: 'Employee',
+    });
+
     return this.employeeRepo.delete({
       id,
       tenantId,

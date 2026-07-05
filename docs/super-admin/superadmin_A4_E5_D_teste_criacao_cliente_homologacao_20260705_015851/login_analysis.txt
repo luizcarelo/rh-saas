@@ -1,0 +1,4 @@
+IS_JSON=True
+ROLE=SUPER_ADMIN
+EMAIL=superadmin@rh-saas.local
+HAS_TOKEN=True

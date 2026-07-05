@@ -1,0 +1,35 @@
+=================================================
+MAIN CHECK
+Data: 20260705_020201
+=================================================
+
+### /opt/rh-saas/backend/src/main.ts
+     1	import { NestFactory } from '@nestjs/core';
+     2	import { AppModule } from './app.module';
+     3	import { ValidationPipe } from '@nestjs/common';
+     4	import helmet from 'helmet';
+     5	
+     6	async function bootstrap() {
+     7	  const app = await NestFactory.create(AppModule);
+     8	
+     9	  // Proteção contra vulnerabilidades web conhecidas (Headers HTTP seguros)
+    10	  app.use(helmet());
+    11	
+    12	  // Ativa o CORS de forma controlada (Mudar em produção para os domínios do SaaS)
+    13	  app.enableCors({ origin: '*' });
+    14	
+    15	  // Força a validação de todas as requisições baseadas nos DTOs com class-validator
+    16	  app.useGlobalPipes(
+    17	    new ValidationPipe({
+    18	      whitelist: true,
+    19	      forbidNonWhitelisted: true,
+    20	      transform: true,
+    21	    }),
+    22	  );
+    23	
+    24	  const port = process.env.PORT || 3000;
+    25	  await app.listen(port, "0.0.0.0");
+    26	  console.log(`🚀 API do SaaS de RH rodando com segurança na porta: ${port}`);
+    27	}
+    28	bootstrap();
+

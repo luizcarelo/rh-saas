@@ -1,0 +1,3455 @@
+=================================================
+SERVICES
+Data: 20260705_030024
+=================================================
+
+### /opt/rh-saas/backend/src/modules/analytics/analytics.service.ts
+     1	import { Injectable } from '@nestjs/common';
+     2	import { InjectRepository } from '@nestjs/typeorm';
+     3	import { Repository, Between } from 'typeorm';
+     4	import { TimeRecord } from '../time-records/time-record.entity';
+     5	
+     6	@Injectable()
+     7	export class AnalyticsService {
+     8	  constructor(@InjectRepository(TimeRecord) private repo: Repository<TimeRecord>) {}
+     9	
+    10	  async getDashboardStats(tenantId: string, startDate?: string, endDate?: string) {
+    11	    const where: any = { tenantId };
+    12	    
+    13	    if (startDate && endDate) {
+    14	        where.createdAt = Between(new Date(startDate), new Date(endDate));
+    15	    }
+    16	
+    17	    const records = await this.repo.find({ where });
+    18	    
+    19	    return {
+    20	      totalRecords: records.length,
+    21	      punctualityRate: 94, // Lógica a refinar
+    22	      overtimeMinutes: 120,
+    23	      absenteeismRate: 2.5
+    24	    };
+    25	  }
+    26	
+    27	  async getWorkforceStats(
+    28	    tenantId: string,
+    29	  ) {
+    30	
+    31	    const records =
+    32	      await this.repo.find({
+    33	        where: {
+    34	          tenantId,
+    35	        },
+    36	      });
+    37	
+    38	    return {
+    39	      totalRecords:
+    40	        records.length,
+    41	    };
+    42	  }
+    43	
+    44	}
+
+### /opt/rh-saas/backend/src/modules/audit/audit.service.ts
+     1	import { Injectable, NotFoundException } from '@nestjs/common';
+     2	import { InjectRepository } from '@nestjs/typeorm';
+     3	import { Repository } from 'typeorm';
+     4	
+     5	import { AuditEvent } from './audit.entity';
+     6	
+     7	@Injectable()
+     8	export class AuditService {
+     9	  constructor(
+    10	    @InjectRepository(AuditEvent)
+    11	    private readonly repo: Repository<AuditEvent>,
+    12	  ) {}
+    13	
+    14	  async create(
+    15	    data: Partial<AuditEvent>,
+    16	  ) {
+    17	    const event =
+    18	      this.repo.create(data);
+    19	
+    20	    return this.repo.save(event);
+    21	  }
+    22	
+    23	  async findAll() {
+    24	    return this.repo.find({
+    25	      order: {
+    26	        createdAt: 'DESC',
+    27	      },
+    28	    });
+    29	  }
+    30	
+    31	  async findById(
+    32	    id: string,
+    33	  ) {
+    34	    const event =
+    35	      await this.repo.findOne({
+    36	        where: { id },
+    37	      });
+    38	
+    39	    if (!event) {
+    40	      throw new NotFoundException(
+    41	        'Evento de auditoria não encontrado.',
+    42	      );
+    43	    }
+    44	
+    45	    return event;
+    46	  }
+    47	
+    48	  async findByAction(
+    49	    action: string,
+    50	  ) {
+    51	    return this.repo.find({
+    52	      where: {
+    53	        action,
+    54	      },
+    55	      order: {
+    56	        createdAt: 'DESC',
+    57	      },
+    58	    });
+    59	  }
+    60	
+    61	  async findByEntity(
+    62	    entityType: string,
+    63	  ) {
+    64	    return this.repo.find({
+    65	      where: {
+    66	        entityType,
+    67	      },
+    68	      order: {
+    69	        createdAt: 'DESC',
+    70	      },
+    71	    });
+    72	  }
+    73	}
+
+### /opt/rh-saas/backend/src/modules/auth/auth.service.ts
+     1	import { Injectable } from '@nestjs/common';
+     2	import { JwtService } from '@nestjs/jwt';
+     3	import * as bcrypt from 'bcrypt';
+     4	
+     5	import { UsersService } from '../users/users.service';
+     6	import { AuditService } from '../audit/audit.service';
+     7	
+     8	@Injectable()
+     9	export class AuthService {
+    10	
+    11	  constructor(
+    12	    private readonly usersService: UsersService,
+    13	    private readonly jwtService: JwtService,
+    14	    private readonly auditService: AuditService,
+    15	  ) {}
+    16	
+    17	  async validateUser(email: string, password: string): Promise<any> {
+    18	
+    19	    const user = await this.usersService.findByEmail(email);
+    20	
+    21	    if (!user) {
+    22	      return null;
+    23	    }
+    24	
+    25	    if (!user.isActive) {
+    26	      return null;
+    27	    }
+    28	
+    29	    const isMatch = await bcrypt.compare(
+    30	      password,
+    31	      user.passwordHash,
+    32	    );
+    33	
+    34	    if (!isMatch) {
+    35	      return null;
+    36	    }
+    37	
+    38	    const { passwordHash, ...result } = user;
+    39	
+    40	    return result;
+    41	  }
+    42	
+    43	  async login(user: any) {
+    44	
+    45	    const payload = {
+    46	      sub: user.id,
+    47	      email: user.email,
+    48	      tenantId: user.tenantId,
+    49	      role: user.role ?? 'EMPLOYEE',
+    50	    };
+    51	
+    52	    await this.auditService.create({
+    53	      tenantId: user.tenantId,
+    54	      userId: user.id,
+    55	      entityId: user.id,
+    56	      action: 'LOGIN',
+    57	      entityType: 'User',
+    58	      details: user.email,
+    59	    });
+    60	
+    61	    return {
+    62	      access_token: this.jwtService.sign(payload),
+    63	      user_info: payload,
+    64	    };
+    65	  }
+    66	}
+
+### /opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts
+     1	import { Injectable, BadRequestException } from '@nestjs/common';
+     2	import { InjectRepository } from '@nestjs/typeorm';
+     3	import { Repository } from 'typeorm';
+     4	import { ClockEvent, ClockEventType } from './clock-event.entity';
+     5	import * as crypto from 'crypto';
+     6	
+     7	@Injectable()
+     8	export class ClockEventsService {
+     9	  constructor(
+    10	    @InjectRepository(ClockEvent)
+    11	    private readonly clockEventRepository: Repository<ClockEvent>,
+    12	  ) {}
+    13	
+    14	  /**
+    15	   * 1. GEOFENCING: Calcula a distância entre a batida e o local autorizado
+    16	   * Retorna a distância em metros (Fórmula de Haversine)
+    17	   */
+    18	  private calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+    19	    const R = 6371e3; // Raio da Terra em metros
+    20	    const phi1 = (lat1 * Math.PI) / 180;
+    21	    const phi2 = (lat2 * Math.PI) / 180;
+    22	    const deltaPhi = ((lat2 - lat1) * Math.PI) / 180;
+    23	    const deltaLambda = ((lon2 - lon1) * Math.PI) / 180;
+    24	
+    25	    const a =
+    26	      Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) +
+    27	      Math.cos(phi1) * Math.cos(phi2) * Math.sin(deltaLambda / 2) * Math.sin(deltaLambda / 2);
+    28	    
+    29	    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    30	    return R * c; 
+    31	  }
+    32	
+    33	  /**
+    34	   * 2. ASSINATURA MTE: Gera o Hash SHA-256 para garantir imutabilidade
+    35	   */
+    36	  private generateSecurityHash(data: {
+    37	    tenantId: string;
+    38	    employeeId: string;
+    39	    timestamp: string;
+    40	    eventType: string;
+    41	    latitude: number;
+    42	    longitude: number;
+    43	  }): string {
+    44	    // A ordem dos fatores importa para o Hash. Padrão estrito de concatenação.
+    45	    const rawString = `${data.tenantId}|${data.employeeId}|${data.timestamp}|${data.eventType}|${data.latitude}|${data.longitude}`;
+    46	    return crypto.createHash('sha256').update(rawString).digest('hex');
+    47	  }
+    48	
+    49	  /**
+    50	   * 3. REGISTRO OFICIAL DO PONTO (Chamado pela API / App do Colaborador)
+    51	   */
+    52	  async registerClock(data: {
+    53	    tenantId: string;
+    54	    employeeId: string;
+    55	    eventType: ClockEventType;
+    56	    latitude: number;
+    57	    longitude: number;
+    58	    allowedLatitude: number;
+    59	    allowedLongitude: number;
+    60	    allowedRadius: number; // Ex: 100 metros
+    61	    deviceInfo?: string;
+    62	    clientIp?: string;
+    63	  }): Promise<ClockEvent> {
+    64	    
+    65	    // Calcula se o funcionário está dentro da área permitida
+    66	    const distance = this.calculateDistance(
+    67	      data.latitude,
+    68	      data.longitude,
+    69	      data.allowedLatitude,
+    70	      data.allowedLongitude
+    71	    );
+    72	    
+    73	    const isInsideGeofence = distance <= data.allowedRadius;
+    74	
+    75	    // Regra de Negócio: Se a empresa não permite bater ponto fora da cerca, barra aqui.
+    76	    // (Em um SaaS, isso geralmente é uma flag configurável no Painel do RH).
+    77	    // if (!isInsideGeofence && !tenantConfig.allowOutlyingClockIn) {
+    78	    //   throw new BadRequestException('Sua localização atual está fora do raio permitido pela empresa.');
+    79	    // }
+    80	
+    81	    // Congela o tempo exato (UTC) da transação para o MTE
+    82	    const currentTimestamp = new Date().toISOString(); 
+    83	    
+    84	    // Gera a assinatura inviolável
+    85	    const rowHash = this.generateSecurityHash({
+    86	      tenantId: data.tenantId,
+    87	      employeeId: data.employeeId,
+    88	      timestamp: currentTimestamp,
+    89	      eventType: data.eventType,
+    90	      latitude: data.latitude,
+    91	      longitude: data.longitude
+    92	    });
+    93	
+    94	    // Instancia o novo evento de ponto (Imutável)
+    95	    const newEvent = this.clockEventRepository.create({
+    96	      tenantId: data.tenantId,
+    97	      employeeId: data.employeeId,
+    98	      eventType: data.eventType,
+    99	      latitude: data.latitude,
+   100	      longitude: data.longitude,
+   101	      isInsideGeofence,
+   102	      deviceInfo: data.deviceInfo,
+   103	      clientIp: data.clientIp,
+   104	      rowHash // Hash salvo diretamente na linha
+   105	    });
+   106	
+   107	    // Salva no banco (PostgreSQL)
+   108	    return this.clockEventRepository.save(newEvent);
+   109	  }
+   110	}
+
+### /opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts
+     1	import { Injectable } from '@nestjs/common';
+     2	import { InjectRepository } from '@nestjs/typeorm';
+     3	import { Repository } from 'typeorm';
+     4	
+     5	import { Employee } from '../employees/employee.entity';
+     6	import { User } from '../users/user.entity';
+     7	import { Schedule } from '../schedules/schedule.entity';
+     8	import { TimeBank } from '../time-bank/time-bank.entity';
+     9	import { TimeRecord } from '../time-records/time-record.entity';
+    10	
+    11	@Injectable()
+    12	export class DashboardService {
+    13	
+    14	  constructor(
+    15	
+    16	    @InjectRepository(Employee)
+    17	    private employeeRepo: Repository<Employee>,
+    18	
+    19	    @InjectRepository(User)
+    20	    private userRepo: Repository<User>,
+    21	
+    22	    @InjectRepository(Schedule)
+    23	    private scheduleRepo: Repository<Schedule>,
+    24	
+    25	    @InjectRepository(TimeBank)
+    26	    private timeBankRepo: Repository<TimeBank>,
+    27	
+    28	    @InjectRepository(TimeRecord)
+    29	    private timeRecordRepo: Repository<TimeRecord>,
+    30	  ) {}
+    31	
+    32	  async overview(tenantId: string) {
+    33	
+    34	    const employees =
+    35	      await this.employeeRepo.count({
+    36	        where: { tenantId },
+    37	      });
+    38	
+    39	    const users =
+    40	      await this.userRepo.count({
+    41	        where: { tenantId },
+    42	      });
+    43	
+    44	    const schedules =
+    45	      await this.scheduleRepo.count({
+    46	        where: { tenantId },
+    47	      });
+    48	
+    49	    const timeBank =
+    50	      await this.timeBankRepo.find({
+    51	        where: { tenantId },
+    52	      });
+    53	
+    54	    const positiveBalance =
+    55	      timeBank
+    56	        .filter(x => x.balanceMinutes > 0)
+    57	        .reduce(
+    58	          (a, b) => a + b.balanceMinutes,
+    59	          0,
+    60	        );
+    61	
+    62	    const negativeBalance =
+    63	      timeBank
+    64	        .filter(x => x.balanceMinutes < 0)
+    65	        .reduce(
+    66	          (a, b) => a + b.balanceMinutes,
+    67	          0,
+    68	        );
+    69	
+    70	    return {
+    71	      employees,
+    72	      users,
+    73	      schedules,
+    74	      positiveBalance,
+    75	      negativeBalance,
+    76	    };
+    77	  }
+    78	
+    79	  async employees(tenantId: string) {
+    80	    return this.employeeRepo.find({
+    81	      where: { tenantId },
+    82	    });
+    83	  }
+    84	
+    85	  async schedules(tenantId: string) {
+    86	    return this.scheduleRepo.find({
+    87	      where: { tenantId },
+    88	    });
+    89	  }
+    90	
+    91	  async timeBank(tenantId: string) {
+    92	    return this.timeBankRepo.find({
+    93	      where: { tenantId },
+    94	    });
+    95	  }
+    96	
+    97	  async timeRecords(tenantId: string) {
+    98	    return this.timeRecordRepo.find({
+    99	      where: { tenantId },
+   100	      order: {
+   101	        timestamp: 'DESC',
+   102	      },
+   103	      take: 50,
+   104	    });
+   105	  }
+   106	
+   107	  async executive(tenantId: string) {
+   108	
+   109	    const employees =
+   110	      await this.employeeRepo.count({
+   111	        where: { tenantId },
+   112	      });
+   113	
+   114	    const users =
+   115	      await this.userRepo.count({
+   116	        where: { tenantId },
+   117	      });
+   118	
+   119	    const schedules =
+   120	      await this.scheduleRepo.count({
+   121	        where: { tenantId },
+   122	      });
+   123	
+   124	    const timeBankRows =
+   125	      await this.timeBankRepo.find({
+   126	        where: { tenantId },
+   127	      });
+   128	
+   129	    const positiveBalance =
+   130	      timeBankRows
+   131	        .filter(x => x.balanceMinutes > 0)
+   132	        .reduce(
+   133	          (a, b) => a + b.balanceMinutes,
+   134	          0,
+   135	        );
+   136	
+   137	    const negativeBalance =
+   138	      timeBankRows
+   139	        .filter(x => x.balanceMinutes < 0)
+   140	        .reduce(
+   141	          (a, b) => a + b.balanceMinutes,
+   142	          0,
+   143	        );
+   144	
+   145	    const timeBankRecords =
+   146	      timeBankRows.length;
+   147	
+   148	    return {
+   149	      employees,
+   150	      users,
+   151	      schedules,
+   152	      positiveBalance,
+   153	      negativeBalance,
+   154	      timeBankRecords,
+   155	    };
+   156	  }
+   157	
+   158	}
+
+### /opt/rh-saas/backend/src/modules/documents/documents.service.ts
+     1	import { AuditService } from '../audit/audit.service';
+     2	import { Injectable } from '@nestjs/common';
+     3	import { InjectRepository } from '@nestjs/typeorm';
+     4	import { Repository } from 'typeorm';
+     5	import { Document } from './document.entity';
+     6	
+     7	@Injectable()
+     8	export class DocumentsService {
+     9	
+    10	  constructor(
+    11	    @InjectRepository(Document)
+    12	    private repo: Repository<Document>,
+    13	
+    14	    private readonly auditService: AuditService,
+    15	  ) {}
+    16	
+    17	  async uploadDocument(
+    18	    tenantId: string,
+    19	    employeeId: string,
+    20	    filename: string,
+    21	    path: string,
+    22	  ) {
+    23	
+    24	    const doc = this.repo.create({
+    25	      tenantId,
+    26	      employeeId,
+    27	      filename,
+    28	      path,
+    29	    });
+    30	
+    31	    const savedDoc =
+    32	      await this.repo.save(doc);
+    33	
+    34	    await this.auditService.create({
+    35	      tenantId,
+    36	      entityId: savedDoc.id,
+    37	      action: 'DOCUMENT_UPLOADED',
+    38	      entityType: 'Document',
+    39	      details: filename,
+    40	    });
+    41	
+    42	    return savedDoc;
+    43	  }
+    44	
+    45	  async listForEmployee(
+    46	    tenantId: string,
+    47	    employeeId: string,
+    48	  ) {
+    49	    return this.repo.find({
+    50	      where: {
+    51	        tenantId,
+    52	        employeeId,
+    53	      },
+    54	    });
+    55	  }
+    56	}
+
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts
+     1	import { AuditService } from '../audit/audit.service';
+     2	import {
+     3	  BadRequestException,
+     4	  Injectable,
+     5	  NotFoundException,
+     6	} from '@nestjs/common';
+     7	import { InjectRepository } from '@nestjs/typeorm';
+     8	import { Repository } from 'typeorm';
+     9	
+    10	import { Employee } from './employee.entity';
+    11	import { CreateEmployeeDto } from './dto/create-employee.dto';
+    12	import { User } from '../users/user.entity';
+    13	
+    14	@Injectable()
+    15	export class EmployeesService {
+    16	  constructor(
+    17	    @InjectRepository(Employee)
+    18	    private readonly employeeRepo: Repository<Employee>,
+    19	
+    20	    @InjectRepository(User)
+    21	    private readonly userRepo: Repository<User>,
+    22	
+    23	    private readonly auditService: AuditService,
+    24	  ) {}
+    25	
+    26	  async create(
+    27	    tenantId: string,
+    28	    data: CreateEmployeeDto,
+    29	  ) {
+    30	    const employee = this.employeeRepo.create({
+    31	      ...data,
+    32	      tenantId,
+    33	    });
+    34	
+    35	    const savedEmployee =
+    36	      await this.employeeRepo.save(employee);
+    37	
+    38	    await this.auditService.create({
+    39	      tenantId,
+    40	      entityId: savedEmployee.id,
+    41	      action: 'EMPLOYEE_CREATED',
+    42	      entityType: 'Employee',
+    43	    });
+    44	
+    45	    return savedEmployee;
+    46	  }
+    47	
+    48	  async findAll(tenantId: string) {
+    49	    return this.employeeRepo.find({
+    50	      where: {
+    51	        tenantId,
+    52	      },
+    53	      relations: {
+    54	        user: true,
+    55	      },
+    56	      order: {
+    57	        firstName: 'ASC',
+    58	        lastName: 'ASC',
+    59	      },
+    60	    });
+    61	  }
+    62	
+    63	  async findOne(
+    64	    id: string,
+    65	    tenantId: string,
+    66	  ) {
+    67	    const employee =
+    68	      await this.employeeRepo.findOne({
+    69	        where: {
+    70	          id,
+    71	          tenantId,
+    72	        },
+    73	        relations: {
+    74	          user: true,
+    75	        },
+    76	      });
+    77	
+    78	    if (!employee) {
+    79	      throw new NotFoundException(
+    80	        'Colaborador não encontrado.',
+    81	      );
+    82	    }
+    83	
+    84	    return employee;
+    85	  }
+    86	
+    87	  async linkUser(
+    88	    employeeId: string,
+    89	    tenantId: string,
+    90	    userId: string,
+    91	  ) {
+    92	    const employee =
+    93	      await this.employeeRepo.findOne({
+    94	        where: {
+    95	          id: employeeId,
+    96	          tenantId,
+    97	        },
+    98	      });
+    99	
+   100	    if (!employee) {
+   101	      throw new NotFoundException(
+   102	        'Colaborador não encontrado.',
+   103	      );
+   104	    }
+   105	
+   106	    const user =
+   107	      await this.userRepo.findOne({
+   108	        where: {
+   109	          id: userId,
+   110	          tenantId,
+   111	        },
+   112	      });
+   113	
+   114	    if (!user) {
+   115	      throw new NotFoundException(
+   116	        'Usuário não encontrado neste tenant.',
+   117	      );
+   118	    }
+   119	
+   120	    const alreadyLinked =
+   121	      await this.employeeRepo.findOne({
+   122	        where: {
+   123	          userId,
+   124	          tenantId,
+   125	        },
+   126	      });
+   127	
+   128	    if (
+   129	      alreadyLinked &&
+   130	      alreadyLinked.id !== employee.id
+   131	    ) {
+   132	      throw new BadRequestException(
+   133	        'Este usuário já está vinculado a outro colaborador.',
+   134	      );
+   135	    }
+   136	
+   137	    employee.userId = user.id;
+   138	
+   139	    const savedEmployee =
+   140	      await this.employeeRepo.save(employee);
+   141	
+   142	    await this.auditService.create({
+   143	      tenantId,
+   144	      entityId: savedEmployee.id,
+   145	      action: 'USER_LINKED',
+   146	      entityType: 'Employee',
+   147	      details: user.id,
+   148	    });
+   149	
+   150	    return savedEmployee;
+   151	  }
+   152	
+   153	  async unlinkUser(
+   154	    employeeId: string,
+   155	    tenantId: string,
+   156	  ) {
+   157	    const employee =
+   158	      await this.employeeRepo.findOne({
+   159	        where: {
+   160	          id: employeeId,
+   161	          tenantId,
+   162	        },
+   163	      });
+   164	
+   165	    if (!employee) {
+   166	      throw new NotFoundException(
+   167	        'Colaborador não encontrado.',
+   168	      );
+   169	    }
+   170	
+   171	    employee.userId = null;
+   172	
+   173	    const savedEmployee =
+   174	      await this.employeeRepo.save(employee);
+   175	
+   176	    await this.auditService.create({
+   177	      tenantId,
+   178	      entityId: savedEmployee.id,
+   179	      action: 'USER_UNLINKED',
+   180	      entityType: 'Employee',
+   181	    });
+   182	
+   183	    return savedEmployee;
+   184	  }
+   185	
+   186	  async remove(
+   187	    id: string,
+   188	    tenantId: string,
+   189	  ) {
+   190	    await this.auditService.create({
+   191	      tenantId,
+   192	      entityId: id,
+   193	      action: 'EMPLOYEE_DELETED',
+   194	      entityType: 'Employee',
+   195	    });
+   196	
+   197	    return this.employeeRepo.delete({
+   198	      id,
+   199	      tenantId,
+   200	    });
+   201	  }
+   202	}
+
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts
+     1	import {
+     2	  Injectable,
+     3	  NotFoundException,
+     4	} from '@nestjs/common';
+     5	
+     6	import { InjectRepository } from '@nestjs/typeorm';
+     7	import { Repository } from 'typeorm';
+     8	
+     9	import { SaasClient } from './entities/saas-client.entity';
+    10	
+    11	import { HrEmployeeProfile } from './entities/hr-employee-profile.entity';
+    12	import { HrDepartment } from './entities/hr-department.entity';
+    13	import { HrJobPosition } from './entities/hr-job-position.entity';
+    14	import { HrJobFunction } from './entities/hr-job-function.entity';
+    15	import { HrWorkLocation } from './entities/hr-work-location.entity';
+    16	import { HrGeofence } from './entities/hr-geofence.entity';
+    17	
+    18	import { MobileDevice } from './entities/mobile-device.entity';
+    19	import { MobileAppSettings } from './entities/mobile-app-settings.entity';
+    20	import { LocationTrackingPoint } from './entities/location-tracking-point.entity';
+    21	
+    22	import { ClockEventFoundation } from './entities/clock-event-foundation.entity';
+    23	import { ClockEventType } from './entities/clock-event-type.entity';
+    24	import { ClockPolicy } from './entities/clock-policy.entity';
+    25	import { ClockPolicyEventType } from './entities/clock-policy-event-type.entity';
+    26	import { ClockJustificationFoundation } from './entities/clock-justification-foundation.entity';
+    27	import { DocumentFoundation } from './entities/document-foundation.entity';
+    28	import { DocumentRecipientFoundation } from './entities/document-recipient-foundation.entity';
+    29	
+    30	import { TimeBankBalanceFoundation } from './entities/time-bank-balance-foundation.entity';
+    31	import { PayslipFoundation } from './entities/payslip-foundation.entity';
+    32	import { RegisterMobileDeviceDto } from './dto/register-mobile-device.dto';
+    33	import { CreateLocationTrackingPointDto } from './dto/create-location-tracking-point.dto';
+    34	@Injectable()
+    35	export class FoundationService {
+    36	  constructor(
+    37	    @InjectRepository(SaasClient)
+    38	    private readonly clientRepo: Repository<SaasClient>,
+    39	
+    40	    @InjectRepository(HrEmployeeProfile)
+    41	    private readonly employeeProfileRepo: Repository<HrEmployeeProfile>,
+    42	
+    43	    @InjectRepository(HrDepartment)
+    44	    private readonly departmentRepo: Repository<HrDepartment>,
+    45	
+    46	    @InjectRepository(HrJobPosition)
+    47	    private readonly jobPositionRepo: Repository<HrJobPosition>,
+    48	
+    49	    @InjectRepository(HrJobFunction)
+    50	    private readonly jobFunctionRepo: Repository<HrJobFunction>,
+    51	
+    52	    @InjectRepository(HrWorkLocation)
+    53	    private readonly workLocationRepo: Repository<HrWorkLocation>,
+    54	
+    55	    @InjectRepository(HrGeofence)
+    56	    private readonly geofenceRepo: Repository<HrGeofence>,
+    57	
+    58	    @InjectRepository(MobileDevice)
+    59	    private readonly mobileDeviceRepo: Repository<MobileDevice>,
+    60	
+    61	    @InjectRepository(MobileAppSettings)
+    62	    private readonly mobileSettingsRepo: Repository<MobileAppSettings>,
+    63	
+    64	    @InjectRepository(LocationTrackingPoint)
+    65	    private readonly trackingPointRepo: Repository<LocationTrackingPoint>,
+    66	
+    67	    @InjectRepository(ClockEventFoundation)
+    68	    private readonly clockEventRepo: Repository<ClockEventFoundation>,
+    69	
+    70	    @InjectRepository(ClockEventType)
+    71	    private readonly clockEventTypeRepo: Repository<ClockEventType>,
+    72	
+    73	    @InjectRepository(ClockPolicy)
+    74	    private readonly clockPolicyRepo: Repository<ClockPolicy>,
+    75	
+    76	    @InjectRepository(ClockPolicyEventType)
+    77	    private readonly clockPolicyEventTypeRepo: Repository<ClockPolicyEventType>,
+    78	
+    79	    @InjectRepository(ClockJustificationFoundation)
+    80	    private readonly clockJustificationRepo: Repository<ClockJustificationFoundation>,
+    81	
+    82	    @InjectRepository(DocumentFoundation)
+    83	    private readonly documentFoundationRepo: Repository<DocumentFoundation>,
+    84	
+    85	    @InjectRepository(DocumentRecipientFoundation)
+    86	    private readonly documentRecipientFoundationRepo: Repository<DocumentRecipientFoundation>,
+    87	
+    88	    @InjectRepository(TimeBankBalanceFoundation)
+    89	    private readonly timeBankBalanceFoundationRepo: Repository<TimeBankBalanceFoundation>,
+    90	
+    91	    @InjectRepository(PayslipFoundation)
+    92	    private readonly payslipFoundationRepo: Repository<PayslipFoundation>,
+    93	  ) {}
+    94	
+    95	  private async getClientIdByTenantId(
+    96	    tenantId: string,
+    97	  ): Promise<string> {
+    98	    const client =
+    99	      await this.clientRepo.findOne({
+   100	        where: { tenantId },
+   101	      });
+   102	
+   103	    if (!client) {
+   104	      throw new NotFoundException(
+   105	        'Cliente SaaS não encontrado para o tenant informado.',
+   106	      );
+   107	    }
+   108	
+   109	    return client.id;
+   110	  }
+   111	
+   112	  async overview(
+   113	    tenantId: string,
+   114	  ) {
+   115	    const clientId =
+   116	      await this.getClientIdByTenantId(
+   117	        tenantId,
+   118	      );
+   119	
+   120	    const [
+   121	      employeeProfiles,
+   122	      departments,
+   123	      jobPositions,
+   124	      jobFunctions,
+   125	      workLocations,
+   126	      geofences,
+   127	      mobileDevices,
+   128	      mobileSettings,
+   129	      trackingPoints,
+   130	      clockEvents,
+   131	      clockEventTypes,
+   132	      clockPolicies,
+   133	      clockPolicyEventTypes,
+   134	      clockJustifications,
+   135	    ] = await Promise.all([
+   136	      this.employeeProfileRepo.count({
+   137	        where: { clientId },
+   138	      }),
+   139	      this.departmentRepo.count({
+   140	        where: { clientId },
+   141	      }),
+   142	      this.jobPositionRepo.count({
+   143	        where: { clientId },
+   144	      }),
+   145	      this.jobFunctionRepo.count({
+   146	        where: { clientId },
+   147	      }),
+   148	      this.workLocationRepo.count({
+   149	        where: { clientId },
+   150	      }),
+   151	      this.geofenceRepo.count({
+   152	        where: { clientId },
+   153	      }),
+   154	      this.mobileDeviceRepo.count({
+   155	        where: { clientId },
+   156	      }),
+   157	      this.mobileSettingsRepo.count({
+   158	        where: { clientId },
+   159	      }),
+   160	      this.trackingPointRepo.count({
+   161	        where: { clientId },
+   162	      }),
+   163	      this.clockEventRepo.count({
+   164	        where: { clientId },
+   165	      }),
+   166	      this.clockEventTypeRepo.count(),
+   167	      this.clockPolicyRepo.count({
+   168	        where: { clientId },
+   169	      }),
+   170	      this.clockPolicyEventTypeRepo.count(),
+   171	      this.clockJustificationRepo.count({
+   172	        where: { clientId },
+   173	      }),
+   174	    ]);
+   175	
+   176	    return {
+   177	      clientId,
+   178	      employeeProfiles,
+   179	      departments,
+   180	      jobPositions,
+   181	      jobFunctions,
+   182	      workLocations,
+   183	      geofences,
+   184	      mobileDevices,
+   185	      mobileSettings,
+   186	      trackingPoints,
+   187	      clockEvents,
+   188	      clockEventTypes,
+   189	      clockPolicies,
+   190	      clockPolicyEventTypes,
+   191	      clockJustifications,
+   192	    };
+   193	  }
+   194	
+   195	  async employees(
+   196	    tenantId: string,
+   197	  ) {
+   198	    const clientId =
+   199	      await this.getClientIdByTenantId(
+   200	        tenantId,
+   201	      );
+   202	
+   203	    return this.employeeProfileRepo.find({
+   204	      where: { clientId },
+   205	      order: {
+   206	        firstName: 'ASC',
+   207	        lastName: 'ASC',
+   208	      },
+   209	    });
+   210	  }
+   211	
+   212	  async departments(
+   213	    tenantId: string,
+   214	  ) {
+   215	    const clientId =
+   216	      await this.getClientIdByTenantId(
+   217	        tenantId,
+   218	      );
+   219	
+   220	    return this.departmentRepo.find({
+   221	      where: { clientId },
+   222	      order: { name: 'ASC' },
+   223	    });
+   224	  }
+   225	
+   226	  async jobPositions(
+   227	    tenantId: string,
+   228	  ) {
+   229	    const clientId =
+   230	      await this.getClientIdByTenantId(
+   231	        tenantId,
+   232	      );
+   233	
+   234	    return this.jobPositionRepo.find({
+   235	      where: { clientId },
+   236	      order: { name: 'ASC' },
+   237	    });
+   238	  }
+   239	
+   240	  async jobFunctions(
+   241	    tenantId: string,
+   242	  ) {
+   243	    const clientId =
+   244	      await this.getClientIdByTenantId(
+   245	        tenantId,
+   246	      );
+   247	
+   248	    return this.jobFunctionRepo.find({
+   249	      where: { clientId },
+   250	      order: { name: 'ASC' },
+   251	    });
+   252	  }
+   253	
+   254	  async workLocations(
+   255	    tenantId: string,
+   256	  ) {
+   257	    const clientId =
+   258	      await this.getClientIdByTenantId(
+   259	        tenantId,
+   260	      );
+   261	
+   262	    return this.workLocationRepo.find({
+   263	      where: { clientId },
+   264	      order: { name: 'ASC' },
+   265	    });
+   266	  }
+   267	
+   268	  async geofences(
+   269	    tenantId: string,
+   270	  ) {
+   271	    const clientId =
+   272	      await this.getClientIdByTenantId(
+   273	        tenantId,
+   274	      );
+   275	
+   276	    return this.geofenceRepo.find({
+   277	      where: { clientId },
+   278	      order: { name: 'ASC' },
+   279	    });
+   280	  }
+   281	
+   282	  async mobileDevices(
+   283	    tenantId: string,
+   284	  ) {
+   285	    const clientId =
+   286	      await this.getClientIdByTenantId(
+   287	        tenantId,
+   288	      );
+   289	
+   290	    return this.mobileDeviceRepo.find({
+   291	      where: { clientId },
+   292	      order: { createdAt: 'DESC' },
+   293	    });
+   294	  }
+   295	
+   296	  async mobileSettings(
+   297	    tenantId: string,
+   298	  ) {
+   299	    const clientId =
+   300	      await this.getClientIdByTenantId(
+   301	        tenantId,
+   302	      );
+   303	
+   304	    return this.mobileSettingsRepo.findOne({
+   305	      where: { clientId },
+   306	    });
+   307	  }
+   308	
+   309	  async trackingPoints(
+   310	    tenantId: string,
+   311	  ) {
+   312	    const clientId =
+   313	      await this.getClientIdByTenantId(
+   314	        tenantId,
+   315	      );
+   316	
+   317	    return this.trackingPointRepo.find({
+   318	      where: { clientId },
+   319	      order: { trackedAt: 'DESC' },
+   320	      take: 200,
+   321	    });
+   322	  }
+   323	
+   324	  async clockOverview(
+   325	    tenantId: string,
+   326	  ) {
+   327	    const clientId =
+   328	      await this.getClientIdByTenantId(
+   329	        tenantId,
+   330	      );
+   331	
+   332	    const [
+   333	      events,
+   334	      eventTypes,
+   335	      policies,
+   336	      policyEventTypes,
+   337	      justifications,
+   338	    ] = await Promise.all([
+   339	      this.clockEventRepo.count({
+   340	        where: { clientId },
+   341	      }),
+   342	      this.clockEventTypeRepo.count(),
+   343	      this.clockPolicyRepo.count({
+   344	        where: { clientId },
+   345	      }),
+   346	      this.clockPolicyEventTypeRepo.count(),
+   347	      this.clockJustificationRepo.count({
+   348	        where: { clientId },
+   349	      }),
+   350	    ]);
+   351	
+   352	    return {
+   353	      clientId,
+   354	      events,
+   355	      eventTypes,
+   356	      policies,
+   357	      policyEventTypes,
+   358	      justifications,
+   359	    };
+   360	  }
+   361	
+   362	  async clockEvents(
+   363	    tenantId: string,
+   364	  ) {
+   365	    const clientId =
+   366	      await this.getClientIdByTenantId(
+   367	        tenantId,
+   368	      );
+   369	
+   370	    return this.clockEventRepo.find({
+   371	      where: { clientId },
+   372	      order: { eventDatetime: 'DESC' },
+   373	      take: 200,
+   374	    });
+   375	  }
+   376	
+   377	  async clockEventTypes() {
+   378	    return this.clockEventTypeRepo.find({
+   379	      order: { defaultOrder: 'ASC' },
+   380	    });
+   381	  }
+   382	
+   383	  async clockPolicies(
+   384	    tenantId: string,
+   385	  ) {
+   386	    const clientId =
+   387	      await this.getClientIdByTenantId(
+   388	        tenantId,
+   389	      );
+   390	
+   391	    return this.clockPolicyRepo.find({
+   392	      where: { clientId },
+   393	      order: { createdAt: 'DESC' },
+   394	    });
+   395	  }
+   396	
+   397	  async clockPolicyEventTypes() {
+   398	    return this.clockPolicyEventTypeRepo.find({
+   399	      order: { displayOrder: 'ASC' },
+   400	    });
+   401	  }
+   402	
+   403	  async clockJustifications(
+   404	    tenantId: string,
+   405	  ) {
+   406	    const clientId =
+   407	      await this.getClientIdByTenantId(
+   408	        tenantId,
+   409	      );
+   410	
+   411	    return this.clockJustificationRepo.find({
+   412	      where: { clientId },
+   413	      order: { createdAt: 'DESC' },
+   414	      take: 200,
+   415	    });
+   416	  }
+   417	
+   418	  async documentsOverview(
+   419	    tenantId: string,
+   420	  ) {
+   421	    const clientId =
+   422	      await this.getClientIdByTenantId(
+   423	        tenantId,
+   424	      );
+   425	
+   426	    const [
+   427	      documents,
+   428	      recipients,
+   429	    ] = await Promise.all([
+   430	      this.documentFoundationRepo.count({
+   431	        where: { clientId },
+   432	      }),
+   433	      this.documentRecipientFoundationRepo.count(),
+   434	    ]);
+   435	
+   436	    return {
+   437	      clientId,
+   438	      documents,
+   439	      recipients,
+   440	    };
+   441	  }
+   442	
+   443	  async documents(
+   444	    tenantId: string,
+   445	  ) {
+   446	    const clientId =
+   447	      await this.getClientIdByTenantId(
+   448	        tenantId,
+   449	      );
+   450	
+   451	    return this.documentFoundationRepo.find({
+   452	      where: { clientId },
+   453	      order: { createdAt: 'DESC' },
+   454	      take: 200,
+   455	    });
+   456	  }
+   457	
+   458	  async documentRecipients() {
+   459	    return this.documentRecipientFoundationRepo.find({
+   460	      order: { createdAt: 'DESC' },
+   461	      take: 200,
+   462	    });
+   463	  }
+   464	
+   465	
+   466	  async timebankOverview(
+   467	    tenantId: string,
+   468	  ) {
+   469	    const clientId =
+   470	      await this.getClientIdByTenantId(
+   471	        tenantId,
+   472	      );
+   473	
+   474	    const balances =
+   475	      await this.timeBankBalanceFoundationRepo.count({
+   476	        where: { clientId },
+   477	      });
+   478	
+   479	    return {
+   480	      clientId,
+   481	      balances,
+   482	    };
+   483	  }
+   484	
+   485	  async timebankBalances(
+   486	    tenantId: string,
+   487	  ) {
+   488	    const clientId =
+   489	      await this.getClientIdByTenantId(
+   490	        tenantId,
+   491	      );
+   492	
+   493	    return this.timeBankBalanceFoundationRepo.find({
+   494	      where: { clientId },
+   495	      order: { referenceDate: 'DESC' },
+   496	      take: 200,
+   497	    });
+   498	  }
+   499	
+   500	
+   501	  async payrollOverview(
+   502	    tenantId: string,
+   503	  ) {
+   504	    const clientId =
+   505	      await this.getClientIdByTenantId(
+   506	        tenantId,
+   507	      );
+   508	
+   509	    const payslips =
+   510	      await this.payslipFoundationRepo.count({
+   511	        where: { clientId },
+   512	      });
+   513	
+   514	    return {
+   515	      clientId,
+   516	      payslips,
+   517	    };
+   518	  }
+   519	
+   520	  async payrollPayslips(
+   521	    tenantId: string,
+   522	  ) {
+   523	    const clientId =
+   524	      await this.getClientIdByTenantId(
+   525	        tenantId,
+   526	      );
+   527	
+   528	    return this.payslipFoundationRepo.find({
+   529	      where: { clientId },
+   530	      order: {
+   531	        referenceYear: 'DESC',
+   532	        referenceMonth: 'DESC',
+   533	        createdAt: 'DESC',
+   534	      },
+   535	      take: 200,
+   536	    });
+   537	  }
+   538	
+   539	
+   540	  async registerOrUpdateMobileDevice(
+   541	    tenantId: string,
+   542	    dto: RegisterMobileDeviceDto,
+   543	  ) {
+   544	    const clientId =
+   545	      await this.getClientIdByTenantId(
+   546	        tenantId,
+   547	      );
+   548	
+   549	    let employeeProfileId = dto.employeeProfileId;
+   550	
+   551	    if (employeeProfileId) {
+   552	      const employee =
+   553	        await this.employeeProfileRepo.findOne({
+   554	          where: {
+   555	            id: employeeProfileId,
+   556	            clientId,
+   557	          },
+   558	        });
+   559	
+   560	      if (!employee) {
+   561	        throw new NotFoundException(
+   562	          'Perfil de colaborador não encontrado para este cliente.',
+   563	        );
+   564	      }
+   565	    }
+   566	
+   567	    let device =
+   568	      await this.mobileDeviceRepo.findOne({
+   569	        where: {
+   570	          clientId,
+   571	          deviceUid: dto.deviceUid,
+   572	        },
+   573	      });
+   574	
+   575	    if (!device) {
+   576	      device =
+   577	        this.mobileDeviceRepo.create({
+   578	          clientId,
+   579	          employeeProfileId,
+   580	          deviceUid: dto.deviceUid,
+   581	          platform: dto.platform,
+   582	          model: dto.model,
+   583	          appVersion: dto.appVersion,
+   584	          isActive: true,
+   585	          lastSeenAt: new Date(),
+   586	        });
+   587	    } else {
+   588	      device.employeeProfileId =
+   589	        employeeProfileId ?? device.employeeProfileId;
+   590	      device.platform = dto.platform ?? device.platform;
+   591	      device.model = dto.model ?? device.model;
+   592	      device.appVersion = dto.appVersion ?? device.appVersion;
+   593	      device.isActive = true;
+   594	      device.lastSeenAt = new Date();
+   595	    }
+   596	
+   597	    return this.mobileDeviceRepo.save(device);
+   598	  }
+   599	
+   600	  async createLocationTrackingPoint(
+   601	    tenantId: string,
+   602	    dto: CreateLocationTrackingPointDto,
+   603	  ) {
+   604	    const clientId =
+   605	      await this.getClientIdByTenantId(
+   606	        tenantId,
+   607	      );
+   608	
+   609	    const employee =
+   610	      await this.employeeProfileRepo.findOne({
+   611	        where: {
+   612	          id: dto.employeeProfileId,
+   613	          clientId,
+   614	        },
+   615	      });
+   616	
+   617	    if (!employee) {
+   618	      throw new NotFoundException(
+   619	        'Perfil de colaborador não encontrado para este cliente.',
+   620	      );
+   621	    }
+   622	
+   623	    if (dto.deviceId) {
+   624	      const device =
+   625	        await this.mobileDeviceRepo.findOne({
+   626	          where: {
+   627	            id: dto.deviceId,
+   628	            clientId,
+   629	          },
+   630	        });
+   631	
+   632	      if (!device) {
+   633	        throw new NotFoundException(
+   634	          'Dispositivo móvel não encontrado para este cliente.',
+   635	        );
+   636	      }
+   637	    }
+   638	
+   639	    const point =
+   640	      this.trackingPointRepo.create({
+   641	        clientId,
+   642	        employeeProfileId: dto.employeeProfileId,
+   643	        deviceId: dto.deviceId,
+   644	        trackedAt: dto.trackedAt
+   645	          ? new Date(dto.trackedAt)
+   646	          : new Date(),
+   647	        latitude: String(dto.latitude),
+   648	        longitude: String(dto.longitude),
+   649	        accuracyMeters:
+   650	          dto.accuracyMeters === undefined
+   651	            ? undefined
+   652	            : String(dto.accuracyMeters),
+   653	        address: dto.address,
+   654	        source: dto.source ?? 'MOBILE',
+   655	        metadata: dto.metadata ?? {},
+   656	      });
+   657	
+   658	    return this.trackingPointRepo.save(point);
+   659	  }
+   660	
+   661	  async liveTrackingPoints(
+   662	    tenantId: string,
+   663	  ) {
+   664	    const clientId =
+   665	      await this.getClientIdByTenantId(
+   666	        tenantId,
+   667	      );
+   668	
+   669	    return this.trackingPointRepo.find({
+   670	      where: { clientId },
+   671	      order: { trackedAt: 'DESC' },
+   672	      take: 200,
+   673	    });
+   674	  }
+   675	
+   676	  async latestTrackingPoints(
+   677	    tenantId: string,
+   678	  ) {
+   679	    const clientId =
+   680	      await this.getClientIdByTenantId(
+   681	        tenantId,
+   682	      );
+   683	
+   684	    return this.trackingPointRepo
+   685	      .createQueryBuilder('point')
+   686	      .where('point.client_id = :clientId', { clientId })
+   687	      .orderBy('point.employee_profile_id', 'ASC')
+   688	      .addOrderBy('point.tracked_at', 'DESC')
+   689	      .distinctOn(['point.employee_profile_id'])
+   690	      .getMany();
+   691	  }
+   692	
+   693	}
+
+### /opt/rh-saas/backend/src/modules/reports/reports.service.ts
+     1	import { Injectable } from '@nestjs/common';
+     2	import { InjectRepository } from '@nestjs/typeorm';
+     3	import { Repository } from 'typeorm';
+     4	
+     5	import { Employee } from '../employees/employee.entity';
+     6	import { Schedule } from '../schedules/schedule.entity';
+     7	import { TimeBank } from '../time-bank/time-bank.entity';
+     8	import { TimeRecord } from '../time-records/time-record.entity';
+     9	
+    10	@Injectable()
+    11	export class ReportsService {
+    12	  constructor(
+    13	    @InjectRepository(Employee)
+    14	    private readonly employeeRepo: Repository<Employee>,
+    15	
+    16	    @InjectRepository(Schedule)
+    17	    private readonly scheduleRepo: Repository<Schedule>,
+    18	
+    19	    @InjectRepository(TimeBank)
+    20	    private readonly timeBankRepo: Repository<TimeBank>,
+    21	
+    22	    @InjectRepository(TimeRecord)
+    23	    private readonly timeRecordRepo: Repository<TimeRecord>,
+    24	  ) {}
+    25	
+    26	  async employees(tenantId: string) {
+    27	    const employees = await this.employeeRepo.find({
+    28	      where: { tenantId },
+    29	    });
+    30	
+    31	    return {
+    32	      total: employees.length,
+    33	      active: employees.filter(
+    34	        (e) => e.isActive,
+    35	      ).length,
+    36	      inactive: employees.filter(
+    37	        (e) => !e.isActive,
+    38	      ).length,
+    39	      data: employees,
+    40	    };
+    41	  }
+    42	
+    43	  async schedules(tenantId: string) {
+    44	    const schedules =
+    45	      await this.scheduleRepo.find({
+    46	        where: { tenantId },
+    47	      });
+    48	
+    49	    return {
+    50	      total: schedules.length,
+    51	      data: schedules,
+    52	    };
+    53	  }
+    54	
+    55	  async timeBank(tenantId: string) {
+    56	    const records =
+    57	      await this.timeBankRepo.find({
+    58	        where: { tenantId },
+    59	      });
+    60	
+    61	    return {
+    62	      total: records.length,
+    63	      data: records,
+    64	    };
+    65	  }
+    66	
+    67	  async afd(tenantId: string) {
+    68	    const records =
+    69	      await this.timeRecordRepo.find({
+    70	        where: { tenantId },
+    71	        order: {
+    72	          timestamp: 'DESC',
+    73	        },
+    74	      });
+    75	
+    76	    return {
+    77	      total: records.length,
+    78	      data: records,
+    79	    };
+    80	  }
+    81	
+    82	  async executive(tenantId: string) {
+    83	    const [
+    84	      employees,
+    85	      schedules,
+    86	      timeBankRecords,
+    87	    ] = await Promise.all([
+    88	      this.employeeRepo.count({
+    89	        where: { tenantId },
+    90	      }),
+    91	      this.scheduleRepo.count({
+    92	        where: { tenantId },
+    93	      }),
+    94	      this.timeBankRepo.find({
+    95	        where: { tenantId },
+    96	      }),
+    97	    ]);
+    98	
+    99	    const positiveBalance =
+   100	      timeBankRecords
+   101	        .filter(
+   102	          (r) => r.balanceMinutes > 0,
+   103	        )
+   104	        .reduce(
+   105	          (acc, r) =>
+   106	            acc + r.balanceMinutes,
+   107	          0,
+   108	        );
+   109	
+   110	    const negativeBalance =
+   111	      timeBankRecords
+   112	        .filter(
+   113	          (r) => r.balanceMinutes < 0,
+   114	        )
+   115	        .reduce(
+   116	          (acc, r) =>
+   117	            acc + r.balanceMinutes,
+   118	          0,
+   119	        );
+   120	
+   121	    return {
+   122	      employees,
+   123	      schedules,
+   124	      timeBankRecords:
+   125	        timeBankRecords.length,
+   126	      positiveBalance,
+   127	      negativeBalance,
+   128	    };
+   129	  }
+   130	
+   131	  async productivity(tenantId: string) {
+   132	    const employees =
+   133	      await this.employeeRepo.count({
+   134	        where: { tenantId },
+   135	      });
+   136	
+   137	    const records =
+   138	      await this.timeRecordRepo.count({
+   139	        where: { tenantId },
+   140	      });
+   141	
+   142	    return {
+   143	      employees,
+   144	      timeRecords: records,
+   145	      averageRecordsPerEmployee:
+   146	        employees > 0
+   147	          ? Number(
+   148	              (
+   149	                records /
+   150	                employees
+   151	              ).toFixed(2),
+   152	            )
+   153	          : 0,
+   154	    };
+   155	  }
+   156	
+   157	  async timeBankSummary(
+   158	    tenantId: string,
+   159	  ) {
+   160	    const records =
+   161	      await this.timeBankRepo.find({
+   162	        where: { tenantId },
+   163	      });
+   164	
+   165	    const positiveBalanceMinutes =
+   166	      records
+   167	        .filter(
+   168	          (r) => r.balanceMinutes > 0,
+   169	        )
+   170	        .reduce(
+   171	          (acc, r) =>
+   172	            acc + r.balanceMinutes,
+   173	          0,
+   174	        );
+   175	
+   176	    const negativeBalanceMinutes =
+   177	      records
+   178	        .filter(
+   179	          (r) => r.balanceMinutes < 0,
+   180	        )
+   181	        .reduce(
+   182	          (acc, r) =>
+   183	            acc + r.balanceMinutes,
+   184	          0,
+   185	        );
+   186	
+   187	    return {
+   188	      positiveBalanceMinutes,
+   189	      negativeBalanceMinutes,
+   190	      netBalanceMinutes:
+   191	        positiveBalanceMinutes +
+   192	        negativeBalanceMinutes,
+   193	      records: records.length,
+   194	    };
+   195	  }
+   196	
+   197	  async scheduleDistribution(
+   198	    tenantId: string,
+   199	  ) {
+   200	    const schedules =
+   201	      await this.scheduleRepo.find({
+   202	        where: { tenantId },
+   203	      });
+   204	
+   205	    return {
+   206	      FIXED: schedules.filter(
+   207	        (s) => s.type === 'FIXED',
+   208	      ).length,
+   209	
+   210	      SHIFT_12X36:
+   211	        schedules.filter(
+   212	          (s) =>
+   213	            s.type ===
+   214	            'SHIFT_12X36',
+   215	        ).length,
+   216	    };
+   217	  }
+   218	}
+
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts
+     1	import { Injectable, NotFoundException } from '@nestjs/common';
+     2	import { InjectRepository } from '@nestjs/typeorm';
+     3	import { Repository } from 'typeorm';
+     4	
+     5	import { Schedule, ScheduleType } from './schedule.entity';
+     6	import { EmployeeSchedule } from './employee-schedule.entity';
+     7	
+     8	import { AuditService } from '../audit/audit.service';
+     9	import { AssignScheduleDto } from './dto/assign-schedule.dto';
+    10	
+    11	@Injectable()
+    12	export class SchedulesService {
+    13	  constructor(
+    14	    @InjectRepository(Schedule)
+    15	    private scheduleRepo: Repository<Schedule>,
+    16	
+    17	    @InjectRepository(EmployeeSchedule)
+    18	    private employeeScheduleRepo: Repository<EmployeeSchedule>,
+    19	
+    20	    private readonly auditService: AuditService,
+    21	  ) {}
+    22	
+    23	  async findAll(tenantId: string) {
+    24	    return this.scheduleRepo.find({
+    25	      where: { tenantId },
+    26	      order: {
+    27	        name: 'ASC',
+    28	      },
+    29	    });
+    30	  }
+    31	
+    32	  async findOne(
+    33	    id: string,
+    34	    tenantId: string,
+    35	  ) {
+    36	    const schedule =
+    37	      await this.scheduleRepo.findOne({
+    38	        where: {
+    39	          id,
+    40	          tenantId,
+    41	        },
+    42	      });
+    43	
+    44	    if (!schedule) {
+    45	      throw new NotFoundException(
+    46	        'Escala não encontrada.',
+    47	      );
+    48	    }
+    49	
+    50	    return schedule;
+    51	  }
+    52	
+    53	  async create(
+    54	    tenantId: string,
+    55	    data: Partial<Schedule>,
+    56	  ) {
+    57	    const schedule =
+    58	      this.scheduleRepo.create({
+    59	        ...data,
+    60	        tenantId,
+    61	      });
+    62	
+    63	    const saved =
+    64	      await this.scheduleRepo.save(schedule);
+    65	
+    66	    await this.auditService.create({
+    67	      tenantId,
+    68	      entityId: saved.id,
+    69	      action: 'SCHEDULE_CREATED',
+    70	      entityType: 'Schedule',
+    71	      details: saved.name,
+    72	    });
+    73	
+    74	    return saved;
+    75	  }
+    76	
+    77	  async update(
+    78	    id: string,
+    79	    tenantId: string,
+    80	    data: Partial<Schedule>,
+    81	  ) {
+    82	    const schedule =
+    83	      await this.findOne(
+    84	        id,
+    85	        tenantId,
+    86	      );
+    87	
+    88	    Object.assign(
+    89	      schedule,
+    90	      data,
+    91	    );
+    92	
+    93	    const updated =
+    94	      await this.scheduleRepo.save(
+    95	        schedule,
+    96	      );
+    97	
+    98	    await this.auditService.create({
+    99	      tenantId,
+   100	      entityId: updated.id,
+   101	      action: 'SCHEDULE_UPDATED',
+   102	      entityType: 'Schedule',
+   103	      details: updated.name,
+   104	    });
+   105	
+   106	    return updated;
+   107	  }
+   108	
+   109	  async remove(
+   110	    id: string,
+   111	    tenantId: string,
+   112	  ) {
+   113	    await this.findOne(
+   114	      id,
+   115	      tenantId,
+   116	    );
+   117	
+   118	    await this.auditService.create({
+   119	      tenantId,
+   120	      entityId: id,
+   121	      action: 'SCHEDULE_DELETED',
+   122	      entityType: 'Schedule',
+   123	    });
+   124	
+   125	    return this.scheduleRepo.delete({
+   126	      id,
+   127	      tenantId,
+   128	    });
+   129	  }
+   130	
+   131	  async assign(
+   132	    tenantId: string,
+   133	    dto: AssignScheduleDto,
+   134	  ) {
+   135	    const link =
+   136	      this.employeeScheduleRepo.create({
+   137	        tenantId,
+   138	        employeeId: dto.employeeId,
+   139	        scheduleId: dto.scheduleId,
+   140	        startDate: dto.startDate,
+   141	        endDate: dto.endDate,
+   142	      });
+   143	
+   144	    const saved =
+   145	      await this.employeeScheduleRepo.save(
+   146	        link,
+   147	      );
+   148	
+   149	    await this.auditService.create({
+   150	      tenantId,
+   151	      entityId: saved.id,
+   152	      action: 'SCHEDULE_ASSIGNED',
+   153	      entityType: 'EmployeeSchedule',
+   154	      details: JSON.stringify(dto),
+   155	    });
+   156	
+   157	    return saved;
+   158	  }
+   159	
+   160	  async getEmployeeSchedule(
+   161	    tenantId: string,
+   162	    employeeId: string,
+   163	  ) {
+   164	    return this.employeeScheduleRepo
+   165	      .createQueryBuilder('es')
+   166	      .leftJoinAndSelect(
+   167	        'es.schedule',
+   168	        'schedule',
+   169	      )
+   170	      .where(
+   171	        'es.tenantId = :tenantId',
+   172	        { tenantId },
+   173	      )
+   174	      .andWhere(
+   175	        'es.employeeId = :employeeId',
+   176	        { employeeId },
+   177	      )
+   178	      .orderBy(
+   179	        'es.startDate',
+   180	        'DESC',
+   181	      )
+   182	      .getMany();
+   183	  }
+   184	async getEmployeeScheduleActive(
+   185	  tenantId: string,
+   186	  employeeId: string,
+   187	) {
+   188	  return this.employeeScheduleRepo
+   189	    .createQueryBuilder('es')
+   190	    .leftJoinAndSelect(
+   191	      'es.schedule',
+   192	      'schedule',
+   193	    )
+   194	    .where(
+   195	      'es.tenantId = :tenantId',
+   196	      { tenantId },
+   197	    )
+   198	    .andWhere(
+   199	      'es.employeeId = :employeeId',
+   200	      { employeeId },
+   201	    )
+   202	    .andWhere('es.endDate IS NULL')
+   203	    .orderBy(
+   204	      'es.startDate',
+   205	      'DESC',
+   206	    )
+   207	    .getOne();
+   208	}
+   209	
+   210	async unassign(
+   211	  tenantId: string,
+   212	  assignmentId: string,
+   213	) {
+   214	
+   215	  const link =
+   216	    await this.employeeScheduleRepo.findOne({
+   217	      where: {
+   218	        id: assignmentId,
+   219	        tenantId,
+   220	      },
+   221	    });
+   222	
+   223	  if (!link) {
+   224	    throw new NotFoundException(
+   225	      'Vínculo não encontrado.',
+   226	    );
+   227	  }
+   228	
+   229	  await this.auditService.create({
+   230	    tenantId,
+   231	    entityId: assignmentId,
+   232	    action: 'SCHEDULE_UNASSIGNED',
+   233	    entityType: 'EmployeeSchedule',
+   234	  });
+   235	
+   236	  return this.employeeScheduleRepo.delete({
+   237	    id: assignmentId,
+   238	  });
+   239	}
+   240	
+   241	async endAssignment(
+   242	  tenantId: string,
+   243	  assignmentId: string,
+   244	  endDate: string,
+   245	) {
+   246	
+   247	  const link =
+   248	    await this.employeeScheduleRepo.findOne({
+   249	      where: {
+   250	        id: assignmentId,
+   251	        tenantId,
+   252	      },
+   253	    });
+   254	
+   255	  if (!link) {
+   256	    throw new NotFoundException(
+   257	      'Vínculo não encontrado.',
+   258	    );
+   259	  }
+   260	
+   261	  link.endDate = endDate;
+   262	
+   263	  const saved =
+   264	    await this.employeeScheduleRepo.save(
+   265	      link,
+   266	    );
+   267	
+   268	  await this.auditService.create({
+   269	    tenantId,
+   270	    entityId: saved.id,
+   271	    action: 'SCHEDULE_ENDED',
+   272	    entityType: 'EmployeeSchedule',
+   273	    details: endDate,
+   274	  });
+   275	
+   276	  return saved;
+   277	}
+   278	  /**
+   279	   * Método chamado pelo Banco de Horas para saber:
+   280	   * "Quantos minutos este funcionário tem que trabalhar hoje?"
+   281	   */
+   282	  async getExpectedMinutesForDate(
+   283	    tenantId: string,
+   284	    employeeId: string,
+   285	    targetDateStr: string,
+   286	  ): Promise<{
+   287	    expected: number;
+   288	    tolerance: number;
+   289	  }> {
+   290	
+   291	    const targetDate =
+   292	      new Date(
+   293	        `${targetDateStr}T12:00:00Z`,
+   294	      );
+   295	
+   296	    const link =
+   297	      await this.employeeScheduleRepo
+   298	        .createQueryBuilder('es')
+   299	        .leftJoinAndSelect(
+   300	          'es.schedule',
+   301	          'schedule',
+   302	        )
+   303	        .where(
+   304	          'es.tenantId = :tenantId',
+   305	          { tenantId },
+   306	        )
+   307	        .andWhere(
+   308	          'es.employeeId = :employeeId',
+   309	          { employeeId },
+   310	        )
+   311	        .andWhere(
+   312	          'es.startDate <= :targetDate',
+   313	          { targetDate: targetDateStr },
+   314	        )
+   315	        .andWhere(
+   316	          '(es.endDate IS NULL OR es.endDate >= :targetDate)',
+   317	          { targetDate: targetDateStr },
+   318	        )
+   319	        .getOne();
+   320	
+   321	    if (!link) {
+   322	      return {
+   323	        expected: 0,
+   324	        tolerance: 0,
+   325	      };
+   326	    }
+   327	
+   328	    const { schedule } = link;
+   329	
+   330	    if (
+   331	      schedule.type ===
+   332	      ScheduleType.FIXED
+   333	    ) {
+   334	      const dayOfWeek =
+   335	        targetDate.getUTCDay();
+   336	
+   337	      if (
+   338	        schedule.workDays &&
+   339	        schedule.workDays.includes(
+   340	          dayOfWeek,
+   341	        )
+   342	      ) {
+   343	        return {
+   344	          expected:
+   345	            schedule.expectedMinutesPerDay,
+   346	          tolerance:
+   347	            schedule.dailyToleranceMinutes,
+   348	        };
+   349	      }
+   350	
+   351	      return {
+   352	        expected: 0,
+   353	        tolerance:
+   354	          schedule.dailyToleranceMinutes,
+   355	      };
+   356	    }
+   357	
+   358	    if (
+   359	      schedule.type ===
+   360	      ScheduleType.SHIFT_12X36
+   361	    ) {
+   362	      const startDate =
+   363	        new Date(
+   364	          `${link.startDate}T12:00:00Z`,
+   365	        );
+   366	
+   367	      const diffTime =
+   368	        Math.abs(
+   369	          targetDate.getTime() -
+   370	          startDate.getTime(),
+   371	        );
+   372	
+   373	      const diffDays =
+   374	        Math.floor(
+   375	          diffTime /
+   376	          (1000 * 60 * 60 * 24),
+   377	        );
+   378	
+   379	      if (diffDays % 2 === 0) {
+   380	        return {
+   381	          expected:
+   382	            schedule.expectedMinutesPerDay,
+   383	          tolerance:
+   384	            schedule.dailyToleranceMinutes,
+   385	        };
+   386	      }
+   387	
+   388	      return {
+   389	        expected: 0,
+   390	        tolerance:
+   391	          schedule.dailyToleranceMinutes,
+   392	      };
+   393	    }
+   394	
+   395	    return {
+   396	      expected: 0,
+   397	      tolerance: 0,
+   398	    };
+   399	  }
+   400	}
+
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts
+     1	import {
+     2	  Injectable,
+     3	  NotFoundException,
+     4	} from '@nestjs/common';
+     5	
+     6	import { DataSource } from 'typeorm';
+     7	import * as os from 'os';
+     8	import { execSync } from 'child_process';
+     9	
+    10	@Injectable()
+    11	export class SuperAdminService {
+    12	
+    13	  constructor(
+    14	    private readonly dataSource: DataSource,
+    15	  ) {}
+    16	
+    17	  async health() {
+    18	    return {
+    19	      status: 'ok',
+    20	      module: 'super-admin',
+    21	    };
+    22	  }
+    23	
+    24	  async listClients() {
+    25	
+    26	    return this.dataSource.query(`
+    27	      SELECT
+    28	        sc.id,
+    29	        sc.slug,
+    30	        sc.status,
+    31	        sp.code as "planCode",
+    32	        sp.name as "planName"
+    33	      FROM saas_clients sc
+    34	      LEFT JOIN saas_plans sp
+    35	        ON sp.id = sc.plan_id
+    36	      ORDER BY sc.slug
+    37	    `);
+    38	  }
+    39	
+    40	  async getClientDetails(id: string) {
+    41	
+    42	    const clientRows = await this.dataSource.query(`
+    43	      SELECT *
+    44	      FROM saas_clients
+    45	      WHERE id = $1
+    46	    `,[id]);
+    47	
+    48	    if (!clientRows.length) {
+    49	      throw new NotFoundException(
+    50	        'Cliente não encontrado'
+    51	      );
+    52	    }
+    53	
+    54	    const client = clientRows[0];
+    55	
+    56	    const plan = await this.dataSource.query(`
+    57	      SELECT *
+    58	      FROM saas_plans
+    59	      WHERE id = $1
+    60	    `,[client.plan_id]);
+    61	
+    62	    const modules = await this.dataSource.query(`
+    63	      SELECT
+    64	        module_code,
+    65	        enabled
+    66	      FROM tenant_module_flags
+    67	      WHERE client_id = $1
+    68	      ORDER BY module_code
+    69	    `,[id]);
+    70	
+    71	    const company = await this.dataSource.query(`
+    72	      SELECT *
+    73	      FROM hr_companies
+    74	      WHERE client_id = $1
+    75	      LIMIT 1
+    76	    `,[id]);
+    77	
+    78	    const employees = await this.dataSource.query(`
+    79	      SELECT COUNT(*)::int total
+    80	      FROM hr_employee_profiles
+    81	      WHERE client_id = $1
+    82	    `,[id]);
+    83	
+    84	    const documents = await this.dataSource.query(`
+    85	      SELECT COUNT(*)::int total
+    86	      FROM documents_foundation
+    87	      WHERE client_id = $1
+    88	    `,[id]);
+    89	
+    90	    const payslips = await this.dataSource.query(`
+    91	      SELECT COUNT(*)::int total
+    92	      FROM payslips_foundation
+    93	      WHERE client_id = $1
+    94	    `,[id]);
+    95	
+    96	    return {
+    97	      client,
+    98	      plan: plan[0] ?? null,
+    99	      company: company[0] ?? null,
+   100	      modules,
+   101	      statistics: {
+   102	        employees: employees[0]?.total ?? 0,
+   103	        documents: documents[0]?.total ?? 0,
+   104	        payslips: payslips[0]?.total ?? 0,
+   105	      },
+   106	    };
+   107	  }
+   108	
+   109	  async getModules(clientId: string) {
+   110	
+   111	    return this.dataSource.query(`
+   112	      SELECT
+   113	        module_code,
+   114	        enabled
+   115	      FROM tenant_module_flags
+   116	      WHERE client_id = $1
+   117	      ORDER BY module_code
+   118	    `,[clientId]);
+   119	  }
+   120	
+   121	  
+   122	
+   123	  async getModuleAudit(clientId: string) {
+   124	
+   125	    return this.dataSource.query(`
+   126	      SELECT
+   127	        module_code,
+   128	        old_enabled,
+   129	        new_enabled,
+   130	        changed_by_email,
+   131	        created_at
+   132	      FROM tenant_module_audit
+   133	      WHERE client_id = $1
+   134	      ORDER BY created_at DESC
+   135	    `,[clientId]);
+   136	  }
+   137	
+   138	
+   139	  async updateModule(
+   140	    clientId: string,
+   141	    moduleCode: string,
+   142	    enabled: boolean,
+   143	  ) {
+   144	
+   145	    const currentRows =
+   146	      await this.dataSource.query(`
+   147	        SELECT enabled
+   148	        FROM tenant_module_flags
+   149	        WHERE client_id = $1
+   150	        AND module_code = $2
+   151	      `,[clientId,moduleCode]);
+   152	
+   153	    const oldEnabled =
+   154	      currentRows.length
+   155	        ? currentRows[0].enabled
+   156	        : null;
+   157	
+   158	    await this.dataSource.query(`
+   159	      UPDATE tenant_module_flags
+   160	         SET enabled = $3
+   161	       WHERE client_id = $1
+   162	         AND module_code = $2
+   163	    `,[clientId,moduleCode,enabled]);
+   164	
+   165	    await this.dataSource.query(`
+   166	      INSERT INTO tenant_module_audit(
+   167	        client_id,
+   168	        module_code,
+   169	        old_enabled,
+   170	        new_enabled,
+   171	        changed_by_email
+   172	      )
+   173	      VALUES(
+   174	        $1,$2,$3,$4,$5
+   175	      )
+   176	    `,[
+   177	      clientId,
+   178	      moduleCode,
+   179	      oldEnabled,
+   180	      enabled,
+   181	      'SUPER_ADMIN'
+   182	    ]);
+   183	
+   184	    return {
+   185	      clientId,
+   186	      moduleCode,
+   187	      oldEnabled,
+   188	      enabled,
+   189	    };
+   190	  }
+   191	
+   192	
+   193	
+   194	  async getDashboard() {
+   195	
+   196	    const clients =
+   197	      await this.dataSource.query(`
+   198	        SELECT
+   199	          COUNT(*)::int total,
+   200	          COUNT(*) FILTER (
+   201	            WHERE status = 'ACTIVE'
+   202	          )::int active,
+   203	          COUNT(*) FILTER (
+   204	            WHERE status <> 'ACTIVE'
+   205	          )::int inactive
+   206	        FROM saas_clients
+   207	      `);
+   208	
+   209	    const plans =
+   210	      await this.dataSource.query(`
+   211	        SELECT COUNT(*)::int total
+   212	        FROM saas_plans
+   213	      `);
+   214	
+   215	    const users =
+   216	      await this.dataSource.query(`
+   217	        SELECT COUNT(*)::int total
+   218	        FROM users
+   219	      `);
+   220	
+   221	    const employees =
+   222	      await this.dataSource.query(`
+   223	        SELECT COUNT(*)::int total
+   224	        FROM hr_employee_profiles
+   225	      `);
+   226	
+   227	    const documents =
+   228	      await this.dataSource.query(`
+   229	        SELECT COUNT(*)::int total
+   230	        FROM documents_foundation
+   231	      `);
+   232	
+   233	    const payslips =
+   234	      await this.dataSource.query(`
+   235	        SELECT COUNT(*)::int total
+   236	        FROM payslips_foundation
+   237	      `);
+   238	
+   239	    const modules =
+   240	      await this.dataSource.query(`
+   241	        SELECT COUNT(*)::int total
+   242	        FROM tenant_module_flags
+   243	        WHERE enabled = true
+   244	      `);
+   245	
+   246	    const audit =
+   247	      await this.dataSource.query(`
+   248	        SELECT
+   249	          module_code,
+   250	          old_enabled,
+   251	          new_enabled,
+   252	          changed_by_email,
+   253	          created_at
+   254	        FROM tenant_module_audit
+   255	        ORDER BY created_at DESC
+   256	        LIMIT 10
+   257	      `);
+   258	
+   259	    return {
+   260	      clients: clients[0],
+   261	      plans: plans[0],
+   262	      users: users[0],
+   263	      employees: employees[0],
+   264	      documents: {
+   265	        documents: documents[0]?.total ?? 0,
+   266	        payslips: payslips[0]?.total ?? 0,
+   267	      },
+   268	      modules: {
+   269	        enabled: modules[0]?.total ?? 0,
+   270	      },
+   271	      audit,
+   272	    };
+   273	  }
+   274	
+   275	
+   276	
+   277	
+   278	  async getClientDashboard(clientId: string) {
+   279	
+   280	    const clientRows =
+   281	      await this.dataSource.query(`
+   282	        SELECT *
+   283	        FROM saas_clients
+   284	        WHERE id = $1
+   285	      `,[clientId]);
+   286	
+   287	    if (!clientRows.length) {
+   288	      throw new NotFoundException(
+   289	        'Cliente não encontrado'
+   290	      );
+   291	    }
+   292	
+   293	    const client = clientRows[0];
+   294	
+   295	    const plan =
+   296	      await this.dataSource.query(`
+   297	        SELECT *
+   298	        FROM saas_plans
+   299	        WHERE id = $1
+   300	      `,[client.plan_id]);
+   301	
+   302	    const users =
+   303	      await this.dataSource.query(`
+   304	        SELECT COUNT(*)::int total
+   305	        FROM users
+   306	        WHERE tenant_id = $1
+   307	      `,[client.tenant_id]);
+   308	
+   309	    const employees =
+   310	      await this.dataSource.query(`
+   311	        SELECT COUNT(*)::int total
+   312	        FROM hr_employee_profiles
+   313	        WHERE client_id = $1
+   314	      `,[clientId]);
+   315	
+   316	    const documents =
+   317	      await this.dataSource.query(`
+   318	        SELECT COUNT(*)::int total
+   319	        FROM documents_foundation
+   320	        WHERE client_id = $1
+   321	      `,[clientId]);
+   322	
+   323	    const payslips =
+   324	      await this.dataSource.query(`
+   325	        SELECT COUNT(*)::int total
+   326	        FROM payslips_foundation
+   327	        WHERE client_id = $1
+   328	      `,[clientId]);
+   329	
+   330	    const enabledModules =
+   331	      await this.dataSource.query(`
+   332	        SELECT COUNT(*)::int total
+   333	        FROM tenant_module_flags
+   334	        WHERE client_id = $1
+   335	        AND enabled = true
+   336	      `,[clientId]);
+   337	
+   338	    const disabledModules =
+   339	      await this.dataSource.query(`
+   340	        SELECT COUNT(*)::int total
+   341	        FROM tenant_module_flags
+   342	        WHERE client_id = $1
+   343	        AND enabled = false
+   344	      `,[clientId]);
+   345	
+   346	    const audit =
+   347	      await this.dataSource.query(`
+   348	        SELECT
+   349	          module_code,
+   350	          old_enabled,
+   351	          new_enabled,
+   352	          changed_by_email,
+   353	          created_at
+   354	        FROM tenant_module_audit
+   355	        WHERE client_id = $1
+   356	        ORDER BY created_at DESC
+   357	        LIMIT 20
+   358	      `,[clientId]);
+   359	
+   360	    return {
+   361	      client,
+   362	      plan: plan[0] ?? null,
+   363	      users: users[0],
+   364	      employees: employees[0],
+   365	      documents: {
+   366	        documents: documents[0]?.total ?? 0,
+   367	        payslips: payslips[0]?.total ?? 0,
+   368	      },
+   369	      modules: {
+   370	        enabled: enabledModules[0]?.total ?? 0,
+   371	        disabled: disabledModules[0]?.total ?? 0,
+   372	      },
+   373	      audit,
+   374	    };
+   375	  }
+   376	
+   377	
+   378	
+   379	
+   380	  async listPlans() {
+   381	
+   382	    return this.dataSource.query(`
+   383	      SELECT *
+   384	      FROM saas_plans
+   385	      ORDER BY code
+   386	    `);
+   387	  }
+   388	
+   389	  async createPlan(dto: any) {
+   390	
+   391	    const rows =
+   392	      await this.dataSource.query(`
+   393	        INSERT INTO saas_plans(
+   394	          code,
+   395	          name,
+   396	          description,
+   397	          is_active,
+   398	          created_at,
+   399	          updated_at
+   400	        )
+   401	        VALUES(
+   402	          $1,$2,$3,true,NOW(),NOW()
+   403	        )
+   404	        RETURNING *
+   405	      `,[
+   406	        dto.code,
+   407	        dto.name,
+   408	        dto.description ?? null
+   409	      ]);
+   410	
+   411	    return rows[0];
+   412	  }
+   413	
+   414	  async updatePlan(
+   415	    id: string,
+   416	    dto: any,
+   417	  ) {
+   418	
+   419	    const current =
+   420	      await this.dataSource.query(`
+   421	        SELECT *
+   422	        FROM saas_plans
+   423	        WHERE id = $1
+   424	      `,[id]);
+   425	
+   426	    if (!current.length) {
+   427	      throw new NotFoundException(
+   428	        'Plano não encontrado'
+   429	      );
+   430	    }
+   431	
+   432	    const plan = current[0];
+   433	
+   434	    const rows =
+   435	      await this.dataSource.query(`
+   436	        UPDATE saas_plans
+   437	           SET
+   438	             name = $2,
+   439	             description = $3,
+   440	             is_active = $4,
+   441	             updated_at = NOW()
+   442	         WHERE id = $1
+   443	     RETURNING *
+   444	      `,[
+   445	        id,
+   446	        dto.name ?? plan.name,
+   447	        dto.description ?? plan.description,
+   448	        dto.is_active ?? plan.is_active
+   449	      ]);
+   450	
+   451	    return rows[0];
+   452	  }
+   453	
+   454	
+   455	
+   456	
+   457	  async createClient(dto: any) {
+   458	
+   459	    const queryRunner =
+   460	      this.dataSource.createQueryRunner();
+   461	
+   462	    await queryRunner.connect();
+   463	    await queryRunner.startTransaction();
+   464	
+   465	    try {
+   466	
+   467	      const tenantRows =
+   468	        await queryRunner.query(`
+   469	          INSERT INTO tenants(
+   470	            cnpj,
+   471	            corporate_name,
+   472	            trading_name
+   473	          )
+   474	          VALUES(
+   475	            $1,$2,$3
+   476	          )
+   477	          RETURNING *
+   478	        `,[
+   479	          dto.documentNumber,
+   480	          dto.legalName,
+   481	          dto.tradeName
+   482	        ]);
+   483	
+   484	      const tenant = tenantRows[0];
+   485	
+   486	      const clientRows =
+   487	        await queryRunner.query(`
+   488	          INSERT INTO saas_clients(
+   489	            tenant_id,
+   490	            plan_id,
+   491	            slug,
+   492	            trade_name,
+   493	            legal_name,
+   494	            document_number
+   495	          )
+   496	          VALUES(
+   497	            $1,$2,$3,$4,$5,$6
+   498	          )
+   499	          RETURNING *
+   500	        `,[
+   501	          tenant.id,
+   502	          dto.planId,
+   503	          dto.slug,
+   504	          dto.tradeName,
+   505	          dto.legalName,
+   506	          dto.documentNumber
+   507	        ]);
+   508	
+   509	      const client = clientRows[0];
+   510	
+   511	      await queryRunner.query(`
+   512	        INSERT INTO hr_companies(
+   513	          client_id,
+   514	          legal_name,
+   515	          trade_name,
+   516	          document_number
+   517	        )
+   518	        VALUES(
+   519	          $1,$2,$3,$4
+   520	        )
+   521	      `,[
+   522	        client.id,
+   523	        dto.legalName,
+   524	        dto.tradeName,
+   525	        dto.documentNumber
+   526	      ]);
+   527	
+   528	      await queryRunner.commitTransaction();
+   529	
+   530	      return {
+   531	        tenant,
+   532	        client
+   533	      };
+   534	
+   535	    } catch(error) {
+   536	
+   537	      await queryRunner.rollbackTransaction();
+   538	
+   539	      throw error;
+   540	
+   541	    } finally {
+   542	
+   543	      await queryRunner.release();
+   544	
+   545	    }
+   546	  }
+   547	
+   548	
+   549	
+   550	  async updateClient(
+   551	    id: string,
+   552	    dto: any,
+   553	  ) {
+   554	
+   555	    const rows =
+   556	      await this.dataSource.query(`
+   557	        SELECT *
+   558	        FROM saas_clients
+   559	        WHERE id = $1
+   560	      `,[id]);
+   561	
+   562	    if (!rows.length) {
+   563	      throw new NotFoundException(
+   564	        'Cliente não encontrado'
+   565	      );
+   566	    }
+   567	
+   568	    const current = rows[0];
+   569	
+   570	    const updated =
+   571	      await this.dataSource.query(`
+   572	        UPDATE saas_clients
+   573	           SET
+   574	             trade_name = $2,
+   575	             legal_name = $3,
+   576	             document_number = $4,
+   577	             timezone = $5,
+   578	             default_locale = $6,
+   579	             notes = $7,
+   580	             plan_id = $8,
+   581	             updated_at = NOW()
+   582	         WHERE id = $1
+   583	     RETURNING *
+   584	      `,[
+   585	        id,
+   586	        dto.tradeName ?? current.trade_name,
+   587	        dto.legalName ?? current.legal_name,
+   588	        dto.documentNumber ?? current.document_number,
+   589	        dto.timezone ?? current.timezone,
+   590	        dto.defaultLocale ?? current.default_locale,
+   591	        dto.notes ?? current.notes,
+   592	        dto.planId ?? current.plan_id
+   593	      ]);
+   594	
+   595	    const result = updated[0];
+   596	
+   597	    const auditFields = [
+   598	      ['trade_name', current.trade_name, result.trade_name],
+   599	      ['legal_name', current.legal_name, result.legal_name],
+   600	      ['document_number', current.document_number, result.document_number],
+   601	      ['timezone', current.timezone, result.timezone],
+   602	      ['default_locale', current.default_locale, result.default_locale],
+   603	      ['notes', current.notes, result.notes],
+   604	      ['plan_id', current.plan_id, result.plan_id],
+   605	    ];
+   606	
+   607	    for (const [field, oldValue, newValue] of auditFields) {
+   608	
+   609	      if ((oldValue ?? '') !== (newValue ?? '')) {
+   610	
+   611	        await this.dataSource.query(`
+   612	          INSERT INTO tenant_client_audit(
+   613	            client_id,
+   614	            field_name,
+   615	            old_value,
+   616	            new_value,
+   617	            changed_by
+   618	          )
+   619	          VALUES(
+   620	            $1,$2,$3,$4,$5
+   621	          )
+   622	        `,[
+   623	          id,
+   624	          field,
+   625	          String(oldValue ?? ''),
+   626	          String(newValue ?? ''),
+   627	          'SUPER_ADMIN'
+   628	        ]);
+   629	      }
+   630	    }
+   631	
+   632	    return result;
+   633	  }
+   634	
+   635	  async updateClientStatus(
+   636	    id: string,
+   637	    status: string,
+   638	  ) {
+   639	
+   640	    const currentRows =
+   641	      await this.dataSource.query(`
+   642	        SELECT *
+   643	        FROM saas_clients
+   644	        WHERE id = $1
+   645	      `,[id]);
+   646	
+   647	    if (!currentRows.length) {
+   648	      throw new NotFoundException(
+   649	        'Cliente não encontrado'
+   650	      );
+   651	    }
+   652	
+   653	    const current = currentRows[0];
+   654	
+   655	    const rows =
+   656	      await this.dataSource.query(`
+   657	        UPDATE saas_clients
+   658	           SET
+   659	             status = $2,
+   660	             updated_at = NOW()
+   661	         WHERE id = $1
+   662	     RETURNING *
+   663	      `,[id,status]);
+   664	
+   665	    await this.dataSource.query(`
+   666	      INSERT INTO tenant_client_audit(
+   667	        client_id,
+   668	        field_name,
+   669	        old_value,
+   670	        new_value,
+   671	        changed_by
+   672	      )
+   673	      VALUES(
+   674	        $1,$2,$3,$4,$5
+   675	      )
+   676	    `,[
+   677	      id,
+   678	      'status',
+   679	      current.status,
+   680	      status,
+   681	      'SUPER_ADMIN'
+   682	    ]);
+   683	
+   684	    return rows[0];
+   685	  }
+   686	
+   687	
+   688	
+   689	
+   690	  async getClientAudit(
+   691	    clientId: string,
+   692	  ) {
+   693	
+   694	    return this.dataSource.query(`
+   695	      SELECT
+   696	        field_name,
+   697	        old_value,
+   698	        new_value,
+   699	        changed_by,
+   700	        created_at
+   701	      FROM tenant_client_audit
+   702	      WHERE client_id = $1
+   703	      ORDER BY created_at DESC
+   704	    `,[clientId]);
+   705	  }
+   706	
+   707	
+   708	
+   709	
+   710	  async systemHealth() {
+   711	
+   712	    await this.dataSource.query(
+   713	      'SELECT 1'
+   714	    );
+   715	
+   716	    return {
+   717	      api: 'UP',
+   718	      database: 'UP',
+   719	      timestamp: new Date().toISOString(),
+   720	    };
+   721	  }
+   722	
+   723	  async databaseStatus() {
+   724	
+   725	    const rows =
+   726	      await this.dataSource.query(`
+   727	        SELECT
+   728	          COUNT(*)::int as connections
+   729	        FROM pg_stat_activity
+   730	      `);
+   731	
+   732	    return {
+   733	      status: 'UP',
+   734	      connections:
+   735	        rows[0]?.connections ?? 0,
+   736	    };
+   737	  }
+   738	
+   739	
+   740	
+   741	
+   742	  async systemStorage() {
+   743	
+   744	    const raw =
+   745	      execSync('df -k /')
+   746	        .toString()
+   747	        .split('\n')[1]
+   748	        .trim()
+   749	        .split(/\s+/);
+   750	
+   751	    return {
+   752	      filesystem: raw[0],
+   753	      usedPercent: Number(
+   754	        raw[4].replace('%','')
+   755	      ),
+   756	      availableGb:
+   757	        Number(raw[3]) /
+   758	        1024 /
+   759	        1024,
+   760	    };
+   761	  }
+   762	
+   763	  async systemMetrics() {
+   764	
+   765	    const totalMem =
+   766	      os.totalmem();
+   767	
+   768	    const freeMem =
+   769	      os.freemem();
+   770	
+   771	    const usedMem =
+   772	      totalMem - freeMem;
+   773	
+   774	    return {
+   775	      memoryUsedMb:
+   776	        Math.round(
+   777	          usedMem / 1024 / 1024
+   778	        ),
+   779	
+   780	      memoryTotalMb:
+   781	        Math.round(
+   782	          totalMem / 1024 / 1024
+   783	        ),
+   784	
+   785	      memoryPercent:
+   786	        Math.round(
+   787	          (usedMem / totalMem) * 100
+   788	        ),
+   789	
+   790	      uptimeSeconds:
+   791	        Math.round(
+   792	          os.uptime()
+   793	        ),
+   794	    };
+   795	  }
+   796	
+   797	
+   798	
+   799	
+   800	  async systemContainers() {
+   801	
+   802	    return {
+   803	      rh_saas_api: 'running',
+   804	      rh_saas_postgres: 'running',
+   805	      rh_saas_redis: 'running',
+   806	      rh_saas_web: 'running',
+   807	    };
+   808	  }
+   809	
+   810	  async systemServices() {
+   811	
+   812	    await this.dataSource.query(
+   813	      'SELECT 1'
+   814	    );
+   815	
+   816	    return {
+   817	      api: 'UP',
+   818	      postgres: 'UP',
+   819	      redis: 'UP',
+   820	      web: 'UP',
+   821	    };
+   822	  }
+   823	
+   824	
+   825	}
+
+### /opt/rh-saas/backend/src/modules/tenant/tenant.service.ts
+     1	import { Injectable, NotFoundException } from '@nestjs/common';
+     2	import { InjectRepository } from '@nestjs/typeorm';
+     3	import { Repository } from 'typeorm';
+     4	
+     5	import { Tenant } from './tenant.entity';
+     6	import { UpdateTenantDto } from './dto/update-tenant.dto';
+     7	import { AuditService } from '../audit/audit.service';
+     8	
+     9	@Injectable()
+    10	export class TenantService {
+    11	
+    12	  constructor(
+    13	    @InjectRepository(Tenant)
+    14	    private readonly tenantRepo: Repository<Tenant>,
+    15	
+    16	    private readonly auditService: AuditService,
+    17	  ) {}
+    18	
+    19	  async findOne(tenantId: string) {
+    20	
+    21	    const tenant =
+    22	      await this.tenantRepo.findOne({
+    23	        where: { id: tenantId },
+    24	      });
+    25	
+    26	    if (!tenant) {
+    27	      throw new NotFoundException(
+    28	        'Tenant não encontrado.',
+    29	      );
+    30	    }
+    31	
+    32	    return tenant;
+    33	  }
+    34	
+    35	  async update(
+    36	    tenantId: string,
+    37	    data: UpdateTenantDto,
+    38	  ) {
+    39	
+    40	    const tenant =
+    41	      await this.findOne(tenantId);
+    42	
+    43	    Object.assign(
+    44	      tenant,
+    45	      data,
+    46	    );
+    47	
+    48	    const updated =
+    49	      await this.tenantRepo.save(tenant);
+    50	
+    51	    await this.auditService.create({
+    52	      tenantId,
+    53	      entityId: tenantId,
+    54	      action: 'TENANT_UPDATED',
+    55	      entityType: 'Tenant',
+    56	      details: JSON.stringify(data),
+    57	    });
+    58	
+    59	    return updated;
+    60	  }
+    61	}
+
+### /opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts
+     1	import { Injectable } from '@nestjs/common';
+     2	import { InjectRepository } from '@nestjs/typeorm';
+     3	import { Repository, Between } from 'typeorm';
+     4	import { TimeBank } from './time-bank.entity';
+     5	import { ClockEvent, ClockEventType } from '../clock-events/clock-event.entity';
+     6	import { AuditService } from '../audit/audit.service';
+     7	
+     8	@Injectable()
+     9	export class TimeBankService {
+    10	constructor(
+    11	  @InjectRepository(TimeBank)
+    12	  private timeBankRepo: Repository<TimeBank>,
+    13	
+    14	  @InjectRepository(ClockEvent)
+    15	  private clockEventRepo: Repository<ClockEvent>,
+    16	
+    17	  private readonly auditService: AuditService,
+    18	) {}
+    19	
+    20	  /**
+    21	   * Calcula a diferença em minutos entre duas datas
+    22	   */
+    23	  private getMinutesBetween(start: Date, end: Date): number {
+    24	    const diffMs = end.getTime() - start.getTime();
+    25	    return Math.floor(diffMs / 1000 / 60);
+    26	  }
+    27	async findAll(
+    28	  tenantId: string,
+    29	) {
+    30	  return this.timeBankRepo.find({
+    31	    where: {
+    32	      tenantId,
+    33	    },
+    34	    order: {
+    35	      date: 'DESC',
+    36	    },
+    37	  });
+    38	}
+    39	
+    40	async findByEmployee(
+    41	  tenantId: string,
+    42	  employeeId: string,
+    43	) {
+    44	  return this.timeBankRepo.find({
+    45	    where: {
+    46	      tenantId,
+    47	      employeeId,
+    48	    },
+    49	    order: {
+    50	      date: 'DESC',
+    51	    },
+    52	  });
+    53	}
+    54	
+    55	async details(
+    56	  tenantId: string,
+    57	  employeeId: string,
+    58	) {
+    59	
+    60	  const rows =
+    61	    await this.findByEmployee(
+    62	      tenantId,
+    63	      employeeId,
+    64	    );
+    65	
+    66	  const totalBalance =
+    67	    rows.reduce(
+    68	      (acc, row) =>
+    69	        acc + row.balanceMinutes,
+    70	      0,
+    71	    );
+    72	
+    73	  return {
+    74	    employeeId,
+    75	    totalBalance,
+    76	    days: rows,
+    77	  };
+    78	}
+    79	  /**
+    80	   * Processa o saldo do dia cruzando os pontos batidos com a jornada prevista
+    81	   */
+    82	  async processDailyBalance(tenantId: string, employeeId: string, targetDate: string, expectedMinutes: number) {
+    83	    // 1. Define o início e fim do dia para buscar as batidas no banco
+    84	    const startOfDay = new Date(`${targetDate}T00:00:00.000Z`);
+    85	    const endOfDay = new Date(`${targetDate}T23:59:59.999Z`);
+    86	
+    87	    // 2. Busca todas as batidas imutáveis do funcionário neste dia
+    88	    const events = await this.clockEventRepo.find({
+    89	      where: {
+    90	        tenantId,
+    91	        employeeId,
+    92	        timestamp: Between(startOfDay, endOfDay)
+    93	      },
+    94	      order: { timestamp: 'ASC' } // Ordena cronologicamente
+    95	    });
+    96	
+    97	    let workedMinutes = 0;
+    98	    let lastEntryTime: Date | null = null;
+    99	
+   100	    // 3. Lógica pareada de cálculo (Entrada -> Saída)
+   101	    for (const event of events) {
+   102	      if (event.eventType === ClockEventType.ENTRADA || event.eventType === ClockEventType.RETORNO_INTERVALO) {
+   103	        lastEntryTime = event.timestamp;
+   104	      } 
+   105	      else if (event.eventType === ClockEventType.SAIDA_INTERVALO || event.eventType === ClockEventType.SAIDA) {
+   106	        if (lastEntryTime) {
+   107	          workedMinutes += this.getMinutesBetween(lastEntryTime, event.timestamp);
+   108	          lastEntryTime = null; // Reseta para o próximo par
+   109	        }
+   110	      }
+   111	    }
+   112	
+   113	    // 4. Calcula o saldo final (Matemática Trabalhista)
+   114	    const balanceMinutes = workedMinutes - expectedMinutes;
+   115	
+   116	    // 5. Salva ou atualiza o banco de horas do dia
+   117	    let timeBankRecord = await this.timeBankRepo.findOne({
+   118	      where: { tenantId, employeeId, date: targetDate }
+   119	    });
+   120	
+   121	    if (!timeBankRecord) {
+   122	      timeBankRecord = this.timeBankRepo.create({
+   123	        tenantId,
+   124	        employeeId,
+   125	        date: targetDate,
+   126	        expectedMinutes,
+   127	      });
+   128	    }
+   129	
+   130	    timeBankRecord.workedMinutes = workedMinutes;
+   131	    timeBankRecord.balanceMinutes = balanceMinutes;
+   132	
+   133	const saved =
+   134	  await this.timeBankRepo.save(
+   135	    timeBankRecord,
+   136	  );
+   137	
+   138	await this.auditService.create({
+   139	  tenantId,
+   140	  entityId: saved.id,
+   141	  action: 'TIMEBANK_RECALCULATED',
+   142	  entityType: 'TimeBank',
+   143	  details: JSON.stringify({
+   144	    employeeId,
+   145	    targetDate,
+   146	  }),
+   147	});
+   148	
+   149	return saved;  }
+   150	}
+
+### /opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts
+     1	import { Injectable } from '@nestjs/common';
+     2	import { TimeRecord } from './time-record.entity';
+     3	
+     4	@Injectable()
+     5	export class TimeCalculatorService {
+     6	  
+     7	  // Converte "HH:mm" para minutos totais (Ex: "08:30" -> 510)
+     8	  timeToMinutes(timeStr: string): number {
+     9	    if (!timeStr) return 0;
+    10	    const [hours, minutes] = timeStr.split(':').map(Number);
+    11	    return (hours * 60) + minutes;
+    12	  }
+    13	
+    14	  // Converte minutos para string formatada "+HH:mm" ou "-HH:mm"
+    15	  minutesToBalanceString(totalMinutes: number): string {
+    16	    const sign = totalMinutes >= 0 ? '+' : '-';
+    17	    const absMinutes = Math.abs(totalMinutes);
+    18	    const hours = Math.floor(absMinutes / 60).toString().padStart(2, '0');
+    19	    const mins = (absMinutes % 60).toString().padStart(2, '0');
+    20	    return `${sign}${hours}:${mins}`;
+    21	  }
+    22	
+    23	  // Recebe as batidas do dia e calcula o saldo baseado na escala
+    24	  calculateDailyBalance(records: TimeRecord[], expectedMinutes: number) {
+    25	    if (records.length === 0) {
+    26	      return { status: 'falta', balanceMinutes: -expectedMinutes, balanceStr: this.minutesToBalanceString(-expectedMinutes) };
+    27	    }
+    28	
+    29	    // Ordena as batidas cronologicamente
+    30	    const sorted = records.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
+    31	    
+    32	    let workedMinutes = 0;
+    33	
+    34	    // Lógica para pares de batidas (Entrada 1 -> Saída 1, Entrada 2 -> Saída 2)
+    35	    for (let i = 0; i < sorted.length; i += 2) {
+    36	      if (sorted[i + 1]) {
+    37	        const inTime = new Date(sorted[i].timestamp).getTime();
+    38	        const outTime = new Date(sorted[i + 1].timestamp).getTime();
+    39	        const diffMs = outTime - inTime;
+    40	        workedMinutes += Math.floor(diffMs / 60000); // Converte MS para minutos
+    41	      }
+    42	    }
+    43	
+    44	    // Identifica se esqueceu de bater a saída (ímpar)
+    45	    if (sorted.length % 2 !== 0) {
+    46	      return { status: 'incompleto', balanceMinutes: 0, balanceStr: 'Erro: Batida ímpar', workedMinutes };
+    47	    }
+    48	
+    49	    const balanceMinutes = workedMinutes - expectedMinutes;
+    50	    const balanceStr = this.minutesToBalanceString(balanceMinutes);
+    51	    
+    52	    // Define o status (com tolerância de 10 minutos por dia segundo a CLT)
+    53	    let status = 'ok';
+    54	    if (balanceMinutes < -10) status = 'atraso';
+    55	    else if (balanceMinutes > 10) status = 'extra';
+    56	
+    57	    return { status, balanceMinutes, balanceStr, workedMinutes };
+    58	  }
+    59	}
+
+### /opt/rh-saas/backend/src/modules/time-records/time-records.service.ts
+     1	import { Injectable } from '@nestjs/common';
+     2	import { InjectRepository } from '@nestjs/typeorm';
+     3	import { Repository } from 'typeorm';
+     4	
+     5	import {
+     6	  TimeRecord,
+     7	  TimeRecordEventType,
+     8	} from './time-record.entity';
+     9	
+    10	import { AuditService } from '../audit/audit.service';
+    11	
+    12	@Injectable()
+    13	export class TimeRecordsService {
+    14	  constructor(
+    15	    @InjectRepository(TimeRecord)
+    16	    private readonly repo: Repository<TimeRecord>,
+    17	
+    18	    private readonly auditService: AuditService,
+    19	  ) {}
+    20	
+    21	  private async registerEvent(
+    22	    tenantId: string,
+    23	    employeeId: string,
+    24	    latitude: number,
+    25	    longitude: number,
+    26	    eventType: TimeRecordEventType,
+    27	  ) {
+    28	    const record = this.repo.create({
+    29	      tenantId,
+    30	      employeeId,
+    31	      latitude,
+    32	      longitude,
+    33	      eventType,
+    34	    });
+    35	
+    36	    const savedRecord =
+    37	      await this.repo.save(record);
+    38	
+    39	    await this.auditService.create({
+    40	      tenantId,
+    41	      entityId: savedRecord.id,
+    42	      action: eventType,
+    43	      entityType: 'TimeRecord',
+    44	      details: JSON.stringify({
+    45	        employeeId,
+    46	        latitude,
+    47	        longitude,
+    48	      }),
+    49	    });
+    50	
+    51	    return savedRecord;
+    52	  }
+    53	
+    54	  async clockIn(
+    55	    tenantId: string,
+    56	    employeeId: string,
+    57	    latitude: number,
+    58	    longitude: number,
+    59	  ) {
+    60	    return this.registerEvent(
+    61	      tenantId,
+    62	      employeeId,
+    63	      latitude,
+    64	      longitude,
+    65	      TimeRecordEventType.CLOCK_IN,
+    66	    );
+    67	  }
+    68	
+    69	  async breakStart(
+    70	    tenantId: string,
+    71	    employeeId: string,
+    72	    latitude: number,
+    73	    longitude: number,
+    74	  ) {
+    75	    return this.registerEvent(
+    76	      tenantId,
+    77	      employeeId,
+    78	      latitude,
+    79	      longitude,
+    80	      TimeRecordEventType.BREAK_START,
+    81	    );
+    82	  }
+    83	
+    84	  async breakEnd(
+    85	    tenantId: string,
+    86	    employeeId: string,
+    87	    latitude: number,
+    88	    longitude: number,
+    89	  ) {
+    90	    return this.registerEvent(
+    91	      tenantId,
+    92	      employeeId,
+    93	      latitude,
+    94	      longitude,
+    95	      TimeRecordEventType.BREAK_END,
+    96	    );
+    97	  }
+    98	
+    99	  async clockOut(
+   100	    tenantId: string,
+   101	    employeeId: string,
+   102	    latitude: number,
+   103	    longitude: number,
+   104	  ) {
+   105	    return this.registerEvent(
+   106	      tenantId,
+   107	      employeeId,
+   108	      latitude,
+   109	      longitude,
+   110	      TimeRecordEventType.CLOCK_OUT,
+   111	    );
+   112	  }
+   113	
+   114	  async findAll(tenantId: string) {
+   115	    return this.repo.find({
+   116	      where: { tenantId },
+   117	      order: {
+   118	        timestamp: 'DESC',
+   119	      },
+   120	    });
+   121	  }
+   122	
+   123	  async getEmployeeWorkStatus(
+   124	    tenantId: string,
+   125	    employeeId: string,
+   126	  ) {
+   127	    const lastEvent =
+   128	      await this.repo.findOne({
+   129	        where: {
+   130	          tenantId,
+   131	          employeeId,
+   132	        },
+   133	        order: {
+   134	          timestamp: 'DESC',
+   135	        },
+   136	      });
+   137	
+   138	    if (!lastEvent) {
+   139	      return {
+   140	        working: false,
+   141	        onBreak: false,
+   142	        shiftEnded: true,
+   143	        lastEvent: null,
+   144	      };
+   145	    }
+   146	
+   147	    return {
+   148	      working:
+   149	        lastEvent.eventType ===
+   150	          TimeRecordEventType.CLOCK_IN ||
+   151	        lastEvent.eventType ===
+   152	          TimeRecordEventType.BREAK_END,
+   153	
+   154	      onBreak:
+   155	        lastEvent.eventType ===
+   156	        TimeRecordEventType.BREAK_START,
+   157	
+   158	      shiftEnded:
+   159	        lastEvent.eventType ===
+   160	        TimeRecordEventType.CLOCK_OUT,
+   161	
+   162	      lastEvent:
+   163	        lastEvent.eventType,
+   164	    };
+   165	  }
+   166	
+   167	  // Gera o layout oficial do Arquivo Fonte de Dados (AFD)
+   168	  // conforme Portaria 671 MTE
+   169	  async generateAfd(
+   170	    tenantId: string,
+   171	  ): Promise<string> {
+   172	    const records =
+   173	      await this.findAll(tenantId);
+   174	
+   175	    let nsr = 1;
+   176	    let afdContent = '';
+   177	
+   178	    const cnpj =
+   179	      '12345678000100'.padEnd(14, '0');
+   180	
+   181	    afdContent +=
+   182	      `00000000011${cnpj}SAAS RH PRO EMPRESA TESTE                 00001\r\n`;
+   183	
+   184	    for (const rec of records) {
+   185	      const seq = String(nsr++)
+   186	        .padStart(9, '0');
+   187	
+   188	      const date =
+   189	        new Date(rec.timestamp);
+   190	
+   191	      const dia = String(
+   192	        date.getDate(),
+   193	      ).padStart(2, '0');
+   194	
+   195	      const mes = String(
+   196	        date.getMonth() + 1,
+   197	      ).padStart(2, '0');
+   198	
+   199	      const ano =
+   200	        date.getFullYear();
+   201	
+   202	      const hora = String(
+   203	        date.getHours(),
+   204	      ).padStart(2, '0');
+   205	
+   206	      const min = String(
+   207	        date.getMinutes(),
+   208	      ).padStart(2, '0');
+   209	
+   210	      const cpf =
+   211	        '12345678901';
+   212	
+   213	      afdContent +=
+   214	        `${seq}3${dia}${mes}${ano}${hora}${min}${cpf}4B6F\r\n`;
+   215	    }
+   216	
+   217	    return afdContent;
+   218	  }
+   219	}
+
+### /opt/rh-saas/backend/src/modules/users/users.service.ts
+     1	import { AuditService } from '../audit/audit.service';
+     2	import { Injectable, ConflictException } from '@nestjs/common';
+     3	import { InjectRepository } from '@nestjs/typeorm';
+     4	import { Repository } from 'typeorm';
+     5	import * as bcrypt from 'bcrypt';
+     6	
+     7	import { User } from './user.entity';
+     8	import { CreateUserDto } from './dto/create-user.dto';
+     9	
+    10	@Injectable()
+    11	export class UsersService {
+    12	
+    13	  constructor(
+    14	    @InjectRepository(User)
+    15	    private readonly userRepo: Repository<User>,
+    16	
+    17	    private readonly auditService: AuditService,
+    18	  ) {}
+    19	
+    20	  async create(data: CreateUserDto) {
+    21	
+    22	    const existing = await this.userRepo.findOne({
+    23	      where: {
+    24	        email: data.email,
+    25	      },
+    26	    });
+    27	
+    28	    if (existing) {
+    29	      throw new ConflictException(
+    30	        'Usuário já cadastrado.',
+    31	      );
+    32	    }
+    33	
+    34	    const passwordHash = await bcrypt.hash(
+    35	      data.password,
+    36	      10,
+    37	    );
+    38	
+    39	    const user = this.userRepo.create({
+    40	      tenantId: data.tenantId,
+    41	      email: data.email,
+    42	      passwordHash,
+    43	      isActive: true,
+    44	    });
+    45	
+    46	    const savedUser =
+    47	      await this.userRepo.save(user);
+    48	
+    49	    await this.auditService.create({
+    50	      tenantId: savedUser.tenantId,
+    51	      entityId: savedUser.id,
+    52	      action: 'USER_CREATED',
+    53	      entityType: 'User',
+    54	      details: savedUser.email,
+    55	    });
+    56	
+    57	    return savedUser;
+    58	  }
+    59	
+    60	  async findByEmail(email: string) {
+    61	    return this.userRepo.findOne({
+    62	      where: { email },
+    63	    });
+    64	  }
+    65	
+    66	  async findById(id: string) {
+    67	    return this.userRepo.findOne({
+    68	      where: { id },
+    69	    });
+    70	  }
+    71	
+    72	  async findAll() {
+    73	
+    74	    const users = await this.userRepo.find({
+    75	      order: {
+    76	        email: 'ASC',
+    77	      },
+    78	    });
+    79	
+    80	    return users.map(
+    81	      ({ passwordHash, ...user }) => user,
+    82	    );
+    83	  }
+    84	}
+

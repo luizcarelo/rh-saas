@@ -1,0 +1,124 @@
+/opt/rh-saas/frontend-web/src/main.tsx:2:import ReactDOM from "react-dom/client";
+/opt/rh-saas/frontend-web/src/App.tsx:23:import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+/opt/rh-saas/frontend-web/src/App.tsx:24:import { SuperAdminClientDetailsPage } from "./pages/SuperAdminClientDetailsPage";
+/opt/rh-saas/frontend-web/src/App.tsx:25:import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+/opt/rh-saas/frontend-web/src/App.tsx:26:import { SuperAdminClientAuditPage } from "./pages/SuperAdminClientAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx:27:import { SuperAdminClientModulesPage } from "./pages/SuperAdminClientModulesPage";
+/opt/rh-saas/frontend-web/src/App.tsx:28:import { SuperAdminClientModulesAuditPage } from "./pages/SuperAdminClientModulesAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx:111:              path="/super-admin/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx:114:                  ? <SuperAdminClientsPage />
+/opt/rh-saas/frontend-web/src/App.tsx:120:              path="/super-admin/clientes/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:123:                  ? <SuperAdminClientDetailsPage />
+/opt/rh-saas/frontend-web/src/App.tsx:129:              path="/super-admin/clientes/:id/dashboard"
+/opt/rh-saas/frontend-web/src/App.tsx:132:                  ? <SuperAdminClientDashboardPage />
+/opt/rh-saas/frontend-web/src/App.tsx:138:              path="/super-admin/clientes/:id/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:141:                  ? <SuperAdminClientAuditPage />
+/opt/rh-saas/frontend-web/src/App.tsx:147:              path="/super-admin/clientes/:id/modules"
+/opt/rh-saas/frontend-web/src/App.tsx:150:                  ? <SuperAdminClientModulesPage />
+/opt/rh-saas/frontend-web/src/App.tsx:156:              path="/super-admin/clientes/:id/modules/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:159:                  ? <SuperAdminClientModulesAuditPage />
+/opt/rh-saas/frontend-web/src/App.tsx:192:                path="/super-admin/clientes/dashboard"
+/opt/rh-saas/frontend-web/src/App.tsx:195:                    title="Dashboard de Clientes"
+/opt/rh-saas/frontend-web/src/App.tsx:196:                    description="Visão consolidada de indicadores por cliente SaaS, incluindo status de implantação, módulos ativos e alertas operacionais."
+/opt/rh-saas/frontend-web/src/App.tsx:198:                    items={['Indicadores por cliente', 'Clientes ativos e suspensos', 'Módulos contratados', 'Alertas operacionais']}
+/opt/rh-saas/frontend-web/src/App.tsx:199:                    nextSteps={['Definir métricas por tenant.', 'Validar endpoints agregados.', 'Criar cards analíticos reais.']}
+/opt/rh-saas/frontend-web/src/App.tsx:205:                path="/super-admin/clientes/novo"
+/opt/rh-saas/frontend-web/src/App.tsx:208:                    title="Novo Cliente SaaS"
+/opt/rh-saas/frontend-web/src/App.tsx:209:                    description="Preparação do fluxo de cadastro de novos clientes SaaS, incluindo dados cadastrais, plano inicial e módulos contratados."
+/opt/rh-saas/frontend-web/src/App.tsx:211:                    items={['Dados do cliente', 'Tenant inicial', 'Plano contratado', 'Módulos habilitados']}
+/opt/rh-saas/frontend-web/src/App.tsx:212:                    nextSteps={['Validar contrato backend de criação de cliente.', 'Definir campos obrigatórios.', 'Implementar formulário de cadastro.']}
+/opt/rh-saas/frontend-web/src/App.tsx:222:                    description="Área para gestão de empresas, matrizes e filiais vinculadas aos clientes SaaS."
+/opt/rh-saas/frontend-web/src/App.tsx:257:                path="/super-admin/modulos/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx:260:                    title="Módulos por Cliente"
+/opt/rh-saas/frontend-web/src/App.tsx:261:                    description="Controle de módulos habilitados por cliente SaaS."
+/opt/rh-saas/frontend-web/src/App.tsx:263:                    items={['Cliente', 'Plano', 'Módulos ativos', 'Feature flags', 'Histórico de alterações']}
+/opt/rh-saas/frontend-web/src/App.tsx:264:                    nextSteps={['Definir vínculo tenant x módulo.', 'Criar endpoint de ativação/desativação.', 'Criar tela de permissões por cliente.']}
+/opt/rh-saas/frontend-web/src/App.tsx:289:                    items={['Usuário', 'Cliente', 'Ação', 'Data/hora', 'Módulo', 'Evento crítico']}
+/opt/rh-saas/frontend-web/src/App.tsx:290:                    nextSteps={['Validar tabelas de auditoria/logs.', 'Criar filtros por usuário e cliente.', 'Criar consulta paginada.']}
+/opt/rh-saas/frontend-web/src/lib/api.ts:13:  tenantId?: string;
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:5:  clientId?: string;
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:30:  clientId?: string;
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:56:  clientId?: string;
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:121:    label: "Dashboard de Clientes",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:122:    path: "/super-admin/clientes/dashboard",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:126:    label: "Clientes SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:127:    path: "/super-admin/clientes",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:131:    label: "Novo Cliente",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:132:    path: "/super-admin/clientes/novo",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:161:    label: "Módulos por Cliente",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:162:    path: "/super-admin/modulos/clientes",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:47:      titulo: "Clientes",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:48:      valor: dashboard?.clients?.total ?? 0,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:51:      titulo: "Clientes Ativos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:52:      valor: dashboard?.clients?.active ?? 0,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:55:      titulo: "Clientes Inativos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:56:      valor: dashboard?.clients?.inactive ?? 0,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:11:type ClientDetailsResponse = {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:12:  client: {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:43:export function SuperAdminClientDetailsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:47:    useState<ClientDetailsResponse | null>(null);
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:54:    apiRequest<ClientDetailsResponse>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:55:      `/v1/super-admin/clients/${id}`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:68:  to={`/super-admin/clientes/${id}/dashboard`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:71:  Dashboard Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:78:          Carregando cliente...
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:91:  to={`/super-admin/clientes/${id}/dashboard`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:94:  Dashboard Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:101:          Cliente não encontrado
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:114:  to={`/super-admin/clientes/${id}/dashboard`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:117:  Dashboard Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:124:        Detalhes do Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:131:            <CardTitle>Cliente</CardTitle>
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:136:              <strong>Slug:</strong> {data.client.slug}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:140:              <strong>Status:</strong> {data.client.status}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:144:              <strong>Timezone:</strong> {data.client.timezone}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:149:              {data.client.default_locale}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:11:type Client = {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:19:export function SuperAdminClientsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:21:  const [clients,setClients] = useState<Client[]>([]);
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:26:    apiRequest<Client[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:27:      "/v1/super-admin/clients"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:29:    .then(setClients)
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:38:        Clientes SaaS
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:45:            Clientes Cadastrados
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:70:                  {clients.map(client => (
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:73:                      key={client.id}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:78:                        {client.slug}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:82:                        {client.planName}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:86:                        {client.status}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:91:                          to={`/super-admin/clientes/${client.id}`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:11:export function SuperAdminClientDashboardPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:22:      `/v1/super-admin/clients/${id}/dashboard`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:64:        Dashboard do Cliente
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:10:    tenantId: string;
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:10:export function SuperAdminClientModulesPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:25:      `/v1/super-admin/clients/${id}/modules`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:42:      `/v1/super-admin/clients/${id}/modules/${moduleCode}`,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:74:    Módulos do Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:78:    to={`/super-admin/clientes/${id}/modules/audit`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:88:        Módulos do Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:5:export function SuperAdminClientModulesAuditPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:16:      `/v1/super-admin/clients/${id}/modules/audit`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:11:export function SuperAdminClientAuditPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:22:      `/v1/super-admin/clients/${id}/audit`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:33:        Auditoria do Cliente
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:172:                O acesso respeita o tenant do usuário autenticado.
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:21:import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:22:import { SuperAdminClientDetailsPage } from "./pages/SuperAdminClientDetailsPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:23:import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:24:import { SuperAdminClientAuditPage } from "./pages/SuperAdminClientAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:25:import { SuperAdminClientModulesPage } from "./pages/SuperAdminClientModulesPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:26:import { SuperAdminClientModulesAuditPage } from "./pages/SuperAdminClientModulesAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:92:              path="/super-admin/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:95:                  ? <SuperAdminClientsPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:101:              path="/super-admin/clientes/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:104:                  ? <SuperAdminClientDetailsPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:110:              path="/super-admin/clientes/:id/dashboard"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:113:                  ? <SuperAdminClientDashboardPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:119:              path="/super-admin/clientes/:id/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:122:                  ? <SuperAdminClientAuditPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:128:              path="/super-admin/clientes/:id/modules"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:131:                  ? <SuperAdminClientModulesPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:137:              path="/super-admin/clientes/:id/modules/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:140:                  ? <SuperAdminClientModulesAuditPage />
+/opt/rh-saas/frontend-web/src/vite-env.d.ts:1:/// <reference types="vite/client" />

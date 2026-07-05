@@ -1,0 +1,33 @@
+# Admin-A1-FUNC-MIG-P5C-6
+
+Data: 20260705_185251
+
+Status:
+ADMIN_A1_FUNC_MIG_P5C_6_ROLLBACK_003_OK
+
+Analise:
+MIG_DIR=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P4_20260705_162551
+MIG_003=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P4_20260705_162551/003-CreateEmployeePendingActions.ts
+HAS_BAD_STAR=NAO
+HAS_DROP_DELETED_AT=SIM
+HAS_DROP_TYPE=SIM
+HAS_DROP_DUE_DATE=SIM
+HAS_DROP_SEVERITY=SIM
+HAS_DROP_STATUS=SIM
+HAS_DROP_EMPLOYEE=SIM
+HAS_DROP_TENANT=SIM
+HAS_DROP_FK=SIM
+HAS_DROP_STATUS_CHECK=SIM
+HAS_DROP_SEVERITY_CHECK=SIM
+HAS_DROP_TABLE=SIM
+BACKUP=/opt/rh-saas/backups/admin_A1_FUNC_MIG_P5C_6_rollback_003_20260705_185251
+REPORT=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P5C_6_rollback_003_20260705_185251/RELATORIO_ADMIN_A1_FUNC_MIG_P5C_6.md
+CONCLUSION=ADMIN_A1_FUNC_MIG_P5C_6_ROLLBACK_003_OK
+
+Regras:
+- Nenhuma migration foi executada.
+- Nenhum banco foi alterado.
+- Nenhum SQL foi executado.
+- Nenhum backend foi alterado.
+- Nenhum frontend foi alterado.
+- Apenas o rollback da migration 003 foi adicionado.

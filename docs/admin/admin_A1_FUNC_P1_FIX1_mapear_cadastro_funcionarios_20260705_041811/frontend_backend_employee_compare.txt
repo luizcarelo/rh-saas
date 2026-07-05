@@ -1,0 +1,113 @@
+# Comparação frontend x backend — funcionários
+
+## Endpoints candidatos frontend
+
+- /v1/auth/login
+- /v1/clients
+- /v1/documents/my-docs
+- /v1/documents/upload
+- /v1/employees
+- /v1/employees/${id}
+- /v1/employees/${id}/link-user
+- /v1/foundation/hr/employees
+- /v1/foundation/live-tracking/device
+- /v1/foundation/live-tracking/latest
+- /v1/foundation/live-tracking/location
+- /v1/foundation/live-tracking/points
+- /v1/super-admin/clientes
+- /v1/super-admin/clients
+- /v1/super-admin/clients/${id}
+- /v1/super-admin/clients/${id}/dashboard
+- /v1/super-admin/dashboard
+- /v1/super-admin/system/database
+- /v1/super-admin/system/health
+- /v1/super-admin/system/metrics
+- /v1/super-admin/system/services
+- /v1/super-admin/system/storage
+- /v1/super-admin/tenants
+- /v1/tenants
+- /v1/time-records/clock-in
+- /v1/users
+
+## Rotas backend detectadas
+
+- /v1/dashboard/employees
+- /v1/dashboard/executive
+- /v1/dashboard/overview
+- /v1/dashboard/schedules
+- /v1/dashboard/time-bank
+- /v1/dashboard/time-records
+- /v1/documents/my-docs
+- /v1/documents/upload
+- /v1/employees
+- /v1/employees/:id
+- /v1/employees/:id/link-user
+- /v1/foundation/clock/event-types
+- /v1/foundation/clock/events
+- /v1/foundation/clock/justifications
+- /v1/foundation/clock/overview
+- /v1/foundation/clock/policies
+- /v1/foundation/clock/policy-event-types
+- /v1/foundation/documents
+- /v1/foundation/documents/overview
+- /v1/foundation/documents/recipients
+- /v1/foundation/hr/departments
+- /v1/foundation/hr/employees
+- /v1/foundation/hr/geofences
+- /v1/foundation/hr/job-functions
+- /v1/foundation/hr/job-positions
+- /v1/foundation/hr/work-locations
+- /v1/foundation/live-tracking/device
+- /v1/foundation/live-tracking/latest
+- /v1/foundation/live-tracking/location
+- /v1/foundation/live-tracking/points
+- /v1/foundation/mobile/devices
+- /v1/foundation/mobile/settings
+- /v1/foundation/overview
+- /v1/foundation/payroll/overview
+- /v1/foundation/payroll/payslips
+- /v1/foundation/timebank/balances
+- /v1/foundation/timebank/overview
+- /v1/foundation/tracking/points
+- /v1/reports/afd
+- /v1/reports/employees
+- /v1/reports/executive
+- /v1/reports/productivity
+- /v1/reports/schedule-distribution
+- /v1/reports/schedules
+- /v1/reports/time-bank
+- /v1/reports/time-bank-summary
+- /v1/schedules
+- /v1/schedules/:id
+- /v1/schedules/assign
+- /v1/schedules/assign/:id
+- /v1/schedules/assign/:id/end
+- /v1/schedules/employee/:employeeId
+- /v1/schedules/employee/:employeeId/active
+- /v1/time-bank
+- /v1/time-bank/:employeeId
+- /v1/time-bank/:employeeId/details
+- /v1/time-bank/recalculate
+- /v1/time-records/afd
+- /v1/time-records/break-end
+- /v1/time-records/break-start
+- /v1/time-records/clock-in
+- /v1/time-records/clock-out
+- /v1/time-records/simulate-math
+
+## Casamentos diretos
+
+- OK direto: /v1/documents/my-docs
+- OK direto: /v1/documents/upload
+- OK direto: /v1/employees
+- OK direto: /v1/foundation/hr/employees
+- OK direto: /v1/foundation/live-tracking/device
+- OK direto: /v1/foundation/live-tracking/latest
+- OK direto: /v1/foundation/live-tracking/location
+- OK direto: /v1/foundation/live-tracking/points
+- OK direto: /v1/time-records/clock-in
+
+## Observações
+
+- Endpoints com parâmetros em template podem exigir revisão manual.
+- Esta comparação é textual e não executa API.

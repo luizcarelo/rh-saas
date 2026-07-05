@@ -1,0 +1,9 @@
+MIG_DIR=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P4_20260705_162551
+MIG_001=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P4_20260705_162551/001-CreateEmployeeDocumentTypes.ts
+MIG_002=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P4_20260705_162551/002-UpgradeDocuments.ts
+CHECKS=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P4B_revisao_001_002_20260705_164216/checks_p4b.txt
+MISSING=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P4B_revisao_001_002_20260705_164216/pendencias_p4b.txt
+REPORT=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P4B_revisao_001_002_20260705_164216/RELATORIO_ADMIN_A1_FUNC_MIG_P4B_REVISAO_001_002.md
+OUTDIR=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P4B_revisao_001_002_20260705_164216
+BACKUP=/opt/rh-saas/backups/admin_A1_FUNC_MIG_P4B_revisao_001_002_20260705_164216
+CONCLUSION=ADMIN_A1_FUNC_MIG_P4B_AJUSTES_NECESSARIOS

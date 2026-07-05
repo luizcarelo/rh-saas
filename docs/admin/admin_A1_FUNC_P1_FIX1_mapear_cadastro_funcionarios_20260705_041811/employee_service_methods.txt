@@ -1,0 +1,3700 @@
+### /opt/rh-saas/backend/src/modules/analytics/analytics.service.ts :: getDashboardStats
+```ts
+uctor(@InjectRepository(TimeRecord) private repo: Repository<TimeRecord>) {}
+
+  async getDashboardStats(tenantId: string, startDate?: string, endDate?: string) {
+    const where: any = { tenantId };
+    
+    if (startDate && endDate) {
+        where.createdAt = Between(new Date(startDate), new Date(endDate));
+    }
+
+    const records = await this.repo.find({ where });
+    
+    return {
+      totalRecords: re
+```
+---
+### /opt/rh-saas/backend/src/modules/analytics/analytics.service.ts :: if
+```ts
+ate?: string, endDate?: string) {
+    const where: any = { tenantId };
+    
+    if (startDate && endDate) {
+        where.createdAt = Between(new Date(startDate), new Date(endDate));
+    }
+
+    const records = await this.repo.find({ where });
+    
+    return {
+      totalRecords: records.length,
+      punctualityRate: 94, // Lógica a refinar
+      overtim
+```
+---
+### /opt/rh-saas/backend/src/modules/analytics/analytics.service.ts :: getWorkforceStats
+```ts
+a refinar
+      overtimeMinutes: 120,
+      absenteeismRate: 2.5
+    };
+  }
+
+  async getWorkforceStats(
+    tenantId: string,
+  ) {
+
+    const records =
+      await this.repo.find({
+        where: {
+          tenantId,
+        },
+      });
+
+    return {
+      totalRecords:
+        records.length,
+    };
+  }
+
+}
+```
+---
+### /opt/rh-saas/backend/src/modules/audit/audit.service.ts :: create
+```ts
+sitory(AuditEvent)
+    private readonly repo: Repository<AuditEvent>,
+  ) {}
+
+  async create(
+    data: Partial<AuditEvent>,
+  ) {
+    const event =
+      this.repo.create(data);
+
+    return this.repo.save(event);
+  }
+
+  async findAll() {
+    return this.repo.find({
+      order: {
+        createdAt: 'DESC',
+      },
+    });
+  }
+
+  async findById(
+    id: string,
+  ) {
+    const
+```
+---
+### /opt/rh-saas/backend/src/modules/audit/audit.service.ts :: findAll
+```ts
+event =
+      this.repo.create(data);
+
+    return this.repo.save(event);
+  }
+
+  async findAll() {
+    return this.repo.find({
+      order: {
+        createdAt: 'DESC',
+      },
+    });
+  }
+
+  async findById(
+    id: string,
+  ) {
+    const event =
+      await this.repo.findOne({
+        where: { id },
+      });
+
+    if (!event) {
+      throw new
+```
+---
+### /opt/rh-saas/backend/src/modules/audit/audit.service.ts :: findById
+```ts
+s.repo.find({
+      order: {
+        createdAt: 'DESC',
+      },
+    });
+  }
+
+  async findById(
+    id: string,
+  ) {
+    const event =
+      await this.repo.findOne({
+        where: { id },
+      });
+
+    if (!event) {
+      throw new NotFoundException(
+        'Evento de auditoria não encontrado.',
+      );
+    }
+
+    return event;
+  }
+
+  async findByAction(
+```
+---
+### /opt/rh-saas/backend/src/modules/audit/audit.service.ts :: if
+```ts
+t event =
+      await this.repo.findOne({
+        where: { id },
+      });
+
+    if (!event) {
+      throw new NotFoundException(
+        'Evento de auditoria não encontrado.',
+      );
+    }
+
+    return event;
+  }
+
+  async findByAction(
+    action: string,
+  ) {
+    return this.repo.find({
+      where: {
+        action,
+      },
+      order:
+```
+---
+### /opt/rh-saas/backend/src/modules/audit/audit.service.ts :: findByAction
+```ts
+'Evento de auditoria não encontrado.',
+      );
+    }
+
+    return event;
+  }
+
+  async findByAction(
+    action: string,
+  ) {
+    return this.repo.find({
+      where: {
+        action,
+      },
+      order: {
+        createdAt: 'DESC',
+      },
+    });
+  }
+
+  async findByEntity(
+    entityType: string,
+  ) {
+    return this.repo.find({
+      where: {
+        entityType,
+```
+---
+### /opt/rh-saas/backend/src/modules/audit/audit.service.ts :: findByEntity
+```ts
+ion,
+      },
+      order: {
+        createdAt: 'DESC',
+      },
+    });
+  }
+
+  async findByEntity(
+    entityType: string,
+  ) {
+    return this.repo.find({
+      where: {
+        entityType,
+      },
+      order: {
+        createdAt: 'DESC',
+      },
+    });
+  }
+}
+```
+---
+### /opt/rh-saas/backend/src/modules/auth/auth.service.ts :: constructor
+```ts
+e } from '../audit/audit.service';
+
+@Injectable()
+export class AuthService {
+
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly jwtService: JwtService,
+    private readonly auditService: AuditService,
+  ) {}
+
+  async validateUser(email: string, password: string): Promise<any> {
+
+    const user = await this.usersService.findByEmail(email);
+
+    if (!user) {
+      return null;
+    }
+
+    if (!user.isActive) {
+      return null;
+    }
+
+    const isMatch =
+```
+---
+### /opt/rh-saas/backend/src/modules/auth/auth.service.ts :: validateUser
+```ts
+Service: JwtService,
+    private readonly auditService: AuditService,
+  ) {}
+
+  async validateUser(email: string, password: string): Promise<any> {
+
+    const user = await this.usersService.findByEmail(email);
+
+    if (!user) {
+      return null;
+    }
+
+    if (!user.isActive) {
+      return null;
+    }
+
+    const isMatch = await bcrypt.compare(
+      password,
+      user.passwordHash,
+    );
+```
+---
+### /opt/rh-saas/backend/src/modules/auth/auth.service.ts :: if
+```ts
+omise<any> {
+
+    const user = await this.usersService.findByEmail(email);
+
+    if (!user) {
+      return null;
+    }
+
+    if (!user.isActive) {
+      return null;
+    }
+
+    const isMatch = await bcrypt.compare(
+      password,
+      user.passwordHash,
+    );
+
+    if (!isMatch) {
+      return null;
+    }
+
+    const { passwordHash, ...resul
+```
+---
+### /opt/rh-saas/backend/src/modules/auth/auth.service.ts :: if
+```ts
+sersService.findByEmail(email);
+
+    if (!user) {
+      return null;
+    }
+
+    if (!user.isActive) {
+      return null;
+    }
+
+    const isMatch = await bcrypt.compare(
+      password,
+      user.passwordHash,
+    );
+
+    if (!isMatch) {
+      return null;
+    }
+
+    const { passwordHash, ...result } = user;
+
+    return result;
+  }
+
+  async login(u
+```
+---
+### /opt/rh-saas/backend/src/modules/auth/auth.service.ts :: if
+```ts
+ch = await bcrypt.compare(
+      password,
+      user.passwordHash,
+    );
+
+    if (!isMatch) {
+      return null;
+    }
+
+    const { passwordHash, ...result } = user;
+
+    return result;
+  }
+
+  async login(user: any) {
+
+    const payload = {
+      sub: user.id,
+      email: user.email,
+      tenantId: user.tenantId,
+      role: user.role ?? '
+```
+---
+### /opt/rh-saas/backend/src/modules/auth/auth.service.ts :: login
+```ts
+}
+
+    const { passwordHash, ...result } = user;
+
+    return result;
+  }
+
+  async login(user: any) {
+
+    const payload = {
+      sub: user.id,
+      email: user.email,
+      tenantId: user.tenantId,
+      role: user.role ?? 'EMPLOYEE',
+    };
+
+    await this.auditService.create({
+      tenantId: user.tenantId,
+      userId: user.id,
+      entityId
+```
+---
+### /opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts :: generateSecurityHash
+```ts
+ASSINATURA MTE: Gera o Hash SHA-256 para garantir imutabilidade
+   */
+  private generateSecurityHash(data: {
+    tenantId: string;
+    employeeId: string;
+    timestamp: string;
+    eventType: string;
+    latitude: number;
+    longitude: number;
+  }): string {
+    // A ordem dos fatores importa para o Hash. Padrão estrito de concatenação.
+    const rawString = `${data.tenantId}|${data.employeeId}|${data.timestamp}|${data.eventType}|${data.latitude}|${data.longitude}`;
+    return crypto.createHash('sha256'
+```
+---
+### /opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts :: registerClock
+```ts
+* 3. REGISTRO OFICIAL DO PONTO (Chamado pela API / App do Colaborador)
+   */
+  async registerClock(data: {
+    tenantId: string;
+    employeeId: string;
+    eventType: ClockEventType;
+    latitude: number;
+    longitude: number;
+    allowedLatitude: number;
+    allowedLongitude: number;
+    allowedRadius: number; // Ex: 100 metros
+    deviceInfo?: string;
+    clientIp?: string;
+  }): Promise<ClockEvent> {
+    
+    // Calcula se o funcionário está dentro da área permitida
+    const distance = this.calculateDistance(
+      data.latitude,
+      data.longitude,
+      data.allowedLatitude,
+      data.allowedLongitude
+    );
+    
+    const isInsideGeofence
+```
+---
+### /opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts :: if
+```ts
+/ (Em um SaaS, isso geralmente é uma flag configurável no Painel do RH).
+    // if (!isInsideGeofence && !tenantConfig.allowOutlyingClockIn) {
+    //   throw new BadRequestException('Sua localização atual está fora do raio permitido pela empresa.');
+    // }
+
+    // Congela o tempo exato (UTC) da transação para o MTE
+    const currentTimestamp = new Date().toISOString(); 
+    
+    // Gera
+```
+---
+### /opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts :: overview
+```ts
+itory(TimeRecord)
+    private timeRecordRepo: Repository<TimeRecord>,
+  ) {}
+
+  async overview(tenantId: string) {
+
+    const employees =
+      await this.employeeRepo.count({
+        where: { tenantId },
+      });
+
+    const users =
+      await this.userRepo.count({
+        where: { tenantId },
+      });
+
+    const schedules =
+      await this.scheduleRepo.coun
+```
+---
+### /opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts :: employees
+```ts
+s,
+      schedules,
+      positiveBalance,
+      negativeBalance,
+    };
+  }
+
+  async employees(tenantId: string) {
+    return this.employeeRepo.find({
+      where: { tenantId },
+    });
+  }
+
+  async schedules(tenantId: string) {
+    return this.scheduleRepo.find({
+      where: { tenantId },
+    });
+  }
+
+  async timeBank(tenantId: string) {
+    return this.timeBa
+```
+---
+### /opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts :: schedules
+```ts
+{
+    return this.employeeRepo.find({
+      where: { tenantId },
+    });
+  }
+
+  async schedules(tenantId: string) {
+    return this.scheduleRepo.find({
+      where: { tenantId },
+    });
+  }
+
+  async timeBank(tenantId: string) {
+    return this.timeBankRepo.find({
+      where: { tenantId },
+    });
+  }
+
+  async timeRecords(tenantId: string) {
+    return this.time
+```
+---
+### /opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts :: timeBank
+```ts
+{
+    return this.scheduleRepo.find({
+      where: { tenantId },
+    });
+  }
+
+  async timeBank(tenantId: string) {
+    return this.timeBankRepo.find({
+      where: { tenantId },
+    });
+  }
+
+  async timeRecords(tenantId: string) {
+    return this.timeRecordRepo.find({
+      where: { tenantId },
+      order: {
+        timestamp: 'DESC',
+      },
+      take: 50,
+```
+---
+### /opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts :: timeRecords
+```ts
+{
+    return this.timeBankRepo.find({
+      where: { tenantId },
+    });
+  }
+
+  async timeRecords(tenantId: string) {
+    return this.timeRecordRepo.find({
+      where: { tenantId },
+      order: {
+        timestamp: 'DESC',
+      },
+      take: 50,
+    });
+  }
+
+  async executive(tenantId: string) {
+
+    const employees =
+      await this.employeeRepo.count({
+```
+---
+### /opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts :: executive
+```ts
+order: {
+        timestamp: 'DESC',
+      },
+      take: 50,
+    });
+  }
+
+  async executive(tenantId: string) {
+
+    const employees =
+      await this.employeeRepo.count({
+        where: { tenantId },
+      });
+
+    const users =
+      await this.userRepo.count({
+        where: { tenantId },
+      });
+
+    const schedules =
+      await this.scheduleRepo.coun
+```
+---
+### /opt/rh-saas/backend/src/modules/documents/documents.service.ts :: uploadDocument
+```ts
+pository<Document>,
+
+    private readonly auditService: AuditService,
+  ) {}
+
+  async uploadDocument(
+    tenantId: string,
+    employeeId: string,
+    filename: string,
+    path: string,
+  ) {
+
+    const doc = this.repo.create({
+      tenantId,
+      employeeId,
+      filename,
+      path,
+    });
+
+    const savedDoc =
+      await this.repo.save(doc);
+
+    await this.auditService.create({
+      tenantId,
+      entityId: savedDoc.id,
+```
+---
+### /opt/rh-saas/backend/src/modules/documents/documents.service.ts :: listForEmployee
+```ts
+Type: 'Document',
+      details: filename,
+    });
+
+    return savedDoc;
+  }
+
+  async listForEmployee(
+    tenantId: string,
+    employeeId: string,
+  ) {
+    return this.repo.find({
+      where: {
+        tenantId,
+        employeeId,
+      },
+    });
+  }
+}
+```
+---
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts :: create
+```ts
+: Repository<User>,
+
+    private readonly auditService: AuditService,
+  ) {}
+
+  async create(
+    tenantId: string,
+    data: CreateEmployeeDto,
+  ) {
+    const employee = this.employeeRepo.create({
+      ...data,
+      tenantId,
+    });
+
+    const savedEmployee =
+      await this.employeeRepo.save(employee);
+
+    await this.auditService.create({
+      tenantId,
+      entityId: savedEmployee.id,
+```
+---
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts :: findAll
+```ts
+EATED',
+      entityType: 'Employee',
+    });
+
+    return savedEmployee;
+  }
+
+  async findAll(tenantId: string) {
+    return this.employeeRepo.find({
+      where: {
+        tenantId,
+      },
+      relations: {
+        user: true,
+      },
+      order: {
+        firstName: 'ASC',
+        lastName: 'ASC',
+      },
+    });
+  }
+
+  async findOne(
+    id: string,
+```
+---
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts :: findOne
+```ts
+r: {
+        firstName: 'ASC',
+        lastName: 'ASC',
+      },
+    });
+  }
+
+  async findOne(
+    id: string,
+    tenantId: string,
+  ) {
+    const employee =
+      await this.employeeRepo.findOne({
+        where: {
+          id,
+          tenantId,
+        },
+        relations: {
+          user: true,
+        },
+      });
+
+    if (!employee) {
+      throw new NotFoundException(
+```
+---
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts :: if
+```ts
+},
+        relations: {
+          user: true,
+        },
+      });
+
+    if (!employee) {
+      throw new NotFoundException(
+        'Colaborador não encontrado.',
+      );
+    }
+
+    return employee;
+  }
+
+  async linkUser(
+    employeeId: string,
+    tenantId: string,
+    userId: string,
+  ) {
+    const employee =
+      await this.emplo
+```
+---
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts :: linkUser
+```ts
+'Colaborador não encontrado.',
+      );
+    }
+
+    return employee;
+  }
+
+  async linkUser(
+    employeeId: string,
+    tenantId: string,
+    userId: string,
+  ) {
+    const employee =
+      await this.employeeRepo.findOne({
+        where: {
+          id: employeeId,
+          tenantId,
+        },
+      });
+
+    if (!employee) {
+      throw new NotFoundException(
+        'Colaborador não encontrado.',
+      );
+```
+---
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts :: if
+```ts
+here: {
+          id: employeeId,
+          tenantId,
+        },
+      });
+
+    if (!employee) {
+      throw new NotFoundException(
+        'Colaborador não encontrado.',
+      );
+    }
+
+    const user =
+      await this.userRepo.findOne({
+        where: {
+          id: userId,
+          tenantId,
+        },
+      });
+
+    if (!user) {
+      th
+```
+---
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts :: if
+```ts
+where: {
+          id: userId,
+          tenantId,
+        },
+      });
+
+    if (!user) {
+      throw new NotFoundException(
+        'Usuário não encontrado neste tenant.',
+      );
+    }
+
+    const alreadyLinked =
+      await this.employeeRepo.findOne({
+        where: {
+          userId,
+          tenantId,
+        },
+      });
+
+    if
+```
+---
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts :: if
+```ts
+where: {
+          userId,
+          tenantId,
+        },
+      });
+
+    if (
+      alreadyLinked &&
+      alreadyLinked.id !== employee.id
+    ) {
+      throw new BadRequestException(
+        'Este usuário já está vinculado a outro colaborador.',
+      );
+    }
+
+    employee.userId = user.id;
+
+    const savedEmployee =
+      await this.employeeRepo.save(employee);
+
+    await this.auditService.
+```
+---
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts :: unlinkUser
+```ts
+: 'Employee',
+      details: user.id,
+    });
+
+    return savedEmployee;
+  }
+
+  async unlinkUser(
+    employeeId: string,
+    tenantId: string,
+  ) {
+    const employee =
+      await this.employeeRepo.findOne({
+        where: {
+          id: employeeId,
+          tenantId,
+        },
+      });
+
+    if (!employee) {
+      throw new NotFoundException(
+        'Colaborador não encontrado.',
+      );
+```
+---
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts :: if
+```ts
+here: {
+          id: employeeId,
+          tenantId,
+        },
+      });
+
+    if (!employee) {
+      throw new NotFoundException(
+        'Colaborador não encontrado.',
+      );
+    }
+
+    employee.userId = null;
+
+    const savedEmployee =
+      await this.employeeRepo.save(employee);
+
+    await this.auditService.create({
+      tenantId,
+```
+---
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts :: remove
+```ts
+INKED',
+      entityType: 'Employee',
+    });
+
+    return savedEmployee;
+  }
+
+  async remove(
+    id: string,
+    tenantId: string,
+  ) {
+    await this.auditService.create({
+      tenantId,
+      entityId: id,
+      action: 'EMPLOYEE_DELETED',
+      entityType: 'Employee',
+    });
+
+    return this.employeeRepo.delete({
+      id,
+      tenantId,
+    });
+  }
+}
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: getClientIdByTenantId
+```ts
+eadonly payslipFoundationRepo: Repository<PayslipFoundation>,
+  ) {}
+
+  private async getClientIdByTenantId(
+    tenantId: string,
+  ): Promise<string> {
+    const client =
+      await this.clientRepo.findOne({
+        where: { tenantId },
+      });
+
+    if (!client) {
+      throw new NotFoundException(
+        'Cliente SaaS não encontrado para o tenant informado.',
+      );
+    }
+
+    return client.
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: if
+```ts
+await this.clientRepo.findOne({
+        where: { tenantId },
+      });
+
+    if (!client) {
+      throw new NotFoundException(
+        'Cliente SaaS não encontrado para o tenant informado.',
+      );
+    }
+
+    return client.id;
+  }
+
+  async overview(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: overview
+```ts
+ontrado para o tenant informado.',
+      );
+    }
+
+    return client.id;
+  }
+
+  async overview(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    const [
+      employeeProfiles,
+      departments,
+      jobPositions,
+      jobFunctions,
+      workLocations,
+      geofences,
+      mobileDevices,
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: employees
+```ts
+Policies,
+      clockPolicyEventTypes,
+      clockJustifications,
+    };
+  }
+
+  async employees(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.employeeProfileRepo.find({
+      where: { clientId },
+      order: {
+        firstName: 'ASC',
+        lastName: 'ASC',
+      },
+    });
+  }
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: departments
+```ts
+r: {
+        firstName: 'ASC',
+        lastName: 'ASC',
+      },
+    });
+  }
+
+  async departments(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.departmentRepo.find({
+      where: { clientId },
+      order: { name: 'ASC' },
+    });
+  }
+
+  async jobPositions(
+    tenantId: string,
+  ) {
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: jobPositions
+```ts
+.find({
+      where: { clientId },
+      order: { name: 'ASC' },
+    });
+  }
+
+  async jobPositions(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.jobPositionRepo.find({
+      where: { clientId },
+      order: { name: 'ASC' },
+    });
+  }
+
+  async jobFunctions(
+    tenantId: string,
+  ) {
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: jobFunctions
+```ts
+.find({
+      where: { clientId },
+      order: { name: 'ASC' },
+    });
+  }
+
+  async jobFunctions(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.jobFunctionRepo.find({
+      where: { clientId },
+      order: { name: 'ASC' },
+    });
+  }
+
+  async workLocations(
+    tenantId: string,
+  ) {
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: workLocations
+```ts
+.find({
+      where: { clientId },
+      order: { name: 'ASC' },
+    });
+  }
+
+  async workLocations(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.workLocationRepo.find({
+      where: { clientId },
+      order: { name: 'ASC' },
+    });
+  }
+
+  async geofences(
+    tenantId: string,
+  ) {
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: geofences
+```ts
+.find({
+      where: { clientId },
+      order: { name: 'ASC' },
+    });
+  }
+
+  async geofences(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.geofenceRepo.find({
+      where: { clientId },
+      order: { name: 'ASC' },
+    });
+  }
+
+  async mobileDevices(
+    tenantId: string,
+  ) {
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: mobileDevices
+```ts
+.find({
+      where: { clientId },
+      order: { name: 'ASC' },
+    });
+  }
+
+  async mobileDevices(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.mobileDeviceRepo.find({
+      where: { clientId },
+      order: { createdAt: 'DESC' },
+    });
+  }
+
+  async mobileSettings(
+    tenantId: string
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: mobileSettings
+```ts
+{
+      where: { clientId },
+      order: { createdAt: 'DESC' },
+    });
+  }
+
+  async mobileSettings(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.mobileSettingsRepo.findOne({
+      where: { clientId },
+    });
+  }
+
+  async trackingPoints(
+    tenantId: string,
+  ) {
+    const clientId =
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: trackingPoints
+```ts
+urn this.mobileSettingsRepo.findOne({
+      where: { clientId },
+    });
+  }
+
+  async trackingPoints(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.trackingPointRepo.find({
+      where: { clientId },
+      order: { trackedAt: 'DESC' },
+      take: 200,
+    });
+  }
+
+  async clockOverview(
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: clockOverview
+```ts
+clientId },
+      order: { trackedAt: 'DESC' },
+      take: 200,
+    });
+  }
+
+  async clockOverview(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    const [
+      events,
+      eventTypes,
+      policies,
+      policyEventTypes,
+      justifications,
+    ] = await Promise.all([
+      this.clockEventRepo.
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: clockEvents
+```ts
+es,
+      policies,
+      policyEventTypes,
+      justifications,
+    };
+  }
+
+  async clockEvents(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.clockEventRepo.find({
+      where: { clientId },
+      order: { eventDatetime: 'DESC' },
+      take: 200,
+    });
+  }
+
+  async clockEventTypes()
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: clockEventTypes
+```ts
+ntId },
+      order: { eventDatetime: 'DESC' },
+      take: 200,
+    });
+  }
+
+  async clockEventTypes() {
+    return this.clockEventTypeRepo.find({
+      order: { defaultOrder: 'ASC' },
+    });
+  }
+
+  async clockPolicies(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: clockPolicies
+```ts
+.clockEventTypeRepo.find({
+      order: { defaultOrder: 'ASC' },
+    });
+  }
+
+  async clockPolicies(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.clockPolicyRepo.find({
+      where: { clientId },
+      order: { createdAt: 'DESC' },
+    });
+  }
+
+  async clockPolicyEventTypes() {
+    return
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: clockPolicyEventTypes
+```ts
+{
+      where: { clientId },
+      order: { createdAt: 'DESC' },
+    });
+  }
+
+  async clockPolicyEventTypes() {
+    return this.clockPolicyEventTypeRepo.find({
+      order: { displayOrder: 'ASC' },
+    });
+  }
+
+  async clockJustifications(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: clockJustifications
+```ts
+PolicyEventTypeRepo.find({
+      order: { displayOrder: 'ASC' },
+    });
+  }
+
+  async clockJustifications(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.clockJustificationRepo.find({
+      where: { clientId },
+      order: { createdAt: 'DESC' },
+      take: 200,
+    });
+  }
+
+  async documentsOver
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: documentsOverview
+```ts
+clientId },
+      order: { createdAt: 'DESC' },
+      take: 200,
+    });
+  }
+
+  async documentsOverview(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    const [
+      documents,
+      recipients,
+    ] = await Promise.all([
+      this.documentFoundationRepo.count({
+        where: { clientId },
+      }),
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: documents
+```ts
+return {
+      clientId,
+      documents,
+      recipients,
+    };
+  }
+
+  async documents(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.documentFoundationRepo.find({
+      where: { clientId },
+      order: { createdAt: 'DESC' },
+      take: 200,
+    });
+  }
+
+  async documentRecip
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: documentRecipients
+```ts
+clientId },
+      order: { createdAt: 'DESC' },
+      take: 200,
+    });
+  }
+
+  async documentRecipients() {
+    return this.documentRecipientFoundationRepo.find({
+      order: { createdAt: 'DESC' },
+      take: 200,
+    });
+  }
+
+
+  async timebankOverview(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tena
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: timebankOverview
+```ts
+epo.find({
+      order: { createdAt: 'DESC' },
+      take: 200,
+    });
+  }
+
+
+  async timebankOverview(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    const balances =
+      await this.timeBankBalanceFoundationRepo.count({
+        where: { clientId },
+      });
+
+    return {
+      clientId,
+      balances,
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: timebankBalances
+```ts
+ientId },
+      });
+
+    return {
+      clientId,
+      balances,
+    };
+  }
+
+  async timebankBalances(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.timeBankBalanceFoundationRepo.find({
+      where: { clientId },
+      order: { referenceDate: 'DESC' },
+      take: 200,
+    });
+  }
+
+
+  async p
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: payrollOverview
+```ts
+tId },
+      order: { referenceDate: 'DESC' },
+      take: 200,
+    });
+  }
+
+
+  async payrollOverview(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    const payslips =
+      await this.payslipFoundationRepo.count({
+        where: { clientId },
+      });
+
+    return {
+      clientId,
+      payslips,
+    };
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: payrollPayslips
+```ts
+ientId },
+      });
+
+    return {
+      clientId,
+      payslips,
+    };
+  }
+
+  async payrollPayslips(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.payslipFoundationRepo.find({
+      where: { clientId },
+      order: {
+        referenceYear: 'DESC',
+        referenceMonth: 'DESC',
+        cr
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: registerOrUpdateMobileDevice
+```ts
+h: 'DESC',
+        createdAt: 'DESC',
+      },
+      take: 200,
+    });
+  }
+
+
+  async registerOrUpdateMobileDevice(
+    tenantId: string,
+    dto: RegisterMobileDeviceDto,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    let employeeProfileId = dto.employeeProfileId;
+
+    if (employeeProfileId) {
+      const employee =
+        await this.employeeProfileRepo.findOne({
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: if
+```ts
+tenantId,
+      );
+
+    let employeeProfileId = dto.employeeProfileId;
+
+    if (employeeProfileId) {
+      const employee =
+        await this.employeeProfileRepo.findOne({
+          where: {
+            id: employeeProfileId,
+            clientId,
+          },
+        });
+
+      if (!employee) {
+        throw new NotFoundException(
+          'Perf
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: if
+```ts
+id: employeeProfileId,
+            clientId,
+          },
+        });
+
+      if (!employee) {
+        throw new NotFoundException(
+          'Perfil de colaborador não encontrado para este cliente.',
+        );
+      }
+    }
+
+    let device =
+      await this.mobileDeviceRepo.findOne({
+        where: {
+          clientId,
+          deviceUid
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: if
+```ts
+clientId,
+          deviceUid: dto.deviceUid,
+        },
+      });
+
+    if (!device) {
+      device =
+        this.mobileDeviceRepo.create({
+          clientId,
+          employeeProfileId,
+          deviceUid: dto.deviceUid,
+          platform: dto.platform,
+          model: dto.model,
+          appVersion: dto.appVersion,
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: createLocationTrackingPoint
+```ts
+enAt = new Date();
+    }
+
+    return this.mobileDeviceRepo.save(device);
+  }
+
+  async createLocationTrackingPoint(
+    tenantId: string,
+    dto: CreateLocationTrackingPointDto,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    const employee =
+      await this.employeeProfileRepo.findOne({
+        where: {
+          id: dto.employeeProfileId,
+          clientId,
+        },
+      }
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: if
+```ts
+id: dto.employeeProfileId,
+          clientId,
+        },
+      });
+
+    if (!employee) {
+      throw new NotFoundException(
+        'Perfil de colaborador não encontrado para este cliente.',
+      );
+    }
+
+    if (dto.deviceId) {
+      const device =
+        await this.mobileDeviceRepo.findOne({
+          where: {
+            id: dto.d
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: if
+```ts
+'Perfil de colaborador não encontrado para este cliente.',
+      );
+    }
+
+    if (dto.deviceId) {
+      const device =
+        await this.mobileDeviceRepo.findOne({
+          where: {
+            id: dto.deviceId,
+            clientId,
+          },
+        });
+
+      if (!device) {
+        throw new NotFoundException(
+          'Dispositivo móve
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: if
+```ts
+id: dto.deviceId,
+            clientId,
+          },
+        });
+
+      if (!device) {
+        throw new NotFoundException(
+          'Dispositivo móvel não encontrado para este cliente.',
+        );
+      }
+    }
+
+    const point =
+      this.trackingPointRepo.create({
+        clientId,
+        employeeProfileId: dto.employeeProfileI
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: create
+```ts
+nte.',
+        );
+      }
+    }
+
+    const point =
+      this.trackingPointRepo.create({
+        clientId,
+        employeeProfileId: dto.employeeProfileId,
+        deviceId: dto.deviceId,
+        trackedAt: dto.trackedAt
+          ? new Date(dto.trackedAt)
+          : new Date(),
+        latitude: String(dto.latitude),
+        longitude: String(dto.longitude),
+        accuracyMeters:
+          dto.accuracyMeters === undefined
+            ? undefined
+            : String(dto.accuracyMeters),
+        address: dto.address,
+        source: dto.source ?? 'MOBILE',
+        metadata: dto.metadata ?? {},
+      });
+
+    return this.trackingPointRepo.save(point);
+  }
+
+  async liveTrackingPoints(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.trackingPointRepo.find(
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: liveTrackingPoints
+```ts
+etadata ?? {},
+      });
+
+    return this.trackingPointRepo.save(point);
+  }
+
+  async liveTrackingPoints(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.trackingPointRepo.find({
+      where: { clientId },
+      order: { trackedAt: 'DESC' },
+      take: 200,
+    });
+  }
+
+  async latestTrackingPoin
+```
+---
+### /opt/rh-saas/backend/src/modules/foundation/foundation.service.ts :: latestTrackingPoints
+```ts
+clientId },
+      order: { trackedAt: 'DESC' },
+      take: 200,
+    });
+  }
+
+  async latestTrackingPoints(
+    tenantId: string,
+  ) {
+    const clientId =
+      await this.getClientIdByTenantId(
+        tenantId,
+      );
+
+    return this.trackingPointRepo
+      .createQueryBuilder('point')
+      .where('point.client_id = :clientId', { clientId })
+      .orderBy('point.employee_pr
+```
+---
+### /opt/rh-saas/backend/src/modules/reports/reports.service.ts :: employees
+```ts
+eRecord)
+    private readonly timeRecordRepo: Repository<TimeRecord>,
+  ) {}
+
+  async employees(tenantId: string) {
+    const employees = await this.employeeRepo.find({
+      where: { tenantId },
+    });
+
+    return {
+      total: employees.length,
+      active: employees.filter(
+        (e) => e.isActive,
+      ).length,
+      inactive: employees.filter(
+```
+---
+### /opt/rh-saas/backend/src/modules/reports/reports.service.ts :: schedules
+```ts
+(e) => !e.isActive,
+      ).length,
+      data: employees,
+    };
+  }
+
+  async schedules(tenantId: string) {
+    const schedules =
+      await this.scheduleRepo.find({
+        where: { tenantId },
+      });
+
+    return {
+      total: schedules.length,
+      data: schedules,
+    };
+  }
+
+  async timeBank(tenantId: string) {
+    const records =
+      await th
+```
+---
+### /opt/rh-saas/backend/src/modules/reports/reports.service.ts :: timeBank
+```ts
+return {
+      total: schedules.length,
+      data: schedules,
+    };
+  }
+
+  async timeBank(tenantId: string) {
+    const records =
+      await this.timeBankRepo.find({
+        where: { tenantId },
+      });
+
+    return {
+      total: records.length,
+      data: records,
+    };
+  }
+
+  async afd(tenantId: string) {
+    const records =
+      await this.timeReco
+```
+---
+### /opt/rh-saas/backend/src/modules/reports/reports.service.ts :: afd
+```ts
+;
+
+    return {
+      total: records.length,
+      data: records,
+    };
+  }
+
+  async afd(tenantId: string) {
+    const records =
+      await this.timeRecordRepo.find({
+        where: { tenantId },
+        order: {
+          timestamp: 'DESC',
+        },
+      });
+
+    return {
+      total: records.length,
+      data: records,
+    };
+  }
+
+  async executive(
+```
+---
+### /opt/rh-saas/backend/src/modules/reports/reports.service.ts :: executive
+```ts
+;
+
+    return {
+      total: records.length,
+      data: records,
+    };
+  }
+
+  async executive(tenantId: string) {
+    const [
+      employees,
+      schedules,
+      timeBankRecords,
+    ] = await Promise.all([
+      this.employeeRepo.count({
+        where: { tenantId },
+      }),
+      this.scheduleRepo.count({
+        where: { tenantId },
+      }),
+      this
+```
+---
+### /opt/rh-saas/backend/src/modules/reports/reports.service.ts :: productivity
+```ts
+BankRecords.length,
+      positiveBalance,
+      negativeBalance,
+    };
+  }
+
+  async productivity(tenantId: string) {
+    const employees =
+      await this.employeeRepo.count({
+        where: { tenantId },
+      });
+
+    const records =
+      await this.timeRecordRepo.count({
+        where: { tenantId },
+      });
+
+    return {
+      employees,
+      timeRecords:
+```
+---
+### /opt/rh-saas/backend/src/modules/reports/reports.service.ts :: timeBankSummary
+```ts
+mployees
+              ).toFixed(2),
+            )
+          : 0,
+    };
+  }
+
+  async timeBankSummary(
+    tenantId: string,
+  ) {
+    const records =
+      await this.timeBankRepo.find({
+        where: { tenantId },
+      });
+
+    const positiveBalanceMinutes =
+      records
+        .filter(
+          (r) => r.balanceMinutes > 0,
+        )
+        .reduce(
+          (acc, r) =
+```
+---
+### /opt/rh-saas/backend/src/modules/reports/reports.service.ts :: scheduleDistribution
+```ts
++
+        negativeBalanceMinutes,
+      records: records.length,
+    };
+  }
+
+  async scheduleDistribution(
+    tenantId: string,
+  ) {
+    const schedules =
+      await this.scheduleRepo.find({
+        where: { tenantId },
+      });
+
+    return {
+      FIXED: schedules.filter(
+        (s) => s.type === 'FIXED',
+      ).length,
+
+      SHIFT_12X36:
+        schedules.filter(
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: findAll
+```ts
+<EmployeeSchedule>,
+
+    private readonly auditService: AuditService,
+  ) {}
+
+  async findAll(tenantId: string) {
+    return this.scheduleRepo.find({
+      where: { tenantId },
+      order: {
+        name: 'ASC',
+      },
+    });
+  }
+
+  async findOne(
+    id: string,
+    tenantId: string,
+  ) {
+    const schedule =
+      await this.scheduleRepo.findOne({
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: findOne
+```ts
+here: { tenantId },
+      order: {
+        name: 'ASC',
+      },
+    });
+  }
+
+  async findOne(
+    id: string,
+    tenantId: string,
+  ) {
+    const schedule =
+      await this.scheduleRepo.findOne({
+        where: {
+          id,
+          tenantId,
+        },
+      });
+
+    if (!schedule) {
+      throw new NotFoundException(
+        'Escala não encontrada.',
+      );
+    }
+
+    retur
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: if
+```ts
+({
+        where: {
+          id,
+          tenantId,
+        },
+      });
+
+    if (!schedule) {
+      throw new NotFoundException(
+        'Escala não encontrada.',
+      );
+    }
+
+    return schedule;
+  }
+
+  async create(
+    tenantId: string,
+    data: Partial<Schedule>,
+  ) {
+    const schedule =
+      this.scheduleRepo.create({
+        ...
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: create
+```ts
+(
+        'Escala não encontrada.',
+      );
+    }
+
+    return schedule;
+  }
+
+  async create(
+    tenantId: string,
+    data: Partial<Schedule>,
+  ) {
+    const schedule =
+      this.scheduleRepo.create({
+        ...data,
+        tenantId,
+      });
+
+    const saved =
+      await this.scheduleRepo.save(schedule);
+
+    await this.auditService.create({
+      tenantId,
+      entityId: saved.id,
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: update
+```ts
+yType: 'Schedule',
+      details: saved.name,
+    });
+
+    return saved;
+  }
+
+  async update(
+    id: string,
+    tenantId: string,
+    data: Partial<Schedule>,
+  ) {
+    const schedule =
+      await this.findOne(
+        id,
+        tenantId,
+      );
+
+    Object.assign(
+      schedule,
+      data,
+    );
+
+    const updated =
+      await this.scheduleRepo.save(
+        schedule,
+      );
+
+    await this.auditSer
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: remove
+```ts
+e: 'Schedule',
+      details: updated.name,
+    });
+
+    return updated;
+  }
+
+  async remove(
+    id: string,
+    tenantId: string,
+  ) {
+    await this.findOne(
+      id,
+      tenantId,
+    );
+
+    await this.auditService.create({
+      tenantId,
+      entityId: id,
+      action: 'SCHEDULE_DELETED',
+      entityType: 'Schedule',
+    });
+
+    return this.scheduleRepo.delete({
+      i
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: assign
+```ts
+return this.scheduleRepo.delete({
+      id,
+      tenantId,
+    });
+  }
+
+  async assign(
+    tenantId: string,
+    dto: AssignScheduleDto,
+  ) {
+    const link =
+      this.employeeScheduleRepo.create({
+        tenantId,
+        employeeId: dto.employeeId,
+        scheduleId: dto.scheduleId,
+        startDate: dto.startDate,
+        endDate: dto.endDate,
+      });
+
+    const saved =
+      aw
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: getEmployeeSchedule
+```ts
+chedule',
+      details: JSON.stringify(dto),
+    });
+
+    return saved;
+  }
+
+  async getEmployeeSchedule(
+    tenantId: string,
+    employeeId: string,
+  ) {
+    return this.employeeScheduleRepo
+      .createQueryBuilder('es')
+      .leftJoinAndSelect(
+        'es.schedule',
+        'schedule',
+      )
+      .where(
+        'es.tenantId = :tenantId',
+        { tenantId },
+      )
+      .andWhere(
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: getEmployeeScheduleActive
+```ts
+.orderBy(
+        'es.startDate',
+        'DESC',
+      )
+      .getMany();
+  }
+async getEmployeeScheduleActive(
+  tenantId: string,
+  employeeId: string,
+) {
+  return this.employeeScheduleRepo
+    .createQueryBuilder('es')
+    .leftJoinAndSelect(
+      'es.schedule',
+      'schedule',
+    )
+    .where(
+      'es.tenantId = :tenantId',
+      { tenantId },
+    )
+    .andWhere(
+      'es.employeeId = :emplo
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: unassign
+```ts
+ULL')
+    .orderBy(
+      'es.startDate',
+      'DESC',
+    )
+    .getOne();
+}
+
+async unassign(
+  tenantId: string,
+  assignmentId: string,
+) {
+
+  const link =
+    await this.employeeScheduleRepo.findOne({
+      where: {
+        id: assignmentId,
+        tenantId,
+      },
+    });
+
+  if (!link) {
+    throw new NotFoundException(
+      'Vínculo não encontrado.',
+    );
+  }
+
+  await this.audi
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: if
+```ts
+where: {
+        id: assignmentId,
+        tenantId,
+      },
+    });
+
+  if (!link) {
+    throw new NotFoundException(
+      'Vínculo não encontrado.',
+    );
+  }
+
+  await this.auditService.create({
+    tenantId,
+    entityId: assignmentId,
+    action: 'SCHEDULE_UNASSIGNED',
+    entityType: 'EmployeeSchedule',
+  });
+
+  return this.em
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: endAssignment
+```ts
+});
+
+  return this.employeeScheduleRepo.delete({
+    id: assignmentId,
+  });
+}
+
+async endAssignment(
+  tenantId: string,
+  assignmentId: string,
+  endDate: string,
+) {
+
+  const link =
+    await this.employeeScheduleRepo.findOne({
+      where: {
+        id: assignmentId,
+        tenantId,
+      },
+    });
+
+  if (!link) {
+    throw new NotFoundException(
+      'Vínculo não encontrado.',
+    );
+  }
+
+  link.endDate =
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: if
+```ts
+where: {
+        id: assignmentId,
+        tenantId,
+      },
+    });
+
+  if (!link) {
+    throw new NotFoundException(
+      'Vínculo não encontrado.',
+    );
+  }
+
+  link.endDate = endDate;
+
+  const saved =
+    await this.employeeScheduleRepo.save(
+      link,
+    );
+
+  await this.auditService.create({
+    tenantId,
+    entityId: sav
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: getExpectedMinutesForDate
+```ts
+saber:
+   * "Quantos minutos este funcionário tem que trabalhar hoje?"
+   */
+  async getExpectedMinutesForDate(
+    tenantId: string,
+    employeeId: string,
+    targetDateStr: string,
+  ): Promise<{
+    expected: number;
+    tolerance: number;
+  }> {
+
+    const targetDate =
+      new Date(
+        `${targetDateStr}T12:00:00Z`,
+      );
+
+    const link =
+      await this.employeeScheduleRepo
+        .createQueryBuilder('es')
+        .leftJoinAnd
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: if
+```ts
+e)',
+          { targetDate: targetDateStr },
+        )
+        .getOne();
+
+    if (!link) {
+      return {
+        expected: 0,
+        tolerance: 0,
+      };
+    }
+
+    const { schedule } = link;
+
+    if (
+      schedule.type ===
+      ScheduleType.FIXED
+    ) {
+      const dayOfWeek =
+        targetDate.getUTCDay();
+
+      if (
+        s
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: if
+```ts
+d: 0,
+        tolerance: 0,
+      };
+    }
+
+    const { schedule } = link;
+
+    if (
+      schedule.type ===
+      ScheduleType.FIXED
+    ) {
+      const dayOfWeek =
+        targetDate.getUTCDay();
+
+      if (
+        schedule.workDays &&
+        schedule.workDays.includes(
+          dayOfWeek,
+        )
+      ) {
+        return {
+          expected:
+            schedule.expectedMinutesPe
+```
+---
+### /opt/rh-saas/backend/src/modules/schedules/schedules.service.ts :: if
+```ts
+tolerance:
+          schedule.dailyToleranceMinutes,
+      };
+    }
+
+    if (
+      schedule.type ===
+      ScheduleType.SHIFT_12X36
+    ) {
+      const startDate =
+        new Date(
+          `${link.startDate}T12:00:00Z`,
+        );
+
+      const diffTime =
+        Math.abs(
+          targetDate.getTime() -
+          startDate.getTime(),
+        );
+
+      const diffDays =
+        Math.f
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: query
+```ts
+id = $1
+      LIMIT 1
+    `,[id]);
+
+    const employees = await this.dataSource.query(`
+      SELECT COUNT(*)::int total
+      FROM hr_employee_profiles
+      WHERE client_id = $1
+    `,[id]);
+
+    const documents = await this.dataSource.query(`
+      SELECT COUNT(*)::int total
+      FROM documents_foundation
+      WHERE client_id = $1
+    `,[id]);
+
+    const payslips = await this.dataSource.query(`
+      SELECT COUNT(*)::int total
+      FROM payslips_foundation
+      WHERE client_id = $1
+    `,[id]);
+
+    return {
+      client,
+      plan: plan[0] ?? null,
+      company: company[0] ?? null,
+      modules,
+      statistics: {
+        employees: employees[0]?.total ?? 0,
+        documents: documents[0]?.total ?? 0,
+        payslips: payslips[0]?.total ?? 0,
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: getModules
+```ts
+?.total ?? 0,
+        payslips: payslips[0]?.total ?? 0,
+      },
+    };
+  }
+
+  async getModules(clientId: string) {
+
+    return this.dataSource.query(`
+      SELECT
+        module_code,
+        enabled
+      FROM tenant_module_flags
+      WHERE client_id = $1
+      ORDER BY module_code
+    `,[clientId]);
+  }
+
+  
+
+  async getModuleAudit(clientId: string) {
+
+    re
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: getModuleAudit
+```ts
+WHERE client_id = $1
+      ORDER BY module_code
+    `,[clientId]);
+  }
+
+  
+
+  async getModuleAudit(clientId: string) {
+
+    return this.dataSource.query(`
+      SELECT
+        module_code,
+        old_enabled,
+        new_enabled,
+        changed_by_email,
+        created_at
+      FROM tenant_module_audit
+      WHERE client_id = $1
+      ORDER BY created_at DESC
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: updateModule
+```ts
+WHERE client_id = $1
+      ORDER BY created_at DESC
+    `,[clientId]);
+  }
+
+
+  async updateModule(
+    clientId: string,
+    moduleCode: string,
+    enabled: boolean,
+  ) {
+
+    const currentRows =
+      await this.dataSource.query(`
+        SELECT enabled
+        FROM tenant_module_flags
+        WHERE client_id = $1
+        AND module_code = $2
+      `,[clientId,moduleCode]);
+
+    const oldEnabled =
+      currentRows.
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: query
+```ts
+}
+
+
+
+  async getDashboard() {
+
+    const clients =
+      await this.dataSource.query(`
+        SELECT
+          COUNT(*)::int total,
+          COUNT(*) FILTER (
+            WHERE status = 'ACTIVE'
+          )::int active,
+          COUNT(*) FILTER (
+            WHERE status <> 'ACTIVE'
+          )::int inactive
+        FROM saas_clients
+      `);
+
+    const plans =
+      await this.dataSource.query(`
+        SELECT COUNT(*)::int total
+        FROM saas_plans
+      `);
+
+    const users =
+      await this.dataSource.query(`
+        SELECT COUNT(*)::int total
+        FROM users
+      `);
+
+    const employees =
+      await this.dataSource.query(`
+        SELECT COUNT(*)::int total
+        FROM hr_employee_profiles
+      `);
+
+    const documents =
+      await this.dataSource.query(`
+        SELECT COUNT(*)::int total
+        FROM documents_foundation
+      `);
+
+    const payslips =
+      await this.dataSource.query(`
+        SELECT COUNT(*)::int total
+        FROM payslips_foundation
+      `);
+
+    const modules =
+      await this.dataSource.query(`
+        SELECT COUNT(*)::int total
+        FROM tenant_module_flags
+        WHERE enabled = true
+      `);
+
+    const audit =
+      await this.dataSource.query(`
+        SELECT
+          module_code,
+          old_enabled,
+          new_enabled,
+          changed_by_email,
+          created_at
+        FROM tenant_module_audit
+        ORDER BY created_at DESC
+        LIMIT 10
+      `);
+
+    return {
+      clients: clients[0],
+      plans: plans[0],
+      users: users[0],
+      employees: employees[0],
+      documents: {
+        documents: documents[0]?.total ?? 0,
+        payslips: payslips[0]?.total ?? 0,
+      },
+      modules: {
+        enab
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: query
+```ts
+= $1
+      `,[client.plan_id]);
+
+    const users =
+      await this.dataSource.query(`
+        SELECT COUNT(*)::int total
+        FROM users
+        WHERE tenant_id = $1
+      `,[client.tenant_id]);
+
+    const employees =
+      await this.dataSource.query(`
+        SELECT COUNT(*)::int total
+        FROM hr_employee_profiles
+        WHERE client_id = $1
+      `,[clientId]);
+
+    const documents =
+      await this.dataSource.query(`
+        SELECT COUNT(*)::int total
+        FROM documents_foundation
+        WHERE client_id = $1
+      `,[clientId]);
+
+    const payslips =
+      await this.dataSource.query(`
+        SELECT COUNT(*)::int total
+        FROM payslips_foundation
+        WHERE client_id = $1
+      `,[clientId]);
+
+    const enabledModules =
+      await this.dataSource.query(`
+        SELECT COUNT(*)::int total
+        FROM tenant_module_flags
+        WHERE client_id = $1
+        AND enabled = true
+      `,[clientId]);
+
+    const disabledModules =
+      await this.dataSource.query(`
+        SELECT COUNT(*)::int total
+        FROM tenant_module_flags
+        WHERE client_id = $1
+        AND enabled = false
+      `,[clientId]);
+
+    const audit =
+      await this.dataSource.query(`
+        SELECT
+          module_code,
+          old_enabled,
+          new_enabled,
+          changed_by_email,
+          created_at
+        FROM tenant_module_audit
+        WHERE client_id = $1
+        ORDER BY created_at DESC
+        LIMIT 20
+      `,[clientId]);
+
+    return {
+      client,
+      plan: plan[0] ?? null,
+      users: users[0],
+      employees: employees[0],
+      documents: {
+        documents: documents[0]?.total ?? 0,
+        payslips: payslips[0]?.total ?? 0,
+      },
+      modules: {
+        enabled: en
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: listPlans
+```ts
+isabled: disabledModules[0]?.total ?? 0,
+      },
+      audit,
+    };
+  }
+
+
+
+
+  async listPlans() {
+
+    return this.dataSource.query(`
+      SELECT *
+      FROM saas_plans
+      ORDER BY code
+    `);
+  }
+
+  async createPlan(dto: any) {
+
+    const rows =
+      await this.dataSource.query(`
+        INSERT INTO saas_plans(
+          code,
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: createPlan
+```ts
+query(`
+      SELECT *
+      FROM saas_plans
+      ORDER BY code
+    `);
+  }
+
+  async createPlan(dto: any) {
+
+    const rows =
+      await this.dataSource.query(`
+        INSERT INTO saas_plans(
+          code,
+          name,
+          description,
+          is_active,
+          created_at,
+          updated_at
+        )
+        VALUES(
+          $1,$2,$3
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: updatePlan
+```ts
+dto.name,
+        dto.description ?? null
+      ]);
+
+    return rows[0];
+  }
+
+  async updatePlan(
+    id: string,
+    dto: any,
+  ) {
+
+    const current =
+      await this.dataSource.query(`
+        SELECT *
+        FROM saas_plans
+        WHERE id = $1
+      `,[id]);
+
+    if (!current.length) {
+      throw new NotFoundException(
+        'Plano não encontrado'
+      );
+    }
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: if
+```ts
+SELECT *
+        FROM saas_plans
+        WHERE id = $1
+      `,[id]);
+
+    if (!current.length) {
+      throw new NotFoundException(
+        'Plano não encontrado'
+      );
+    }
+
+    const plan = current[0];
+
+    const rows =
+      await this.dataSource.query(`
+        UPDATE saas_plans
+           SET
+             name = $2,
+             descri
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: createClient
+```ts
+dto.is_active ?? plan.is_active
+      ]);
+
+    return rows[0];
+  }
+
+
+
+
+  async createClient(dto: any) {
+
+    const queryRunner =
+      this.dataSource.createQueryRunner();
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+
+      const tenantRows =
+        await queryRunner.query(`
+          INSERT INTO tenants(
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: catch
+```ts
+itTransaction();
+
+      return {
+        tenant,
+        client
+      };
+
+    } catch(error) {
+
+      await queryRunner.rollbackTransaction();
+
+      throw error;
+
+    } finally {
+
+      await queryRunner.release();
+
+    }
+  }
+
+
+
+  async updateClient(
+    id: string,
+    dto: any,
+  ) {
+
+    const rows =
+      await this.dataSource.query(`
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: updateClient
+```ts
+row error;
+
+    } finally {
+
+      await queryRunner.release();
+
+    }
+  }
+
+
+
+  async updateClient(
+    id: string,
+    dto: any,
+  ) {
+
+    const rows =
+      await this.dataSource.query(`
+        SELECT *
+        FROM saas_clients
+        WHERE id = $1
+      `,[id]);
+
+    if (!rows.length) {
+      throw new NotFoundException(
+        'Cliente não encontrado'
+      );
+    }
+
+    co
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: if
+```ts
+SELECT *
+        FROM saas_clients
+        WHERE id = $1
+      `,[id]);
+
+    if (!rows.length) {
+      throw new NotFoundException(
+        'Cliente não encontrado'
+      );
+    }
+
+    const current = rows[0];
+
+    const updated =
+      await this.dataSource.query(`
+        UPDATE saas_clients
+           SET
+             trade_name = $2,
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: for
+```ts
+result.notes],
+      ['plan_id', current.plan_id, result.plan_id],
+    ];
+
+    for (const [field, oldValue, newValue] of auditFields) {
+
+      if ((oldValue ?? '') !== (newValue ?? '')) {
+
+        await this.dataSource.query(`
+          INSERT INTO tenant_client_audit(
+            client_id,
+            field_name,
+            old_value,
+            new_value,
+            changed_by
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: updateClientStatus
+```ts
+),
+          'SUPER_ADMIN'
+        ]);
+      }
+    }
+
+    return result;
+  }
+
+  async updateClientStatus(
+    id: string,
+    status: string,
+  ) {
+
+    const currentRows =
+      await this.dataSource.query(`
+        SELECT *
+        FROM saas_clients
+        WHERE id = $1
+      `,[id]);
+
+    if (!currentRows.length) {
+      throw new NotFoundException(
+        'Cliente não encontrado'
+      );
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: if
+```ts
+SELECT *
+        FROM saas_clients
+        WHERE id = $1
+      `,[id]);
+
+    if (!currentRows.length) {
+      throw new NotFoundException(
+        'Cliente não encontrado'
+      );
+    }
+
+    const current = currentRows[0];
+
+    const rows =
+      await this.dataSource.query(`
+        UPDATE saas_clients
+           SET
+             status = $2,
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: getClientAudit
+```ts
+tatus,
+      status,
+      'SUPER_ADMIN'
+    ]);
+
+    return rows[0];
+  }
+
+
+
+
+  async getClientAudit(
+    clientId: string,
+  ) {
+
+    return this.dataSource.query(`
+      SELECT
+        field_name,
+        old_value,
+        new_value,
+        changed_by,
+        created_at
+      FROM tenant_client_audit
+      WHERE client_id = $1
+      ORDER BY created_at DESC
+    `,[clientI
+```
+---
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts :: systemHealth
+```ts
+HERE client_id = $1
+      ORDER BY created_at DESC
+    `,[clientId]);
+  }
+
+
+
+
+  async systemHealth() {
+
+    await this.dataSource.query(
+      'SELECT 1'
+    );
+
+    return {
+      api: 'UP',
+      database: 'UP',
+      timestamp: new Date().toISOString(),
+    };
+  }
+
+  async databaseStatus() {
+
+    const rows =
+      await this.dataSource.query(`
+```
+---
+### /opt/rh-saas/backend/src/modules/tenant/tenant.service.ts :: findOne
+```ts
+Repository<Tenant>,
+
+    private readonly auditService: AuditService,
+  ) {}
+
+  async findOne(tenantId: string) {
+
+    const tenant =
+      await this.tenantRepo.findOne({
+        where: { id: tenantId },
+      });
+
+    if (!tenant) {
+      throw new NotFoundException(
+        'Tenant não encontrado.',
+      );
+    }
+
+    return tenant;
+  }
+
+  async update(
+```
+---
+### /opt/rh-saas/backend/src/modules/tenant/tenant.service.ts :: if
+```ts
+await this.tenantRepo.findOne({
+        where: { id: tenantId },
+      });
+
+    if (!tenant) {
+      throw new NotFoundException(
+        'Tenant não encontrado.',
+      );
+    }
+
+    return tenant;
+  }
+
+  async update(
+    tenantId: string,
+    data: UpdateTenantDto,
+  ) {
+
+    const tenant =
+      await this.findOne(tenantId);
+
+    Object.a
+```
+---
+### /opt/rh-saas/backend/src/modules/tenant/tenant.service.ts :: update
+```ts
+on(
+        'Tenant não encontrado.',
+      );
+    }
+
+    return tenant;
+  }
+
+  async update(
+    tenantId: string,
+    data: UpdateTenantDto,
+  ) {
+
+    const tenant =
+      await this.findOne(tenantId);
+
+    Object.assign(
+      tenant,
+      data,
+    );
+
+    const updated =
+      await this.tenantRepo.save(tenant);
+
+    await this.auditService.create({
+      tenantId,
+      entityId: tenantI
+```
+---
+### /opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts :: getMinutesBetween
+```ts
+{}
+
+  /**
+   * Calcula a diferença em minutos entre duas datas
+   */
+  private getMinutesBetween(start: Date, end: Date): number {
+    const diffMs = end.getTime() - start.getTime();
+    return Math.floor(diffMs / 1000 / 60);
+  }
+async findAll(
+  tenantId: string,
+) {
+  return this.timeBankRepo.find({
+    where: {
+      tenantId,
+    },
+    order: {
+      date: 'DESC',
+    },
+```
+---
+### /opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts :: findAll
+```ts
+end.getTime() - start.getTime();
+    return Math.floor(diffMs / 1000 / 60);
+  }
+async findAll(
+  tenantId: string,
+) {
+  return this.timeBankRepo.find({
+    where: {
+      tenantId,
+    },
+    order: {
+      date: 'DESC',
+    },
+  });
+}
+
+async findByEmployee(
+  tenantId: string,
+  employeeId: string,
+) {
+  return this.timeBankRepo.find({
+    where: {
+      tenantId,
+```
+---
+### /opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts :: findByEmployee
+```ts
+here: {
+      tenantId,
+    },
+    order: {
+      date: 'DESC',
+    },
+  });
+}
+
+async findByEmployee(
+  tenantId: string,
+  employeeId: string,
+) {
+  return this.timeBankRepo.find({
+    where: {
+      tenantId,
+      employeeId,
+    },
+    order: {
+      date: 'DESC',
+    },
+  });
+}
+
+async details(
+  tenantId: string,
+  employeeId: string,
+) {
+
+  const rows =
+    await this.findByEmployee(
+```
+---
+### /opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts :: details
+```ts
+ntId,
+      employeeId,
+    },
+    order: {
+      date: 'DESC',
+    },
+  });
+}
+
+async details(
+  tenantId: string,
+  employeeId: string,
+) {
+
+  const rows =
+    await this.findByEmployee(
+      tenantId,
+      employeeId,
+    );
+
+  const totalBalance =
+    rows.reduce(
+      (acc, row) =>
+        acc + row.balanceMinutes,
+      0,
+    );
+
+  return {
+    employeeId,
+    totalBalance,
+```
+---
+### /opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts :: processDailyBalance
+```ts
+ocessa o saldo do dia cruzando os pontos batidos com a jornada prevista
+   */
+  async processDailyBalance(tenantId: string, employeeId: string, targetDate: string, expectedMinutes: number) {
+    // 1. Define o início e fim do dia para buscar as batidas no banco
+    const startOfDay = new Date(`${targetDate}T00:00:00.000Z`);
+    const endOfDay = new Date(`${targetDate}T23:59:59.999Z`);
+
+    // 2. Busca todas as batidas imutáveis do funci
+```
+---
+### /opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts :: if
+```ts
+.findOne({
+      where: { tenantId, employeeId, date: targetDate }
+    });
+
+    if (!timeBankRecord) {
+      timeBankRecord = this.timeBankRepo.create({
+        tenantId,
+        employeeId,
+        date: targetDate,
+        expectedMinutes,
+      });
+    }
+
+    timeBankRecord.workedMinutes = workedMinutes;
+    timeBankRecord.balanceMinutes = balance
+```
+---
+### /opt/rh-saas/backend/src/modules/time-records/time-records.service.ts :: registerEvent
+```ts
+imeRecord>,
+
+    private readonly auditService: AuditService,
+  ) {}
+
+  private async registerEvent(
+    tenantId: string,
+    employeeId: string,
+    latitude: number,
+    longitude: number,
+    eventType: TimeRecordEventType,
+  ) {
+    const record = this.repo.create({
+      tenantId,
+      employeeId,
+      latitude,
+      longitude,
+      eventType,
+    });
+
+    const savedRecord =
+      await this.repo.save(record);
+
+    await this.auditService.create({
+      tenantId,
+```
+---
+### /opt/rh-saas/backend/src/modules/time-records/time-records.service.ts :: clockIn
+```ts
+latitude,
+        longitude,
+      }),
+    });
+
+    return savedRecord;
+  }
+
+  async clockIn(
+    tenantId: string,
+    employeeId: string,
+    latitude: number,
+    longitude: number,
+  ) {
+    return this.registerEvent(
+      tenantId,
+      employeeId,
+      latitude,
+      longitude,
+      TimeRecordEventType.CLOCK_IN,
+    );
+  }
+
+  async breakStart(
+    tenantId: string,
+    employeeId: string,
+    latitude: number,
+    longitude:
+```
+---
+### /opt/rh-saas/backend/src/modules/time-records/time-records.service.ts :: breakStart
+```ts
+latitude,
+      longitude,
+      TimeRecordEventType.CLOCK_IN,
+    );
+  }
+
+  async breakStart(
+    tenantId: string,
+    employeeId: string,
+    latitude: number,
+    longitude: number,
+  ) {
+    return this.registerEvent(
+      tenantId,
+      employeeId,
+      latitude,
+      longitude,
+      TimeRecordEventType.BREAK_START,
+    );
+  }
+
+  async breakEnd(
+    tenantId: string,
+    employeeId: string,
+    latitude: number,
+    longitude:
+```
+---
+### /opt/rh-saas/backend/src/modules/time-records/time-records.service.ts :: breakEnd
+```ts
+latitude,
+      longitude,
+      TimeRecordEventType.BREAK_START,
+    );
+  }
+
+  async breakEnd(
+    tenantId: string,
+    employeeId: string,
+    latitude: number,
+    longitude: number,
+  ) {
+    return this.registerEvent(
+      tenantId,
+      employeeId,
+      latitude,
+      longitude,
+      TimeRecordEventType.BREAK_END,
+    );
+  }
+
+  async clockOut(
+    tenantId: string,
+    employeeId: string,
+    latitude: number,
+    longitude: n
+```
+---
+### /opt/rh-saas/backend/src/modules/time-records/time-records.service.ts :: clockOut
+```ts
+latitude,
+      longitude,
+      TimeRecordEventType.BREAK_END,
+    );
+  }
+
+  async clockOut(
+    tenantId: string,
+    employeeId: string,
+    latitude: number,
+    longitude: number,
+  ) {
+    return this.registerEvent(
+      tenantId,
+      employeeId,
+      latitude,
+      longitude,
+      TimeRecordEventType.CLOCK_OUT,
+    );
+  }
+
+  async findAll(tenantId: string) {
+    return this.repo.find({
+      where: { tenantId },
+      order
+```
+---
+### /opt/rh-saas/backend/src/modules/time-records/time-records.service.ts :: findAll
+```ts
+latitude,
+      longitude,
+      TimeRecordEventType.CLOCK_OUT,
+    );
+  }
+
+  async findAll(tenantId: string) {
+    return this.repo.find({
+      where: { tenantId },
+      order: {
+        timestamp: 'DESC',
+      },
+    });
+  }
+
+  async getEmployeeWorkStatus(
+    tenantId: string,
+    employeeId: string,
+  ) {
+    const lastEvent =
+      await this.repo.fin
+```
+---
+### /opt/rh-saas/backend/src/modules/time-records/time-records.service.ts :: getEmployeeWorkStatus
+```ts
+{ tenantId },
+      order: {
+        timestamp: 'DESC',
+      },
+    });
+  }
+
+  async getEmployeeWorkStatus(
+    tenantId: string,
+    employeeId: string,
+  ) {
+    const lastEvent =
+      await this.repo.findOne({
+        where: {
+          tenantId,
+          employeeId,
+        },
+        order: {
+          timestamp: 'DESC',
+        },
+      });
+
+    if (!lastEvent) {
+      return {
+        working: fal
+```
+---
+### /opt/rh-saas/backend/src/modules/time-records/time-records.service.ts :: generateAfd
+```ts
+layout oficial do Arquivo Fonte de Dados (AFD)
+  // conforme Portaria 671 MTE
+  async generateAfd(
+    tenantId: string,
+  ): Promise<string> {
+    const records =
+      await this.findAll(tenantId);
+
+    let nsr = 1;
+    let afdContent = '';
+
+    const cnpj =
+      '12345678000100'.padEnd(14, '0');
+
+    afdContent +=
+      `00000000011${cnpj}SAAS RH PRO EMPRESA TESTE                 00001\
+```
+---
+### /opt/rh-saas/backend/src/modules/users/users.service.ts :: create
+```ts
+: Repository<User>,
+
+    private readonly auditService: AuditService,
+  ) {}
+
+  async create(data: CreateUserDto) {
+
+    const existing = await this.userRepo.findOne({
+      where: {
+        email: data.email,
+      },
+    });
+
+    if (existing) {
+      throw new ConflictException(
+        'Usuário já cadastrado.',
+      );
+    }
+
+    const passwordHash = await b
+```
+---
+### /opt/rh-saas/backend/src/modules/users/users.service.ts :: if
+```ts
+rRepo.findOne({
+      where: {
+        email: data.email,
+      },
+    });
+
+    if (existing) {
+      throw new ConflictException(
+        'Usuário já cadastrado.',
+      );
+    }
+
+    const passwordHash = await bcrypt.hash(
+      data.password,
+      10,
+    );
+
+    const user = this.userRepo.create({
+      tenantId: data.tenantId,
+      emai
+```
+---
+### /opt/rh-saas/backend/src/modules/users/users.service.ts :: findByEmail
+```ts
+: 'User',
+      details: savedUser.email,
+    });
+
+    return savedUser;
+  }
+
+  async findByEmail(email: string) {
+    return this.userRepo.findOne({
+      where: { email },
+    });
+  }
+
+  async findById(id: string) {
+    return this.userRepo.findOne({
+      where: { id },
+    });
+  }
+
+  async findAll() {
+
+    const users = await this.userRepo.find({
+      order
+```
+---
+### /opt/rh-saas/backend/src/modules/users/users.service.ts :: findById
+```ts
+ng) {
+    return this.userRepo.findOne({
+      where: { email },
+    });
+  }
+
+  async findById(id: string) {
+    return this.userRepo.findOne({
+      where: { id },
+    });
+  }
+
+  async findAll() {
+
+    const users = await this.userRepo.find({
+      order: {
+        email: 'ASC',
+      },
+    });
+
+    return users.map(
+      ({ passwordHash, ...user }) =>
+```
+---
+### /opt/rh-saas/backend/src/modules/users/users.service.ts :: findAll
+```ts
+tring) {
+    return this.userRepo.findOne({
+      where: { id },
+    });
+  }
+
+  async findAll() {
+
+    const users = await this.userRepo.find({
+      order: {
+        email: 'ASC',
+      },
+    });
+
+    return users.map(
+      ({ passwordHash, ...user }) => user,
+    );
+  }
+}
+```
+---

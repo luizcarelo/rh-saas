@@ -1,0 +1,233 @@
+file	class	field	type	optional	decorators
+/opt/rh-saas/backend/src/modules/auth/dto/login.dto.ts	LoginDto	email	string	NAO	@IsEmail({}, { message: 'Forneça um e-mail válido.' }) @IsNotEmpty()
+/opt/rh-saas/backend/src/modules/auth/dto/login.dto.ts	LoginDto	password	string	NAO	@IsNotEmpty() @MinLength(6, { message: 'A senha deve ter no mínimo 6 caracteres.' })
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	CreateEmployeeDto	firstName	string	NAO	@IsString() @IsNotEmpty()
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	CreateEmployeeDto	lastName	string	NAO	@IsString() @IsNotEmpty()
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	CreateEmployeeDto	cpf	string	NAO	@IsString() @Length(11, 11)
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	CreateEmployeeDto	email	string	NAO	@IsEmail()
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	CreateEmployeeDto	department	string	NAO	@IsString()
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	CreateEmployeeDto	jobTitle	string	NAO	@IsString()
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	CreateEmployeeDto	admissionDate	string	NAO	@IsDateString()
+/opt/rh-saas/backend/src/modules/employees/dto/link-user.dto.ts	LinkUserDto	userId	string	NAO	@IsUUID()
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	id	string	NAO	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	tenant	Tenant	NAO	@ManyToOne(() => Tenant) @JoinColumn({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	tenantId	string	NAO	@Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	nullable	true,	NAO	@OneToOne(() => User, {
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	onDelete	'SET NULL',	NAO	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	user	User | null	NAO	@JoinColumn({ name: 'user_id' })
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	name	'user_id',	NAO	@Column({
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	type	'uuid',	NAO	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	nullable	true,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	userId	string | null	NAO	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	firstName	string	NAO	@Column()
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	lastName	string	NAO	@Column()
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	unique	true,	NAO	@Column({
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	length	11,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	cpf	string	NAO	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	email	string	NAO	@Column()
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	nullable	true,	NAO	@Column({
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	department	string	NAO	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	nullable	true,	NAO	@Column({
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	jobTitle	string	NAO	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	type	'date',	NAO	@Column({
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	admissionDate	string	NAO	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	default	true,	NAO	@Column({
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	isActive	boolean	NAO	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	createdAt	Date	NAO	@CreateDateColumn()
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	Employee	updatedAt	Date	NAO	@UpdateDateColumn()
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts	EmployeesModule	imports	[AuditModule,	NAO	@Module({
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts	EmployeesModule	providers	[	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts	EmployeesModule	controllers	[	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts	EmployeesModule	exports	[	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	tenantId	string,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	data	CreateEmployeeDto,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	entityId	savedEmployee.id,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	action	'EMPLOYEE_CREATED',	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	entityType	'Employee',	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	where	{	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	relations	{	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	user	true,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	order	{	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	firstName	'ASC',	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	lastName	'ASC',	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	id	string,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	tenantId	string,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	where	{	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	relations	{	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	user	true,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	employeeId	string,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	tenantId	string,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	userId	string,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	where	{	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	id	employeeId,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	where	{	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	id	userId,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	where	{	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	entityId	savedEmployee.id,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	action	'USER_LINKED',	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	entityType	'Employee',	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	details	user.id,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	employeeId	string,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	tenantId	string,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	where	{	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	id	employeeId,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	entityId	savedEmployee.id,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	action	'USER_UNLINKED',	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	entityType	'Employee',	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	id	string,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	tenantId	string,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	entityId	id,	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	action	'EMPLOYEE_DELETED',	NAO	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	EmployeesService	entityType	'Employee',	NAO	
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts	CreateLocationTrackingPointDto	employeeProfileId	string	NAO	@IsUUID()
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts	CreateLocationTrackingPointDto	deviceId	string	SIM	@IsOptional() @IsUUID()
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts	CreateLocationTrackingPointDto	latitude	number	NAO	@Type(() => Number) @IsNumber() @Min(-90) @Max(90)
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts	CreateLocationTrackingPointDto	longitude	number	NAO	@Type(() => Number) @IsNumber() @Min(-180) @Max(180)
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts	CreateLocationTrackingPointDto	accuracyMeters	number	SIM	@IsOptional() @Type(() => Number) @IsNumber() @Min(0)
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts	CreateLocationTrackingPointDto	address	string	SIM	@IsOptional() @IsString() @MaxLength(500)
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts	CreateLocationTrackingPointDto	source	string	SIM	@IsOptional() @IsString() @MaxLength(50)
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts	CreateLocationTrackingPointDto	trackedAt	string	SIM	@IsOptional() @IsISO8601()
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts	CreateLocationTrackingPointDto	metadata	Record<string, any>	SIM	@IsOptional() @IsObject()
+/opt/rh-saas/backend/src/modules/foundation/dto/register-mobile-device.dto.ts	RegisterMobileDeviceDto	employeeProfileId	string	SIM	@IsOptional() @IsUUID()
+/opt/rh-saas/backend/src/modules/foundation/dto/register-mobile-device.dto.ts	RegisterMobileDeviceDto	deviceUid	string	NAO	@IsString() @MaxLength(255)
+/opt/rh-saas/backend/src/modules/foundation/dto/register-mobile-device.dto.ts	RegisterMobileDeviceDto	platform	string	SIM	@IsOptional() @IsString() @MaxLength(80)
+/opt/rh-saas/backend/src/modules/foundation/dto/register-mobile-device.dto.ts	RegisterMobileDeviceDto	model	string	SIM	@IsOptional() @IsString() @MaxLength(255)
+/opt/rh-saas/backend/src/modules/foundation/dto/register-mobile-device.dto.ts	RegisterMobileDeviceDto	appVersion	string	SIM	@IsOptional() @IsString() @MaxLength(50)
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	name	'hr_employee_profiles',	NAO	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	synchronize	false,	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	id	string	NAO	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	name	'client_id',	NAO	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	type	'uuid',	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	clientId	string	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	name	'employee_external_ref',	NAO	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	type	'text',	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	nullable	true,	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	employeeExternalRef	string	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	name	'first_name',	NAO	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	type	'text',	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	firstName	string	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	name	'last_name',	NAO	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	type	'text',	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	lastName	string	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	type	'text',	NAO	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	nullable	true,	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	cpf	string	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	type	'text',	NAO	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	nullable	true,	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	email	string	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	name	'department_id',	NAO	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	type	'uuid',	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	nullable	true,	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	departmentId	string	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	name	'job_position_id',	NAO	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	type	'uuid',	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	nullable	true,	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	jobPositionId	string	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	name	'job_function_id',	NAO	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	type	'uuid',	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	nullable	true,	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	jobFunctionId	string	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	name	'admission_date',	NAO	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	type	'date',	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	nullable	true,	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	admissionDate	string	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	type	'text',	NAO	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	default	'ACTIVE',	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	status	string	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	name	'created_at',	NAO	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	type	'timestamptz',	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	createdAt	Date	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	name	'updated_at',	NAO	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	type	'timestamptz',	NAO	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	HrEmployeeProfile	updatedAt	Date	NAO	
+/opt/rh-saas/backend/src/modules/schedules/dto/assign-schedule.dto.ts	AssignScheduleDto	employeeId	string	NAO	
+/opt/rh-saas/backend/src/modules/schedules/dto/assign-schedule.dto.ts	AssignScheduleDto	scheduleId	string	NAO	
+/opt/rh-saas/backend/src/modules/schedules/dto/assign-schedule.dto.ts	AssignScheduleDto	startDate	string	NAO	
+/opt/rh-saas/backend/src/modules/schedules/dto/assign-schedule.dto.ts	AssignScheduleDto	endDate	string	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts	CreateScheduleDto	name	string	NAO	
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts	CreateScheduleDto	type	ScheduleType	NAO	
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts	CreateScheduleDto	workDays	number[]	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts	CreateScheduleDto	expectedMinutesPerDay	number	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts	CreateScheduleDto	dailyToleranceMinutes	number	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts	CreateScheduleDto	entry1	string	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts	CreateScheduleDto	exit1	string	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts	CreateScheduleDto	entry2	string	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts	CreateScheduleDto	exit2	string	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts	CreateScheduleDto	expectedMinutes	number	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts	UpdateScheduleDto	name	string	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts	UpdateScheduleDto	type	any	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts	UpdateScheduleDto	workDays	number[]	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts	UpdateScheduleDto	expectedMinutesPerDay	number	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts	UpdateScheduleDto	dailyToleranceMinutes	number	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts	UpdateScheduleDto	entry1	string	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts	UpdateScheduleDto	exit1	string	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts	UpdateScheduleDto	entry2	string	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts	UpdateScheduleDto	exit2	string	SIM	
+/opt/rh-saas/backend/src/modules/schedules/dto/update-schedule.dto.ts	UpdateScheduleDto	expectedMinutes	number	SIM	
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	EmployeeSchedule	id	string	NAO	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	EmployeeSchedule	tenantId	string	NAO	@Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	EmployeeSchedule	employeeId	string	NAO	@Column({ name: 'employee_id' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	EmployeeSchedule	schedule	Schedule	NAO	@ManyToOne(() => Schedule) @JoinColumn({ name: 'schedule_id' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	EmployeeSchedule	scheduleId	string	NAO	@Column({ name: 'schedule_id' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	EmployeeSchedule	startDate	string	NAO	@Column({ name: 'start_date', type: 'date' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	EmployeeSchedule	endDate	string	NAO	@Column({ name: 'end_date', type: 'date', nullable: true })
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts	ClientDashboardDto	client	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts	ClientDashboardDto	plan	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts	ClientDashboardDto	users	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts	ClientDashboardDto	employees	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts	ClientDashboardDto	documents	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts	ClientDashboardDto	modules	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts	ClientDashboardDto	audit	any[]	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts	ClientDetailsDto	client	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts	ClientDetailsDto	plan	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts	ClientDetailsDto	company	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts	ClientDetailsDto	modules	any[]	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts	ClientDetailsDto	statistics	{	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts	ClientDetailsDto	employees	number	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts	ClientDetailsDto	documents	number	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts	ClientDetailsDto	payslips	number	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-summary.dto.ts	ClientSummaryDto	id	string	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-summary.dto.ts	ClientSummaryDto	slug	string	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-summary.dto.ts	ClientSummaryDto	planCode	string | null	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-summary.dto.ts	ClientSummaryDto	planName	string | null	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-summary.dto.ts	ClientSummaryDto	status	string	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts	CreateClientDto	slug	string	NAO	@IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts	CreateClientDto	tradeName	string	NAO	@IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts	CreateClientDto	legalName	string	NAO	@IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts	CreateClientDto	documentNumber	string	NAO	@IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts	CreateClientDto	planId	string	NAO	@IsUUID()
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-plan.dto.ts	CreatePlanDto	code	string	NAO	@IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-plan.dto.ts	CreatePlanDto	name	string	NAO	@IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-plan.dto.ts	CreatePlanDto	description	string	SIM	@IsOptional() @IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts	DashboardDto	clients	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts	DashboardDto	plans	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts	DashboardDto	users	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts	DashboardDto	employees	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts	DashboardDto	documents	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts	DashboardDto	modules	any	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts	DashboardDto	audit	any[]	NAO	
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client-status.dto.ts	UpdateClientStatusDto	status	string	NAO	@IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts	UpdateClientDto	tradeName	string	SIM	@IsOptional() @IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts	UpdateClientDto	legalName	string	SIM	@IsOptional() @IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts	UpdateClientDto	documentNumber	string	SIM	@IsOptional() @IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts	UpdateClientDto	timezone	string	SIM	@IsOptional() @IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts	UpdateClientDto	defaultLocale	string	SIM	@IsOptional() @IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts	UpdateClientDto	notes	string	SIM	@IsOptional() @IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts	UpdateClientDto	planId	string	SIM	@IsOptional() @IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-module.dto.ts	UpdateModuleDto	enabled	boolean	NAO	@IsBoolean()
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-plan.dto.ts	UpdatePlanDto	name	string	SIM	@IsOptional() @IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-plan.dto.ts	UpdatePlanDto	description	string	SIM	@IsOptional() @IsString()
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-plan.dto.ts	UpdatePlanDto	is_active	boolean	SIM	@IsOptional() @IsBoolean()
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts	UpdateTenantDto	corporateName	string	SIM	
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts	UpdateTenantDto	tradingName	string	SIM	
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts	UpdateTenantDto	isActive	boolean	SIM	
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts	UpdateTenantDto	phone	string	SIM	
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts	UpdateTenantDto	email	string	SIM	
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts	UpdateTenantDto	address	string	SIM	
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts	UpdateTenantDto	website	string	SIM	
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts	UpdateTenantDto	hrManager	string	SIM	
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts	UpdateTenantDto	logoUrl	string	SIM	
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts	CreateUserDto	tenantId	string	NAO	@IsUUID()
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts	CreateUserDto	employeeId	string	NAO	@IsUUID()
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts	CreateUserDto	email	string	NAO	@IsEmail()
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts	CreateUserDto	password	string	NAO	@IsString()

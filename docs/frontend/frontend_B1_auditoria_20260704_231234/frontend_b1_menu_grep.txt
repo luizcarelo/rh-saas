@@ -1,0 +1,52 @@
+/opt/rh-saas/frontend-web/src/App.tsx:4:import { AdminLayout } from "./layouts/AdminLayout";
+/opt/rh-saas/frontend-web/src/App.tsx:47:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:20:export type RegisterMobileDevicePayload = {
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:28:export type MobileDeviceFoundation = {
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:75:  payload: RegisterMobileDevicePayload,
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:77:  return apiRequest<MobileDeviceFoundation>(
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:12:const menu = [
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:14:    label: "Dashboard",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:15:    path: "/",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:19:    label: "Colaboradores",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:20:    path: "/colaboradores",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:24:    label: "Usuários",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:25:    path: "/usuarios",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:29:  label: "Analytics",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:30:  path: "/analytics",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:34:    label: "Controle de ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:35:    path: "/ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:39:    label: "Registrar ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:40:    path: "/registrar-ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:44:    label: "Auditoria",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:45:    path: "/audit",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:50:    label: "Live Tracking",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:51:    path: "/live-tracking-foundation",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:75:export function AdminLayout() {
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:79:const dynamicMenu = [
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:83:          label: "Dashboard SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:84:          path: "/super-admin",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:88:          label: "Clientes SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:89:          path: "/super-admin/clientes",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:93:          label: "Planos SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:94:          path: "/super-admin/planos",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:100:  ...menu,
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:127:            {dynamicMenu.map((item) => {
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:70:        Documentos
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:71:      titulo: "Documentos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:219:              Documentos:
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:67:        {/* Card de Bater Ponto */}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:43:      titulo: "Documentos",
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx:13:      <h1 className="text-2xl font-bold text-slate-900">Meus Documentos</h1>
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:103:        <h1 className="text-3xl font-bold text-slate-900">Espelho de Ponto</h1>
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx:19:        <Card><CardHeader className="flex flex-row items-center justify-between pb-2"><CardTitle className="text-sm font-medium">Documentos</CardTitle><FileSignature className="h-4 w-4 text-primary" /></CardHeader><CardContent><div className="text-2xl font-bold">5</div></CardContent></Card>
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:96:          {/* Botão de Bater Ponto */}
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:107:             status === "success" ? <><CheckCircle2 className="mr-2 h-6 w-6" /> Ponto Registrado!</> : 
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:6:  MobileDeviceFoundation,
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:51:  const [device, setDevice] = useState<MobileDeviceFoundation | null>(null);
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:100:      setMessage("Pontos atualizados com sucesso.");
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:234:            Live Tracking
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:237:            Tela simples de validação do Live Tracking usando mobile_devices e
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:244:        {message || "Pronto para validar Live Tracking."}
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx:406:          Pontos recentes
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:4:import { AdminLayout } from "./layouts/AdminLayout";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:43:          <Route element={<AdminLayout />}>

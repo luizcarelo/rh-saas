@@ -1,0 +1,16 @@
+=================================================
+SUPERADMIN-A4-A - DB SAMPLE REDIGIDO
+Data: 20260704_235939
+=================================================
+
+### public.audit_events
+                  id                  |              tenant_id               |               user_id                | action | entity_type |              entity_id               |      details      |         created_at         
+--------------------------------------+--------------------------------------+--------------------------------------+--------+-------------+--------------------------------------+-------------------+----------------------------
+ d11859a3-905c-4b79-9bfa-9fe7cd0bd775 | 11446a8f-ed2c-468e-9be1-3409beb12d3c | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | LOGIN  | User        | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | [EMAIL_REDACTED] | 2026-07-04 01:33:37.087578
+ abe28b76-d06d-48d6-8516-b506d2af0682 | 11446a8f-ed2c-468e-9be1-3409beb12d3c | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | LOGIN  | User        | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | [EMAIL_REDACTED] | 2026-07-04 01:33:43.821018
+ 744f98b1-1187-42e4-a482-c16d593eb085 | 11446a8f-ed2c-468e-9be1-3409beb12d3c | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | LOGIN  | User        | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | [EMAIL_REDACTED] | 2026-07-04 12:22:12.727583
+ fbb9d6fb-9941-4ac8-84d2-4141c80692e9 | 11446a8f-ed2c-468e-9be1-3409beb12d3c | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | LOGIN  | User        | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | [EMAIL_REDACTED] | 2026-07-04 12:22:58.107689
+ d2248280-6529-40df-aa21-c2e3ec57e675 | 11446a8f-ed2c-468e-9be1-3409beb12d3c | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | LOGIN  | User        | 5ee2bff9-27d9-42bc-aef5-d82147ced930 | [EMAIL_REDACTED] | 2026-07-04 12:26:43.366057
+(5 rows)
+
+

@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { apiRequest } from "../lib/api";
 import { EmployeeForm, EmployeePayload } from "../components/EmployeeForm";
+import { Link } from "react-router-dom";
 
 type Employee = {
   id: string;
@@ -80,6 +81,46 @@ export function EmployeesPage() {
       setSaving(false);
     }
   }
+
+  async function deleteEmployee(
+    id: string,
+  ) {
+
+    const confirmar =
+      window.confirm(
+        "Deseja realmente excluir este colaborador?"
+      );
+
+    if (!confirmar) {
+      return;
+    }
+
+    try {
+
+      await apiRequest(
+        `/v1/employees/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      setSuccess(
+        "Colaborador removido com sucesso."
+      );
+
+      await loadEmployees();
+
+    } catch (err) {
+
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Não foi possível excluir."
+      );
+
+    }
+  }
+
 
   useEffect(() => {
     loadEmployees();
@@ -226,6 +267,7 @@ export function EmployeesPage() {
                   <th className="px-4 py-4">Cargo</th>
                   <th className="px-4 py-4">Usuário</th>
                   <th className="px-4 py-4">Status</th>
+                  <th className="px-4 py-4">Ações</th>
                 </tr>
               </thead>
 
@@ -233,7 +275,7 @@ export function EmployeesPage() {
                 {loadingList && (
                   <tr>
                     <td
-                      colSpan={7}
+                      colSpan={8}
                       className="px-4 py-10 text-center text-slate-400"
                     >
                       Carregando colaboradores...
@@ -244,7 +286,7 @@ export function EmployeesPage() {
                 {!loadingList && filteredEmployees.length === 0 && (
                   <tr>
                     <td
-                      colSpan={7}
+                      colSpan={8}
                       className="px-4 py-10 text-center text-slate-400"
                     >
                       Nenhum colaborador encontrado.
@@ -306,6 +348,25 @@ export function EmployeesPage() {
                           </span>
                         )}
                       </td>
+                      <td className="px-4 py-4">
+  <Link
+    to={`/colaboradores/${employee.id}`}
+    className="rounded-lg bg-cyan-600 px-3 py-2 text-xs font-semibold text-white hover:bg-cyan-500"
+  >
+    Ver Detalhes
+  </Link>
+
+  <button
+    type="button"
+    onClick={() =>
+      deleteEmployee(employee.id)
+    }
+    className="ml-2 rounded-lg bg-red-600 px-3 py-2 text-xs font-semibold text-white hover:bg-red-500"
+  >
+    Excluir
+  </button>
+
+</td>
                     </tr>
                   ))}
               </tbody>

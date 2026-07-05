@@ -1,0 +1,6 @@
+/opt/rh-saas/backend/src/app.module.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.module.ts
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts
+/opt/rh-saas/backend/src/modules/reports/reports.module.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.module.ts

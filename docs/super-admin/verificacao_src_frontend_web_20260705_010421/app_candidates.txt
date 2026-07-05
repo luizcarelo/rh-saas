@@ -1,0 +1,2 @@
+/opt/rh-saas/frontend-web/src/App.tsx
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx

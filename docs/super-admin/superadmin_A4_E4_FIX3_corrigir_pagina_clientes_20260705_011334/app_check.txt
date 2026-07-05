@@ -1,0 +1,5 @@
+Arquivo: /opt/rh-saas/frontend-web/src/App.tsx
+
+23:import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+123:              path="/super-admin/clientes"
+124:              element={superAdminOnly(<SuperAdminClientsPage />)}

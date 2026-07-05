@@ -1,0 +1,1 @@
+{"message":"Tipo de batida inválido ou ainda não suportado neste endpoint.","supportedPunchTypes":["ENTRADA","INICIO_INTERVALO","FIM_INTERVALO","SAIDA"],"receivedPunchType":"TIPO_INVALIDO"}

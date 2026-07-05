@@ -1,0 +1,149 @@
+ backend/src/app.module.ts                                        |    9 [32m+[m[31m-[m
+ backend/src/modules/analytics/analytics.controller.ts            |   11 [32m+[m
+ backend/src/modules/analytics/analytics.service.ts               |   18 [32m+[m
+ backend/src/modules/audit/audit.controller.ts                    |   48 [32m+[m[31m-[m
+ backend/src/modules/audit/audit.module.ts                        |   19 [32m+[m[31m-[m
+ backend/src/modules/auth/auth.module.ts                          |    5 [32m+[m[31m-[m
+ backend/src/modules/auth/auth.service.ts                         |   11 [32m+[m
+ backend/src/modules/documents/documents.module.ts                |    3 [32m+[m[31m-[m
+ backend/src/modules/documents/documents.service.ts               |   47 [32m+[m[31m-[m
+ backend/src/modules/employees/employees.module.ts                |    3 [32m+[m[31m-[m
+ backend/src/modules/employees/employees.service.ts               |  151 [32m+[m[31m-[m
+ backend/src/modules/schedules/schedules.module.ts                |   26 [32m+[m[31m-[m
+ backend/src/modules/schedules/schedules.service.ts               |  398 [32m++++[m[31m-[m
+ backend/src/modules/super-admin/super-admin.controller.ts        |  193 [32m++[m[31m-[m
+ backend/src/modules/super-admin/super-admin.service.ts           |  808 [32m+++++++++[m[31m-[m
+ backend/src/modules/tenant/tenant.entity.ts                      |   72 [32m+[m[31m-[m
+ backend/src/modules/time-bank/time-bank.module.ts                |   26 [32m+[m[31m-[m
+ backend/src/modules/time-bank/time-bank.service.ts               |   86 [32m+[m[31m-[m
+ backend/src/modules/time-records/time-record.entity.ts           |   42 [32m+[m[31m-[m
+ backend/src/modules/time-records/time-records.controller.ts      |  177 [32m++[m[31m-[m
+ backend/src/modules/time-records/time-records.module.ts          |    3 [32m+[m[31m-[m
+ backend/src/modules/time-records/time-records.service.ts         |  220 [32m++[m[31m-[m
+ backend/src/modules/users/users.module.ts                        |    3 [32m+[m[31m-[m
+ backend/src/modules/users/users.service.ts                       |   24 [32m+[m[31m-[m
+ backend/tsconfig.build.json                                      |   12 [32m+[m[31m-[m
+ backend/tsconfig.json.bak.vscode.20260702_223055                 |   25 [31m-[m
+ backups/auditoria_backend_20260703_001842/app.module.ts.bak      |   52 [31m-[m
+ .../audit.bak/audit.controller.ts                                |   21 [31m-[m
+ .../auditoria_backend_20260703_001842/audit.bak/audit.entity.ts  |   26 [31m-[m
+ .../audit.bak/audit.interceptor.ts                               |   31 [31m-[m
+ .../auditoria_backend_20260703_001842/audit.bak/audit.module.ts  |    7 [31m-[m
+ .../auditoria_backend_20260703_001842/audit.bak/audit.service.ts |   13 [31m-[m
+ .../backup_audit_backend_20260703_001538/app.module.ts.bak       |   53 [31m-[m
+ .../audit/audit.controller.ts                                    |   14 [31m-[m
+ .../backup_audit_backend_20260703_001538/audit/audit.entity.ts   |   26 [31m-[m
+ .../audit/audit.interceptor.ts                                   |   31 [31m-[m
+ .../backup_audit_backend_20260703_001538/audit/audit.module.ts   |   15 [31m-[m
+ .../backup_audit_backend_20260703_001538/audit/audit.service.ts  |   13 [31m-[m
+ .../rh_saas_db_backup_fase_0_1_20260703_011301.sql               |  670 [31m--------[m
+ .../rh_saas_db_backup_fase_1_1_v2_20260703_012357.sql            | 2228 [31m--------------------------[m
+ .../rh_saas_db_backup_fase_1_2a_20260703_012939.sql              | 2290 [31m---------------------------[m
+ .../rh_saas_db_backup_fase_1_2b_20260703_013207.sql              | 2293 [31m---------------------------[m
+ .../rh_saas_db_backup_fase_1_2c_20260703_013433.sql              | 2300 [31m---------------------------[m
+ .../rh_saas_db_backup_fase_1_2d_20260703_013551.sql              | 2302 [31m---------------------------[m
+ .../rh_saas_db_backup_fase_1_2e_20260703_013705.sql              | 2310 [31m---------------------------[m
+ .../rh_saas_db_backup_fase_1_4_20260703_014040.sql               | 2321 [31m----------------------------[m
+ data/postgres/base/16384/1247                                    |  Bin [31m155648[m -> [32m163840[m bytes
+ data/postgres/base/16384/1247_fsm                                |  Bin [31m24576[m -> [32m24576[m bytes
+ data/postgres/base/16384/1249                                    |  Bin [31m819200[m -> [32m827392[m bytes
+ data/postgres/base/16384/1249_fsm                                |  Bin [31m24576[m -> [32m24576[m bytes
+ data/postgres/base/16384/1249_vm                                 |  Bin [31m8192[m -> [32m8192[m bytes
+ data/postgres/base/16384/1259                                    |  Bin [31m163840[m -> [32m172032[m bytes
+ data/postgres/base/16384/1259_fsm                                |  Bin [31m24576[m -> [32m24576[m bytes
+ data/postgres/base/16384/19663                                   |  Bin [31m8192[m -> [32m8192[m bytes
+ data/postgres/base/16384/19705                                   |  Bin [31m0[m -> [32m8192[m bytes
+ data/postgres/base/16384/19712                                   |  Bin [31m8192[m -> [32m16384[m bytes
+ data/postgres/base/16384/19790                                   |  Bin [31m8192[m -> [32m8192[m bytes
+ data/postgres/base/16384/19797                                   |  Bin [31m16384[m -> [32m16384[m bytes
+ data/postgres/base/16384/19889                                   |  Bin [31m8192[m -> [32m8192[m bytes
+ data/postgres/base/16384/19902                                   |  Bin [31m8192[m -> [32m8192[m bytes
+ data/postgres/base/16384/19915                                   |  Bin [31m16384[m -> [32m16384[m bytes
+ data/postgres/base/16384/19917                                   |  Bin [31m16384[m -> [32m16384[m bytes
+ data/postgres/base/16384/19919                                   |  Bin [31m16384[m -> [32m16384[m bytes
+ data/postgres/base/16384/19926                                   |  Bin [31m8192[m -> [32m8192[m bytes
+ data/postgres/base/16384/19955                                   |  Bin [31m8192[m -> [32m8192[m bytes
+ data/postgres/base/16384/20106                                   |  Bin [31m8192[m -> [32m8192[m bytes
+ data/postgres/base/16384/20221                                   |  Bin [31m0[m -> [32m8192[m bytes
+ data/postgres/base/16384/20229                                   |  Bin [31m8192[m -> [32m16384[m bytes
+ data/postgres/base/16384/20231                                   |  Bin [31m8192[m -> [32m16384[m bytes
+ data/postgres/base/16384/20306                                   |  Bin [31m0[m -> [32m8192[m bytes
+ data/postgres/base/16384/20315                                   |  Bin [31m8192[m -> [32m16384[m bytes
+ data/postgres/base/16384/20332                                   |  Bin [31m8192[m -> [32m16384[m bytes
+ data/postgres/base/16384/2579                                    |  Bin [31m16384[m -> [32m16384[m bytes
+ data/postgres/base/16384/2604                                    |  Bin [31m57344[m -> [32m57344[m bytes
+ data/postgres/base/16384/2606                                    |  Bin [31m106496[m -> [32m106496[m bytes
+ data/postgres/base/16384/2608                                    |  Bin [31m425984[m -> [32m434176[m bytes
+ data/postgres/base/16384/2610                                    |  Bin [31m73728[m -> [32m73728[m bytes
+ data/postgres/base/16384/2615                                    |  Bin [31m8192[m -> [32m8192[m bytes
+ data/postgres/base/16384/2619                                    |  Bin [31m245760[m -> [32m245760[m bytes
+ data/postgres/base/16384/2656                                    |  Bin [31m16384[m -> [32m16384[m bytes
+ data/postgres/base/16384/2657                                    |  Bin [31m16384[m -> [32m16384[m bytes
+ data/postgres/base/16384/2658                                    |  Bin [31m196608[m -> [32m196608[m bytes
+ data/postgres/base/16384/2659                                    |  Bin [31m139264[m -> [32m139264[m bytes
+ data/postgres/base/16384/2662                                    |  Bin [31m40960[m -> [32m40960[m bytes
+ data/postgres/base/16384/2663                                    |  Bin [31m65536[m -> [32m65536[m bytes
+ data/postgres/base/16384/2664                                    |  Bin [31m49152[m -> [32m49152[m bytes
+ data/postgres/base/16384/2665                                    |  Bin [31m40960[m -> [32m40960[m bytes
+ data/postgres/base/16384/2666                                    |  Bin [31m16384[m -> [32m16384[m bytes
+ data/postgres/base/16384/2667                                    |  Bin [31m16384[m -> [32m16384[m bytes
+ data/postgres/base/16384/2673                                    |  Bin [31m286720[m -> [32m286720[m bytes
+ data/postgres/base/16384/2674                                    |  Bin [31m172032[m -> [32m180224[m bytes
+ data/postgres/base/16384/2678                                    |  Bin [31m16384[m -> [32m16384[m bytes
+ data/postgres/base/16384/2679                                    |  Bin [31m16384[m -> [32m16384[m bytes
+ data/postgres/base/16384/2684                                    |  Bin [31m16384[m -> [32m16384[m bytes
+ data/postgres/base/16384/2685                                    |  Bin [31m16384[m -> [32m16384[m bytes
+ data/postgres/base/16384/2703                                    |  Bin [31m40960[m -> [32m40960[m bytes
+ data/postgres/base/16384/2704                                    |  Bin [31m57344[m -> [32m57344[m bytes
+ data/postgres/base/16384/3455                                    |  Bin [31m32768[m -> [32m32768[m bytes
+ data/postgres/global/pg_control                                  |  Bin [31m8192[m -> [32m8192[m bytes
+ data/postgres/pg_multixact/members/0000                          |  Bin [31m8192[m -> [32m8192[m bytes
+ data/postgres/pg_multixact/offsets/0000                          |  Bin [31m8192[m -> [32m8192[m bytes
+ data/postgres/pg_wal/000000010000000000000004                    |  Bin [31m16777216[m -> [32m16777216[m bytes
+ data/postgres/pg_xact/0000                                       |  Bin [31m8192[m -> [32m8192[m bytes
+ docs/CHANGELOG.md                                                |  479 [32m++++++[m
+ docs/CONTEXTO_PROJETO.md                                         |  791 [32m++++++++++[m
+ docs/DECISOES_TECNICAS.md                                        |  498 [32m++++++[m
+ docs/PENDENCIAS.md                                               |  484 [32m++++++[m
+ .../AuditLogsPage.tsx.bak                                        |   46 [31m-[m
+ .../backup_auditoria_frontend_20260703_001356/api.ts.bak         |  135 [31m--[m
+ frontend-web/backup_debian_web_20260702_235159/index.html        |   13 [31m-[m
+ .../src__components__EmployeeForm.tsx                            |  156 [31m--[m
+ frontend-web/backup_debian_web_20260702_235159/src__index.css    |   31 [31m-[m
+ frontend-web/backup_debian_web_20260702_235159/src__main.tsx     |   10 [31m-[m
+ frontend-web/backup_debian_web_20260702_235159/tsconfig.app.json |   32 [31m-[m
+ frontend-web/backup_debian_web_20260702_235159/tsconfig.json     |   18 [31m-[m
+ frontend-web/backup_funcoes_frontend_20260703_000804/App.tsx.bak |   43 [31m-[m
+ .../ProtectedRoute.tsx.bak                                       |   12 [31m-[m
+ frontend-web/backup_funcoes_frontend_20260703_000804/api.ts.bak  |   84 [31m-[m
+ .../pages/AuditLogsPage.tsx                                      |   46 [31m-[m
+ .../pages/ClockInPage.tsx                                        |   94 [31m--[m
+ .../backup_funcoes_frontend_20260703_000804/pages/Dashboard.tsx  |   28 [31m-[m
+ .../pages/EmployeeDashboard.tsx                                  |  138 [31m--[m
+ .../pages/EmployeeDocumentsPage.tsx                              |   42 [31m-[m
+ .../pages/EmployeesPage.tsx                                      |  318 [31m----[m
+ .../backup_funcoes_frontend_20260703_000804/pages/Login.tsx      |  170 [31m--[m
+ .../pages/TimeTrackingPage.tsx                                   |  102 [31m--[m
+ frontend-web/backup_revisao_senior_20260702_230757/.env.bak      |    1 [31m-[m
+ .../backup_revisao_senior_20260702_230757/EmployeeForm.tsx.bak   |  156 [31m--[m
+ frontend-web/backup_revisao_senior_20260702_230757/index.css.bak |   31 [31m-[m
+ .../backup_revisao_senior_20260702_230757/index.html.bak         |   13 [31m-[m
+ frontend-web/backup_revisao_senior_20260702_230757/main.tsx.bak  |   10 [31m-[m
+ .../backup_revisao_senior_20260702_230757/tsconfig.app.json.bak  |   25 [31m-[m
+ .../backup_revisao_senior_20260702_230757/tsconfig.json.bak      |   14 [31m-[m
+ frontend-web/backup_seguro_frontend_20260702_231631/index.html   |   13 [31m-[m
+ .../backup_seguro_frontend_20260702_231631/postcss.config.cjs    |    6 [31m-[m
+ .../src__components__EmployeeForm.tsx                            |  156 [31m--[m
+ .../backup_seguro_frontend_20260702_231631/src__index.css        |   31 [31m-[m
+ .../backup_seguro_frontend_20260702_231631/src__main.tsx         |   10 [31m-[m
+ .../backup_seguro_frontend_20260702_231631/tailwind.config.cjs   |   28 [31m-[m
+ .../backup_seguro_frontend_20260702_231631/tsconfig.app.json     |   25 [31m-[m
+ .../backup_seguro_frontend_20260702_231631/tsconfig.json         |   14 [31m-[m
+ frontend-web/src/App.tsx                                         |  182 [32m++[m[31m-[m
+ frontend-web/src/layouts/AdminLayout.tsx                         |   42 [32m+[m[31m-[m
+ frontend-web/src/pages/ClockInPage.tsx                           |   38 [32m+[m[31m-[m
+ frontend-web/src/pages/EmployeesPage.tsx                         |   65 [32m+[m[31m-[m
+ frontend-web/src/pages/TimeTrackingPage.tsx                      |  152 [32m+[m[31m-[m
+ frontend-web/tsconfig.app.tsbuildinfo                            |    2 [32m+[m[31m-[m
+ mobile-app                                                       |    2 [32m+[m[31m-[m
+ 148 files changed, 4948 insertions(+), 19294 deletions(-)

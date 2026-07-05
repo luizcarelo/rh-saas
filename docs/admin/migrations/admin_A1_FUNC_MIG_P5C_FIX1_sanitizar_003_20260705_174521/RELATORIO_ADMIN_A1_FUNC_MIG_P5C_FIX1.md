@@ -1,0 +1,36 @@
+# Admin-A1-FUNC-MIG-P5C-FIX1
+
+Data: 20260705_174521
+
+## Status
+
+```text
+ADMIN_A1_FUNC_MIG_P5C_FIX1_VALIDACAO_FALHOU
+```
+
+## Analise
+
+```text
+MIG_003=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P4_20260705_162551/003-CreateEmployeePendingActions.ts
+HAS_STAR_BEFORE=SIM
+HAS_STAR_AFTER=NAO
+HAS_TABLE=NAO
+HAS_CREATE_INDEX=NAO
+HAS_TABLE_INDEX=NAO
+HAS_FK=NAO
+HAS_STATUS=NAO
+HAS_SEVERITY=NAO
+HAS_DROP_TABLE=NAO
+BACKUP=/opt/rh-saas/backups/admin_A1_FUNC_MIG_P5C_FIX1_sanitizar_003_20260705_174521
+REPORT=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P5C_FIX1_sanitizar_003_20260705_174521/RELATORIO_ADMIN_A1_FUNC_MIG_P5C_FIX1.md
+CONCLUSION=ADMIN_A1_FUNC_MIG_P5C_FIX1_VALIDACAO_FALHOU
+```
+
+## Regras
+
+- Nenhuma migration foi executada.
+- Nenhum banco foi alterado.
+- Nenhum SQL foi executado.
+- Nenhum backend foi alterado.
+- Nenhum frontend foi alterado.
+- Apenas o arquivo 003-CreateEmployeePendingActions.ts foi sanitizado.

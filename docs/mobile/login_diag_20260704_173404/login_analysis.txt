@@ -1,0 +1,8 @@
+HTTP_STATUS=200
+IS_JSON=True
+TOP_LEVEL_KEYS=access_token, user_info
+TOKEN_KEYS_FOUND=access_token
+HAS_token=False
+HAS_access_token=True
+HAS_accessToken=False
+HAS_jwt=False

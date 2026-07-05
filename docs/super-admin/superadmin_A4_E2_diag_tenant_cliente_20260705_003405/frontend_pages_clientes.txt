@@ -1,0 +1,11 @@
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx
+/opt/rh-saas/frontend-web/src/pages/super-admin/SuperAdminPlaceholderPage.tsx

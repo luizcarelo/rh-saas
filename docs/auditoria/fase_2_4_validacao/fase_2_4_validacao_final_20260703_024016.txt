@@ -1,0 +1,38 @@
+======================================================================
+FASE 2.4 - VALIDACAO FINAL
+======================================================================
+
+1. MODULOS INICIAIS
+STATUS=200
+[{"module_code":"AFD_EXPORTACOES","enabled":true},{"module_code":"ASSINATURA_ELETRONICA","enabled":true},{"module_code":"BANCO_HORAS","enabled":true},{"module_code":"DOCUMENTOS","enabled":true},{"module_code":"HOLERITES","enabled":true},{"module_code":"JUSTIFICATIVAS","enabled":true},{"module_code":"MAPA","enabled":true},{"module_code":"PONTO_MOBILE","enabled":true},{"module_code":"SELFIE","enabled":true},{"module_code":"SUPER_ADMIN_TESTE","enabled":true},{"module_code":"TELEMETRIA","enabled":true}]
+
+2. DESABILITAR MODULO
+STATUS=200
+{"clientId":"53df5639-7222-4336-ad36-9163ee3ffb12","moduleCode":"SUPER_ADMIN_TESTE","enabled":false}
+
+3. VALIDAR VIA API
+STATUS=200
+[{"module_code":"AFD_EXPORTACOES","enabled":true},{"module_code":"ASSINATURA_ELETRONICA","enabled":true},{"module_code":"BANCO_HORAS","enabled":true},{"module_code":"DOCUMENTOS","enabled":true},{"module_code":"HOLERITES","enabled":true},{"module_code":"JUSTIFICATIVAS","enabled":true},{"module_code":"MAPA","enabled":true},{"module_code":"PONTO_MOBILE","enabled":true},{"module_code":"SELFIE","enabled":true},{"module_code":"SUPER_ADMIN_TESTE","enabled":false},{"module_code":"TELEMETRIA","enabled":true}]
+
+4. VALIDAR VIA BANCO
+              client_id               |    module_code    | enabled 
+--------------------------------------+-------------------+---------
+ 53df5639-7222-4336-ad36-9163ee3ffb12 | SUPER_ADMIN_TESTE | f
+(1 row)
+
+
+
+5. REABILITAR MODULO
+STATUS=200
+{"clientId":"53df5639-7222-4336-ad36-9163ee3ffb12","moduleCode":"SUPER_ADMIN_TESTE","enabled":true}
+
+6. VALIDAR VIA API
+STATUS=200
+[{"module_code":"AFD_EXPORTACOES","enabled":true},{"module_code":"ASSINATURA_ELETRONICA","enabled":true},{"module_code":"BANCO_HORAS","enabled":true},{"module_code":"DOCUMENTOS","enabled":true},{"module_code":"HOLERITES","enabled":true},{"module_code":"JUSTIFICATIVAS","enabled":true},{"module_code":"MAPA","enabled":true},{"module_code":"PONTO_MOBILE","enabled":true},{"module_code":"SELFIE","enabled":true},{"module_code":"SUPER_ADMIN_TESTE","enabled":true},{"module_code":"TELEMETRIA","enabled":true}]
+
+7. VALIDAR VIA BANCO
+              client_id               |    module_code    | enabled 
+--------------------------------------+-------------------+---------
+ 53df5639-7222-4336-ad36-9163ee3ffb12 | SUPER_ADMIN_TESTE | t
+(1 row)
+

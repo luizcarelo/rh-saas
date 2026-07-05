@@ -1,0 +1,29 @@
+[
+  {
+    "id": "20dc3472-8a7e-4091-a763-04904d876d02",
+    "code": "ENTERPRISE",
+    "name": "Enterprise",
+    "description": "Plano completo para clientes de producao.",
+    "is_active": true,
+    "created_at": "2026-07-03T01:13:03.392Z",
+    "updated_at": "2026-07-04T23:43:07.691Z"
+  },
+  {
+    "id": "de2acf21-fad0-4c57-9533-0258343dfb60",
+    "code": "ENTERPRISE_TEST",
+    "name": "Enterprise Teste",
+    "description": "Plano completo para cliente exemplo e homologacao interna.",
+    "is_active": true,
+    "created_at": "2026-07-03T01:13:03.392Z",
+    "updated_at": "2026-07-03T01:29:40.158Z"
+  },
+  {
+    "id": "e77eadb1-ad13-4f6c-8192-43134aa54a81",
+    "code": "TRIAL",
+    "name": "Teste",
+    "description": "Plano de teste para validacao interna.",
+    "is_active": true,
+    "created_at": "2026-07-03T01:13:03.392Z",
+    "updated_at": "2026-07-03T01:29:40.158Z"
+  }
+]

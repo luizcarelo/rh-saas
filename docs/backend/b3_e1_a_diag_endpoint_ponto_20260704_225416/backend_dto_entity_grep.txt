@@ -1,0 +1,385 @@
+=================================================
+BACKEND-B3-E1-A - DTO/ENTITY/CAMPOS
+=================================================
+
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:22:import { ClockEventFoundation } from './entities/clock-event-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:23:import { ClockEventType } from './entities/clock-event-type.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:67:    @InjectRepository(ClockEventFoundation)
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:68:    private readonly clockEventRepo: Repository<ClockEventFoundation>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:70:    @InjectRepository(ClockEventType)
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:71:    private readonly clockEventTypeRepo: Repository<ClockEventType>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:130:      clockEvents,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:131:      clockEventTypes,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:163:      this.clockEventRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:166:      this.clockEventTypeRepo.count(),
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:187:      clockEvents,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:188:      clockEventTypes,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:334:      eventTypes,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:339:      this.clockEventRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:342:      this.clockEventTypeRepo.count(),
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:355:      eventTypes,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:362:  async clockEvents(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:370:    return this.clockEventRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:377:  async clockEventTypes() {
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:378:    return this.clockEventTypeRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:647:        latitude: String(dto.latitude),
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:648:        longitude: String(dto.longitude),
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts:27:  latitude: number;
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts:33:  longitude: number;
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:20:import { ClockEventFoundation } from './entities/clock-event-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:21:import { ClockEventType } from './entities/clock-event-type.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:46:      ClockEventFoundation,
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:47:      ClockEventType,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:100:  clockEvents(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:101:    return this.foundationService.clockEvents(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:107:  clockEventTypes() {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:108:    return this.foundationService.clockEventTypes();
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:13:export class ClockEventFoundation {
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:25:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:32:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:35:  eventTypeId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:39:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:46:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:52:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:57:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:64:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:70:    type: 'numeric',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:75:  latitude: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:78:    type: 'numeric',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:83:  longitude: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:87:    type: 'numeric',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:95:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:114:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:121:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:128:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:134:    type: 'bigint',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:139:    type: 'jsonb',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:146:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:152:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts:24:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts:29:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts:36:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts:42:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy-event-type.entity.ts:15:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy-event-type.entity.ts:21:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy-event-type.entity.ts:23:  eventTypeId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy-event-type.entity.ts:50:    type: 'int',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy-event-type.entity.ts:57:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:24:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:30:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:36:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:42:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:48:    type: 'numeric',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:53:  latitude: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:56:    type: 'numeric',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:61:  longitude: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:65:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:71:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:25:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:32:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:35:  clockEventId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:39:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:44:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:50:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:57:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:64:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:71:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:78:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:85:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:91:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts:25:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts:32:    type: 'date',
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts:38:    type: 'int',
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts:45:    type: 'int',
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts:52:    type: 'int',
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts:59:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts:65:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:25:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:32:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:38:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:43:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:49:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:56:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:63:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:70:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:77:    type: 'date',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:83:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:90:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:96:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:26:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:32:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:39:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:46:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:53:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:59:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:65:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:72:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:78:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:85:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:91:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-type.entity.ts:13:export class ClockEventType {
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-type.entity.ts:18:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-type.entity.ts:23:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-type.entity.ts:28:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-type.entity.ts:35:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-type.entity.ts:41:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-type.entity.ts:48:    type: 'int',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-type.entity.ts:61:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-type.entity.ts:67:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:26:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:33:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:38:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:44:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:51:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:64:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:71:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:77:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:24:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:29:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:42:    type: 'int',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:67:    type: 'int',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:86:    type: 'int',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:99:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:105:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts:24:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts:29:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts:66:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts:72:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-app-settings.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-app-settings.entity.ts:25:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-app-settings.entity.ts:61:    type: 'jsonb',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-app-settings.entity.ts:68:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-app-settings.entity.ts:74:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts:24:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts:29:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts:36:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts:42:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:25:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:32:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:39:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:44:    type: 'numeric',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:48:  latitude: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:51:    type: 'numeric',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:55:  longitude: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:59:    type: 'numeric',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:67:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:73:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:79:    type: 'jsonb',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:86:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:92:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts:25:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts:31:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts:36:    type: 'numeric',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts:40:  latitude: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts:43:    type: 'numeric',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts:47:  longitude: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts:51:    type: 'int',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts:64:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts:70:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:24:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:30:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:36:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:61:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:68:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:75:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:81:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:25:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:31:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:38:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:45:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:51:    type: 'jsonb',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:58:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:64:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:19:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:25:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:32:    type: 'int',
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:38:    type: 'int',
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:43:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:49:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:56:    type: 'text',
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:63:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:70:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:76:    type: 'timestamptz',
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:4:export enum ClockEventType {
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:5:  ENTRADA = 'ENTRADA',
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:6:  SAIDA_INTERVALO = 'SAIDA_INTERVALO',
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:7:  RETORNO_INTERVALO = 'RETORNO_INTERVALO',
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:8:  SAIDA = 'SAIDA',
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:13:export class ClockEvent {
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:28:  @CreateDateColumn({ name: 'timestamp', type: 'timestamp with time zone' })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:34:  @Column({ type: 'enum', enum: ClockEventType })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:35:  eventType: ClockEventType;
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:38:  @Column({ type: 'double precision', nullable: true })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:39:  latitude: number;
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:41:  @Column({ type: 'double precision', nullable: true })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:42:  longitude: number;
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:48:  @Column({ name: 'device_info', type: 'text', nullable: true })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:55:  @Column({ type: 'varchar', length: 64, unique: true })
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:4:import { ClockEvent, ClockEventType } from './clock-event.entity';
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:8:export class ClockEventsService {
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:10:    @InjectRepository(ClockEvent)
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:11:    private readonly clockEventRepository: Repository<ClockEvent>,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:40:    eventType: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:41:    latitude: number;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:42:    longitude: number;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:45:    const rawString = `${data.tenantId}|${data.employeeId}|${data.timestamp}|${data.eventType}|${data.latitude}|${data.longitude}`;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:55:    eventType: ClockEventType;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:56:    latitude: number;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:57:    longitude: number;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:63:  }): Promise<ClockEvent> {
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:67:      data.latitude,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:68:      data.longitude,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:89:      eventType: data.eventType,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:90:      latitude: data.latitude,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:91:      longitude: data.longitude
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:95:    const newEvent = this.clockEventRepository.create({
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:98:      eventType: data.eventType,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:99:      latitude: data.latitude,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:100:      longitude: data.longitude,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:108:    return this.clockEventRepository.save(newEvent);
+/opt/rh-saas/backend/src/modules/reports/reports.module.ts:10:import { TimeRecord } from '../time-records/time-record.entity';
+/opt/rh-saas/backend/src/modules/reports/reports.module.ts:18:      TimeRecord,
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:8:import { TimeRecord } from '../time-records/time-record.entity';
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:22:    @InjectRepository(TimeRecord)
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:23:    private readonly timeRecordRepo: Repository<TimeRecord>,
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:69:      await this.timeRecordRepo.find({
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:138:      await this.timeRecordRepo.count({
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:144:      timeRecords: records,
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts:5:import { TimeRecord } from './time-record.entity';
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts:6:import { TimeRecordsService } from './time-records.service';
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts:7:import { TimeRecordsController } from './time-records.controller';
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts:10:  imports: [AuditModule, TypeOrmModule.forFeature([TimeRecord])],
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts:11:  controllers: [TimeRecordsController],
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts:12:  providers: [TimeRecordsService, TimeCalculatorService],
+/opt/rh-saas/backend/src/modules/time-records/time-records.module.ts:14:export class TimeRecordsModule {}
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:6:  TimeRecord,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:7:  TimeRecordEventType,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:13:export class TimeRecordsService {
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:15:    @InjectRepository(TimeRecord)
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:16:    private readonly repo: Repository<TimeRecord>,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:24:    latitude: number,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:25:    longitude: number,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:26:    eventType: TimeRecordEventType,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:31:      latitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:32:      longitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:33:      eventType,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:42:      action: eventType,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:43:      entityType: 'TimeRecord',
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:46:        latitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:47:        longitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:57:    latitude: number,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:58:    longitude: number,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:63:      latitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:64:      longitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:65:      TimeRecordEventType.CLOCK_IN,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:72:    latitude: number,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:73:    longitude: number,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:78:      latitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:79:      longitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:80:      TimeRecordEventType.BREAK_START,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:87:    latitude: number,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:88:    longitude: number,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:93:      latitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:94:      longitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:95:      TimeRecordEventType.BREAK_END,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:102:    latitude: number,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:103:    longitude: number,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:108:      latitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:109:      longitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:110:      TimeRecordEventType.CLOCK_OUT,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:149:        lastEvent.eventType ===
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:150:          TimeRecordEventType.CLOCK_IN ||
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:151:        lastEvent.eventType ===
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:152:          TimeRecordEventType.BREAK_END,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:155:        lastEvent.eventType ===
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:156:        TimeRecordEventType.BREAK_START,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:159:        lastEvent.eventType ===
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:160:        TimeRecordEventType.CLOCK_OUT,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:163:        lastEvent.eventType,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:11:import { TimeRecordsService } from './time-records.service';
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:17:export class TimeRecordsController {
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:19:    private readonly timeRecordsService: TimeRecordsService,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:28:    return this.timeRecordsService.clockIn(
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:31:      body.latitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:32:      body.longitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:41:    return this.timeRecordsService.breakStart(
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:44:      body.latitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:45:      body.longitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:54:    return this.timeRecordsService.breakEnd(
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:57:      body.latitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:58:      body.longitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:67:    return this.timeRecordsService.clockOut(
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:70:      body.latitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:71:      body.longitude,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:81:      await this.timeRecordsService.generateAfd(
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts:2:import { TimeRecord } from './time-record.entity';
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts:24:  calculateDailyBalance(records: TimeRecord[], expectedMinutes: number) {
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:8:export enum TimeRecordEventType {
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:16:export class TimeRecord {
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:30:    type: 'decimal',
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:35:  latitude: number;
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:38:    type: 'decimal',
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:43:  longitude: number;
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:48:    default: TimeRecordEventType.CLOCK_IN,
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:50:  eventType: string;
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts:42:    type: 'text',
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.module.ts:11:import { TimeRecord } from '../time-records/time-record.entity';
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.module.ts:20:      TimeRecord,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:48:  timeRecords(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:49:    return this.dashboardService.timeRecords(
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:9:import { TimeRecord } from '../time-records/time-record.entity';
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:28:    @InjectRepository(TimeRecord)
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:29:    private timeRecordRepo: Repository<TimeRecord>,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:97:  async timeRecords(tenantId: string) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:98:    return this.timeRecordRepo.find({
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:4:import { TimeRecord } from '../time-records/time-record.entity';
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:8:  constructor(@InjectRepository(TimeRecord) private repo: Repository<TimeRecord>) {}
+/opt/rh-saas/backend/src/modules/analytics/analytics.module.ts:3:import { TimeRecord } from '../time-records/time-record.entity';
+/opt/rh-saas/backend/src/modules/analytics/analytics.module.ts:8:  imports: [TypeOrmModule.forFeature([TimeRecord])],
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:36:    type: 'uuid',
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:67:    type: 'date',
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts:50:    type: 'text',
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts:70:    type: 'text',
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:40:    type: 'varchar',
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:51:    type: 'timestamp',
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts:23:  @Column({ name: 'start_date', type: 'date' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts:26:  @Column({ name: 'end_date', type: 'date', nullable: true })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts:19:  @Column({ type: 'enum', enum: ScheduleType, default: ScheduleType.FIXED })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts:20:  type: ScheduleType;
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts:22:  @Column({ type: 'jsonb', nullable: true })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts:25:  @Column({ name: 'expected_minutes_per_day', type: 'int', default: 480 })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts:28:  @Column({ name: 'daily_tolerance_minutes', type: 'int', default: 10 })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts:43:  @Column({ name: 'expected_minutes', type: 'int', default: 480 })
+/opt/rh-saas/backend/src/modules/schedules/dto/create-schedule.dto.ts:5:  type: ScheduleType;
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.module.ts:8:import { ClockEvent } from '../clock-events/clock-event.entity';
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.module.ts:16:      ClockEvent,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts:14:  @Column({ type: 'date' })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts:17:  @Column({ name: 'expected_minutes', type: 'int' })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts:20:  @Column({ name: 'worked_minutes', type: 'int', default: 0 })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts:23:  @Column({ name: 'balance_minutes', type: 'int', default: 0 })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:5:import { ClockEvent, ClockEventType } from '../clock-events/clock-event.entity';
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:14:  @InjectRepository(ClockEvent)
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:15:  private clockEventRepo: Repository<ClockEvent>,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:88:    const events = await this.clockEventRepo.find({
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:102:      if (event.eventType === ClockEventType.ENTRADA || event.eventType === ClockEventType.RETORNO_INTERVALO) {
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:105:      else if (event.eventType === ClockEventType.SAIDA_INTERVALO || event.eventType === ClockEventType.SAIDA) {
+/opt/rh-saas/backend/src/app.module.ts:12:import { TimeRecordsModule } from "./modules/time-records/time-records.module";
+/opt/rh-saas/backend/src/app.module.ts:16:import { ClockEvent } from './modules/clock-events/clock-event.entity';
+/opt/rh-saas/backend/src/app.module.ts:35:    TimeRecordsModule,
+/opt/rh-saas/backend/src/app.module.ts:47:        type: 'postgres',
+/opt/rh-saas/backend/src/app.module.ts:54:        entities: [Tenant, ClockEvent, User], // Traz as soltas (User é crucial pro Auth)

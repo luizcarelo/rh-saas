@@ -1,0 +1,7 @@
+test_name	payload_file	http_status	response_file	detected_id	accepted
+A_atual_lat_lng	/opt/rh-saas/docs/mobile/clock_contract_diag_20260704_224911/payload_A_atual_lat_lng.json	201	/opt/rh-saas/docs/mobile/clock_contract_diag_20260704_224911/response_A_atual_lat_lng.json	b212f5f4-6d8d-4f21-9960-81b41d02aa54	SIM
+B_punchType_ENTRADA	/opt/rh-saas/docs/mobile/clock_contract_diag_20260704_224911/payload_B_punchType_ENTRADA.json	201	/opt/rh-saas/docs/mobile/clock_contract_diag_20260704_224911/response_B_punchType_ENTRADA.json	6b26661b-a0dc-4ff6-8898-c2eef4abf31f	SIM
+C_eventType_ENTRADA	/opt/rh-saas/docs/mobile/clock_contract_diag_20260704_224911/payload_C_eventType_ENTRADA.json	201	/opt/rh-saas/docs/mobile/clock_contract_diag_20260704_224911/response_C_eventType_ENTRADA.json	85dca325-50e4-427d-ace8-3f3948f732db	SIM
+D_type_ENTRADA	/opt/rh-saas/docs/mobile/clock_contract_diag_20260704_224911/payload_D_type_ENTRADA.json	201	/opt/rh-saas/docs/mobile/clock_contract_diag_20260704_224911/response_D_type_ENTRADA.json	0c4a8106-b55c-4cf2-a828-b2a609053928	SIM
+E_clockType_ENTRADA	/opt/rh-saas/docs/mobile/clock_contract_diag_20260704_224911/payload_E_clockType_ENTRADA.json	201	/opt/rh-saas/docs/mobile/clock_contract_diag_20260704_224911/response_E_clockType_ENTRADA.json	c0a86e77-d53f-4258-9edf-79b335a27aec	SIM
+F_punchType_INVALIDO	/opt/rh-saas/docs/mobile/clock_contract_diag_20260704_224911/payload_F_punchType_INVALIDO.json	201	/opt/rh-saas/docs/mobile/clock_contract_diag_20260704_224911/response_F_punchType_INVALIDO.json	bff86738-40f5-46a8-a938-77b70372439e	SIM

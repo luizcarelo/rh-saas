@@ -1,0 +1,332 @@
+file	field	type	decorators
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts	name	'tenant_id',	@Column({
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts	tenantId	string	
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts	name	'user_id',	@Column({
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts	userId	string	
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts	action	string	@Column()
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts	name	'entity_type',	@Column({
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts	name	'entity_id',	@Column({
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts	tenant	Tenant	@ManyToOne(() => Tenant, { onDelete: 'RESTRICT' }) @JoinColumn({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts	tenantId	string	@Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts	employeeId	string	@Column({ name: 'employee_id' })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts	timestamp	Date	@CreateDateColumn({ name: 'timestamp', type: 'timestamp with time zone' })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts	timezone	string	@Column({ default: 'UTC' })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts	eventType	ClockEventType	@Column({ type: 'enum', enum: ClockEventType })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts	latitude	number	@Column({ type: 'double precision', nullable: true })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts	longitude	number	@Column({ type: 'double precision', nullable: true })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts	isInsideGeofence	boolean	@Column({ name: 'is_inside_geofence', default: true })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts	deviceInfo	string	@Column({ name: 'device_info', type: 'text', nullable: true })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts	clientIp	string	@Column({ name: 'client_ip', length: 45, nullable: true })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts	rowHash	string	@Column({ type: 'varchar', length: 64, unique: true })
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts	tenantId	string	@Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts	employeeId	string	@Column({ name: 'employee_id' })
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts	filename	string	@Column()
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts	path	string	@Column()
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts	isSigned	boolean	@Column({ default: false })
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts	createdAt	Date	@CreateDateColumn()
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	firstName	string	@IsString() @IsNotEmpty()
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	lastName	string	@IsString() @IsNotEmpty()
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	cpf	string	@IsString() @Length(11, 11)
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	email	string	@IsEmail()
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	department	string	@IsString()
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	jobTitle	string	@IsString()
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts	admissionDate	string	@IsDateString()
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	tenant	Tenant	@ManyToOne(() => Tenant) @JoinColumn({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	tenantId	string	@Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	nullable	true,	@OneToOne(() => User, {
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	user	User | null	@JoinColumn({ name: 'user_id' })
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	name	'user_id',	@Column({
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	userId	string | null	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	firstName	string	@Column()
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	lastName	string	@Column()
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	unique	true,	@Column({
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	cpf	string	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	email	string	@Column()
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	nullable	true,	@Column({
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	department	string	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	nullable	true,	@Column({
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	type	'date',	@Column({
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	admissionDate	string	
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	default	true,	@Column({
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	createdAt	Date	@CreateDateColumn()
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts	updatedAt	Date	@UpdateDateColumn()
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts	imports	[AuditModule,	@Module({
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	tenantId	string,	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	user	true,	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	firstName	'ASC',	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	lastName	'ASC',	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	tenantId	string,	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	user	true,	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	employeeId	string,	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	tenantId	string,	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	userId	string,	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	employeeId	string,	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	tenantId	string,	
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts	tenantId	string,	
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'clock_events_foundation',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'client_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'employee_profile_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	employeeProfileId	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'event_type_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'local_event_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'event_datetime',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'server_received_at',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'sync_status',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	type	'numeric',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	type	'numeric',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'accuracy_meters',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'inside_geofence',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'selfie_required',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'selfie_file_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'local_hash',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'server_hash',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	type	'bigint',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	type	'jsonb',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	name	'clock_justifications_foundation',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	name	'client_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	name	'employee_profile_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	employeeProfileId	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	name	'clock_event_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	name	'justification_type',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	name	'attachment_path',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	name	'reviewed_by',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	name	'reviewed_at',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	name	'review_notes',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts	name	'document_recipients_foundation',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts	name	'document_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts	name	'employee_profile_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts	employeeProfileId	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts	name	'viewed_at',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts	name	'signed_at',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts	type	'jsonb',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts	name	'hr_departments',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts	name	'client_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts	name	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	name	'hr_employee_profiles',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	name	'client_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	name	'employee_external_ref',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	employeeExternalRef	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	name	'first_name',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	firstName	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	name	'last_name',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	lastName	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	cpf	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	email	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	name	'department_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	departmentId	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	name	'job_position_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	jobPositionId	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	name	'job_function_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	name	'admission_date',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	admissionDate	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts	name	'hr_geofences',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts	name	'client_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts	name	'work_location_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts	name	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts	type	'numeric',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts	type	'numeric',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts	name	'radius_meters',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts	name	'is_active',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts	name	'hr_job_functions',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts	name	'client_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts	name	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts	name	'allows_external_visit',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts	name	'allows_travel',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts	name	'allows_overtime',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts	name	'allows_on_call',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts	name	'allows_shift_duty',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts	name	'hr_job_positions',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts	name	'client_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts	name	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts	name	'hr_work_locations',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts	name	'client_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts	name	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts	name	'address_line',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts	type	'numeric',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts	type	'numeric',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	name	'location_tracking_points',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	name	'client_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	name	'employee_profile_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	employeeProfileId	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	name	'device_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	name	'tracked_at',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	type	'numeric',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	type	'numeric',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	name	'accuracy_meters',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	type	'jsonb',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts	name	'mobile_devices',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts	name	'client_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts	name	'employee_profile_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts	employeeProfileId	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts	name	'device_uid',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts	name	'app_version',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts	name	'is_active',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts	name	'last_seen_at',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts	name	'payslips_foundation',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts	name	'client_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts	name	'employee_profile_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts	employeeProfileId	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts	name	'reference_month',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts	name	'reference_year',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts	name	'file_path',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts	name	'hash_sha256',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts	name	'acknowledged_at',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	name	'saas_clients',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	name	'tenant_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	tenantId	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	name	'plan_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	name	'trade_name',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	tradeName	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	name	'legal_name',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	legalName	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	name	'document_number',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	name	'default_locale',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	type	'text',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts	name	'time_bank_balances_foundation',	@Entity({
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts	name	'client_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts	name	'employee_profile_id',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts	employeeProfileId	string	
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts	name	'reference_date',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts	name	'balance_minutes',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts	name	'credit_minutes',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts	name	'debit_minutes',	@Column({
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	tenantId	string	@Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	employeeId	string	@Column({ name: 'employee_id' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	schedule	Schedule	@ManyToOne(() => Schedule) @JoinColumn({ name: 'schedule_id' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	scheduleId	string	@Column({ name: 'schedule_id' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	startDate	string	@Column({ name: 'start_date', type: 'date' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts	endDate	string	@Column({ name: 'end_date', type: 'date', nullable: true })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts	tenantId	string	@Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts	name	string	@Column()
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts	type	ScheduleType	@Column({ type: 'enum', enum: ScheduleType, default: ScheduleType.FIXED })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts	workDays	number[]	@Column({ type: 'jsonb', nullable: true })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts	expectedMinutesPerDay	number	@Column({ name: 'expected_minutes_per_day', type: 'int', default: 480 })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts	dailyToleranceMinutes	number	@Column({ name: 'daily_tolerance_minutes', type: 'int', default: 10 })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts	entry1	string	@Column({ nullable: true })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts	exit1	string	@Column({ nullable: true })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts	entry2	string	@Column({ nullable: true })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts	exit2	string	@Column({ nullable: true })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts	expectedMinutes	number	@Column({ name: 'expected_minutes', type: 'int', default: 480 })
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	cnpj	string	@Column({ unique: true, length: 14 })
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	name	'corporate_name',	@Column({
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	corporateName	string	
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	name	'trading_name',	@Column({
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	tradingName	string	
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	name	'is_active',	@Column({
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	nullable	true,	@Column({
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	phone	string	
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	nullable	true,	@Column({
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	email	string	
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	nullable	true,	@Column({
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	nullable	true,	@Column({
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	nullable	true,	@Column({
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	name	'hr_manager',	
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	nullable	true,	@Column({
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	name	'logo_url',	
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts	name	'updated_at',	@UpdateDateColumn({
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts	tenantId	string	@Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts	employeeId	string	@Column({ name: 'employee_id' })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts	date	string	@Column({ type: 'date' })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts	expectedMinutes	number	@Column({ name: 'expected_minutes', type: 'int' })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts	workedMinutes	number	@Column({ name: 'worked_minutes', type: 'int', default: 0 })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts	balanceMinutes	number	@Column({ name: 'balance_minutes', type: 'int', default: 0 })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts	status	string	@Column({ default: 'OPEN' })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts	createdAt	Date	@CreateDateColumn({ name: 'created_at' })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts	updatedAt	Date	@UpdateDateColumn({ name: 'updated_at' })
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts	tenantId	string	@Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts	name	'employee_id',	@Column({
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts	employeeId	string	
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts	type	'decimal',	@Column({
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts	type	'decimal',	@Column({
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts	name	'event_type',	@Column({
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts	timestamp	Date	@CreateDateColumn()
+/opt/rh-saas/backend/src/modules/users/user.entity.ts	id	string	@PrimaryGeneratedColumn('uuid')
+/opt/rh-saas/backend/src/modules/users/user.entity.ts	tenant	Tenant	@ManyToOne(() => Tenant) @JoinColumn({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/users/user.entity.ts	tenantId	string	@Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/users/user.entity.ts	email	string	@Column()
+/opt/rh-saas/backend/src/modules/users/user.entity.ts	passwordHash	string	@Column()
+/opt/rh-saas/backend/src/modules/users/user.entity.ts	type	'varchar',	@Column({
+/opt/rh-saas/backend/src/modules/users/user.entity.ts	isActive	boolean	@Column({ default: true })
+/opt/rh-saas/backend/src/modules/users/user.entity.ts	name	'last_login_at',	@Column({
+/opt/rh-saas/backend/src/modules/users/user.entity.ts	name	'created_at',	@CreateDateColumn({
+/opt/rh-saas/backend/src/modules/users/user.entity.ts	name	'updated_at',	@UpdateDateColumn({

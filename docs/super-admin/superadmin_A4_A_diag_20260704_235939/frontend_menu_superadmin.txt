@@ -1,0 +1,35 @@
+/opt/rh-saas/frontend-web/src/App.tsx:4:import { AdminLayout } from "./layouts/AdminLayout";
+/opt/rh-saas/frontend-web/src/App.tsx:47:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:12:const menu = [
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:14:    label: "Dashboard",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:15:    path: "/",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:19:    label: "Colaboradores",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:20:    path: "/colaboradores",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:24:    label: "Usuários",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:25:    path: "/usuarios",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:29:  label: "Analytics",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:30:  path: "/analytics",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:34:    label: "Controle de ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:35:    path: "/ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:39:    label: "Registrar ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:40:    path: "/registrar-ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:44:    label: "Auditoria",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:45:    path: "/audit",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:50:    label: "Live Tracking",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:51:    path: "/live-tracking-foundation",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:56:// SUPERADMIN_A3_B_ROLE_MENU
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:114:const superAdminMenu = [
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:116:    label: "Dashboard SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:117:    path: "/super-admin",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:121:    label: "Clientes SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:122:    path: "/super-admin/clientes",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:126:    label: "Planos SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:127:    path: "/super-admin/planos",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:152:export function AdminLayout() {
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:158:  // SUPERADMIN_A3_B_DYNAMIC_MENU_FILTER
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:159:  const dynamicMenu = userRoleForMenu === 'SUPER_ADMIN' ? superAdminMenu : menu;
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:185:            {dynamicMenu.map((item) => {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:38:        Clientes SaaS
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:42:    Planos SaaS
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:4:import { AdminLayout } from "./layouts/AdminLayout";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:43:          <Route element={<AdminLayout />}>

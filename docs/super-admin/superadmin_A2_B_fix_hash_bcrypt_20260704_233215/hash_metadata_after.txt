@@ -1,0 +1,5 @@
+          email           |    role     | hash_length | hash_prefix | detected_algorithm 
+--------------------------+-------------+-------------+-------------+--------------------
+ superadmin@rh-saas.local | SUPER_ADMIN |          60 | $2b$10$     | bcrypt_2b
+(1 row)
+

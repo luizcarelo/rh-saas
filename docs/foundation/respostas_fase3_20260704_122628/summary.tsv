@@ -1,0 +1,11 @@
+endpoint	http_status	response_file
+/v1/foundation/overview	404	/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-overview.json
+/v1/foundation/hr/employees	404	/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-employees.json
+/v1/foundation/hr/departments	404	/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-departments.json
+/v1/foundation/hr/job-positions	404	/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-job-positions.json
+/v1/foundation/hr/job-functions	404	/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-job-functions.json
+/v1/foundation/hr/work-locations	404	/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-work-locations.json
+/v1/foundation/hr/geofences	404	/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-hr-geofences.json
+/v1/foundation/mobile/devices	404	/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-mobile-devices.json
+/v1/foundation/mobile/settings	404	/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-mobile-settings.json
+/v1/foundation/tracking/points	404	/opt/rh-saas/docs/foundation/respostas_fase3_20260704_122628/v1-foundation-tracking-points.json

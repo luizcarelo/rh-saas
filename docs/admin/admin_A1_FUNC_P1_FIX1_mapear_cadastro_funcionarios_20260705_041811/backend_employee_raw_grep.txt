@@ -1,0 +1,991 @@
+=================================================
+BACKEND EMPLOYEE RAW GREP
+Data: 20260705_041811
+=================================================
+
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:11:import { HrEmployeeProfile } from './entities/hr-employee-profile.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:12:import { HrDepartment } from './entities/hr-department.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:13:import { HrJobPosition } from './entities/hr-job-position.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:27:import { DocumentFoundation } from './entities/document-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:28:import { DocumentRecipientFoundation } from './entities/document-recipient-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:41:    private readonly employeeProfileRepo: Repository<HrEmployeeProfile>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:44:    private readonly departmentRepo: Repository<HrDepartment>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:83:    private readonly documentFoundationRepo: Repository<DocumentFoundation>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:86:    private readonly documentRecipientFoundationRepo: Repository<DocumentRecipientFoundation>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:96:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:100:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:113:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:117:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:121:      employeeProfiles,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:122:      departments,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:136:      this.employeeProfileRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:139:      this.departmentRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:178:      employeeProfiles,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:179:      departments,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:195:  async employees(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:196:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:200:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:203:    return this.employeeProfileRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:212:  async departments(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:213:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:217:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:220:    return this.departmentRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:227:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:231:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:241:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:245:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:255:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:259:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:269:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:273:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:283:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:287:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:297:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:301:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:310:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:314:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:325:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:329:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:363:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:367:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:384:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:388:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:404:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:408:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:418:  async documentsOverview(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:419:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:423:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:427:      documents,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:430:      this.documentFoundationRepo.count({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:433:      this.documentRecipientFoundationRepo.count(),
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:438:      documents,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:443:  async documents(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:444:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:448:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:451:    return this.documentFoundationRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:458:  async documentRecipients() {
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:459:    return this.documentRecipientFoundationRepo.find({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:467:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:471:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:486:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:490:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:502:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:506:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:521:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:525:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:541:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:546:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:549:    let employeeProfileId = dto.employeeProfileId;
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:551:    if (employeeProfileId) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:552:      const employee =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:553:        await this.employeeProfileRepo.findOne({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:555:            id: employeeProfileId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:560:      if (!employee) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:562:          'Perfil de colaborador não encontrado para este cliente.',
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:579:          employeeProfileId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:588:      device.employeeProfileId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:589:        employeeProfileId ?? device.employeeProfileId;
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:601:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:606:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:609:    const employee =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:610:      await this.employeeProfileRepo.findOne({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:612:          id: dto.employeeProfileId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:617:    if (!employee) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:619:        'Perfil de colaborador não encontrado para este cliente.',
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:642:        employeeProfileId: dto.employeeProfileId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:662:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:666:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:677:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:681:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:687:      .orderBy('point.employee_profile_id', 'ASC')
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:689:      .distinctOn(['point.employee_profile_id'])
+/opt/rh-saas/backend/src/modules/foundation/dto/create-location-tracking-point.dto.ts:17:  employeeProfileId: string;
+/opt/rh-saas/backend/src/modules/foundation/dto/register-mobile-device.dto.ts:11:  employeeProfileId?: string;
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:9:import { HrEmployeeProfile } from './entities/hr-employee-profile.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:10:import { HrDepartment } from './entities/hr-department.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:11:import { HrJobPosition } from './entities/hr-job-position.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:25:import { DocumentFoundation } from './entities/document-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:26:import { DocumentRecipientFoundation } from './entities/document-recipient-foundation.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:15:@Controller('v1/foundation')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:22:  @Get('overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:25:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:29:  @Get('hr/employees')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:30:  employees(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:31:    return this.foundationService.employees(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:32:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:36:  @Get('hr/departments')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:37:  departments(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:38:    return this.foundationService.departments(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:39:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:43:  @Get('hr/job-positions')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:46:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:50:  @Get('hr/job-functions')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:53:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:57:  @Get('hr/work-locations')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:60:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:64:  @Get('hr/geofences')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:67:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:71:  @Get('mobile/devices')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:74:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:78:  @Get('mobile/settings')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:81:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:85:  @Get('tracking/points')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:88:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:92:  @Get('clock/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:95:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:99:  @Get('clock/events')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:102:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:106:  @Get('clock/event-types')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:111:  @Get('clock/policies')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:114:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:118:  @Get('clock/policy-event-types')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:123:  @Get('clock/justifications')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:126:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:130:  @Get('documents/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:131:  documentsOverview(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:132:    return this.foundationService.documentsOverview(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:133:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:137:  @Get('documents')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:138:  documents(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:139:    return this.foundationService.documents(
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:140:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:144:  @Get('documents/recipients')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:145:  documentRecipients() {
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:146:    return this.foundationService.documentRecipients();
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:150:  @Get('timebank/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:153:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:157:  @Get('timebank/balances')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:160:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:165:  @Get('payroll/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:168:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:172:  @Get('payroll/payslips')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:175:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:180:  @Post('live-tracking/device')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:186:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:191:  @Post('live-tracking/location')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:197:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:202:  @Get('live-tracking/points')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:207:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:211:  @Get('live-tracking/latest')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:216:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:24:    name: 'employee_profile_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:28:  employeeProfileId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts:10:  name: 'hr_job_positions',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:24:    name: 'employee_profile_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:28:  employeeProfileId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts:24:    name: 'employee_profile_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts:28:  employeeProfileId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:10:  name: 'hr_employee_profiles',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:24:    name: 'employee_external_ref',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:28:  employeeExternalRef: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:46:  cpf: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:55:    name: 'department_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:59:  departmentId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:62:    name: 'job_position_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:76:    name: 'admission_date',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:80:  admissionDate: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:22:  tenantId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:52:    name: 'document_number',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:56:  documentNumber: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:25:    name: 'employee_profile_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:29:  employeeProfileId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts:10:  name: 'hr_departments',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:24:    name: 'employee_profile_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:28:  employeeProfileId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:10:  name: 'documents_foundation',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:29:    name: 'document_type',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:33:  documentType: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:10:  name: 'document_recipients_foundation',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:18:    name: 'document_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:21:  documentId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:24:    name: 'employee_profile_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts:28:  employeeProfileId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:24:    name: 'employee_profile_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:28:  employeeProfileId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:22:  tenantId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:24:  @Column({ name: 'employee_id' })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:25:  employeeId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:37:    tenantId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:38:    employeeId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:45:    const rawString = `${data.tenantId}|${data.employeeId}|${data.timestamp}|${data.eventType}|${data.latitude}|${data.longitude}`;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:53:    tenantId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:54:    employeeId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:86:      tenantId: data.tenantId,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:87:      employeeId: data.employeeId,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:96:      tenantId: data.tenantId,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:97:      employeeId: data.employeeId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:11:@Controller('v1/reports')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:18:  @Get('employees')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:19:  employees(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:20:    return this.reportsService.employees(
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:21:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:25:  @Get('schedules')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:28:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:32:  @Get('time-bank')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:35:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:39:  @Get('afd')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:42:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:46:  @Get('executive')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:49:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:53:  @Get('productivity')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:56:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:60:  @Get('time-bank-summary')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:63:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:67:  @Get('schedule-distribution')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:70:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.module.ts:7:import { Employee } from '../employees/employee.entity';
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:5:import { Employee } from '../employees/employee.entity';
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:14:    private readonly employeeRepo: Repository<Employee>,
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:26:  async employees(tenantId: string) {
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:27:    const employees = await this.employeeRepo.find({
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:28:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:32:      total: employees.length,
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:33:      active: employees.filter(
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:36:      inactive: employees.filter(
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:39:      data: employees,
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:43:  async schedules(tenantId: string) {
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:46:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:55:  async timeBank(tenantId: string) {
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:58:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:67:  async afd(tenantId: string) {
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:70:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:82:  async executive(tenantId: string) {
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:84:      employees,
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:88:      this.employeeRepo.count({
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:89:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:92:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:95:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:122:      employees,
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:131:  async productivity(tenantId: string) {
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:132:    const employees =
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:133:      await this.employeeRepo.count({
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:134:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:139:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:143:      employees,
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:146:        employees > 0
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:150:                employees
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:158:    tenantId: string,
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:162:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:198:    tenantId: string,
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:202:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:22:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:23:    employeeId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:29:      tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:30:      employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:40:      tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:45:        employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:55:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:56:    employeeId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:61:      tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:62:      employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:70:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:71:    employeeId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:76:      tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:77:      employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:85:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:86:    employeeId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:91:      tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:92:      employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:100:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:101:    employeeId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:106:      tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:107:      employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:114:  async findAll(tenantId: string) {
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:116:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:124:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:125:    employeeId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:130:          tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:131:          employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:170:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:173:      await this.findAll(tenantId);
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:210:      const cpf =
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:214:        `${seq}3${dia}${mes}${ano}${hora}${min}${cpf}4B6F\r\n`;
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:7:@Controller('v1/time-records')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:42:  @Post('clock-in')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:53:      return this.timeRecordsService.clockIn(req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:54:      body.employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:60:      return this.timeRecordsService.breakStart(req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:61:      body.employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:67:      return this.timeRecordsService.breakEnd(req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:68:      body.employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:73:    return this.timeRecordsService.clockOut(req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:74:      body.employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:79:  @Post('break-start')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:85:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:86:      body.employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:92:  @Post('break-end')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:98:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:99:      body.employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:105:  @Post('clock-out')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:111:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:112:      body.employeeId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:118:  @Get('afd')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:125:        req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:129:      'Content-disposition',
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:141:  @Post('simulate-math')
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:21:  tenantId: string;
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:24:    name: 'employee_id',
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:27:  employeeId: string;
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts:18:  tenantId: string;
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts:24:  userId: string;
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:9:@Controller('audit')
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:16:  @Get()
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:21:  @Get('action/:action')
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:30:  @Get('entity/:entityType')
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:40:  @Get(':id')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.module.ts:7:import { Employee } from '../employees/employee.entity';
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:11:@Controller('v1/dashboard')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:19:  @Get('overview')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:22:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:26:  @Get('employees')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:27:  employees(@Req() req: any) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:28:    return this.dashboardService.employees(
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:29:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:33:  @Get('time-bank')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:36:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:40:  @Get('schedules')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:43:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:47:  @Get('time-records')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:50:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:54:  @Get('executive')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:59:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:5:import { Employee } from '../employees/employee.entity';
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:17:    private employeeRepo: Repository<Employee>,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:32:  async overview(tenantId: string) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:34:    const employees =
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:35:      await this.employeeRepo.count({
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:36:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:41:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:46:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:51:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:71:      employees,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:79:  async employees(tenantId: string) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:80:    return this.employeeRepo.find({
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:81:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:85:  async schedules(tenantId: string) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:87:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:91:  async timeBank(tenantId: string) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:93:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:97:  async timeRecords(tenantId: string) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:99:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:107:  async executive(tenantId: string) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:109:    const employees =
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:110:      await this.employeeRepo.count({
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:111:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:116:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:121:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:126:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:149:      employees,
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:10:  async getDashboardStats(tenantId: string, startDate?: string, endDate?: string) {
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:11:    const where: any = { tenantId };
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:28:    tenantId: string,
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:34:          tenantId,
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:5:@Controller('v1/analytics')
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:10:  @Get('overview')
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:12:    return this.service.getDashboardStats(req.user.tenantId, start, end);
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:15:  @Get('workforce')
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:20:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:12:import { EmployeesService } from './employees.service';
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:13:import { CreateEmployeeDto } from './dto/create-employee.dto';
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:20:@Controller('v1/employees')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:22:export class EmployeesController {
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:24:    private readonly employeesService: EmployeesService,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:27:  @Post()
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:30:    @Body() createDto: CreateEmployeeDto,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:33:    return this.employeesService.create(
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:34:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:39:  @Get()
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:44:    return this.employeesService.findAll(
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:45:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:49:  @Get(':id')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:55:    return this.employeesService.findOne(
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:57:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:61:  @Put(':id/link-user')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:68:    return this.employeesService.linkUser(
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:70:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:71:      dto.userId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:75:  @Delete(':id/link-user')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:81:    return this.employeesService.unlinkUser(
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:83:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:87:  @Delete(':id')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:93:    return this.employeesService.remove(
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:95:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:15:@Entity('employees')
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:25:  tenantId: string;
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:39:  userId: string | null;
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:51:  cpf: string;
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:59:  department: string;
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:69:  admissionDate: string;
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts:4:import { Employee } from './employee.entity';
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts:5:import { EmployeesService } from './employees.service';
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts:6:import { EmployeesController } from './employees.controller';
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts:17:    EmployeesService,
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts:20:    EmployeesController,
+/opt/rh-saas/backend/src/modules/employees/employees.module.ts:23:    EmployeesService,
+/opt/rh-saas/backend/src/modules/employees/dto/link-user.dto.ts:5:  userId: string;
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts:3:export class CreateEmployeeDto {
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts:14:  cpf: string;
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts:20:  department: string;
+/opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts:26:  admissionDate: string;
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:10:import { Employee } from './employee.entity';
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:11:import { CreateEmployeeDto } from './dto/create-employee.dto';
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:15:export class EmployeesService {
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:18:    private readonly employeeRepo: Repository<Employee>,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:27:    tenantId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:28:    data: CreateEmployeeDto,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:30:    const employee = this.employeeRepo.create({
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:32:      tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:36:      await this.employeeRepo.save(employee);
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:39:      tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:48:  async findAll(tenantId: string) {
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:49:    return this.employeeRepo.find({
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:51:        tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:65:    tenantId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:67:    const employee =
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:68:      await this.employeeRepo.findOne({
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:71:          tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:78:    if (!employee) {
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:84:    return employee;
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:88:    employeeId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:89:    tenantId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:90:    userId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:92:    const employee =
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:93:      await this.employeeRepo.findOne({
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:95:          id: employeeId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:96:          tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:100:    if (!employee) {
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:109:          id: userId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:110:          tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:121:      await this.employeeRepo.findOne({
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:123:          userId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:124:          tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:130:      alreadyLinked.id !== employee.id
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:133:        'Este usuário já está vinculado a outro colaborador.',
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:137:    employee.userId = user.id;
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:140:      await this.employeeRepo.save(employee);
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:143:      tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:154:    employeeId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:155:    tenantId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:157:    const employee =
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:158:      await this.employeeRepo.findOne({
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:160:          id: employeeId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:161:          tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:165:    if (!employee) {
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:171:    employee.userId = null;
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:174:      await this.employeeRepo.save(employee);
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:177:      tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:188:    tenantId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:191:      tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:197:    return this.employeeRepo.delete({
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:199:      tenantId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:78:    const employees = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:80:      FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:84:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:86:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:102:        employees: employees[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:103:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:221:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:224:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:227:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:230:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:263:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:264:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:265:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:309:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:312:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:316:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:319:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:364:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:365:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:366:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:479:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:494:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:506:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:516:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:525:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:576:             document_number = $4,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:588:        dto.documentNumber ?? current.document_number,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:600:      ['document_number', current.document_number, result.document_number],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:167:  @Get('clients/:id/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:177:  @Get('system/health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:183:  @Get('system/database')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:192:  @Get('system/storage')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:198:  @Get('system/metrics')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:207:  @Get('system/containers')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:213:  @Get('system/services')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:78:    const employees = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:80:      FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:84:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:86:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:102:        employees: employees[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:103:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:221:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:224:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:227:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:230:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:263:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:264:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:265:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:309:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:312:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:316:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:319:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:364:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:365:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:366:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:479:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:494:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:506:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:516:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:525:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:576:             document_number = $4,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:588:        dto.documentNumber ?? current.document_number,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:600:      ['document_number', current.document_number, result.document_number],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:21:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:30:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:36:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:42:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:51:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:59:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:75:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:85:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:93:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:103:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:109:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:117:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:128:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:76:    const employees = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:78:      FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:82:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:84:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:100:        employees: employees[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:101:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:219:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:222:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:225:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:228:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:261:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:262:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:263:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:307:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:310:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:314:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:317:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:362:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:363:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:364:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:20:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:29:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:35:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:41:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:50:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:58:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:74:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:84:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:92:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:102:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:108:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:116:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:76:    const employees = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:78:      FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:82:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:84:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:100:        employees: employees[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:101:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:219:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:222:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:225:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:228:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:261:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:262:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:263:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:307:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:310:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:314:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:317:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:362:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:363:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:364:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:477:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:492:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:504:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:514:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:523:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:167:  @Get('clients/:id/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:177:  @Get('system/health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:183:  @Get('system/database')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:192:  @Get('system/storage')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:198:  @Get('system/metrics')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:76:    const employees = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:78:      FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:82:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:84:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:100:        employees: employees[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:101:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:219:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:222:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:225:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:228:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:261:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:262:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:263:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:307:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:310:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:314:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:317:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:362:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:363:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:364:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:477:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:492:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:504:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:514:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:523:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:574:             document_number = $4,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:586:        dto.documentNumber ?? current.document_number,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:76:    const employees = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:78:      FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:82:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:84:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:100:        employees: employees[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:101:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:219:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:222:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:225:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:228:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:261:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:262:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:263:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:307:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:310:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:314:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:317:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:362:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:363:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:364:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:477:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:492:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:504:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:514:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:523:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:574:             document_number = $4,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:586:        dto.documentNumber ?? current.document_number,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:598:      ['document_number', current.document_number, result.document_number],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:76:    const employees = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:78:      FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:82:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:84:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:100:        employees: employees[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:101:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:219:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:222:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:225:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:228:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:261:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:262:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:263:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:307:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:310:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:314:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:317:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:362:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:363:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:364:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:477:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:492:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:504:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:514:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:523:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:574:             document_number = $4,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:586:        dto.documentNumber ?? current.document_number,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:598:      ['document_number', current.document_number, result.document_number],
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts:5:  employees: any;
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts:6:  documents: any;
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts:18:  documentNumber: string;
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts:5:  employees: any;
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts:6:  documents: any;
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts:7:    employees: number;
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts:8:    documents: number;
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts:19:  documentNumber?: string;
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:167:  @Get('clients/:id/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:167:  @Get('clients/:id/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:177:  @Get('system/health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:183:  @Get('system/database')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:76:    const employees = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:78:      FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:82:    const documents = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:84:      FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:100:        employees: employees[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:101:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:219:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:222:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:225:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:228:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:261:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:262:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:263:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:307:    const employees =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:310:        FROM hr_employee_profiles
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:314:    const documents =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:317:        FROM documents_foundation
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:362:      employees: employees[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:363:      documents: {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:364:        documents: documents[0]?.total ?? 0,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:477:          dto.documentNumber,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:492:            document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:504:          dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:514:          document_number
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:523:        dto.documentNumber
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:574:             document_number = $4,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:586:        dto.documentNumber ?? current.document_number,
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:19:  async findOne(tenantId: string) {
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:23:        where: { id: tenantId },
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:36:    tenantId: string,
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:41:      await this.findOne(tenantId);
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:52:      tenantId,
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:53:      entityId: tenantId,
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:14:@Controller('v1/tenant')
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:22:  @Get()
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:27:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:31:  @Put()
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:37:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/users/users.service.ts:40:      tenantId: data.tenantId,
+/opt/rh-saas/backend/src/modules/users/users.service.ts:50:      tenantId: savedUser.tenantId,
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:31:  tenantId: string;
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts:6:  tenantId: string;
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts:9:  employeeId: string;
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:18:@Controller('v1/users')
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:26:  @Post()
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:33:      tenantId: req.user.tenantId,
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:37:  @Get()
+/opt/rh-saas/backend/src/modules/schedules/schedules.module.ts:5:import { EmployeeSchedule } from './employee-schedule.entity';
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts:4:@Entity('employee_schedules')
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts:10:  tenantId: string;
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts:12:  @Column({ name: 'employee_id' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts:13:  employeeId: string;
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:21:@Controller('v1/schedules')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:29:  @Get()
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:34:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:38:  @Post('assign')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:44:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:49:  @Get('employee/:employeeId')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:52:    @Param('employeeId') employeeId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:55:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:56:      employeeId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:59:@Get('employee/:employeeId/active')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:62:  @Param('employeeId') employeeId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:65:    req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:66:    employeeId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:70:@Delete('assign/:id')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:76:    req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:81:@Patch('assign/:id/end')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:88:    req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:94:  @Get(':id')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:101:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:105:  @Post()
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:111:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:116:  @Put(':id')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:124:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:129:  @Delete(':id')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:136:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:6:import { EmployeeSchedule } from './employee-schedule.entity';
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:18:    private employeeScheduleRepo: Repository<EmployeeSchedule>,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:23:  async findAll(tenantId: string) {
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:25:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:34:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:40:          tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:54:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:60:        tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:67:      tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:79:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:85:        tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:99:      tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:111:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:115:      tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:119:      tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:127:      tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:132:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:136:      this.employeeScheduleRepo.create({
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:137:        tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:138:        employeeId: dto.employeeId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:145:      await this.employeeScheduleRepo.save(
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:150:      tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:161:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:162:    employeeId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:164:    return this.employeeScheduleRepo
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:171:        'es.tenantId = :tenantId',
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:172:        { tenantId },
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:175:        'es.employeeId = :employeeId',
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:176:        { employeeId },
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:185:  tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:186:  employeeId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:188:  return this.employeeScheduleRepo
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:195:      'es.tenantId = :tenantId',
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:196:      { tenantId },
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:199:      'es.employeeId = :employeeId',
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:200:      { employeeId },
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:211:  tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:216:    await this.employeeScheduleRepo.findOne({
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:219:        tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:230:    tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:236:  return this.employeeScheduleRepo.delete({
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:242:  tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:248:    await this.employeeScheduleRepo.findOne({
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:251:        tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:264:    await this.employeeScheduleRepo.save(
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:269:    tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:283:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:284:    employeeId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:297:      await this.employeeScheduleRepo
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:304:          'es.tenantId = :tenantId',
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:305:          { tenantId },
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:308:          'es.employeeId = :employeeId',
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:309:          { employeeId },
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts:14:  tenantId: string;
+/opt/rh-saas/backend/src/modules/schedules/dto/assign-schedule.dto.ts:2:  employeeId: string;
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:48:      tenantId: user.tenantId,
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:53:      tenantId: user.tenantId,
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:54:      userId: user.id,
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts:22:      userId: payload.sub,
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts:23:      tenantId: payload.tenantId,
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:5:@Controller('v1/auth')
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:9:  @Post('login')
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:46:      tenantId: user.tenantId,
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts:3:@Entity('documents')
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts:9:  tenantId: string;
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts:11:  @Column({ name: 'employee_id' })
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts:12:  employeeId: string;
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:5:import { Document } from './document.entity';
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:18:    tenantId: string,
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:19:    employeeId: string,
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:25:      tenantId,
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:26:      employeeId,
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:35:      tenantId,
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:46:    tenantId: string,
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:47:    employeeId: string,
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:51:        tenantId,
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:52:        employeeId,
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:3:import { DocumentsService } from './documents.service';
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:6:@Controller('v1/documents')
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:11:  @Post('upload')
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:14:    return this.docsService.uploadDocument(req.user.tenantId, req.body.employeeId, file.originalname, file.path);
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:17:  @Get('my-docs')
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:19:    return this.docsService.listForEmployee(req.user.tenantId, req.user.employeeId);
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts:4:import { Document } from './document.entity';
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts:5:import { DocumentsService } from './documents.service';
+/opt/rh-saas/backend/src/modules/documents/documents.module.ts:6:import { DocumentsController } from './documents.controller';
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts:9:  tenantId: string;
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts:11:  @Column({ name: 'employee_id' })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts:12:  employeeId: string;
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:14:@Controller('v1/time-bank')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:22:  @Get()
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:27:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:31:  @Get(':employeeId')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:34:    @Param('employeeId') employeeId: string,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:37:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:38:      employeeId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:42:  @Get(':employeeId/details')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:45:    @Param('employeeId') employeeId: string,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:48:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:49:      employeeId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:53:  @Post('recalculate')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:59:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:60:      body.employeeId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:28:  tenantId: string,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:32:      tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:41:  tenantId: string,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:42:  employeeId: string,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:46:      tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:47:      employeeId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:56:  tenantId: string,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:57:  employeeId: string,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:62:      tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:63:      employeeId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:74:    employeeId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:82:  async processDailyBalance(tenantId: string, employeeId: string, targetDate: string, expectedMinutes: number) {
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:90:        tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:91:        employeeId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:118:      where: { tenantId, employeeId, date: targetDate }
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:123:        tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:124:        employeeId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:139:  tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:144:    employeeId,
+/opt/rh-saas/backend/src/app.controller.ts:4:@Controller()
+/opt/rh-saas/backend/src/app.controller.ts:8:  @Get()
+/opt/rh-saas/backend/src/app.module.ts:8:import { DocumentsModule } from "./modules/documents/documents.module";
+/opt/rh-saas/backend/src/app.module.ts:9:import { EmployeesModule } from "./modules/employees/employees.module";

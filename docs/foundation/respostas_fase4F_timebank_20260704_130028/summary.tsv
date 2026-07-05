@@ -1,0 +1,3 @@
+endpoint	http_status	response_file
+/v1/foundation/timebank/overview	200	/opt/rh-saas/docs/foundation/respostas_fase4F_timebank_20260704_130028/v1-foundation-timebank-overview.json
+/v1/foundation/timebank/balances	200	/opt/rh-saas/docs/foundation/respostas_fase4F_timebank_20260704_130028/v1-foundation-timebank-balances.json

@@ -1,0 +1,1029 @@
+=================================================
+SUPERADMIN-A4-A - FRONTEND RAW
+Data: 20260704_235939
+=================================================
+
+## Estrutura frontend
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/App.css
+/opt/rh-saas/frontend-web/src/App.tsx
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak
+/opt/rh-saas/frontend-web/src/assets/hero.png
+/opt/rh-saas/frontend-web/src/assets/react.svg
+/opt/rh-saas/frontend-web/src/assets/vite.svg
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx
+/opt/rh-saas/frontend-web/src/components/MapComponent.tsx
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx
+/opt/rh-saas/frontend-web/src/components/ui/button.tsx
+/opt/rh-saas/frontend-web/src/components/ui/card.tsx
+/opt/rh-saas/frontend-web/src/components/ui/dialog.tsx
+/opt/rh-saas/frontend-web/src/components/ui/Skeleton.tsx
+/opt/rh-saas/frontend-web/src/components/ui/table.tsx
+/opt/rh-saas/frontend-web/src/index.css
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx
+/opt/rh-saas/frontend-web/src/lib/api.ts
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+/opt/rh-saas/frontend-web/src/lib/utils.ts
+/opt/rh-saas/frontend-web/src/lib/validations/employee.ts
+/opt/rh-saas/frontend-web/src/main.tsx
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Login.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx
+/opt/rh-saas/frontend-web/src/utils/export.ts
+/opt/rh-saas/frontend-web/src/vite-env.d.ts
+
+## Rotas/termos Super Admin
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/App.tsx:22:import { SuperAdminDashboard } from "./pages/SuperAdminDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx:23:import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+/opt/rh-saas/frontend-web/src/App.tsx:24:import { SuperAdminClientDetailsPage } from "./pages/SuperAdminClientDetailsPage";
+/opt/rh-saas/frontend-web/src/App.tsx:25:import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+/opt/rh-saas/frontend-web/src/App.tsx:26:import { SuperAdminClientAuditPage } from "./pages/SuperAdminClientAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx:27:import { SuperAdminClientModulesPage } from "./pages/SuperAdminClientModulesPage";
+/opt/rh-saas/frontend-web/src/App.tsx:28:import { SuperAdminClientModulesAuditPage } from "./pages/SuperAdminClientModulesAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx:30:import { SuperAdminPlansPage } from "./pages/SuperAdminPlansPage";
+/opt/rh-saas/frontend-web/src/App.tsx:31:import { SuperAdminPlanDetailsPage } from "./pages/SuperAdminPlanDetailsPage";
+/opt/rh-saas/frontend-web/src/App.tsx:32:import { SuperAdminPlanCreatePage } from "./pages/SuperAdminPlanCreatePage";
+/opt/rh-saas/frontend-web/src/App.tsx:101:              path="/super-admin"
+/opt/rh-saas/frontend-web/src/App.tsx:103:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:104:                  ? <SuperAdminDashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:110:              path="/super-admin/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx:112:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:113:                  ? <SuperAdminClientsPage />
+/opt/rh-saas/frontend-web/src/App.tsx:119:              path="/super-admin/clientes/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:121:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:122:                  ? <SuperAdminClientDetailsPage />
+/opt/rh-saas/frontend-web/src/App.tsx:128:              path="/super-admin/clientes/:id/dashboard"
+/opt/rh-saas/frontend-web/src/App.tsx:130:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:131:                  ? <SuperAdminClientDashboardPage />
+/opt/rh-saas/frontend-web/src/App.tsx:137:              path="/super-admin/clientes/:id/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:139:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:140:                  ? <SuperAdminClientAuditPage />
+/opt/rh-saas/frontend-web/src/App.tsx:146:              path="/super-admin/clientes/:id/modules"
+/opt/rh-saas/frontend-web/src/App.tsx:148:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:149:                  ? <SuperAdminClientModulesPage />
+/opt/rh-saas/frontend-web/src/App.tsx:155:              path="/super-admin/clientes/:id/modules/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:157:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:158:                  ? <SuperAdminClientModulesAuditPage />
+/opt/rh-saas/frontend-web/src/App.tsx:164:              path="/super-admin/planos"
+/opt/rh-saas/frontend-web/src/App.tsx:166:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:167:                  ? <SuperAdminPlansPage />
+/opt/rh-saas/frontend-web/src/App.tsx:173:              path="/super-admin/planos/novo"
+/opt/rh-saas/frontend-web/src/App.tsx:175:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:176:                  ? <SuperAdminPlanCreatePage />
+/opt/rh-saas/frontend-web/src/App.tsx:182:              path="/super-admin/planos/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:184:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:185:                  ? <SuperAdminPlanDetailsPage />
+/opt/rh-saas/frontend-web/src/lib/api.ts:13:  tenantId?: string;
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:44:    label: "Auditoria",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:117:    path: "/super-admin",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:121:    label: "Clientes SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:122:    path: "/super-admin/clientes",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:126:    label: "Planos SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:127:    path: "/super-admin/planos",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:159:  const dynamicMenu = userRoleForMenu === 'SUPER_ADMIN' ? superAdminMenu : menu;
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:213:                {user?.email || "admin@empresa.com"}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:4:export function SuperAdminPlanCreatePage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:13:      "/v1/super-admin/plans",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:10:export function SuperAdminDashboard() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:22:      apiRequest("/v1/super-admin/dashboard"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:23:      apiRequest("/v1/super-admin/system/health"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:24:      apiRequest("/v1/super-admin/system/database"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:25:      apiRequest("/v1/super-admin/system/storage"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:26:      apiRequest("/v1/super-admin/system/metrics"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:27:      apiRequest("/v1/super-admin/system/services"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:47:      titulo: "Clientes",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:51:      titulo: "Clientes Ativos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:55:      titulo: "Clientes Inativos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:59:      titulo: "Planos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:79:      titulo: "Módulos Ativos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:80:      valor: dashboard?.modules?.enabled ?? 0,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:144:            Auditoria Recente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:13:export function SuperAdminPlanDetailsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:28:      "/v1/super-admin/plans"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:61:      `/v1/super-admin/plans/${plan.id}`,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:37:  modules: Array<{
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:43:export function SuperAdminClientDetailsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:55:      `/v1/super-admin/clients/${id}`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:68:  to={`/super-admin/clientes/${id}/dashboard`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:91:  to={`/super-admin/clientes/${id}/dashboard`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:114:  to={`/super-admin/clientes/${id}/dashboard`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:182:            <CardTitle>Empresa</CardTitle>
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:236:          <CardTitle>Módulos Habilitados</CardTitle>
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:243:            {data.modules.map((module) => (
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:114:            "Nenhuma rota de auditoria disponível no backend no momento.",
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:122:          : "Não foi possível carregar os logs de auditoria.",
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:176:                Auditoria
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:181:                não possuir rota de auditoria, esta tela exibirá uma mensagem
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:213:            <p className="font-semibold">Auditoria indisponível</p>
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:223:            <p className="font-semibold">Erro ao carregar auditoria</p>
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:233:              Eventos de auditoria
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:272:                      Carregando auditoria...
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:285:                        <p>Nenhum evento de auditoria encontrado.</p>
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:19:export function SuperAdminClientsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:27:      "/v1/super-admin/clients"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:38:        Clientes SaaS
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:45:            Clientes Cadastrados
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:91:                          to={`/super-admin/clientes/${client.id}`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:11:export function SuperAdminClientDashboardPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:22:      `/v1/super-admin/clients/${id}/dashboard`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:51:      titulo: "Módulos Ativos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:52:      valor: data.modules?.enabled ?? 0,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:55:      titulo: "Módulos Inativos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:56:      valor: data.modules?.disabled ?? 0,
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:10:    tenantId: string;
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:42:  const [email, setEmail] = useState("admin@empresa.com");
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:95:                Controle colaboradores, ponto, documentos e auditoria em uma
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:141:                placeholder="admin@empresa.com"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:10:export function SuperAdminClientModulesPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:25:      `/v1/super-admin/clients/${id}/modules`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:42:      `/v1/super-admin/clients/${id}/modules/${moduleCode}`,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:74:    Módulos do Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:78:    to={`/super-admin/clientes/${id}/modules/audit`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:81:    Auditoria
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:88:        Módulos do Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:5:export function SuperAdminClientModulesAuditPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:16:      `/v1/super-admin/clients/${id}/modules/audit`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:27:        Auditoria de Módulos
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:45:                Nenhuma auditoria encontrada.
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:11:export function SuperAdminClientAuditPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:22:      `/v1/super-admin/clients/${id}/audit`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:33:        Auditoria do Cliente
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:47:            <p>Nenhuma auditoria encontrada.</p>
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:20:export function SuperAdminPlansPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:28:      "/v1/super-admin/plans"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:42:    Planos SaaS
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:46:    to="/super-admin/planos/novo"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:58:            Planos Cadastrados
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:126:    to={`/super-admin/planos/${plan.id}`}
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:171:                Cadastre, consulte e acompanhe os colaboradores da empresa.
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:172:                O acesso respeita o tenant do usuário autenticado.
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx:104:          placeholder="colaborador@empresa.com"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:20:import { SuperAdminDashboard } from "./pages/SuperAdminDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:21:import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:22:import { SuperAdminClientDetailsPage } from "./pages/SuperAdminClientDetailsPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:23:import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:24:import { SuperAdminClientAuditPage } from "./pages/SuperAdminClientAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:25:import { SuperAdminClientModulesPage } from "./pages/SuperAdminClientModulesPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:26:import { SuperAdminClientModulesAuditPage } from "./pages/SuperAdminClientModulesAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:28:import { SuperAdminPlansPage } from "./pages/SuperAdminPlansPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:29:import { SuperAdminPlanDetailsPage } from "./pages/SuperAdminPlanDetailsPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:30:import { SuperAdminPlanCreatePage } from "./pages/SuperAdminPlanCreatePage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:83:              path="/super-admin"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:85:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:86:                  ? <SuperAdminDashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:92:              path="/super-admin/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:94:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:95:                  ? <SuperAdminClientsPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:101:              path="/super-admin/clientes/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:103:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:104:                  ? <SuperAdminClientDetailsPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:110:              path="/super-admin/clientes/:id/dashboard"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:112:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:113:                  ? <SuperAdminClientDashboardPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:119:              path="/super-admin/clientes/:id/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:121:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:122:                  ? <SuperAdminClientAuditPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:128:              path="/super-admin/clientes/:id/modules"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:130:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:131:                  ? <SuperAdminClientModulesPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:137:              path="/super-admin/clientes/:id/modules/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:139:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:140:                  ? <SuperAdminClientModulesAuditPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:146:              path="/super-admin/planos"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:148:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:149:                  ? <SuperAdminPlansPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:155:              path="/super-admin/planos/novo"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:157:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:158:                  ? <SuperAdminPlanCreatePage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:164:              path="/super-admin/planos/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:166:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:167:                  ? <SuperAdminPlanDetailsPage />
+
+## Paginas candidatas
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx
+
+## Services candidatos
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/lib/api.ts
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+
+## Menu Super Admin
+-------------------------------------------------
+/opt/rh-saas/frontend-web/src/App.tsx:4:import { AdminLayout } from "./layouts/AdminLayout";
+/opt/rh-saas/frontend-web/src/App.tsx:47:          <Route element={<AdminLayout />}>
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:12:const menu = [
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:14:    label: "Dashboard",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:15:    path: "/",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:19:    label: "Colaboradores",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:20:    path: "/colaboradores",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:24:    label: "Usuários",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:25:    path: "/usuarios",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:29:  label: "Analytics",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:30:  path: "/analytics",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:34:    label: "Controle de ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:35:    path: "/ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:39:    label: "Registrar ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:40:    path: "/registrar-ponto",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:44:    label: "Auditoria",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:45:    path: "/audit",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:50:    label: "Live Tracking",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:51:    path: "/live-tracking-foundation",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:56:// SUPERADMIN_A3_B_ROLE_MENU
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:114:const superAdminMenu = [
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:116:    label: "Dashboard SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:117:    path: "/super-admin",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:121:    label: "Clientes SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:122:    path: "/super-admin/clientes",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:126:    label: "Planos SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:127:    path: "/super-admin/planos",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:152:export function AdminLayout() {
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:158:  // SUPERADMIN_A3_B_DYNAMIC_MENU_FILTER
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:159:  const dynamicMenu = userRoleForMenu === 'SUPER_ADMIN' ? superAdminMenu : menu;
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:185:            {dynamicMenu.map((item) => {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:38:        Clientes SaaS
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:42:    Planos SaaS
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:4:import { AdminLayout } from "./layouts/AdminLayout";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:43:          <Route element={<AdminLayout />}>
+
+## App.tsx
+-------------------------------------------------
+     1	import { BrowserRouter, Route, Routes } from "react-router-dom";
+     2	import { Toaster } from "react-hot-toast";
+     3	
+     4	import { AdminLayout } from "./layouts/AdminLayout";
+     5	import { EmployeeLayout } from "./layouts/EmployeeLayout";
+     6	
+     7	import { ProtectedRoute } from "./components/ProtectedRoute";
+     8	import { LiveTrackingFoundationPage } from "./pages/LiveTrackingFoundationPage";
+     9	import { getUserInfo } from "./lib/api";
+    10	
+    11	import { Login } from "./pages/Login";
+    12	import { Dashboard } from "./pages/Dashboard";
+    13	import { EmployeesPage } from "./pages/EmployeesPage";
+    14	import { EmployeeDetailsPage } from "./pages/EmployeeDetailsPage";
+    15	import { DocumentsPage } from "./pages/DocumentsPage";
+    16	import { UsersPage } from "./pages/UsersPage";
+    17	import { AuditLogsPage } from "./pages/AuditLogsPage";
+    18	import { TimeTrackingPage } from "./pages/TimeTrackingPage";
+    19	import { ClockInPage } from "./pages/ClockInPage";
+    20	import { EmployeeDashboard } from "./pages/EmployeeDashboard";
+    21	
+    22	import { SuperAdminDashboard } from "./pages/SuperAdminDashboard";
+    23	import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+    24	import { SuperAdminClientDetailsPage } from "./pages/SuperAdminClientDetailsPage";
+    25	import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+    26	import { SuperAdminClientAuditPage } from "./pages/SuperAdminClientAuditPage";
+    27	import { SuperAdminClientModulesPage } from "./pages/SuperAdminClientModulesPage";
+    28	import { SuperAdminClientModulesAuditPage } from "./pages/SuperAdminClientModulesAuditPage";
+    29	
+    30	import { SuperAdminPlansPage } from "./pages/SuperAdminPlansPage";
+    31	import { SuperAdminPlanDetailsPage } from "./pages/SuperAdminPlanDetailsPage";
+    32	import { SuperAdminPlanCreatePage } from "./pages/SuperAdminPlanCreatePage";
+    33	
+    34	import { AnalyticsPage } from "./pages/AnalyticsPage";
+    35	
+    36	export default function App() {
+    37	  return (
+    38	    <BrowserRouter>
+    39	      <Routes>
+    40	
+    41	        <Route
+    42	          path="/login"
+    43	          element={<Login />}
+    44	        />
+    45	
+    46	        <Route element={<ProtectedRoute />}>
+    47	          <Route element={<AdminLayout />}>
+    48	
+    49	            <Route
+    50	              path="/"
+    51	              element={<Dashboard />}
+    52	            />
+    53	
+    54	            <Route
+    55	              path="/colaboradores"
+    56	              element={<EmployeesPage />}
+    57	            />
+    58	
+    59	            <Route
+    60	            path="/colaboradores/:id"
+    61	            element={<EmployeeDetailsPage />}
+    62	            />
+    63	
+    64	            
+    65	<Route
+    66	  path="/documentos"
+    67	  element={<DocumentsPage />}
+    68	/>
+    69	
+    70	<Route
+    71	  path="/usuarios"
+    72	    element={<UsersPage />}
+    73	/>
+    74	<Route
+    75	  path="/analytics"
+    76	  element={<AnalyticsPage />}
+    77	/>
+    78	
+    79	            <Route
+    80	              path="/audit"
+    81	              element={<AuditLogsPage />}
+    82	            />
+    83	
+    84	            <Route
+    85	              path="/ponto"
+    86	              element={<TimeTrackingPage />}
+    87	            />
+    88	
+    89	            <Route
+    90	              path="/registrar-ponto"
+    91	              element={<ClockInPage />}
+    92	            />
+    93	
+    94	
+    95	            <Route
+    96	              path="/live-tracking-foundation"
+    97	              element={<LiveTrackingFoundationPage />}
+    98	            />
+    99	
+   100	            <Route
+   101	              path="/super-admin"
+   102	              element={
+   103	                getUserInfo()?.role === "SUPER_ADMIN"
+   104	                  ? <SuperAdminDashboard />
+   105	                  : <Dashboard />
+   106	              }
+   107	            />
+   108	
+   109	            <Route
+   110	              path="/super-admin/clientes"
+   111	              element={
+   112	                getUserInfo()?.role === "SUPER_ADMIN"
+   113	                  ? <SuperAdminClientsPage />
+   114	                  : <Dashboard />
+   115	              }
+   116	            />
+   117	
+   118	            <Route
+   119	              path="/super-admin/clientes/:id"
+   120	              element={
+   121	                getUserInfo()?.role === "SUPER_ADMIN"
+   122	                  ? <SuperAdminClientDetailsPage />
+   123	                  : <Dashboard />
+   124	              }
+   125	            />
+   126	
+   127	            <Route
+   128	              path="/super-admin/clientes/:id/dashboard"
+   129	              element={
+   130	                getUserInfo()?.role === "SUPER_ADMIN"
+   131	                  ? <SuperAdminClientDashboardPage />
+   132	                  : <Dashboard />
+   133	              }
+   134	            />
+   135	
+   136	            <Route
+   137	              path="/super-admin/clientes/:id/audit"
+   138	              element={
+   139	                getUserInfo()?.role === "SUPER_ADMIN"
+   140	                  ? <SuperAdminClientAuditPage />
+   141	                  : <Dashboard />
+   142	              }
+   143	            />
+   144	
+   145	            <Route
+   146	              path="/super-admin/clientes/:id/modules"
+   147	              element={
+   148	                getUserInfo()?.role === "SUPER_ADMIN"
+   149	                  ? <SuperAdminClientModulesPage />
+   150	                  : <Dashboard />
+   151	              }
+   152	            />
+   153	
+   154	            <Route
+   155	              path="/super-admin/clientes/:id/modules/audit"
+   156	              element={
+   157	                getUserInfo()?.role === "SUPER_ADMIN"
+   158	                  ? <SuperAdminClientModulesAuditPage />
+   159	                  : <Dashboard />
+   160	              }
+   161	            />
+   162	
+   163	            <Route
+   164	              path="/super-admin/planos"
+   165	              element={
+   166	                getUserInfo()?.role === "SUPER_ADMIN"
+   167	                  ? <SuperAdminPlansPage />
+   168	                  : <Dashboard />
+   169	              }
+   170	            />
+   171	
+   172	            <Route
+   173	              path="/super-admin/planos/novo"
+   174	              element={
+   175	                getUserInfo()?.role === "SUPER_ADMIN"
+   176	                  ? <SuperAdminPlanCreatePage />
+   177	                  : <Dashboard />
+   178	              }
+   179	            />
+   180	
+   181	            <Route
+   182	              path="/super-admin/planos/:id"
+   183	              element={
+   184	                getUserInfo()?.role === "SUPER_ADMIN"
+   185	                  ? <SuperAdminPlanDetailsPage />
+   186	                  : <Dashboard />
+   187	              }
+   188	            />
+   189	
+   190	          </Route>
+   191	        </Route>
+   192	
+   193	        <Route element={<ProtectedRoute />}>
+   194	<Route element={<EmployeeLayout />}>
+   195	            <Route
+   196	              path="/meu-painel"
+   197	              element={<EmployeeDashboard />}
+   198	            />
+   199	          </Route>
+   200	        </Route>
+   201	
+   202	      </Routes>
+   203	
+   204	      <Toaster position="top-right" />
+   205	    </BrowserRouter>
+   206	  );
+   207	}
+
+## AdminLayout.tsx
+-------------------------------------------------
+     1	import {
+     2	  BarChart3,
+     3	  Clock3,
+     4	  FileText,
+     5	  LayoutDashboard,
+     6	  LogOut,
+     7	  ShieldCheck,
+     8	  Users,
+     9	} from "lucide-react";
+    10	import { NavLink, Outlet, useNavigate } from "react-router-dom";
+    11	import { clearSession, getUserInfo } from "../lib/api";
+    12	const menu = [
+    13	  {
+    14	    label: "Dashboard",
+    15	    path: "/",
+    16	    icon: LayoutDashboard,
+    17	  },
+    18	  {
+    19	    label: "Colaboradores",
+    20	    path: "/colaboradores",
+    21	    icon: Users,
+    22	  },
+    23	  {
+    24	    label: "Usuários",
+    25	    path: "/usuarios",
+    26	    icon: Users,
+    27	  },
+    28	  {
+    29	  label: "Analytics",
+    30	  path: "/analytics",
+    31	  icon: BarChart3,
+    32	},
+    33	  {
+    34	    label: "Controle de ponto",
+    35	    path: "/ponto",
+    36	    icon: Clock3,
+    37	  },
+    38	  {
+    39	    label: "Registrar ponto",
+    40	    path: "/registrar-ponto",
+    41	    icon: ShieldCheck,
+    42	  },
+    43	  {
+    44	    label: "Auditoria",
+    45	    path: "/audit",
+    46	    icon: FileText,
+    47	  },
+    48	
+    49	  {
+    50	    label: "Live Tracking",
+    51	    path: "/live-tracking-foundation",
+    52	    icon: LayoutDashboard,
+    53	  },
+    54	];
+    55	
+    56	// SUPERADMIN_A3_B_ROLE_MENU
+    57	type StoredUserInfo = {
+    58	  role?: string;
+    59	  user?: {
+    60	    role?: string;
+    61	  };
+    62	  user_info?: {
+    63	    role?: string;
+    64	  };
+    65	};
+    66	
+    67	function readRoleFromStoredValue(value: string | null) {
+    68	  if (!value) {
+    69	    return '';
+    70	  }
+    71	
+    72	  try {
+    73	    const parsed = JSON.parse(value) as StoredUserInfo;
+    74	
+    75	    return (
+    76	      parsed.role ||
+    77	      parsed.user?.role ||
+    78	      parsed.user_info?.role ||
+    79	      ''
+    80	    );
+    81	  } catch {
+    82	    return '';
+    83	  }
+    84	}
+    85	
+    86	function getLoggedUserRole() {
+    87	  const keys = [
+    88	    'user_info',
+    89	    'userInfo',
+    90	    'user',
+    91	    'auth_user',
+    92	    'authUser',
+    93	    '@RH_USER',
+    94	    '@LH_User',
+    95	  ];
+    96	
+    97	  for (const key of keys) {
+    98	    const localRole = readRoleFromStoredValue(localStorage.getItem(key));
+    99	
+   100	    if (localRole) {
+   101	      return localRole;
+   102	    }
+   103	
+   104	    const sessionRole = readRoleFromStoredValue(sessionStorage.getItem(key));
+   105	
+   106	    if (sessionRole) {
+   107	      return sessionRole;
+   108	    }
+   109	  }
+   110	
+   111	  return '';
+   112	}
+   113	
+   114	const superAdminMenu = [
+   115	  {
+   116	    label: "Dashboard SaaS",
+   117	    path: "/super-admin",
+   118	    icon: ShieldCheck,
+   119	  },
+   120	  {
+   121	    label: "Clientes SaaS",
+   122	    path: "/super-admin/clientes",
+   123	    icon: Users,
+   124	  },
+   125	  {
+   126	    label: "Planos SaaS",
+   127	    path: "/super-admin/planos",
+   128	    icon: ShieldCheck,
+   129	  },
+   130	];
+   131	
+   132	
+   133	function IconLogo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+   134	  const sizeClass =
+   135	    size === "lg"
+   136	      ? "h-24 w-24 rounded-3xl"
+   137	      : size === "sm"
+   138	        ? "h-11 w-11 rounded-xl"
+   139	        : "h-14 w-14 rounded-2xl";
+   140	
+   141	  return (
+   142	    <div
+   143	      className={`${sizeClass} bg-white bg-contain bg-center bg-no-repeat shadow-xl shadow-cyan-500/20`}
+   144	      style={{
+   145	        backgroundImage: "url('/assets/icone-app.png')",
+   146	      }}
+   147	      aria-label="Ícone LH Solução RH"
+   148	    />
+   149	  );
+   150	}
+   151	
+   152	export function AdminLayout() {
+   153	  const navigate = useNavigate();
+   154	  const user = getUserInfo();
+   155	
+   156	const userRoleForMenu = getLoggedUserRole();
+   157	
+   158	  // SUPERADMIN_A3_B_DYNAMIC_MENU_FILTER
+   159	  const dynamicMenu = userRoleForMenu === 'SUPER_ADMIN' ? superAdminMenu : menu;
+   160	  function logout() {
+   161	    clearSession();
+   162	    navigate("/login", {
+   163	      replace: true,
+   164	    });
+   165	  }
+   166	
+   167	  return (
+   168	    <div className="min-h-screen bg-slate-950 text-slate-100">
+   169	      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.30),_transparent_34%),radial-gradient(circle_at_top_right,_rgba(34,197,94,0.18),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(249,115,22,0.16),_transparent_28%)]" />
+   170	
+   171	      <div className="relative flex min-h-screen">
+   172	        <aside className="hidden w-72 shrink-0 border-r border-white/10 bg-slate-950/85 backdrop-blur-xl lg:flex lg:flex-col">
+   173	          <div className="flex h-24 items-center gap-3 px-6">
+   174	            <IconLogo />
+   175	
+   176	            <div>
+   177	              <p className="text-sm font-medium text-cyan-200">LH Solução RH</p>
+   178	              <h1 className="text-lg font-bold tracking-tight text-white">
+   179	                Gestão inteligente
+   180	              </h1>
+   181	            </div>
+   182	          </div>
+   183	
+   184	          <nav className="flex-1 space-y-2 px-4 py-4">
+   185	            {dynamicMenu.map((item) => {
+   186	              const Icon = item.icon;
+   187	
+   188	              return (
+   189	                <NavLink
+   190	                  key={item.path}
+   191	                  to={item.path}
+   192	                  end={item.path === "/"}
+   193	                  className={({ isActive }) =>
+   194	                    [
+   195	                      "group flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition",
+   196	                      isActive
+   197	                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20"
+   198	                        : "text-slate-300 hover:bg-white/10 hover:text-white",
+   199	                    ].join(" ")
+   200	                  }
+   201	                >
+   202	                  <Icon className="h-5 w-5" />
+   203	                  {item.label}
+   204	                </NavLink>
+   205	              );
+   206	            })}
+   207	          </nav>
+   208	
+   209	          <div className="border-t border-white/10 p-4">
+   210	            <div className="mb-4 rounded-2xl bg-white/5 p-4">
+   211	              <p className="text-xs text-slate-400">Usuário conectado</p>
+   212	              <p className="mt-1 truncate text-sm font-semibold text-white">
+   213	                {user?.email || "admin@empresa.com"}
+   214	              </p>
+   215	              <p className="mt-1 text-xs text-orange-300">
+   216	                Perfil: {user?.role || "ADMIN"}
+   217	              </p>
+   218	            </div>
+   219	
+   220	            <button
+   221	              type="button"
+   222	              onClick={logout}
+   223	              className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 px-4 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/10"
+   224	            >
+   225	              <LogOut className="h-4 w-4" />
+   226	              Sair
+   227	            </button>
+   228	          </div>
+   229	        </aside>
+   230	
+   231	        <main className="flex min-h-screen flex-1 flex-col">
+   232	          <header className="sticky top-0 z-20 border-b border-white/10 bg-slate-950/75 px-4 py-4 backdrop-blur-xl lg:px-8">
+   233	            <div className="flex items-center justify-between">
+   234	              <div className="flex items-center gap-3 lg:hidden">
+   235	                <IconLogo size="sm" />
+   236	
+   237	                <div>
+   238	                  <p className="text-sm text-cyan-200">LH Solução RH</p>
+   239	                  <p className="text-base font-bold text-white">
+   240	                    Gestão inteligente
+   241	                  </p>
+   242	                </div>
+   243	              </div>
+   244	
+   245	              <div className="hidden lg:block">
+   246	                <p className="text-sm text-slate-400">Painel administrativo</p>
+   247	                <h2 className="text-xl font-bold text-white">
+   248	                  Bem-vindo ao sistema de RH
+   249	                </h2>
+   250	              </div>
+   251	
+   252	              <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-2">
+   253	                <BarChart3 className="h-5 w-5 text-orange-300" />
+   254	                <span className="text-sm font-medium text-slate-200">
+   255	                  Online
+   256	                </span>
+   257	              </div>
+   258	            </div>
+   259	          </header>
+   260	
+   261	          <section className="flex-1 p-4 lg:p-8">
+   262	            <Outlet />
+   263	          </section>
+   264	        </main>
+   265	      </div>
+   266	    </div>
+   267	  );
+   268	}
+
+## Services completos
+-------------------------------------------------
+### /opt/rh-saas/frontend-web/src/lib/api.ts
+     1	export type ApiError = {
+     2	  message?: string | string[];
+     3	  error?: string;
+     4	  statusCode?: number;
+     5	};
+     6	
+     7	export const API_BASE =
+     8	  import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "";
+     9	
+    10	export type UserInfo = {
+    11	  sub?: string;
+    12	  userId?: string;
+    13	  tenantId?: string;
+    14	  email?: string;
+    15	  role?: string;
+    16	  employeeId?: string | null;
+    17	};
+    18	
+    19	export function getToken() {
+    20	  return (
+    21	    localStorage.getItem("rh_access_token") ||
+    22	    localStorage.getItem("token") ||
+    23	    ""
+    24	  );
+    25	}
+    26	
+    27	export function getUserInfo(): UserInfo | null {
+    28	  const raw =
+    29	    localStorage.getItem("rh_user_info") ||
+    30	    localStorage.getItem("user_info");
+    31	
+    32	  if (!raw) {
+    33	    return null;
+    34	  }
+    35	
+    36	  try {
+    37	    return JSON.parse(raw) as UserInfo;
+    38	  } catch {
+    39	    return null;
+    40	  }
+    41	}
+    42	
+    43	export function setSession(accessToken: string, userInfo: unknown) {
+    44	  localStorage.setItem("rh_access_token", accessToken);
+    45	  localStorage.setItem("rh_user_info", JSON.stringify(userInfo));
+    46	
+    47	  /*
+    48	   * Compatibilidade com páginas antigas que ainda usam:
+    49	   * localStorage.getItem("token")
+    50	   */
+    51	  localStorage.setItem("token", accessToken);
+    52	  localStorage.setItem("user_info", JSON.stringify(userInfo));
+    53	}
+    54	
+    55	export function clearSession() {
+    56	  localStorage.removeItem("rh_access_token");
+    57	  localStorage.removeItem("rh_user_info");
+    58	
+    59	  /*
+    60	   * Remove também chaves antigas.
+    61	   */
+    62	  localStorage.removeItem("token");
+    63	  localStorage.removeItem("user_info");
+    64	}
+    65	
+    66	export function getAuthHeaders() {
+    67	  const token = getToken();
+    68	
+    69	  if (!token) {
+    70	    return {};
+    71	  }
+    72	
+    73	  return {
+    74	    Authorization: `Bearer ${token}`,
+    75	  };
+    76	}
+    77	
+    78	function normalizeErrorMessage(data: unknown, fallback: string) {
+    79	  if (!data || typeof data !== "object") {
+    80	    return fallback;
+    81	  }
+    82	
+    83	  const apiError = data as ApiError;
+    84	
+    85	  if (Array.isArray(apiError.message)) {
+    86	    return apiError.message.join(", ");
+    87	  }
+    88	
+    89	  return apiError.message || apiError.error || fallback;
+    90	}
+    91	
+    92	export async function apiRequest<T>(
+    93	  endpoint: string,
+    94	  options: RequestInit = {},
+    95	): Promise<T> {
+    96	  const token = getToken();
+    97	
+    98	  const headers: Record<string, string> = {
+    99	    "Content-Type": "application/json",
+   100	    ...((options.headers as Record<string, string>) || {}),
+   101	  };
+   102	
+   103	  if (token) {
+   104	    headers.Authorization = `Bearer ${token}`;
+   105	  }
+   106	
+   107	  const response = await fetch(`${API_BASE}${endpoint}`, {
+   108	    ...options,
+   109	    headers,
+   110	  });
+   111	
+   112	  const text = await response.text();
+   113	
+   114	  let data: unknown = null;
+   115	
+   116	  if (text) {
+   117	    try {
+   118	      data = JSON.parse(text);
+   119	    } catch {
+   120	      data = text;
+   121	    }
+   122	  }
+   123	
+   124	  if (response.status === 401) {
+   125	    clearSession();
+   126	  }
+   127	
+   128	  if (!response.ok) {
+   129	    throw new Error(
+   130	      normalizeErrorMessage(data, `Erro HTTP ${response.status}`),
+   131	    );
+   132	  }
+   133	
+   134	  return data as T;
+   135	}
+
+### /opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+     1	import { apiRequest } from "./api";
+     2	
+     3	export type FoundationEmployee = {
+     4	  id: string;
+     5	  clientId?: string;
+     6	  employeeExternalRef?: string | null;
+     7	  firstName?: string;
+     8	  lastName?: string;
+     9	  cpf?: string | null;
+    10	  email?: string | null;
+    11	  departmentId?: string | null;
+    12	  jobPositionId?: string | null;
+    13	  jobFunctionId?: string | null;
+    14	  admissionDate?: string | null;
+    15	  status?: string;
+    16	  createdAt?: string;
+    17	  updatedAt?: string;
+    18	};
+    19	
+    20	export type RegisterMobileDevicePayload = {
+    21	  employeeProfileId?: string;
+    22	  deviceUid: string;
+    23	  platform?: string;
+    24	  model?: string;
+    25	  appVersion?: string;
+    26	};
+    27	
+    28	export type MobileDeviceFoundation = {
+    29	  id: string;
+    30	  clientId?: string;
+    31	  employeeProfileId?: string | null;
+    32	  deviceUid: string;
+    33	  platform?: string | null;
+    34	  model?: string | null;
+    35	  appVersion?: string | null;
+    36	  isActive?: boolean;
+    37	  lastSeenAt?: string | null;
+    38	  createdAt?: string;
+    39	  updatedAt?: string;
+    40	};
+    41	
+    42	export type CreateLocationTrackingPointPayload = {
+    43	  employeeProfileId: string;
+    44	  deviceId?: string;
+    45	  latitude: number;
+    46	  longitude: number;
+    47	  accuracyMeters?: number;
+    48	  address?: string;
+    49	  source?: string;
+    50	  trackedAt?: string;
+    51	  metadata?: Record<string, unknown>;
+    52	};
+    53	
+    54	export type LocationTrackingPointFoundation = {
+    55	  id: string;
+    56	  clientId?: string;
+    57	  employeeProfileId?: string | null;
+    58	  deviceId?: string | null;
+    59	  trackedAt?: string;
+    60	  latitude: string | number;
+    61	  longitude: string | number;
+    62	  accuracyMeters?: string | number | null;
+    63	  address?: string | null;
+    64	  source?: string;
+    65	  metadata?: Record<string, unknown>;
+    66	  createdAt?: string;
+    67	  updatedAt?: string;
+    68	};
+    69	
+    70	export async function getFoundationEmployees() {
+    71	  return apiRequest<FoundationEmployee[]>("/v1/foundation/hr/employees");
+    72	}
+    73	
+    74	export async function registerLiveTrackingDevice(
+    75	  payload: RegisterMobileDevicePayload,
+    76	) {
+    77	  return apiRequest<MobileDeviceFoundation>(
+    78	    "/v1/foundation/live-tracking/device",
+    79	    {
+    80	      method: "POST",
+    81	      body: JSON.stringify(payload),
+    82	    },
+    83	  );
+    84	}
+    85	
+    86	export async function sendLiveTrackingLocation(
+    87	  payload: CreateLocationTrackingPointPayload,
+    88	) {
+    89	  return apiRequest<LocationTrackingPointFoundation>(
+    90	    "/v1/foundation/live-tracking/location",
+    91	    {
+    92	      method: "POST",
+    93	      body: JSON.stringify(payload),
+    94	    },
+    95	  );
+    96	}
+    97	
+    98	export async function getLiveTrackingPoints() {
+    99	  return apiRequest<LocationTrackingPointFoundation[]>(
+   100	    "/v1/foundation/live-tracking/points",
+   101	  );
+   102	}
+   103	
+   104	export async function getLatestLiveTrackingPoints() {
+   105	  return apiRequest<LocationTrackingPointFoundation[]>(
+   106	    "/v1/foundation/live-tracking/latest",
+   107	  );
+   108	}
+   109	
+   110	export function getOrCreateBrowserDeviceUid() {
+   111	  const storageKey = "rh_live_tracking_device_uid";
+   112	  const existing = localStorage.getItem(storageKey);
+   113	
+   114	  if (existing) {
+   115	    return existing;
+   116	  }
+   117	
+   118	  const generated =
+   119	    "web-" +
+   120	    Date.now().toString(36) +
+   121	    "-" +
+   122	    Math.random().toString(36).slice(2, 10);
+   123	
+   124	  localStorage.setItem(storageKey, generated);
+   125	
+   126	  return generated;
+   127	}
+

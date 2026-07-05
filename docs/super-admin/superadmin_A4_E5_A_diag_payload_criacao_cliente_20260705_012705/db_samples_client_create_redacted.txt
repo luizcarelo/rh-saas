@@ -1,0 +1,11 @@
+=================================================
+DB SAMPLES REDACTED
+Data: 20260705_012705
+=================================================
+
+### public.saas_clients
+                  id                  |              tenant_id               |               plan_id                |     slug      |      trade_name       |           legal_name           | document_number | status |     timezone      | default_locale |                           notes                            |          created_at           |          updated_at          
+--------------------------------------+--------------------------------------+--------------------------------------+---------------+-----------------------+--------------------------------+-----------------+--------+-------------------+----------------+------------------------------------------------------------+-------------------------------+------------------------------
+ 53df5639-7222-4336-ad36-9163ee3ffb12 | 11446a8f-ed2c-468e-9be1-3409beb12d3c | de2acf21-fad0-4c57-9533-0258343dfb60 | empresa-teste | Empresa Teste RH SaaS | SAAS RH PRO EMPRESA TESTE LTDA | [CNPJ_REDACTED]  | ACTIVE | America/Sao_Paulo | pt-BR          | Cliente exemplo criado para testes controlados do RH SaaS. | 2026-07-03 01:13:03.402138+00 | 2026-07-03 01:29:40.15815+00
+(1 row)
+

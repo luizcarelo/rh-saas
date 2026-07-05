@@ -1,0 +1,108 @@
+# Módulo Funcionário — Cadastro progressivo
+
+## Regra principal
+
+O cadastro de funcionário deverá ser progressivo.
+
+O sistema não deverá exigir todos os dados da ficha completa no primeiro momento.
+
+O funcionário deverá nascer com um cadastro mínimo operacional e depois ser complementado por etapas.
+
+## Cadastro mínimo operacional
+
+O cadastro mínimo atual identificado para criação do funcionário é:
+
+- firstName;
+- lastName;
+- cpf;
+- email;
+- department;
+- jobTitle;
+- admissionDate.
+
+Esse cadastro mínimo permite criar o registro inicial do funcionário.
+
+## Ficha completa por etapas
+
+Após o pré-cadastro, a ficha deverá ser completada em etapas:
+
+- dados pessoais;
+- endereço;
+- contrato;
+- jornada e ponto;
+- documentos;
+- dependentes;
+- benefícios;
+- financeiro e bancário;
+- saúde e segurança;
+- vínculo com usuário;
+- auditoria;
+- pendências e notificações.
+
+## Status sugeridos
+
+O módulo deverá prever status de ciclo de vida do funcionário:
+
+- DRAFT;
+- PENDING_COMPLETION;
+- ACTIVE;
+- INACTIVE;
+- TERMINATED.
+
+## Regras de ativação
+
+O funcionário só deverá ser considerado ativo quando os requisitos mínimos definidos para o tenant e módulos ativos forem atendidos.
+
+Exemplos de requisitos futuros:
+
+- cadastro mínimo preenchido;
+- CPF válido;
+- e-mail informado;
+- departamento definido;
+- cargo/função definidos;
+- data de admissão preenchida;
+- contrato completo, quando exigido;
+- endereço completo, quando exigido;
+- documentos obrigatórios aprovados, quando exigido;
+- jornada configurada, quando módulo de ponto estiver ativo;
+- usuário vinculado, quando acesso ao app/portal for necessário.
+
+## Checklist de completude
+
+O admin web deverá futuramente exibir um checklist de completude da ficha do funcionário.
+
+O checklist deve indicar:
+
+- dados completos;
+- dados pendentes;
+- documentos pendentes;
+- documentos vencidos;
+- pendências de aprovação;
+- pendências que bloqueiam ativação.
+
+## Direção de interface
+
+A tela de cadastro não deve ser um formulário único gigante.
+
+A interface deverá usar:
+
+- etapas;
+- abas;
+- cards de pendência;
+- checklist;
+- salvamento parcial;
+- validação por etapa.
+
+## Fora de escopo nesta parte
+
+Esta parte não implementa:
+
+- novas tabelas;
+- novos endpoints;
+- alteração no admin web;
+- alteração no backend;
+- alteração no banco;
+- criação de funcionário;
+- validação operacional.
+
+Esta parte registra apenas a regra de cadastro progressivo.

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { apiRequest } from "../lib/api";
 import { MapPin, Clock as ClockIcon, CheckCircle2, AlertCircle } from "lucide-react";
 
 export function ClockInPage() {
@@ -24,12 +25,39 @@ export function ClockInPage() {
           const { latitude, longitude } = position.coords;
           setLocationMsg(`Lat: ${latitude.toFixed(4)}, Lng: ${longitude.toFixed(4)}`);
           
-          // Simulação do envio para a nossa API do NestJS
-          setTimeout(() => {
+          try {
+
+            await apiRequest(
+              "/v1/time-records/clock-in",
+              {
+                method: "POST",
+                body: JSON.stringify({
+                  employeeId: "",
+                  latitude,
+                  longitude,
+                }),
+              }
+            );
+
             setStatus("success");
-            // Retorna ao estado inicial após 3 segundos
-            setTimeout(() => setStatus("idle"), 3000);
-          }, 1500);
+
+            setTimeout(
+              () => setStatus("idle"),
+              3000
+            );
+
+          } catch (error) {
+
+            console.error(error);
+
+            setStatus("error");
+
+            setTimeout(
+              () => setStatus("idle"),
+              4000
+            );
+
+          }
         },
         (error) => {
           console.error("Erro de GPS:", error);

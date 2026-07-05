@@ -1,0 +1,24 @@
+1:export type SuperAdminClientStatus =
+8:export type SuperAdminClientPlan = {
+15:export type SuperAdminClientModule = {
+22:export type SuperAdminClient = {
+27:  status?: SuperAdminClientStatus;
+33:  plan?: SuperAdminClientPlan | null;
+34:  modules?: SuperAdminClientModule[];
+44:  | SuperAdminClient[]
+46:      data?: SuperAdminClient[];
+47:      items?: SuperAdminClient[];
+48:      results?: SuperAdminClient[];
+49:      clients?: SuperAdminClient[];
+50:      tenants?: SuperAdminClient[];
+53:export type ListSuperAdminClientsResult = {
+55:  clients: SuperAdminClient[];
+58:const CLIENT_LIST_ENDPOINT_CANDIDATES = [
+59:  '/v1/super-admin/clientes',
+61:  '/v1/tenants',
+129:function normalizeClientList(payload: ListResponseShape): SuperAdminClient[] {
+152:  localStorage.clear();
+175:  if (response.status === 401) {
+204:export async function listSuperAdminClients(): Promise<ListSuperAdminClientsResult> {
+207:  for (const endpoint of CLIENT_LIST_ENDPOINT_CANDIDATES) {
+230:  list: listSuperAdminClients,

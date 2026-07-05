@@ -1,0 +1,12 @@
+HAS_UPDATEFIELD=SIM
+HAS_COMPUTED_FIELD=SIM
+HAS_LITERAL_VALUE_BUG=NAO
+
+BLOCO_UPDATEFIELD:
+  function updateField<K extends keyof FormState>(field: K, value: FormState[K]) {
+    setForm((current) => ({
+      ...current,
+      [field]: value,
+    }));
+  }
+

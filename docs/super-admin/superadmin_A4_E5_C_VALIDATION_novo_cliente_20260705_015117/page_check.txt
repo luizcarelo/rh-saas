@@ -1,0 +1,18 @@
+Arquivo: /opt/rh-saas/frontend-web/src/pages/SuperAdminClientCreatePage.tsx
+
+5:  createSuperAdminClient,
+18:  adminEmail: string;
+31:  adminEmail: '',
+42:export function SuperAdminClientCreatePage() {
+67:      moduleIds: modules.length > 0 ? modules : undefined,
+69:      adminEmail: form.adminEmail.trim() || undefined,
+74:  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+81:      setError('Informe o nome do cliente SaaS.');
+88:      const createdClient = await createSuperAdminClient(buildPayload());
+119:              Novo Cliente SaaS
+131:            Voltar para Clientes
+137:        onSubmit={(event) => void handleSubmit(event)}
+274:              value={form.adminEmail}
+276:                updateField('adminEmail', event.target.value)
+316:            Cancelar
+324:            {submitting ? 'Criando cliente...' : 'Criar Cliente SaaS'}

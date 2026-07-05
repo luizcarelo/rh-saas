@@ -1,0 +1,7 @@
+MIG_DIR=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P4_20260705_162551
+MIG_004=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P4_20260705_162551/004-CreateEmployeeNotifications.ts
+DETAILS=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P5D_7_validar_004_20260705_190242/details_p5d_7.txt
+MISSING=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P5D_7_validar_004_20260705_190242/pendencias_p5d_7.txt
+BACKUP=/opt/rh-saas/backups/admin_A1_FUNC_MIG_P5D_7_validar_004_20260705_190242
+REPORT=/opt/rh-saas/docs/admin/migrations/admin_A1_FUNC_MIG_P5D_7_validar_004_20260705_190242/RELATORIO_ADMIN_A1_FUNC_MIG_P5D_7.md
+CONCLUSION=ADMIN_A1_FUNC_MIG_P5D_7_004_VALIDADA

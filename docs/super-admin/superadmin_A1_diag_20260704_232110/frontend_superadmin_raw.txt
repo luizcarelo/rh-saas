@@ -1,0 +1,628 @@
+=================================================
+SUPERADMIN-A1 - FRONTEND-WEB
+Data: 20260704_232110
+Frontend: /opt/rh-saas/frontend-web
+=================================================
+
+## Estrutura frontend src
+/opt/rh-saas/frontend-web/src/App.css
+/opt/rh-saas/frontend-web/src/App.tsx
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak
+/opt/rh-saas/frontend-web/src/assets/hero.png
+/opt/rh-saas/frontend-web/src/assets/react.svg
+/opt/rh-saas/frontend-web/src/assets/vite.svg
+/opt/rh-saas/frontend-web/src/components/EmployeeForm.tsx
+/opt/rh-saas/frontend-web/src/components/MapComponent.tsx
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx
+/opt/rh-saas/frontend-web/src/components/ui/button.tsx
+/opt/rh-saas/frontend-web/src/components/ui/card.tsx
+/opt/rh-saas/frontend-web/src/components/ui/dialog.tsx
+/opt/rh-saas/frontend-web/src/components/ui/Skeleton.tsx
+/opt/rh-saas/frontend-web/src/components/ui/table.tsx
+/opt/rh-saas/frontend-web/src/index.css
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx
+/opt/rh-saas/frontend-web/src/lib/api.ts
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+/opt/rh-saas/frontend-web/src/lib/utils.ts
+/opt/rh-saas/frontend-web/src/lib/validations/employee.ts
+/opt/rh-saas/frontend-web/src/main.tsx
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Dashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeeDocumentsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/LiveTrackingFoundationPage.tsx
+/opt/rh-saas/frontend-web/src/pages/Login.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx
+/opt/rh-saas/frontend-web/src/utils/export.ts
+/opt/rh-saas/frontend-web/src/vite-env.d.ts
+
+## Rotas, menus e telas relacionadas
+/opt/rh-saas/frontend-web/src/App.tsx:22:import { SuperAdminDashboard } from "./pages/SuperAdminDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx:23:import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+/opt/rh-saas/frontend-web/src/App.tsx:24:import { SuperAdminClientDetailsPage } from "./pages/SuperAdminClientDetailsPage";
+/opt/rh-saas/frontend-web/src/App.tsx:25:import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+/opt/rh-saas/frontend-web/src/App.tsx:26:import { SuperAdminClientAuditPage } from "./pages/SuperAdminClientAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx:27:import { SuperAdminClientModulesPage } from "./pages/SuperAdminClientModulesPage";
+/opt/rh-saas/frontend-web/src/App.tsx:28:import { SuperAdminClientModulesAuditPage } from "./pages/SuperAdminClientModulesAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx:30:import { SuperAdminPlansPage } from "./pages/SuperAdminPlansPage";
+/opt/rh-saas/frontend-web/src/App.tsx:31:import { SuperAdminPlanDetailsPage } from "./pages/SuperAdminPlanDetailsPage";
+/opt/rh-saas/frontend-web/src/App.tsx:32:import { SuperAdminPlanCreatePage } from "./pages/SuperAdminPlanCreatePage";
+/opt/rh-saas/frontend-web/src/App.tsx:101:              path="/super-admin"
+/opt/rh-saas/frontend-web/src/App.tsx:103:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:104:                  ? <SuperAdminDashboard />
+/opt/rh-saas/frontend-web/src/App.tsx:110:              path="/super-admin/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx:112:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:113:                  ? <SuperAdminClientsPage />
+/opt/rh-saas/frontend-web/src/App.tsx:119:              path="/super-admin/clientes/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:121:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:122:                  ? <SuperAdminClientDetailsPage />
+/opt/rh-saas/frontend-web/src/App.tsx:128:              path="/super-admin/clientes/:id/dashboard"
+/opt/rh-saas/frontend-web/src/App.tsx:130:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:131:                  ? <SuperAdminClientDashboardPage />
+/opt/rh-saas/frontend-web/src/App.tsx:137:              path="/super-admin/clientes/:id/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:139:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:140:                  ? <SuperAdminClientAuditPage />
+/opt/rh-saas/frontend-web/src/App.tsx:146:              path="/super-admin/clientes/:id/modules"
+/opt/rh-saas/frontend-web/src/App.tsx:148:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:149:                  ? <SuperAdminClientModulesPage />
+/opt/rh-saas/frontend-web/src/App.tsx:155:              path="/super-admin/clientes/:id/modules/audit"
+/opt/rh-saas/frontend-web/src/App.tsx:157:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:158:                  ? <SuperAdminClientModulesAuditPage />
+/opt/rh-saas/frontend-web/src/App.tsx:164:              path="/super-admin/planos"
+/opt/rh-saas/frontend-web/src/App.tsx:166:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:167:                  ? <SuperAdminPlansPage />
+/opt/rh-saas/frontend-web/src/App.tsx:173:              path="/super-admin/planos/novo"
+/opt/rh-saas/frontend-web/src/App.tsx:175:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:176:                  ? <SuperAdminPlanCreatePage />
+/opt/rh-saas/frontend-web/src/App.tsx:182:              path="/super-admin/planos/:id"
+/opt/rh-saas/frontend-web/src/App.tsx:184:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx:185:                  ? <SuperAdminPlanDetailsPage />
+/opt/rh-saas/frontend-web/src/lib/api.ts:13:  tenantId?: string;
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:80:  ...(user?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:84:          path: "/super-admin",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:88:          label: "Clientes SaaS",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:89:          path: "/super-admin/clientes",
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:94:          path: "/super-admin/planos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:4:export function SuperAdminPlanCreatePage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:13:      "/v1/super-admin/plans",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:10:export function SuperAdminDashboard() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:22:      apiRequest("/v1/super-admin/dashboard"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:23:      apiRequest("/v1/super-admin/system/health"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:24:      apiRequest("/v1/super-admin/system/database"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:25:      apiRequest("/v1/super-admin/system/storage"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:26:      apiRequest("/v1/super-admin/system/metrics"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:27:      apiRequest("/v1/super-admin/system/services"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:47:      titulo: "Clientes",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:51:      titulo: "Clientes Ativos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:55:      titulo: "Clientes Inativos",
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:60:      valor: dashboard?.plans?.total ?? 0,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:80:      valor: dashboard?.modules?.enabled ?? 0,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:13:export function SuperAdminPlanDetailsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:28:      "/v1/super-admin/plans"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:30:      .then(plans => {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:33:          plans.find(p => p.id === id);
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:61:      `/v1/super-admin/plans/${plan.id}`,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:37:  modules: Array<{
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:43:export function SuperAdminClientDetailsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:55:      `/v1/super-admin/clients/${id}`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:68:  to={`/super-admin/clientes/${id}/dashboard`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:91:  to={`/super-admin/clientes/${id}/dashboard`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:114:  to={`/super-admin/clientes/${id}/dashboard`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:243:            {data.modules.map((module) => (
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:19:export function SuperAdminClientsPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:27:      "/v1/super-admin/clients"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:38:        Clientes SaaS
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:45:            Clientes Cadastrados
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:91:                          to={`/super-admin/clientes/${client.id}`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:11:export function SuperAdminClientDashboardPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:22:      `/v1/super-admin/clients/${id}/dashboard`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:52:      valor: data.modules?.enabled ?? 0,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:56:      valor: data.modules?.disabled ?? 0,
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:10:    tenantId: string;
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:10:export function SuperAdminClientModulesPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:25:      `/v1/super-admin/clients/${id}/modules`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:42:      `/v1/super-admin/clients/${id}/modules/${moduleCode}`,
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:78:    to={`/super-admin/clientes/${id}/modules/audit`}
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:5:export function SuperAdminClientModulesAuditPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:16:      `/v1/super-admin/clients/${id}/modules/audit`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:11:export function SuperAdminClientAuditPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:22:      `/v1/super-admin/clients/${id}/audit`
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:20:export function SuperAdminPlansPage() {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:22:  const [plans,setPlans] = useState<Plan[]>([]);
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:28:      "/v1/super-admin/plans"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:46:    to="/super-admin/planos/novo"
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:100:                  {plans.map(plan => (
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:126:    to={`/super-admin/planos/${plan.id}`}
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:172:                O acesso respeita o tenant do usuário autenticado.
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:20:import { SuperAdminDashboard } from "./pages/SuperAdminDashboard";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:21:import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:22:import { SuperAdminClientDetailsPage } from "./pages/SuperAdminClientDetailsPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:23:import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:24:import { SuperAdminClientAuditPage } from "./pages/SuperAdminClientAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:25:import { SuperAdminClientModulesPage } from "./pages/SuperAdminClientModulesPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:26:import { SuperAdminClientModulesAuditPage } from "./pages/SuperAdminClientModulesAuditPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:28:import { SuperAdminPlansPage } from "./pages/SuperAdminPlansPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:29:import { SuperAdminPlanDetailsPage } from "./pages/SuperAdminPlanDetailsPage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:30:import { SuperAdminPlanCreatePage } from "./pages/SuperAdminPlanCreatePage";
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:83:              path="/super-admin"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:85:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:86:                  ? <SuperAdminDashboard />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:92:              path="/super-admin/clientes"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:94:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:95:                  ? <SuperAdminClientsPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:101:              path="/super-admin/clientes/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:103:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:104:                  ? <SuperAdminClientDetailsPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:110:              path="/super-admin/clientes/:id/dashboard"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:112:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:113:                  ? <SuperAdminClientDashboardPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:119:              path="/super-admin/clientes/:id/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:121:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:122:                  ? <SuperAdminClientAuditPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:128:              path="/super-admin/clientes/:id/modules"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:130:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:131:                  ? <SuperAdminClientModulesPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:137:              path="/super-admin/clientes/:id/modules/audit"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:139:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:140:                  ? <SuperAdminClientModulesAuditPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:146:              path="/super-admin/planos"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:148:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:149:                  ? <SuperAdminPlansPage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:155:              path="/super-admin/planos/novo"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:157:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:158:                  ? <SuperAdminPlanCreatePage />
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:164:              path="/super-admin/planos/:id"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:166:                getUserInfo()?.role === "SUPER_ADMIN"
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:167:                  ? <SuperAdminPlanDetailsPage />
+
+## App/Rotas principais
+### /opt/rh-saas/frontend-web/src/App.tsx
+     1	import { BrowserRouter, Route, Routes } from "react-router-dom";
+     2	import { Toaster } from "react-hot-toast";
+     3	
+     4	import { AdminLayout } from "./layouts/AdminLayout";
+     5	import { EmployeeLayout } from "./layouts/EmployeeLayout";
+     6	
+     7	import { ProtectedRoute } from "./components/ProtectedRoute";
+     8	import { LiveTrackingFoundationPage } from "./pages/LiveTrackingFoundationPage";
+     9	import { getUserInfo } from "./lib/api";
+    10	
+    11	import { Login } from "./pages/Login";
+    12	import { Dashboard } from "./pages/Dashboard";
+    13	import { EmployeesPage } from "./pages/EmployeesPage";
+    14	import { EmployeeDetailsPage } from "./pages/EmployeeDetailsPage";
+    15	import { DocumentsPage } from "./pages/DocumentsPage";
+    16	import { UsersPage } from "./pages/UsersPage";
+    17	import { AuditLogsPage } from "./pages/AuditLogsPage";
+    18	import { TimeTrackingPage } from "./pages/TimeTrackingPage";
+    19	import { ClockInPage } from "./pages/ClockInPage";
+    20	import { EmployeeDashboard } from "./pages/EmployeeDashboard";
+    21	
+    22	import { SuperAdminDashboard } from "./pages/SuperAdminDashboard";
+    23	import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+    24	import { SuperAdminClientDetailsPage } from "./pages/SuperAdminClientDetailsPage";
+    25	import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+    26	import { SuperAdminClientAuditPage } from "./pages/SuperAdminClientAuditPage";
+    27	import { SuperAdminClientModulesPage } from "./pages/SuperAdminClientModulesPage";
+    28	import { SuperAdminClientModulesAuditPage } from "./pages/SuperAdminClientModulesAuditPage";
+    29	
+    30	import { SuperAdminPlansPage } from "./pages/SuperAdminPlansPage";
+    31	import { SuperAdminPlanDetailsPage } from "./pages/SuperAdminPlanDetailsPage";
+    32	import { SuperAdminPlanCreatePage } from "./pages/SuperAdminPlanCreatePage";
+    33	
+    34	import { AnalyticsPage } from "./pages/AnalyticsPage";
+    35	
+    36	export default function App() {
+    37	  return (
+    38	    <BrowserRouter>
+    39	      <Routes>
+    40	
+    41	        <Route
+    42	          path="/login"
+    43	          element={<Login />}
+    44	        />
+    45	
+    46	        <Route element={<ProtectedRoute />}>
+    47	          <Route element={<AdminLayout />}>
+    48	
+    49	            <Route
+    50	              path="/"
+    51	              element={<Dashboard />}
+    52	            />
+    53	
+    54	            <Route
+    55	              path="/colaboradores"
+    56	              element={<EmployeesPage />}
+    57	            />
+    58	
+    59	            <Route
+    60	            path="/colaboradores/:id"
+    61	            element={<EmployeeDetailsPage />}
+    62	            />
+    63	
+    64	            
+    65	<Route
+    66	  path="/documentos"
+    67	  element={<DocumentsPage />}
+    68	/>
+    69	
+    70	<Route
+    71	  path="/usuarios"
+    72	    element={<UsersPage />}
+    73	/>
+    74	<Route
+    75	  path="/analytics"
+    76	  element={<AnalyticsPage />}
+    77	/>
+    78	
+    79	            <Route
+    80	              path="/audit"
+    81	              element={<AuditLogsPage />}
+    82	            />
+    83	
+    84	            <Route
+    85	              path="/ponto"
+    86	              element={<TimeTrackingPage />}
+    87	            />
+    88	
+    89	            <Route
+    90	              path="/registrar-ponto"
+    91	              element={<ClockInPage />}
+    92	            />
+    93	
+    94	
+    95	            <Route
+    96	              path="/live-tracking-foundation"
+    97	              element={<LiveTrackingFoundationPage />}
+    98	            />
+    99	
+   100	            <Route
+   101	              path="/super-admin"
+   102	              element={
+   103	                getUserInfo()?.role === "SUPER_ADMIN"
+   104	                  ? <SuperAdminDashboard />
+   105	                  : <Dashboard />
+   106	              }
+   107	            />
+   108	
+   109	            <Route
+   110	              path="/super-admin/clientes"
+   111	              element={
+   112	                getUserInfo()?.role === "SUPER_ADMIN"
+   113	                  ? <SuperAdminClientsPage />
+   114	                  : <Dashboard />
+   115	              }
+   116	            />
+   117	
+   118	            <Route
+   119	              path="/super-admin/clientes/:id"
+   120	              element={
+   121	                getUserInfo()?.role === "SUPER_ADMIN"
+   122	                  ? <SuperAdminClientDetailsPage />
+   123	                  : <Dashboard />
+   124	              }
+   125	            />
+   126	
+   127	            <Route
+   128	              path="/super-admin/clientes/:id/dashboard"
+   129	              element={
+   130	                getUserInfo()?.role === "SUPER_ADMIN"
+   131	                  ? <SuperAdminClientDashboardPage />
+   132	                  : <Dashboard />
+   133	              }
+   134	            />
+   135	
+   136	            <Route
+   137	              path="/super-admin/clientes/:id/audit"
+   138	              element={
+   139	                getUserInfo()?.role === "SUPER_ADMIN"
+   140	                  ? <SuperAdminClientAuditPage />
+   141	                  : <Dashboard />
+   142	              }
+   143	            />
+   144	
+   145	            <Route
+   146	              path="/super-admin/clientes/:id/modules"
+   147	              element={
+   148	                getUserInfo()?.role === "SUPER_ADMIN"
+   149	                  ? <SuperAdminClientModulesPage />
+   150	                  : <Dashboard />
+   151	              }
+   152	            />
+   153	
+   154	            <Route
+   155	              path="/super-admin/clientes/:id/modules/audit"
+   156	              element={
+   157	                getUserInfo()?.role === "SUPER_ADMIN"
+   158	                  ? <SuperAdminClientModulesAuditPage />
+   159	                  : <Dashboard />
+   160	              }
+   161	            />
+   162	
+   163	            <Route
+   164	              path="/super-admin/planos"
+   165	              element={
+   166	                getUserInfo()?.role === "SUPER_ADMIN"
+   167	                  ? <SuperAdminPlansPage />
+   168	                  : <Dashboard />
+   169	              }
+   170	            />
+   171	
+   172	            <Route
+   173	              path="/super-admin/planos/novo"
+   174	              element={
+   175	                getUserInfo()?.role === "SUPER_ADMIN"
+   176	                  ? <SuperAdminPlanCreatePage />
+   177	                  : <Dashboard />
+   178	              }
+   179	            />
+   180	
+   181	            <Route
+   182	              path="/super-admin/planos/:id"
+   183	              element={
+   184	                getUserInfo()?.role === "SUPER_ADMIN"
+   185	                  ? <SuperAdminPlanDetailsPage />
+   186	                  : <Dashboard />
+   187	              }
+   188	            />
+   189	
+   190	          </Route>
+   191	        </Route>
+   192	
+   193	        <Route element={<ProtectedRoute />}>
+   194	<Route element={<EmployeeLayout />}>
+   195	            <Route
+   196	              path="/meu-painel"
+   197	              element={<EmployeeDashboard />}
+   198	            />
+   199	          </Route>
+   200	        </Route>
+   201	
+   202	      </Routes>
+   203	
+   204	      <Toaster position="top-right" />
+   205	    </BrowserRouter>
+   206	  );
+   207	}
+
+### /opt/rh-saas/frontend-web/src/main.tsx
+     1	import React from "react";
+     2	import ReactDOM from "react-dom/client";
+     3	import App from "./App";
+     4	import "./index.css";
+     5	
+     6	ReactDOM.createRoot(document.getElementById("root")!).render(
+     7	  <React.StrictMode>
+     8	    <App />
+     9	  </React.StrictMode>,
+    10	);
+
+### /opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx
+     1	import {
+     2	  BarChart3,
+     3	  Clock3,
+     4	  FileText,
+     5	  LayoutDashboard,
+     6	  LogOut,
+     7	  ShieldCheck,
+     8	  Users,
+     9	} from "lucide-react";
+    10	import { NavLink, Outlet, useNavigate } from "react-router-dom";
+    11	import { clearSession, getUserInfo } from "../lib/api";
+    12	const menu = [
+    13	  {
+    14	    label: "Dashboard",
+    15	    path: "/",
+    16	    icon: LayoutDashboard,
+    17	  },
+    18	  {
+    19	    label: "Colaboradores",
+    20	    path: "/colaboradores",
+    21	    icon: Users,
+    22	  },
+    23	  {
+    24	    label: "Usuários",
+    25	    path: "/usuarios",
+    26	    icon: Users,
+    27	  },
+    28	  {
+    29	  label: "Analytics",
+    30	  path: "/analytics",
+    31	  icon: BarChart3,
+    32	},
+    33	  {
+    34	    label: "Controle de ponto",
+    35	    path: "/ponto",
+    36	    icon: Clock3,
+    37	  },
+    38	  {
+    39	    label: "Registrar ponto",
+    40	    path: "/registrar-ponto",
+    41	    icon: ShieldCheck,
+    42	  },
+    43	  {
+    44	    label: "Auditoria",
+    45	    path: "/audit",
+    46	    icon: FileText,
+    47	  },
+    48	
+    49	  {
+    50	    label: "Live Tracking",
+    51	    path: "/live-tracking-foundation",
+    52	    icon: LayoutDashboard,
+    53	  },
+    54	];
+    55	
+    56	function IconLogo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+    57	  const sizeClass =
+    58	    size === "lg"
+    59	      ? "h-24 w-24 rounded-3xl"
+    60	      : size === "sm"
+    61	        ? "h-11 w-11 rounded-xl"
+    62	        : "h-14 w-14 rounded-2xl";
+    63	
+    64	  return (
+    65	    <div
+    66	      className={`${sizeClass} bg-white bg-contain bg-center bg-no-repeat shadow-xl shadow-cyan-500/20`}
+    67	      style={{
+    68	        backgroundImage: "url('/assets/icone-app.png')",
+    69	      }}
+    70	      aria-label="Ícone LH Solução RH"
+    71	    />
+    72	  );
+    73	}
+    74	
+    75	export function AdminLayout() {
+    76	  const navigate = useNavigate();
+    77	  const user = getUserInfo();
+    78	
+    79	const dynamicMenu = [
+    80	  ...(user?.role === "SUPER_ADMIN"
+    81	    ? [
+    82	        {
+    83	          label: "Dashboard SaaS",
+    84	          path: "/super-admin",
+    85	          icon: ShieldCheck,
+    86	        },
+    87	        {
+    88	          label: "Clientes SaaS",
+    89	          path: "/super-admin/clientes",
+    90	          icon: Users,
+    91	        },
+    92	        {
+    93	          label: "Planos SaaS",
+    94	          path: "/super-admin/planos",
+    95	          icon: ShieldCheck,
+    96	        },
+    97	      ]
+    98	    : []),
+    99	
+   100	  ...menu,
+   101	];
+   102	  function logout() {
+   103	    clearSession();
+   104	    navigate("/login", {
+   105	      replace: true,
+   106	    });
+   107	  }
+   108	
+   109	  return (
+   110	    <div className="min-h-screen bg-slate-950 text-slate-100">
+   111	      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.30),_transparent_34%),radial-gradient(circle_at_top_right,_rgba(34,197,94,0.18),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(249,115,22,0.16),_transparent_28%)]" />
+   112	
+   113	      <div className="relative flex min-h-screen">
+   114	        <aside className="hidden w-72 shrink-0 border-r border-white/10 bg-slate-950/85 backdrop-blur-xl lg:flex lg:flex-col">
+   115	          <div className="flex h-24 items-center gap-3 px-6">
+   116	            <IconLogo />
+   117	
+   118	            <div>
+   119	              <p className="text-sm font-medium text-cyan-200">LH Solução RH</p>
+   120	              <h1 className="text-lg font-bold tracking-tight text-white">
+   121	                Gestão inteligente
+   122	              </h1>
+   123	            </div>
+   124	          </div>
+   125	
+   126	          <nav className="flex-1 space-y-2 px-4 py-4">
+   127	            {dynamicMenu.map((item) => {
+   128	              const Icon = item.icon;
+   129	
+   130	              return (
+   131	                <NavLink
+   132	                  key={item.path}
+   133	                  to={item.path}
+   134	                  end={item.path === "/"}
+   135	                  className={({ isActive }) =>
+   136	                    [
+   137	                      "group flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition",
+   138	                      isActive
+   139	                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20"
+   140	                        : "text-slate-300 hover:bg-white/10 hover:text-white",
+   141	                    ].join(" ")
+   142	                  }
+   143	                >
+   144	                  <Icon className="h-5 w-5" />
+   145	                  {item.label}
+   146	                </NavLink>
+   147	              );
+   148	            })}
+   149	          </nav>
+   150	
+   151	          <div className="border-t border-white/10 p-4">
+   152	            <div className="mb-4 rounded-2xl bg-white/5 p-4">
+   153	              <p className="text-xs text-slate-400">Usuário conectado</p>
+   154	              <p className="mt-1 truncate text-sm font-semibold text-white">
+   155	                {user?.email || "admin@empresa.com"}
+   156	              </p>
+   157	              <p className="mt-1 text-xs text-orange-300">
+   158	                Perfil: {user?.role || "ADMIN"}
+   159	              </p>
+   160	            </div>
+   161	
+   162	            <button
+   163	              type="button"
+   164	              onClick={logout}
+   165	              className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 px-4 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/10"
+   166	            >
+   167	              <LogOut className="h-4 w-4" />
+   168	              Sair
+   169	            </button>
+   170	          </div>
+   171	        </aside>
+   172	
+   173	        <main className="flex min-h-screen flex-1 flex-col">
+   174	          <header className="sticky top-0 z-20 border-b border-white/10 bg-slate-950/75 px-4 py-4 backdrop-blur-xl lg:px-8">
+   175	            <div className="flex items-center justify-between">
+   176	              <div className="flex items-center gap-3 lg:hidden">
+   177	                <IconLogo size="sm" />
+   178	
+   179	                <div>
+   180	                  <p className="text-sm text-cyan-200">LH Solução RH</p>
+   181	                  <p className="text-base font-bold text-white">
+   182	                    Gestão inteligente
+   183	                  </p>
+   184	                </div>
+   185	              </div>
+   186	
+   187	              <div className="hidden lg:block">
+   188	                <p className="text-sm text-slate-400">Painel administrativo</p>
+   189	                <h2 className="text-xl font-bold text-white">
+   190	                  Bem-vindo ao sistema de RH
+   191	                </h2>
+   192	              </div>
+   193	
+   194	              <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-2">
+   195	                <BarChart3 className="h-5 w-5 text-orange-300" />
+   196	                <span className="text-sm font-medium text-slate-200">
+   197	                  Online
+   198	                </span>
+   199	              </div>
+   200	            </div>
+   201	          </header>
+   202	
+   203	          <section className="flex-1 p-4 lg:p-8">
+   204	            <Outlet />
+   205	          </section>
+   206	        </main>
+   207	      </div>
+   208	    </div>
+   209	  );
+   210	}
+

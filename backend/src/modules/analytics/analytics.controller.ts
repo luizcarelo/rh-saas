@@ -11,4 +11,15 @@ export class AnalyticsController {
   async getOverview(@Req() req: any, @Query('start') start: string, @Query('end') end: string) {
     return this.service.getDashboardStats(req.user.tenantId, start, end);
   }
+
+  @Get('workforce')
+  async workforce(
+    @Req() req: any,
+  ) {
+    return this.service.getWorkforceStats(
+      req.user.tenantId,
+    );
+  }
+
+
 }

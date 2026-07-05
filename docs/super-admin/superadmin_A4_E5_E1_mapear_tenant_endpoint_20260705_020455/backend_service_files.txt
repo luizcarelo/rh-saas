@@ -1,0 +1,16 @@
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts
+/opt/rh-saas/backend/src/modules/audit/audit.service.ts
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-calculator.service.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts
+/opt/rh-saas/backend/src/modules/users/users.service.ts

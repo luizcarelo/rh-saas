@@ -1,0 +1,141 @@
+     1	import AsyncStorage from '@react-native-async-storage/async-storage';
+     2	
+     3	import api from './api';
+     4	
+     5	export type FoundationEmployee = {
+     6	  id: string;
+     7	  clientId?: string;
+     8	  employeeExternalRef?: string | null;
+     9	  firstName?: string;
+    10	  lastName?: string;
+    11	  cpf?: string | null;
+    12	  email?: string | null;
+    13	  departmentId?: string | null;
+    14	  jobPositionId?: string | null;
+    15	  jobFunctionId?: string | null;
+    16	  admissionDate?: string | null;
+    17	  status?: string;
+    18	  createdAt?: string;
+    19	  updatedAt?: string;
+    20	};
+    21	
+    22	export type RegisterMobileDevicePayload = {
+    23	  employeeProfileId?: string;
+    24	  deviceUid: string;
+    25	  platform?: string;
+    26	  model?: string;
+    27	  appVersion?: string;
+    28	};
+    29	
+    30	export type MobileDeviceFoundation = {
+    31	  id: string;
+    32	  clientId?: string;
+    33	  employeeProfileId?: string | null;
+    34	  deviceUid: string;
+    35	  platform?: string | null;
+    36	  model?: string | null;
+    37	  appVersion?: string | null;
+    38	  isActive?: boolean;
+    39	  lastSeenAt?: string | null;
+    40	  createdAt?: string;
+    41	  updatedAt?: string;
+    42	};
+    43	
+    44	export type CreateLocationTrackingPointPayload = {
+    45	  employeeProfileId: string;
+    46	  deviceId?: string;
+    47	  latitude: number;
+    48	  longitude: number;
+    49	  accuracyMeters?: number;
+    50	  address?: string;
+    51	  source?: string;
+    52	  trackedAt?: string;
+    53	  metadata?: Record<string, unknown>;
+    54	};
+    55	
+    56	export type LocationTrackingPointFoundation = {
+    57	  id: string;
+    58	  clientId?: string;
+    59	  employeeProfileId?: string | null;
+    60	  deviceId?: string | null;
+    61	  trackedAt?: string;
+    62	  latitude: string | number;
+    63	  longitude: string | number;
+    64	  accuracyMeters?: string | number | null;
+    65	  address?: string | null;
+    66	  source?: string;
+    67	  metadata?: Record<string, unknown>;
+    68	  createdAt?: string;
+    69	  updatedAt?: string;
+    70	};
+    71	
+    72	const LIVE_TRACKING_DEVICE_UID_KEY = '@LH_LiveTrackingDeviceUid';
+    73	
+    74	function generateDeviceUid() {
+    75	  return (
+    76	    'mobile-' +
+    77	    Date.now().toString(36) +
+    78	    '-' +
+    79	    Math.random().toString(36).slice(2, 10)
+    80	  );
+    81	}
+    82	
+    83	export async function getOrCreateMobileDeviceUid() {
+    84	  const existing = await AsyncStorage.getItem(LIVE_TRACKING_DEVICE_UID_KEY);
+    85	
+    86	  if (existing) {
+    87	    return existing;
+    88	  }
+    89	
+    90	  const generated = generateDeviceUid();
+    91	
+    92	  await AsyncStorage.setItem(LIVE_TRACKING_DEVICE_UID_KEY, generated);
+    93	
+    94	  return generated;
+    95	}
+    96	
+    97	export async function getFoundationEmployees() {
+    98	  const response = await api.get<FoundationEmployee[]>(
+    99	    '/v1/foundation/hr/employees',
+   100	  );
+   101	
+   102	  return response.data;
+   103	}
+   104	
+   105	export async function registerLiveTrackingDevice(
+   106	  payload: RegisterMobileDevicePayload,
+   107	) {
+   108	  const response = await api.post<MobileDeviceFoundation>(
+   109	    '/v1/foundation/live-tracking/device',
+   110	    payload,
+   111	  );
+   112	
+   113	  return response.data;
+   114	}
+   115	
+   116	export async function sendLiveTrackingLocation(
+   117	  payload: CreateLocationTrackingPointPayload,
+   118	) {
+   119	  const response = await api.post<LocationTrackingPointFoundation>(
+   120	    '/v1/foundation/live-tracking/location',
+   121	    payload,
+   122	  );
+   123	
+   124	  return response.data;
+   125	}
+   126	
+   127	export async function getLiveTrackingPoints() {
+   128	  const response = await api.get<LocationTrackingPointFoundation[]>(
+   129	    '/v1/foundation/live-tracking/points',
+   130	  );
+   131	
+   132	  return response.data;
+   133	}
+   134	
+   135	export async function getLatestLiveTrackingPoints() {
+   136	  const response = await api.get<LocationTrackingPointFoundation[]>(
+   137	    '/v1/foundation/live-tracking/latest',
+   138	  );
+   139	
+   140	  return response.data;
+   141	}

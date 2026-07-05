@@ -1,0 +1,11 @@
+/opt/rh-saas/frontend-web/src
+/opt/rh-saas/frontend-web/src/assets
+/opt/rh-saas/frontend-web/src/components
+/opt/rh-saas/frontend-web/src/components/ui
+/opt/rh-saas/frontend-web/src/layouts
+/opt/rh-saas/frontend-web/src/lib
+/opt/rh-saas/frontend-web/src/lib/validations
+/opt/rh-saas/frontend-web/src/pages
+/opt/rh-saas/frontend-web/src/pages/super-admin
+/opt/rh-saas/frontend-web/src/services
+/opt/rh-saas/frontend-web/src/utils

@@ -3,15 +3,19 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Between } from 'typeorm';
 import { TimeBank } from './time-bank.entity';
 import { ClockEvent, ClockEventType } from '../clock-events/clock-event.entity';
+import { AuditService } from '../audit/audit.service';
 
 @Injectable()
 export class TimeBankService {
-  constructor(
-    @InjectRepository(TimeBank)
-    private timeBankRepo: Repository<TimeBank>,
-    @InjectRepository(ClockEvent)
-    private clockEventRepo: Repository<ClockEvent>,
-  ) {}
+constructor(
+  @InjectRepository(TimeBank)
+  private timeBankRepo: Repository<TimeBank>,
+
+  @InjectRepository(ClockEvent)
+  private clockEventRepo: Repository<ClockEvent>,
+
+  private readonly auditService: AuditService,
+) {}
 
   /**
    * Calcula a diferença em minutos entre duas datas
@@ -20,7 +24,58 @@ export class TimeBankService {
     const diffMs = end.getTime() - start.getTime();
     return Math.floor(diffMs / 1000 / 60);
   }
+async findAll(
+  tenantId: string,
+) {
+  return this.timeBankRepo.find({
+    where: {
+      tenantId,
+    },
+    order: {
+      date: 'DESC',
+    },
+  });
+}
 
+async findByEmployee(
+  tenantId: string,
+  employeeId: string,
+) {
+  return this.timeBankRepo.find({
+    where: {
+      tenantId,
+      employeeId,
+    },
+    order: {
+      date: 'DESC',
+    },
+  });
+}
+
+async details(
+  tenantId: string,
+  employeeId: string,
+) {
+
+  const rows =
+    await this.findByEmployee(
+      tenantId,
+      employeeId,
+    );
+
+  const totalBalance =
+    rows.reduce(
+      (acc, row) =>
+        acc + row.balanceMinutes,
+      0,
+    );
+
+  return {
+    employeeId,
+    totalBalance,
+    days: rows,
+  };
+}
   /**
    * Processa o saldo do dia cruzando os pontos batidos com a jornada prevista
    */
@@ -75,6 +130,21 @@ export class TimeBankService {
     timeBankRecord.workedMinutes = workedMinutes;
     timeBankRecord.balanceMinutes = balanceMinutes;
 
-    return this.timeBankRepo.save(timeBankRecord);
-  }
+const saved =
+  await this.timeBankRepo.save(
+    timeBankRecord,
+  );
+
+await this.auditService.create({
+  tenantId,
+  entityId: saved.id,
+  action: 'TIMEBANK_RECALCULATED',
+  entityType: 'TimeBank',
+  details: JSON.stringify({
+    employeeId,
+    targetDate,
+  }),
+});
+
+return saved;  }
 }

@@ -1,0 +1,8 @@
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts

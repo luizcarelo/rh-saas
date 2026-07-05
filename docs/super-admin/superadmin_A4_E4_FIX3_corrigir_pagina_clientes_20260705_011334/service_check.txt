@@ -1,0 +1,12 @@
+Arquivo: /opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts
+
+1:export type SuperAdminClientStatus =
+8:export type SuperAdminClientPlan = {
+15:export type SuperAdminClientModule = {
+22:export type SuperAdminClient = {
+59:  '/v1/super-admin/clientes',
+130:  if (Array.isArray(payload)) {
+143:    if (Array.isArray(candidate)) {
+175:  if (response.status === 401) {
+204:export async function listSuperAdminClients(): Promise<ListSuperAdminClientsResult> {
+230:  list: listSuperAdminClients,

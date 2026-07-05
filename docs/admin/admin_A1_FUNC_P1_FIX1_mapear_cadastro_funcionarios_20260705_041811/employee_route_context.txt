@@ -1,0 +1,3584 @@
+# Contexto das rotas backend de funcionários
+
+## GET /v1/dashboard/employees — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+
+```ts
+class DashboardController {
+
+  constructor(
+    private readonly dashboardService: DashboardService,
+  ) {}
+
+  @Get('overview')
+  overview(@Req() req: any) {
+    return this.dashboardService.overview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('employees')
+  employees(@Req() req: any) {
+    return this.dashboardService.employees(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank')
+  timeBank(@Req() req: any) {
+    return this.dashboardService.timeBank(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedules')
+  schedules(@Req() req: any) {
+    return this.dashboardService.schedules(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-records')
+  timeRecords(@Req() req: any) {
+    return this.dashboardService.timeRecords(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('executive')
+  executive(
+    @Req() req: any,
+  ) {
+    return this.dashboardService.executive(
+      req.user.tenantId,
+    );
+  }
+
+
+}
+```
+
+---
+## GET /v1/dashboard/executive — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+
+```ts
+Req() req: any) {
+    return this.dashboardService.schedules(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-records')
+  timeRecords(@Req() req: any) {
+    return this.dashboardService.timeRecords(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('executive')
+  executive(
+    @Req() req: any,
+  ) {
+    return this.dashboardService.executive(
+      req.user.tenantId,
+    );
+  }
+
+
+}
+```
+
+---
+## GET /v1/dashboard/overview — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+
+```ts
+@Controller('v1/dashboard')
+@UseGuards(JwtAuthGuard)
+export class DashboardController {
+
+  constructor(
+    private readonly dashboardService: DashboardService,
+  ) {}
+
+  @Get('overview')
+  overview(@Req() req: any) {
+    return this.dashboardService.overview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('employees')
+  employees(@Req() req: any) {
+    return this.dashboardService.employees(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank')
+  timeBank(@Req() req: any) {
+    return this.dashboardService.timeBank(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedules')
+  schedules(@Req() req: any) {
+    return this.dashboardService.schedules(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-records')
+  timeRecords(@Req() req: any) {
+    return this.dashboardService.timeRecords(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('executive')
+  executive(
+    @Req() req: any,
+```
+
+---
+## GET /v1/dashboard/schedules — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+
+```ts
+ployees(@Req() req: any) {
+    return this.dashboardService.employees(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank')
+  timeBank(@Req() req: any) {
+    return this.dashboardService.timeBank(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedules')
+  schedules(@Req() req: any) {
+    return this.dashboardService.schedules(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-records')
+  timeRecords(@Req() req: any) {
+    return this.dashboardService.timeRecords(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('executive')
+  executive(
+    @Req() req: any,
+  ) {
+    return this.dashboardService.executive(
+      req.user.tenantId,
+    );
+  }
+
+
+}
+```
+
+---
+## GET /v1/dashboard/time-bank — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+
+```ts
+erview(@Req() req: any) {
+    return this.dashboardService.overview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('employees')
+  employees(@Req() req: any) {
+    return this.dashboardService.employees(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank')
+  timeBank(@Req() req: any) {
+    return this.dashboardService.timeBank(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedules')
+  schedules(@Req() req: any) {
+    return this.dashboardService.schedules(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-records')
+  timeRecords(@Req() req: any) {
+    return this.dashboardService.timeRecords(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('executive')
+  executive(
+    @Req() req: any,
+  ) {
+    return this.dashboardService.executive(
+      req.user.tenantId,
+    );
+  }
+
+
+}
+```
+
+---
+## GET /v1/dashboard/time-records — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+
+```ts
+meBank(@Req() req: any) {
+    return this.dashboardService.timeBank(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedules')
+  schedules(@Req() req: any) {
+    return this.dashboardService.schedules(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-records')
+  timeRecords(@Req() req: any) {
+    return this.dashboardService.timeRecords(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('executive')
+  executive(
+    @Req() req: any,
+  ) {
+    return this.dashboardService.executive(
+      req.user.tenantId,
+    );
+  }
+
+
+}
+```
+
+---
+## GET /v1/documents/my-docs — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+
+```ts
+ost('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  async upload(@UploadedFile() file: any, @Req() req: any) {
+    return this.docsService.uploadDocument(req.user.tenantId, req.body.employeeId, file.originalname, file.path);
+  }
+
+  @Get('my-docs')
+  async list(@Req() req: any) {
+    return this.docsService.listForEmployee(req.user.tenantId, req.user.employeeId);
+  }
+}
+```
+
+---
+## POST /v1/documents/upload — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+
+```ts
+@Controller('v1/documents')
+@UseGuards(JwtAuthGuard)
+export class DocumentsController {
+  constructor(private readonly docsService: DocumentsService) {}
+
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  async upload(@UploadedFile() file: any, @Req() req: any) {
+    return this.docsService.uploadDocument(req.user.tenantId, req.body.employeeId, file.originalname, file.path);
+  }
+
+  @Get('my-docs')
+  async list(@Req() req: any) {
+    return this.docsService.listForEmployee(req.user.tenantId, req.user.employeeId);
+  }
+}
+```
+
+---
+## GET /v1/employees — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+
+```ts
+,
+  ) {}
+
+  @Post()
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async create(
+    @Body() createDto: CreateEmployeeDto,
+    @Req() req: any,
+  ) {
+    return this.employeesService.create(
+      req.user.tenantId,
+      createDto,
+    );
+  }
+
+  @Get()
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async findAll(
+    @Req() req: any,
+  ) {
+    return this.employeesService.findAll(
+      req.user.tenantId,
+    );
+  }
+
+  @Get(':id')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async findOne(
+    @Param('id') id: string,
+    @Req() req: any,
+  ) {
+    return this.employeesService.findOne(
+      id,
+      req.user.tenantId,
+    );
+  }
+
+  @Put(':id/link-user')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async linkUser(
+    @Param('id') id: string,
+    @Body() dto: LinkUserDto,
+    @Req() req: any,
+  ) {
+    return this.employeesService.linkUser(
+      id,
+      req.user.tenantId,
+      dto.userId,
+    );
+  }
+
+  @Delete(':id/link-user')
+  @Roles(UserRole.ADMIN
+```
+
+---
+## POST /v1/employees — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+
+```ts
+@Controller('v1/employees')
+@UseGuards(JwtAuthGuard, RolesGuard)
+export class EmployeesController {
+  constructor(
+    private readonly employeesService: EmployeesService,
+  ) {}
+
+  @Post()
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async create(
+    @Body() createDto: CreateEmployeeDto,
+    @Req() req: any,
+  ) {
+    return this.employeesService.create(
+      req.user.tenantId,
+      createDto,
+    );
+  }
+
+  @Get()
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async findAll(
+    @Req() req: any,
+  ) {
+    return this.employeesService.findAll(
+      req.user.tenantId,
+    );
+  }
+
+  @Get(':id')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async findOne(
+    @Param('id') id: string,
+    @Req() req: any,
+  ) {
+    return this.employeesService.findOne(
+      id,
+      req.user.tenantId,
+    );
+  }
+
+  @Put(':id/link-user')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async linkUser(
+    @Param('id')
+```
+
+---
+## DELETE /v1/employees/:id — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+
+```ts
+}
+
+  @Delete(':id/link-user')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async unlinkUser(
+    @Param('id') id: string,
+    @Req() req: any,
+  ) {
+    return this.employeesService.unlinkUser(
+      id,
+      req.user.tenantId,
+    );
+  }
+
+  @Delete(':id')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async remove(
+    @Param('id') id: string,
+    @Req() req: any,
+  ) {
+    return this.employeesService.remove(
+      id,
+      req.user.tenantId,
+    );
+  }
+}
+```
+
+---
+## GET /v1/employees/:id — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+
+```ts
+rvice.create(
+      req.user.tenantId,
+      createDto,
+    );
+  }
+
+  @Get()
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async findAll(
+    @Req() req: any,
+  ) {
+    return this.employeesService.findAll(
+      req.user.tenantId,
+    );
+  }
+
+  @Get(':id')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async findOne(
+    @Param('id') id: string,
+    @Req() req: any,
+  ) {
+    return this.employeesService.findOne(
+      id,
+      req.user.tenantId,
+    );
+  }
+
+  @Put(':id/link-user')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async linkUser(
+    @Param('id') id: string,
+    @Body() dto: LinkUserDto,
+    @Req() req: any,
+  ) {
+    return this.employeesService.linkUser(
+      id,
+      req.user.tenantId,
+      dto.userId,
+    );
+  }
+
+  @Delete(':id/link-user')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async unlinkUser(
+    @Param('id') id: string,
+    @Req() req: any,
+  ) {
+    return this.employeesService.unlinkUser(
+      id,
+      req.user.tenantId,
+```
+
+---
+## DELETE /v1/employees/:id/link-user — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+
+```ts
+rRole.ADMIN, UserRole.RH)
+  async linkUser(
+    @Param('id') id: string,
+    @Body() dto: LinkUserDto,
+    @Req() req: any,
+  ) {
+    return this.employeesService.linkUser(
+      id,
+      req.user.tenantId,
+      dto.userId,
+    );
+  }
+
+  @Delete(':id/link-user')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async unlinkUser(
+    @Param('id') id: string,
+    @Req() req: any,
+  ) {
+    return this.employeesService.unlinkUser(
+      id,
+      req.user.tenantId,
+    );
+  }
+
+  @Delete(':id')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async remove(
+    @Param('id') id: string,
+    @Req() req: any,
+  ) {
+    return this.employeesService.remove(
+      id,
+      req.user.tenantId,
+    );
+  }
+}
+```
+
+---
+## PUT /v1/employees/:id/link-user — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+
+```ts
+r.tenantId,
+    );
+  }
+
+  @Get(':id')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async findOne(
+    @Param('id') id: string,
+    @Req() req: any,
+  ) {
+    return this.employeesService.findOne(
+      id,
+      req.user.tenantId,
+    );
+  }
+
+  @Put(':id/link-user')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async linkUser(
+    @Param('id') id: string,
+    @Body() dto: LinkUserDto,
+    @Req() req: any,
+  ) {
+    return this.employeesService.linkUser(
+      id,
+      req.user.tenantId,
+      dto.userId,
+    );
+  }
+
+  @Delete(':id/link-user')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async unlinkUser(
+    @Param('id') id: string,
+    @Req() req: any,
+  ) {
+    return this.employeesService.unlinkUser(
+      id,
+      req.user.tenantId,
+    );
+  }
+
+  @Delete(':id')
+  @Roles(UserRole.ADMIN, UserRole.RH)
+  async remove(
+    @Param('id') id: string,
+    @Req() req: any,
+  ) {
+    return this.employeesService.remove(
+      id,
+      req.user.tenantId,
+    );
+  }
+}
+```
+
+---
+## GET /v1/foundation/clock/event-types — clockEventTypes
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+req: any) {
+    return this.foundationService.clockOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/events')
+  clockEvents(@Req() req: any) {
+    return this.foundationService.clockEvents(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/event-types')
+  clockEventTypes() {
+    return this.foundationService.clockEventTypes();
+  }
+
+  @Get('clock/policies')
+  clockPolicies(@Req() req: any) {
+    return this.foundationService.clockPolicies(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/policy-event-types')
+  clockPolicyEventTypes() {
+    return this.foundationService.clockPolicyEventTypes();
+  }
+
+  @Get('clock/justifications')
+  clockJustifications(@Req() req: any) {
+    return this.foundationService.clockJustifications(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents/overview')
+  documentsOverview(@Req() req: any) {
+    return this.foundationService.documentsOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents')
+  do
+```
+
+---
+## GET /v1/foundation/clock/events — clockEventTypes
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+y) {
+    return this.foundationService.trackingPoints(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/overview')
+  clockOverview(@Req() req: any) {
+    return this.foundationService.clockOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/events')
+  clockEvents(@Req() req: any) {
+    return this.foundationService.clockEvents(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/event-types')
+  clockEventTypes() {
+    return this.foundationService.clockEventTypes();
+  }
+
+  @Get('clock/policies')
+  clockPolicies(@Req() req: any) {
+    return this.foundationService.clockPolicies(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/policy-event-types')
+  clockPolicyEventTypes() {
+    return this.foundationService.clockPolicyEventTypes();
+  }
+
+  @Get('clock/justifications')
+  clockJustifications(@Req() req: any) {
+    return this.foundationService.clockJustifications(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents/overview')
+  docume
+```
+
+---
+## GET /v1/foundation/clock/justifications — documentRecipients
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+icies(@Req() req: any) {
+    return this.foundationService.clockPolicies(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/policy-event-types')
+  clockPolicyEventTypes() {
+    return this.foundationService.clockPolicyEventTypes();
+  }
+
+  @Get('clock/justifications')
+  clockJustifications(@Req() req: any) {
+    return this.foundationService.clockJustifications(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents/overview')
+  documentsOverview(@Req() req: any) {
+    return this.foundationService.documentsOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents')
+  documents(@Req() req: any) {
+    return this.foundationService.documents(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents/recipients')
+  documentRecipients() {
+    return this.foundationService.documentRecipients();
+  }
+
+
+  @Get('timebank/overview')
+  timebankOverview(@Req() req: any) {
+    return this.foundationService.timebankOverview(
+      req.user.tenantId,
+    );
+  }
+```
+
+---
+## GET /v1/foundation/clock/overview — clockEventTypes
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+{
+    return this.foundationService.mobileSettings(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('tracking/points')
+  trackingPoints(@Req() req: any) {
+    return this.foundationService.trackingPoints(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/overview')
+  clockOverview(@Req() req: any) {
+    return this.foundationService.clockOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/events')
+  clockEvents(@Req() req: any) {
+    return this.foundationService.clockEvents(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/event-types')
+  clockEventTypes() {
+    return this.foundationService.clockEventTypes();
+  }
+
+  @Get('clock/policies')
+  clockPolicies(@Req() req: any) {
+    return this.foundationService.clockPolicies(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/policy-event-types')
+  clockPolicyEventTypes() {
+    return this.foundationService.clockPolicyEventTypes();
+  }
+
+  @Get('clock/justifications')
+  clockJustifications(@Req
+```
+
+---
+## GET /v1/foundation/clock/policies — clockPolicyEventTypes
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+ock/events')
+  clockEvents(@Req() req: any) {
+    return this.foundationService.clockEvents(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/event-types')
+  clockEventTypes() {
+    return this.foundationService.clockEventTypes();
+  }
+
+  @Get('clock/policies')
+  clockPolicies(@Req() req: any) {
+    return this.foundationService.clockPolicies(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/policy-event-types')
+  clockPolicyEventTypes() {
+    return this.foundationService.clockPolicyEventTypes();
+  }
+
+  @Get('clock/justifications')
+  clockJustifications(@Req() req: any) {
+    return this.foundationService.clockJustifications(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents/overview')
+  documentsOverview(@Req() req: any) {
+    return this.foundationService.documentsOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents')
+  documents(@Req() req: any) {
+    return this.foundationService.documents(
+      req.user.tenantId,
+    );
+```
+
+---
+## GET /v1/foundation/clock/policy-event-types — clockPolicyEventTypes
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+ent-types')
+  clockEventTypes() {
+    return this.foundationService.clockEventTypes();
+  }
+
+  @Get('clock/policies')
+  clockPolicies(@Req() req: any) {
+    return this.foundationService.clockPolicies(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/policy-event-types')
+  clockPolicyEventTypes() {
+    return this.foundationService.clockPolicyEventTypes();
+  }
+
+  @Get('clock/justifications')
+  clockJustifications(@Req() req: any) {
+    return this.foundationService.clockJustifications(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents/overview')
+  documentsOverview(@Req() req: any) {
+    return this.foundationService.documentsOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents')
+  documents(@Req() req: any) {
+    return this.foundationService.documents(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents/recipients')
+  documentRecipients() {
+    return this.foundationService.documentRecipients();
+  }
+
+
+  @Get('timebank/overview')
+  time
+```
+
+---
+## GET /v1/foundation/documents — documentRecipients
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+his.foundationService.clockJustifications(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents/overview')
+  documentsOverview(@Req() req: any) {
+    return this.foundationService.documentsOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents')
+  documents(@Req() req: any) {
+    return this.foundationService.documents(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents/recipients')
+  documentRecipients() {
+    return this.foundationService.documentRecipients();
+  }
+
+
+  @Get('timebank/overview')
+  timebankOverview(@Req() req: any) {
+    return this.foundationService.timebankOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('timebank/balances')
+  timebankBalances(@Req() req: any) {
+    return this.foundationService.timebankBalances(
+      req.user.tenantId,
+    );
+  }
+
+
+  @Get('payroll/overview')
+  payrollOverview(@Req() req: any) {
+    return this.foundationService.payrollOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Ge
+```
+
+---
+## GET /v1/foundation/documents/overview — documentRecipients
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+Types() {
+    return this.foundationService.clockPolicyEventTypes();
+  }
+
+  @Get('clock/justifications')
+  clockJustifications(@Req() req: any) {
+    return this.foundationService.clockJustifications(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents/overview')
+  documentsOverview(@Req() req: any) {
+    return this.foundationService.documentsOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents')
+  documents(@Req() req: any) {
+    return this.foundationService.documents(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents/recipients')
+  documentRecipients() {
+    return this.foundationService.documentRecipients();
+  }
+
+
+  @Get('timebank/overview')
+  timebankOverview(@Req() req: any) {
+    return this.foundationService.timebankOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('timebank/balances')
+  timebankBalances(@Req() req: any) {
+    return this.foundationService.timebankBalances(
+      req.user.tenantId,
+    );
+  }
+
+
+  @Get('
+```
+
+---
+## GET /v1/foundation/documents/recipients — documentRecipients
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+() req: any) {
+    return this.foundationService.documentsOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents')
+  documents(@Req() req: any) {
+    return this.foundationService.documents(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents/recipients')
+  documentRecipients() {
+    return this.foundationService.documentRecipients();
+  }
+
+
+  @Get('timebank/overview')
+  timebankOverview(@Req() req: any) {
+    return this.foundationService.timebankOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('timebank/balances')
+  timebankBalances(@Req() req: any) {
+    return this.foundationService.timebankBalances(
+      req.user.tenantId,
+    );
+  }
+
+
+  @Get('payroll/overview')
+  payrollOverview(@Req() req: any) {
+    return this.foundationService.payrollOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('payroll/payslips')
+  payrollPayslips(@Req() req: any) {
+    return this.foundationService.payrollPayslips(
+      req.user.tenantId,
+    );
+```
+
+---
+## GET /v1/foundation/hr/departments — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+w(@Req() req: any) {
+    return this.foundationService.overview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/employees')
+  employees(@Req() req: any) {
+    return this.foundationService.employees(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/departments')
+  departments(@Req() req: any) {
+    return this.foundationService.departments(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/job-positions')
+  jobPositions(@Req() req: any) {
+    return this.foundationService.jobPositions(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/job-functions')
+  jobFunctions(@Req() req: any) {
+    return this.foundationService.jobFunctions(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/work-locations')
+  workLocations(@Req() req: any) {
+    return this.foundationService.workLocations(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/geofences')
+  geofences(@Req() req: any) {
+    return this.foundationService.geofences(
+      req.user.tenantId,
+    );
+  }
+
+  @Ge
+```
+
+---
+## GET /v1/foundation/hr/employees — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+ss FoundationController {
+  constructor(
+    private readonly foundationService: FoundationService,
+  ) {}
+
+  @Get('overview')
+  overview(@Req() req: any) {
+    return this.foundationService.overview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/employees')
+  employees(@Req() req: any) {
+    return this.foundationService.employees(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/departments')
+  departments(@Req() req: any) {
+    return this.foundationService.departments(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/job-positions')
+  jobPositions(@Req() req: any) {
+    return this.foundationService.jobPositions(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/job-functions')
+  jobFunctions(@Req() req: any) {
+    return this.foundationService.jobFunctions(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/work-locations')
+  workLocations(@Req() req: any) {
+    return this.foundationService.workLocations(
+      req.user.tenantId,
+    );
+  }
+
+  @
+```
+
+---
+## GET /v1/foundation/hr/geofences — clockEventTypes
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+) {
+    return this.foundationService.jobFunctions(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/work-locations')
+  workLocations(@Req() req: any) {
+    return this.foundationService.workLocations(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/geofences')
+  geofences(@Req() req: any) {
+    return this.foundationService.geofences(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('mobile/devices')
+  mobileDevices(@Req() req: any) {
+    return this.foundationService.mobileDevices(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('mobile/settings')
+  mobileSettings(@Req() req: any) {
+    return this.foundationService.mobileSettings(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('tracking/points')
+  trackingPoints(@Req() req: any) {
+    return this.foundationService.trackingPoints(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/overview')
+  clockOverview(@Req() req: any) {
+    return this.foundationService.clockOverview(
+      req.user.tenantId,
+    );
+```
+
+---
+## GET /v1/foundation/hr/job-functions — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+any) {
+    return this.foundationService.departments(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/job-positions')
+  jobPositions(@Req() req: any) {
+    return this.foundationService.jobPositions(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/job-functions')
+  jobFunctions(@Req() req: any) {
+    return this.foundationService.jobFunctions(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/work-locations')
+  workLocations(@Req() req: any) {
+    return this.foundationService.workLocations(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/geofences')
+  geofences(@Req() req: any) {
+    return this.foundationService.geofences(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('mobile/devices')
+  mobileDevices(@Req() req: any) {
+    return this.foundationService.mobileDevices(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('mobile/settings')
+  mobileSettings(@Req() req: any) {
+    return this.foundationService.mobileSettings(
+      req.user.tenantId,
+    );
+  }
+```
+
+---
+## GET /v1/foundation/hr/job-positions — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+) req: any) {
+    return this.foundationService.employees(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/departments')
+  departments(@Req() req: any) {
+    return this.foundationService.departments(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/job-positions')
+  jobPositions(@Req() req: any) {
+    return this.foundationService.jobPositions(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/job-functions')
+  jobFunctions(@Req() req: any) {
+    return this.foundationService.jobFunctions(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/work-locations')
+  workLocations(@Req() req: any) {
+    return this.foundationService.workLocations(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/geofences')
+  geofences(@Req() req: any) {
+    return this.foundationService.geofences(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('mobile/devices')
+  mobileDevices(@Req() req: any) {
+    return this.foundationService.mobileDevices(
+      req.user.tenantId,
+    );
+  }
+
+  @
+```
+
+---
+## GET /v1/foundation/hr/work-locations — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+any) {
+    return this.foundationService.jobPositions(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/job-functions')
+  jobFunctions(@Req() req: any) {
+    return this.foundationService.jobFunctions(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/work-locations')
+  workLocations(@Req() req: any) {
+    return this.foundationService.workLocations(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/geofences')
+  geofences(@Req() req: any) {
+    return this.foundationService.geofences(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('mobile/devices')
+  mobileDevices(@Req() req: any) {
+    return this.foundationService.mobileDevices(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('mobile/settings')
+  mobileSettings(@Req() req: any) {
+    return this.foundationService.mobileSettings(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('tracking/points')
+  trackingPoints(@Req() req: any) {
+    return this.foundationService.trackingPoints(
+      req.user.tenantId,
+    );
+  }
+```
+
+---
+## POST /v1/foundation/live-tracking/device — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+return this.foundationService.payrollOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('payroll/payslips')
+  payrollPayslips(@Req() req: any) {
+    return this.foundationService.payrollPayslips(
+      req.user.tenantId,
+    );
+  }
+
+
+  @Post('live-tracking/device')
+  registerLiveTrackingDevice(
+    @Req() req: any,
+    @Body() dto: RegisterMobileDeviceDto,
+  ) {
+    return this.foundationService.registerOrUpdateMobileDevice(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Post('live-tracking/location')
+  createLiveTrackingLocation(
+    @Req() req: any,
+    @Body() dto: CreateLocationTrackingPointDto,
+  ) {
+    return this.foundationService.createLocationTrackingPoint(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Get('live-tracking/points')
+  liveTrackingPoints(
+    @Req() req: any,
+  ) {
+    return this.foundationService.liveTrackingPoints(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('live-tracking/latest')
+  latestTrackingPoints(
+    @Req()
+```
+
+---
+## GET /v1/foundation/live-tracking/latest — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+tionTrackingPoint(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Get('live-tracking/points')
+  liveTrackingPoints(
+    @Req() req: any,
+  ) {
+    return this.foundationService.liveTrackingPoints(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('live-tracking/latest')
+  latestTrackingPoints(
+    @Req() req: any,
+  ) {
+    return this.foundationService.latestTrackingPoints(
+      req.user.tenantId,
+    );
+  }
+
+}
+```
+
+---
+## POST /v1/foundation/live-tracking/location — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+st('live-tracking/device')
+  registerLiveTrackingDevice(
+    @Req() req: any,
+    @Body() dto: RegisterMobileDeviceDto,
+  ) {
+    return this.foundationService.registerOrUpdateMobileDevice(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Post('live-tracking/location')
+  createLiveTrackingLocation(
+    @Req() req: any,
+    @Body() dto: CreateLocationTrackingPointDto,
+  ) {
+    return this.foundationService.createLocationTrackingPoint(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Get('live-tracking/points')
+  liveTrackingPoints(
+    @Req() req: any,
+  ) {
+    return this.foundationService.liveTrackingPoints(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('live-tracking/latest')
+  latestTrackingPoints(
+    @Req() req: any,
+  ) {
+    return this.foundationService.latestTrackingPoints(
+      req.user.tenantId,
+    );
+  }
+
+}
+```
+
+---
+## GET /v1/foundation/live-tracking/points — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+-tracking/location')
+  createLiveTrackingLocation(
+    @Req() req: any,
+    @Body() dto: CreateLocationTrackingPointDto,
+  ) {
+    return this.foundationService.createLocationTrackingPoint(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Get('live-tracking/points')
+  liveTrackingPoints(
+    @Req() req: any,
+  ) {
+    return this.foundationService.liveTrackingPoints(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('live-tracking/latest')
+  latestTrackingPoints(
+    @Req() req: any,
+  ) {
+    return this.foundationService.latestTrackingPoints(
+      req.user.tenantId,
+    );
+  }
+
+}
+```
+
+---
+## GET /v1/foundation/mobile/devices — clockEventTypes
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+q() req: any) {
+    return this.foundationService.workLocations(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/geofences')
+  geofences(@Req() req: any) {
+    return this.foundationService.geofences(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('mobile/devices')
+  mobileDevices(@Req() req: any) {
+    return this.foundationService.mobileDevices(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('mobile/settings')
+  mobileSettings(@Req() req: any) {
+    return this.foundationService.mobileSettings(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('tracking/points')
+  trackingPoints(@Req() req: any) {
+    return this.foundationService.trackingPoints(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/overview')
+  clockOverview(@Req() req: any) {
+    return this.foundationService.clockOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/events')
+  clockEvents(@Req() req: any) {
+    return this.foundationService.clockEvents(
+      req.user.tenantId,
+    );
+```
+
+---
+## GET /v1/foundation/mobile/settings — clockEventTypes
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+q: any) {
+    return this.foundationService.geofences(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('mobile/devices')
+  mobileDevices(@Req() req: any) {
+    return this.foundationService.mobileDevices(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('mobile/settings')
+  mobileSettings(@Req() req: any) {
+    return this.foundationService.mobileSettings(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('tracking/points')
+  trackingPoints(@Req() req: any) {
+    return this.foundationService.trackingPoints(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/overview')
+  clockOverview(@Req() req: any) {
+    return this.foundationService.clockOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/events')
+  clockEvents(@Req() req: any) {
+    return this.foundationService.clockEvents(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/event-types')
+  clockEventTypes() {
+    return this.foundationService.clockEventTypes();
+  }
+
+  @Get('clock/policies')
+  clockP
+```
+
+---
+## GET /v1/foundation/overview — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+@Controller('v1/foundation')
+@UseGuards(JwtAuthGuard)
+export class FoundationController {
+  constructor(
+    private readonly foundationService: FoundationService,
+  ) {}
+
+  @Get('overview')
+  overview(@Req() req: any) {
+    return this.foundationService.overview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/employees')
+  employees(@Req() req: any) {
+    return this.foundationService.employees(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/departments')
+  departments(@Req() req: any) {
+    return this.foundationService.departments(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/job-positions')
+  jobPositions(@Req() req: any) {
+    return this.foundationService.jobPositions(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/job-functions')
+  jobFunctions(@Req() req: any) {
+    return this.foundationService.jobFunctions(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('hr/work-lo
+```
+
+---
+## GET /v1/foundation/payroll/overview — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+urn this.foundationService.timebankOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('timebank/balances')
+  timebankBalances(@Req() req: any) {
+    return this.foundationService.timebankBalances(
+      req.user.tenantId,
+    );
+  }
+
+
+  @Get('payroll/overview')
+  payrollOverview(@Req() req: any) {
+    return this.foundationService.payrollOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('payroll/payslips')
+  payrollPayslips(@Req() req: any) {
+    return this.foundationService.payrollPayslips(
+      req.user.tenantId,
+    );
+  }
+
+
+  @Post('live-tracking/device')
+  registerLiveTrackingDevice(
+    @Req() req: any,
+    @Body() dto: RegisterMobileDeviceDto,
+  ) {
+    return this.foundationService.registerOrUpdateMobileDevice(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Post('live-tracking/location')
+  createLiveTrackingLocation(
+    @Req() req: any,
+    @Body() dto: CreateLocationTrackingPointDto,
+  ) {
+    return this.foundationService.crea
+```
+
+---
+## GET /v1/foundation/payroll/payslips — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+return this.foundationService.timebankBalances(
+      req.user.tenantId,
+    );
+  }
+
+
+  @Get('payroll/overview')
+  payrollOverview(@Req() req: any) {
+    return this.foundationService.payrollOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('payroll/payslips')
+  payrollPayslips(@Req() req: any) {
+    return this.foundationService.payrollPayslips(
+      req.user.tenantId,
+    );
+  }
+
+
+  @Post('live-tracking/device')
+  registerLiveTrackingDevice(
+    @Req() req: any,
+    @Body() dto: RegisterMobileDeviceDto,
+  ) {
+    return this.foundationService.registerOrUpdateMobileDevice(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Post('live-tracking/location')
+  createLiveTrackingLocation(
+    @Req() req: any,
+    @Body() dto: CreateLocationTrackingPointDto,
+  ) {
+    return this.foundationService.createLocationTrackingPoint(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Get('live-tracking/points')
+  liveTrackingPoints(
+    @Req() req: any,
+  ) {
+```
+
+---
+## GET /v1/foundation/timebank/balances — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+cumentRecipients() {
+    return this.foundationService.documentRecipients();
+  }
+
+
+  @Get('timebank/overview')
+  timebankOverview(@Req() req: any) {
+    return this.foundationService.timebankOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('timebank/balances')
+  timebankBalances(@Req() req: any) {
+    return this.foundationService.timebankBalances(
+      req.user.tenantId,
+    );
+  }
+
+
+  @Get('payroll/overview')
+  payrollOverview(@Req() req: any) {
+    return this.foundationService.payrollOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('payroll/payslips')
+  payrollPayslips(@Req() req: any) {
+    return this.foundationService.payrollPayslips(
+      req.user.tenantId,
+    );
+  }
+
+
+  @Post('live-tracking/device')
+  registerLiveTrackingDevice(
+    @Req() req: any,
+    @Body() dto: RegisterMobileDeviceDto,
+  ) {
+    return this.foundationService.registerOrUpdateMobileDevice(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Post('live-tracking/
+```
+
+---
+## GET /v1/foundation/timebank/overview — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+ents')
+  documents(@Req() req: any) {
+    return this.foundationService.documents(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('documents/recipients')
+  documentRecipients() {
+    return this.foundationService.documentRecipients();
+  }
+
+
+  @Get('timebank/overview')
+  timebankOverview(@Req() req: any) {
+    return this.foundationService.timebankOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('timebank/balances')
+  timebankBalances(@Req() req: any) {
+    return this.foundationService.timebankBalances(
+      req.user.tenantId,
+    );
+  }
+
+
+  @Get('payroll/overview')
+  payrollOverview(@Req() req: any) {
+    return this.foundationService.payrollOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('payroll/payslips')
+  payrollPayslips(@Req() req: any) {
+    return this.foundationService.payrollPayslips(
+      req.user.tenantId,
+    );
+  }
+
+
+  @Post('live-tracking/device')
+  registerLiveTrackingDevice(
+    @Req() req: any,
+    @Body() dto: RegisterMob
+```
+
+---
+## GET /v1/foundation/tracking/points — clockEventTypes
+
+Arquivo: /opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+
+```ts
+{
+    return this.foundationService.mobileDevices(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('mobile/settings')
+  mobileSettings(@Req() req: any) {
+    return this.foundationService.mobileSettings(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('tracking/points')
+  trackingPoints(@Req() req: any) {
+    return this.foundationService.trackingPoints(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/overview')
+  clockOverview(@Req() req: any) {
+    return this.foundationService.clockOverview(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/events')
+  clockEvents(@Req() req: any) {
+    return this.foundationService.clockEvents(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/event-types')
+  clockEventTypes() {
+    return this.foundationService.clockEventTypes();
+  }
+
+  @Get('clock/policies')
+  clockPolicies(@Req() req: any) {
+    return this.foundationService.clockPolicies(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('clock/policy-event-types')
+```
+
+---
+## GET /v1/reports/afd — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+
+```ts
+schedules(@Req() req: any) {
+    return this.reportsService.schedules(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank')
+  timeBank(@Req() req: any) {
+    return this.reportsService.timeBank(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('afd')
+  afd(@Req() req: any) {
+    return this.reportsService.afd(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('executive')
+  executive(@Req() req: any) {
+    return this.reportsService.executive(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('productivity')
+  productivity(@Req() req: any) {
+    return this.reportsService.productivity(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank-summary')
+  timeBankSummary(@Req() req: any) {
+    return this.reportsService.timeBankSummary(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedule-distribution')
+  scheduleDistribution(@Req() req: any) {
+    return this.reportsService.scheduleDistribution(
+      req.user.tenantId,
+    );
+  }
+}
+```
+
+---
+## GET /v1/reports/employees — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+
+```ts
+@Controller('v1/reports')
+@UseGuards(JwtAuthGuard)
+export class ReportsController {
+  constructor(
+    private readonly reportsService: ReportsService,
+  ) {}
+
+  @Get('employees')
+  employees(@Req() req: any) {
+    return this.reportsService.employees(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedules')
+  schedules(@Req() req: any) {
+    return this.reportsService.schedules(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank')
+  timeBank(@Req() req: any) {
+    return this.reportsService.timeBank(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('afd')
+  afd(@Req() req: any) {
+    return this.reportsService.afd(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('executive')
+  executive(@Req() req: any) {
+    return this.reportsService.executive(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('productivity')
+  productivity(@Req() req: any) {
+    return this.reportsService.p
+```
+
+---
+## GET /v1/reports/executive — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+
+```ts
+@Get('time-bank')
+  timeBank(@Req() req: any) {
+    return this.reportsService.timeBank(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('afd')
+  afd(@Req() req: any) {
+    return this.reportsService.afd(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('executive')
+  executive(@Req() req: any) {
+    return this.reportsService.executive(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('productivity')
+  productivity(@Req() req: any) {
+    return this.reportsService.productivity(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank-summary')
+  timeBankSummary(@Req() req: any) {
+    return this.reportsService.timeBankSummary(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedule-distribution')
+  scheduleDistribution(@Req() req: any) {
+    return this.reportsService.scheduleDistribution(
+      req.user.tenantId,
+    );
+  }
+}
+```
+
+---
+## GET /v1/reports/productivity — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+
+```ts
+et('afd')
+  afd(@Req() req: any) {
+    return this.reportsService.afd(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('executive')
+  executive(@Req() req: any) {
+    return this.reportsService.executive(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('productivity')
+  productivity(@Req() req: any) {
+    return this.reportsService.productivity(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank-summary')
+  timeBankSummary(@Req() req: any) {
+    return this.reportsService.timeBankSummary(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedule-distribution')
+  scheduleDistribution(@Req() req: any) {
+    return this.reportsService.scheduleDistribution(
+      req.user.tenantId,
+    );
+  }
+}
+```
+
+---
+## GET /v1/reports/schedule-distribution — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+
+```ts
+ny) {
+    return this.reportsService.productivity(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank-summary')
+  timeBankSummary(@Req() req: any) {
+    return this.reportsService.timeBankSummary(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedule-distribution')
+  scheduleDistribution(@Req() req: any) {
+    return this.reportsService.scheduleDistribution(
+      req.user.tenantId,
+    );
+  }
+}
+```
+
+---
+## GET /v1/reports/schedules — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+
+```ts
+xport class ReportsController {
+  constructor(
+    private readonly reportsService: ReportsService,
+  ) {}
+
+  @Get('employees')
+  employees(@Req() req: any) {
+    return this.reportsService.employees(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedules')
+  schedules(@Req() req: any) {
+    return this.reportsService.schedules(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank')
+  timeBank(@Req() req: any) {
+    return this.reportsService.timeBank(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('afd')
+  afd(@Req() req: any) {
+    return this.reportsService.afd(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('executive')
+  executive(@Req() req: any) {
+    return this.reportsService.executive(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('productivity')
+  productivity(@Req() req: any) {
+    return this.reportsService.productivity(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank-summary')
+  timeBankSummary(@Req() req: any) {
+    return this
+```
+
+---
+## GET /v1/reports/time-bank — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+
+```ts
+employees(@Req() req: any) {
+    return this.reportsService.employees(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedules')
+  schedules(@Req() req: any) {
+    return this.reportsService.schedules(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank')
+  timeBank(@Req() req: any) {
+    return this.reportsService.timeBank(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('afd')
+  afd(@Req() req: any) {
+    return this.reportsService.afd(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('executive')
+  executive(@Req() req: any) {
+    return this.reportsService.executive(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('productivity')
+  productivity(@Req() req: any) {
+    return this.reportsService.productivity(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank-summary')
+  timeBankSummary(@Req() req: any) {
+    return this.reportsService.timeBankSummary(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedule-distribution')
+  scheduleDistribution(@Req(
+```
+
+---
+## GET /v1/reports/time-bank-summary — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+
+```ts
+(@Req() req: any) {
+    return this.reportsService.executive(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('productivity')
+  productivity(@Req() req: any) {
+    return this.reportsService.productivity(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('time-bank-summary')
+  timeBankSummary(@Req() req: any) {
+    return this.reportsService.timeBankSummary(
+      req.user.tenantId,
+    );
+  }
+
+  @Get('schedule-distribution')
+  scheduleDistribution(@Req() req: any) {
+    return this.reportsService.scheduleDistribution(
+      req.user.tenantId,
+    );
+  }
+}
+```
+
+---
+## GET /v1/schedules — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+
+```ts
+@Controller('v1/schedules')
+@UseGuards(JwtAuthGuard)
+export class ScheduleController {
+
+  constructor(
+    private readonly schedulesService: SchedulesService,
+  ) {}
+
+  @Get()
+  findAll(
+    @Req() req: any,
+  ) {
+    return this.schedulesService.findAll(
+      req.user.tenantId,
+    );
+  }
+
+  @Post('assign')
+  assign(
+    @Req() req: any,
+    @Body() dto: AssignScheduleDto,
+  ) {
+    return this.schedulesService.assign(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Get('employee/:employeeId')
+  getEmployeeSchedule(
+    @Req() req: any,
+    @Param('employeeId') employeeId: string,
+  ) {
+    return this.schedulesService.getEmployeeSchedule(
+      req.user.tenantId,
+      employeeId,
+    );
+  }
+@Get('employee/:employeeId/active')
+getEmployeeScheduleActive(
+  @Req() req: any,
+  @Param('employeeId') employeeId: string,
+) {
+  return this.schedulesService.getEmplo
+```
+
+---
+## POST /v1/schedules — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+
+```ts
+ssignment(
+    req.user.tenantId,
+    id,
+    body.endDate,
+  );
+}
+
+  @Get(':id')
+  findOne(
+    @Req() req: any,
+    @Param('id') id: string,
+  ) {
+    return this.schedulesService.findOne(
+      id,
+      req.user.tenantId,
+    );
+  }
+
+  @Post()
+  create(
+    @Req() req: any,
+    @Body() dto: CreateScheduleDto,
+  ) {
+    return this.schedulesService.create(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Put(':id')
+  update(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Body() dto: UpdateScheduleDto,
+  ) {
+    return this.schedulesService.update(
+      id,
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Delete(':id')
+  remove(
+    @Req() req: any,
+    @Param('id') id: string,
+  ) {
+    return this.schedulesService.remove(
+      id,
+      req.user.tenantId,
+    );
+  }
+}
+```
+
+---
+## DELETE /v1/schedules/:id — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+
+```ts
+dto,
+    );
+  }
+
+  @Put(':id')
+  update(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Body() dto: UpdateScheduleDto,
+  ) {
+    return this.schedulesService.update(
+      id,
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Delete(':id')
+  remove(
+    @Req() req: any,
+    @Param('id') id: string,
+  ) {
+    return this.schedulesService.remove(
+      id,
+      req.user.tenantId,
+    );
+  }
+}
+```
+
+---
+## GET /v1/schedules/:id — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+
+```ts
+nantId,
+    id,
+  );
+}
+
+@Patch('assign/:id/end')
+endAssignment(
+  @Req() req: any,
+  @Param('id') id: string,
+  @Body() body: any,
+) {
+  return this.schedulesService.endAssignment(
+    req.user.tenantId,
+    id,
+    body.endDate,
+  );
+}
+
+  @Get(':id')
+  findOne(
+    @Req() req: any,
+    @Param('id') id: string,
+  ) {
+    return this.schedulesService.findOne(
+      id,
+      req.user.tenantId,
+    );
+  }
+
+  @Post()
+  create(
+    @Req() req: any,
+    @Body() dto: CreateScheduleDto,
+  ) {
+    return this.schedulesService.create(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Put(':id')
+  update(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Body() dto: UpdateScheduleDto,
+  ) {
+    return this.schedulesService.update(
+      id,
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Delete(':id')
+  remove(
+    @Req() req: any,
+    @Param('id') id: string,
+  ) {
+    return this.schedulesService.remove(
+      id,
+      req.user.tenantI
+```
+
+---
+## PUT /v1/schedules/:id — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+
+```ts
+esService.findOne(
+      id,
+      req.user.tenantId,
+    );
+  }
+
+  @Post()
+  create(
+    @Req() req: any,
+    @Body() dto: CreateScheduleDto,
+  ) {
+    return this.schedulesService.create(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Put(':id')
+  update(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Body() dto: UpdateScheduleDto,
+  ) {
+    return this.schedulesService.update(
+      id,
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Delete(':id')
+  remove(
+    @Req() req: any,
+    @Param('id') id: string,
+  ) {
+    return this.schedulesService.remove(
+      id,
+      req.user.tenantId,
+    );
+  }
+}
+```
+
+---
+## POST /v1/schedules/assign — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+
+```ts
+ort class ScheduleController {
+
+  constructor(
+    private readonly schedulesService: SchedulesService,
+  ) {}
+
+  @Get()
+  findAll(
+    @Req() req: any,
+  ) {
+    return this.schedulesService.findAll(
+      req.user.tenantId,
+    );
+  }
+
+  @Post('assign')
+  assign(
+    @Req() req: any,
+    @Body() dto: AssignScheduleDto,
+  ) {
+    return this.schedulesService.assign(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Get('employee/:employeeId')
+  getEmployeeSchedule(
+    @Req() req: any,
+    @Param('employeeId') employeeId: string,
+  ) {
+    return this.schedulesService.getEmployeeSchedule(
+      req.user.tenantId,
+      employeeId,
+    );
+  }
+@Get('employee/:employeeId/active')
+getEmployeeScheduleActive(
+  @Req() req: any,
+  @Param('employeeId') employeeId: string,
+) {
+  return this.schedulesService.getEmployeeScheduleActive(
+    req.user.tenantId,
+    employeeId,
+  );
+}
+
+@Delete('assign/:id')
+unassign(
+  @Req() req: any,
+  @Param('id') id:
+```
+
+---
+## DELETE /v1/schedules/assign/:id — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+
+```ts
+;
+  }
+@Get('employee/:employeeId/active')
+getEmployeeScheduleActive(
+  @Req() req: any,
+  @Param('employeeId') employeeId: string,
+) {
+  return this.schedulesService.getEmployeeScheduleActive(
+    req.user.tenantId,
+    employeeId,
+  );
+}
+
+@Delete('assign/:id')
+unassign(
+  @Req() req: any,
+  @Param('id') id: string,
+) {
+  return this.schedulesService.unassign(
+    req.user.tenantId,
+    id,
+  );
+}
+
+@Patch('assign/:id/end')
+endAssignment(
+  @Req() req: any,
+  @Param('id') id: string,
+  @Body() body: any,
+) {
+  return this.schedulesService.endAssignment(
+    req.user.tenantId,
+    id,
+    body.endDate,
+  );
+}
+
+  @Get(':id')
+  findOne(
+    @Req() req: any,
+    @Param('id') id: string,
+  ) {
+    return this.schedulesService.findOne(
+      id,
+      req.user.tenantId,
+    );
+  }
+
+  @Post()
+  create(
+    @Req() req: any,
+    @Body() dto: CreateScheduleDto,
+  ) {
+    return this.schedulesService.create(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @
+```
+
+---
+## PATCH /v1/schedules/assign/:id/end — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+
+```ts
+ice.getEmployeeScheduleActive(
+    req.user.tenantId,
+    employeeId,
+  );
+}
+
+@Delete('assign/:id')
+unassign(
+  @Req() req: any,
+  @Param('id') id: string,
+) {
+  return this.schedulesService.unassign(
+    req.user.tenantId,
+    id,
+  );
+}
+
+@Patch('assign/:id/end')
+endAssignment(
+  @Req() req: any,
+  @Param('id') id: string,
+  @Body() body: any,
+) {
+  return this.schedulesService.endAssignment(
+    req.user.tenantId,
+    id,
+    body.endDate,
+  );
+}
+
+  @Get(':id')
+  findOne(
+    @Req() req: any,
+    @Param('id') id: string,
+  ) {
+    return this.schedulesService.findOne(
+      id,
+      req.user.tenantId,
+    );
+  }
+
+  @Post()
+  create(
+    @Req() req: any,
+    @Body() dto: CreateScheduleDto,
+  ) {
+    return this.schedulesService.create(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Put(':id')
+  update(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Body() dto: UpdateScheduleDto,
+  ) {
+    return this.schedulesService.update(
+      id,
+```
+
+---
+## GET /v1/schedules/employee/:employeeId — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+
+```ts
+ulesService.findAll(
+      req.user.tenantId,
+    );
+  }
+
+  @Post('assign')
+  assign(
+    @Req() req: any,
+    @Body() dto: AssignScheduleDto,
+  ) {
+    return this.schedulesService.assign(
+      req.user.tenantId,
+      dto,
+    );
+  }
+
+  @Get('employee/:employeeId')
+  getEmployeeSchedule(
+    @Req() req: any,
+    @Param('employeeId') employeeId: string,
+  ) {
+    return this.schedulesService.getEmployeeSchedule(
+      req.user.tenantId,
+      employeeId,
+    );
+  }
+@Get('employee/:employeeId/active')
+getEmployeeScheduleActive(
+  @Req() req: any,
+  @Param('employeeId') employeeId: string,
+) {
+  return this.schedulesService.getEmployeeScheduleActive(
+    req.user.tenantId,
+    employeeId,
+  );
+}
+
+@Delete('assign/:id')
+unassign(
+  @Req() req: any,
+  @Param('id') id: string,
+) {
+  return this.schedulesService.unassign(
+    req.user.tenantId,
+    id,
+  );
+}
+
+@Patch('assign/:id/end')
+endAssignment(
+  @Req() req: any,
+  @Param('id') id: string,
+  @Body() body
+```
+
+---
+## GET /v1/schedules/employee/:employeeId/active — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+
+```ts
+}
+
+  @Get('employee/:employeeId')
+  getEmployeeSchedule(
+    @Req() req: any,
+    @Param('employeeId') employeeId: string,
+  ) {
+    return this.schedulesService.getEmployeeSchedule(
+      req.user.tenantId,
+      employeeId,
+    );
+  }
+@Get('employee/:employeeId/active')
+getEmployeeScheduleActive(
+  @Req() req: any,
+  @Param('employeeId') employeeId: string,
+) {
+  return this.schedulesService.getEmployeeScheduleActive(
+    req.user.tenantId,
+    employeeId,
+  );
+}
+
+@Delete('assign/:id')
+unassign(
+  @Req() req: any,
+  @Param('id') id: string,
+) {
+  return this.schedulesService.unassign(
+    req.user.tenantId,
+    id,
+  );
+}
+
+@Patch('assign/:id/end')
+endAssignment(
+  @Req() req: any,
+  @Param('id') id: string,
+  @Body() body: any,
+) {
+  return this.schedulesService.endAssignment(
+    req.user.tenantId,
+    id,
+    body.endDate,
+  );
+}
+
+  @Get(':id')
+  findOne(
+    @Req() req: any,
+    @Param('id') id: string,
+  ) {
+    return this.schedulesService.findOne(
+```
+
+---
+## GET /v1/time-bank — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+
+```ts
+@Controller('v1/time-bank')
+@UseGuards(JwtAuthGuard)
+export class TimeBankController {
+
+  constructor(
+    private readonly timeBankService: TimeBankService,
+  ) {}
+
+  @Get()
+  findAll(
+    @Req() req: any,
+  ) {
+    return this.timeBankService.findAll(
+      req.user.tenantId,
+    );
+  }
+
+  @Get(':employeeId')
+  findByEmployee(
+    @Req() req: any,
+    @Param('employeeId') employeeId: string,
+  ) {
+    return this.timeBankService.findByEmployee(
+      req.user.tenantId,
+      employeeId,
+    );
+  }
+
+  @Get(':employeeId/details')
+  details(
+    @Req() req: any,
+    @Param('employeeId') employeeId: string,
+  ) {
+    return this.timeBankService.details(
+      req.user.tenantId,
+      employeeId,
+    );
+  }
+
+  @Post('recalculate')
+  recalculate(
+    @Req() req: any,
+    @Body() body: any,
+  ) {
+    return this.timeBankService.processDailyBalance(
+      req.user.ten
+```
+
+---
+## GET /v1/time-bank/:employeeId — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+
+```ts
+export class TimeBankController {
+
+  constructor(
+    private readonly timeBankService: TimeBankService,
+  ) {}
+
+  @Get()
+  findAll(
+    @Req() req: any,
+  ) {
+    return this.timeBankService.findAll(
+      req.user.tenantId,
+    );
+  }
+
+  @Get(':employeeId')
+  findByEmployee(
+    @Req() req: any,
+    @Param('employeeId') employeeId: string,
+  ) {
+    return this.timeBankService.findByEmployee(
+      req.user.tenantId,
+      employeeId,
+    );
+  }
+
+  @Get(':employeeId/details')
+  details(
+    @Req() req: any,
+    @Param('employeeId') employeeId: string,
+  ) {
+    return this.timeBankService.details(
+      req.user.tenantId,
+      employeeId,
+    );
+  }
+
+  @Post('recalculate')
+  recalculate(
+    @Req() req: any,
+    @Body() body: any,
+  ) {
+    return this.timeBankService.processDailyBalance(
+      req.user.tenantId,
+      body.employeeId,
+      body.date,
+      body.expectedMinutes,
+    );
+  }
+}
+```
+
+---
+## GET /v1/time-bank/:employeeId/details — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+
+```ts
+.tenantId,
+    );
+  }
+
+  @Get(':employeeId')
+  findByEmployee(
+    @Req() req: any,
+    @Param('employeeId') employeeId: string,
+  ) {
+    return this.timeBankService.findByEmployee(
+      req.user.tenantId,
+      employeeId,
+    );
+  }
+
+  @Get(':employeeId/details')
+  details(
+    @Req() req: any,
+    @Param('employeeId') employeeId: string,
+  ) {
+    return this.timeBankService.details(
+      req.user.tenantId,
+      employeeId,
+    );
+  }
+
+  @Post('recalculate')
+  recalculate(
+    @Req() req: any,
+    @Body() body: any,
+  ) {
+    return this.timeBankService.processDailyBalance(
+      req.user.tenantId,
+      body.employeeId,
+      body.date,
+      body.expectedMinutes,
+    );
+  }
+}
+```
+
+---
+## POST /v1/time-bank/recalculate — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+
+```ts
+employeeId,
+    );
+  }
+
+  @Get(':employeeId/details')
+  details(
+    @Req() req: any,
+    @Param('employeeId') employeeId: string,
+  ) {
+    return this.timeBankService.details(
+      req.user.tenantId,
+      employeeId,
+    );
+  }
+
+  @Post('recalculate')
+  recalculate(
+    @Req() req: any,
+    @Body() body: any,
+  ) {
+    return this.timeBankService.processDailyBalance(
+      req.user.tenantId,
+      body.employeeId,
+      body.date,
+      body.expectedMinutes,
+    );
+  }
+}
+```
+
+---
+## GET /v1/time-records/afd — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+
+```ts
+@Post('clock-out')
+  async clockOut(
+    @Body() body: any,
+    @Req() req: any,
+  ) {
+    return this.timeRecordsService.clockOut(
+      req.user.tenantId,
+      body.employeeId,
+      body.latitude,
+      body.longitude,
+    );
+  }
+
+  @Get('afd')
+  async downloadAfd(
+    @Req() req: any,
+    @Res() res: any,
+  ) {
+    const afdData =
+      await this.timeRecordsService.generateAfd(
+        req.user.tenantId,
+      );
+
+    res.setHeader(
+      'Content-disposition',
+      'attachment; filename=AFD_MTE.txt',
+    );
+
+    res.setHeader(
+      'Content-type',
+      'text/plain',
+    );
+
+    res.send(afdData);
+  }
+
+  @Post('simulate-math')
+  simulateMath(
+    @Body() body: any,
+  ) {
+    const baseDate = '2026-07-01T';
+
+    const records: any[] = [];
+
+    if (body.in1)
+      records.push({
+        timestamp: new Date(
+          `${baseDate}${body.in1}:00Z`,
+        ),
+      });
+
+    if (body.out1)
+      records.push({
+        timestamp: n
+```
+
+---
+## POST /v1/time-records/break-end — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+
+```ts
+st('break-start')
+  async breakStart(
+    @Body() body: any,
+    @Req() req: any,
+  ) {
+    return this.timeRecordsService.breakStart(
+      req.user.tenantId,
+      body.employeeId,
+      body.latitude,
+      body.longitude,
+    );
+  }
+
+  @Post('break-end')
+  async breakEnd(
+    @Body() body: any,
+    @Req() req: any,
+  ) {
+    return this.timeRecordsService.breakEnd(
+      req.user.tenantId,
+      body.employeeId,
+      body.latitude,
+      body.longitude,
+    );
+  }
+
+  @Post('clock-out')
+  async clockOut(
+    @Body() body: any,
+    @Req() req: any,
+  ) {
+    return this.timeRecordsService.clockOut(
+      req.user.tenantId,
+      body.employeeId,
+      body.latitude,
+      body.longitude,
+    );
+  }
+
+  @Get('afd')
+  async downloadAfd(
+    @Req() req: any,
+    @Res() res: any,
+  ) {
+    const afdData =
+      await this.timeRecordsService.generateAfd(
+        req.user.tenantId,
+      );
+
+    res.setHeader(
+      'Content-disposition',
+      'at
+```
+
+---
+## POST /v1/time-records/break-start — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+
+```ts
+reakEnd(req.user.tenantId,
+      body.employeeId,
+      body.latitude,
+      body.longitude,);
+    }
+
+    return this.timeRecordsService.clockOut(req.user.tenantId,
+      body.employeeId,
+      body.latitude,
+      body.longitude,);
+  }
+
+  @Post('break-start')
+  async breakStart(
+    @Body() body: any,
+    @Req() req: any,
+  ) {
+    return this.timeRecordsService.breakStart(
+      req.user.tenantId,
+      body.employeeId,
+      body.latitude,
+      body.longitude,
+    );
+  }
+
+  @Post('break-end')
+  async breakEnd(
+    @Body() body: any,
+    @Req() req: any,
+  ) {
+    return this.timeRecordsService.breakEnd(
+      req.user.tenantId,
+      body.employeeId,
+      body.latitude,
+      body.longitude,
+    );
+  }
+
+  @Post('clock-out')
+  async clockOut(
+    @Body() body: any,
+    @Req() req: any,
+  ) {
+    return this.timeRecordsService.clockOut(
+      req.user.tenantId,
+      body.employeeId,
+      body.latitude,
+      body.longitude,
+    );
+  }
+
+  @Ge
+```
+
+---
+## POST /v1/time-records/clock-in — if
+
+Arquivo: /opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+
+```ts
+ype,
+      });
+    }
+
+    return normalizedPunchType as typeof supportedPunchTypes[number];
+  }
+
+
+  constructor(
+    private readonly timeRecordsService: TimeRecordsService,
+    private readonly calculator: TimeCalculatorService,
+  ) {}
+
+  @Post('clock-in')
+  async clockIn(
+    @Body() body: any,
+    @Req() req: any,
+  ) {
+    const punchType = this.resolvePrimaryPunchType(
+      (body as { punchType?: unknown }).punchType,
+    );
+
+    // B3_E1_B1_PUNCHTYPE_DISPATCH
+    if (!punchType || punchType === 'ENTRADA') {
+      return this.timeRecordsService.clockIn(req.user.tenantId,
+      body.employeeId,
+      body.latitude,
+      body.longitude,);
+    }
+
+    if (punchType === 'INICIO_INTERVALO') {
+      return this.timeRecordsService.breakStart(req.user.tenantId,
+      body.employeeId,
+      body.latitude,
+      body.longitude,);
+    }
+
+    if (punchType === 'FIM_INTERVALO') {
+      return this.timeRecordsService.breakEnd(req.user.tenantId,
+```
+
+---
+## POST /v1/time-records/clock-out — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+
+```ts
+@Post('break-end')
+  async breakEnd(
+    @Body() body: any,
+    @Req() req: any,
+  ) {
+    return this.timeRecordsService.breakEnd(
+      req.user.tenantId,
+      body.employeeId,
+      body.latitude,
+      body.longitude,
+    );
+  }
+
+  @Post('clock-out')
+  async clockOut(
+    @Body() body: any,
+    @Req() req: any,
+  ) {
+    return this.timeRecordsService.clockOut(
+      req.user.tenantId,
+      body.employeeId,
+      body.latitude,
+      body.longitude,
+    );
+  }
+
+  @Get('afd')
+  async downloadAfd(
+    @Req() req: any,
+    @Res() res: any,
+  ) {
+    const afdData =
+      await this.timeRecordsService.generateAfd(
+        req.user.tenantId,
+      );
+
+    res.setHeader(
+      'Content-disposition',
+      'attachment; filename=AFD_MTE.txt',
+    );
+
+    res.setHeader(
+      'Content-type',
+      'text/plain',
+    );
+
+    res.send(afdData);
+  }
+
+  @Post('simulate-math')
+  simulateMath(
+    @Body() body: any,
+  ) {
+    const baseDate = '2026-07
+```
+
+---
+## POST /v1/time-records/simulate-math — 
+
+Arquivo: /opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+
+```ts
+eAfd(
+        req.user.tenantId,
+      );
+
+    res.setHeader(
+      'Content-disposition',
+      'attachment; filename=AFD_MTE.txt',
+    );
+
+    res.setHeader(
+      'Content-type',
+      'text/plain',
+    );
+
+    res.send(afdData);
+  }
+
+  @Post('simulate-math')
+  simulateMath(
+    @Body() body: any,
+  ) {
+    const baseDate = '2026-07-01T';
+
+    const records: any[] = [];
+
+    if (body.in1)
+      records.push({
+        timestamp: new Date(
+          `${baseDate}${body.in1}:00Z`,
+        ),
+      });
+
+    if (body.out1)
+      records.push({
+        timestamp: new Date(
+          `${baseDate}${body.out1}:00Z`,
+        ),
+      });
+
+    if (body.in2)
+      records.push({
+        timestamp: new Date(
+          `${baseDate}${body.in2}:00Z`,
+        ),
+      });
+
+    if (body.out2)
+      records.push({
+        timestamp: new Date(
+          `${baseDate}${body.out2}:00Z`,
+        ),
+      });
+
+    return this.calculator.calculateDailyBalance(
+      recor
+```
+
+---

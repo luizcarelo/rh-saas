@@ -1,0 +1,12 @@
+Arquivo: /opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx
+
+6:  listSuperAdminClients,
+43:export function SuperAdminClientsPage() {
+56:      const result = await listSuperAdminClients();
+64:          : 'Não foi possível carregar os Clientes SaaS.';
+124:              Clientes SaaS
+171:              Endpoint usado
+205:          Carregando clientes SaaS...
+209:          <p className="font-semibold">Erro ao carregar clientes</p>
+215:            Nenhum cliente encontrado
+276:                        Ver detalhes

@@ -1,0 +1,63 @@
+=================================================
+FRONTEND APP ROUTES
+Data: 20260705_041644
+=================================================
+
+### /opt/rh-saas/frontend-web/src/App.tsx
+6:import { EmployeeLayout } from "./layouts/EmployeeLayout";
+12:import { EmployeesPage } from "./pages/EmployeesPage";
+20:import { EmployeeDashboard } from "./pages/EmployeeDashboard";
+94:      <Routes>
+95:        <Route path="/login" element={<LoginPage />} />
+97:        <Route element={<ProtectedRoute />}>
+98:          <Route element={<AdminLayout />}>
+99:            <Route path="/" element={<Dashboard />} />
+101:            <Route path="/colaboradores" element={<EmployeesPage />} />
+103:            <Route path="/usuarios" element={<UsersPage />} />
+105:            <Route path="/analytics" element={<AnalyticsPage />} />
+107:            <Route path="/ponto" element={<TimeRecordsPage />} />
+109:            <Route path="/registrar-ponto" element={<RegisterTimePage />} />
+111:            <Route path="/audit" element={<AuditPage />} />
+113:            <Route
+114:              path="/live-tracking-foundation"
+118:            <Route
+119:              path="/super-admin"
+123:            <Route
+124:              path="/super-admin/clientes"
+128:            <Route
+129:              path="/super-admin/clientes/dashboard"
+150:            <Route
+151:              path="/super-admin/clientes/novo"
+155:            <Route
+156:              path="/super-admin/clientes/:id"
+160:            <Route
+161:              path="/super-admin/clientes/:id/audit"
+165:            <Route
+166:              path="/super-admin/clientes/:id/modules"
+170:            <Route
+171:              path="/super-admin/clientes/:id/modules/audit"
+175:            <Route
+176:              path="/super-admin/empresas"
+198:            <Route
+199:              path="/super-admin/planos"
+203:            <Route
+204:              path="/super-admin/planos/novo"
+208:            <Route
+209:              path="/super-admin/planos/:id"
+213:            <Route
+214:              path="/super-admin/planos/recursos"
+237:            <Route
+238:              path="/super-admin/modulos"
+261:            <Route
+262:              path="/super-admin/modulos/clientes"
+284:            <Route
+285:              path="/super-admin/usuarios"
+307:            <Route
+308:              path="/super-admin/auditoria"
+331:            <Route
+332:              path="/super-admin/configuracoes"
+355:        <Route element={<ProtectedRoute />}>
+356:          <Route element={<EmployeeLayout />}>
+357:            <Route path="/meu-painel" element={<EmployeeDashboard />} />
+361:        <Route path="*" element={<Navigate to="/" replace />} />
+

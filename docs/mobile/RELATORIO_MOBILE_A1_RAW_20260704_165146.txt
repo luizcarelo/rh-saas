@@ -1,0 +1,366 @@
+=================================================
+DIAGNOSTICO MOBILE-A1
+Data: 20260704_165146
+Pasta: /opt/rh-saas/mobile-app
+=================================================
+
+## Arquivos principais
+-------------------------------------------------
+/opt/rh-saas/mobile-app/app.json
+/opt/rh-saas/mobile-app/.env
+/opt/rh-saas/mobile-app/package.json
+/opt/rh-saas/mobile-app/package-lock.json
+/opt/rh-saas/mobile-app/tsconfig.json
+
+## package.json
+-------------------------------------------------
+{
+  "name": "mobile-app",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-navigation/native": "^7.3.5",
+    "@react-navigation/native-stack": "^7.17.7",
+    "axios": "^1.18.1",
+    "expo": "~54.0.34",
+    "expo-location": "~19.0.8",
+    "expo-status-bar": "~3.0.9",
+    "lucide-react-native": "^1.23.0",
+    "react": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0"
+  },
+  "devDependencies": {
+    "@types/react": "~19.1.0",
+    "typescript": "~5.9.2"
+  },
+  "private": true
+}
+
+## Resumo package.json
+-------------------------------------------------
+name: mobile-app
+version: 1.0.0
+main: index.ts
+
+scripts:
+  android = expo start --android
+  ios = expo start --ios
+  start = expo start
+  web = expo start --web
+
+dependencies importantes:
+  expo = ~54.0.34
+  expo-location = ~19.0.8
+  expo-status-bar = ~3.0.9
+  react = 19.1.0
+  react-native = 0.81.5
+  @react-native-async-storage/async-storage = 2.2.0
+  @react-navigation/native = ^7.3.5
+  @react-navigation/native-stack = ^7.17.7
+  axios = ^1.18.1
+
+devDependencies importantes:
+  typescript = ~5.9.2
+
+## Estrutura sem node_modules
+-------------------------------------------------
+/opt/rh-saas/mobile-app
+/opt/rh-saas/mobile-app/AGENTS.md
+/opt/rh-saas/mobile-app/app.json
+/opt/rh-saas/mobile-app/app.json.tmp
+/opt/rh-saas/mobile-app/App.tsx
+/opt/rh-saas/mobile-app/assets
+/opt/rh-saas/mobile-app/assets/adaptive-icon.png
+/opt/rh-saas/mobile-app/assets/favicon.png
+/opt/rh-saas/mobile-app/assets/icone-app.png
+/opt/rh-saas/mobile-app/assets/icon.png
+/opt/rh-saas/mobile-app/assets/logo_rh.png
+/opt/rh-saas/mobile-app/assets/splash-icon.png
+/opt/rh-saas/mobile-app/.claude
+/opt/rh-saas/mobile-app/CLAUDE.md
+/opt/rh-saas/mobile-app/.claude/settings.json
+/opt/rh-saas/mobile-app/dist
+/opt/rh-saas/mobile-app/dist/assets
+/opt/rh-saas/mobile-app/dist/assets/02bc1fa7c0313217bde2d65ccbff40c9
+/opt/rh-saas/mobile-app/dist/assets/069d99eb1fa6712c0b9034a58c6b57dd
+/opt/rh-saas/mobile-app/dist/assets/0747a1317bbe9c6fc340b889ef8ab3ae
+/opt/rh-saas/mobile-app/dist/assets/0a328cd9c1afd0afe8e3b1ec5165b1b4
+/opt/rh-saas/mobile-app/dist/assets/1190ab078c57159f4245a328118fcd9a
+/opt/rh-saas/mobile-app/dist/assets/286d67d3f74808a60a78d3ebf1a5fb57
+/opt/rh-saas/mobile-app/dist/assets/35ba0eaec5a4f5ed12ca16fabeae451d
+/opt/rh-saas/mobile-app/dist/assets/3cd68ccdb8938e3711da2e8831b85493
+/opt/rh-saas/mobile-app/dist/assets/4403c6117ec30c859bc95d70ce4a71d3
+/opt/rh-saas/mobile-app/dist/assets/5e9ff3fb921a833f69f0e2409fb126bc
+/opt/rh-saas/mobile-app/dist/assets/61ca7e64b7d605716c57706cef640b9a
+/opt/rh-saas/mobile-app/dist/assets/778ffc9fe8773a878e9c30a6304784de
+/opt/rh-saas/mobile-app/dist/assets/78c625386b4d0690b421eb0fc78f7b9c
+/opt/rh-saas/mobile-app/dist/assets/aff2c65b39a296d4f7e96d0f58169170
+/opt/rh-saas/mobile-app/dist/assets/c3273c9e5321f20d1e42c2efae2578c4
+/opt/rh-saas/mobile-app/dist/assets/c79c3606a1cf168006ad3979763c7e0c
+/opt/rh-saas/mobile-app/dist/assets/d84e297c3b3e49a614248143d53e40ca
+/opt/rh-saas/mobile-app/dist/assets/d8e7601e3df962f83c62371ac14964d8
+/opt/rh-saas/mobile-app/dist/_expo
+/opt/rh-saas/mobile-app/dist/_expo/static
+/opt/rh-saas/mobile-app/dist/_expo/static/js
+/opt/rh-saas/mobile-app/dist/_expo/static/js/android
+/opt/rh-saas/mobile-app/dist/metadata.json
+/opt/rh-saas/mobile-app/eas.json
+/opt/rh-saas/mobile-app/.env
+/opt/rh-saas/mobile-app/expo.log
+/opt/rh-saas/mobile-app/.git
+/opt/rh-saas/mobile-app/.git/branches
+/opt/rh-saas/mobile-app/.git/COMMIT_EDITMSG
+/opt/rh-saas/mobile-app/.git/config
+/opt/rh-saas/mobile-app/.git/description
+/opt/rh-saas/mobile-app/.git/FETCH_HEAD
+/opt/rh-saas/mobile-app/.git/HEAD
+/opt/rh-saas/mobile-app/.git/hooks
+/opt/rh-saas/mobile-app/.git/hooks/applypatch-msg.sample
+/opt/rh-saas/mobile-app/.git/hooks/commit-msg.sample
+/opt/rh-saas/mobile-app/.git/hooks/fsmonitor-watchman.sample
+/opt/rh-saas/mobile-app/.git/hooks/post-update.sample
+/opt/rh-saas/mobile-app/.git/hooks/pre-applypatch.sample
+/opt/rh-saas/mobile-app/.git/hooks/pre-commit.sample
+/opt/rh-saas/mobile-app/.git/hooks/pre-merge-commit.sample
+/opt/rh-saas/mobile-app/.git/hooks/prepare-commit-msg.sample
+/opt/rh-saas/mobile-app/.git/hooks/pre-push.sample
+/opt/rh-saas/mobile-app/.git/hooks/pre-rebase.sample
+/opt/rh-saas/mobile-app/.git/hooks/pre-receive.sample
+/opt/rh-saas/mobile-app/.git/hooks/push-to-checkout.sample
+/opt/rh-saas/mobile-app/.git/hooks/sendemail-validate.sample
+/opt/rh-saas/mobile-app/.git/hooks/update.sample
+/opt/rh-saas/mobile-app/.gitignore
+/opt/rh-saas/mobile-app/.git/index
+/opt/rh-saas/mobile-app/.git/info
+/opt/rh-saas/mobile-app/.git/info/exclude
+/opt/rh-saas/mobile-app/.git/logs
+/opt/rh-saas/mobile-app/.git/logs/HEAD
+/opt/rh-saas/mobile-app/.git/logs/refs
+/opt/rh-saas/mobile-app/.git/logs/refs/heads
+/opt/rh-saas/mobile-app/.git/logs/refs/heads/master
+/opt/rh-saas/mobile-app/.git/objects
+/opt/rh-saas/mobile-app/.git/objects/03
+/opt/rh-saas/mobile-app/.git/objects/03/29d0c93c3a2f575e4d87faeea9b6029d400ef1
+/opt/rh-saas/mobile-app/.git/objects/03/d6f6b6c6727954aec1d8206222769afd178d8d
+/opt/rh-saas/mobile-app/.git/objects/09
+/opt/rh-saas/mobile-app/.git/objects/09/dbe3ee6885a3e1ab0c82fed4fd32fd2e953051
+/opt/rh-saas/mobile-app/.git/objects/0c
+/opt/rh-saas/mobile-app/.git/objects/0c/e009d84a9275e71845e5f0aef41a323f414afb
+/opt/rh-saas/mobile-app/.git/objects/12
+/opt/rh-saas/mobile-app/.git/objects/12/55e644daec1ce04ff450c47143a342fb5c2ae8
+/opt/rh-saas/mobile-app/.git/objects/17
+/opt/rh-saas/mobile-app/.git/objects/17/6e6a5a759d0caef81821729f349bfd7b88babb
+/opt/rh-saas/mobile-app/.git/objects/1c
+/opt/rh-saas/mobile-app/.git/objects/1c/735386cf968a45b33c41d68ec2b2b29dfa2391
+/opt/rh-saas/mobile-app/.git/objects/1c/acf0556fd8da32921bf94af8fbdb1f8d2da6b1
+/opt/rh-saas/mobile-app/.git/objects/1d
+/opt/rh-saas/mobile-app/.git/objects/1d/6e981ef6c4ea336e6fe8f3fbce9487221a075c
+/opt/rh-saas/mobile-app/.git/objects/23
+/opt/rh-saas/mobile-app/.git/objects/23/444d9b814b33ff44cc5f7545dc850220ac942c
+/opt/rh-saas/mobile-app/.git/objects/23/5cf54ce0c87b4979d00a2469d79b2372e4c2b8
+/opt/rh-saas/mobile-app/.git/objects/25
+/opt/rh-saas/mobile-app/.git/objects/25/8087d73a37bc37e167cfbfd2b147c977417b88
+/opt/rh-saas/mobile-app/.git/objects/28
+/opt/rh-saas/mobile-app/.git/objects/28/cbc595c844561945229caba316ecaf52154438
+/opt/rh-saas/mobile-app/.git/objects/32
+/opt/rh-saas/mobile-app/.git/objects/32/259ff41b9fb016f4eea1cbdbf5b704cb306334
+/opt/rh-saas/mobile-app/.git/objects/3a
+/opt/rh-saas/mobile-app/.git/objects/3a/c4dc7505216a62ca26106860501ab071a35e64
+/opt/rh-saas/mobile-app/.git/objects/43
+/opt/rh-saas/mobile-app/.git/objects/43/c994c2d3617f947bcb5adf1933e21dabe46bb5
+/opt/rh-saas/mobile-app/.git/objects/49
+/opt/rh-saas/mobile-app/.git/objects/49/fb91de76dda6f3e7d8e46ff5a26a702ca2b4a0
+/opt/rh-saas/mobile-app/.git/objects/58
+/opt/rh-saas/mobile-app/.git/objects/58/50f257b206006a3bb4e07a0b443190fcddff7c
+/opt/rh-saas/mobile-app/.git/objects/5d
+/opt/rh-saas/mobile-app/.git/objects/5d/cd8463a821c1eb3e68c529aa708af095d7b9fc
+/opt/rh-saas/mobile-app/.git/objects/60
+/opt/rh-saas/mobile-app/.git/objects/60/47d39d0a2b0a64fc190b3ef276409d545d9180
+/opt/rh-saas/mobile-app/.git/objects/60/590f42982d7083dd9b27a129c0e03bda96ae9a
+/opt/rh-saas/mobile-app/.git/objects/66
+/opt/rh-saas/mobile-app/.git/objects/66/6ab2ae9bd742da6f95efffaa581f29969ca651
+/opt/rh-saas/mobile-app/.git/objects/73
+/opt/rh-saas/mobile-app/.git/objects/73/cda463352de07b3b269ff0892ea4a24fe7c343
+/opt/rh-saas/mobile-app/.git/objects/75
+/opt/rh-saas/mobile-app/.git/objects/75/bc665f5eb7268993351446c22573ed650b1bfb
+/opt/rh-saas/mobile-app/.git/objects/76
+/opt/rh-saas/mobile-app/.git/objects/76/a6831d7a47ae64c82552cc6b79dd1b7f6d7d8e
+/opt/rh-saas/mobile-app/.git/objects/84
+/opt/rh-saas/mobile-app/.git/objects/84/b908d51b620a1653df25d40c0876952490fc6b
+/opt/rh-saas/mobile-app/.git/objects/85
+/opt/rh-saas/mobile-app/.git/objects/85/307cfbc977d8e1a1f18be121856eb65a22ebbc
+/opt/rh-saas/mobile-app/.git/objects/a0
+/opt/rh-saas/mobile-app/.git/objects/a0/b1526fc7b78680fd8d733dbc6113e1af695487
+/opt/rh-saas/mobile-app/.git/objects/aa
+/opt/rh-saas/mobile-app/.git/objects/aa/d39544c1d07dd5d572a37f391ef4133eb34825
+/opt/rh-saas/mobile-app/.git/objects/b5
+/opt/rh-saas/mobile-app/.git/objects/b5/01e8319db50bdd55b9a35750bc78119330f2b9
+/opt/rh-saas/mobile-app/.git/objects/b9
+/opt/rh-saas/mobile-app/.git/objects/b9/567f6052d70ca2c9035e33667fded3cc4ed71f
+/opt/rh-saas/mobile-app/.git/objects/b9/ced3698e8dd4b2a0a8fc65aed13a00c7f2cc03
+/opt/rh-saas/mobile-app/.git/objects/c7
+/opt/rh-saas/mobile-app/.git/objects/c7/b3e919a11ac45a5f386d43667627a896656f6f
+/opt/rh-saas/mobile-app/.git/objects/ca
+/opt/rh-saas/mobile-app/.git/objects/ca/574fa3b4f058225d72fbd7c82e2c2217b2078f
+/opt/rh-saas/mobile-app/.git/objects/d0
+/opt/rh-saas/mobile-app/.git/objects/d0/b274fa4f20c81983639ff8c4b1f18340f1a2c8
+/opt/rh-saas/mobile-app/.git/objects/d9
+/opt/rh-saas/mobile-app/.git/objects/d9/14c328fe1d7c235283f985f1679a330b40b565
+/opt/rh-saas/mobile-app/.git/objects/e6
+/opt/rh-saas/mobile-app/.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+/opt/rh-saas/mobile-app/.git/objects/e7
+/opt/rh-saas/mobile-app/.git/objects/e7/5f697b1801871ad8cd9309b05e8ffe8c6b6d01
+/opt/rh-saas/mobile-app/.git/objects/ee
+/opt/rh-saas/mobile-app/.git/objects/ee/697f09045041277cdae3f3491466df965659a9
+/opt/rh-saas/mobile-app/.git/objects/info
+/opt/rh-saas/mobile-app/.git/objects/pack
+/opt/rh-saas/mobile-app/.git/refs
+/opt/rh-saas/mobile-app/.git/refs/heads
+/opt/rh-saas/mobile-app/.git/refs/heads/master
+/opt/rh-saas/mobile-app/.git/refs/tags
+/opt/rh-saas/mobile-app/index.ts
+/opt/rh-saas/mobile-app/node_modules
+/opt/rh-saas/mobile-app/package.json
+/opt/rh-saas/mobile-app/package-lock.json
+/opt/rh-saas/mobile-app/set_env.sh
+/opt/rh-saas/mobile-app/src
+/opt/rh-saas/mobile-app/src/components
+/opt/rh-saas/mobile-app/src/screens
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx
+/opt/rh-saas/mobile-app/src/services
+/opt/rh-saas/mobile-app/src/services/api.ts
+/opt/rh-saas/mobile-app/tsconfig.json
+
+## Diretorios src
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src
+/opt/rh-saas/mobile-app/src/components
+/opt/rh-saas/mobile-app/src/screens
+/opt/rh-saas/mobile-app/src/services
+
+## Arquivos src
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx
+/opt/rh-saas/mobile-app/src/services/api.ts
+
+## Conteudo de src/services/api.ts
+-------------------------------------------------
+     1	import axios from 'axios';
+     2	import AsyncStorage from '@react-native-async-storage/async-storage';
+     3	
+     4	const api = axios.create({
+     5	  baseURL: 'https://rh.lhsolucao.com.br',
+     6	});
+     7	
+     8	// Interceptor para injetar o Token em cada chamada automaticamente
+     9	api.interceptors.request.use(async (config) => {
+    10	  const token = await AsyncStorage.getItem('@LH_Token');
+    11	  if (token) {
+    12	    config.headers.Authorization = `Bearer ${token}`;
+    13	  }
+    14	  return config;
+    15	});
+    16	
+    17	export default api;
+
+## Telas existentes
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx
+
+## Navegacao
+-------------------------------------------------
+
+/opt/rh-saas/mobile-app/App.tsx:2:import { NavigationContainer } from '@react-navigation/native';
+/opt/rh-saas/mobile-app/App.tsx:3:import { createNativeStackNavigator } from '@react-navigation/native-stack';
+/opt/rh-saas/mobile-app/App.tsx:7:const Stack = createNativeStackNavigator();
+/opt/rh-saas/mobile-app/App.tsx:11:    <NavigationContainer>
+/opt/rh-saas/mobile-app/App.tsx:12:      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Login">
+/opt/rh-saas/mobile-app/App.tsx:15:      </Stack.Navigator>
+/opt/rh-saas/mobile-app/App.tsx:16:    </NavigationContainer>
+
+## Auth/token/AsyncStorage
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:4:import AsyncStorage from '@react-native-async-storage/async-storage';
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:18:    await AsyncStorage.removeItem('@LH_Token');
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:3:import AsyncStorage from '@react-native-async-storage/async-storage';
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:19:      const { token } = response.data;
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:20:      await AsyncStorage.setItem('@LH_Token', token);
+/opt/rh-saas/mobile-app/src/services/api.ts:2:import AsyncStorage from '@react-native-async-storage/async-storage';
+/opt/rh-saas/mobile-app/src/services/api.ts:10:  const token = await AsyncStorage.getItem('@LH_Token');
+/opt/rh-saas/mobile-app/src/services/api.ts:11:  if (token) {
+/opt/rh-saas/mobile-app/src/services/api.ts:12:    config.headers.Authorization = `Bearer ${token}`;
+
+## API base e HTTP
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/services/api.ts:1:import axios from 'axios';
+/opt/rh-saas/mobile-app/src/services/api.ts:4:const api = axios.create({
+/opt/rh-saas/mobile-app/src/services/api.ts:5:  baseURL: 'https://rh.lhsolucao.com.br',
+/opt/rh-saas/mobile-app/.env:1:EXPO_PUBLIC_API_URL=https://rh.lhsolucao.com.br
+
+## expo-location / geolocation
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:3:import * as Location from 'expo-location';
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:25:      let { status } = await Location.requestForegroundPermissionsAsync();
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:32:      const location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High });
+/opt/rh-saas/mobile-app/app.json:18:      "expo-location"
+
+## app.json/app.config
+-------------------------------------------------
+### /opt/rh-saas/mobile-app/app.json
+{
+  "expo": {
+    "name": "LH Solução RH",
+    "slug": "lh-rh",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icone-app.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/logo_rh.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      "expo-location"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icone-app.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.luizcarelo.lhrh"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d2933a18-0ca2-4799-bd2e-6ebc07bc923f"
+      }
+    }
+  }
+}
+
+## .env sanitizado
+-------------------------------------------------
+### /opt/rh-saas/mobile-app/.env
+EXPO_PUBLIC_API_URL=https://rh.lhsolucao.com.br
+

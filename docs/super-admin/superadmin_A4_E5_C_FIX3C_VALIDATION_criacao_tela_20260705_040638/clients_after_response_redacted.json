@@ -1,0 +1,23 @@
+[
+  {
+    "id": "53fd426c-d9e5-4b2a-b433-d042dec71ffb",
+    "slug": "cliente-homologacao-rh-saas-20260705-032638",
+    "status": "ACTIVE",
+    "planCode": "ENTERPRISE_TEST",
+    "planName": "Enterprise Teste"
+  },
+  {
+    "id": "e6a890d0-b453-4334-ba53-8a31bf2acd36",
+    "slug": "cliente-tela-homologacao-rh-saas-fix3c-20260705-040638",
+    "status": "ACTIVE",
+    "planCode": "ENTERPRISE_TEST",
+    "planName": "Enterprise Teste"
+  },
+  {
+    "id": "53df5639-7222-4336-ad36-9163ee3ffb12",
+    "slug": "empresa-teste",
+    "status": "ACTIVE",
+    "planCode": "ENTERPRISE_TEST",
+    "planName": "Enterprise Teste"
+  }
+]

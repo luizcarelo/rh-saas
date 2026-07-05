@@ -1,0 +1,6 @@
+IS_JSON=False
+CREATED_ID=nao localizado
+CREATED_SLUG=nao localizado
+CREATED_EMAIL=nao localizado
+SELECTED_ENDPOINT=
+CREATE_STATUS=

@@ -10,7 +10,7 @@ import { EmployeesModule } from "./modules/employees/employees.module";
 import { SchedulesModule } from "./modules/schedules/schedules.module";
 import { TimeBankModule } from "./modules/time-bank/time-bank.module";
 import { TimeRecordsModule } from "./modules/time-records/time-records.module";
-
+import { TenantModule } from './modules/tenant/tenant.module';
 // Entidades "soltas" (Sem módulo próprio)
 import { Tenant } from './modules/tenant/tenant.entity';
 import { ClockEvent } from './modules/clock-events/clock-event.entity';
@@ -18,6 +18,9 @@ import { User } from './modules/users/user.entity';
 import { UsersModule } from './modules/users/users.module';
 import { AuditModule } from './modules/audit/audit.module';
 import { SuperAdminModule } from "./modules/super-admin/super-admin.module";
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { ReportsModule } from './modules/reports/reports.module';
+import { FoundationModule } from './modules/foundation/foundation.module';
 @Module({
   imports: [
     AuditModule,
@@ -30,6 +33,10 @@ import { SuperAdminModule } from "./modules/super-admin/super-admin.module";
     SchedulesModule,
     TimeBankModule,
     TimeRecordsModule,
+    TenantModule,
+    DashboardModule,
+    ReportsModule,
+    FoundationModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),

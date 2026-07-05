@@ -1,0 +1,3 @@
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts
+/opt/rh-saas/backend/src/modules/users/user.entity.ts

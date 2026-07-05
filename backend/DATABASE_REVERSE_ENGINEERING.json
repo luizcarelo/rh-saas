@@ -1,0 +1,2271 @@
+{
+  "generatedAt": "2026-07-04 11:19:47.720772",
+  "database": "rh_saas_db",
+  "tables": [
+    {
+      "table": "audit_events",
+      "rows": "2",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "tenant_id",
+          "type": "character varying"
+        },
+        {
+          "name": "user_id",
+          "type": "character varying"
+        },
+        {
+          "name": "action",
+          "type": "character varying"
+        },
+        {
+          "name": "entity_type",
+          "type": "character varying"
+        },
+        {
+          "name": "entity_id",
+          "type": "character varying"
+        },
+        {
+          "name": "details",
+          "type": "text"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "audit_logs",
+      "rows": "18",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "userId",
+          "type": "character varying"
+        },
+        {
+          "name": "action",
+          "type": "character varying"
+        },
+        {
+          "name": "resource",
+          "type": "character varying"
+        },
+        {
+          "name": "payload",
+          "type": "jsonb"
+        },
+        {
+          "name": "ipAddress",
+          "type": "character varying"
+        },
+        {
+          "name": "timestamp",
+          "type": "timestamp without time zone"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "audit_logs_unified",
+      "rows": "6",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "tenant_id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "actor_user_id",
+          "type": "uuid"
+        },
+        {
+          "name": "actor_email",
+          "type": "text"
+        },
+        {
+          "name": "actor_role",
+          "type": "text"
+        },
+        {
+          "name": "action",
+          "type": "text"
+        },
+        {
+          "name": "entity_type",
+          "type": "text"
+        },
+        {
+          "name": "entity_id",
+          "type": "text"
+        },
+        {
+          "name": "ip_address",
+          "type": "text"
+        },
+        {
+          "name": "user_agent",
+          "type": "text"
+        },
+        {
+          "name": "metadata",
+          "type": "jsonb"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "clock_event_types",
+      "rows": "18",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "code",
+          "type": "text"
+        },
+        {
+          "name": "name",
+          "type": "text"
+        },
+        {
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "pair_code",
+          "type": "text"
+        },
+        {
+          "name": "category",
+          "type": "text"
+        },
+        {
+          "name": "default_order",
+          "type": "integer"
+        },
+        {
+          "name": "active_by_default",
+          "type": "boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "clock_events",
+      "rows": "0",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "tenant_id",
+          "type": "uuid"
+        },
+        {
+          "name": "employee_id",
+          "type": "character varying"
+        },
+        {
+          "name": "timestamp",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "timezone",
+          "type": "character varying"
+        },
+        {
+          "name": "eventType",
+          "type": "USER-DEFINED"
+        },
+        {
+          "name": "latitude",
+          "type": "double precision"
+        },
+        {
+          "name": "longitude",
+          "type": "double precision"
+        },
+        {
+          "name": "is_inside_geofence",
+          "type": "boolean"
+        },
+        {
+          "name": "device_info",
+          "type": "text"
+        },
+        {
+          "name": "client_ip",
+          "type": "character varying"
+        },
+        {
+          "name": "rowHash",
+          "type": "character varying"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "tenant_id",
+          "table": "tenants",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "clock_events_foundation",
+      "rows": "0",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "employee_profile_id",
+          "type": "uuid"
+        },
+        {
+          "name": "event_type_id",
+          "type": "uuid"
+        },
+        {
+          "name": "local_event_id",
+          "type": "text"
+        },
+        {
+          "name": "event_datetime",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "server_received_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "source",
+          "type": "text"
+        },
+        {
+          "name": "sync_status",
+          "type": "text"
+        },
+        {
+          "name": "latitude",
+          "type": "numeric"
+        },
+        {
+          "name": "longitude",
+          "type": "numeric"
+        },
+        {
+          "name": "accuracy_meters",
+          "type": "numeric"
+        },
+        {
+          "name": "address",
+          "type": "text"
+        },
+        {
+          "name": "inside_geofence",
+          "type": "boolean"
+        },
+        {
+          "name": "selfie_required",
+          "type": "boolean"
+        },
+        {
+          "name": "selfie_file_id",
+          "type": "uuid"
+        },
+        {
+          "name": "local_hash",
+          "type": "text"
+        },
+        {
+          "name": "server_hash",
+          "type": "text"
+        },
+        {
+          "name": "nsr",
+          "type": "bigint"
+        },
+        {
+          "name": "metadata",
+          "type": "jsonb"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        },
+        {
+          "column": "employee_profile_id",
+          "table": "hr_employee_profiles",
+          "ref_column": "id"
+        },
+        {
+          "column": "event_type_id",
+          "table": "clock_event_types",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "clock_justifications_foundation",
+      "rows": "1",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "employee_profile_id",
+          "type": "uuid"
+        },
+        {
+          "name": "clock_event_id",
+          "type": "uuid"
+        },
+        {
+          "name": "justification_type",
+          "type": "text"
+        },
+        {
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "status",
+          "type": "text"
+        },
+        {
+          "name": "attachment_path",
+          "type": "text"
+        },
+        {
+          "name": "reviewed_by",
+          "type": "text"
+        },
+        {
+          "name": "reviewed_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "review_notes",
+          "type": "text"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        },
+        {
+          "column": "employee_profile_id",
+          "table": "hr_employee_profiles",
+          "ref_column": "id"
+        },
+        {
+          "column": "clock_event_id",
+          "table": "clock_events_foundation",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "clock_policies",
+      "rows": "1",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "name",
+          "type": "text"
+        },
+        {
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "gps_required",
+          "type": "boolean"
+        },
+        {
+          "name": "min_accuracy_meters",
+          "type": "integer"
+        },
+        {
+          "name": "geofence_required",
+          "type": "boolean"
+        },
+        {
+          "name": "allow_outside_geofence_with_justification",
+          "type": "boolean"
+        },
+        {
+          "name": "offline_allowed",
+          "type": "boolean"
+        },
+        {
+          "name": "max_offline_hours",
+          "type": "integer"
+        },
+        {
+          "name": "selfie_required",
+          "type": "boolean"
+        },
+        {
+          "name": "telemetry_enabled",
+          "type": "boolean"
+        },
+        {
+          "name": "telemetry_interval_minutes",
+          "type": "integer"
+        },
+        {
+          "name": "is_default",
+          "type": "boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "clock_policy_event_types",
+      "rows": "4",
+      "columns": [
+        {
+          "name": "policy_id",
+          "type": "uuid"
+        },
+        {
+          "name": "event_type_id",
+          "type": "uuid"
+        },
+        {
+          "name": "enabled",
+          "type": "boolean"
+        },
+        {
+          "name": "requires_selfie",
+          "type": "boolean"
+        },
+        {
+          "name": "requires_geofence",
+          "type": "boolean"
+        },
+        {
+          "name": "requires_justification",
+          "type": "boolean"
+        },
+        {
+          "name": "display_order",
+          "type": "integer"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "policy_id",
+          "table": "clock_policies",
+          "ref_column": "id"
+        },
+        {
+          "column": "event_type_id",
+          "table": "clock_event_types",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "document_recipients_foundation",
+      "rows": "3",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "document_id",
+          "type": "uuid"
+        },
+        {
+          "name": "employee_profile_id",
+          "type": "uuid"
+        },
+        {
+          "name": "status",
+          "type": "text"
+        },
+        {
+          "name": "viewed_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "signed_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "evidence",
+          "type": "jsonb"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "employee_profile_id",
+          "table": "hr_employee_profiles",
+          "ref_column": "id"
+        },
+        {
+          "column": "document_id",
+          "table": "documents_foundation",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "documents",
+      "rows": "0",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "tenant_id",
+          "type": "character varying"
+        },
+        {
+          "name": "employee_id",
+          "type": "character varying"
+        },
+        {
+          "name": "filename",
+          "type": "character varying"
+        },
+        {
+          "name": "path",
+          "type": "character varying"
+        },
+        {
+          "name": "isSigned",
+          "type": "boolean"
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp without time zone"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "documents_foundation",
+      "rows": "1",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "name": "document_type",
+          "type": "text"
+        },
+        {
+          "name": "status",
+          "type": "text"
+        },
+        {
+          "name": "requires_signature",
+          "type": "boolean"
+        },
+        {
+          "name": "requires_selfie",
+          "type": "boolean"
+        },
+        {
+          "name": "requires_location",
+          "type": "boolean"
+        },
+        {
+          "name": "file_path",
+          "type": "text"
+        },
+        {
+          "name": "hash_sha256",
+          "type": "text"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "employee_schedules",
+      "rows": "0",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "tenant_id",
+          "type": "character varying"
+        },
+        {
+          "name": "employee_id",
+          "type": "character varying"
+        },
+        {
+          "name": "schedule_id",
+          "type": "uuid"
+        },
+        {
+          "name": "start_date",
+          "type": "date"
+        },
+        {
+          "name": "end_date",
+          "type": "date"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "schedule_id",
+          "table": "schedules",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "employees",
+      "rows": "2",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "tenant_id",
+          "type": "uuid"
+        },
+        {
+          "name": "firstName",
+          "type": "character varying"
+        },
+        {
+          "name": "lastName",
+          "type": "character varying"
+        },
+        {
+          "name": "cpf",
+          "type": "character varying"
+        },
+        {
+          "name": "email",
+          "type": "character varying"
+        },
+        {
+          "name": "department",
+          "type": "character varying"
+        },
+        {
+          "name": "jobTitle",
+          "type": "character varying"
+        },
+        {
+          "name": "admissionDate",
+          "type": "date"
+        },
+        {
+          "name": "isActive",
+          "type": "boolean"
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp without time zone"
+        },
+        {
+          "name": "updatedAt",
+          "type": "timestamp without time zone"
+        },
+        {
+          "name": "user_id",
+          "type": "uuid"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "tenant_id",
+          "table": "tenants",
+          "ref_column": "id"
+        },
+        {
+          "column": "user_id",
+          "table": "users",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "geography_columns",
+      "rows": "0",
+      "columns": [
+        {
+          "name": "f_table_catalog",
+          "type": "name"
+        },
+        {
+          "name": "f_table_schema",
+          "type": "name"
+        },
+        {
+          "name": "f_table_name",
+          "type": "name"
+        },
+        {
+          "name": "f_geography_column",
+          "type": "name"
+        },
+        {
+          "name": "coord_dimension",
+          "type": "integer"
+        },
+        {
+          "name": "srid",
+          "type": "integer"
+        },
+        {
+          "name": "type",
+          "type": "text"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "geometry_columns",
+      "rows": "12",
+      "columns": [
+        {
+          "name": "f_table_catalog",
+          "type": "character varying"
+        },
+        {
+          "name": "f_table_schema",
+          "type": "name"
+        },
+        {
+          "name": "f_table_name",
+          "type": "name"
+        },
+        {
+          "name": "f_geometry_column",
+          "type": "name"
+        },
+        {
+          "name": "coord_dimension",
+          "type": "integer"
+        },
+        {
+          "name": "srid",
+          "type": "integer"
+        },
+        {
+          "name": "type",
+          "type": "character varying"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "hr_branches",
+      "rows": "0",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "company_id",
+          "type": "uuid"
+        },
+        {
+          "name": "name",
+          "type": "text"
+        },
+        {
+          "name": "document_number",
+          "type": "text"
+        },
+        {
+          "name": "address_line",
+          "type": "text"
+        },
+        {
+          "name": "city",
+          "type": "text"
+        },
+        {
+          "name": "state",
+          "type": "text"
+        },
+        {
+          "name": "postal_code",
+          "type": "text"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        },
+        {
+          "column": "company_id",
+          "table": "hr_companies",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "hr_companies",
+      "rows": "1",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "legal_name",
+          "type": "text"
+        },
+        {
+          "name": "trade_name",
+          "type": "text"
+        },
+        {
+          "name": "document_number",
+          "type": "text"
+        },
+        {
+          "name": "state_registration",
+          "type": "text"
+        },
+        {
+          "name": "municipal_registration",
+          "type": "text"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "hr_cost_centers",
+      "rows": "3",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "code",
+          "type": "text"
+        },
+        {
+          "name": "name",
+          "type": "text"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "hr_departments",
+      "rows": "3",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "name",
+          "type": "text"
+        },
+        {
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "hr_employee_profiles",
+      "rows": "3",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "employee_external_ref",
+          "type": "text"
+        },
+        {
+          "name": "first_name",
+          "type": "text"
+        },
+        {
+          "name": "last_name",
+          "type": "text"
+        },
+        {
+          "name": "cpf",
+          "type": "text"
+        },
+        {
+          "name": "email",
+          "type": "text"
+        },
+        {
+          "name": "department_id",
+          "type": "uuid"
+        },
+        {
+          "name": "job_position_id",
+          "type": "uuid"
+        },
+        {
+          "name": "job_function_id",
+          "type": "uuid"
+        },
+        {
+          "name": "admission_date",
+          "type": "date"
+        },
+        {
+          "name": "status",
+          "type": "text"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        },
+        {
+          "column": "department_id",
+          "table": "hr_departments",
+          "ref_column": "id"
+        },
+        {
+          "column": "job_position_id",
+          "table": "hr_job_positions",
+          "ref_column": "id"
+        },
+        {
+          "column": "job_function_id",
+          "table": "hr_job_functions",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "hr_geofences",
+      "rows": "1",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "work_location_id",
+          "type": "uuid"
+        },
+        {
+          "name": "name",
+          "type": "text"
+        },
+        {
+          "name": "latitude",
+          "type": "numeric"
+        },
+        {
+          "name": "longitude",
+          "type": "numeric"
+        },
+        {
+          "name": "radius_meters",
+          "type": "integer"
+        },
+        {
+          "name": "is_active",
+          "type": "boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        },
+        {
+          "column": "work_location_id",
+          "table": "hr_work_locations",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "hr_job_functions",
+      "rows": "4",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "name",
+          "type": "text"
+        },
+        {
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "allows_external_visit",
+          "type": "boolean"
+        },
+        {
+          "name": "allows_travel",
+          "type": "boolean"
+        },
+        {
+          "name": "allows_overtime",
+          "type": "boolean"
+        },
+        {
+          "name": "allows_on_call",
+          "type": "boolean"
+        },
+        {
+          "name": "allows_shift_duty",
+          "type": "boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "hr_job_positions",
+      "rows": "5",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "name",
+          "type": "text"
+        },
+        {
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "hr_work_locations",
+      "rows": "1",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "name",
+          "type": "text"
+        },
+        {
+          "name": "address_line",
+          "type": "text"
+        },
+        {
+          "name": "city",
+          "type": "text"
+        },
+        {
+          "name": "state",
+          "type": "text"
+        },
+        {
+          "name": "latitude",
+          "type": "numeric"
+        },
+        {
+          "name": "longitude",
+          "type": "numeric"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "location_tracking_points",
+      "rows": "0",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "employee_profile_id",
+          "type": "uuid"
+        },
+        {
+          "name": "device_id",
+          "type": "uuid"
+        },
+        {
+          "name": "tracked_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "latitude",
+          "type": "numeric"
+        },
+        {
+          "name": "longitude",
+          "type": "numeric"
+        },
+        {
+          "name": "accuracy_meters",
+          "type": "numeric"
+        },
+        {
+          "name": "address",
+          "type": "text"
+        },
+        {
+          "name": "source",
+          "type": "text"
+        },
+        {
+          "name": "metadata",
+          "type": "jsonb"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        },
+        {
+          "column": "employee_profile_id",
+          "table": "hr_employee_profiles",
+          "ref_column": "id"
+        },
+        {
+          "column": "device_id",
+          "table": "mobile_devices",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "mobile_app_settings",
+      "rows": "1",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "min_supported_version",
+          "type": "text"
+        },
+        {
+          "name": "force_update",
+          "type": "boolean"
+        },
+        {
+          "name": "allow_offline",
+          "type": "boolean"
+        },
+        {
+          "name": "show_address_before_clock",
+          "type": "boolean"
+        },
+        {
+          "name": "show_pending_sync_count",
+          "type": "boolean"
+        },
+        {
+          "name": "privacy_notice_required",
+          "type": "boolean"
+        },
+        {
+          "name": "settings",
+          "type": "jsonb"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "mobile_devices",
+      "rows": "0",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "employee_profile_id",
+          "type": "uuid"
+        },
+        {
+          "name": "device_uid",
+          "type": "text"
+        },
+        {
+          "name": "platform",
+          "type": "text"
+        },
+        {
+          "name": "model",
+          "type": "text"
+        },
+        {
+          "name": "app_version",
+          "type": "text"
+        },
+        {
+          "name": "is_active",
+          "type": "boolean"
+        },
+        {
+          "name": "last_seen_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        },
+        {
+          "column": "employee_profile_id",
+          "table": "hr_employee_profiles",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "mobile_sync_batches",
+      "rows": "0",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "employee_profile_id",
+          "type": "uuid"
+        },
+        {
+          "name": "device_id",
+          "type": "uuid"
+        },
+        {
+          "name": "status",
+          "type": "text"
+        },
+        {
+          "name": "received_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "processed_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "metadata",
+          "type": "jsonb"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        },
+        {
+          "column": "employee_profile_id",
+          "table": "hr_employee_profiles",
+          "ref_column": "id"
+        },
+        {
+          "column": "device_id",
+          "table": "mobile_devices",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "payslips_foundation",
+      "rows": "1",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "employee_profile_id",
+          "type": "uuid"
+        },
+        {
+          "name": "reference_month",
+          "type": "integer"
+        },
+        {
+          "name": "reference_year",
+          "type": "integer"
+        },
+        {
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "name": "file_path",
+          "type": "text"
+        },
+        {
+          "name": "hash_sha256",
+          "type": "text"
+        },
+        {
+          "name": "acknowledged_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        },
+        {
+          "column": "employee_profile_id",
+          "table": "hr_employee_profiles",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "rh_saas_schema_migrations",
+      "rows": "7",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "migration_key",
+          "type": "text"
+        },
+        {
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "executed_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "metadata",
+          "type": "jsonb"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "saas_clients",
+      "rows": "1",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "tenant_id",
+          "type": "uuid"
+        },
+        {
+          "name": "plan_id",
+          "type": "uuid"
+        },
+        {
+          "name": "slug",
+          "type": "text"
+        },
+        {
+          "name": "trade_name",
+          "type": "text"
+        },
+        {
+          "name": "legal_name",
+          "type": "text"
+        },
+        {
+          "name": "document_number",
+          "type": "text"
+        },
+        {
+          "name": "status",
+          "type": "text"
+        },
+        {
+          "name": "timezone",
+          "type": "text"
+        },
+        {
+          "name": "default_locale",
+          "type": "text"
+        },
+        {
+          "name": "notes",
+          "type": "text"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "plan_id",
+          "table": "saas_plans",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "saas_plans",
+      "rows": "3",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "code",
+          "type": "text"
+        },
+        {
+          "name": "name",
+          "type": "text"
+        },
+        {
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "is_active",
+          "type": "boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "schedules",
+      "rows": "0",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "tenant_id",
+          "type": "character varying"
+        },
+        {
+          "name": "name",
+          "type": "character varying"
+        },
+        {
+          "name": "type",
+          "type": "USER-DEFINED"
+        },
+        {
+          "name": "workDays",
+          "type": "jsonb"
+        },
+        {
+          "name": "expected_minutes_per_day",
+          "type": "integer"
+        },
+        {
+          "name": "daily_tolerance_minutes",
+          "type": "integer"
+        },
+        {
+          "name": "entry1",
+          "type": "character varying"
+        },
+        {
+          "name": "exit1",
+          "type": "character varying"
+        },
+        {
+          "name": "entry2",
+          "type": "character varying"
+        },
+        {
+          "name": "exit2",
+          "type": "character varying"
+        },
+        {
+          "name": "expected_minutes",
+          "type": "integer"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "spatial_ref_sys",
+      "rows": "8500",
+      "columns": [
+        {
+          "name": "srid",
+          "type": "integer"
+        },
+        {
+          "name": "auth_name",
+          "type": "character varying"
+        },
+        {
+          "name": "auth_srid",
+          "type": "integer"
+        },
+        {
+          "name": "srtext",
+          "type": "character varying"
+        },
+        {
+          "name": "proj4text",
+          "type": "character varying"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "super_admin_users",
+      "rows": "1",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "email",
+          "type": "text"
+        },
+        {
+          "name": "full_name",
+          "type": "text"
+        },
+        {
+          "name": "is_active",
+          "type": "boolean"
+        },
+        {
+          "name": "notes",
+          "type": "text"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "tenant_client_audit",
+      "rows": "0",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "field_name",
+          "type": "character varying"
+        },
+        {
+          "name": "old_value",
+          "type": "text"
+        },
+        {
+          "name": "new_value",
+          "type": "text"
+        },
+        {
+          "name": "changed_by",
+          "type": "character varying"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "tenant_module_audit",
+      "rows": "2",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "module_code",
+          "type": "character varying"
+        },
+        {
+          "name": "old_enabled",
+          "type": "boolean"
+        },
+        {
+          "name": "new_enabled",
+          "type": "boolean"
+        },
+        {
+          "name": "changed_by_user_id",
+          "type": "uuid"
+        },
+        {
+          "name": "changed_by_email",
+          "type": "character varying"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "tenant_module_flags",
+      "rows": "11",
+      "columns": [
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "module_code",
+          "type": "text"
+        },
+        {
+          "name": "enabled",
+          "type": "boolean"
+        },
+        {
+          "name": "settings",
+          "type": "jsonb"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "tenants",
+      "rows": "1",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "cnpj",
+          "type": "character varying"
+        },
+        {
+          "name": "corporate_name",
+          "type": "character varying"
+        },
+        {
+          "name": "trading_name",
+          "type": "character varying"
+        },
+        {
+          "name": "is_active",
+          "type": "boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone"
+        },
+        {
+          "name": "phone",
+          "type": "character varying"
+        },
+        {
+          "name": "email",
+          "type": "character varying"
+        },
+        {
+          "name": "address",
+          "type": "text"
+        },
+        {
+          "name": "website",
+          "type": "character varying"
+        },
+        {
+          "name": "hr_manager",
+          "type": "character varying"
+        },
+        {
+          "name": "logo_url",
+          "type": "text"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "time_bank",
+      "rows": "0",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "tenant_id",
+          "type": "character varying"
+        },
+        {
+          "name": "employee_id",
+          "type": "character varying"
+        },
+        {
+          "name": "date",
+          "type": "date"
+        },
+        {
+          "name": "expected_minutes",
+          "type": "integer"
+        },
+        {
+          "name": "worked_minutes",
+          "type": "integer"
+        },
+        {
+          "name": "balance_minutes",
+          "type": "integer"
+        },
+        {
+          "name": "status",
+          "type": "character varying"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "time_bank_balances_foundation",
+      "rows": "3",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "client_id",
+          "type": "uuid"
+        },
+        {
+          "name": "employee_profile_id",
+          "type": "uuid"
+        },
+        {
+          "name": "reference_date",
+          "type": "date"
+        },
+        {
+          "name": "balance_minutes",
+          "type": "integer"
+        },
+        {
+          "name": "credit_minutes",
+          "type": "integer"
+        },
+        {
+          "name": "debit_minutes",
+          "type": "integer"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "client_id",
+          "table": "saas_clients",
+          "ref_column": "id"
+        },
+        {
+          "column": "employee_profile_id",
+          "table": "hr_employee_profiles",
+          "ref_column": "id"
+        }
+      ]
+    },
+    {
+      "table": "time_records",
+      "rows": "0",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "tenant_id",
+          "type": "character varying"
+        },
+        {
+          "name": "employee_id",
+          "type": "character varying"
+        },
+        {
+          "name": "latitude",
+          "type": "numeric"
+        },
+        {
+          "name": "longitude",
+          "type": "numeric"
+        },
+        {
+          "name": "timestamp",
+          "type": "timestamp without time zone"
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "table": "users",
+      "rows": "2",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "tenant_id",
+          "type": "uuid"
+        },
+        {
+          "name": "email",
+          "type": "character varying"
+        },
+        {
+          "name": "passwordHash",
+          "type": "character varying"
+        },
+        {
+          "name": "isActive",
+          "type": "boolean"
+        },
+        {
+          "name": "last_login_at",
+          "type": "timestamp without time zone"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone"
+        },
+        {
+          "name": "role",
+          "type": "character varying"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "tenant_id",
+          "table": "tenants",
+          "ref_column": "id"
+        }
+      ]
+    }
+  ]
+}

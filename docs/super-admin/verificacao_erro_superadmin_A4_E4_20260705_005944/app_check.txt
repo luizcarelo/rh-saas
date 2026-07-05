@@ -1,0 +1,163 @@
+=================================================
+APP CHECK
+Data: 20260705_005944
+Arquivo: /opt/rh-saas/frontend-web/src/App.tsx
+=================================================
+
+APP_EXISTS=SIM
+
+## Primeiras 80 linhas
+-------------------------------------------------
+     1	import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+     2	import { Toaster } from "react-hot-toast";
+     3	
+     4	import { AdminLayout } from "./layouts/AdminLayout";
+     5	import { EmployeeLayout } from "./layouts/EmployeeLayout";
+     6	
+     7	import { ProtectedRoute } from "./components/ProtectedRoute";
+     8	
+     9	import { LoginPage } from "./pages/LoginPage";
+    10	import { Dashboard } from "./pages/Dashboard";
+    11	import { EmployeesPage } from "./pages/EmployeesPage";
+    12	import { UsersPage } from "./pages/UsersPage";
+    13	import { AnalyticsPage } from "./pages/AnalyticsPage";
+    14	import { TimeRecordsPage } from "./pages/TimeRecordsPage";
+    15	import { RegisterTimePage } from "./pages/RegisterTimePage";
+    16	import { AuditPage } from "./pages/AuditPage";
+    17	import { LiveTrackingFoundationPage } from "./pages/LiveTrackingFoundationPage";
+    18	
+    19	import { EmployeeDashboard } from "./pages/employee/EmployeeDashboard";
+    20	
+    21	import { SuperAdminDashboardPage } from "./pages/super-admin/SuperAdminDashboardPage";
+    22	import { SuperAdminClientsPage } from "./pages/super-admin/SuperAdminClientsPage";
+    23	import { SuperAdminClientDashboardPage } from "./pages/super-admin/SuperAdminClientDashboardPage";
+    24	import { SuperAdminClientAuditPage } from "./pages/super-admin/SuperAdminClientAuditPage";
+    25	import { SuperAdminClientModulesPage } from "./pages/super-admin/SuperAdminClientModulesPage";
+    26	import { SuperAdminClientModulesAuditPage } from "./pages/super-admin/SuperAdminClientModulesAuditPage";
+    27	import { SuperAdminPlansPage } from "./pages/super-admin/SuperAdminPlansPage";
+    28	import { SuperAdminPlanCreatePage } from "./pages/super-admin/SuperAdminPlanCreatePage";
+    29	import { SuperAdminPlanDetailsPage } from "./pages/super-admin/SuperAdminPlanDetailsPage";
+    30	import { SuperAdminPlaceholderPage } from "./pages/super-admin/SuperAdminPlaceholderPage";
+    31	
+    32	type StoredUserInfo = {
+    33	  role?: string;
+    34	  user?: {
+    35	    role?: string;
+    36	  };
+    37	  user_info?: {
+    38	    role?: string;
+    39	  };
+    40	};
+    41	
+    42	function readUserInfoFromStorageValue(value: string | null) {
+    43	  if (!value) {
+    44	    return null;
+    45	  }
+    46	
+    47	  try {
+    48	    return JSON.parse(value) as StoredUserInfo;
+    49	  } catch {
+    50	    return null;
+    51	  }
+    52	}
+    53	
+    54	function getUserInfo() {
+    55	  const keys = [
+    56	    "user_info",
+    57	    "userInfo",
+    58	    "user",
+    59	    "auth_user",
+    60	    "authUser",
+    61	    "@RH_USER",
+    62	    "@LH_User",
+    63	  ];
+    64	
+    65	  for (const key of keys) {
+    66	    const localUser = readUserInfoFromStorageValue(localStorage.getItem(key));
+    67	
+    68	    if (localUser) {
+    69	      return localUser.user_info || localUser.user || localUser;
+    70	    }
+    71	
+    72	    const sessionUser = readUserInfoFromStorageValue(
+    73	      sessionStorage.getItem(key),
+    74	    );
+    75	
+    76	    if (sessionUser) {
+    77	      return sessionUser.user_info || sessionUser.user || sessionUser;
+    78	    }
+    79	  }
+    80	
+
+## Trechos relevantes
+-------------------------------------------------
+1:import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+4:import { AdminLayout } from "./layouts/AdminLayout";
+22:import { SuperAdminClientsPage } from "./pages/super-admin/SuperAdminClientsPage";
+30:import { SuperAdminPlaceholderPage } from "./pages/super-admin/SuperAdminPlaceholderPage";
+90:    <BrowserRouter>
+91:      <Routes>
+95:          <Route element={<AdminLayout />}>
+121:              path="/super-admin/clientes"
+122:              element={superAdminOnly(<SuperAdminClientsPage />)}
+128:                <SuperAdminPlaceholderPage
+150:                <SuperAdminPlaceholderPage
+192:                <SuperAdminPlaceholderPage
+230:                <SuperAdminPlaceholderPage
+254:                <SuperAdminPlaceholderPage
+278:                <SuperAdminPlaceholderPage
+301:                <SuperAdminPlaceholderPage
+324:                <SuperAdminPlaceholderPage
+348:                <SuperAdminPlaceholderPage
+376:      </Routes>
+379:    </BrowserRouter>
+
+## Rotas Super Admin
+-------------------------------------------------
+116:              path="/super-admin"
+121:              path="/super-admin/clientes"
+126:              path="/super-admin/clientes/dashboard"
+148:              path="/super-admin/clientes/novo"
+170:              path="/super-admin/clientes/:id"
+175:              path="/super-admin/clientes/:id/audit"
+180:              path="/super-admin/clientes/:id/modules"
+185:              path="/super-admin/clientes/:id/modules/audit"
+190:              path="/super-admin/empresas"
+213:              path="/super-admin/planos"
+218:              path="/super-admin/planos/novo"
+223:              path="/super-admin/planos/:id"
+228:              path="/super-admin/planos/recursos"
+252:              path="/super-admin/modulos"
+276:              path="/super-admin/modulos/clientes"
+299:              path="/super-admin/usuarios"
+322:              path="/super-admin/auditoria"
+346:              path="/super-admin/configuracoes"
+
+## Imports
+-------------------------------------------------
+1:import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+2:import { Toaster } from "react-hot-toast";
+4:import { AdminLayout } from "./layouts/AdminLayout";
+5:import { EmployeeLayout } from "./layouts/EmployeeLayout";
+7:import { ProtectedRoute } from "./components/ProtectedRoute";
+9:import { LoginPage } from "./pages/LoginPage";
+10:import { Dashboard } from "./pages/Dashboard";
+11:import { EmployeesPage } from "./pages/EmployeesPage";
+12:import { UsersPage } from "./pages/UsersPage";
+13:import { AnalyticsPage } from "./pages/AnalyticsPage";
+14:import { TimeRecordsPage } from "./pages/TimeRecordsPage";
+15:import { RegisterTimePage } from "./pages/RegisterTimePage";
+16:import { AuditPage } from "./pages/AuditPage";
+17:import { LiveTrackingFoundationPage } from "./pages/LiveTrackingFoundationPage";
+19:import { EmployeeDashboard } from "./pages/employee/EmployeeDashboard";
+21:import { SuperAdminDashboardPage } from "./pages/super-admin/SuperAdminDashboardPage";
+22:import { SuperAdminClientsPage } from "./pages/super-admin/SuperAdminClientsPage";
+23:import { SuperAdminClientDashboardPage } from "./pages/super-admin/SuperAdminClientDashboardPage";
+24:import { SuperAdminClientAuditPage } from "./pages/super-admin/SuperAdminClientAuditPage";
+25:import { SuperAdminClientModulesPage } from "./pages/super-admin/SuperAdminClientModulesPage";
+26:import { SuperAdminClientModulesAuditPage } from "./pages/super-admin/SuperAdminClientModulesAuditPage";
+27:import { SuperAdminPlansPage } from "./pages/super-admin/SuperAdminPlansPage";
+28:import { SuperAdminPlanCreatePage } from "./pages/super-admin/SuperAdminPlanCreatePage";
+29:import { SuperAdminPlanDetailsPage } from "./pages/super-admin/SuperAdminPlanDetailsPage";
+30:import { SuperAdminPlaceholderPage } from "./pages/super-admin/SuperAdminPlaceholderPage";
+

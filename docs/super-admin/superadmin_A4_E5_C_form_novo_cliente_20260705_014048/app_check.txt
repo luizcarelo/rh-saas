@@ -1,0 +1,3 @@
+33:import { SuperAdminClientCreatePage } from "./pages/SuperAdminClientCreatePage";
+151:              path="/super-admin/clientes/novo"
+152:              element={superAdminOnly(<SuperAdminClientCreatePage />)}

@@ -1,0 +1,13 @@
+Arquivo: /opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts
+
+175:  if (response.status === 401) {
+230:export type CreateSuperAdminClientPayload = {
+245:const CLIENT_CREATE_ENDPOINT_CANDIDATES = [
+246:  '/v1/super-admin/clients',
+255:  payload: CreateSuperAdminClientPayload,
+267:    method: 'POST',
+275:  if (response.status === 401) {
+304:export async function createSuperAdminClient(
+305:  payload: CreateSuperAdminClientPayload,
+309:  for (const endpoint of CLIENT_CREATE_ENDPOINT_CANDIDATES) {
+327:  create: createSuperAdminClient,

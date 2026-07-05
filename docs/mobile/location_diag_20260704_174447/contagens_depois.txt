@@ -1,0 +1,6 @@
+          tabela          | total 
+--------------------------+-------
+ mobile_devices           |     4
+ location_tracking_points |    26
+(2 rows)
+

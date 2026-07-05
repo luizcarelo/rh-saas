@@ -1,0 +1,2080 @@
+=================================================
+BACKEND EMPLOYEE ENTITIES
+Data: 20260705_041811
+=================================================
+
+### /opt/rh-saas/backend/src/modules/audit/audit.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	} from 'typeorm';
+     7	
+     8	@Entity('audit_events')
+     9	export class AuditEvent {
+    10	
+    11	  @PrimaryGeneratedColumn('uuid')
+    12	  id: string;
+    13	
+    14	  @Column({
+    15	    name: 'tenant_id',
+    16	    nullable: true,
+    17	  })
+    18	  tenantId: string;
+    19	
+    20	  @Column({
+    21	    name: 'user_id',
+    22	    nullable: true,
+    23	  })
+    24	  userId: string;
+    25	
+    26	  @Column()
+    27	  action: string;
+    28	
+    29	  @Column({
+    30	    name: 'entity_type',
+    31	    nullable: true,
+    32	  })
+    33	  entityType: string;
+    34	
+    35	  @Column({
+    36	    name: 'entity_id',
+    37	    nullable: true,
+    38	  })
+    39	  entityId: string;
+    40	
+    41	  @Column({
+    42	    type: 'text',
+    43	    nullable: true,
+    44	  })
+    45	  details: string;
+    46	
+    47	  @CreateDateColumn({
+    48	    name: 'created_at',
+    49	  })
+    50	  createdAt: Date;
+    51	}
+
+### /opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts
+     1	import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+     2	import { Tenant } from '../tenant/tenant.entity';
+     3	
+     4	export enum ClockEventType {
+     5	  ENTRADA = 'ENTRADA',
+     6	  SAIDA_INTERVALO = 'SAIDA_INTERVALO',
+     7	  RETORNO_INTERVALO = 'RETORNO_INTERVALO',
+     8	  SAIDA = 'SAIDA',
+     9	  EXTRA = 'EXTRA'
+    10	}
+    11	
+    12	@Entity('clock_events')
+    13	export class ClockEvent {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @ManyToOne(() => Tenant, { onDelete: 'RESTRICT' })
+    18	  @JoinColumn({ name: 'tenant_id' })
+    19	  tenant: Tenant;
+    20	
+    21	  @Column({ name: 'tenant_id' })
+    22	  tenantId: string;
+    23	
+    24	  @Column({ name: 'employee_id' })
+    25	  employeeId: string;
+    26	
+    27	  // A Portaria 671 exige data/hora exata do registro e o fuso horário
+    28	  @CreateDateColumn({ name: 'timestamp', type: 'timestamp with time zone' })
+    29	  timestamp: Date;
+    30	
+    31	  @Column({ default: 'UTC' })
+    32	  timezone: string;
+    33	
+    34	  @Column({ type: 'enum', enum: ClockEventType })
+    35	  eventType: ClockEventType;
+    36	
+    37	  // Coordenadas geográficas para validação posterior (PostGIS)
+    38	  @Column({ type: 'double precision', nullable: true })
+    39	  latitude: number;
+    40	
+    41	  @Column({ type: 'double precision', nullable: true })
+    42	  longitude: number;
+    43	
+    44	  @Column({ name: 'is_inside_geofence', default: true })
+    45	  isInsideGeofence: boolean;
+    46	
+    47	  // Auditoria do dispositivo usado para bater o ponto
+    48	  @Column({ name: 'device_info', type: 'text', nullable: true })
+    49	  deviceInfo: string;
+    50	
+    51	  @Column({ name: 'client_ip', length: 45, nullable: true })
+    52	  clientIp: string;
+    53	
+    54	  // ASSINATURA DIGITAL (HASH SHA-256): Garante que a linha não foi adulterada no banco de dados
+    55	  @Column({ type: 'varchar', length: 64, unique: true })
+    56	  rowHash: string;
+    57	}
+
+### /opt/rh-saas/backend/src/modules/documents/document.entity.ts
+     1	import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
+     2	
+     3	@Entity('documents')
+     4	export class Document {
+     5	  @PrimaryGeneratedColumn('uuid')
+     6	  id: string;
+     7	
+     8	  @Column({ name: 'tenant_id' })
+     9	  tenantId: string;
+    10	
+    11	  @Column({ name: 'employee_id' })
+    12	  employeeId: string;
+    13	
+    14	  @Column()
+    15	  filename: string;
+    16	
+    17	  @Column()
+    18	  path: string;
+    19	
+    20	  @Column({ default: false })
+    21	  isSigned: boolean;
+    22	
+    23	  @CreateDateColumn()
+    24	  createdAt: Date;
+    25	}
+
+### /opt/rh-saas/backend/src/modules/employees/dto/create-employee.dto.ts
+     1	import { IsString, IsEmail, IsNotEmpty, IsDateString, Length } from 'class-validator';
+     2	
+     3	export class CreateEmployeeDto {
+     4	  @IsString()
+     5	  @IsNotEmpty()
+     6	  firstName: string;
+     7	
+     8	  @IsString()
+     9	  @IsNotEmpty()
+    10	  lastName: string;
+    11	
+    12	  @IsString()
+    13	  @Length(11, 11)
+    14	  cpf: string;
+    15	
+    16	  @IsEmail()
+    17	  email: string;
+    18	
+    19	  @IsString()
+    20	  department: string;
+    21	
+    22	  @IsString()
+    23	  jobTitle: string;
+    24	
+    25	  @IsDateString()
+    26	  admissionDate: string;
+    27	}
+
+### /opt/rh-saas/backend/src/modules/employees/employee.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  ManyToOne,
+     6	  OneToOne,
+     7	  JoinColumn,
+     8	  CreateDateColumn,
+     9	  UpdateDateColumn,
+    10	} from 'typeorm';
+    11	
+    12	import { Tenant } from '../tenant/tenant.entity';
+    13	import { User } from '../users/user.entity';
+    14	
+    15	@Entity('employees')
+    16	export class Employee {
+    17	  @PrimaryGeneratedColumn('uuid')
+    18	  id: string;
+    19	
+    20	  @ManyToOne(() => Tenant)
+    21	  @JoinColumn({ name: 'tenant_id' })
+    22	  tenant: Tenant;
+    23	
+    24	  @Column({ name: 'tenant_id' })
+    25	  tenantId: string;
+    26	
+    27	  @OneToOne(() => User, {
+    28	    nullable: true,
+    29	    onDelete: 'SET NULL',
+    30	  })
+    31	  @JoinColumn({ name: 'user_id' })
+    32	  user: User | null;
+    33	
+    34	  @Column({
+    35	    name: 'user_id',
+    36	    type: 'uuid',
+    37	    nullable: true,
+    38	  })
+    39	  userId: string | null;
+    40	
+    41	  @Column()
+    42	  firstName: string;
+    43	
+    44	  @Column()
+    45	  lastName: string;
+    46	
+    47	  @Column({
+    48	    unique: true,
+    49	    length: 11,
+    50	  })
+    51	  cpf: string;
+    52	
+    53	  @Column()
+    54	  email: string;
+    55	
+    56	  @Column({
+    57	    nullable: true,
+    58	  })
+    59	  department: string;
+    60	
+    61	  @Column({
+    62	    nullable: true,
+    63	  })
+    64	  jobTitle: string;
+    65	
+    66	  @Column({
+    67	    type: 'date',
+    68	  })
+    69	  admissionDate: string;
+    70	
+    71	  @Column({
+    72	    default: true,
+    73	  })
+    74	  isActive: boolean;
+    75	
+    76	  @CreateDateColumn()
+    77	  createdAt: Date;
+    78	
+    79	  @UpdateDateColumn()
+    80	  updatedAt: Date;
+    81	}
+
+### /opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+     1	import {
+     2	  Body,
+     3	  Controller,
+     4	  Delete,
+     5	  Get,
+     6	  Param,
+     7	  Post,
+     8	  Put,
+     9	  Req,
+    10	  UseGuards,
+    11	} from '@nestjs/common';
+    12	import { EmployeesService } from './employees.service';
+    13	import { CreateEmployeeDto } from './dto/create-employee.dto';
+    14	import { LinkUserDto } from './dto/link-user.dto';
+    15	import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+    16	import { RolesGuard } from '../auth/guards/roles.guard';
+    17	import { Roles } from '../auth/decorators/roles.decorator';
+    18	import { UserRole } from '../users/user.entity';
+    19	
+    20	@Controller('v1/employees')
+    21	@UseGuards(JwtAuthGuard, RolesGuard)
+    22	export class EmployeesController {
+    23	  constructor(
+    24	    private readonly employeesService: EmployeesService,
+    25	  ) {}
+    26	
+    27	  @Post()
+    28	  @Roles(UserRole.ADMIN, UserRole.RH)
+    29	  async create(
+    30	    @Body() createDto: CreateEmployeeDto,
+    31	    @Req() req: any,
+    32	  ) {
+    33	    return this.employeesService.create(
+    34	      req.user.tenantId,
+    35	      createDto,
+    36	    );
+    37	  }
+    38	
+    39	  @Get()
+    40	  @Roles(UserRole.ADMIN, UserRole.RH)
+    41	  async findAll(
+    42	    @Req() req: any,
+    43	  ) {
+    44	    return this.employeesService.findAll(
+    45	      req.user.tenantId,
+    46	    );
+    47	  }
+    48	
+    49	  @Get(':id')
+    50	  @Roles(UserRole.ADMIN, UserRole.RH)
+    51	  async findOne(
+    52	    @Param('id') id: string,
+    53	    @Req() req: any,
+    54	  ) {
+    55	    return this.employeesService.findOne(
+    56	      id,
+    57	      req.user.tenantId,
+    58	    );
+    59	  }
+    60	
+    61	  @Put(':id/link-user')
+    62	  @Roles(UserRole.ADMIN, UserRole.RH)
+    63	  async linkUser(
+    64	    @Param('id') id: string,
+    65	    @Body() dto: LinkUserDto,
+    66	    @Req() req: any,
+    67	  ) {
+    68	    return this.employeesService.linkUser(
+    69	      id,
+    70	      req.user.tenantId,
+    71	      dto.userId,
+    72	    );
+    73	  }
+    74	
+    75	  @Delete(':id/link-user')
+    76	  @Roles(UserRole.ADMIN, UserRole.RH)
+    77	  async unlinkUser(
+    78	    @Param('id') id: string,
+    79	    @Req() req: any,
+    80	  ) {
+    81	    return this.employeesService.unlinkUser(
+    82	      id,
+    83	      req.user.tenantId,
+    84	    );
+    85	  }
+    86	
+    87	  @Delete(':id')
+    88	  @Roles(UserRole.ADMIN, UserRole.RH)
+    89	  async remove(
+    90	    @Param('id') id: string,
+    91	    @Req() req: any,
+    92	  ) {
+    93	    return this.employeesService.remove(
+    94	      id,
+    95	      req.user.tenantId,
+    96	    );
+    97	  }
+    98	}
+
+### /opt/rh-saas/backend/src/modules/employees/employees.module.ts
+     1	import { AuditModule } from '../audit/audit.module';
+     2	import { Module } from '@nestjs/common';
+     3	import { TypeOrmModule } from '@nestjs/typeorm';
+     4	import { Employee } from './employee.entity';
+     5	import { EmployeesService } from './employees.service';
+     6	import { EmployeesController } from './employees.controller';
+     7	import { User } from '../users/user.entity';
+     8	
+     9	@Module({
+    10	  imports: [AuditModule, 
+    11	    TypeOrmModule.forFeature([
+    12	      Employee,
+    13	      User,
+    14	    ]),
+    15	  ],
+    16	  providers: [
+    17	    EmployeesService,
+    18	  ],
+    19	  controllers: [
+    20	    EmployeesController,
+    21	  ],
+    22	  exports: [
+    23	    EmployeesService,
+    24	  ],
+    25	})
+    26	export class EmployeesModule {}
+
+### /opt/rh-saas/backend/src/modules/employees/employees.service.ts
+     1	import { AuditService } from '../audit/audit.service';
+     2	import {
+     3	  BadRequestException,
+     4	  Injectable,
+     5	  NotFoundException,
+     6	} from '@nestjs/common';
+     7	import { InjectRepository } from '@nestjs/typeorm';
+     8	import { Repository } from 'typeorm';
+     9	
+    10	import { Employee } from './employee.entity';
+    11	import { CreateEmployeeDto } from './dto/create-employee.dto';
+    12	import { User } from '../users/user.entity';
+    13	
+    14	@Injectable()
+    15	export class EmployeesService {
+    16	  constructor(
+    17	    @InjectRepository(Employee)
+    18	    private readonly employeeRepo: Repository<Employee>,
+    19	
+    20	    @InjectRepository(User)
+    21	    private readonly userRepo: Repository<User>,
+    22	
+    23	    private readonly auditService: AuditService,
+    24	  ) {}
+    25	
+    26	  async create(
+    27	    tenantId: string,
+    28	    data: CreateEmployeeDto,
+    29	  ) {
+    30	    const employee = this.employeeRepo.create({
+    31	      ...data,
+    32	      tenantId,
+    33	    });
+    34	
+    35	    const savedEmployee =
+    36	      await this.employeeRepo.save(employee);
+    37	
+    38	    await this.auditService.create({
+    39	      tenantId,
+    40	      entityId: savedEmployee.id,
+    41	      action: 'EMPLOYEE_CREATED',
+    42	      entityType: 'Employee',
+    43	    });
+    44	
+    45	    return savedEmployee;
+    46	  }
+    47	
+    48	  async findAll(tenantId: string) {
+    49	    return this.employeeRepo.find({
+    50	      where: {
+    51	        tenantId,
+    52	      },
+    53	      relations: {
+    54	        user: true,
+    55	      },
+    56	      order: {
+    57	        firstName: 'ASC',
+    58	        lastName: 'ASC',
+    59	      },
+    60	    });
+    61	  }
+    62	
+    63	  async findOne(
+    64	    id: string,
+    65	    tenantId: string,
+    66	  ) {
+    67	    const employee =
+    68	      await this.employeeRepo.findOne({
+    69	        where: {
+    70	          id,
+    71	          tenantId,
+    72	        },
+    73	        relations: {
+    74	          user: true,
+    75	        },
+    76	      });
+    77	
+    78	    if (!employee) {
+    79	      throw new NotFoundException(
+    80	        'Colaborador não encontrado.',
+    81	      );
+    82	    }
+    83	
+    84	    return employee;
+    85	  }
+    86	
+    87	  async linkUser(
+    88	    employeeId: string,
+    89	    tenantId: string,
+    90	    userId: string,
+    91	  ) {
+    92	    const employee =
+    93	      await this.employeeRepo.findOne({
+    94	        where: {
+    95	          id: employeeId,
+    96	          tenantId,
+    97	        },
+    98	      });
+    99	
+   100	    if (!employee) {
+   101	      throw new NotFoundException(
+   102	        'Colaborador não encontrado.',
+   103	      );
+   104	    }
+   105	
+   106	    const user =
+   107	      await this.userRepo.findOne({
+   108	        where: {
+   109	          id: userId,
+   110	          tenantId,
+   111	        },
+   112	      });
+   113	
+   114	    if (!user) {
+   115	      throw new NotFoundException(
+   116	        'Usuário não encontrado neste tenant.',
+   117	      );
+   118	    }
+   119	
+   120	    const alreadyLinked =
+   121	      await this.employeeRepo.findOne({
+   122	        where: {
+   123	          userId,
+   124	          tenantId,
+   125	        },
+   126	      });
+   127	
+   128	    if (
+   129	      alreadyLinked &&
+   130	      alreadyLinked.id !== employee.id
+   131	    ) {
+   132	      throw new BadRequestException(
+   133	        'Este usuário já está vinculado a outro colaborador.',
+   134	      );
+   135	    }
+   136	
+   137	    employee.userId = user.id;
+   138	
+   139	    const savedEmployee =
+   140	      await this.employeeRepo.save(employee);
+   141	
+   142	    await this.auditService.create({
+   143	      tenantId,
+   144	      entityId: savedEmployee.id,
+   145	      action: 'USER_LINKED',
+   146	      entityType: 'Employee',
+   147	      details: user.id,
+   148	    });
+   149	
+   150	    return savedEmployee;
+   151	  }
+   152	
+   153	  async unlinkUser(
+   154	    employeeId: string,
+   155	    tenantId: string,
+   156	  ) {
+   157	    const employee =
+   158	      await this.employeeRepo.findOne({
+   159	        where: {
+   160	          id: employeeId,
+   161	          tenantId,
+   162	        },
+   163	      });
+   164	
+   165	    if (!employee) {
+   166	      throw new NotFoundException(
+   167	        'Colaborador não encontrado.',
+   168	      );
+   169	    }
+   170	
+   171	    employee.userId = null;
+   172	
+   173	    const savedEmployee =
+   174	      await this.employeeRepo.save(employee);
+   175	
+   176	    await this.auditService.create({
+   177	      tenantId,
+   178	      entityId: savedEmployee.id,
+   179	      action: 'USER_UNLINKED',
+   180	      entityType: 'Employee',
+   181	    });
+   182	
+   183	    return savedEmployee;
+   184	  }
+   185	
+   186	  async remove(
+   187	    id: string,
+   188	    tenantId: string,
+   189	  ) {
+   190	    await this.auditService.create({
+   191	      tenantId,
+   192	      entityId: id,
+   193	      action: 'EMPLOYEE_DELETED',
+   194	      entityType: 'Employee',
+   195	    });
+   196	
+   197	    return this.employeeRepo.delete({
+   198	      id,
+   199	      tenantId,
+   200	    });
+   201	  }
+   202	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'clock_events_foundation',
+    11	  synchronize: false,
+    12	})
+    13	export class ClockEventFoundation {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'client_id',
+    19	    type: 'uuid',
+    20	  })
+    21	  clientId: string;
+    22	
+    23	  @Column({
+    24	    name: 'employee_profile_id',
+    25	    type: 'uuid',
+    26	    nullable: true,
+    27	  })
+    28	  employeeProfileId: string;
+    29	
+    30	  @Column({
+    31	    name: 'event_type_id',
+    32	    type: 'uuid',
+    33	    nullable: true,
+    34	  })
+    35	  eventTypeId: string;
+    36	
+    37	  @Column({
+    38	    name: 'local_event_id',
+    39	    type: 'text',
+    40	    nullable: true,
+    41	  })
+    42	  localEventId: string;
+    43	
+    44	  @Column({
+    45	    name: 'event_datetime',
+    46	    type: 'timestamptz',
+    47	  })
+    48	  eventDatetime: Date;
+    49	
+    50	  @Column({
+    51	    name: 'server_received_at',
+    52	    type: 'timestamptz',
+    53	  })
+    54	  serverReceivedAt: Date;
+    55	
+    56	  @Column({
+    57	    type: 'text',
+    58	    default: 'MOBILE',
+    59	  })
+    60	  source: string;
+    61	
+    62	  @Column({
+    63	    name: 'sync_status',
+    64	    type: 'text',
+    65	    default: 'SYNCED',
+    66	  })
+    67	  syncStatus: string;
+    68	
+    69	  @Column({
+    70	    type: 'numeric',
+    71	    precision: 10,
+    72	    scale: 7,
+    73	    nullable: true,
+    74	  })
+    75	  latitude: string;
+    76	
+    77	  @Column({
+    78	    type: 'numeric',
+    79	    precision: 10,
+    80	    scale: 7,
+    81	    nullable: true,
+    82	  })
+    83	  longitude: string;
+    84	
+    85	  @Column({
+    86	    name: 'accuracy_meters',
+    87	    type: 'numeric',
+    88	    precision: 10,
+    89	    scale: 2,
+    90	    nullable: true,
+    91	  })
+    92	  accuracyMeters: string;
+    93	
+    94	  @Column({
+    95	    type: 'text',
+    96	    nullable: true,
+    97	  })
+    98	  address: string;
+    99	
+   100	  @Column({
+   101	    name: 'inside_geofence',
+   102	    nullable: true,
+   103	  })
+   104	  insideGeofence: boolean;
+   105	
+   106	  @Column({
+   107	    name: 'selfie_required',
+   108	    default: false,
+   109	  })
+   110	  selfieRequired: boolean;
+   111	
+   112	  @Column({
+   113	    name: 'selfie_file_id',
+   114	    type: 'uuid',
+   115	    nullable: true,
+   116	  })
+   117	  selfieFileId: string;
+   118	
+   119	  @Column({
+   120	    name: 'local_hash',
+   121	    type: 'text',
+   122	    nullable: true,
+   123	  })
+   124	  localHash: string;
+   125	
+   126	  @Column({
+   127	    name: 'server_hash',
+   128	    type: 'text',
+   129	    nullable: true,
+   130	  })
+   131	  serverHash: string;
+   132	
+   133	  @Column({
+   134	    type: 'bigint',
+   135	  })
+   136	  nsr: string;
+   137	
+   138	  @Column({
+   139	    type: 'jsonb',
+   140	    default: () => "'{}'::jsonb",
+   141	  })
+   142	  metadata: any;
+   143	
+   144	  @CreateDateColumn({
+   145	    name: 'created_at',
+   146	    type: 'timestamptz',
+   147	  })
+   148	  createdAt: Date;
+   149	
+   150	  @UpdateDateColumn({
+   151	    name: 'updated_at',
+   152	    type: 'timestamptz',
+   153	  })
+   154	  updatedAt: Date;
+   155	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'clock_justifications_foundation',
+    11	  synchronize: false,
+    12	})
+    13	export class ClockJustificationFoundation {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'client_id',
+    19	    type: 'uuid',
+    20	  })
+    21	  clientId: string;
+    22	
+    23	  @Column({
+    24	    name: 'employee_profile_id',
+    25	    type: 'uuid',
+    26	    nullable: true,
+    27	  })
+    28	  employeeProfileId: string;
+    29	
+    30	  @Column({
+    31	    name: 'clock_event_id',
+    32	    type: 'uuid',
+    33	    nullable: true,
+    34	  })
+    35	  clockEventId: string;
+    36	
+    37	  @Column({
+    38	    name: 'justification_type',
+    39	    type: 'text',
+    40	  })
+    41	  justificationType: string;
+    42	
+    43	  @Column({
+    44	    type: 'text',
+    45	    nullable: true,
+    46	  })
+    47	  description: string;
+    48	
+    49	  @Column({
+    50	    type: 'text',
+    51	    nullable: true,
+    52	  })
+    53	  status: string;
+    54	
+    55	  @Column({
+    56	    name: 'attachment_path',
+    57	    type: 'text',
+    58	    nullable: true,
+    59	  })
+    60	  attachmentPath: string;
+    61	
+    62	  @Column({
+    63	    name: 'reviewed_by',
+    64	    type: 'text',
+    65	    nullable: true,
+    66	  })
+    67	  reviewedBy: string;
+    68	
+    69	  @Column({
+    70	    name: 'reviewed_at',
+    71	    type: 'timestamptz',
+    72	    nullable: true,
+    73	  })
+    74	  reviewedAt: Date;
+    75	
+    76	  @Column({
+    77	    name: 'review_notes',
+    78	    type: 'text',
+    79	    nullable: true,
+    80	  })
+    81	  reviewNotes: string;
+    82	
+    83	  @CreateDateColumn({
+    84	    name: 'created_at',
+    85	    type: 'timestamptz',
+    86	  })
+    87	  createdAt: Date;
+    88	
+    89	  @UpdateDateColumn({
+    90	    name: 'updated_at',
+    91	    type: 'timestamptz',
+    92	  })
+    93	  updatedAt: Date;
+    94	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/document-recipient-foundation.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'document_recipients_foundation',
+    11	  synchronize: false,
+    12	})
+    13	export class DocumentRecipientFoundation {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'document_id',
+    19	    type: 'uuid',
+    20	  })
+    21	  documentId: string;
+    22	
+    23	  @Column({
+    24	    name: 'employee_profile_id',
+    25	    type: 'uuid',
+    26	    nullable: true,
+    27	  })
+    28	  employeeProfileId: string;
+    29	
+    30	  @Column({
+    31	    type: 'text',
+    32	    nullable: true,
+    33	  })
+    34	  status: string;
+    35	
+    36	  @Column({
+    37	    name: 'viewed_at',
+    38	    type: 'timestamptz',
+    39	    nullable: true,
+    40	  })
+    41	  viewedAt: Date;
+    42	
+    43	  @Column({
+    44	    name: 'signed_at',
+    45	    type: 'timestamptz',
+    46	    nullable: true,
+    47	  })
+    48	  signedAt: Date;
+    49	
+    50	  @Column({
+    51	    type: 'jsonb',
+    52	    default: () => "'{}'::jsonb",
+    53	  })
+    54	  evidence: any;
+    55	
+    56	  @CreateDateColumn({
+    57	    name: 'created_at',
+    58	    type: 'timestamptz',
+    59	  })
+    60	  createdAt: Date;
+    61	
+    62	  @UpdateDateColumn({
+    63	    name: 'updated_at',
+    64	    type: 'timestamptz',
+    65	  })
+    66	  updatedAt: Date;
+    67	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'hr_departments',
+    11	  synchronize: false,
+    12	})
+    13	export class HrDepartment {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'client_id',
+    19	    type: 'uuid',
+    20	  })
+    21	  clientId: string;
+    22	
+    23	  @Column({
+    24	    type: 'text',
+    25	  })
+    26	  name: string;
+    27	
+    28	  @Column({
+    29	    type: 'text',
+    30	    nullable: true,
+    31	  })
+    32	  description: string;
+    33	
+    34	  @CreateDateColumn({
+    35	    name: 'created_at',
+    36	    type: 'timestamptz',
+    37	  })
+    38	  createdAt: Date;
+    39	
+    40	  @UpdateDateColumn({
+    41	    name: 'updated_at',
+    42	    type: 'timestamptz',
+    43	  })
+    44	  updatedAt: Date;
+    45	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'hr_employee_profiles',
+    11	  synchronize: false,
+    12	})
+    13	export class HrEmployeeProfile {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'client_id',
+    19	    type: 'uuid',
+    20	  })
+    21	  clientId: string;
+    22	
+    23	  @Column({
+    24	    name: 'employee_external_ref',
+    25	    type: 'text',
+    26	    nullable: true,
+    27	  })
+    28	  employeeExternalRef: string;
+    29	
+    30	  @Column({
+    31	    name: 'first_name',
+    32	    type: 'text',
+    33	  })
+    34	  firstName: string;
+    35	
+    36	  @Column({
+    37	    name: 'last_name',
+    38	    type: 'text',
+    39	  })
+    40	  lastName: string;
+    41	
+    42	  @Column({
+    43	    type: 'text',
+    44	    nullable: true,
+    45	  })
+    46	  cpf: string;
+    47	
+    48	  @Column({
+    49	    type: 'text',
+    50	    nullable: true,
+    51	  })
+    52	  email: string;
+    53	
+    54	  @Column({
+    55	    name: 'department_id',
+    56	    type: 'uuid',
+    57	    nullable: true,
+    58	  })
+    59	  departmentId: string;
+    60	
+    61	  @Column({
+    62	    name: 'job_position_id',
+    63	    type: 'uuid',
+    64	    nullable: true,
+    65	  })
+    66	  jobPositionId: string;
+    67	
+    68	  @Column({
+    69	    name: 'job_function_id',
+    70	    type: 'uuid',
+    71	    nullable: true,
+    72	  })
+    73	  jobFunctionId: string;
+    74	
+    75	  @Column({
+    76	    name: 'admission_date',
+    77	    type: 'date',
+    78	    nullable: true,
+    79	  })
+    80	  admissionDate: string;
+    81	
+    82	  @Column({
+    83	    type: 'text',
+    84	    default: 'ACTIVE',
+    85	  })
+    86	  status: string;
+    87	
+    88	  @CreateDateColumn({
+    89	    name: 'created_at',
+    90	    type: 'timestamptz',
+    91	  })
+    92	  createdAt: Date;
+    93	
+    94	  @UpdateDateColumn({
+    95	    name: 'updated_at',
+    96	    type: 'timestamptz',
+    97	  })
+    98	  updatedAt: Date;
+    99	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'hr_geofences',
+    11	  synchronize: false,
+    12	})
+    13	export class HrGeofence {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'client_id',
+    19	    type: 'uuid',
+    20	  })
+    21	  clientId: string;
+    22	
+    23	  @Column({
+    24	    name: 'work_location_id',
+    25	    type: 'uuid',
+    26	    nullable: true,
+    27	  })
+    28	  workLocationId: string;
+    29	
+    30	  @Column({
+    31	    type: 'text',
+    32	  })
+    33	  name: string;
+    34	
+    35	  @Column({
+    36	    type: 'numeric',
+    37	    precision: 10,
+    38	    scale: 7,
+    39	  })
+    40	  latitude: string;
+    41	
+    42	  @Column({
+    43	    type: 'numeric',
+    44	    precision: 10,
+    45	    scale: 7,
+    46	  })
+    47	  longitude: string;
+    48	
+    49	  @Column({
+    50	    name: 'radius_meters',
+    51	    type: 'int',
+    52	    default: 100,
+    53	  })
+    54	  radiusMeters: number;
+    55	
+    56	  @Column({
+    57	    name: 'is_active',
+    58	    default: true,
+    59	  })
+    60	  isActive: boolean;
+    61	
+    62	  @CreateDateColumn({
+    63	    name: 'created_at',
+    64	    type: 'timestamptz',
+    65	  })
+    66	  createdAt: Date;
+    67	
+    68	  @UpdateDateColumn({
+    69	    name: 'updated_at',
+    70	    type: 'timestamptz',
+    71	  })
+    72	  updatedAt: Date;
+    73	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'hr_job_functions',
+    11	  synchronize: false,
+    12	})
+    13	export class HrJobFunction {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'client_id',
+    19	    type: 'uuid',
+    20	  })
+    21	  clientId: string;
+    22	
+    23	  @Column({
+    24	    type: 'text',
+    25	  })
+    26	  name: string;
+    27	
+    28	  @Column({
+    29	    type: 'text',
+    30	    nullable: true,
+    31	  })
+    32	  description: string;
+    33	
+    34	  @Column({
+    35	    name: 'allows_external_visit',
+    36	    default: false,
+    37	  })
+    38	  allowsExternalVisit: boolean;
+    39	
+    40	  @Column({
+    41	    name: 'allows_travel',
+    42	    default: false,
+    43	  })
+    44	  allowsTravel: boolean;
+    45	
+    46	  @Column({
+    47	    name: 'allows_overtime',
+    48	    default: false,
+    49	  })
+    50	  allowsOvertime: boolean;
+    51	
+    52	  @Column({
+    53	    name: 'allows_on_call',
+    54	    default: false,
+    55	  })
+    56	  allowsOnCall: boolean;
+    57	
+    58	  @Column({
+    59	    name: 'allows_shift_duty',
+    60	    default: false,
+    61	  })
+    62	  allowsShiftDuty: boolean;
+    63	
+    64	  @CreateDateColumn({
+    65	    name: 'created_at',
+    66	    type: 'timestamptz',
+    67	  })
+    68	  createdAt: Date;
+    69	
+    70	  @UpdateDateColumn({
+    71	    name: 'updated_at',
+    72	    type: 'timestamptz',
+    73	  })
+    74	  updatedAt: Date;
+    75	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'hr_job_positions',
+    11	  synchronize: false,
+    12	})
+    13	export class HrJobPosition {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'client_id',
+    19	    type: 'uuid',
+    20	  })
+    21	  clientId: string;
+    22	
+    23	  @Column({
+    24	    type: 'text',
+    25	  })
+    26	  name: string;
+    27	
+    28	  @Column({
+    29	    type: 'text',
+    30	    nullable: true,
+    31	  })
+    32	  description: string;
+    33	
+    34	  @CreateDateColumn({
+    35	    name: 'created_at',
+    36	    type: 'timestamptz',
+    37	  })
+    38	  createdAt: Date;
+    39	
+    40	  @UpdateDateColumn({
+    41	    name: 'updated_at',
+    42	    type: 'timestamptz',
+    43	  })
+    44	  updatedAt: Date;
+    45	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'hr_work_locations',
+    11	  synchronize: false,
+    12	})
+    13	export class HrWorkLocation {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'client_id',
+    19	    type: 'uuid',
+    20	  })
+    21	  clientId: string;
+    22	
+    23	  @Column({
+    24	    type: 'text',
+    25	  })
+    26	  name: string;
+    27	
+    28	  @Column({
+    29	    name: 'address_line',
+    30	    type: 'text',
+    31	    nullable: true,
+    32	  })
+    33	  addressLine: string;
+    34	
+    35	  @Column({
+    36	    type: 'text',
+    37	    nullable: true,
+    38	  })
+    39	  city: string;
+    40	
+    41	  @Column({
+    42	    type: 'text',
+    43	    nullable: true,
+    44	  })
+    45	  state: string;
+    46	
+    47	  @Column({
+    48	    type: 'numeric',
+    49	    precision: 10,
+    50	    scale: 7,
+    51	    nullable: true,
+    52	  })
+    53	  latitude: string;
+    54	
+    55	  @Column({
+    56	    type: 'numeric',
+    57	    precision: 10,
+    58	    scale: 7,
+    59	    nullable: true,
+    60	  })
+    61	  longitude: string;
+    62	
+    63	  @CreateDateColumn({
+    64	    name: 'created_at',
+    65	    type: 'timestamptz',
+    66	  })
+    67	  createdAt: Date;
+    68	
+    69	  @UpdateDateColumn({
+    70	    name: 'updated_at',
+    71	    type: 'timestamptz',
+    72	  })
+    73	  updatedAt: Date;
+    74	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'location_tracking_points',
+    11	  synchronize: false,
+    12	})
+    13	export class LocationTrackingPoint {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'client_id',
+    19	    type: 'uuid',
+    20	  })
+    21	  clientId: string;
+    22	
+    23	  @Column({
+    24	    name: 'employee_profile_id',
+    25	    type: 'uuid',
+    26	    nullable: true,
+    27	  })
+    28	  employeeProfileId: string;
+    29	
+    30	  @Column({
+    31	    name: 'device_id',
+    32	    type: 'uuid',
+    33	    nullable: true,
+    34	  })
+    35	  deviceId: string;
+    36	
+    37	  @Column({
+    38	    name: 'tracked_at',
+    39	    type: 'timestamptz',
+    40	  })
+    41	  trackedAt: Date;
+    42	
+    43	  @Column({
+    44	    type: 'numeric',
+    45	    precision: 10,
+    46	    scale: 7,
+    47	  })
+    48	  latitude: string;
+    49	
+    50	  @Column({
+    51	    type: 'numeric',
+    52	    precision: 10,
+    53	    scale: 7,
+    54	  })
+    55	  longitude: string;
+    56	
+    57	  @Column({
+    58	    name: 'accuracy_meters',
+    59	    type: 'numeric',
+    60	    precision: 10,
+    61	    scale: 2,
+    62	    nullable: true,
+    63	  })
+    64	  accuracyMeters: string;
+    65	
+    66	  @Column({
+    67	    type: 'text',
+    68	    nullable: true,
+    69	  })
+    70	  address: string;
+    71	
+    72	  @Column({
+    73	    type: 'text',
+    74	    default: 'MOBILE',
+    75	  })
+    76	  source: string;
+    77	
+    78	  @Column({
+    79	    type: 'jsonb',
+    80	    default: () => "'{}'::jsonb",
+    81	  })
+    82	  metadata: any;
+    83	
+    84	  @CreateDateColumn({
+    85	    name: 'created_at',
+    86	    type: 'timestamptz',
+    87	  })
+    88	  createdAt: Date;
+    89	
+    90	  @UpdateDateColumn({
+    91	    name: 'updated_at',
+    92	    type: 'timestamptz',
+    93	  })
+    94	  updatedAt: Date;
+    95	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'mobile_devices',
+    11	  synchronize: false,
+    12	})
+    13	export class MobileDevice {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'client_id',
+    19	    type: 'uuid',
+    20	    nullable: true,
+    21	  })
+    22	  clientId: string;
+    23	
+    24	  @Column({
+    25	    name: 'employee_profile_id',
+    26	    type: 'uuid',
+    27	    nullable: true,
+    28	  })
+    29	  employeeProfileId: string;
+    30	
+    31	  @Column({
+    32	    name: 'device_uid',
+    33	    type: 'text',
+    34	  })
+    35	  deviceUid: string;
+    36	
+    37	  @Column({
+    38	    type: 'text',
+    39	    nullable: true,
+    40	  })
+    41	  platform: string;
+    42	
+    43	  @Column({
+    44	    type: 'text',
+    45	    nullable: true,
+    46	  })
+    47	  model: string;
+    48	
+    49	  @Column({
+    50	    name: 'app_version',
+    51	    type: 'text',
+    52	    nullable: true,
+    53	  })
+    54	  appVersion: string;
+    55	
+    56	  @Column({
+    57	    name: 'is_active',
+    58	    default: true,
+    59	  })
+    60	  isActive: boolean;
+    61	
+    62	  @Column({
+    63	    name: 'last_seen_at',
+    64	    type: 'timestamptz',
+    65	    nullable: true,
+    66	  })
+    67	  lastSeenAt: Date;
+    68	
+    69	  @CreateDateColumn({
+    70	    name: 'created_at',
+    71	    type: 'timestamptz',
+    72	  })
+    73	  createdAt: Date;
+    74	
+    75	  @UpdateDateColumn({
+    76	    name: 'updated_at',
+    77	    type: 'timestamptz',
+    78	  })
+    79	  updatedAt: Date;
+    80	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'payslips_foundation',
+    11	  synchronize: false,
+    12	})
+    13	export class PayslipFoundation {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'client_id',
+    19	    type: 'uuid',
+    20	  })
+    21	  clientId: string;
+    22	
+    23	  @Column({
+    24	    name: 'employee_profile_id',
+    25	    type: 'uuid',
+    26	    nullable: true,
+    27	  })
+    28	  employeeProfileId: string;
+    29	
+    30	  @Column({
+    31	    name: 'reference_month',
+    32	    type: 'int',
+    33	  })
+    34	  referenceMonth: number;
+    35	
+    36	  @Column({
+    37	    name: 'reference_year',
+    38	    type: 'int',
+    39	  })
+    40	  referenceYear: number;
+    41	
+    42	  @Column({
+    43	    type: 'text',
+    44	  })
+    45	  title: string;
+    46	
+    47	  @Column({
+    48	    name: 'file_path',
+    49	    type: 'text',
+    50	    nullable: true,
+    51	  })
+    52	  filePath: string;
+    53	
+    54	  @Column({
+    55	    name: 'hash_sha256',
+    56	    type: 'text',
+    57	    nullable: true,
+    58	  })
+    59	  hashSha256: string;
+    60	
+    61	  @Column({
+    62	    name: 'acknowledged_at',
+    63	    type: 'timestamptz',
+    64	    nullable: true,
+    65	  })
+    66	  acknowledgedAt: Date;
+    67	
+    68	  @CreateDateColumn({
+    69	    name: 'created_at',
+    70	    type: 'timestamptz',
+    71	  })
+    72	  createdAt: Date;
+    73	
+    74	  @UpdateDateColumn({
+    75	    name: 'updated_at',
+    76	    type: 'timestamptz',
+    77	  })
+    78	  updatedAt: Date;
+    79	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'saas_clients',
+    11	  synchronize: false,
+    12	})
+    13	export class SaasClient {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'tenant_id',
+    19	    type: 'uuid',
+    20	    nullable: true,
+    21	  })
+    22	  tenantId: string;
+    23	
+    24	  @Column({
+    25	    name: 'plan_id',
+    26	    type: 'uuid',
+    27	    nullable: true,
+    28	  })
+    29	  planId: string;
+    30	
+    31	  @Column({
+    32	    type: 'text',
+    33	    nullable: true,
+    34	  })
+    35	  slug: string;
+    36	
+    37	  @Column({
+    38	    name: 'trade_name',
+    39	    type: 'text',
+    40	    nullable: true,
+    41	  })
+    42	  tradeName: string;
+    43	
+    44	  @Column({
+    45	    name: 'legal_name',
+    46	    type: 'text',
+    47	    nullable: true,
+    48	  })
+    49	  legalName: string;
+    50	
+    51	  @Column({
+    52	    name: 'document_number',
+    53	    type: 'text',
+    54	    nullable: true,
+    55	  })
+    56	  documentNumber: string;
+    57	
+    58	  @Column({
+    59	    type: 'text',
+    60	    nullable: true,
+    61	  })
+    62	  status: string;
+    63	
+    64	  @Column({
+    65	    type: 'text',
+    66	    nullable: true,
+    67	  })
+    68	  timezone: string;
+    69	
+    70	  @Column({
+    71	    name: 'default_locale',
+    72	    type: 'text',
+    73	    nullable: true,
+    74	  })
+    75	  defaultLocale: string;
+    76	
+    77	  @Column({
+    78	    type: 'text',
+    79	    nullable: true,
+    80	  })
+    81	  notes: string;
+    82	
+    83	  @CreateDateColumn({
+    84	    name: 'created_at',
+    85	    type: 'timestamptz',
+    86	  })
+    87	  createdAt: Date;
+    88	
+    89	  @UpdateDateColumn({
+    90	    name: 'updated_at',
+    91	    type: 'timestamptz',
+    92	  })
+    93	  updatedAt: Date;
+    94	}
+
+### /opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity({
+    10	  name: 'time_bank_balances_foundation',
+    11	  synchronize: false,
+    12	})
+    13	export class TimeBankBalanceFoundation {
+    14	  @PrimaryGeneratedColumn('uuid')
+    15	  id: string;
+    16	
+    17	  @Column({
+    18	    name: 'client_id',
+    19	    type: 'uuid',
+    20	  })
+    21	  clientId: string;
+    22	
+    23	  @Column({
+    24	    name: 'employee_profile_id',
+    25	    type: 'uuid',
+    26	    nullable: true,
+    27	  })
+    28	  employeeProfileId: string;
+    29	
+    30	  @Column({
+    31	    name: 'reference_date',
+    32	    type: 'date',
+    33	  })
+    34	  referenceDate: string;
+    35	
+    36	  @Column({
+    37	    name: 'balance_minutes',
+    38	    type: 'int',
+    39	    default: 0,
+    40	  })
+    41	  balanceMinutes: number;
+    42	
+    43	  @Column({
+    44	    name: 'credit_minutes',
+    45	    type: 'int',
+    46	    default: 0,
+    47	  })
+    48	  creditMinutes: number;
+    49	
+    50	  @Column({
+    51	    name: 'debit_minutes',
+    52	    type: 'int',
+    53	    default: 0,
+    54	  })
+    55	  debitMinutes: number;
+    56	
+    57	  @CreateDateColumn({
+    58	    name: 'created_at',
+    59	    type: 'timestamptz',
+    60	  })
+    61	  createdAt: Date;
+    62	
+    63	  @UpdateDateColumn({
+    64	    name: 'updated_at',
+    65	    type: 'timestamptz',
+    66	  })
+    67	  updatedAt: Date;
+    68	}
+
+### /opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts
+     1	import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+     2	import { Schedule } from './schedule.entity';
+     3	
+     4	@Entity('employee_schedules')
+     5	export class EmployeeSchedule {
+     6	  @PrimaryGeneratedColumn('uuid')
+     7	  id: string;
+     8	
+     9	  @Column({ name: 'tenant_id' })
+    10	  tenantId: string;
+    11	
+    12	  @Column({ name: 'employee_id' })
+    13	  employeeId: string;
+    14	
+    15	  @ManyToOne(() => Schedule)
+    16	  @JoinColumn({ name: 'schedule_id' })
+    17	  schedule: Schedule;
+    18	
+    19	  @Column({ name: 'schedule_id' })
+    20	  scheduleId: string;
+    21	
+    22	  // Data em que o funcionário começou nesta escala (Crucial para o cálculo do 12x36)
+    23	  @Column({ name: 'start_date', type: 'date' })
+    24	  startDate: string; 
+    25	
+    26	  @Column({ name: 'end_date', type: 'date', nullable: true })
+    27	  endDate: string;
+    28	}
+
+### /opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts
+     1	import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+     2	
+     3	export enum ScheduleType {
+     4	  FIXED = 'FIXED',
+     5	  SHIFT_12X36 = 'SHIFT_12X36'
+     6	}
+     7	
+     8	@Entity('schedules')
+     9	export class Schedule {
+    10	  @PrimaryGeneratedColumn('uuid')
+    11	  id: string;
+    12	
+    13	  @Column({ name: 'tenant_id' })
+    14	  tenantId: string;
+    15	
+    16	  @Column()
+    17	  name: string;
+    18	
+    19	  @Column({ type: 'enum', enum: ScheduleType, default: ScheduleType.FIXED })
+    20	  type: ScheduleType;
+    21	
+    22	  @Column({ type: 'jsonb', nullable: true })
+    23	  workDays: number[];
+    24	
+    25	  @Column({ name: 'expected_minutes_per_day', type: 'int', default: 480 })
+    26	  expectedMinutesPerDay: number;
+    27	
+    28	  @Column({ name: 'daily_tolerance_minutes', type: 'int', default: 10 })
+    29	  dailyToleranceMinutes: number;
+    30	
+    31	  @Column({ nullable: true })
+    32	  entry1: string;
+    33	
+    34	  @Column({ nullable: true })
+    35	  exit1: string;
+    36	
+    37	  @Column({ nullable: true })
+    38	  entry2: string;
+    39	
+    40	  @Column({ nullable: true })
+    41	  exit2: string;
+    42	
+    43	  @Column({ name: 'expected_minutes', type: 'int', default: 480 })
+    44	  expectedMinutes: number;
+    45	}
+
+### /opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	  UpdateDateColumn,
+     7	} from 'typeorm';
+     8	
+     9	@Entity('tenants')
+    10	export class Tenant {
+    11	  @PrimaryGeneratedColumn('uuid')
+    12	  id: string;
+    13	
+    14	  @Column({ unique: true, length: 14 })
+    15	  cnpj: string;
+    16	
+    17	  @Column({
+    18	    name: 'corporate_name',
+    19	    length: 255,
+    20	  })
+    21	  corporateName: string;
+    22	
+    23	  @Column({
+    24	    name: 'trading_name',
+    25	    length: 255,
+    26	    nullable: true,
+    27	  })
+    28	  tradingName: string;
+    29	
+    30	  @Column({
+    31	    name: 'is_active',
+    32	    default: true,
+    33	  })
+    34	  isActive: boolean;
+    35	
+    36	  @Column({
+    37	    nullable: true,
+    38	    length: 50,
+    39	  })
+    40	  phone?: string;
+    41	
+    42	  @Column({
+    43	    nullable: true,
+    44	    length: 255,
+    45	  })
+    46	  email?: string;
+    47	
+    48	  @Column({
+    49	    nullable: true,
+    50	    type: 'text',
+    51	  })
+    52	  address?: string;
+    53	
+    54	  @Column({
+    55	    nullable: true,
+    56	    length: 255,
+    57	  })
+    58	  website?: string;
+    59	
+    60	  @Column({
+    61	    nullable: true,
+    62	    name: 'hr_manager',
+    63	    length: 255,
+    64	  })
+    65	  hrManager?: string;
+    66	
+    67	  @Column({
+    68	    nullable: true,
+    69	    name: 'logo_url',
+    70	    type: 'text',
+    71	  })
+    72	  logoUrl?: string;
+    73	
+    74	  @CreateDateColumn({
+    75	    name: 'created_at',
+    76	  })
+    77	  createdAt: Date;
+    78	
+    79	  @UpdateDateColumn({
+    80	    name: 'updated_at',
+    81	  })
+    82	  updatedAt: Date;
+    83	}
+
+### /opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts
+     1	import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+     2	
+     3	@Entity('time_bank')
+     4	export class TimeBank {
+     5	  @PrimaryGeneratedColumn('uuid')
+     6	  id: string;
+     7	
+     8	  @Column({ name: 'tenant_id' })
+     9	  tenantId: string;
+    10	
+    11	  @Column({ name: 'employee_id' })
+    12	  employeeId: string;
+    13	
+    14	  @Column({ type: 'date' })
+    15	  date: string; // Formato YYYY-MM-DD
+    16	
+    17	  @Column({ name: 'expected_minutes', type: 'int' })
+    18	  expectedMinutes: number; // Jornada esperada (Ex: 480 min = 8h)
+    19	
+    20	  @Column({ name: 'worked_minutes', type: 'int', default: 0 })
+    21	  workedMinutes: number; // O que ele de fato trabalhou
+    22	
+    23	  @Column({ name: 'balance_minutes', type: 'int', default: 0 })
+    24	  balanceMinutes: number; // Positivo (Hora Extra) ou Negativo (Atraso)
+    25	
+    26	  @Column({ default: 'OPEN' })
+    27	  status: string; // OPEN (Aberto no mês) | CLOSED (Fechado/Pago na Folha)
+    28	
+    29	  @CreateDateColumn({ name: 'created_at' })
+    30	  createdAt: Date;
+    31	
+    32	  @UpdateDateColumn({ name: 'updated_at' })
+    33	  updatedAt: Date;
+    34	}
+
+### /opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  CreateDateColumn,
+     6	} from 'typeorm';
+     7	
+     8	export enum TimeRecordEventType {
+     9	  CLOCK_IN = 'CLOCK_IN',
+    10	  BREAK_START = 'BREAK_START',
+    11	  BREAK_END = 'BREAK_END',
+    12	  CLOCK_OUT = 'CLOCK_OUT',
+    13	}
+    14	
+    15	@Entity('time_records')
+    16	export class TimeRecord {
+    17	  @PrimaryGeneratedColumn('uuid')
+    18	  id: string;
+    19	
+    20	  @Column({ name: 'tenant_id' })
+    21	  tenantId: string;
+    22	
+    23	  @Column({
+    24	    name: 'employee_id',
+    25	    nullable: true,
+    26	  })
+    27	  employeeId: string;
+    28	
+    29	  @Column({
+    30	    type: 'decimal',
+    31	    precision: 10,
+    32	    scale: 7,
+    33	    nullable: true,
+    34	  })
+    35	  latitude: number;
+    36	
+    37	  @Column({
+    38	    type: 'decimal',
+    39	    precision: 10,
+    40	    scale: 7,
+    41	    nullable: true,
+    42	  })
+    43	  longitude: number;
+    44	
+    45	  @Column({
+    46	    name: 'event_type',
+    47	    length: 20,
+    48	    default: TimeRecordEventType.CLOCK_IN,
+    49	  })
+    50	  eventType: string;
+    51	
+    52	  @CreateDateColumn()
+    53	  timestamp: Date;
+    54	}
+
+### /opt/rh-saas/backend/src/modules/users/user.entity.ts
+     1	import {
+     2	  Entity,
+     3	  Column,
+     4	  PrimaryGeneratedColumn,
+     5	  ManyToOne,
+     6	  JoinColumn,
+     7	  CreateDateColumn,
+     8	  UpdateDateColumn,
+     9	} from 'typeorm';
+    10	
+    11	import { Tenant } from '../tenant/tenant.entity';
+    12	
+    13	export enum UserRole {
+    14	  SUPER_ADMIN = 'SUPER_ADMIN',
+    15	  ADMIN = 'ADMIN',
+    16	  RH = 'RH',
+    17	  MANAGER = 'MANAGER',
+    18	  EMPLOYEE = 'EMPLOYEE',
+    19	}
+    20	
+    21	@Entity('users')
+    22	export class User {
+    23	  @PrimaryGeneratedColumn('uuid')
+    24	  id: string;
+    25	
+    26	  @ManyToOne(() => Tenant)
+    27	  @JoinColumn({ name: 'tenant_id' })
+    28	  tenant: Tenant;
+    29	
+    30	  @Column({ name: 'tenant_id' })
+    31	  tenantId: string;
+    32	
+    33	  @Column()
+    34	  email: string;
+    35	
+    36	  @Column()
+    37	  passwordHash: string;
+    38	
+    39	  @Column({
+    40	    type: 'varchar',
+    41	    length: 30,
+    42	    default: UserRole.EMPLOYEE,
+    43	  })
+    44	  role: UserRole;
+    45	
+    46	  @Column({ default: true })
+    47	  isActive: boolean;
+    48	
+    49	  @Column({
+    50	    name: 'last_login_at',
+    51	    type: 'timestamp',
+    52	    nullable: true,
+    53	  })
+    54	  lastLoginAt: Date;
+    55	
+    56	  @CreateDateColumn({
+    57	    name: 'created_at',
+    58	  })
+    59	  createdAt: Date;
+    60	
+    61	  @UpdateDateColumn({
+    62	    name: 'updated_at',
+    63	  })
+    64	  updatedAt: Date;
+    65	}
+

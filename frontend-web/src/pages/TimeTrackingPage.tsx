@@ -2,8 +2,77 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { apiRequest } from "../lib/api";
 
 export function TimeTrackingPage() {
+
+  async function downloadAfd() {
+
+    const token =
+      localStorage.getItem(
+        "rh_access_token"
+      );
+
+    const response = await fetch(
+      "/v1/time-records/afd",
+      {
+        headers: {
+          Authorization:
+            `Bearer ${token}`,
+        },
+      }
+    );
+
+    const blob =
+      await response.blob();
+
+    const url =
+      window.URL.createObjectURL(blob);
+
+    const a =
+      document.createElement("a");
+
+    a.href = url;
+    a.download = "AFD_MTE.txt";
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    a.remove();
+
+    window.URL.revokeObjectURL(url);
+  }
+
+  const [in1,setIn1] = useState("08:00");
+  const [out1,setOut1] = useState("12:00");
+  const [in2,setIn2] = useState("13:00");
+  const [out2,setOut2] = useState("18:00");
+
+  const [expectedMinutes,setExpectedMinutes] =
+    useState(480);
+
+  const [simulationResult,setSimulationResult] =
+    useState<any>(null);
+
+  async function simulateMath() {
+
+    const result = await apiRequest(
+      "/v1/time-records/simulate-math",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          in1,
+          out1,
+          in2,
+          out2,
+          expectedMinutes,
+        }),
+      }
+    );
+
+    setSimulationResult(result);
+  }
   const [selectedMonth, setSelectedMonth] = useState("2026-07");
   const [selectedEmployee, setSelectedEmployee] = useState("joao-silva");
 
@@ -47,10 +116,91 @@ export function TimeTrackingPage() {
             value={selectedMonth}
             onChange={(e) => setSelectedMonth(e.target.value)}
           />
-          <Button variant="outline"><Download className="mr-2 h-4 w-4" /> Exportar PDF</Button>
+          <Button
+            variant="outline"
+            onClick={downloadAfd}
+          >
+            <Download className="mr-2 h-4 w-4" />
+            Baixar AFD
+          </Button>
         </div>
       </div>
       
+      <Card>
+        <CardHeader>
+          <CardTitle>
+            Simulador de Jornada
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent>
+
+          <div className="grid grid-cols-2 gap-3">
+
+            <input
+              type="time"
+              value={in1}
+              onChange={(e)=>setIn1(e.target.value)}
+              className="border rounded p-2"
+            />
+
+            <input
+              type="time"
+              value={out1}
+              onChange={(e)=>setOut1(e.target.value)}
+              className="border rounded p-2"
+            />
+
+            <input
+              type="time"
+              value={in2}
+              onChange={(e)=>setIn2(e.target.value)}
+              className="border rounded p-2"
+            />
+
+            <input
+              type="time"
+              value={out2}
+              onChange={(e)=>setOut2(e.target.value)}
+              className="border rounded p-2"
+            />
+
+          </div>
+
+          <input
+            type="number"
+            value={expectedMinutes}
+            onChange={(e)=>
+              setExpectedMinutes(
+                Number(e.target.value)
+              )
+            }
+            className="mt-3 w-full border rounded p-2"
+            placeholder="Minutos esperados"
+          />
+
+          <Button
+            className="mt-3"
+            onClick={simulateMath}
+          >
+            Calcular
+          </Button>
+
+          {simulationResult && (
+
+            <pre className="mt-3 text-xs overflow-auto">
+              {JSON.stringify(
+                simulationResult,
+                null,
+                2
+              )}
+            </pre>
+
+          )}
+
+        </CardContent>
+      </Card>
+
       {/* Cards de Resumo do Mês */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
         <Card><CardHeader className="pb-2"><CardTitle className="text-sm font-medium text-slate-500">Saldo Atual (Banco)</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold text-emerald-600">+14h 30m</div></CardContent></Card>

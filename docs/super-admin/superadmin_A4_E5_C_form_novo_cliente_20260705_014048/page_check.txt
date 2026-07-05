@@ -1,0 +1,11 @@
+5:  createSuperAdminClient,
+18:  adminEmail: string;
+31:  adminEmail: '',
+42:export function SuperAdminClientCreatePage() {
+67:      moduleIds: modules.length > 0 ? modules : undefined,
+69:      adminEmail: form.adminEmail.trim() || undefined,
+88:      const createdClient = await createSuperAdminClient(buildPayload());
+119:              Novo Cliente SaaS
+274:              value={form.adminEmail}
+276:                updateField('adminEmail', event.target.value)
+324:            {submitting ? 'Criando cliente...' : 'Criar Cliente SaaS'}

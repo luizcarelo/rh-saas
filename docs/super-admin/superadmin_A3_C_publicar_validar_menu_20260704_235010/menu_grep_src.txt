@@ -1,0 +1,5 @@
+56:// SUPERADMIN_A3_B_ROLE_MENU
+114:const superAdminMenu = [
+156:const userRoleForMenu = getLoggedUserRole();
+158:  // SUPERADMIN_A3_B_DYNAMIC_MENU_FILTER
+159:  const dynamicMenu = userRoleForMenu === 'SUPER_ADMIN' ? superAdminMenu : menu;

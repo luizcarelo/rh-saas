@@ -1,0 +1,3397 @@
+=================================================
+FRONTEND CANDIDATE CONTENT - CREATE CLIENT
+Data: 20260705_012705
+=================================================
+
+
+## Lista: /opt/rh-saas/docs/super-admin/superadmin_A4_E5_A_diag_payload_criacao_cliente_20260705_012705/frontend_services_client_create.txt
+-------------------------------------------------
+
+### /opt/rh-saas/frontend-web/src/lib/api.ts
+     1	export type ApiError = {
+     2	  message?: string | string[];
+     3	  error?: string;
+     4	  statusCode?: number;
+     5	};
+     6	
+     7	export const API_BASE =
+     8	  import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "";
+     9	
+    10	export type UserInfo = {
+    11	  sub?: string;
+    12	  userId?: string;
+    13	  tenantId?: string;
+    14	  email?: string;
+    15	  role?: string;
+    16	  employeeId?: string | null;
+    17	};
+    18	
+    19	export function getToken() {
+    20	  return (
+    21	    localStorage.getItem("rh_access_token") ||
+    22	    localStorage.getItem("token") ||
+    23	    ""
+    24	  );
+    25	}
+    26	
+    27	export function getUserInfo(): UserInfo | null {
+    28	  const raw =
+    29	    localStorage.getItem("rh_user_info") ||
+    30	    localStorage.getItem("user_info");
+    31	
+    32	  if (!raw) {
+    33	    return null;
+    34	  }
+    35	
+    36	  try {
+    37	    return JSON.parse(raw) as UserInfo;
+    38	  } catch {
+    39	    return null;
+    40	  }
+    41	}
+    42	
+    43	export function setSession(accessToken: string, userInfo: unknown) {
+    44	  localStorage.setItem("rh_access_token", accessToken);
+    45	  localStorage.setItem("rh_user_info", JSON.stringify(userInfo));
+    46	
+    47	  /*
+    48	   * Compatibilidade com páginas antigas que ainda usam:
+    49	   * localStorage.getItem("token")
+    50	   */
+    51	  localStorage.setItem("token", accessToken);
+    52	  localStorage.setItem("user_info", JSON.stringify(userInfo));
+    53	}
+    54	
+    55	export function clearSession() {
+    56	  localStorage.removeItem("rh_access_token");
+    57	  localStorage.removeItem("rh_user_info");
+    58	
+    59	  /*
+    60	   * Remove também chaves antigas.
+    61	   */
+    62	  localStorage.removeItem("token");
+    63	  localStorage.removeItem("user_info");
+    64	}
+    65	
+    66	export function getAuthHeaders() {
+    67	  const token = getToken();
+    68	
+    69	  if (!token) {
+    70	    return {};
+    71	  }
+    72	
+    73	  return {
+    74	    Authorization: `Bearer ${token}`,
+    75	  };
+    76	}
+    77	
+    78	function normalizeErrorMessage(data: unknown, fallback: string) {
+    79	  if (!data || typeof data !== "object") {
+    80	    return fallback;
+    81	  }
+    82	
+    83	  const apiError = data as ApiError;
+    84	
+    85	  if (Array.isArray(apiError.message)) {
+    86	    return apiError.message.join(", ");
+    87	  }
+    88	
+    89	  return apiError.message || apiError.error || fallback;
+    90	}
+    91	
+    92	export async function apiRequest<T>(
+    93	  endpoint: string,
+    94	  options: RequestInit = {},
+    95	): Promise<T> {
+    96	  const token = getToken();
+    97	
+    98	  const headers: Record<string, string> = {
+    99	    "Content-Type": "application/json",
+   100	    ...((options.headers as Record<string, string>) || {}),
+   101	  };
+   102	
+   103	  if (token) {
+   104	    headers.Authorization = `Bearer ${token}`;
+   105	  }
+   106	
+   107	  const response = await fetch(`${API_BASE}${endpoint}`, {
+   108	    ...options,
+   109	    headers,
+   110	  });
+   111	
+   112	  const text = await response.text();
+   113	
+   114	  let data: unknown = null;
+   115	
+   116	  if (text) {
+   117	    try {
+   118	      data = JSON.parse(text);
+   119	    } catch {
+   120	      data = text;
+   121	    }
+   122	  }
+   123	
+   124	  if (response.status === 401) {
+   125	    clearSession();
+   126	  }
+   127	
+   128	  if (!response.ok) {
+   129	    throw new Error(
+   130	      normalizeErrorMessage(data, `Erro HTTP ${response.status}`),
+   131	    );
+   132	  }
+   133	
+   134	  return data as T;
+   135	}
+
+### /opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+     1	import { apiRequest } from "./api";
+     2	
+     3	export type FoundationEmployee = {
+     4	  id: string;
+     5	  clientId?: string;
+     6	  employeeExternalRef?: string | null;
+     7	  firstName?: string;
+     8	  lastName?: string;
+     9	  cpf?: string | null;
+    10	  email?: string | null;
+    11	  departmentId?: string | null;
+    12	  jobPositionId?: string | null;
+    13	  jobFunctionId?: string | null;
+    14	  admissionDate?: string | null;
+    15	  status?: string;
+    16	  createdAt?: string;
+    17	  updatedAt?: string;
+    18	};
+    19	
+    20	export type RegisterMobileDevicePayload = {
+    21	  employeeProfileId?: string;
+    22	  deviceUid: string;
+    23	  platform?: string;
+    24	  model?: string;
+    25	  appVersion?: string;
+    26	};
+    27	
+    28	export type MobileDeviceFoundation = {
+    29	  id: string;
+    30	  clientId?: string;
+    31	  employeeProfileId?: string | null;
+    32	  deviceUid: string;
+    33	  platform?: string | null;
+    34	  model?: string | null;
+    35	  appVersion?: string | null;
+    36	  isActive?: boolean;
+    37	  lastSeenAt?: string | null;
+    38	  createdAt?: string;
+    39	  updatedAt?: string;
+    40	};
+    41	
+    42	export type CreateLocationTrackingPointPayload = {
+    43	  employeeProfileId: string;
+    44	  deviceId?: string;
+    45	  latitude: number;
+    46	  longitude: number;
+    47	  accuracyMeters?: number;
+    48	  address?: string;
+    49	  source?: string;
+    50	  trackedAt?: string;
+    51	  metadata?: Record<string, unknown>;
+    52	};
+    53	
+    54	export type LocationTrackingPointFoundation = {
+    55	  id: string;
+    56	  clientId?: string;
+    57	  employeeProfileId?: string | null;
+    58	  deviceId?: string | null;
+    59	  trackedAt?: string;
+    60	  latitude: string | number;
+    61	  longitude: string | number;
+    62	  accuracyMeters?: string | number | null;
+    63	  address?: string | null;
+    64	  source?: string;
+    65	  metadata?: Record<string, unknown>;
+    66	  createdAt?: string;
+    67	  updatedAt?: string;
+    68	};
+    69	
+    70	export async function getFoundationEmployees() {
+    71	  return apiRequest<FoundationEmployee[]>("/v1/foundation/hr/employees");
+    72	}
+    73	
+    74	export async function registerLiveTrackingDevice(
+    75	  payload: RegisterMobileDevicePayload,
+    76	) {
+    77	  return apiRequest<MobileDeviceFoundation>(
+    78	    "/v1/foundation/live-tracking/device",
+    79	    {
+    80	      method: "POST",
+    81	      body: JSON.stringify(payload),
+    82	    },
+    83	  );
+    84	}
+    85	
+    86	export async function sendLiveTrackingLocation(
+    87	  payload: CreateLocationTrackingPointPayload,
+    88	) {
+    89	  return apiRequest<LocationTrackingPointFoundation>(
+    90	    "/v1/foundation/live-tracking/location",
+    91	    {
+    92	      method: "POST",
+    93	      body: JSON.stringify(payload),
+    94	    },
+    95	  );
+    96	}
+    97	
+    98	export async function getLiveTrackingPoints() {
+    99	  return apiRequest<LocationTrackingPointFoundation[]>(
+   100	    "/v1/foundation/live-tracking/points",
+   101	  );
+   102	}
+   103	
+   104	export async function getLatestLiveTrackingPoints() {
+   105	  return apiRequest<LocationTrackingPointFoundation[]>(
+   106	    "/v1/foundation/live-tracking/latest",
+   107	  );
+   108	}
+   109	
+   110	export function getOrCreateBrowserDeviceUid() {
+   111	  const storageKey = "rh_live_tracking_device_uid";
+   112	  const existing = localStorage.getItem(storageKey);
+   113	
+   114	  if (existing) {
+   115	    return existing;
+   116	  }
+   117	
+   118	  const generated =
+   119	    "web-" +
+   120	    Date.now().toString(36) +
+   121	    "-" +
+   122	    Math.random().toString(36).slice(2, 10);
+   123	
+   124	  localStorage.setItem(storageKey, generated);
+   125	
+   126	  return generated;
+   127	}
+
+### /opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts
+     1	export type SuperAdminClientStatus =
+     2	  | 'ACTIVE'
+     3	  | 'INACTIVE'
+     4	  | 'SUSPENDED'
+     5	  | 'PENDING'
+     6	  | string;
+     7	
+     8	export type SuperAdminClientPlan = {
+     9	  id?: string;
+    10	  name?: string;
+    11	  code?: string;
+    12	  description?: string;
+    13	};
+    14	
+    15	export type SuperAdminClientModule = {
+    16	  id?: string;
+    17	  name?: string;
+    18	  code?: string;
+    19	  isActive?: boolean;
+    20	};
+    21	
+    22	export type SuperAdminClient = {
+    23	  id: string;
+    24	  name?: string;
+    25	  slug?: string;
+    26	  email?: string;
+    27	  status?: SuperAdminClientStatus;
+    28	  isActive?: boolean;
+    29	  tenantId?: string;
+    30	  tenant_id?: string;
+    31	  planId?: string;
+    32	  plan_id?: string;
+    33	  plan?: SuperAdminClientPlan | null;
+    34	  modules?: SuperAdminClientModule[];
+    35	  createdAt?: string;
+    36	  created_at?: string;
+    37	  updatedAt?: string;
+    38	  updated_at?: string;
+    39	};
+    40	
+    41	type UnknownRecord = Record<string, unknown>;
+    42	
+    43	type ListResponseShape =
+    44	  | SuperAdminClient[]
+    45	  | {
+    46	      data?: SuperAdminClient[];
+    47	      items?: SuperAdminClient[];
+    48	      results?: SuperAdminClient[];
+    49	      clients?: SuperAdminClient[];
+    50	      tenants?: SuperAdminClient[];
+    51	    };
+    52	
+    53	export type ListSuperAdminClientsResult = {
+    54	  endpoint: string;
+    55	  clients: SuperAdminClient[];
+    56	};
+    57	
+    58	const CLIENT_LIST_ENDPOINT_CANDIDATES = [
+    59	  '/v1/super-admin/clientes',
+    60	  '/v1/super-admin/tenants',
+    61	  '/v1/tenants',
+    62	  '/v1/clients',
+    63	];
+    64	
+    65	function getApiBaseUrl() {
+    66	  const apiBaseUrl = import.meta.env.VITE_API_URL || '';
+    67	
+    68	  return apiBaseUrl.replace(/\/$/, '');
+    69	}
+    70	
+    71	function readTokenFromStorageValue(value: string | null) {
+    72	  if (!value) {
+    73	    return '';
+    74	  }
+    75	
+    76	  try {
+    77	    const parsed = JSON.parse(value) as {
+    78	      access_token?: string;
+    79	      accessToken?: string;
+    80	      token?: string;
+    81	      jwt?: string;
+    82	    };
+    83	
+    84	    return (
+    85	      parsed.access_token ||
+    86	      parsed.accessToken ||
+    87	      parsed.token ||
+    88	      parsed.jwt ||
+    89	      ''
+    90	    );
+    91	  } catch {
+    92	    return value;
+    93	  }
+    94	}
+    95	
+    96	export function getSuperAdminAuthToken() {
+    97	  const keys = [
+    98	    'access_token',
+    99	    'accessToken',
+   100	    'token',
+   101	    'jwt',
+   102	    'auth_token',
+   103	    'authToken',
+   104	    '@LH_Token',
+   105	    '@RH_Token',
+   106	    'user_info',
+   107	    'userInfo',
+   108	    'auth_user',
+   109	    'authUser',
+   110	  ];
+   111	
+   112	  for (const key of keys) {
+   113	    const localToken = readTokenFromStorageValue(localStorage.getItem(key));
+   114	
+   115	    if (localToken) {
+   116	      return localToken;
+   117	    }
+   118	
+   119	    const sessionToken = readTokenFromStorageValue(sessionStorage.getItem(key));
+   120	
+   121	    if (sessionToken) {
+   122	      return sessionToken;
+   123	    }
+   124	  }
+   125	
+   126	  return '';
+   127	}
+   128	
+   129	function normalizeClientList(payload: ListResponseShape): SuperAdminClient[] {
+   130	  if (Array.isArray(payload)) {
+   131	    return payload;
+   132	  }
+   133	
+   134	  const candidates = [
+   135	    payload.data,
+   136	    payload.items,
+   137	    payload.results,
+   138	    payload.clients,
+   139	    payload.tenants,
+   140	  ];
+   141	
+   142	  for (const candidate of candidates) {
+   143	    if (Array.isArray(candidate)) {
+   144	      return candidate;
+   145	    }
+   146	  }
+   147	
+   148	  return [];
+   149	}
+   150	
+   151	function clearSessionAndRedirect() {
+   152	  localStorage.clear();
+   153	  sessionStorage.clear();
+   154	  window.location.href = '/login';
+   155	}
+   156	
+   157	async function requestJson(endpoint: string) {
+   158	  const token = getSuperAdminAuthToken();
+   159	
+   160	  if (!token) {
+   161	    throw new Error('Token de autenticação não encontrado.');
+   162	  }
+   163	
+   164	  const baseUrl = getApiBaseUrl();
+   165	  const url = `${baseUrl}${endpoint}`;
+   166	
+   167	  const response = await fetch(url, {
+   168	    method: 'GET',
+   169	    headers: {
+   170	      Authorization: `Bearer ${token}`,
+   171	      'Content-Type': 'application/json',
+   172	    },
+   173	  });
+   174	
+   175	  if (response.status === 401) {
+   176	    clearSessionAndRedirect();
+   177	    throw new Error('Sessão expirada.');
+   178	  }
+   179	
+   180	  const text = await response.text();
+   181	
+   182	  let payload: unknown = null;
+   183	
+   184	  if (text) {
+   185	    try {
+   186	      payload = JSON.parse(text) as unknown;
+   187	    } catch {
+   188	      payload = text;
+   189	    }
+   190	  }
+   191	
+   192	  if (!response.ok) {
+   193	    const message =
+   194	      typeof payload === 'object' && payload !== null
+   195	        ? String((payload as UnknownRecord).message || response.statusText)
+   196	        : response.statusText;
+   197	
+   198	    throw new Error(message || 'Falha ao buscar clientes SaaS.');
+   199	  }
+   200	
+   201	  return payload as ListResponseShape;
+   202	}
+   203	
+   204	export async function listSuperAdminClients(): Promise<ListSuperAdminClientsResult> {
+   205	  const errors: string[] = [];
+   206	
+   207	  for (const endpoint of CLIENT_LIST_ENDPOINT_CANDIDATES) {
+   208	    try {
+   209	      const payload = await requestJson(endpoint);
+   210	      const clients = normalizeClientList(payload);
+   211	
+   212	      return {
+   213	        endpoint,
+   214	        clients,
+   215	      };
+   216	    } catch (error) {
+   217	      const message =
+   218	        error instanceof Error ? error.message : 'Erro desconhecido';
+   219	
+   220	      errors.push(`${endpoint}: ${message}`);
+   221	    }
+   222	  }
+   223	
+   224	  throw new Error(
+   225	    `Nenhum endpoint de Clientes SaaS respondeu com sucesso. ${errors.join(' | ')}`,
+   226	  );
+   227	}
+   228	
+   229	export const superAdminClientsService = {
+   230	  list: listSuperAdminClients,
+   231	};
+
+## Lista: /opt/rh-saas/docs/super-admin/superadmin_A4_E5_A_diag_payload_criacao_cliente_20260705_012705/frontend_pages_client_create.txt
+-------------------------------------------------
+
+### /opt/rh-saas/frontend-web/src/App.tsx
+     1	import type { ReactNode } from "react";
+     2	import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+     3	import { Toaster } from "react-hot-toast";
+     4	
+     5	import { AdminLayout } from "./layouts/AdminLayout";
+     6	import { EmployeeLayout } from "./layouts/EmployeeLayout";
+     7	
+     8	import { ProtectedRoute } from "./components/ProtectedRoute";
+     9	
+    10	import { Login as LoginPage } from "./pages/Login";
+    11	import { Dashboard } from "./pages/Dashboard";
+    12	import { EmployeesPage } from "./pages/EmployeesPage";
+    13	import { UsersPage } from "./pages/UsersPage";
+    14	import { AnalyticsPage } from "./pages/AnalyticsPage";
+    15	import { TimeTrackingPage as TimeRecordsPage } from "./pages/TimeTrackingPage";
+    16	import { ClockInPage as RegisterTimePage } from "./pages/ClockInPage";
+    17	import { AuditLogsPage as AuditPage } from "./pages/AuditLogsPage";
+    18	import { LiveTrackingFoundationPage } from "./pages/LiveTrackingFoundationPage";
+    19	
+    20	import { EmployeeDashboard } from "./pages/EmployeeDashboard";
+    21	
+    22	import { SuperAdminDashboard as SuperAdminDashboardPage } from "./pages/SuperAdminDashboard";
+    23	import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+    24	import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+    25	import { SuperAdminClientAuditPage } from "./pages/SuperAdminClientAuditPage";
+    26	import { SuperAdminClientModulesPage } from "./pages/SuperAdminClientModulesPage";
+    27	import { SuperAdminClientModulesAuditPage } from "./pages/SuperAdminClientModulesAuditPage";
+    28	import { SuperAdminPlansPage } from "./pages/SuperAdminPlansPage";
+    29	import { SuperAdminPlanCreatePage } from "./pages/SuperAdminPlanCreatePage";
+    30	import { SuperAdminPlanDetailsPage } from "./pages/SuperAdminPlanDetailsPage";
+    31	
+    32	import { SuperAdminPlaceholderPage } from "./pages/super-admin/SuperAdminPlaceholderPage";
+    33	
+    34	type StoredUserInfo = {
+    35	  role?: string;
+    36	  user?: {
+    37	    role?: string;
+    38	  };
+    39	  user_info?: {
+    40	    role?: string;
+    41	  };
+    42	};
+    43	
+    44	function readUserInfoFromStorageValue(value: string | null) {
+    45	  if (!value) {
+    46	    return null;
+    47	  }
+    48	
+    49	  try {
+    50	    return JSON.parse(value) as StoredUserInfo;
+    51	  } catch {
+    52	    return null;
+    53	  }
+    54	}
+    55	
+    56	function getUserInfo() {
+    57	  const keys = [
+    58	    "user_info",
+    59	    "userInfo",
+    60	    "user",
+    61	    "auth_user",
+    62	    "authUser",
+    63	    "@RH_USER",
+    64	    "@LH_User",
+    65	  ];
+    66	
+    67	  for (const key of keys) {
+    68	    const localUser = readUserInfoFromStorageValue(localStorage.getItem(key));
+    69	
+    70	    if (localUser) {
+    71	      return localUser.user_info || localUser.user || localUser;
+    72	    }
+    73	
+    74	    const sessionUser = readUserInfoFromStorageValue(
+    75	      sessionStorage.getItem(key),
+    76	    );
+    77	
+    78	    if (sessionUser) {
+    79	      return sessionUser.user_info || sessionUser.user || sessionUser;
+    80	    }
+    81	  }
+    82	
+    83	  return null;
+    84	}
+    85	
+    86	function superAdminOnly(element: ReactNode) {
+    87	  return getUserInfo()?.role === "SUPER_ADMIN" ? element : <Dashboard />;
+    88	}
+    89	
+    90	export default function App() {
+    91	  return (
+    92	    <BrowserRouter>
+    93	      <Routes>
+    94	        <Route path="/login" element={<LoginPage />} />
+    95	
+    96	        <Route element={<ProtectedRoute />}>
+    97	          <Route element={<AdminLayout />}>
+    98	            <Route path="/" element={<Dashboard />} />
+    99	
+   100	            <Route path="/colaboradores" element={<EmployeesPage />} />
+   101	
+   102	            <Route path="/usuarios" element={<UsersPage />} />
+   103	
+   104	            <Route path="/analytics" element={<AnalyticsPage />} />
+   105	
+   106	            <Route path="/ponto" element={<TimeRecordsPage />} />
+   107	
+   108	            <Route path="/registrar-ponto" element={<RegisterTimePage />} />
+   109	
+   110	            <Route path="/audit" element={<AuditPage />} />
+   111	
+   112	            <Route
+   113	              path="/live-tracking-foundation"
+   114	              element={<LiveTrackingFoundationPage />}
+   115	            />
+   116	
+   117	            <Route
+   118	              path="/super-admin"
+   119	              element={superAdminOnly(<SuperAdminDashboardPage />)}
+   120	            />
+   121	
+   122	            <Route
+   123	              path="/super-admin/clientes"
+   124	              element={superAdminOnly(<SuperAdminClientsPage />)}
+   125	            />
+   126	
+   127	            <Route
+   128	              path="/super-admin/clientes/dashboard"
+   129	              element={superAdminOnly(
+   130	                <SuperAdminPlaceholderPage
+   131	                  title="Dashboard de Clientes"
+   132	                  description="Visão consolidada de indicadores por cliente SaaS, incluindo status de implantação, módulos ativos e alertas operacionais."
+   133	                  priority="Média"
+   134	                  items={[
+   135	                    "Indicadores por cliente",
+   136	                    "Clientes ativos e suspensos",
+   137	                    "Módulos contratados",
+   138	                    "Alertas operacionais",
+   139	                  ]}
+   140	                  nextSteps={[
+   141	                    "Definir métricas por tenant.",
+   142	                    "Validar endpoints agregados.",
+   143	                    "Criar cards analíticos reais.",
+   144	                  ]}
+   145	                />,
+   146	              )}
+   147	            />
+   148	
+   149	            <Route
+   150	              path="/super-admin/clientes/novo"
+   151	              element={superAdminOnly(
+   152	                <SuperAdminPlaceholderPage
+   153	                  title="Novo Cliente SaaS"
+   154	                  description="Preparação do fluxo de cadastro de novos clientes SaaS, incluindo dados cadastrais, plano inicial e módulos contratados."
+   155	                  priority="Alta"
+   156	                  items={[
+   157	                    "Dados do cliente",
+   158	                    "Tenant inicial",
+   159	                    "Plano contratado",
+   160	                    "Módulos habilitados",
+   161	                  ]}
+   162	                  nextSteps={[
+   163	                    "Validar contrato backend de criação de cliente.",
+   164	                    "Definir campos obrigatórios.",
+   165	                    "Implementar formulário de cadastro.",
+   166	                  ]}
+   167	                />,
+   168	              )}
+   169	            />
+   170	
+   171	            <Route
+   172	              path="/super-admin/clientes/:id"
+   173	              element={superAdminOnly(<SuperAdminClientDashboardPage />)}
+   174	            />
+   175	
+   176	            <Route
+   177	              path="/super-admin/clientes/:id/audit"
+   178	              element={superAdminOnly(<SuperAdminClientAuditPage />)}
+   179	            />
+   180	
+   181	            <Route
+   182	              path="/super-admin/clientes/:id/modules"
+   183	              element={superAdminOnly(<SuperAdminClientModulesPage />)}
+   184	            />
+   185	
+   186	            <Route
+   187	              path="/super-admin/clientes/:id/modules/audit"
+   188	              element={superAdminOnly(<SuperAdminClientModulesAuditPage />)}
+   189	            />
+   190	
+   191	            <Route
+   192	              path="/super-admin/empresas"
+   193	              element={superAdminOnly(
+   194	                <SuperAdminPlaceholderPage
+   195	                  title="Empresas e Filiais"
+   196	                  description="Área para gestão de empresas, matrizes e filiais vinculadas aos clientes SaaS."
+   197	                  priority="Alta"
+   198	                  items={[
+   199	                    "Matriz",
+   200	                    "Filiais",
+   201	                    "CNPJ",
+   202	                    "Endereço completo",
+   203	                    "Status ativo/inativo",
+   204	                  ]}
+   205	                  nextSteps={[
+   206	                    "Mapear tabela real de empresas/filiais.",
+   207	                    "Validar endpoints existentes.",
+   208	                    "Criar CRUD de empresas e filiais.",
+   209	                  ]}
+   210	                />,
+   211	              )}
+   212	            />
+   213	
+   214	            <Route
+   215	              path="/super-admin/planos"
+   216	              element={superAdminOnly(<SuperAdminPlansPage />)}
+   217	            />
+   218	
+   219	            <Route
+   220	              path="/super-admin/planos/novo"
+   221	              element={superAdminOnly(<SuperAdminPlanCreatePage />)}
+   222	            />
+   223	
+   224	            <Route
+   225	              path="/super-admin/planos/:id"
+   226	              element={superAdminOnly(<SuperAdminPlanDetailsPage />)}
+   227	            />
+   228	
+   229	            <Route
+   230	              path="/super-admin/planos/recursos"
+   231	              element={superAdminOnly(
+   232	                <SuperAdminPlaceholderPage
+   233	                  title="Recursos dos Planos"
+   234	                  description="Área para definir quais recursos e módulos pertencem a cada plano SaaS."
+   235	                  priority="Média"
+   236	                  items={[
+   237	                    "Ponto eletrônico",
+   238	                    "Documentos",
+   239	                    "Mobile",
+   240	                    "Live Tracking",
+   241	                    "Holerites",
+   242	                    "Relatórios",
+   243	                  ]}
+   244	                  nextSteps={[
+   245	                    "Mapear módulos/features existentes.",
+   246	                    "Definir matriz plano x recurso.",
+   247	                    "Criar tela de associação.",
+   248	                  ]}
+   249	                />,
+   250	              )}
+   251	            />
+   252	
+   253	            <Route
+   254	              path="/super-admin/modulos"
+   255	              element={superAdminOnly(
+   256	                <SuperAdminPlaceholderPage
+   257	                  title="Módulos SaaS"
+   258	                  description="Catálogo dos módulos disponíveis na plataforma SaaS."
+   259	                  priority="Alta"
+   260	                  items={[
+   261	                    "Ponto",
+   262	                    "Documentos",
+   263	                    "Assinaturas",
+   264	                    "Mobile",
+   265	                    "Live Tracking",
+   266	                    "Holerites",
+   267	                  ]}
+   268	                  nextSteps={[
+   269	                    "Validar tabela de módulos/features.",
+   270	                    "Definir status por módulo.",
+   271	                    "Criar CRUD ou catálogo administrável.",
+   272	                  ]}
+   273	                />,
+   274	              )}
+   275	            />
+   276	
+   277	            <Route
+   278	              path="/super-admin/modulos/clientes"
+   279	              element={superAdminOnly(
+   280	                <SuperAdminPlaceholderPage
+   281	                  title="Módulos por Cliente"
+   282	                  description="Controle de módulos habilitados por cliente SaaS."
+   283	                  priority="Alta"
+   284	                  items={[
+   285	                    "Cliente",
+   286	                    "Plano",
+   287	                    "Módulos ativos",
+   288	                    "Feature flags",
+   289	                    "Histórico de alterações",
+   290	                  ]}
+   291	                  nextSteps={[
+   292	                    "Definir vínculo tenant x módulo.",
+   293	                    "Criar endpoint de ativação/desativação.",
+   294	                    "Criar tela de permissões por cliente.",
+   295	                  ]}
+   296	                />,
+   297	              )}
+   298	            />
+   299	
+   300	            <Route
+   301	              path="/super-admin/usuarios"
+   302	              element={superAdminOnly(
+   303	                <SuperAdminPlaceholderPage
+   304	                  title="Usuários Administrativos"
+   305	                  description="Gestão de usuários administrativos da plataforma SaaS."
+   306	                  priority="Alta"
+   307	                  items={[
+   308	                    "SUPER_ADMIN",
+   309	                    "TENANT_ADMIN",
+   310	                    "RH_ADMIN",
+   311	                    "Status ativo/inativo",
+   312	                    "Reset controlado de senha",
+   313	                  ]}
+   314	                  nextSteps={[
+   315	                    "Validar endpoints de usuários.",
+   316	                    "Definir permissões por perfil.",
+   317	                    "Criar CRUD administrativo seguro.",
+   318	                  ]}
+   319	                />,
+   320	              )}
+   321	            />
+   322	
+   323	            <Route
+   324	              path="/super-admin/auditoria"
+   325	              element={superAdminOnly(
+   326	                <SuperAdminPlaceholderPage
+   327	                  title="Auditoria SaaS"
+   328	                  description="Consulta de ações administrativas, logs críticos e eventos relevantes da operação SaaS."
+   329	                  priority="Média"
+   330	                  items={[
+   331	                    "Usuário",
+   332	                    "Cliente",
+   333	                    "Ação",
+   334	                    "Data/hora",
+   335	                    "Módulo",
+   336	                    "Evento crítico",
+   337	                  ]}
+   338	                  nextSteps={[
+   339	                    "Validar tabelas de auditoria/logs.",
+   340	                    "Criar filtros por usuário e cliente.",
+   341	                    "Criar consulta paginada.",
+   342	                  ]}
+   343	                />,
+   344	              )}
+   345	            />
+   346	
+   347	            <Route
+   348	              path="/super-admin/configuracoes"
+   349	              element={superAdminOnly(
+   350	                <SuperAdminPlaceholderPage
+   351	                  title="Configurações SaaS"
+   352	                  description="Parâmetros globais da plataforma, identidade visual padrão e políticas gerais."
+   353	                  priority="Média"
+   354	                  items={[
+   355	                    "Parâmetros globais",
+   356	                    "Identidade visual",
+   357	                    "Políticas de segurança",
+   358	                    "Limites globais",
+   359	                  ]}
+   360	                  nextSteps={[
+   361	                    "Definir parâmetros globais suportados.",
+   362	                    "Validar persistência no backend.",
+   363	                    "Criar tela de configuração segura.",
+   364	                  ]}
+   365	                />,
+   366	              )}
+   367	            />
+   368	          </Route>
+   369	        </Route>
+   370	
+   371	        <Route element={<ProtectedRoute />}>
+   372	          <Route element={<EmployeeLayout />}>
+   373	            <Route path="/meu-painel" element={<EmployeeDashboard />} />
+   374	          </Route>
+   375	        </Route>
+   376	
+   377	        <Route path="*" element={<Navigate to="/" replace />} />
+   378	      </Routes>
+   379	
+   380	      <Toaster position="top-right" />
+   381	    </BrowserRouter>
+   382	  );
+   383	}
+
+### /opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx
+     1	import {
+     2	  BarChart3,
+     3	  Clock3,
+     4	  FileText,
+     5	  LayoutDashboard,
+     6	  LogOut,
+     7	  ShieldCheck,
+     8	  Users,
+     9	} from "lucide-react";
+    10	import { NavLink, Outlet, useNavigate } from "react-router-dom";
+    11	import { clearSession, getUserInfo } from "../lib/api";
+    12	const menu = [
+    13	  {
+    14	    label: "Dashboard",
+    15	    path: "/",
+    16	    icon: LayoutDashboard,
+    17	  },
+    18	  {
+    19	    label: "Colaboradores",
+    20	    path: "/colaboradores",
+    21	    icon: Users,
+    22	  },
+    23	  {
+    24	    label: "Usuários",
+    25	    path: "/usuarios",
+    26	    icon: Users,
+    27	  },
+    28	  {
+    29	  label: "Analytics",
+    30	  path: "/analytics",
+    31	  icon: BarChart3,
+    32	},
+    33	  {
+    34	    label: "Controle de ponto",
+    35	    path: "/ponto",
+    36	    icon: Clock3,
+    37	  },
+    38	  {
+    39	    label: "Registrar ponto",
+    40	    path: "/registrar-ponto",
+    41	    icon: ShieldCheck,
+    42	  },
+    43	  {
+    44	    label: "Auditoria",
+    45	    path: "/audit",
+    46	    icon: FileText,
+    47	  },
+    48	
+    49	  {
+    50	    label: "Live Tracking",
+    51	    path: "/live-tracking-foundation",
+    52	    icon: LayoutDashboard,
+    53	  },
+    54	];
+    55	
+    56	// SUPERADMIN_A3_B_ROLE_MENU
+    57	type StoredUserInfo = {
+    58	  role?: string;
+    59	  user?: {
+    60	    role?: string;
+    61	  };
+    62	  user_info?: {
+    63	    role?: string;
+    64	  };
+    65	};
+    66	
+    67	function readRoleFromStoredValue(value: string | null) {
+    68	  if (!value) {
+    69	    return '';
+    70	  }
+    71	
+    72	  try {
+    73	    const parsed = JSON.parse(value) as StoredUserInfo;
+    74	
+    75	    return (
+    76	      parsed.role ||
+    77	      parsed.user?.role ||
+    78	      parsed.user_info?.role ||
+    79	      ''
+    80	    );
+    81	  } catch {
+    82	    return '';
+    83	  }
+    84	}
+    85	
+    86	function getLoggedUserRole() {
+    87	  const keys = [
+    88	    'user_info',
+    89	    'userInfo',
+    90	    'user',
+    91	    'auth_user',
+    92	    'authUser',
+    93	    '@RH_USER',
+    94	    '@LH_User',
+    95	  ];
+    96	
+    97	  for (const key of keys) {
+    98	    const localRole = readRoleFromStoredValue(localStorage.getItem(key));
+    99	
+   100	    if (localRole) {
+   101	      return localRole;
+   102	    }
+   103	
+   104	    const sessionRole = readRoleFromStoredValue(sessionStorage.getItem(key));
+   105	
+   106	    if (sessionRole) {
+   107	      return sessionRole;
+   108	    }
+   109	  }
+   110	
+   111	  return '';
+   112	}
+   113	
+   114	const superAdminMenu = [
+   115	  {
+   116	    label: "Dashboard SaaS",
+   117	    path: "/super-admin",
+   118	    icon: ShieldCheck,
+   119	  },
+   120	  {
+   121	    label: "Dashboard de Clientes",
+   122	    path: "/super-admin/clientes/dashboard",
+   123	    icon: LayoutDashboard,
+   124	  },
+   125	  {
+   126	    label: "Clientes SaaS",
+   127	    path: "/super-admin/clientes",
+   128	    icon: Users,
+   129	  },
+   130	  {
+   131	    label: "Novo Cliente",
+   132	    path: "/super-admin/clientes/novo",
+   133	    icon: Users,
+   134	  },
+   135	  {
+   136	    label: "Empresas / Filiais",
+   137	    path: "/super-admin/empresas",
+   138	    icon: Users,
+   139	  },
+   140	  {
+   141	    label: "Planos SaaS",
+   142	    path: "/super-admin/planos",
+   143	    icon: ShieldCheck,
+   144	  },
+   145	  {
+   146	    label: "Novo Plano",
+   147	    path: "/super-admin/planos/novo",
+   148	    icon: ShieldCheck,
+   149	  },
+   150	  {
+   151	    label: "Recursos dos Planos",
+   152	    path: "/super-admin/planos/recursos",
+   153	    icon: ShieldCheck,
+   154	  },
+   155	  {
+   156	    label: "Módulos SaaS",
+   157	    path: "/super-admin/modulos",
+   158	    icon: LayoutDashboard,
+   159	  },
+   160	  {
+   161	    label: "Módulos por Cliente",
+   162	    path: "/super-admin/modulos/clientes",
+   163	    icon: LayoutDashboard,
+   164	  },
+   165	  {
+   166	    label: "Usuários Admin",
+   167	    path: "/super-admin/usuarios",
+   168	    icon: Users,
+   169	  },
+   170	  {
+   171	    label: "Auditoria SaaS",
+   172	    path: "/super-admin/auditoria",
+   173	    icon: FileText,
+   174	  },
+   175	  {
+   176	    label: "Configurações SaaS",
+   177	    path: "/super-admin/configuracoes",
+   178	    icon: ShieldCheck,
+   179	  },
+   180	];
+   181	
+   182	
+   183	function IconLogo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+   184	  const sizeClass =
+   185	    size === "lg"
+   186	      ? "h-24 w-24 rounded-3xl"
+   187	      : size === "sm"
+   188	        ? "h-11 w-11 rounded-xl"
+   189	        : "h-14 w-14 rounded-2xl";
+   190	
+   191	  return (
+   192	    <div
+   193	      className={`${sizeClass} bg-white bg-contain bg-center bg-no-repeat shadow-xl shadow-cyan-500/20`}
+   194	      style={{
+   195	        backgroundImage: "url('/assets/icone-app.png')",
+   196	      }}
+   197	      aria-label="Ícone LH Solução RH"
+   198	    />
+   199	  );
+   200	}
+   201	
+   202	export function AdminLayout() {
+   203	  const navigate = useNavigate();
+   204	  const user = getUserInfo();
+   205	
+   206	const userRoleForMenu = getLoggedUserRole();
+   207	
+   208	  // SUPERADMIN_A3_B_DYNAMIC_MENU_FILTER
+   209	  const dynamicMenu = userRoleForMenu === 'SUPER_ADMIN' ? superAdminMenu : menu;
+   210	  function logout() {
+   211	    clearSession();
+   212	    navigate("/login", {
+   213	      replace: true,
+   214	    });
+   215	  }
+   216	
+   217	  return (
+   218	    <div className="min-h-screen bg-slate-950 text-slate-100">
+   219	      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.30),_transparent_34%),radial-gradient(circle_at_top_right,_rgba(34,197,94,0.18),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(249,115,22,0.16),_transparent_28%)]" />
+   220	
+   221	      <div className="relative flex min-h-screen">
+   222	        <aside className="hidden w-72 shrink-0 border-r border-white/10 bg-slate-950/85 backdrop-blur-xl lg:flex lg:flex-col">
+   223	          <div className="flex h-24 items-center gap-3 px-6">
+   224	            <IconLogo />
+   225	
+   226	            <div>
+   227	              <p className="text-sm font-medium text-cyan-200">LH Solução RH</p>
+   228	              <h1 className="text-lg font-bold tracking-tight text-white">
+   229	                Gestão inteligente
+   230	              </h1>
+   231	            </div>
+   232	          </div>
+   233	
+   234	          <nav className="flex-1 space-y-2 px-4 py-4">
+   235	            {dynamicMenu.map((item) => {
+   236	              const Icon = item.icon;
+   237	
+   238	              return (
+   239	                <NavLink
+   240	                  key={item.path}
+   241	                  to={item.path}
+   242	                  end={item.path === "/"}
+   243	                  className={({ isActive }) =>
+   244	                    [
+   245	                      "group flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition",
+   246	                      isActive
+   247	                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20"
+   248	                        : "text-slate-300 hover:bg-white/10 hover:text-white",
+   249	                    ].join(" ")
+   250	                  }
+   251	                >
+   252	                  <Icon className="h-5 w-5" />
+   253	                  {item.label}
+   254	                </NavLink>
+   255	              );
+   256	            })}
+   257	          </nav>
+   258	
+   259	          <div className="border-t border-white/10 p-4">
+   260	            <div className="mb-4 rounded-2xl bg-white/5 p-4">
+   261	              <p className="text-xs text-slate-400">Usuário conectado</p>
+   262	              <p className="mt-1 truncate text-sm font-semibold text-white">
+   263	                {user?.email || "admin@empresa.com"}
+   264	              </p>
+   265	              <p className="mt-1 text-xs text-orange-300">
+   266	                Perfil: {user?.role || "ADMIN"}
+   267	              </p>
+   268	            </div>
+   269	
+   270	            <button
+   271	              type="button"
+   272	              onClick={logout}
+   273	              className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 px-4 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/10"
+   274	            >
+   275	              <LogOut className="h-4 w-4" />
+   276	              Sair
+   277	            </button>
+   278	          </div>
+   279	        </aside>
+   280	
+   281	        <main className="flex min-h-screen flex-1 flex-col">
+   282	          <header className="sticky top-0 z-20 border-b border-white/10 bg-slate-950/75 px-4 py-4 backdrop-blur-xl lg:px-8">
+   283	            <div className="flex items-center justify-between">
+   284	              <div className="flex items-center gap-3 lg:hidden">
+   285	                <IconLogo size="sm" />
+   286	
+   287	                <div>
+   288	                  <p className="text-sm text-cyan-200">LH Solução RH</p>
+   289	                  <p className="text-base font-bold text-white">
+   290	                    Gestão inteligente
+   291	                  </p>
+   292	                </div>
+   293	              </div>
+   294	
+   295	              <div className="hidden lg:block">
+   296	                <p className="text-sm text-slate-400">Painel administrativo</p>
+   297	                <h2 className="text-xl font-bold text-white">
+   298	                  Bem-vindo ao sistema de RH
+   299	                </h2>
+   300	              </div>
+   301	
+   302	              <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-2">
+   303	                <BarChart3 className="h-5 w-5 text-orange-300" />
+   304	                <span className="text-sm font-medium text-slate-200">
+   305	                  Online
+   306	                </span>
+   307	              </div>
+   308	            </div>
+   309	          </header>
+   310	
+   311	          <section className="flex-1 p-4 lg:p-8">
+   312	            <Outlet />
+   313	          </section>
+   314	        </main>
+   315	      </div>
+   316	    </div>
+   317	  );
+   318	}
+
+### /opt/rh-saas/frontend-web/src/lib/api.ts
+     1	export type ApiError = {
+     2	  message?: string | string[];
+     3	  error?: string;
+     4	  statusCode?: number;
+     5	};
+     6	
+     7	export const API_BASE =
+     8	  import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "";
+     9	
+    10	export type UserInfo = {
+    11	  sub?: string;
+    12	  userId?: string;
+    13	  tenantId?: string;
+    14	  email?: string;
+    15	  role?: string;
+    16	  employeeId?: string | null;
+    17	};
+    18	
+    19	export function getToken() {
+    20	  return (
+    21	    localStorage.getItem("rh_access_token") ||
+    22	    localStorage.getItem("token") ||
+    23	    ""
+    24	  );
+    25	}
+    26	
+    27	export function getUserInfo(): UserInfo | null {
+    28	  const raw =
+    29	    localStorage.getItem("rh_user_info") ||
+    30	    localStorage.getItem("user_info");
+    31	
+    32	  if (!raw) {
+    33	    return null;
+    34	  }
+    35	
+    36	  try {
+    37	    return JSON.parse(raw) as UserInfo;
+    38	  } catch {
+    39	    return null;
+    40	  }
+    41	}
+    42	
+    43	export function setSession(accessToken: string, userInfo: unknown) {
+    44	  localStorage.setItem("rh_access_token", accessToken);
+    45	  localStorage.setItem("rh_user_info", JSON.stringify(userInfo));
+    46	
+    47	  /*
+    48	   * Compatibilidade com páginas antigas que ainda usam:
+    49	   * localStorage.getItem("token")
+    50	   */
+    51	  localStorage.setItem("token", accessToken);
+    52	  localStorage.setItem("user_info", JSON.stringify(userInfo));
+    53	}
+    54	
+    55	export function clearSession() {
+    56	  localStorage.removeItem("rh_access_token");
+    57	  localStorage.removeItem("rh_user_info");
+    58	
+    59	  /*
+    60	   * Remove também chaves antigas.
+    61	   */
+    62	  localStorage.removeItem("token");
+    63	  localStorage.removeItem("user_info");
+    64	}
+    65	
+    66	export function getAuthHeaders() {
+    67	  const token = getToken();
+    68	
+    69	  if (!token) {
+    70	    return {};
+    71	  }
+    72	
+    73	  return {
+    74	    Authorization: `Bearer ${token}`,
+    75	  };
+    76	}
+    77	
+    78	function normalizeErrorMessage(data: unknown, fallback: string) {
+    79	  if (!data || typeof data !== "object") {
+    80	    return fallback;
+    81	  }
+    82	
+    83	  const apiError = data as ApiError;
+    84	
+    85	  if (Array.isArray(apiError.message)) {
+    86	    return apiError.message.join(", ");
+    87	  }
+    88	
+    89	  return apiError.message || apiError.error || fallback;
+    90	}
+    91	
+    92	export async function apiRequest<T>(
+    93	  endpoint: string,
+    94	  options: RequestInit = {},
+    95	): Promise<T> {
+    96	  const token = getToken();
+    97	
+    98	  const headers: Record<string, string> = {
+    99	    "Content-Type": "application/json",
+   100	    ...((options.headers as Record<string, string>) || {}),
+   101	  };
+   102	
+   103	  if (token) {
+   104	    headers.Authorization = `Bearer ${token}`;
+   105	  }
+   106	
+   107	  const response = await fetch(`${API_BASE}${endpoint}`, {
+   108	    ...options,
+   109	    headers,
+   110	  });
+   111	
+   112	  const text = await response.text();
+   113	
+   114	  let data: unknown = null;
+   115	
+   116	  if (text) {
+   117	    try {
+   118	      data = JSON.parse(text);
+   119	    } catch {
+   120	      data = text;
+   121	    }
+   122	  }
+   123	
+   124	  if (response.status === 401) {
+   125	    clearSession();
+   126	  }
+   127	
+   128	  if (!response.ok) {
+   129	    throw new Error(
+   130	      normalizeErrorMessage(data, `Erro HTTP ${response.status}`),
+   131	    );
+   132	  }
+   133	
+   134	  return data as T;
+   135	}
+
+### /opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+     1	import { apiRequest } from "./api";
+     2	
+     3	export type FoundationEmployee = {
+     4	  id: string;
+     5	  clientId?: string;
+     6	  employeeExternalRef?: string | null;
+     7	  firstName?: string;
+     8	  lastName?: string;
+     9	  cpf?: string | null;
+    10	  email?: string | null;
+    11	  departmentId?: string | null;
+    12	  jobPositionId?: string | null;
+    13	  jobFunctionId?: string | null;
+    14	  admissionDate?: string | null;
+    15	  status?: string;
+    16	  createdAt?: string;
+    17	  updatedAt?: string;
+    18	};
+    19	
+    20	export type RegisterMobileDevicePayload = {
+    21	  employeeProfileId?: string;
+    22	  deviceUid: string;
+    23	  platform?: string;
+    24	  model?: string;
+    25	  appVersion?: string;
+    26	};
+    27	
+    28	export type MobileDeviceFoundation = {
+    29	  id: string;
+    30	  clientId?: string;
+    31	  employeeProfileId?: string | null;
+    32	  deviceUid: string;
+    33	  platform?: string | null;
+    34	  model?: string | null;
+    35	  appVersion?: string | null;
+    36	  isActive?: boolean;
+    37	  lastSeenAt?: string | null;
+    38	  createdAt?: string;
+    39	  updatedAt?: string;
+    40	};
+    41	
+    42	export type CreateLocationTrackingPointPayload = {
+    43	  employeeProfileId: string;
+    44	  deviceId?: string;
+    45	  latitude: number;
+    46	  longitude: number;
+    47	  accuracyMeters?: number;
+    48	  address?: string;
+    49	  source?: string;
+    50	  trackedAt?: string;
+    51	  metadata?: Record<string, unknown>;
+    52	};
+    53	
+    54	export type LocationTrackingPointFoundation = {
+    55	  id: string;
+    56	  clientId?: string;
+    57	  employeeProfileId?: string | null;
+    58	  deviceId?: string | null;
+    59	  trackedAt?: string;
+    60	  latitude: string | number;
+    61	  longitude: string | number;
+    62	  accuracyMeters?: string | number | null;
+    63	  address?: string | null;
+    64	  source?: string;
+    65	  metadata?: Record<string, unknown>;
+    66	  createdAt?: string;
+    67	  updatedAt?: string;
+    68	};
+    69	
+    70	export async function getFoundationEmployees() {
+    71	  return apiRequest<FoundationEmployee[]>("/v1/foundation/hr/employees");
+    72	}
+    73	
+    74	export async function registerLiveTrackingDevice(
+    75	  payload: RegisterMobileDevicePayload,
+    76	) {
+    77	  return apiRequest<MobileDeviceFoundation>(
+    78	    "/v1/foundation/live-tracking/device",
+    79	    {
+    80	      method: "POST",
+    81	      body: JSON.stringify(payload),
+    82	    },
+    83	  );
+    84	}
+    85	
+    86	export async function sendLiveTrackingLocation(
+    87	  payload: CreateLocationTrackingPointPayload,
+    88	) {
+    89	  return apiRequest<LocationTrackingPointFoundation>(
+    90	    "/v1/foundation/live-tracking/location",
+    91	    {
+    92	      method: "POST",
+    93	      body: JSON.stringify(payload),
+    94	    },
+    95	  );
+    96	}
+    97	
+    98	export async function getLiveTrackingPoints() {
+    99	  return apiRequest<LocationTrackingPointFoundation[]>(
+   100	    "/v1/foundation/live-tracking/points",
+   101	  );
+   102	}
+   103	
+   104	export async function getLatestLiveTrackingPoints() {
+   105	  return apiRequest<LocationTrackingPointFoundation[]>(
+   106	    "/v1/foundation/live-tracking/latest",
+   107	  );
+   108	}
+   109	
+   110	export function getOrCreateBrowserDeviceUid() {
+   111	  const storageKey = "rh_live_tracking_device_uid";
+   112	  const existing = localStorage.getItem(storageKey);
+   113	
+   114	  if (existing) {
+   115	    return existing;
+   116	  }
+   117	
+   118	  const generated =
+   119	    "web-" +
+   120	    Date.now().toString(36) +
+   121	    "-" +
+   122	    Math.random().toString(36).slice(2, 10);
+   123	
+   124	  localStorage.setItem(storageKey, generated);
+   125	
+   126	  return generated;
+   127	}
+
+### /opt/rh-saas/frontend-web/src/main.tsx
+     1	import React from "react";
+     2	import ReactDOM from "react-dom/client";
+     3	import App from "./App";
+     4	import "./index.css";
+     5	
+     6	ReactDOM.createRoot(document.getElementById("root")!).render(
+     7	  <React.StrictMode>
+     8	    <App />
+     9	  </React.StrictMode>,
+    10	);
+
+### /opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx
+     1	import { useEffect, useMemo, useState } from "react";
+     2	import {
+     3	  AlertCircle,
+     4	  CheckCircle2,
+     5	  Plus,
+     6	  RefreshCw,
+     7	  Search,
+     8	  Users,
+     9	} from "lucide-react";
+    10	import { apiRequest } from "../lib/api";
+    11	import { EmployeeForm, EmployeePayload } from "../components/EmployeeForm";
+    12	import { Link } from "react-router-dom";
+    13	
+    14	type Employee = {
+    15	  id: string;
+    16	  firstName: string;
+    17	  lastName: string;
+    18	  cpf: string;
+    19	  email: string;
+    20	  department?: string | null;
+    21	  jobTitle?: string | null;
+    22	  admissionDate: string;
+    23	  isActive: boolean;
+    24	  userId?: string | null;
+    25	  user?: {
+    26	    id: string;
+    27	    email: string;
+    28	    role?: string;
+    29	  } | null;
+    30	};
+    31	
+    32	export function EmployeesPage() {
+    33	  const [employees, setEmployees] = useState<Employee[]>([]);
+    34	  const [search, setSearch] = useState("");
+    35	  const [showForm, setShowForm] = useState(false);
+    36	  const [loadingList, setLoadingList] = useState(false);
+    37	  const [saving, setSaving] = useState(false);
+    38	  const [error, setError] = useState("");
+    39	  const [success, setSuccess] = useState("");
+    40	
+    41	  async function loadEmployees() {
+    42	    setLoadingList(true);
+    43	    setError("");
+    44	
+    45	    try {
+    46	      const data = await apiRequest<Employee[]>("/v1/employees");
+    47	      setEmployees(Array.isArray(data) ? data : []);
+    48	    } catch (err) {
+    49	      setError(
+    50	        err instanceof Error
+    51	          ? err.message
+    52	          : "Não foi possível carregar os colaboradores.",
+    53	      );
+    54	    } finally {
+    55	      setLoadingList(false);
+    56	    }
+    57	  }
+    58	
+    59	  async function createEmployee(payload: EmployeePayload) {
+    60	    setSaving(true);
+    61	    setError("");
+    62	    setSuccess("");
+    63	
+    64	    try {
+    65	      await apiRequest<Employee>("/v1/employees", {
+    66	        method: "POST",
+    67	        body: JSON.stringify(payload),
+    68	      });
+    69	
+    70	      setSuccess("Colaborador cadastrado com sucesso.");
+    71	      setShowForm(false);
+    72	
+    73	      await loadEmployees();
+    74	    } catch (err) {
+    75	      setError(
+    76	        err instanceof Error
+    77	          ? err.message
+    78	          : "Não foi possível cadastrar o colaborador.",
+    79	      );
+    80	    } finally {
+    81	      setSaving(false);
+    82	    }
+    83	  }
+    84	
+    85	  async function deleteEmployee(
+    86	    id: string,
+    87	  ) {
+    88	
+    89	    const confirmar =
+    90	      window.confirm(
+    91	        "Deseja realmente excluir este colaborador?"
+    92	      );
+    93	
+    94	    if (!confirmar) {
+    95	      return;
+    96	    }
+    97	
+    98	    try {
+    99	
+   100	      await apiRequest(
+   101	        `/v1/employees/${id}`,
+   102	        {
+   103	          method: "DELETE",
+   104	        }
+   105	      );
+   106	
+   107	      setSuccess(
+   108	        "Colaborador removido com sucesso."
+   109	      );
+   110	
+   111	      await loadEmployees();
+   112	
+   113	    } catch (err) {
+   114	
+   115	      setError(
+   116	        err instanceof Error
+   117	          ? err.message
+   118	          : "Não foi possível excluir."
+   119	      );
+   120	
+   121	    }
+   122	  }
+   123	
+   124	
+   125	  useEffect(() => {
+   126	    loadEmployees();
+   127	  }, []);
+   128	
+   129	  const filteredEmployees = useMemo(() => {
+   130	    const term = search.trim().toLowerCase();
+   131	
+   132	    if (!term) {
+   133	      return employees;
+   134	    }
+   135	
+   136	    return employees.filter((employee) => {
+   137	      const fullText = [
+   138	        employee.firstName,
+   139	        employee.lastName,
+   140	        employee.email,
+   141	        employee.cpf,
+   142	        employee.department,
+   143	        employee.jobTitle,
+   144	      ]
+   145	        .filter(Boolean)
+   146	        .join(" ")
+   147	        .toLowerCase();
+   148	
+   149	      return fullText.includes(term);
+   150	    });
+   151	  }, [employees, search]);
+   152	
+   153	  return (
+   154	    <div className="space-y-6">
+   155	      <section className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 shadow-2xl shadow-slate-950/30 backdrop-blur-xl">
+   156	        <div className="relative p-6 lg:p-8">
+   157	          <div className="absolute right-0 top-0 h-40 w-40 rounded-bl-[4rem] bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-orange-400/20 blur-2xl" />
+   158	
+   159	          <div className="relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+   160	            <div>
+   161	              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-sm font-medium text-cyan-100">
+   162	                <Users className="h-4 w-4" />
+   163	                Gestão de pessoas
+   164	              </div>
+   165	
+   166	              <h1 className="text-3xl font-black tracking-tight text-white">
+   167	                Colaboradores
+   168	              </h1>
+   169	
+   170	              <p className="mt-2 max-w-2xl text-sm text-slate-300">
+   171	                Cadastre, consulte e acompanhe os colaboradores da empresa.
+   172	                O acesso respeita o tenant do usuário autenticado.
+   173	              </p>
+   174	            </div>
+   175	
+   176	            <div className="flex flex-col gap-3 sm:flex-row">
+   177	              <button
+   178	                type="button"
+   179	                onClick={loadEmployees}
+   180	                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+   181	              >
+   182	                <RefreshCw
+   183	                  className={[
+   184	                    "h-4 w-4",
+   185	                    loadingList ? "animate-spin" : "",
+   186	                  ].join(" ")}
+   187	                />
+   188	                Atualizar
+   189	              </button>
+   190	
+   191	              <button
+   192	                type="button"
+   193	                onClick={() => setShowForm((current) => !current)}
+   194	                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-500 via-blue-600 to-orange-500 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-cyan-500/20 transition hover:scale-[1.01]"
+   195	              >
+   196	                <Plus className="h-4 w-4" />
+   197	                Novo colaborador
+   198	              </button>
+   199	            </div>
+   200	          </div>
+   201	        </div>
+   202	      </section>
+   203	
+   204	      {error && (
+   205	        <div className="flex items-center gap-3 rounded-2xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+   206	          <AlertCircle className="h-5 w-5" />
+   207	          {error}
+   208	        </div>
+   209	      )}
+   210	
+   211	      {success && (
+   212	        <div className="flex items-center gap-3 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
+   213	          <CheckCircle2 className="h-5 w-5" />
+   214	          {success}
+   215	        </div>
+   216	      )}
+   217	
+   218	      {showForm && (
+   219	        <section className="rounded-[2rem] border border-white/10 bg-white/10 p-6 shadow-xl shadow-slate-950/20 backdrop-blur-xl">
+   220	          <div className="mb-5">
+   221	            <h2 className="text-xl font-bold text-white">
+   222	              Novo colaborador
+   223	            </h2>
+   224	            <p className="mt-1 text-sm text-slate-300">
+   225	              Preencha os dados básicos para criar o cadastro.
+   226	            </p>
+   227	          </div>
+   228	
+   229	          <EmployeeForm
+   230	            loading={saving}
+   231	            onSubmit={createEmployee}
+   232	          />
+   233	        </section>
+   234	      )}
+   235	
+   236	      <section className="rounded-[2rem] border border-white/10 bg-white/10 p-6 shadow-xl shadow-slate-950/20 backdrop-blur-xl">
+   237	        <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+   238	          <div>
+   239	            <h2 className="text-xl font-bold text-white">
+   240	              Lista de colaboradores
+   241	            </h2>
+   242	            <p className="mt-1 text-sm text-slate-400">
+   243	              {filteredEmployees.length} registro(s) encontrado(s)
+   244	            </p>
+   245	          </div>
+   246	
+   247	          <div className="relative w-full lg:w-96">
+   248	            <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+   249	            <input
+   250	              value={search}
+   251	              onChange={(event) => setSearch(event.target.value)}
+   252	              className="w-full rounded-2xl border border-white/10 bg-slate-900/70 py-3 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400"
+   253	              placeholder="Buscar por nome, e-mail, CPF..."
+   254	            />
+   255	          </div>
+   256	        </div>
+   257	
+   258	        <div className="overflow-hidden rounded-2xl border border-white/10">
+   259	          <div className="overflow-x-auto">
+   260	            <table className="w-full min-w-[900px] border-collapse text-left text-sm">
+   261	              <thead className="bg-slate-900/90 text-xs uppercase tracking-wide text-slate-400">
+   262	                <tr>
+   263	                  <th className="px-4 py-4">Nome</th>
+   264	                  <th className="px-4 py-4">CPF</th>
+   265	                  <th className="px-4 py-4">E-mail</th>
+   266	                  <th className="px-4 py-4">Departamento</th>
+   267	                  <th className="px-4 py-4">Cargo</th>
+   268	                  <th className="px-4 py-4">Usuário</th>
+   269	                  <th className="px-4 py-4">Status</th>
+   270	                  <th className="px-4 py-4">Ações</th>
+   271	                </tr>
+   272	              </thead>
+   273	
+   274	              <tbody className="divide-y divide-white/10">
+   275	                {loadingList && (
+   276	                  <tr>
+   277	                    <td
+   278	                      colSpan={8}
+   279	                      className="px-4 py-10 text-center text-slate-400"
+   280	                    >
+   281	                      Carregando colaboradores...
+   282	                    </td>
+   283	                  </tr>
+   284	                )}
+   285	
+   286	                {!loadingList && filteredEmployees.length === 0 && (
+   287	                  <tr>
+   288	                    <td
+   289	                      colSpan={8}
+   290	                      className="px-4 py-10 text-center text-slate-400"
+   291	                    >
+   292	                      Nenhum colaborador encontrado.
+   293	                    </td>
+   294	                  </tr>
+   295	                )}
+   296	
+   297	                {!loadingList &&
+   298	                  filteredEmployees.map((employee) => (
+   299	                    <tr
+   300	                      key={employee.id}
+   301	                      className="bg-white/[0.02] transition hover:bg-white/[0.06]"
+   302	                    >
+   303	                      <td className="px-4 py-4">
+   304	                        <p className="font-semibold text-white">
+   305	                          {employee.firstName} {employee.lastName}
+   306	                        </p>
+   307	                        <p className="text-xs text-slate-500">
+   308	                          ID: {employee.id}
+   309	                        </p>
+   310	                      </td>
+   311	
+   312	                      <td className="px-4 py-4 text-slate-300">
+   313	                        {employee.cpf}
+   314	                      </td>
+   315	
+   316	                      <td className="px-4 py-4 text-slate-300">
+   317	                        {employee.email}
+   318	                      </td>
+   319	
+   320	                      <td className="px-4 py-4 text-slate-300">
+   321	                        {employee.department || "-"}
+   322	                      </td>
+   323	
+   324	                      <td className="px-4 py-4 text-slate-300">
+   325	                        {employee.jobTitle || "-"}
+   326	                      </td>
+   327	
+   328	                      <td className="px-4 py-4">
+   329	                        {employee.userId ? (
+   330	                          <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-200">
+   331	                            Vinculado
+   332	                          </span>
+   333	                        ) : (
+   334	                          <span className="rounded-full bg-orange-400/10 px-3 py-1 text-xs font-semibold text-orange-200">
+   335	                            Sem usuário
+   336	                          </span>
+   337	                        )}
+   338	                      </td>
+   339	
+   340	                      <td className="px-4 py-4">
+   341	                        {employee.isActive ? (
+   342	                          <span className="rounded-full bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-200">
+   343	                            Ativo
+   344	                          </span>
+   345	                        ) : (
+   346	                          <span className="rounded-full bg-red-400/10 px-3 py-1 text-xs font-semibold text-red-200">
+   347	                            Inativo
+   348	                          </span>
+   349	                        )}
+   350	                      </td>
+   351	                      <td className="px-4 py-4">
+   352	  <Link
+   353	    to={`/colaboradores/${employee.id}`}
+   354	    className="rounded-lg bg-cyan-600 px-3 py-2 text-xs font-semibold text-white hover:bg-cyan-500"
+   355	  >
+   356	    Ver Detalhes
+   357	  </Link>
+   358	
+   359	  <button
+   360	    type="button"
+   361	    onClick={() =>
+   362	      deleteEmployee(employee.id)
+   363	    }
+   364	    className="ml-2 rounded-lg bg-red-600 px-3 py-2 text-xs font-semibold text-white hover:bg-red-500"
+   365	  >
+   366	    Excluir
+   367	  </button>
+   368	
+   369	</td>
+   370	                    </tr>
+   371	                  ))}
+   372	              </tbody>
+   373	            </table>
+   374	          </div>
+   375	        </div>
+   376	      </section>
+   377	    </div>
+   378	  );
+   379	}
+
+### /opt/rh-saas/frontend-web/src/pages/Login.tsx
+     1	import { FormEvent, useState } from "react";
+     2	import { useNavigate } from "react-router-dom";
+     3	import { apiRequest, setSession } from "../lib/api";
+     4	
+     5	type LoginResponse = {
+     6	  access_token: string;
+     7	  user_info: {
+     8	    sub: string;
+     9	    email: string;
+    10	    tenantId: string;
+    11	    role: string;
+    12	  };
+    13	};
+    14	
+    15	function AppIcon() {
+    16	  return (
+    17	    <div
+    18	      className="h-24 w-24 rounded-3xl bg-white bg-contain bg-center bg-no-repeat shadow-xl"
+    19	      style={{
+    20	        backgroundImage: "url('/assets/icone-app.png')",
+    21	      }}
+    22	      aria-label="Ícone LH Solução RH"
+    23	    />
+    24	  );
+    25	}
+    26	
+    27	function BrandLogo() {
+    28	  return (
+    29	    <div
+    30	      className="mx-auto mb-6 h-24 max-w-sm bg-contain bg-center bg-no-repeat lg:mx-0"
+    31	      style={{
+    32	        backgroundImage: "url('/assets/logo_rh.png')",
+    33	      }}
+    34	      aria-label="Logo LH Solução RH"
+    35	    />
+    36	  );
+    37	}
+    38	
+    39	export function Login() {
+    40	  const navigate = useNavigate();
+    41	
+    42	  const [email, setEmail] = useState("admin@empresa.com");
+    43	  const [password, setPassword] = useState("Admin@123");
+    44	  const [loading, setLoading] = useState(false);
+    45	  const [error, setError] = useState("");
+    46	
+    47	  async function handleSubmit(event: FormEvent) {
+    48	    event.preventDefault();
+    49	
+    50	    setLoading(true);
+    51	    setError("");
+    52	
+    53	    try {
+    54	      const response = await apiRequest<LoginResponse>("/v1/auth/login", {
+    55	        method: "POST",
+    56	        body: JSON.stringify({
+    57	          email,
+    58	          password,
+    59	        }),
+    60	      });
+    61	
+    62	      setSession(response.access_token, response.user_info);
+    63	
+    64	      navigate("/", {
+    65	        replace: true,
+    66	      });
+    67	    } catch (err) {
+    68	      setError(
+    69	        err instanceof Error
+    70	          ? err.message
+    71	          : "Não foi possível entrar no sistema.",
+    72	      );
+    73	    } finally {
+    74	      setLoading(false);
+    75	    }
+    76	  }
+    77	
+    78	  return (
+    79	    <div className="flex min-h-screen items-center justify-center bg-slate-950 p-4 text-white">
+    80	      <div className="fixed inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.35),_transparent_34%),radial-gradient(circle_at_top_right,_rgba(34,197,94,0.22),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(249,115,22,0.20),_transparent_30%)]" />
+    81	
+    82	      <div className="relative grid w-full max-w-5xl overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 shadow-2xl shadow-cyan-950/40 backdrop-blur-xl lg:grid-cols-2">
+    83	        <div className="hidden bg-gradient-to-br from-cyan-400 via-blue-600 to-slate-950 p-10 lg:block">
+    84	          <div className="flex h-full flex-col justify-between">
+    85	            <div>
+    86	              <div className="mb-8">
+    87	                <AppIcon />
+    88	              </div>
+    89	
+    90	              <h1 className="text-4xl font-black tracking-tight">
+    91	                RH moderno, seguro e conectado.
+    92	              </h1>
+    93	
+    94	              <p className="mt-4 max-w-md text-base text-cyan-50">
+    95	                Controle colaboradores, ponto, documentos e auditoria em uma
+    96	                plataforma com identidade visual renovada.
+    97	              </p>
+    98	            </div>
+    99	
+   100	            <div className="rounded-3xl bg-white/15 p-5">
+   101	              <p className="text-sm text-cyan-50">
+   102	                Acesso administrativo protegido por JWT e perfis de usuário.
+   103	              </p>
+   104	            </div>
+   105	          </div>
+   106	        </div>
+   107	
+   108	        <form onSubmit={handleSubmit} className="p-8 lg:p-12">
+   109	          <div className="mb-8 text-center lg:text-left">
+   110	            <BrandLogo />
+   111	
+   112	            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-orange-300">
+   113	              Acesso seguro
+   114	            </p>
+   115	
+   116	            <h2 className="mt-3 text-3xl font-bold text-white">
+   117	              Entrar no sistema
+   118	            </h2>
+   119	
+   120	            <p className="mt-2 text-sm text-slate-300">
+   121	              Informe seu e-mail e senha para acessar o painel.
+   122	            </p>
+   123	          </div>
+   124	
+   125	          {error && (
+   126	            <div className="mb-5 rounded-2xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+   127	              {error}
+   128	            </div>
+   129	          )}
+   130	
+   131	          <div className="space-y-4">
+   132	            <label className="block">
+   133	              <span className="mb-2 block text-sm font-medium text-slate-200">
+   134	                E-mail
+   135	              </span>
+   136	              <input
+   137	                value={email}
+   138	                onChange={(event) => setEmail(event.target.value)}
+   139	                type="email"
+   140	                className="w-full rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+   141	                placeholder="admin@empresa.com"
+   142	              />
+   143	            </label>
+   144	
+   145	            <label className="block">
+   146	              <span className="mb-2 block text-sm font-medium text-slate-200">
+   147	                Senha
+   148	              </span>
+   149	              <input
+   150	                value={password}
+   151	                onChange={(event) => setPassword(event.target.value)}
+   152	                type="password"
+   153	                className="w-full rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-orange-400 focus:ring-4 focus:ring-orange-400/10"
+   154	                placeholder="Sua senha"
+   155	              />
+   156	            </label>
+   157	          </div>
+   158	
+   159	          <button
+   160	            type="submit"
+   161	            disabled={loading}
+   162	            className="mt-6 w-full rounded-2xl bg-gradient-to-r from-cyan-500 via-blue-600 to-orange-500 px-5 py-3 font-bold text-white shadow-lg shadow-cyan-500/20 transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-60"
+   163	          >
+   164	            {loading ? "Entrando..." : "Entrar"}
+   165	          </button>
+   166	        </form>
+   167	      </div>
+   168	    </div>
+   169	  );
+   170	}
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx
+     1	import { useEffect, useState } from "react";
+     2	import { useParams } from "react-router-dom";
+     3	import { apiRequest } from "../lib/api";
+     4	import {
+     5	  Card,
+     6	  CardContent,
+     7	  CardHeader,
+     8	  CardTitle,
+     9	} from "../components/ui/card";
+    10	
+    11	export function SuperAdminClientAuditPage() {
+    12	
+    13	  const { id } = useParams();
+    14	
+    15	  const [audit,setAudit] = useState<any[]>([]);
+    16	
+    17	  useEffect(() => {
+    18	
+    19	    if (!id) return;
+    20	
+    21	    apiRequest<any[]>(
+    22	      `/v1/super-admin/clients/${id}/audit`
+    23	    )
+    24	      .then(setAudit)
+    25	      .catch(console.error);
+    26	
+    27	  }, [id]);
+    28	
+    29	  return (
+    30	    <div className="space-y-6">
+    31	
+    32	      <h1 className="text-3xl font-bold text-white">
+    33	        Auditoria do Cliente
+    34	      </h1>
+    35	
+    36	      <Card>
+    37	
+    38	        <CardHeader>
+    39	          <CardTitle>
+    40	            Histórico de Alterações
+    41	          </CardTitle>
+    42	        </CardHeader>
+    43	
+    44	        <CardContent>
+    45	
+    46	          {audit.length === 0 ? (
+    47	            <p>Nenhuma auditoria encontrada.</p>
+    48	          ) : (
+    49	            <pre>
+    50	              {JSON.stringify(audit,null,2)}
+    51	            </pre>
+    52	          )}
+    53	
+    54	        </CardContent>
+    55	
+    56	      </Card>
+    57	
+    58	    </div>
+    59	  );
+    60	}
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx
+     1	import { useEffect, useState } from "react";
+     2	import { useParams } from "react-router-dom";
+     3	import { apiRequest } from "../lib/api";
+     4	import {
+     5	  Card,
+     6	  CardContent,
+     7	  CardHeader,
+     8	  CardTitle,
+     9	} from "../components/ui/card";
+    10	
+    11	export function SuperAdminClientDashboardPage() {
+    12	
+    13	  const { id } = useParams();
+    14	
+    15	  const [data,setData] = useState<any>(null);
+    16	
+    17	  useEffect(() => {
+    18	
+    19	    if (!id) return;
+    20	
+    21	    apiRequest(
+    22	      `/v1/super-admin/clients/${id}/dashboard`
+    23	    )
+    24	      .then(setData)
+    25	      .catch(console.error);
+    26	
+    27	  }, [id]);
+    28	
+    29	  if (!data) {
+    30	    return <div>Carregando...</div>;
+    31	  }
+    32	
+    33	  const cards = [
+    34	    {
+    35	      titulo: "Usuários",
+    36	      valor: data.users?.total ?? 0,
+    37	    },
+    38	    {
+    39	      titulo: "Funcionários",
+    40	      valor: data.employees?.total ?? 0,
+    41	    },
+    42	    {
+    43	      titulo: "Documentos",
+    44	      valor: data.documents?.documents ?? 0,
+    45	    },
+    46	    {
+    47	      titulo: "Holerites",
+    48	      valor: data.documents?.payslips ?? 0,
+    49	    },
+    50	    {
+    51	      titulo: "Módulos Ativos",
+    52	      valor: data.modules?.enabled ?? 0,
+    53	    },
+    54	    {
+    55	      titulo: "Módulos Inativos",
+    56	      valor: data.modules?.disabled ?? 0,
+    57	    },
+    58	  ];
+    59	
+    60	  return (
+    61	    <div className="space-y-6">
+    62	
+    63	      <h1 className="text-3xl font-bold text-white">
+    64	        Dashboard do Cliente
+    65	      </h1>
+    66	
+    67	      <div className="grid gap-4 md:grid-cols-3">
+    68	
+    69	        {cards.map(card => (
+    70	          <Card key={card.titulo}>
+    71	            <CardHeader>
+    72	              <CardTitle>
+    73	                {card.titulo}
+    74	              </CardTitle>
+    75	            </CardHeader>
+    76	
+    77	            <CardContent>
+    78	              <div className="text-3xl font-bold">
+    79	                {card.valor}
+    80	              </div>
+    81	            </CardContent>
+    82	          </Card>
+    83	        ))}
+    84	
+    85	      </div>
+    86	
+    87	    </div>
+    88	  );
+    89	}
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx
+     1	import { useEffect, useState } from "react";
+     2	import { Link, useParams } from "react-router-dom";
+     3	import { apiRequest } from "../lib/api";
+     4	import {
+     5	  Card,
+     6	  CardContent,
+     7	  CardHeader,
+     8	  CardTitle,
+     9	} from "../components/ui/card";
+    10	
+    11	type ClientDetailsResponse = {
+    12	  client: {
+    13	    slug: string;
+    14	    status: string;
+    15	    timezone: string;
+    16	    default_locale: string;
+    17	  };
+    18	
+    19	  plan: {
+    20	    code: string;
+    21	    name: string;
+    22	    description: string;
+    23	  };
+    24	
+    25	  company: {
+    26	    legal_name: string;
+    27	    trade_name: string;
+    28	    document_number: string;
+    29	  };
+    30	
+    31	  statistics: {
+    32	    employees: number;
+    33	    documents: number;
+    34	    payslips: number;
+    35	  };
+    36	
+    37	  modules: Array<{
+    38	    module_code: string;
+    39	    enabled: boolean;
+    40	  }>;
+    41	};
+    42	
+    43	export function SuperAdminClientDetailsPage() {
+    44	  const { id } = useParams();
+    45	
+    46	  const [data, setData] =
+    47	    useState<ClientDetailsResponse | null>(null);
+    48	
+    49	  const [loading, setLoading] = useState(true);
+    50	
+    51	  useEffect(() => {
+    52	    if (!id) return;
+    53	
+    54	    apiRequest<ClientDetailsResponse>(
+    55	      `/v1/super-admin/clients/${id}`
+    56	    )
+    57	      .then(setData)
+    58	      .finally(() => setLoading(false));
+    59	  }, [id]);
+    60	
+    61	  if (loading) {
+    62	    return (
+    63	      <div className="space-y-4">
+    64	        
+    65	<div className="flex gap-4">
+    66	
+    67	<Link
+    68	  to={`/super-admin/clientes/${id}/dashboard`}
+    69	  className="rounded bg-cyan-600 px-4 py-2 text-white"
+    70	>
+    71	  Dashboard Cliente
+    72	</Link>
+    73	
+    74	</div>
+    75	
+    76	<h1 className="text-3xl font-bold text-white">
+    77	
+    78	          Carregando cliente...
+    79	        </h1>
+    80	      </div>
+    81	    );
+    82	  }
+    83	
+    84	  if (!data) {
+    85	    return (
+    86	      <div className="space-y-4">
+    87	        
+    88	<div className="flex gap-4">
+    89	
+    90	<Link
+    91	  to={`/super-admin/clientes/${id}/dashboard`}
+    92	  className="rounded bg-cyan-600 px-4 py-2 text-white"
+    93	>
+    94	  Dashboard Cliente
+    95	</Link>
+    96	
+    97	</div>
+    98	
+    99	<h1 className="text-3xl font-bold text-white">
+   100	
+   101	          Cliente não encontrado
+   102	        </h1>
+   103	      </div>
+   104	    );
+   105	  }
+   106	
+   107	  return (
+   108	    <div className="space-y-6">
+   109	
+   110	      
+   111	<div className="flex gap-4">
+   112	
+   113	<Link
+   114	  to={`/super-admin/clientes/${id}/dashboard`}
+   115	  className="rounded bg-cyan-600 px-4 py-2 text-white"
+   116	>
+   117	  Dashboard Cliente
+   118	</Link>
+   119	
+   120	</div>
+   121	
+   122	<h1 className="text-3xl font-bold text-white">
+   123	
+   124	        Detalhes do Cliente
+   125	      </h1>
+   126	
+   127	      <div className="grid gap-4 md:grid-cols-2">
+   128	
+   129	        <Card>
+   130	          <CardHeader>
+   131	            <CardTitle>Cliente</CardTitle>
+   132	          </CardHeader>
+   133	
+   134	          <CardContent className="space-y-2">
+   135	            <div>
+   136	              <strong>Slug:</strong> {data.client.slug}
+   137	            </div>
+   138	
+   139	            <div>
+   140	              <strong>Status:</strong> {data.client.status}
+   141	            </div>
+   142	
+   143	            <div>
+   144	              <strong>Timezone:</strong> {data.client.timezone}
+   145	            </div>
+   146	
+   147	            <div>
+   148	              <strong>Idioma:</strong>{" "}
+   149	              {data.client.default_locale}
+   150	            </div>
+   151	          </CardContent>
+   152	        </Card>
+   153	
+   154	        <Card>
+   155	          <CardHeader>
+   156	            <CardTitle>Plano</CardTitle>
+   157	          </CardHeader>
+   158	
+   159	          <CardContent className="space-y-2">
+   160	            <div>
+   161	              <strong>Código:</strong> {data.plan.code}
+   162	            </div>
+   163	
+   164	            <div>
+   165	              <strong>Nome:</strong> {data.plan.name}
+   166	            </div>
+   167	
+   168	            <div>
+   169	              <strong>Descrição:</strong>
+   170	            </div>
+   171	
+   172	            <div>{data.plan.description}</div>
+   173	          </CardContent>
+   174	        </Card>
+   175	
+   176	      </div>
+   177	
+   178	      <div className="grid gap-4 md:grid-cols-2">
+   179	
+   180	        <Card>
+   181	          <CardHeader>
+   182	            <CardTitle>Empresa</CardTitle>
+   183	          </CardHeader>
+   184	
+   185	          <CardContent className="space-y-2">
+   186	            <div>
+   187	              <strong>Razão Social:</strong>
+   188	              {" "}
+   189	              {data.company.legal_name}
+   190	            </div>
+   191	
+   192	            <div>
+   193	              <strong>Nome Fantasia:</strong>
+   194	              {" "}
+   195	              {data.company.trade_name}
+   196	            </div>
+   197	
+   198	            <div>
+   199	              <strong>CNPJ:</strong>
+   200	              {" "}
+   201	              {data.company.document_number}
+   202	            </div>
+   203	          </CardContent>
+   204	        </Card>
+   205	
+   206	        <Card>
+   207	          <CardHeader>
+   208	            <CardTitle>Estatísticas</CardTitle>
+   209	          </CardHeader>
+   210	
+   211	          <CardContent className="space-y-2">
+   212	            <div>
+   213	              Funcionários:
+   214	              {" "}
+   215	              {data.statistics.employees}
+   216	            </div>
+   217	
+   218	            <div>
+   219	              Documentos:
+   220	              {" "}
+   221	              {data.statistics.documents}
+   222	            </div>
+   223	
+   224	            <div>
+   225	              Holerites:
+   226	              {" "}
+   227	              {data.statistics.payslips}
+   228	            </div>
+   229	          </CardContent>
+   230	        </Card>
+   231	
+   232	      </div>
+   233	
+   234	      <Card>
+   235	        <CardHeader>
+   236	          <CardTitle>Módulos Habilitados</CardTitle>
+   237	        </CardHeader>
+   238	
+   239	        <CardContent>
+   240	
+   241	          <div className="grid gap-2 md:grid-cols-3">
+   242	
+   243	            {data.modules.map((module) => (
+   244	              <div
+   245	                key={module.module_code}
+   246	                className="rounded border p-2"
+   247	              >
+   248	                {module.module_code}
+   249	              </div>
+   250	            ))}
+   251	
+   252	          </div>
+   253	
+   254	        </CardContent>
+   255	      </Card>
+   256	
+   257	    </div>
+   258	  );
+   259	}
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx
+     1	import { useEffect, useState } from "react";
+     2	import { useParams } from "react-router-dom";
+     3	import { apiRequest } from "../lib/api";
+     4	
+     5	export function SuperAdminClientModulesAuditPage() {
+     6	
+     7	  const { id } = useParams();
+     8	
+     9	  const [items,setItems] = useState<any[]>([]);
+    10	
+    11	  useEffect(() => {
+    12	
+    13	    if (!id) return;
+    14	
+    15	    apiRequest<any[]>(
+    16	      `/v1/super-admin/clients/${id}/modules/audit`
+    17	    )
+    18	      .then(setItems)
+    19	      .catch(console.error);
+    20	
+    21	  }, [id]);
+    22	
+    23	  return (
+    24	    <div className="space-y-6">
+    25	
+    26	      <h1 className="text-3xl font-bold text-white">
+    27	        Auditoria de Módulos
+    28	      </h1>
+    29	
+    30	      <table className="w-full">
+    31	
+    32	        <thead>
+    33	          <tr>
+    34	            <th>Data</th>
+    35	            <th>Módulo</th>
+    36	            <th>Detalhes</th>
+    37	          </tr>
+    38	        </thead>
+    39	
+    40	        <tbody>
+    41	
+    42	          {items.length === 0 ? (
+    43	            <tr>
+    44	              <td colSpan={3}>
+    45	                Nenhuma auditoria encontrada.
+    46	              </td>
+    47	            </tr>
+    48	          ) : (
+    49	            items.map((item,index) => (
+    50	              <tr key={index}>
+    51	                <td>{item.created_at || "-"}</td>
+    52	                <td>{item.module_code || "-"}</td>
+    53	                <td>
+    54	                  {JSON.stringify(item)}
+    55	                </td>
+    56	              </tr>
+    57	            ))
+    58	          )}
+    59	
+    60	        </tbody>
+    61	
+    62	      </table>
+    63	
+    64	    </div>
+    65	  );
+    66	}
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx
+     1	import { useEffect, useState } from "react";
+     2	import { Link, useParams } from "react-router-dom";
+     3	import { apiRequest } from "../lib/api";
+     4	
+     5	type ModuleItem = {
+     6	  module_code: string;
+     7	  enabled: boolean;
+     8	};
+     9	
+    10	export function SuperAdminClientModulesPage() {
+    11	
+    12	  const { id } = useParams();
+    13	
+    14	  const [items,setItems] =
+    15	    useState<ModuleItem[]>([]);
+    16	
+    17	  const [loading,setLoading] =
+    18	    useState(true);
+    19	
+    20	  useEffect(() => {
+    21	
+    22	    if (!id) return;
+    23	
+    24	    apiRequest<ModuleItem[]>(
+    25	      `/v1/super-admin/clients/${id}/modules`
+    26	    )
+    27	      .then(setItems)
+    28	      .finally(() =>
+    29	        setLoading(false)
+    30	      );
+    31	
+    32	  }, [id]);
+    33	
+    34	  async function atualizarModulo(
+    35	    moduleCode: string,
+    36	    enabled: boolean,
+    37	  ) {
+    38	
+    39	    if (!id) return;
+    40	
+    41	    await apiRequest(
+    42	      `/v1/super-admin/clients/${id}/modules/${moduleCode}`,
+    43	      {
+    44	        method: "PUT",
+    45	        body: JSON.stringify({
+    46	          enabled,
+    47	        }),
+    48	      }
+    49	    );
+    50	
+    51	    setItems(current =>
+    52	      current.map(item =>
+    53	        item.module_code === moduleCode
+    54	          ? {
+    55	              ...item,
+    56	              enabled,
+    57	            }
+    58	          : item
+    59	      )
+    60	    );
+    61	  }
+    62	
+    63	  if (loading) {
+    64	    return <div>Carregando...</div>;
+    65	  }
+    66	
+    67	  return (
+    68	    <div className="space-y-6">
+    69	
+    70	      
+    71	<div className="flex justify-between items-center">
+    72	
+    73	  <h1 className="text-3xl font-bold text-white">
+    74	    Módulos do Cliente
+    75	  </h1>
+    76	
+    77	  <Link
+    78	    to={`/super-admin/clientes/${id}/modules/audit`}
+    79	    className="rounded bg-orange-600 px-4 py-2 text-white"
+    80	  >
+    81	    Auditoria
+    82	  </Link>
+    83	
+    84	</div>
+    85	
+    86	<h1 className="hidden">
+    87	
+    88	        Módulos do Cliente
+    89	      </h1>
+    90	
+    91	      <table className="w-full">
+    92	
+    93	        <thead>
+    94	          <tr>
+    95	            <th>Módulo</th>
+    96	            <th>Status</th>
+    97	            <th>Ação</th>
+    98	          </tr>
+    99	        </thead>
+   100	
+   101	        <tbody>
+   102	
+   103	          {items.map(item => (
+   104	
+   105	            <tr key={item.module_code}>
+   106	
+   107	              <td>
+   108	                {item.module_code}
+   109	              </td>
+   110	
+   111	              <td>
+   112	                {item.enabled
+   113	                  ? "Ativo"
+   114	                  : "Inativo"}
+   115	              </td>
+   116	
+   117	              <td>
+   118	
+   119	                <button
+   120	                  onClick={() =>
+   121	                    atualizarModulo(
+   122	                      item.module_code,
+   123	                      !item.enabled
+   124	                    )
+   125	                  }
+   126	                  className="rounded bg-cyan-600 px-3 py-1 text-white"
+   127	                >
+   128	                  {item.enabled
+   129	                    ? "Desativar"
+   130	                    : "Ativar"}
+   131	                </button>
+   132	
+   133	              </td>
+   134	
+   135	            </tr>
+   136	
+   137	          ))}
+   138	
+   139	        </tbody>
+   140	
+   141	      </table>
+   142	
+   143	    </div>
+   144	  );
+   145	}
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx
+     1	import { useEffect, useMemo, useState } from 'react';
+     2	import { Link } from 'react-router-dom';
+     3	
+     4	import {
+     5	  type SuperAdminClient,
+     6	  listSuperAdminClients,
+     7	} from '../services/superAdminClientsService';
+     8	
+     9	function getClientName(client: SuperAdminClient) {
+    10	  return client.name || client.slug || client.email || client.id;
+    11	}
+    12	
+    13	function getClientTenantId(client: SuperAdminClient) {
+    14	  return client.tenantId || client.tenant_id || client.id;
+    15	}
+    16	
+    17	function getClientStatusLabel(client: SuperAdminClient) {
+    18	  if (client.status) {
+    19	    return client.status;
+    20	  }
+    21	
+    22	  if (typeof client.isActive === 'boolean') {
+    23	    return client.isActive ? 'ACTIVE' : 'INACTIVE';
+    24	  }
+    25	
+    26	  return 'INDEFINIDO';
+    27	}
+    28	
+    29	function getClientPlanName(client: SuperAdminClient) {
+    30	  return (
+    31	    client.plan?.name ||
+    32	    client.plan?.code ||
+    33	    client.planId ||
+    34	    client.plan_id ||
+    35	    'Não informado'
+    36	  );
+    37	}
+    38	
+    39	function getClientCreatedAt(client: SuperAdminClient) {
+    40	  return client.createdAt || client.created_at || 'Não informado';
+    41	}
+    42	
+    43	export function SuperAdminClientsPage() {
+    44	  const [clients, setClients] = useState<SuperAdminClient[]>([]);
+    45	  const [endpoint, setEndpoint] = useState('');
+    46	  const [search, setSearch] = useState('');
+    47	  const [statusFilter, setStatusFilter] = useState('TODOS');
+    48	  const [loading, setLoading] = useState(true);
+    49	  const [error, setError] = useState('');
+    50	
+    51	  async function loadClients() {
+    52	    setLoading(true);
+    53	    setError('');
+    54	
+    55	    try {
+    56	      const result = await listSuperAdminClients();
+    57	
+    58	      setClients(Array.isArray(result.clients) ? result.clients : []);
+    59	      setEndpoint(result.endpoint);
+    60	    } catch (err) {
+    61	      const message =
+    62	        err instanceof Error
+    63	          ? err.message
+    64	          : 'Não foi possível carregar os Clientes SaaS.';
+    65	
+    66	      setError(message);
+    67	      setClients([]);
+    68	    } finally {
+    69	      setLoading(false);
+    70	    }
+    71	  }
+    72	
+    73	  useEffect(() => {
+    74	    void loadClients();
+    75	  }, []);
+    76	
+    77	  const filteredClients = useMemo(() => {
+    78	    const normalizedSearch = search.trim().toLowerCase();
+    79	
+    80	    return clients.filter((client) => {
+    81	      const status = getClientStatusLabel(client);
+    82	      const matchesStatus = statusFilter === 'TODOS' || status === statusFilter;
+    83	
+    84	      const searchable = [
+    85	        client.id,
+    86	        client.name,
+    87	        client.slug,
+    88	        client.email,
+    89	        client.tenantId,
+    90	        client.tenant_id,
+    91	        client.plan?.name,
+    92	        client.plan?.code,
+    93	      ]
+    94	        .filter(Boolean)
+    95	        .join(' ')
+    96	        .toLowerCase();
+    97	
+    98	      const matchesSearch =
+    99	        !normalizedSearch || searchable.includes(normalizedSearch);
+   100	
+   101	      return matchesStatus && matchesSearch;
+   102	    });
+   103	  }, [clients, search, statusFilter]);
+   104	
+   105	  const statusOptions = useMemo(() => {
+   106	    const statuses = new Set<string>();
+   107	
+   108	    clients.forEach((client) => {
+   109	      statuses.add(getClientStatusLabel(client));
+   110	    });
+   111	
+   112	    return ['TODOS', ...Array.from(statuses).sort()];
+   113	  }, [clients]);
+   114	
+   115	  return (
+   116	    <div className="space-y-6">
+   117	      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+   118	        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+   119	          <div>
+   120	            <p className="text-sm font-semibold uppercase tracking-wide text-sky-700">
+   121	              Super Admin
+   122	            </p>
+   123	            <h1 className="mt-2 text-2xl font-bold text-slate-900">
+   124	              Clientes SaaS
+   125	            </h1>
+   126	            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+   127	              Listagem real de clientes/tenants carregada pela API. Esta fase
+   128	              ainda não cria, edita ou inativa clientes.
+   129	            </p>
+   130	          </div>
+   131	
+   132	          <div className="flex flex-col gap-2 sm:flex-row">
+   133	            <button
+   134	              type="button"
+   135	              onClick={() => void loadClients()}
+   136	              className="rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+   137	            >
+   138	              Atualizar
+   139	            </button>
+   140	
+   141	            <Link
+   142	              to="/super-admin/clientes/novo"
+   143	              className="rounded-2xl bg-sky-700 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-sky-800"
+   144	            >
+   145	              Novo Cliente
+   146	            </Link>
+   147	          </div>
+   148	        </div>
+   149	
+   150	        <div className="mt-5 grid gap-3 md:grid-cols-3">
+   151	          <div className="rounded-2xl bg-slate-50 p-4">
+   152	            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+   153	              Total carregado
+   154	            </p>
+   155	            <p className="mt-1 text-2xl font-bold text-slate-900">
+   156	              {clients.length}
+   157	            </p>
+   158	          </div>
+   159	
+   160	          <div className="rounded-2xl bg-slate-50 p-4">
+   161	            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+   162	              Exibindo
+   163	            </p>
+   164	            <p className="mt-1 text-2xl font-bold text-slate-900">
+   165	              {filteredClients.length}
+   166	            </p>
+   167	          </div>
+   168	
+   169	          <div className="rounded-2xl bg-slate-50 p-4">
+   170	            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+   171	              Endpoint usado
+   172	            </p>
+   173	            <p className="mt-1 break-all text-sm font-semibold text-slate-800">
+   174	              {endpoint || 'Aguardando carregamento'}
+   175	            </p>
+   176	          </div>
+   177	        </div>
+   178	      </div>
+   179	
+   180	      <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+   181	        <div className="grid gap-3 lg:grid-cols-[1fr_220px]">
+   182	          <input
+   183	            value={search}
+   184	            onChange={(event) => setSearch(event.target.value)}
+   185	            placeholder="Pesquisar por nome, e-mail, slug, tenant ou plano"
+   186	            className="rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+   187	          />
+   188	
+   189	          <select
+   190	            value={statusFilter}
+   191	            onChange={(event) => setStatusFilter(event.target.value)}
+   192	            className="rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+   193	          >
+   194	            {statusOptions.map((status) => (
+   195	              <option key={status} value={status}>
+   196	                {status === 'TODOS' ? 'Todos os status' : status}
+   197	              </option>
+   198	            ))}
+   199	          </select>
+   200	        </div>
+   201	      </div>
+   202	
+   203	      {loading ? (
+   204	        <div className="rounded-3xl border border-slate-200 bg-white p-8 text-center text-sm text-slate-600 shadow-sm">
+   205	          Carregando clientes SaaS...
+   206	        </div>
+   207	      ) : error ? (
+   208	        <div className="rounded-3xl border border-red-200 bg-red-50 p-6 text-sm text-red-800">
+   209	          <p className="font-semibold">Erro ao carregar clientes</p>
+   210	          <p className="mt-2">{error}</p>
+   211	        </div>
+   212	      ) : filteredClients.length === 0 ? (
+   213	        <div className="rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm">
+   214	          <p className="text-lg font-semibold text-slate-900">
+   215	            Nenhum cliente encontrado
+   216	          </p>
+   217	          <p className="mt-2 text-sm text-slate-600">
+   218	            Ajuste os filtros ou cadastre um novo cliente quando o fluxo de
+   219	            criação estiver habilitado.
+   220	          </p>
+   221	        </div>
+   222	      ) : (
+   223	        <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+   224	          <div className="overflow-x-auto">
+   225	            <table className="min-w-full divide-y divide-slate-200 text-sm">
+   226	              <thead className="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+   227	                <tr>
+   228	                  <th className="px-5 py-4">Cliente</th>
+   229	                  <th className="px-5 py-4">Tenant</th>
+   230	                  <th className="px-5 py-4">Plano</th>
+   231	                  <th className="px-5 py-4">Status</th>
+   232	                  <th className="px-5 py-4">Criado em</th>
+   233	                  <th className="px-5 py-4 text-right">Ações</th>
+   234	                </tr>
+   235	              </thead>
+   236	
+   237	              <tbody className="divide-y divide-slate-100">
+   238	                {filteredClients.map((client) => (
+   239	                  <tr key={client.id} className="hover:bg-slate-50">
+   240	                    <td className="px-5 py-4">
+   241	                      <p className="font-semibold text-slate-900">
+   242	                        {getClientName(client)}
+   243	                      </p>
+   244	                      <p className="mt-1 text-xs text-slate-500">
+   245	                        {client.email ||
+   246	                          client.slug ||
+   247	                          'Sem e-mail/slug informado'}
+   248	                      </p>
+   249	                    </td>
+   250	
+   251	                    <td className="px-5 py-4">
+   252	                      <p className="max-w-[220px] truncate font-mono text-xs text-slate-600">
+   253	                        {getClientTenantId(client)}
+   254	                      </p>
+   255	                    </td>
+   256	
+   257	                    <td className="px-5 py-4 text-slate-700">
+   258	                      {getClientPlanName(client)}
+   259	                    </td>
+   260	
+   261	                    <td className="px-5 py-4">
+   262	                      <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700">
+   263	                        {getClientStatusLabel(client)}
+   264	                      </span>
+   265	                    </td>
+   266	
+   267	                    <td className="px-5 py-4 text-slate-600">
+   268	                      {getClientCreatedAt(client)}
+   269	                    </td>
+   270	
+   271	                    <td className="px-5 py-4 text-right">
+   272	                      <Link
+   273	                        to={`/super-admin/clientes/${client.id}`}
+   274	                        className="text-sm font-semibold text-sky-700 hover:text-sky-900"
+   275	                      >
+   276	                        Ver detalhes
+   277	                      </Link>
+   278	                    </td>
+   279	                  </tr>
+   280	                ))}
+   281	              </tbody>
+   282	            </table>
+   283	          </div>
+   284	        </div>
+   285	      )}
+   286	
+   287	      <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">
+   288	        <p className="font-semibold">Limite desta fase</p>
+   289	        <p className="mt-2">
+   290	          Esta tela implementa apenas a listagem real. Cadastro, edição,
+   291	          ativação/inativação e vínculo de plano/módulos serão tratados nas
+   292	          próximas fases.
+   293	        </p>
+   294	      </div>
+   295	    </div>
+   296	  );
+   297	}
+
+### /opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx
+     1	import { useEffect, useState } from "react";
+     2	import { apiRequest } from "../lib/api";
+     3	import {
+     4	  Card,
+     5	  CardContent,
+     6	  CardHeader,
+     7	  CardTitle,
+     8	} from "../components/ui/card";
+     9	
+    10	export function SuperAdminDashboard() {
+    11	
+    12	  const [dashboard,setDashboard] = useState<any>({});
+    13	  const [health,setHealth] = useState<any>({});
+    14	  const [database,setDatabase] = useState<any>({});
+    15	  const [storage,setStorage] = useState<any>({});
+    16	  const [metrics,setMetrics] = useState<any>({});
+    17	  const [services,setServices] = useState<any>({});
+    18	
+    19	  useEffect(() => {
+    20	
+    21	    Promise.all([
+    22	      apiRequest("/v1/super-admin/dashboard"),
+    23	      apiRequest("/v1/super-admin/system/health"),
+    24	      apiRequest("/v1/super-admin/system/database"),
+    25	      apiRequest("/v1/super-admin/system/storage"),
+    26	      apiRequest("/v1/super-admin/system/metrics"),
+    27	      apiRequest("/v1/super-admin/system/services"),
+    28	    ])
+    29	    .then(
+    30	      ([d,h,db,st,mt,sv]) => {
+    31	
+    32	        setDashboard(d);
+    33	        setHealth(h);
+    34	        setDatabase(db);
+    35	        setStorage(st);
+    36	        setMetrics(mt);
+    37	        setServices(sv);
+    38	
+    39	      }
+    40	    )
+    41	    .catch(console.error);
+    42	
+    43	  }, []);
+    44	
+    45	  const cards = [
+    46	    {
+    47	      titulo: "Clientes",
+    48	      valor: dashboard?.clients?.total ?? 0,
+    49	    },
+    50	    {
+    51	      titulo: "Clientes Ativos",
+    52	      valor: dashboard?.clients?.active ?? 0,
+    53	    },
+    54	    {
+    55	      titulo: "Clientes Inativos",
+    56	      valor: dashboard?.clients?.inactive ?? 0,
+    57	    },
+    58	    {
+    59	      titulo: "Planos",
+    60	      valor: dashboard?.plans?.total ?? 0,
+    61	    },
+    62	    {
+    63	      titulo: "Usuários",
+    64	      valor: dashboard?.users?.total ?? 0,
+    65	    },
+    66	    {
+    67	      titulo: "Funcionários",
+    68	      valor: dashboard?.employees?.total ?? 0,
+    69	    },
+    70	    {
+    71	      titulo: "Documentos",
+    72	      valor: dashboard?.documents?.documents ?? 0,
+    73	    },
+    74	    {
+    75	      titulo: "Holerites",
+    76	      valor: dashboard?.documents?.payslips ?? 0,
+    77	    },
+    78	    {
+    79	      titulo: "Módulos Ativos",
+    80	      valor: dashboard?.modules?.enabled ?? 0,
+    81	    },
+    82	  ];
+    83	
+    84	  return (
+    85	    <div className="space-y-6">
+    86	
+    87	      <h1 className="text-3xl font-bold text-white">
+    88	        Dashboard SUPER ADMIN
+    89	      </h1>
+    90	
+    91	      <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
+    92	
+    93	        {cards.map((card) => (
+    94	          <Card key={card.titulo}>
+    95	            <CardHeader>
+    96	              <CardTitle>
+    97	                {card.titulo}
+    98	              </CardTitle>
+    99	            </CardHeader>
+   100	
+   101	            <CardContent>
+   102	              <div className="text-3xl font-bold">
+   103	                {card.valor}
+   104	              </div>
+   105	            </CardContent>
+   106	          </Card>
+   107	        ))}
+   108	
+   109	      </div>
+   110	
+   111	      <Card>
+   112	        <CardHeader>
+   113	          <CardTitle>
+   114	            Observabilidade
+   115	          </CardTitle>
+   116	        </CardHeader>
+   117	
+   118	        <CardContent>
+   119	
+   120	          <div>API: {health?.api}</div>
+   121	
+   122	          <div>Banco: {health?.database}</div>
+   123	
+   124	          <div>Conexões: {database?.connections}</div>
+   125	
+   126	          <div>Disco: {storage?.usedPercent}%</div>
+   127	
+   128	          <div>Memória: {metrics?.memoryPercent}%</div>
+   129	
+   130	          <div>Uptime: {metrics?.uptimeSeconds}</div>
+   131	
+   132	          <div>
+   133	            Serviços:
+   134	            {" "}
+   135	            {JSON.stringify(services)}
+   136	          </div>
+   137	
+   138	        </CardContent>
+   139	      </Card>
+   140	
+   141	      <Card>
+   142	        <CardHeader>
+   143	          <CardTitle>
+   144	            Auditoria Recente
+   145	          </CardTitle>
+   146	        </CardHeader>
+   147	
+   148	        <CardContent>
+   149	
+   150	          {(dashboard?.audit || []).map(
+   151	            (item:any,index:number) => (
+   152	
+   153	              <div
+   154	                key={index}
+   155	                className="border-b py-2"
+   156	              >
+   157	                <strong>
+   158	                  {item.module_code}
+   159	                </strong>
+   160	
+   161	                <div>
+   162	                  {String(item.old_enabled)}
+   163	                  {" → "}
+   164	                  {String(item.new_enabled)}
+   165	                </div>
+   166	
+   167	                <div>
+   168	                  {item.changed_by_email}
+   169	                </div>
+   170	
+   171	              </div>
+   172	            )
+   173	          )}
+   174	
+   175	        </CardContent>
+   176	      </Card>
+   177	
+   178	    </div>
+   179	  );
+   180	}
+
+### /opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts
+     1	export type SuperAdminClientStatus =
+     2	  | 'ACTIVE'
+     3	  | 'INACTIVE'
+     4	  | 'SUSPENDED'
+     5	  | 'PENDING'
+     6	  | string;
+     7	
+     8	export type SuperAdminClientPlan = {
+     9	  id?: string;
+    10	  name?: string;
+    11	  code?: string;
+    12	  description?: string;
+    13	};
+    14	
+    15	export type SuperAdminClientModule = {
+    16	  id?: string;
+    17	  name?: string;
+    18	  code?: string;
+    19	  isActive?: boolean;
+    20	};
+    21	
+    22	export type SuperAdminClient = {
+    23	  id: string;
+    24	  name?: string;
+    25	  slug?: string;
+    26	  email?: string;
+    27	  status?: SuperAdminClientStatus;
+    28	  isActive?: boolean;
+    29	  tenantId?: string;
+    30	  tenant_id?: string;
+    31	  planId?: string;
+    32	  plan_id?: string;
+    33	  plan?: SuperAdminClientPlan | null;
+    34	  modules?: SuperAdminClientModule[];
+    35	  createdAt?: string;
+    36	  created_at?: string;
+    37	  updatedAt?: string;
+    38	  updated_at?: string;
+    39	};
+    40	
+    41	type UnknownRecord = Record<string, unknown>;
+    42	
+    43	type ListResponseShape =
+    44	  | SuperAdminClient[]
+    45	  | {
+    46	      data?: SuperAdminClient[];
+    47	      items?: SuperAdminClient[];
+    48	      results?: SuperAdminClient[];
+    49	      clients?: SuperAdminClient[];
+    50	      tenants?: SuperAdminClient[];
+    51	    };
+    52	
+    53	export type ListSuperAdminClientsResult = {
+    54	  endpoint: string;
+    55	  clients: SuperAdminClient[];
+    56	};
+    57	
+    58	const CLIENT_LIST_ENDPOINT_CANDIDATES = [
+    59	  '/v1/super-admin/clientes',
+    60	  '/v1/super-admin/tenants',
+    61	  '/v1/tenants',
+    62	  '/v1/clients',
+    63	];
+    64	
+    65	function getApiBaseUrl() {
+    66	  const apiBaseUrl = import.meta.env.VITE_API_URL || '';
+    67	
+    68	  return apiBaseUrl.replace(/\/$/, '');
+    69	}
+    70	
+    71	function readTokenFromStorageValue(value: string | null) {
+    72	  if (!value) {
+    73	    return '';
+    74	  }
+    75	
+    76	  try {
+    77	    const parsed = JSON.parse(value) as {
+    78	      access_token?: string;
+    79	      accessToken?: string;
+    80	      token?: string;
+    81	      jwt?: string;
+    82	    };
+    83	
+    84	    return (
+    85	      parsed.access_token ||
+    86	      parsed.accessToken ||
+    87	      parsed.token ||
+    88	      parsed.jwt ||
+    89	      ''
+    90	    );
+    91	  } catch {
+    92	    return value;
+    93	  }
+    94	}
+    95	
+    96	export function getSuperAdminAuthToken() {
+    97	  const keys = [
+    98	    'access_token',
+    99	    'accessToken',
+   100	    'token',
+   101	    'jwt',
+   102	    'auth_token',
+   103	    'authToken',
+   104	    '@LH_Token',
+   105	    '@RH_Token',
+   106	    'user_info',
+   107	    'userInfo',
+   108	    'auth_user',
+   109	    'authUser',
+   110	  ];
+   111	
+   112	  for (const key of keys) {
+   113	    const localToken = readTokenFromStorageValue(localStorage.getItem(key));
+   114	
+   115	    if (localToken) {
+   116	      return localToken;
+   117	    }
+   118	
+   119	    const sessionToken = readTokenFromStorageValue(sessionStorage.getItem(key));
+   120	
+   121	    if (sessionToken) {
+   122	      return sessionToken;
+   123	    }
+   124	  }
+   125	
+   126	  return '';
+   127	}
+   128	
+   129	function normalizeClientList(payload: ListResponseShape): SuperAdminClient[] {
+   130	  if (Array.isArray(payload)) {
+   131	    return payload;
+   132	  }
+   133	
+   134	  const candidates = [
+   135	    payload.data,
+   136	    payload.items,
+   137	    payload.results,
+   138	    payload.clients,
+   139	    payload.tenants,
+   140	  ];
+   141	
+   142	  for (const candidate of candidates) {
+   143	    if (Array.isArray(candidate)) {
+   144	      return candidate;
+   145	    }
+   146	  }
+   147	
+   148	  return [];
+   149	}
+   150	
+   151	function clearSessionAndRedirect() {
+   152	  localStorage.clear();
+   153	  sessionStorage.clear();
+   154	  window.location.href = '/login';
+   155	}
+   156	
+   157	async function requestJson(endpoint: string) {
+   158	  const token = getSuperAdminAuthToken();
+   159	
+   160	  if (!token) {
+   161	    throw new Error('Token de autenticação não encontrado.');
+   162	  }
+   163	
+   164	  const baseUrl = getApiBaseUrl();
+   165	  const url = `${baseUrl}${endpoint}`;
+   166	
+   167	  const response = await fetch(url, {
+   168	    method: 'GET',
+   169	    headers: {
+   170	      Authorization: `Bearer ${token}`,
+   171	      'Content-Type': 'application/json',
+   172	    },
+   173	  });
+   174	
+   175	  if (response.status === 401) {
+   176	    clearSessionAndRedirect();
+   177	    throw new Error('Sessão expirada.');
+   178	  }
+   179	
+   180	  const text = await response.text();
+   181	
+   182	  let payload: unknown = null;
+   183	
+   184	  if (text) {
+   185	    try {
+   186	      payload = JSON.parse(text) as unknown;
+   187	    } catch {
+   188	      payload = text;
+   189	    }
+   190	  }
+   191	
+   192	  if (!response.ok) {
+   193	    const message =
+   194	      typeof payload === 'object' && payload !== null
+   195	        ? String((payload as UnknownRecord).message || response.statusText)
+   196	        : response.statusText;
+   197	
+   198	    throw new Error(message || 'Falha ao buscar clientes SaaS.');
+   199	  }
+   200	
+   201	  return payload as ListResponseShape;
+   202	}
+   203	
+   204	export async function listSuperAdminClients(): Promise<ListSuperAdminClientsResult> {
+   205	  const errors: string[] = [];
+   206	
+   207	  for (const endpoint of CLIENT_LIST_ENDPOINT_CANDIDATES) {
+   208	    try {
+   209	      const payload = await requestJson(endpoint);
+   210	      const clients = normalizeClientList(payload);
+   211	
+   212	      return {
+   213	        endpoint,
+   214	        clients,
+   215	      };
+   216	    } catch (error) {
+   217	      const message =
+   218	        error instanceof Error ? error.message : 'Erro desconhecido';
+   219	
+   220	      errors.push(`${endpoint}: ${message}`);
+   221	    }
+   222	  }
+   223	
+   224	  throw new Error(
+   225	    `Nenhum endpoint de Clientes SaaS respondeu com sucesso. ${errors.join(' | ')}`,
+   226	  );
+   227	}
+   228	
+   229	export const superAdminClientsService = {
+   230	  list: listSuperAdminClients,
+   231	};
+
+### /opt/rh-saas/frontend-web/src/vite-env.d.ts
+     1	/// <reference types="vite/client" />
+     2	
+     3	declare module '*.css' {
+     4	  const content: { [className: string]: string };
+     5	  export default content;
+     6	}

@@ -1,0 +1,2 @@
+endpoint	http_status	matched
+/v1/super-admin/clients	200	SIM

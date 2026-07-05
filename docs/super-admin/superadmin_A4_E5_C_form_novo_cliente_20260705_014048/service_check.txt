@@ -1,0 +1,7 @@
+Arquivo: /opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts
+
+230:export type CreateSuperAdminClientPayload = {
+254:  payload: CreateSuperAdminClientPayload,
+303:export async function createSuperAdminClient(
+304:  payload: CreateSuperAdminClientPayload,
+326:  create: createSuperAdminClient,

@@ -1,0 +1,480 @@
+=================================================
+APP MODULE CHECK
+Data: 20260705_020201
+=================================================
+
+### /opt/rh-saas/backend/src/app.module.ts
+     1	import { Module } from '@nestjs/common';
+     2	import { ConfigModule, ConfigService } from '@nestjs/config';
+     3	import { TypeOrmModule } from '@nestjs/typeorm';
+     4	
+     5	// TODOS os Módulos do Sistema
+     6	import { AnalyticsModule } from "./modules/analytics/analytics.module";
+     7	import { AuthModule } from "./modules/auth/auth.module"; // <-- AQUI ESTAVA O PROBLEMA!
+     8	import { DocumentsModule } from "./modules/documents/documents.module";
+     9	import { EmployeesModule } from "./modules/employees/employees.module";
+    10	import { SchedulesModule } from "./modules/schedules/schedules.module";
+    11	import { TimeBankModule } from "./modules/time-bank/time-bank.module";
+    12	import { TimeRecordsModule } from "./modules/time-records/time-records.module";
+    13	import { TenantModule } from './modules/tenant/tenant.module';
+    14	// Entidades "soltas" (Sem módulo próprio)
+    15	import { Tenant } from './modules/tenant/tenant.entity';
+    16	import { ClockEvent } from './modules/clock-events/clock-event.entity';
+    17	import { User } from './modules/users/user.entity';
+    18	import { UsersModule } from './modules/users/users.module';
+    19	import { AuditModule } from './modules/audit/audit.module';
+    20	import { SuperAdminModule } from "./modules/super-admin/super-admin.module";
+    21	import { DashboardModule } from './modules/dashboard/dashboard.module';
+    22	import { ReportsModule } from './modules/reports/reports.module';
+    23	import { FoundationModule } from './modules/foundation/foundation.module';
+    24	@Module({
+    25	  imports: [
+    26	    AuditModule,
+    27	    SuperAdminModule,
+    28	    AnalyticsModule,
+    29	    AuthModule,
+    30	    UsersModule,
+    31	    DocumentsModule,
+    32	    EmployeesModule,
+    33	    SchedulesModule,
+    34	    TimeBankModule,
+    35	    TimeRecordsModule,
+    36	    TenantModule,
+    37	    DashboardModule,
+    38	    ReportsModule,
+    39	    FoundationModule,
+    40	    ConfigModule.forRoot({
+    41	      isGlobal: true,
+    42	    }),
+    43	    TypeOrmModule.forRootAsync({
+    44	      imports: [ConfigModule],
+    45	      inject: [ConfigService],
+    46	      useFactory: (configService: ConfigService) => ({
+    47	        type: 'postgres',
+    48	        host: configService.get<string>('DB_HOST'),
+    49	        port: configService.get<number>('DB_PORT'),
+    50	        username: configService.get<string>('DB_USERNAME'),
+    51	        password: configService.get<string>('DB_PASSWORD'),
+    52	        database: configService.get<string>('DB_DATABASE'),
+    53	        
+    54	        entities: [Tenant, ClockEvent, User], // Traz as soltas (User é crucial pro Auth)
+    55	        autoLoadEntities: true, 
+    56	        synchronize: configService.get<string>('NODE_ENV') === 'development',
+    57	      }),
+    58	    }),
+    59	  ],
+    60	})
+    61	export class AppModule {}
+
+### /opt/rh-saas/backend/src/modules/analytics/analytics.module.ts
+     1	import { Module } from '@nestjs/common';
+     2	import { TypeOrmModule } from '@nestjs/typeorm';
+     3	import { TimeRecord } from '../time-records/time-record.entity';
+     4	import { AnalyticsService } from './analytics.service';
+     5	import { AnalyticsController } from './analytics.controller';
+     6	
+     7	@Module({
+     8	  imports: [TypeOrmModule.forFeature([TimeRecord])],
+     9	  controllers: [AnalyticsController],
+    10	  providers: [AnalyticsService],
+    11	})
+    12	export class AnalyticsModule {}
+
+### /opt/rh-saas/backend/src/modules/audit/audit.module.ts
+     1	import { Module } from '@nestjs/common';
+     2	import { TypeOrmModule } from '@nestjs/typeorm';
+     3	
+     4	import { AuditController } from './audit.controller';
+     5	import { AuditEvent } from './audit.entity';
+     6	import { AuditService } from './audit.service';
+     7	
+     8	@Module({
+     9	  imports: [
+    10	    TypeOrmModule.forFeature([
+    11	      AuditEvent,
+    12	    ]),
+    13	  ],
+    14	    controllers: [
+    15	    AuditController,
+    16	  ],
+    17	  providers: [
+    18	    AuditService,
+    19	  ],
+    20	  exports: [
+    21	    AuditService,
+    22	  ],
+    23	})
+    24	export class AuditModule {}
+
+### /opt/rh-saas/backend/src/modules/auth/auth.module.ts
+     1	import { AuditModule } from '../audit/audit.module';
+     2	import { Module } from '@nestjs/common';
+     3	import { JwtModule } from '@nestjs/jwt';
+     4	import { PassportModule } from '@nestjs/passport';
+     5	import { ConfigModule, ConfigService } from '@nestjs/config';
+     6	
+     7	import { AuthService } from './auth.service';
+     8	import { AuthController } from './auth.controller';
+     9	import { JwtStrategy } from './strategies/jwt.strategy';
+    10	import { RolesGuard } from './guards/roles.guard';
+    11	
+    12	import { UsersModule } from '../users/users.module';
+    13	
+    14	@Module({
+    15	  imports: [AuditModule, 
+    16	    UsersModule,
+    17	    PassportModule,
+    18	    JwtModule.registerAsync({
+    19	      imports: [AuditModule, ConfigModule],
+    20	      inject: [ConfigService],
+    21	      useFactory: async (configService: ConfigService) => ({
+    22	        secret:
+    23	          configService.get<string>('JWT_SECRET') ||
+    24	          'FallbackSecret!@#2024',
+    25	        signOptions: {
+    26	          expiresIn:
+    27	            (configService.get<string>('JWT_EXPIRATION') ||
+    28	              '8h') as any,
+    29	        },
+    30	      }),
+    31	    }),
+    32	  ],
+    33	  providers: [
+    34	    AuthService,
+    35	    JwtStrategy,
+    36	    RolesGuard,
+    37	  ],
+    38	  controllers: [
+    39	    AuthController,
+    40	  ],
+    41	  exports: [
+    42	    AuthService,
+    43	  ],
+    44	})
+    45	export class AuthModule {}
+
+### /opt/rh-saas/backend/src/modules/dashboard/dashboard.module.ts
+     1	import { Module } from '@nestjs/common';
+     2	import { TypeOrmModule } from '@nestjs/typeorm';
+     3	
+     4	import { DashboardController } from './dashboard.controller';
+     5	import { DashboardService } from './dashboard.service';
+     6	
+     7	import { Employee } from '../employees/employee.entity';
+     8	import { User } from '../users/user.entity';
+     9	import { Schedule } from '../schedules/schedule.entity';
+    10	import { TimeBank } from '../time-bank/time-bank.entity';
+    11	import { TimeRecord } from '../time-records/time-record.entity';
+    12	
+    13	@Module({
+    14	  imports: [
+    15	    TypeOrmModule.forFeature([
+    16	      Employee,
+    17	      User,
+    18	      Schedule,
+    19	      TimeBank,
+    20	      TimeRecord,
+    21	    ]),
+    22	  ],
+    23	  controllers: [
+    24	    DashboardController,
+    25	  ],
+    26	  providers: [
+    27	    DashboardService,
+    28	  ],
+    29	})
+    30	export class DashboardModule {}
+
+### /opt/rh-saas/backend/src/modules/documents/documents.module.ts
+     1	import { AuditModule } from '../audit/audit.module';
+     2	import { Module } from '@nestjs/common';
+     3	import { TypeOrmModule } from '@nestjs/typeorm';
+     4	import { Document } from './document.entity';
+     5	import { DocumentsService } from './documents.service';
+     6	import { DocumentsController } from './documents.controller';
+     7	
+     8	@Module({
+     9	  imports: [AuditModule, TypeOrmModule.forFeature([Document])],
+    10	  controllers: [DocumentsController],
+    11	  providers: [DocumentsService],
+    12	})
+    13	export class DocumentsModule {}
+
+### /opt/rh-saas/backend/src/modules/employees/employees.module.ts
+     1	import { AuditModule } from '../audit/audit.module';
+     2	import { Module } from '@nestjs/common';
+     3	import { TypeOrmModule } from '@nestjs/typeorm';
+     4	import { Employee } from './employee.entity';
+     5	import { EmployeesService } from './employees.service';
+     6	import { EmployeesController } from './employees.controller';
+     7	import { User } from '../users/user.entity';
+     8	
+     9	@Module({
+    10	  imports: [AuditModule, 
+    11	    TypeOrmModule.forFeature([
+    12	      Employee,
+    13	      User,
+    14	    ]),
+    15	  ],
+    16	  providers: [
+    17	    EmployeesService,
+    18	  ],
+    19	  controllers: [
+    20	    EmployeesController,
+    21	  ],
+    22	  exports: [
+    23	    EmployeesService,
+    24	  ],
+    25	})
+    26	export class EmployeesModule {}
+
+### /opt/rh-saas/backend/src/modules/foundation/foundation.module.ts
+     1	import { Module } from '@nestjs/common';
+     2	import { TypeOrmModule } from '@nestjs/typeorm';
+     3	
+     4	import { FoundationController } from './foundation.controller';
+     5	import { FoundationService } from './foundation.service';
+     6	
+     7	import { SaasClient } from './entities/saas-client.entity';
+     8	
+     9	import { HrEmployeeProfile } from './entities/hr-employee-profile.entity';
+    10	import { HrDepartment } from './entities/hr-department.entity';
+    11	import { HrJobPosition } from './entities/hr-job-position.entity';
+    12	import { HrJobFunction } from './entities/hr-job-function.entity';
+    13	import { HrWorkLocation } from './entities/hr-work-location.entity';
+    14	import { HrGeofence } from './entities/hr-geofence.entity';
+    15	
+    16	import { MobileDevice } from './entities/mobile-device.entity';
+    17	import { MobileAppSettings } from './entities/mobile-app-settings.entity';
+    18	import { LocationTrackingPoint } from './entities/location-tracking-point.entity';
+    19	
+    20	import { ClockEventFoundation } from './entities/clock-event-foundation.entity';
+    21	import { ClockEventType } from './entities/clock-event-type.entity';
+    22	import { ClockPolicy } from './entities/clock-policy.entity';
+    23	import { ClockPolicyEventType } from './entities/clock-policy-event-type.entity';
+    24	import { ClockJustificationFoundation } from './entities/clock-justification-foundation.entity';
+    25	import { DocumentFoundation } from './entities/document-foundation.entity';
+    26	import { DocumentRecipientFoundation } from './entities/document-recipient-foundation.entity';
+    27	
+    28	import { TimeBankBalanceFoundation } from './entities/time-bank-balance-foundation.entity';
+    29	import { PayslipFoundation } from './entities/payslip-foundation.entity';
+    30	@Module({
+    31	  imports: [
+    32	    TypeOrmModule.forFeature([
+    33	      SaasClient,
+    34	
+    35	      HrEmployeeProfile,
+    36	      HrDepartment,
+    37	      HrJobPosition,
+    38	      HrJobFunction,
+    39	      HrWorkLocation,
+    40	      HrGeofence,
+    41	
+    42	      MobileDevice,
+    43	      MobileAppSettings,
+    44	      LocationTrackingPoint,
+    45	
+    46	      ClockEventFoundation,
+    47	      ClockEventType,
+    48	      ClockPolicy,
+    49	      ClockPolicyEventType,
+    50	      ClockJustificationFoundation,
+    51	      DocumentFoundation,
+    52	      DocumentRecipientFoundation,
+    53	      TimeBankBalanceFoundation,
+    54	      PayslipFoundation,
+    55	    ]),
+    56	  ],
+    57	  controllers: [
+    58	    FoundationController,
+    59	  ],
+    60	  providers: [
+    61	    FoundationService,
+    62	  ],
+    63	  exports: [
+    64	    FoundationService,
+    65	  ],
+    66	})
+    67	export class FoundationModule {}
+
+### /opt/rh-saas/backend/src/modules/reports/reports.module.ts
+     1	import { Module } from '@nestjs/common';
+     2	import { TypeOrmModule } from '@nestjs/typeorm';
+     3	
+     4	import { ReportsController } from './reports.controller';
+     5	import { ReportsService } from './reports.service';
+     6	
+     7	import { Employee } from '../employees/employee.entity';
+     8	import { Schedule } from '../schedules/schedule.entity';
+     9	import { TimeBank } from '../time-bank/time-bank.entity';
+    10	import { TimeRecord } from '../time-records/time-record.entity';
+    11	
+    12	@Module({
+    13	  imports: [
+    14	    TypeOrmModule.forFeature([
+    15	      Employee,
+    16	      Schedule,
+    17	      TimeBank,
+    18	      TimeRecord,
+    19	    ]),
+    20	  ],
+    21	  controllers: [
+    22	    ReportsController,
+    23	  ],
+    24	  providers: [
+    25	    ReportsService,
+    26	  ],
+    27	})
+    28	export class ReportsModule {}
+
+### /opt/rh-saas/backend/src/modules/schedules/schedules.module.ts
+     1	import { Module } from '@nestjs/common';
+     2	import { TypeOrmModule } from '@nestjs/typeorm';
+     3	
+     4	import { Schedule } from './schedule.entity';
+     5	import { EmployeeSchedule } from './employee-schedule.entity';
+     6	
+     7	import { SchedulesService } from './schedules.service';
+     8	import { ScheduleController } from './schedule.controller';
+     9	
+    10	import { AuditModule } from '../audit/audit.module';
+    11	
+    12	@Module({
+    13	  imports: [
+    14	    AuditModule,
+    15	    TypeOrmModule.forFeature([
+    16	      Schedule,
+    17	      EmployeeSchedule,
+    18	    ]),
+    19	  ],
+    20	  providers: [
+    21	    SchedulesService,
+    22	  ],
+    23	  controllers: [
+    24	    ScheduleController,
+    25	  ],
+    26	  exports: [
+    27	    SchedulesService,
+    28	  ],
+    29	})
+    30	export class SchedulesModule {}
+
+### /opt/rh-saas/backend/src/modules/super-admin/super-admin.module.ts
+     1	import { Module } from '@nestjs/common';
+     2	
+     3	import { SuperAdminController } from './super-admin.controller';
+     4	import { SuperAdminService } from './super-admin.service';
+     5	
+     6	@Module({
+     7	  controllers: [
+     8	    SuperAdminController,
+     9	  ],
+    10	  providers: [
+    11	    SuperAdminService,
+    12	  ],
+    13	})
+    14	export class SuperAdminModule {}
+
+### /opt/rh-saas/backend/src/modules/tenant/tenant.module.ts
+     1	import { Module } from '@nestjs/common';
+     2	import { TypeOrmModule } from '@nestjs/typeorm';
+     3	
+     4	import { Tenant } from './tenant.entity';
+     5	import { TenantService } from './tenant.service';
+     6	import { TenantController } from './tenant.controller';
+     7	
+     8	import { AuditModule } from '../audit/audit.module';
+     9	
+    10	@Module({
+    11	  imports: [
+    12	    AuditModule,
+    13	    TypeOrmModule.forFeature([
+    14	      Tenant,
+    15	    ]),
+    16	  ],
+    17	  providers: [
+    18	    TenantService,
+    19	  ],
+    20	  controllers: [
+    21	    TenantController,
+    22	  ],
+    23	  exports: [
+    24	    TenantService,
+    25	  ],
+    26	})
+    27	export class TenantModule {}
+
+### /opt/rh-saas/backend/src/modules/time-bank/time-bank.module.ts
+     1	import { Module } from '@nestjs/common';
+     2	import { TypeOrmModule } from '@nestjs/typeorm';
+     3	
+     4	import { TimeBank } from './time-bank.entity';
+     5	import { TimeBankService } from './time-bank.service';
+     6	import { TimeBankController } from './time-bank.controller';
+     7	
+     8	import { ClockEvent } from '../clock-events/clock-event.entity';
+     9	import { AuditModule } from '../audit/audit.module';
+    10	
+    11	@Module({
+    12	  imports: [
+    13	    AuditModule,
+    14	    TypeOrmModule.forFeature([
+    15	      TimeBank,
+    16	      ClockEvent,
+    17	    ]),
+    18	  ],
+    19	  controllers: [
+    20	    TimeBankController,
+    21	  ],
+    22	  providers: [
+    23	    TimeBankService,
+    24	  ],
+    25	  exports: [
+    26	    TimeBankService,
+    27	  ],
+    28	})
+    29	export class TimeBankModule {}
+
+### /opt/rh-saas/backend/src/modules/time-records/time-records.module.ts
+     1	import { AuditModule } from '../audit/audit.module';
+     2	import { TimeCalculatorService } from "./time-calculator.service";
+     3	import { Module } from '@nestjs/common';
+     4	import { TypeOrmModule } from '@nestjs/typeorm';
+     5	import { TimeRecord } from './time-record.entity';
+     6	import { TimeRecordsService } from './time-records.service';
+     7	import { TimeRecordsController } from './time-records.controller';
+     8	
+     9	@Module({
+    10	  imports: [AuditModule, TypeOrmModule.forFeature([TimeRecord])],
+    11	  controllers: [TimeRecordsController],
+    12	  providers: [TimeRecordsService, TimeCalculatorService],
+    13	})
+    14	export class TimeRecordsModule {}
+
+### /opt/rh-saas/backend/src/modules/users/users.module.ts
+     1	import { AuditModule } from '../audit/audit.module';
+     2	import { Module } from '@nestjs/common';
+     3	import { TypeOrmModule } from '@nestjs/typeorm';
+     4	
+     5	import { User } from './user.entity';
+     6	import { UsersService } from './users.service';
+     7	import { UsersController } from './users.controller';
+     8	
+     9	@Module({
+    10	  imports: [AuditModule, 
+    11	    TypeOrmModule.forFeature([
+    12	      User
+    13	    ])
+    14	  ],
+    15	  providers: [
+    16	    UsersService
+    17	  ],
+    18	  exports: [
+    19	    UsersService
+    20	  ],
+    21	  controllers: [
+    22	    UsersController
+    23	  ]
+    24	})
+    25	export class UsersModule {}
+

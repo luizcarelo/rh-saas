@@ -1,0 +1,9 @@
+{
+  "access_token": "[REDACTED length=329]",
+  "user_info": {
+    "sub": "6e8821c9-53ea-4787-87d7-36bf6e11db82",
+    "email": "superadmin@rh-saas.local",
+    "tenantId": "11446a8f-ed2c-468e-9be1-3409beb12d3c",
+    "role": "SUPER_ADMIN"
+  }
+}

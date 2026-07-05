@@ -1,0 +1,202 @@
+=================================================
+BACKEND-B3-E1-A - RAW DB
+Data: 20260704_225416
+=================================================
+
+## Tabelas candidatas
+-------------------------------------------------
+ table_schema |           table_name            
+--------------+---------------------------------
+ public       | audit_events
+ public       | clock_event_types
+ public       | clock_events
+ public       | clock_events_foundation
+ public       | clock_justifications_foundation
+ public       | clock_policies
+ public       | clock_policy_event_types
+ public       | hr_work_locations
+ public       | location_tracking_points
+ public       | time_bank
+ public       | time_bank_balances_foundation
+ public       | time_records
+(12 rows)
+
+
+## Colunas candidatas
+-------------------------------------------------
+ table_schema |           table_name            |                column_name                |          data_type          | is_nullable |                    column_default                    
+--------------+---------------------------------+-------------------------------------------+-----------------------------+-------------+------------------------------------------------------
+ public       | audit_events                    | id                                        | uuid                        | NO          | uuid_generate_v4()
+ public       | audit_events                    | tenant_id                                 | character varying           | YES         | 
+ public       | audit_events                    | user_id                                   | character varying           | YES         | 
+ public       | audit_events                    | action                                    | character varying           | NO          | 
+ public       | audit_events                    | entity_type                               | character varying           | YES         | 
+ public       | audit_events                    | entity_id                                 | character varying           | YES         | 
+ public       | audit_events                    | details                                   | text                        | YES         | 
+ public       | audit_events                    | created_at                                | timestamp without time zone | NO          | now()
+ public       | audit_logs                      | timestamp                                 | timestamp without time zone | NO          | now()
+ public       | audit_logs_unified              | entity_type                               | text                        | YES         | 
+ public       | clock_event_types               | id                                        | uuid                        | NO          | gen_random_uuid()
+ public       | clock_event_types               | code                                      | text                        | NO          | 
+ public       | clock_event_types               | name                                      | text                        | NO          | 
+ public       | clock_event_types               | description                               | text                        | YES         | 
+ public       | clock_event_types               | pair_code                                 | text                        | YES         | 
+ public       | clock_event_types               | category                                  | text                        | NO          | 'WORK'::text
+ public       | clock_event_types               | default_order                             | integer                     | NO          | 0
+ public       | clock_event_types               | active_by_default                         | boolean                     | NO          | true
+ public       | clock_event_types               | created_at                                | timestamp with time zone    | NO          | now()
+ public       | clock_event_types               | updated_at                                | timestamp with time zone    | NO          | now()
+ public       | clock_events                    | id                                        | uuid                        | NO          | uuid_generate_v4()
+ public       | clock_events                    | tenant_id                                 | uuid                        | NO          | 
+ public       | clock_events                    | employee_id                               | character varying           | NO          | 
+ public       | clock_events                    | timestamp                                 | timestamp with time zone    | NO          | now()
+ public       | clock_events                    | timezone                                  | character varying           | NO          | 'UTC'::character varying
+ public       | clock_events                    | eventType                                 | USER-DEFINED                | NO          | 
+ public       | clock_events                    | latitude                                  | double precision            | YES         | 
+ public       | clock_events                    | longitude                                 | double precision            | YES         | 
+ public       | clock_events                    | is_inside_geofence                        | boolean                     | NO          | true
+ public       | clock_events                    | device_info                               | text                        | YES         | 
+ public       | clock_events                    | client_ip                                 | character varying           | YES         | 
+ public       | clock_events                    | rowHash                                   | character varying           | NO          | 
+ public       | clock_events_foundation         | id                                        | uuid                        | NO          | gen_random_uuid()
+ public       | clock_events_foundation         | client_id                                 | uuid                        | NO          | 
+ public       | clock_events_foundation         | employee_profile_id                       | uuid                        | YES         | 
+ public       | clock_events_foundation         | event_type_id                             | uuid                        | YES         | 
+ public       | clock_events_foundation         | local_event_id                            | text                        | YES         | 
+ public       | clock_events_foundation         | event_datetime                            | timestamp with time zone    | NO          | 
+ public       | clock_events_foundation         | server_received_at                        | timestamp with time zone    | NO          | now()
+ public       | clock_events_foundation         | source                                    | text                        | NO          | 'MOBILE'::text
+ public       | clock_events_foundation         | sync_status                               | text                        | NO          | 'SYNCED'::text
+ public       | clock_events_foundation         | latitude                                  | numeric                     | YES         | 
+ public       | clock_events_foundation         | longitude                                 | numeric                     | YES         | 
+ public       | clock_events_foundation         | accuracy_meters                           | numeric                     | YES         | 
+ public       | clock_events_foundation         | address                                   | text                        | YES         | 
+ public       | clock_events_foundation         | inside_geofence                           | boolean                     | YES         | 
+ public       | clock_events_foundation         | selfie_required                           | boolean                     | NO          | false
+ public       | clock_events_foundation         | selfie_file_id                            | uuid                        | YES         | 
+ public       | clock_events_foundation         | local_hash                                | text                        | YES         | 
+ public       | clock_events_foundation         | server_hash                               | text                        | YES         | 
+ public       | clock_events_foundation         | nsr                                       | bigint                      | NO          | nextval('clock_events_foundation_nsr_seq'::regclass)
+ public       | clock_events_foundation         | metadata                                  | jsonb                       | NO          | '{}'::jsonb
+ public       | clock_events_foundation         | created_at                                | timestamp with time zone    | NO          | now()
+ public       | clock_events_foundation         | updated_at                                | timestamp with time zone    | NO          | now()
+ public       | clock_justifications_foundation | id                                        | uuid                        | NO          | gen_random_uuid()
+ public       | clock_justifications_foundation | client_id                                 | uuid                        | NO          | 
+ public       | clock_justifications_foundation | employee_profile_id                       | uuid                        | YES         | 
+ public       | clock_justifications_foundation | clock_event_id                            | uuid                        | YES         | 
+ public       | clock_justifications_foundation | justification_type                        | text                        | NO          | 
+ public       | clock_justifications_foundation | description                               | text                        | NO          | 
+ public       | clock_justifications_foundation | status                                    | text                        | NO          | 'PENDING'::text
+ public       | clock_justifications_foundation | attachment_path                           | text                        | YES         | 
+ public       | clock_justifications_foundation | reviewed_by                               | text                        | YES         | 
+ public       | clock_justifications_foundation | reviewed_at                               | timestamp with time zone    | YES         | 
+ public       | clock_justifications_foundation | review_notes                              | text                        | YES         | 
+ public       | clock_justifications_foundation | created_at                                | timestamp with time zone    | NO          | now()
+ public       | clock_justifications_foundation | updated_at                                | timestamp with time zone    | NO          | now()
+ public       | clock_policies                  | id                                        | uuid                        | NO          | gen_random_uuid()
+ public       | clock_policies                  | client_id                                 | uuid                        | NO          | 
+ public       | clock_policies                  | name                                      | text                        | NO          | 
+ public       | clock_policies                  | description                               | text                        | YES         | 
+ public       | clock_policies                  | gps_required                              | boolean                     | NO          | true
+ public       | clock_policies                  | min_accuracy_meters                       | integer                     | NO          | 30
+ public       | clock_policies                  | geofence_required                         | boolean                     | NO          | false
+ public       | clock_policies                  | allow_outside_geofence_with_justification | boolean                     | NO          | true
+ public       | clock_policies                  | offline_allowed                           | boolean                     | NO          | true
+ public       | clock_policies                  | max_offline_hours                         | integer                     | NO          | 48
+ public       | clock_policies                  | selfie_required                           | boolean                     | NO          | false
+ public       | clock_policies                  | telemetry_enabled                         | boolean                     | NO          | false
+ public       | clock_policies                  | telemetry_interval_minutes                | integer                     | NO          | 10
+ public       | clock_policies                  | is_default                                | boolean                     | NO          | false
+ public       | clock_policies                  | created_at                                | timestamp with time zone    | NO          | now()
+ public       | clock_policies                  | updated_at                                | timestamp with time zone    | NO          | now()
+ public       | clock_policy_event_types        | policy_id                                 | uuid                        | NO          | 
+ public       | clock_policy_event_types        | event_type_id                             | uuid                        | NO          | 
+ public       | clock_policy_event_types        | enabled                                   | boolean                     | NO          | true
+ public       | clock_policy_event_types        | requires_selfie                           | boolean                     | NO          | false
+ public       | clock_policy_event_types        | requires_geofence                         | boolean                     | NO          | false
+ public       | clock_policy_event_types        | requires_justification                    | boolean                     | NO          | false
+ public       | clock_policy_event_types        | display_order                             | integer                     | NO          | 0
+ public       | clock_policy_event_types        | updated_at                                | timestamp with time zone    | NO          | now()
+ public       | documents_foundation            | document_type                             | text                        | NO          | 
+ public       | geography_columns               | type                                      | text                        | YES         | 
+ public       | geometry_columns                | type                                      | character varying           | YES         | 
+ public       | hr_geofences                    | latitude                                  | numeric                     | NO          | 
+ public       | hr_geofences                    | longitude                                 | numeric                     | NO          | 
+ public       | hr_job_functions                | allows_overtime                           | boolean                     | NO          | false
+ public       | hr_work_locations               | id                                        | uuid                        | NO          | gen_random_uuid()
+ public       | hr_work_locations               | client_id                                 | uuid                        | NO          | 
+ public       | hr_work_locations               | name                                      | text                        | NO          | 
+ public       | hr_work_locations               | address_line                              | text                        | YES         | 
+ public       | hr_work_locations               | city                                      | text                        | YES         | 
+ public       | hr_work_locations               | state                                     | text                        | YES         | 
+ public       | hr_work_locations               | latitude                                  | numeric                     | YES         | 
+ public       | hr_work_locations               | longitude                                 | numeric                     | YES         | 
+ public       | hr_work_locations               | created_at                                | timestamp with time zone    | NO          | now()
+ public       | hr_work_locations               | updated_at                                | timestamp with time zone    | NO          | now()
+ public       | location_tracking_points        | id                                        | uuid                        | NO          | gen_random_uuid()
+ public       | location_tracking_points        | client_id                                 | uuid                        | NO          | 
+ public       | location_tracking_points        | employee_profile_id                       | uuid                        | YES         | 
+ public       | location_tracking_points        | device_id                                 | uuid                        | YES         | 
+ public       | location_tracking_points        | tracked_at                                | timestamp with time zone    | NO          | 
+ public       | location_tracking_points        | latitude                                  | numeric                     | NO          | 
+ public       | location_tracking_points        | longitude                                 | numeric                     | NO          | 
+ public       | location_tracking_points        | accuracy_meters                           | numeric                     | YES         | 
+ public       | location_tracking_points        | address                                   | text                        | YES         | 
+ public       | location_tracking_points        | source                                    | text                        | NO          | 'MOBILE'::text
+ public       | location_tracking_points        | metadata                                  | jsonb                       | NO          | '{}'::jsonb
+ public       | location_tracking_points        | created_at                                | timestamp with time zone    | NO          | now()
+ public       | location_tracking_points        | updated_at                                | timestamp with time zone    | NO          | now()
+ public       | mobile_app_settings             | show_address_before_clock                 | boolean                     | NO          | true
+ public       | saas_clients                    | timezone                                  | text                        | NO          | 'America/Sao_Paulo'::text
+ public       | schedules                       | type                                      | USER-DEFINED                | NO          | 'FIXED'::schedules_type_enum
+ public       | time_bank                       | id                                        | uuid                        | NO          | uuid_generate_v4()
+ public       | time_bank                       | tenant_id                                 | character varying           | NO          | 
+ public       | time_bank                       | employee_id                               | character varying           | NO          | 
+ public       | time_bank                       | date                                      | date                        | NO          | 
+ public       | time_bank                       | expected_minutes                          | integer                     | NO          | 
+ public       | time_bank                       | worked_minutes                            | integer                     | NO          | 0
+ public       | time_bank                       | balance_minutes                           | integer                     | NO          | 0
+ public       | time_bank                       | status                                    | character varying           | NO          | 'OPEN'::character varying
+ public       | time_bank                       | created_at                                | timestamp without time zone | NO          | now()
+ public       | time_bank                       | updated_at                                | timestamp without time zone | NO          | now()
+ public       | time_bank_balances_foundation   | id                                        | uuid                        | NO          | gen_random_uuid()
+ public       | time_bank_balances_foundation   | client_id                                 | uuid                        | NO          | 
+ public       | time_bank_balances_foundation   | employee_profile_id                       | uuid                        | YES         | 
+ public       | time_bank_balances_foundation   | reference_date                            | date                        | NO          | 
+ public       | time_bank_balances_foundation   | balance_minutes                           | integer                     | NO          | 0
+ public       | time_bank_balances_foundation   | credit_minutes                            | integer                     | NO          | 0
+ public       | time_bank_balances_foundation   | debit_minutes                             | integer                     | NO          | 0
+ public       | time_bank_balances_foundation   | created_at                                | timestamp with time zone    | NO          | now()
+ public       | time_bank_balances_foundation   | updated_at                                | timestamp with time zone    | NO          | now()
+ public       | time_records                    | id                                        | uuid                        | NO          | uuid_generate_v4()
+ public       | time_records                    | tenant_id                                 | character varying           | NO          | 
+ public       | time_records                    | employee_id                               | character varying           | YES         | 
+ public       | time_records                    | latitude                                  | numeric                     | YES         | 
+ public       | time_records                    | longitude                                 | numeric                     | YES         | 
+ public       | time_records                    | timestamp                                 | timestamp without time zone | NO          | now()
+ public       | time_records                    | event_type                                | character varying           | NO          | 'CLOCK_IN'::character varying
+ tiger        | tabblock20                      | uatype                                    | character varying           | YES         | 
+ topology     | layer                           | feature_type                              | integer                     | NO          | 
+(151 rows)
+
+
+## Contagens candidatas
+-------------------------------------------------
+DO
+           table_name            | total 
+---------------------------------+-------
+ audit_events                    |    31
+ clock_events                    |     0
+ clock_events_foundation         |     0
+ clock_event_types               |    18
+ clock_justifications_foundation |     1
+ clock_policies                  |     1
+ clock_policy_event_types        |     4
+ hr_work_locations               |     1
+ location_tracking_points        |    29
+ time_bank                       |     0
+ time_bank_balances_foundation   |     3
+ time_records                    |     9
+(12 rows)
+
+

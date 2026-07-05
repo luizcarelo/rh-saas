@@ -1,0 +1,316 @@
+     1	import { BrowserRouter, Route, Routes } from "react-router-dom";
+     2	import { Toaster } from "react-hot-toast";
+     3	
+     4	import { AdminLayout } from "./layouts/AdminLayout";
+     5	import { EmployeeLayout } from "./layouts/EmployeeLayout";
+     6	
+     7	import { ProtectedRoute } from "./components/ProtectedRoute";
+     8	import { LiveTrackingFoundationPage } from "./pages/LiveTrackingFoundationPage";
+     9	import { getUserInfo } from "./lib/api";
+    10	
+    11	import { Login } from "./pages/Login";
+    12	import { Dashboard } from "./pages/Dashboard";
+    13	import { EmployeesPage } from "./pages/EmployeesPage";
+    14	import { EmployeeDetailsPage } from "./pages/EmployeeDetailsPage";
+    15	import { DocumentsPage } from "./pages/DocumentsPage";
+    16	import { UsersPage } from "./pages/UsersPage";
+    17	import { AuditLogsPage } from "./pages/AuditLogsPage";
+    18	import { TimeTrackingPage } from "./pages/TimeTrackingPage";
+    19	import { ClockInPage } from "./pages/ClockInPage";
+    20	import { EmployeeDashboard } from "./pages/EmployeeDashboard";
+    21	
+    22	import { SuperAdminDashboard } from "./pages/SuperAdminDashboard";
+    23	import { SuperAdminClientsPage } from "./pages/SuperAdminClientsPage";
+    24	import { SuperAdminClientDetailsPage } from "./pages/SuperAdminClientDetailsPage";
+    25	import { SuperAdminClientDashboardPage } from "./pages/SuperAdminClientDashboardPage";
+    26	import { SuperAdminClientAuditPage } from "./pages/SuperAdminClientAuditPage";
+    27	import { SuperAdminClientModulesPage } from "./pages/SuperAdminClientModulesPage";
+    28	import { SuperAdminClientModulesAuditPage } from "./pages/SuperAdminClientModulesAuditPage";
+    29	
+    30	import { SuperAdminPlansPage } from "./pages/SuperAdminPlansPage";
+    31	import { SuperAdminPlanDetailsPage } from "./pages/SuperAdminPlanDetailsPage";
+    32	import { SuperAdminPlanCreatePage } from "./pages/SuperAdminPlanCreatePage";
+    33	
+    34	import { AnalyticsPage } from "./pages/AnalyticsPage";
+    35	import { SuperAdminPlaceholderPage } from "./pages/super-admin/SuperAdminPlaceholderPage";
+    36	
+    37	export default function App() {
+    38	  return (
+    39	    <BrowserRouter>
+    40	      <Routes>
+    41	
+    42	        <Route
+    43	          path="/login"
+    44	          element={<Login />}
+    45	        />
+    46	
+    47	        <Route element={<ProtectedRoute />}>
+    48	          <Route element={<AdminLayout />}>
+    49	
+    50	            <Route
+    51	              path="/"
+    52	              element={<Dashboard />}
+    53	            />
+    54	
+    55	            <Route
+    56	              path="/colaboradores"
+    57	              element={<EmployeesPage />}
+    58	            />
+    59	
+    60	            <Route
+    61	            path="/colaboradores/:id"
+    62	            element={<EmployeeDetailsPage />}
+    63	            />
+    64	
+    65	            
+    66	<Route
+    67	  path="/documentos"
+    68	  element={<DocumentsPage />}
+    69	/>
+    70	
+    71	<Route
+    72	  path="/usuarios"
+    73	    element={<UsersPage />}
+    74	/>
+    75	<Route
+    76	  path="/analytics"
+    77	  element={<AnalyticsPage />}
+    78	/>
+    79	
+    80	            <Route
+    81	              path="/audit"
+    82	              element={<AuditLogsPage />}
+    83	            />
+    84	
+    85	            <Route
+    86	              path="/ponto"
+    87	              element={<TimeTrackingPage />}
+    88	            />
+    89	
+    90	            <Route
+    91	              path="/registrar-ponto"
+    92	              element={<ClockInPage />}
+    93	            />
+    94	
+    95	
+    96	            <Route
+    97	              path="/live-tracking-foundation"
+    98	              element={<LiveTrackingFoundationPage />}
+    99	            />
+   100	
+   101	            <Route
+   102	              path="/super-admin"
+   103	              element={
+   104	                getUserInfo()?.role === "SUPER_ADMIN"
+   105	                  ? <SuperAdminDashboard />
+   106	                  : <Dashboard />
+   107	              }
+   108	            />
+   109	
+   110	            <Route
+   111	              path="/super-admin/clientes"
+   112	              element={
+   113	                getUserInfo()?.role === "SUPER_ADMIN"
+   114	                  ? <SuperAdminClientsPage />
+   115	                  : <Dashboard />
+   116	              }
+   117	            />
+   118	
+   119	            <Route
+   120	              path="/super-admin/clientes/:id"
+   121	              element={
+   122	                getUserInfo()?.role === "SUPER_ADMIN"
+   123	                  ? <SuperAdminClientDetailsPage />
+   124	                  : <Dashboard />
+   125	              }
+   126	            />
+   127	
+   128	            <Route
+   129	              path="/super-admin/clientes/:id/dashboard"
+   130	              element={
+   131	                getUserInfo()?.role === "SUPER_ADMIN"
+   132	                  ? <SuperAdminClientDashboardPage />
+   133	                  : <Dashboard />
+   134	              }
+   135	            />
+   136	
+   137	            <Route
+   138	              path="/super-admin/clientes/:id/audit"
+   139	              element={
+   140	                getUserInfo()?.role === "SUPER_ADMIN"
+   141	                  ? <SuperAdminClientAuditPage />
+   142	                  : <Dashboard />
+   143	              }
+   144	            />
+   145	
+   146	            <Route
+   147	              path="/super-admin/clientes/:id/modules"
+   148	              element={
+   149	                getUserInfo()?.role === "SUPER_ADMIN"
+   150	                  ? <SuperAdminClientModulesPage />
+   151	                  : <Dashboard />
+   152	              }
+   153	            />
+   154	
+   155	            <Route
+   156	              path="/super-admin/clientes/:id/modules/audit"
+   157	              element={
+   158	                getUserInfo()?.role === "SUPER_ADMIN"
+   159	                  ? <SuperAdminClientModulesAuditPage />
+   160	                  : <Dashboard />
+   161	              }
+   162	            />
+   163	
+   164	            <Route
+   165	              path="/super-admin/planos"
+   166	              element={
+   167	                getUserInfo()?.role === "SUPER_ADMIN"
+   168	                  ? <SuperAdminPlansPage />
+   169	                  : <Dashboard />
+   170	              }
+   171	            />
+   172	
+   173	            <Route
+   174	              path="/super-admin/planos/novo"
+   175	              element={
+   176	                getUserInfo()?.role === "SUPER_ADMIN"
+   177	                  ? <SuperAdminPlanCreatePage />
+   178	                  : <Dashboard />
+   179	              }
+   180	            />
+   181	
+   182	            <Route
+   183	              path="/super-admin/planos/:id"
+   184	              element={
+   185	                getUserInfo()?.role === "SUPER_ADMIN"
+   186	                  ? <SuperAdminPlanDetailsPage />
+   187	            <Route
+   188	              path="/super-admin/clientes/dashboard"
+   189	              element={(
+   190	                <SuperAdminPlaceholderPage
+   191	                  title="Dashboard de Clientes"
+   192	                  description="Visão consolidada de indicadores por cliente SaaS, incluindo status de implantação, módulos ativos e alertas operacionais."
+   193	                  priority="Média"
+   194	                  items={['Indicadores por cliente', 'Clientes ativos e suspensos', 'Módulos contratados', 'Alertas operacionais']}
+   195	                  nextSteps={['Definir métricas por tenant.', 'Validar endpoints agregados.', 'Criar cards analíticos reais.']}
+   196	                />
+   197	              )}
+   198	            />
+   199	            <Route
+   200	              path="/super-admin/clientes/novo"
+   201	              element={(
+   202	                <SuperAdminPlaceholderPage
+   203	                  title="Novo Cliente SaaS"
+   204	                  description="Preparação do fluxo de cadastro de novos clientes SaaS, incluindo dados cadastrais, plano inicial e módulos contratados."
+   205	                  priority="Alta"
+   206	                  items={['Dados do cliente', 'Tenant inicial', 'Plano contratado', 'Módulos habilitados']}
+   207	                  nextSteps={['Validar contrato backend de criação de cliente.', 'Definir campos obrigatórios.', 'Implementar formulário de cadastro.']}
+   208	                />
+   209	              )}
+   210	            />
+   211	            <Route
+   212	              path="/super-admin/empresas"
+   213	              element={(
+   214	                <SuperAdminPlaceholderPage
+   215	                  title="Empresas e Filiais"
+   216	                  description="Área para gestão de empresas, matrizes e filiais vinculadas aos clientes SaaS."
+   217	                  priority="Alta"
+   218	                  items={['Matriz', 'Filiais', 'CNPJ', 'Endereço completo', 'Status ativo/inativo']}
+   219	                  nextSteps={['Mapear tabela real de empresas/filiais.', 'Validar endpoints existentes.', 'Criar CRUD de empresas e filiais.']}
+   220	                />
+   221	              )}
+   222	            />
+   223	            <Route
+   224	              path="/super-admin/planos/recursos"
+   225	              element={(
+   226	                <SuperAdminPlaceholderPage
+   227	                  title="Recursos dos Planos"
+   228	                  description="Área para definir quais recursos e módulos pertencem a cada plano SaaS."
+   229	                  priority="Média"
+   230	                  items={['Ponto eletrônico', 'Documentos', 'Mobile', 'Live Tracking', 'Holerites', 'Relatórios']}
+   231	                  nextSteps={['Mapear módulos/features existentes.', 'Definir matriz plano x recurso.', 'Criar tela de associação.']}
+   232	                />
+   233	              )}
+   234	            />
+   235	            <Route
+   236	              path="/super-admin/modulos"
+   237	              element={(
+   238	                <SuperAdminPlaceholderPage
+   239	                  title="Módulos SaaS"
+   240	                  description="Catálogo dos módulos disponíveis na plataforma SaaS."
+   241	                  priority="Alta"
+   242	                  items={['Ponto', 'Documentos', 'Assinaturas', 'Mobile', 'Live Tracking', 'Holerites']}
+   243	                  nextSteps={['Validar tabela de módulos/features.', 'Definir status por módulo.', 'Criar CRUD ou catálogo administrável.']}
+   244	                />
+   245	              )}
+   246	            />
+   247	            <Route
+   248	              path="/super-admin/modulos/clientes"
+   249	              element={(
+   250	                <SuperAdminPlaceholderPage
+   251	                  title="Módulos por Cliente"
+   252	                  description="Controle de módulos habilitados por cliente SaaS."
+   253	                  priority="Alta"
+   254	                  items={['Cliente', 'Plano', 'Módulos ativos', 'Feature flags', 'Histórico de alterações']}
+   255	                  nextSteps={['Definir vínculo tenant x módulo.', 'Criar endpoint de ativação/desativação.', 'Criar tela de permissões por cliente.']}
+   256	                />
+   257	              )}
+   258	            />
+   259	            <Route
+   260	              path="/super-admin/usuarios"
+   261	              element={(
+   262	                <SuperAdminPlaceholderPage
+   263	                  title="Usuários Administrativos"
+   264	                  description="Gestão de usuários administrativos da plataforma SaaS."
+   265	                  priority="Alta"
+   266	                  items={['SUPER_ADMIN', 'TENANT_ADMIN', 'RH_ADMIN', 'Status ativo/inativo', 'Reset controlado de senha']}
+   267	                  nextSteps={['Validar endpoints de usuários.', 'Definir permissões por perfil.', 'Criar CRUD administrativo seguro.']}
+   268	                />
+   269	              )}
+   270	            />
+   271	            <Route
+   272	              path="/super-admin/auditoria"
+   273	              element={(
+   274	                <SuperAdminPlaceholderPage
+   275	                  title="Auditoria SaaS"
+   276	                  description="Consulta de ações administrativas, logs críticos e eventos relevantes da operação SaaS."
+   277	                  priority="Média"
+   278	                  items={['Usuário', 'Cliente', 'Ação', 'Data/hora', 'Módulo', 'Evento crítico']}
+   279	                  nextSteps={['Validar tabelas de auditoria/logs.', 'Criar filtros por usuário e cliente.', 'Criar consulta paginada.']}
+   280	                />
+   281	              )}
+   282	            />
+   283	            <Route
+   284	              path="/super-admin/configuracoes"
+   285	              element={(
+   286	                <SuperAdminPlaceholderPage
+   287	                  title="Configurações SaaS"
+   288	                  description="Parâmetros globais da plataforma, identidade visual padrão e políticas gerais."
+   289	                  priority="Média"
+   290	                  items={['Parâmetros globais', 'Identidade visual', 'Políticas de segurança', 'Limites globais']}
+   291	                  nextSteps={['Definir parâmetros globais suportados.', 'Validar persistência no backend.', 'Criar tela de configuração segura.']}
+   292	                />
+   293	              )}
+   294	            />
+   295	                  : <Dashboard />
+   296	              }
+   297	            />
+   298	
+   299	          </Route>
+   300	        </Route>
+   301	
+   302	        <Route element={<ProtectedRoute />}>
+   303	<Route element={<EmployeeLayout />}>
+   304	            <Route
+   305	              path="/meu-painel"
+   306	              element={<EmployeeDashboard />}
+   307	            />
+   308	          </Route>
+   309	        </Route>
+   310	
+   311	      </Routes>
+   312	
+   313	      <Toaster position="top-right" />
+   314	    </BrowserRouter>
+   315	  );
+   316	}

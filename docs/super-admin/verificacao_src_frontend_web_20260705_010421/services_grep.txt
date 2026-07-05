@@ -1,0 +1,78 @@
+/opt/rh-saas/frontend-web/src/lib/api.ts:8:  import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "";
+/opt/rh-saas/frontend-web/src/lib/api.ts:83:  const apiError = data as ApiError;
+/opt/rh-saas/frontend-web/src/lib/api.ts:85:  if (Array.isArray(apiError.message)) {
+/opt/rh-saas/frontend-web/src/lib/api.ts:86:    return apiError.message.join(", ");
+/opt/rh-saas/frontend-web/src/lib/api.ts:89:  return apiError.message || apiError.error || fallback;
+/opt/rh-saas/frontend-web/src/lib/api.ts:92:export async function apiRequest<T>(
+/opt/rh-saas/frontend-web/src/lib/api.ts:107:  const response = await fetch(`${API_BASE}${endpoint}`, {
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:1:import { apiRequest } from "./api";
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:71:  return apiRequest<FoundationEmployee[]>("/v1/foundation/hr/employees");
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:77:  return apiRequest<MobileDeviceFoundation>(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:89:  return apiRequest<LocationTrackingPointFoundation>(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:99:  return apiRequest<LocationTrackingPointFoundation[]>(
+/opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts:105:  return apiRequest<LocationTrackingPointFoundation[]>(
+/opt/rh-saas/frontend-web/src/layouts/AdminLayout.tsx:11:import { clearSession, getUserInfo } from "../lib/api";
+/opt/rh-saas/frontend-web/src/layouts/EmployeeLayout.tsx:2:import { clearSession, getUserInfo } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:40:    const data = await apiRequest<Employee>(
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:50:    apiRequest<User[]>("/v1/users")
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:68:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/EmployeeDetailsPage.tsx:85:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanCreatePage.tsx:12:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:25:      await apiRequest<DocumentItem[]>(
+/opt/rh-saas/frontend-web/src/pages/DocumentsPage.tsx:50:    await fetch(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:22:      apiRequest("/v1/super-admin/dashboard"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:23:      apiRequest("/v1/super-admin/system/health"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:24:      apiRequest("/v1/super-admin/system/database"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:25:      apiRequest("/v1/super-admin/system/storage"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:26:      apiRequest("/v1/super-admin/system/metrics"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:27:      apiRequest("/v1/super-admin/system/services"),
+/opt/rh-saas/frontend-web/src/pages/SuperAdminDashboard.tsx:120:          <div>API: {health?.api}</div>
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:27:    apiRequest<Plan[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlanDetailsPage.tsx:60:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDetailsPage.tsx:54:    apiRequest<ClientDetailsResponse>(
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:9:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/AuditLogsPage.tsx:80:          const response = await apiRequest<unknown>(endpoint);
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientsPage.tsx:26:    apiRequest<Client[]>(
+/opt/rh-saas/frontend-web/src/pages/EmployeeDashboard.tsx:25:            const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/time-records/clock-in`, {
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientDashboardPage.tsx:21:    apiRequest(
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:3:import { apiRequest, setSession } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/Login.tsx:54:      const response = await apiRequest<LoginResponse>("/v1/auth/login", {
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/AnalyticsPage.tsx:20:    const result = await apiRequest<AnalyticsData>(
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:2:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:28:      await apiRequest<User[]>(
+/opt/rh-saas/frontend-web/src/pages/UsersPage.tsx:41:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:24:    apiRequest<ModuleItem[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesPage.tsx:41:    await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:5:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:16:    const response = await fetch(
+/opt/rh-saas/frontend-web/src/pages/TimeTrackingPage.tsx:60:    const result = await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientModulesAuditPage.tsx:15:    apiRequest<any[]>(
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:4:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/ClockInPage.tsx:30:            await apiRequest(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:3:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminClientAuditPage.tsx:21:    apiRequest<any[]>(
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:4:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/SuperAdminPlansPage.tsx:27:    apiRequest<Plan[]>(
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:10:import { apiRequest } from "../lib/api";
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:46:      const data = await apiRequest<Employee[]>("/v1/employees");
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:65:      await apiRequest<Employee>("/v1/employees", {
+/opt/rh-saas/frontend-web/src/pages/EmployeesPage.tsx:100:      await apiRequest(
+/opt/rh-saas/frontend-web/src/components/ProtectedRoute.tsx:2:import { getToken } from "../lib/api";
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:66:  const apiBaseUrl = import.meta.env.VITE_API_URL || '';
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:68:  return apiBaseUrl.replace(/\/$/, '');
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:167:  const response = await fetch(url, {
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:204:export async function listSuperAdminClients(): Promise<ListSuperAdminClientsResult> {
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:229:export const superAdminClientsService = {
+/opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts:230:  list: listSuperAdminClients,
+/opt/rh-saas/frontend-web/src/App.tsx.20260703_230020.bak:8:import { getUserInfo } from "./lib/api";

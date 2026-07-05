@@ -1,0 +1,5 @@
+IS_JSON=True
+ROLE=SUPER_ADMIN
+EMAIL=superadmin@rh-saas.local
+TENANT_ID=11446a8f-ed2c-468e-9be1-3409beb12d3c
+HAS_TOKEN=True

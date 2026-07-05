@@ -23,4 +23,22 @@ export class AnalyticsService {
       absenteeismRate: 2.5
     };
   }
+
+  async getWorkforceStats(
+    tenantId: string,
+  ) {
+
+    const records =
+      await this.repo.find({
+        where: {
+          tenantId,
+        },
+      });
+
+    return {
+      totalRecords:
+        records.length,
+    };
+  }
+
 }

@@ -1,0 +1,9 @@
+ROOT_EXISTS=SIM
+BACKEND_EXISTS=SIM
+BACKEND_SRC_EXISTS=SIM
+FRONTEND_EXISTS=SIM
+DOCS_BACKUP_OK=SIM
+OUTDIR=/opt/rh-saas/docs/super-admin/superadmin_A4_E5_E1B_FIX1_parser_rotas_post_20260705_030024
+BACKUP=/opt/rh-saas/backups/superadmin_A4_E5_E1B_FIX1_parser_rotas_post_20260705_030024
+ENV_FILE=/opt/rh-saas/docs/super-admin/superadmin_A4_E5_E1B_FIX1_parser_rotas_post_20260705_030024/ENV_CONTEXT.env
+CONCLUSION=E5_E1B_FIX1_P1_PREPARACAO_OK

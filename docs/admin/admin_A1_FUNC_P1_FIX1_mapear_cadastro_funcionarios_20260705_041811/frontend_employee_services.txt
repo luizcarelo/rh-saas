@@ -1,0 +1,50 @@
+=================================================
+FRONTEND EMPLOYEE SERVICES
+Data: 20260705_041811
+=================================================
+
+### /opt/rh-saas/frontend-web/src/lib/api.ts
+16:  employeeId?: string | null;
+19:export function getToken() {
+21:    localStorage.getItem("rh_access_token") ||
+22:    localStorage.getItem("token") ||
+27:export function getUserInfo(): UserInfo | null {
+29:    localStorage.getItem("rh_user_info") ||
+30:    localStorage.getItem("user_info");
+49:   * localStorage.getItem("token")
+66:export function getAuthHeaders() {
+67:  const token = getToken();
+92:export async function apiRequest<T>(
+93:  endpoint: string,
+96:  const token = getToken();
+107:  const response = await fetch(`${API_BASE}${endpoint}`, {
+
+### /opt/rh-saas/frontend-web/src/lib/liveTrackingApi.ts
+1:import { apiRequest } from "./api";
+3:export type FoundationEmployee = {
+6:  employeeExternalRef?: string | null;
+21:  employeeProfileId?: string;
+31:  employeeProfileId?: string | null;
+43:  employeeProfileId: string;
+57:  employeeProfileId?: string | null;
+70:export async function getFoundationEmployees() {
+71:  return apiRequest<FoundationEmployee[]>("/v1/foundation/hr/employees");
+77:  return apiRequest<MobileDeviceFoundation>(
+78:    "/v1/foundation/live-tracking/device",
+80:      method: "POST",
+89:  return apiRequest<LocationTrackingPointFoundation>(
+90:    "/v1/foundation/live-tracking/location",
+92:      method: "POST",
+98:export async function getLiveTrackingPoints() {
+99:  return apiRequest<LocationTrackingPointFoundation[]>(
+100:    "/v1/foundation/live-tracking/points",
+104:export async function getLatestLiveTrackingPoints() {
+105:  return apiRequest<LocationTrackingPointFoundation[]>(
+106:    "/v1/foundation/live-tracking/latest",
+110:export function getOrCreateBrowserDeviceUid() {
+112:  const existing = localStorage.getItem(storageKey);
+
+### /opt/rh-saas/frontend-web/src/lib/validations/employee.ts
+3:export const employeeSchema = z.object({
+13:export type EmployeeFormValues = z.infer<typeof employeeSchema>;
+

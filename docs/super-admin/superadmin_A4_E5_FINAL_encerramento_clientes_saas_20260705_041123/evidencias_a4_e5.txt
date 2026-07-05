@@ -1,0 +1,66 @@
+=================================================
+EVIDÊNCIAS LOCAIS A4-E5
+Data: 20260705_041123
+=================================================
+
+Relatórios A4-E5 encontrados:
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_A_DIAG_PAYLOAD_CRIACAO_CLIENTE_20260705_012705.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_B_FIX1B_AJUSTAR_ENDPOINT_CREATE_20260705_031416.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_B_SERVICE_CREATE_CLIENT_20260705_013745.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_C_FIX2_CREATE_VALIDATION_20260705_035540.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_C_FIX2_FORM_DTO_REAL_20260705_032847.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_C_FIX2_VALIDATION_FORM_DTO_REAL_20260705_033049.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_C_FIX3B_CORRIGIR_UPDATEFIELD_DIRETO_20260705_040223.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_C_FIX3C_CORRIGIR_UPDATEFIELD_COMPUTED_20260705_040355.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_C_FIX3_CORRIGIR_UPDATEFIELD_20260705_040022.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_C_FIX3C_VALIDATION_CRIACAO_TELA_20260705_040638.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_C_VALIDATION_NOVO_CLIENTE_20260705_015117.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_D1_DESCOBRIR_ENDPOINT_POST_CLIENTE_20260705_020201.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_D2_PAYLOAD_PLANO_VALIDO_20260705_032318.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_D3_PAYLOAD_FINAL_SLUG_20260705_032638.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_D_FIX1_TESTE_CRIACAO_COM_ENV_20260705_031947.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_E1B_FIX1_P1_PREPARAR_BACKUP_20260705_030024.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_E1B_FIX1_P2_COLETAR_BACKEND_20260705_030024.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_E1B_FIX1_P3D_PARSER_SEM_GROUP_20260705_030024.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_E1_MAPEAR_TENANT_ENDPOINT_20260705_020455.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_LIST_FIX1_AJUSTAR_ENDPOINT_LISTAGEM_20260705_034531.md
+/opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_LIST_FIX1_VALIDATION_20260705_034744.md
+
+Diretórios de evidências A4-E5 encontrados:
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_A_diag_payload_criacao_cliente_20260705_012705
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_B_FIX1_ajustar_endpoint_create_20260705_031326
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_B_FIX1B_ajustar_endpoint_create_20260705_031416
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_B_service_create_client_20260705_013745
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_C_FIX2_CREATE_VALIDATION_20260705_035540
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_C_FIX2_form_dto_real_20260705_032847
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_C_FIX2_VALIDATION_form_dto_real_20260705_033049
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_C_FIX3B_corrigir_updatefield_direto_20260705_040223
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_C_FIX3C_corrigir_updatefield_computed_20260705_040355
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_C_FIX3_corrigir_updatefield_20260705_040022
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_C_FIX3C_VALIDATION_criacao_tela_20260705_040638
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_C_form_novo_cliente_20260705_014048
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_C_VALIDATION_novo_cliente_20260705_015117
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_D1_descobrir_endpoint_post_cliente_20260705_020201
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_D2_payload_plano_valido_20260705_032318
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_D3_payload_final_slug_20260705_032638
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_D_FIX1_teste_criacao_com_env_20260705_031947
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_D_teste_criacao_cliente_homologacao_20260705_015528
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_D_teste_criacao_cliente_homologacao_20260705_015637
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_D_teste_criacao_cliente_homologacao_20260705_015851
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_D_teste_criacao_cliente_homologacao_20260705_031503
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_D_teste_criacao_cliente_homologacao_20260705_031556
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_D_teste_criacao_cliente_homologacao_20260705_031613
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_D_teste_criacao_cliente_homologacao_20260705_031740
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_E1B_extrair_rota_post_20260705_020725
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_E1B_FIX1_parser_rotas_post_20260705_030024
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_E1_mapear_tenant_endpoint_20260705_020455
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_FINAL_encerramento_clientes_saas_20260705_041123
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_LIST_FIX1_ajustar_endpoint_listagem_20260705_034531
+/opt/rh-saas/docs/super-admin/superadmin_A4_E5_LIST_FIX1_VALIDATION_20260705_034744
+
+Últimos relatórios relevantes, se existirem:
+- /opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_D3_PAYLOAD_FINAL_SLUG_20260705_032638.md
+- /opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_C_FIX2_FORM_DTO_REAL_20260705_032847.md
+- /opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_LIST_FIX1_VALIDATION_20260705_034744.md
+- /opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_C_FIX3C_CORRIGIR_UPDATEFIELD_COMPUTED_20260705_040355.md
+- /opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_C_FIX3C_VALIDATION_CRIACAO_TELA_20260705_040638.md

@@ -1,0 +1,8 @@
+Arquivo: /opt/rh-saas/frontend-web/src/pages/SuperAdminClientCreatePage.tsx
+
+5:  createSuperAdminClient,
+81:      setError('Informe o nome do cliente SaaS.');
+88:      const createdClient = await createSuperAdminClient(buildPayload());
+119:              Novo Cliente SaaS
+137:        onSubmit={(event) => void handleSubmit(event)}
+324:            {submitting ? 'Criando cliente...' : 'Criar Cliente SaaS'}

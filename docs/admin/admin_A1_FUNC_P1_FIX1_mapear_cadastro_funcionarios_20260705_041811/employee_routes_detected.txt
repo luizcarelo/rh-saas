@@ -1,0 +1,207 @@
+GET	/v1/dashboard/employees	HANDLER=	BODY_DTO=	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=employees
+---
+GET	/v1/dashboard/executive	HANDLER=	BODY_DTO=	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=executive
+---
+GET	/v1/dashboard/overview	HANDLER=	BODY_DTO=	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=overview
+---
+GET	/v1/dashboard/schedules	HANDLER=	BODY_DTO=	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=schedules
+---
+GET	/v1/dashboard/time-bank	HANDLER=	BODY_DTO=	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=time-bank
+---
+GET	/v1/dashboard/time-records	HANDLER=	BODY_DTO=	CLASS=DashboardController	FILE=/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts
+  controller=v1/dashboard methodPath=time-records
+---
+GET	/v1/documents/my-docs	HANDLER=	BODY_DTO=	CLASS=DocumentsController	FILE=/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+  controller=v1/documents methodPath=my-docs
+---
+POST	/v1/documents/upload	HANDLER=	BODY_DTO=	CLASS=DocumentsController	FILE=/opt/rh-saas/backend/src/modules/documents/documents.controller.ts
+  controller=v1/documents methodPath=upload
+---
+GET	/v1/employees	HANDLER=	BODY_DTO=LinkUserDto	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=
+---
+POST	/v1/employees	HANDLER=	BODY_DTO=CreateEmployeeDto	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=
+---
+DELETE	/v1/employees/:id	HANDLER=	BODY_DTO=	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=:id
+---
+GET	/v1/employees/:id	HANDLER=	BODY_DTO=LinkUserDto	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=:id
+---
+DELETE	/v1/employees/:id/link-user	HANDLER=	BODY_DTO=	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=:id/link-user
+---
+PUT	/v1/employees/:id/link-user	HANDLER=	BODY_DTO=LinkUserDto	CLASS=EmployeesController	FILE=/opt/rh-saas/backend/src/modules/employees/employees.controller.ts
+  controller=v1/employees methodPath=:id/link-user
+---
+GET	/v1/foundation/clock/event-types	HANDLER=clockEventTypes	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/event-types
+---
+GET	/v1/foundation/clock/events	HANDLER=clockEventTypes	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/events
+---
+GET	/v1/foundation/clock/justifications	HANDLER=documentRecipients	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/justifications
+---
+GET	/v1/foundation/clock/overview	HANDLER=clockEventTypes	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/overview
+---
+GET	/v1/foundation/clock/policies	HANDLER=clockPolicyEventTypes	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/policies
+---
+GET	/v1/foundation/clock/policy-event-types	HANDLER=clockPolicyEventTypes	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=clock/policy-event-types
+---
+GET	/v1/foundation/documents	HANDLER=documentRecipients	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=documents
+---
+GET	/v1/foundation/documents/overview	HANDLER=documentRecipients	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=documents/overview
+---
+GET	/v1/foundation/documents/recipients	HANDLER=documentRecipients	BODY_DTO=RegisterMobileDeviceDto	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=documents/recipients
+---
+GET	/v1/foundation/hr/departments	HANDLER=	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/departments
+---
+GET	/v1/foundation/hr/employees	HANDLER=	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/employees
+---
+GET	/v1/foundation/hr/geofences	HANDLER=clockEventTypes	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/geofences
+---
+GET	/v1/foundation/hr/job-functions	HANDLER=	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/job-functions
+---
+GET	/v1/foundation/hr/job-positions	HANDLER=	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/job-positions
+---
+GET	/v1/foundation/hr/work-locations	HANDLER=	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=hr/work-locations
+---
+POST	/v1/foundation/live-tracking/device	HANDLER=	BODY_DTO=RegisterMobileDeviceDto	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=live-tracking/device
+---
+GET	/v1/foundation/live-tracking/latest	HANDLER=	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=live-tracking/latest
+---
+POST	/v1/foundation/live-tracking/location	HANDLER=	BODY_DTO=CreateLocationTrackingPointDto	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=live-tracking/location
+---
+GET	/v1/foundation/live-tracking/points	HANDLER=	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=live-tracking/points
+---
+GET	/v1/foundation/mobile/devices	HANDLER=clockEventTypes	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=mobile/devices
+---
+GET	/v1/foundation/mobile/settings	HANDLER=clockEventTypes	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=mobile/settings
+---
+GET	/v1/foundation/overview	HANDLER=	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=overview
+---
+GET	/v1/foundation/payroll/overview	HANDLER=	BODY_DTO=RegisterMobileDeviceDto	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=payroll/overview
+---
+GET	/v1/foundation/payroll/payslips	HANDLER=	BODY_DTO=RegisterMobileDeviceDto	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=payroll/payslips
+---
+GET	/v1/foundation/timebank/balances	HANDLER=	BODY_DTO=RegisterMobileDeviceDto	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=timebank/balances
+---
+GET	/v1/foundation/timebank/overview	HANDLER=	BODY_DTO=RegisterMobileDeviceDto	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=timebank/overview
+---
+GET	/v1/foundation/tracking/points	HANDLER=clockEventTypes	BODY_DTO=	CLASS=FoundationController	FILE=/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts
+  controller=v1/foundation methodPath=tracking/points
+---
+GET	/v1/reports/afd	HANDLER=	BODY_DTO=	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=afd
+---
+GET	/v1/reports/employees	HANDLER=	BODY_DTO=	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=employees
+---
+GET	/v1/reports/executive	HANDLER=	BODY_DTO=	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=executive
+---
+GET	/v1/reports/productivity	HANDLER=	BODY_DTO=	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=productivity
+---
+GET	/v1/reports/schedule-distribution	HANDLER=	BODY_DTO=	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=schedule-distribution
+---
+GET	/v1/reports/schedules	HANDLER=	BODY_DTO=	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=schedules
+---
+GET	/v1/reports/time-bank	HANDLER=	BODY_DTO=	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=time-bank
+---
+GET	/v1/reports/time-bank-summary	HANDLER=	BODY_DTO=	CLASS=ReportsController	FILE=/opt/rh-saas/backend/src/modules/reports/reports.controller.ts
+  controller=v1/reports methodPath=time-bank-summary
+---
+GET	/v1/schedules	HANDLER=	BODY_DTO=AssignScheduleDto	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=
+---
+POST	/v1/schedules	HANDLER=	BODY_DTO=CreateScheduleDto	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=
+---
+DELETE	/v1/schedules/:id	HANDLER=	BODY_DTO=	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=:id
+---
+GET	/v1/schedules/:id	HANDLER=	BODY_DTO=CreateScheduleDto	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=:id
+---
+PUT	/v1/schedules/:id	HANDLER=	BODY_DTO=UpdateScheduleDto	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=:id
+---
+POST	/v1/schedules/assign	HANDLER=	BODY_DTO=AssignScheduleDto	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=assign
+---
+DELETE	/v1/schedules/assign/:id	HANDLER=	BODY_DTO=any	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=assign/:id
+---
+PATCH	/v1/schedules/assign/:id/end	HANDLER=	BODY_DTO=any	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=assign/:id/end
+---
+GET	/v1/schedules/employee/:employeeId	HANDLER=	BODY_DTO=any	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=employee/:employeeId
+---
+GET	/v1/schedules/employee/:employeeId/active	HANDLER=	BODY_DTO=any	CLASS=ScheduleController	FILE=/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts
+  controller=v1/schedules methodPath=employee/:employeeId/active
+---
+GET	/v1/time-bank	HANDLER=	BODY_DTO=any	CLASS=TimeBankController	FILE=/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+  controller=v1/time-bank methodPath=
+---
+GET	/v1/time-bank/:employeeId	HANDLER=	BODY_DTO=any	CLASS=TimeBankController	FILE=/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+  controller=v1/time-bank methodPath=:employeeId
+---
+GET	/v1/time-bank/:employeeId/details	HANDLER=	BODY_DTO=any	CLASS=TimeBankController	FILE=/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+  controller=v1/time-bank methodPath=:employeeId/details
+---
+POST	/v1/time-bank/recalculate	HANDLER=	BODY_DTO=any	CLASS=TimeBankController	FILE=/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts
+  controller=v1/time-bank methodPath=recalculate
+---
+GET	/v1/time-records/afd	HANDLER=	BODY_DTO=any	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=afd
+---
+POST	/v1/time-records/break-end	HANDLER=	BODY_DTO=any	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=break-end
+---
+POST	/v1/time-records/break-start	HANDLER=	BODY_DTO=any	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=break-start
+---
+POST	/v1/time-records/clock-in	HANDLER=if	BODY_DTO=any	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=clock-in
+---
+POST	/v1/time-records/clock-out	HANDLER=	BODY_DTO=any	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=clock-out
+---
+POST	/v1/time-records/simulate-math	HANDLER=	BODY_DTO=any	CLASS=TimeRecordsController	FILE=/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts
+  controller=v1/time-records methodPath=simulate-math
+---

@@ -1,0 +1,14 @@
+=================================================
+FRONTEND SERVICE CHECK
+Data: 20260705_020455
+=================================================
+
+### /opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts
+230:export type CreateSuperAdminClientPayload = {
+245:const CLIENT_CREATE_ENDPOINT_CANDIDATES = [
+254:  payload: CreateSuperAdminClientPayload,
+266:    method: 'POST',
+303:export async function createSuperAdminClient(
+304:  payload: CreateSuperAdminClientPayload,
+308:  for (const endpoint of CLIENT_CREATE_ENDPOINT_CANDIDATES) {
+326:  create: createSuperAdminClient,

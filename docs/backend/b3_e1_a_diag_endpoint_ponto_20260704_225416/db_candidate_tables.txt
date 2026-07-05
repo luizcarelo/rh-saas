@@ -1,0 +1,16 @@
+ table_schema |           table_name            
+--------------+---------------------------------
+ public       | audit_events
+ public       | clock_event_types
+ public       | clock_events
+ public       | clock_events_foundation
+ public       | clock_justifications_foundation
+ public       | clock_policies
+ public       | clock_policy_event_types
+ public       | hr_work_locations
+ public       | location_tracking_points
+ public       | time_bank
+ public       | time_bank_balances_foundation
+ public       | time_records
+(12 rows)
+

@@ -1,0 +1,5 @@
+{
+  "message": "Credenciais inválidas.",
+  "error": "Unauthorized",
+  "statusCode": 401
+}

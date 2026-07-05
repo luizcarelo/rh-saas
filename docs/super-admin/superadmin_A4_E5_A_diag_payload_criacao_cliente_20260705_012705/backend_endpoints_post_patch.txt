@@ -1,0 +1,1660 @@
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:9:import { SaasClient } from './entities/saas-client.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:37:    @InjectRepository(SaasClient)
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:38:    private readonly clientRepo: Repository<SaasClient>,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:95:  private async getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:96:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:98:    const client =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:99:      await this.clientRepo.findOne({
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:100:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:103:    if (!client) {
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:105:        'Cliente SaaS não encontrado para o tenant informado.',
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:109:    return client.id;
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:113:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:115:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:116:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:117:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:137:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:140:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:143:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:146:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:149:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:152:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:155:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:158:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:161:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:164:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:168:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:172:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:177:      clientId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:196:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:198:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:199:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:200:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:204:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:213:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:215:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:216:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:217:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:221:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:227:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:229:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:230:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:231:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:235:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:241:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:243:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:244:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:245:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:249:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:255:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:257:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:258:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:259:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:263:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:269:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:271:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:272:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:273:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:277:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:283:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:285:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:286:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:287:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:291:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:297:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:299:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:300:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:301:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:305:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:310:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:312:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:313:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:314:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:318:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:325:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:327:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:328:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:329:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:340:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:344:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:348:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:353:      clientId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:363:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:365:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:366:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:367:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:371:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:384:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:386:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:387:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:388:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:392:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:404:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:406:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:407:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:408:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:412:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:419:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:421:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:422:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:423:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:431:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:437:      clientId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:444:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:446:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:447:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:448:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:452:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:467:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:469:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:470:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:471:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:476:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:480:      clientId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:486:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:488:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:489:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:490:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:494:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:502:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:504:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:505:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:506:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:511:        where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:515:      clientId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:521:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:523:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:524:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:525:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:529:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:541:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:544:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:545:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:546:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:556:            clientId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:562:          'Perfil de colaborador não encontrado para este cliente.',
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:570:          clientId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:578:          clientId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:601:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:604:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:605:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:606:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:613:          clientId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:619:        'Perfil de colaborador não encontrado para este cliente.',
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:628:            clientId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:634:          'Dispositivo móvel não encontrado para este cliente.',
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:641:        clientId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:662:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:664:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:665:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:666:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:670:      where: { clientId },
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:677:    tenantId: string,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:679:    const clientId =
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:680:      await this.getClientIdByTenantId(
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:681:        tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.service.ts:686:      .where('point.client_id = :clientId', { clientId })
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:7:import { SaasClient } from './entities/saas-client.entity';
+/opt/rh-saas/backend/src/modules/foundation/foundation.module.ts:33:      SaasClient,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:15:@Controller('v1/foundation')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:22:  @Get('overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:25:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:29:  @Get('hr/employees')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:32:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:36:  @Get('hr/departments')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:39:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:43:  @Get('hr/job-positions')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:46:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:50:  @Get('hr/job-functions')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:53:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:57:  @Get('hr/work-locations')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:60:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:64:  @Get('hr/geofences')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:67:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:71:  @Get('mobile/devices')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:74:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:78:  @Get('mobile/settings')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:81:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:85:  @Get('tracking/points')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:88:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:92:  @Get('clock/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:95:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:99:  @Get('clock/events')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:102:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:106:  @Get('clock/event-types')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:111:  @Get('clock/policies')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:114:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:118:  @Get('clock/policy-event-types')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:123:  @Get('clock/justifications')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:126:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:130:  @Get('documents/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:133:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:137:  @Get('documents')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:140:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:144:  @Get('documents/recipients')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:150:  @Get('timebank/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:153:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:157:  @Get('timebank/balances')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:160:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:165:  @Get('payroll/overview')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:168:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:172:  @Get('payroll/payslips')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:175:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:180:  @Post('live-tracking/device')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:186:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:191:  @Post('live-tracking/location')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:197:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:202:  @Get('live-tracking/points')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:207:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:211:  @Get('live-tracking/latest')
+/opt/rh-saas/backend/src/modules/foundation/foundation.controller.ts:216:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-event-foundation.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-position.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-work-location.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-justification-foundation.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/time-bank-balance-foundation.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-employee-profile.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:10:  name: 'saas_clients',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:13:export class SaasClient {
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:18:    name: 'tenant_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/saas-client.entity.ts:22:  tenantId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-device.entity.ts:22:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/clock-policy.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-job-function.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-app-settings.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/mobile-app-settings.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-department.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/location-tracking-point.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/hr-geofence.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/document-foundation.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:18:    name: 'client_id',
+/opt/rh-saas/backend/src/modules/foundation/entities/payslip-foundation.entity.ts:21:  clientId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:2:import { Tenant } from '../tenant/tenant.entity';
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:17:  @ManyToOne(() => Tenant, { onDelete: 'RESTRICT' })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:18:  @JoinColumn({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:19:  tenant: Tenant;
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:21:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:22:  tenantId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:51:  @Column({ name: 'client_ip', length: 45, nullable: true })
+/opt/rh-saas/backend/src/modules/clock-events/clock-event.entity.ts:52:  clientIp: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:37:    tenantId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:45:    const rawString = `${data.tenantId}|${data.employeeId}|${data.timestamp}|${data.eventType}|${data.latitude}|${data.longitude}`;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:53:    tenantId: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:62:    clientIp?: string;
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:77:    // if (!isInsideGeofence && !tenantConfig.allowOutlyingClockIn) {
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:86:      tenantId: data.tenantId,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:96:      tenantId: data.tenantId,
+/opt/rh-saas/backend/src/modules/clock-events/clock-events.service.ts:103:      clientIp: data.clientIp,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:11:@Controller('v1/reports')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:18:  @Get('employees')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:21:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:25:  @Get('schedules')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:28:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:32:  @Get('time-bank')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:35:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:39:  @Get('afd')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:42:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:46:  @Get('executive')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:49:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:53:  @Get('productivity')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:56:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:60:  @Get('time-bank-summary')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:63:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:67:  @Get('schedule-distribution')
+/opt/rh-saas/backend/src/modules/reports/reports.controller.ts:70:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:26:  async employees(tenantId: string) {
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:28:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:43:  async schedules(tenantId: string) {
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:46:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:55:  async timeBank(tenantId: string) {
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:58:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:67:  async afd(tenantId: string) {
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:70:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:82:  async executive(tenantId: string) {
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:89:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:92:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:95:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:131:  async productivity(tenantId: string) {
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:134:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:139:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:158:    tenantId: string,
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:162:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:198:    tenantId: string,
+/opt/rh-saas/backend/src/modules/reports/reports.service.ts:202:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:22:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:29:      tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:40:      tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:55:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:61:      tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:70:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:76:      tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:85:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:91:      tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:100:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:106:      tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:114:  async findAll(tenantId: string) {
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:116:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:124:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:130:          tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:170:    tenantId: string,
+/opt/rh-saas/backend/src/modules/time-records/time-records.service.ts:173:      await this.findAll(tenantId);
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:7:@Controller('v1/time-records')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:42:  @Post('clock-in')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:53:      return this.timeRecordsService.clockIn(req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:60:      return this.timeRecordsService.breakStart(req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:67:      return this.timeRecordsService.breakEnd(req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:73:    return this.timeRecordsService.clockOut(req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:79:  @Post('break-start')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:85:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:92:  @Post('break-end')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:98:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:105:  @Post('clock-out')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:111:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:118:  @Get('afd')
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:125:        req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-records/time-records.controller.ts:141:  @Post('simulate-math')
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:20:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/time-records/time-record.entity.ts:21:  tenantId: string;
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts:15:    name: 'tenant_id',
+/opt/rh-saas/backend/src/modules/audit/audit.entity.ts:18:  tenantId: string;
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:9:@Controller('audit')
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:16:  @Get()
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:21:  @Get('action/:action')
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:30:  @Get('entity/:entityType')
+/opt/rh-saas/backend/src/modules/audit/audit.controller.ts:40:  @Get(':id')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:11:@Controller('v1/dashboard')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:19:  @Get('overview')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:22:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:26:  @Get('employees')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:29:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:33:  @Get('time-bank')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:36:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:40:  @Get('schedules')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:43:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:47:  @Get('time-records')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:50:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:54:  @Get('executive')
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.controller.ts:59:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:32:  async overview(tenantId: string) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:36:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:41:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:46:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:51:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:79:  async employees(tenantId: string) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:81:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:85:  async schedules(tenantId: string) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:87:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:91:  async timeBank(tenantId: string) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:93:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:97:  async timeRecords(tenantId: string) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:99:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:107:  async executive(tenantId: string) {
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:111:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:116:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:121:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/dashboard/dashboard.service.ts:126:        where: { tenantId },
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:10:  async getDashboardStats(tenantId: string, startDate?: string, endDate?: string) {
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:11:    const where: any = { tenantId };
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:28:    tenantId: string,
+/opt/rh-saas/backend/src/modules/analytics/analytics.service.ts:34:          tenantId,
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:5:@Controller('v1/analytics')
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:10:  @Get('overview')
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:12:    return this.service.getDashboardStats(req.user.tenantId, start, end);
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:15:  @Get('workforce')
+/opt/rh-saas/backend/src/modules/analytics/analytics.controller.ts:20:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:20:@Controller('v1/employees')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:27:  @Post()
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:34:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:39:  @Get()
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:45:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:49:  @Get(':id')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:57:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:61:  @Put(':id/link-user')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:70:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:75:  @Delete(':id/link-user')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:83:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:87:  @Delete(':id')
+/opt/rh-saas/backend/src/modules/employees/employees.controller.ts:95:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:12:import { Tenant } from '../tenant/tenant.entity';
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:20:  @ManyToOne(() => Tenant)
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:21:  @JoinColumn({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:22:  tenant: Tenant;
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:24:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/employees/employee.entity.ts:25:  tenantId: string;
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:27:    tenantId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:32:      tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:39:      tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:48:  async findAll(tenantId: string) {
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:51:        tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:65:    tenantId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:71:          tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:89:    tenantId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:96:          tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:110:          tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:116:        'Usuário não encontrado neste tenant.',
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:124:          tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:143:      tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:155:    tenantId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:161:          tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:177:      tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:188:    tenantId: string,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:191:      tenantId,
+/opt/rh-saas/backend/src/modules/employees/employees.service.ts:199:      tenantId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:20:      module: 'super-admin',
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:24:  async listClients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:33:      FROM saas_clients sc
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:40:  async getClientDetails(id: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:42:    const clientRows = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:44:      FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:48:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:50:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:54:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:60:    `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:66:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:67:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:74:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:81:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:87:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:93:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:97:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:109:  async getModules(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:115:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:116:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:118:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:123:  async getModuleAudit(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:132:      FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:133:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:135:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:140:    clientId: string,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:148:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:149:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:151:      `,[clientId,moduleCode]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:159:      UPDATE tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:161:       WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:163:    `,[clientId,moduleCode,enabled]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:166:      INSERT INTO tenant_module_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:167:        client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:177:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:181:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:185:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:196:    const clients =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:206:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:242:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:254:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:260:      clients: clients[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:278:  async getClientDashboard(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:280:    const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:283:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:285:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:287:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:289:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:293:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:300:      `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:306:        WHERE tenant_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:307:      `,[client.tenant_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:313:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:314:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:320:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:321:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:327:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:328:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:333:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:334:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:336:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:341:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:342:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:344:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:354:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:355:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:358:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:361:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:457:  async createClient(dto: any) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:467:      const tenantRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:469:          INSERT INTO tenants(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:484:      const tenant = tenantRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:486:      const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:488:          INSERT INTO saas_clients(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:489:            tenant_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:501:          tenant.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:509:      const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:513:          client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:522:        client.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:531:        tenant,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:532:        client
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:550:  async updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:558:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:564:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:572:        UPDATE saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:612:          INSERT INTO tenant_client_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:613:            client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:627:          'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:635:  async updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:643:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:649:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:657:        UPDATE saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:666:      INSERT INTO tenant_client_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:667:        client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:681:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:690:  async getClientAudit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:691:    clientId: string,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:701:      FROM tenant_client_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:702:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts:704:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:16:import { SuperAdminService } from './super-admin.service';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:20:import { CreateClientDto } from './dto/create-client.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:21:import { UpdateClientDto } from './dto/update-client.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:22:import { UpdateClientStatusDto } from './dto/update-client-status.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:32:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:38:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:40:  clients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:41:    return this.service.listClients();
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:44:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:49:    return this.service.getClientDetails(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:53:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:61:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:77:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:87:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:95:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:97:  tenantDashboard(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:100:    return this.service.getClientDashboard(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:105:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:111:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:119:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:130:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:132:  createClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:133:    @Body() dto: CreateClientDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:135:    return this.service.createClient(dto);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:140:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:142:  updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:144:    @Body() dto: UpdateClientDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:146:    return this.service.updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:152:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:154:  updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:156:    @Body() dto: UpdateClientStatusDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:158:    return this.service.updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:166:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:167:  @Get('clients/:id/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:168:  clientAudit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:171:    return this.service.getClientAudit(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:176:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:177:  @Get('system/health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:182:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:183:  @Get('system/database')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:191:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:192:  @Get('system/storage')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:197:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:198:  @Get('system/metrics')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:206:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:207:  @Get('system/containers')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:212:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts:213:  @Get('system/services')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:20:      module: 'super-admin',
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:24:  async listClients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:33:      FROM saas_clients sc
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:40:  async getClientDetails(id: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:42:    const clientRows = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:44:      FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:48:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:50:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:54:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:60:    `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:66:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:67:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:74:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:81:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:87:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:93:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:97:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:109:  async getModules(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:115:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:116:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:118:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:123:  async getModuleAudit(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:132:      FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:133:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:135:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:140:    clientId: string,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:148:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:149:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:151:      `,[clientId,moduleCode]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:159:      UPDATE tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:161:       WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:163:    `,[clientId,moduleCode,enabled]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:166:      INSERT INTO tenant_module_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:167:        client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:177:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:181:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:185:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:196:    const clients =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:206:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:242:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:254:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:260:      clients: clients[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:278:  async getClientDashboard(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:280:    const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:283:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:285:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:287:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:289:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:293:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:300:      `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:306:        WHERE tenant_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:307:      `,[client.tenant_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:313:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:314:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:320:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:321:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:327:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:328:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:333:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:334:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:336:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:341:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:342:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:344:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:354:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:355:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:358:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:361:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:457:  async createClient(dto: any) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:467:      const tenantRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:469:          INSERT INTO tenants(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:484:      const tenant = tenantRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:486:      const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:488:          INSERT INTO saas_clients(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:489:            tenant_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:501:          tenant.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:509:      const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:513:          client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:522:        client.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:531:        tenant,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:532:        client
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:550:  async updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:558:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:564:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:572:        UPDATE saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:612:          INSERT INTO tenant_client_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:613:            client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:627:          'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:635:  async updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:643:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:649:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:657:        UPDATE saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:666:      INSERT INTO tenant_client_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:667:        client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:681:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:690:  async getClientAudit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:691:    clientId: string,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:701:      FROM tenant_client_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:702:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_131209.bak:704:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:15:import { SuperAdminService } from './super-admin.service';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:19:import { CreateClientDto } from './dto/create-client.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:21:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:29:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:30:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:35:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:36:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:37:  clients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:38:    return this.service.listClients();
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:41:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:42:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:46:    return this.service.getClientDetails(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:50:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:51:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:58:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:59:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:74:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:75:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:84:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:85:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:92:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:93:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:94:  tenantDashboard(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:97:    return this.service.getClientDashboard(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:102:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:103:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:108:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:109:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:116:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:117:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:127:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:128:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:129:  createClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:130:    @Body() dto: CreateClientDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115335.bak:132:    return this.service.createClient(dto);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:18:      module: 'super-admin',
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:22:  async listClients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:31:      FROM saas_clients sc
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:38:  async getClientDetails(id: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:40:    const clientRows = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:42:      FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:46:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:48:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:52:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:58:    `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:64:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:65:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:72:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:79:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:85:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:91:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:95:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:107:  async getModules(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:113:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:114:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:116:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:121:  async getModuleAudit(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:130:      FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:131:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:133:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:138:    clientId: string,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:146:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:147:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:149:      `,[clientId,moduleCode]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:157:      UPDATE tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:159:       WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:161:    `,[clientId,moduleCode,enabled]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:164:      INSERT INTO tenant_module_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:165:        client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:175:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:179:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:183:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:194:    const clients =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:204:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:240:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:252:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:258:      clients: clients[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:276:  async getClientDashboard(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:278:    const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:281:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:283:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:285:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:287:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:291:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:298:      `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:304:        WHERE tenant_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:305:      `,[client.tenant_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:311:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:312:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:318:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:319:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:325:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:326:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:331:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:332:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:334:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:339:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:340:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:342:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:352:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:353:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:356:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115111.bak:359:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:15:import { SuperAdminService } from './super-admin.service';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:20:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:28:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:29:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:34:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:35:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:36:  clients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:37:    return this.service.listClients();
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:40:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:41:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:45:    return this.service.getClientDetails(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:49:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:50:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:57:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:58:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:73:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:74:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:83:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:84:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:91:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:92:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:93:  tenantDashboard(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:96:    return this.service.getClientDashboard(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:101:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:102:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:107:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:108:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:115:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115111.bak:116:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:18:      module: 'super-admin',
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:22:  async listClients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:31:      FROM saas_clients sc
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:38:  async getClientDetails(id: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:40:    const clientRows = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:42:      FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:46:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:48:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:52:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:58:    `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:64:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:65:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:72:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:79:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:85:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:91:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:95:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:107:  async getModules(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:113:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:114:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:116:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:121:  async getModuleAudit(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:130:      FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:131:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:133:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:138:    clientId: string,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:146:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:147:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:149:      `,[clientId,moduleCode]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:157:      UPDATE tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:159:       WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:161:    `,[clientId,moduleCode,enabled]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:164:      INSERT INTO tenant_module_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:165:        client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:175:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:179:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:183:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:194:    const clients =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:204:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:240:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:252:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:258:      clients: clients[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:276:  async getClientDashboard(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:278:    const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:281:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:283:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:285:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:287:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:291:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:298:      `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:304:        WHERE tenant_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:305:      `,[client.tenant_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:311:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:312:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:318:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:319:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:325:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:326:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:331:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:332:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:334:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:339:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:340:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:342:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:352:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:353:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:356:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:359:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:455:  async createClient(dto: any) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:465:      const tenantRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:467:          INSERT INTO tenants(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:482:      const tenant = tenantRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:484:      const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:486:          INSERT INTO saas_clients(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:487:            tenant_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:499:          tenant.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:507:      const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:511:          client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:520:        client.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:529:        tenant,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115335.bak:530:        client
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:16:import { SuperAdminService } from './super-admin.service';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:20:import { CreateClientDto } from './dto/create-client.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:21:import { UpdateClientDto } from './dto/update-client.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:22:import { UpdateClientStatusDto } from './dto/update-client-status.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:32:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:38:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:40:  clients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:41:    return this.service.listClients();
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:44:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:49:    return this.service.getClientDetails(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:53:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:61:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:77:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:87:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:95:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:97:  tenantDashboard(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:100:    return this.service.getClientDashboard(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:105:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:111:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:119:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:130:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:132:  createClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:133:    @Body() dto: CreateClientDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:135:    return this.service.createClient(dto);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:140:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:142:  updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:144:    @Body() dto: UpdateClientDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:146:    return this.service.updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:152:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:154:  updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:156:    @Body() dto: UpdateClientStatusDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:158:    return this.service.updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:166:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:167:  @Get('clients/:id/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:168:  clientAudit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:171:    return this.service.getClientAudit(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:176:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:177:  @Get('system/health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:182:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:183:  @Get('system/database')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:191:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:192:  @Get('system/storage')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:197:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_131209.bak:198:  @Get('system/metrics')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.module.ts:3:import { SuperAdminController } from './super-admin.controller';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.module.ts:4:import { SuperAdminService } from './super-admin.service';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:16:import { SuperAdminService } from './super-admin.service';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:20:import { CreateClientDto } from './dto/create-client.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:21:import { UpdateClientDto } from './dto/update-client.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:22:import { UpdateClientStatusDto } from './dto/update-client-status.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:32:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:38:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:40:  clients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:41:    return this.service.listClients();
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:44:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:49:    return this.service.getClientDetails(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:53:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:61:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:77:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:87:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:95:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:97:  tenantDashboard(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:100:    return this.service.getClientDashboard(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:105:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:111:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:119:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:130:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:132:  createClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:133:    @Body() dto: CreateClientDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:135:    return this.service.createClient(dto);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:140:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:142:  updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:144:    @Body() dto: UpdateClientDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:146:    return this.service.updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:152:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:154:  updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:156:    @Body() dto: UpdateClientStatusDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_115537.bak:158:    return this.service.updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:18:      module: 'super-admin',
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:22:  async listClients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:31:      FROM saas_clients sc
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:38:  async getClientDetails(id: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:40:    const clientRows = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:42:      FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:46:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:48:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:52:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:58:    `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:64:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:65:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:72:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:79:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:85:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:91:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:95:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:107:  async getModules(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:113:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:114:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:116:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:121:  async getModuleAudit(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:130:      FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:131:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:133:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:138:    clientId: string,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:146:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:147:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:149:      `,[clientId,moduleCode]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:157:      UPDATE tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:159:       WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:161:    `,[clientId,moduleCode,enabled]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:164:      INSERT INTO tenant_module_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:165:        client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:175:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:179:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:183:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:194:    const clients =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:204:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:240:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:252:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:258:      clients: clients[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:276:  async getClientDashboard(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:278:    const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:281:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:283:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:285:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:287:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:291:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:298:      `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:304:        WHERE tenant_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:305:      `,[client.tenant_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:311:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:312:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:318:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:319:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:325:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:326:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:331:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:332:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:334:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:339:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:340:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:342:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:352:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:353:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:356:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:359:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:455:  async createClient(dto: any) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:465:      const tenantRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:467:          INSERT INTO tenants(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:482:      const tenant = tenantRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:484:      const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:486:          INSERT INTO saas_clients(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:487:            tenant_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:499:          tenant.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:507:      const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:511:          client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:520:        client.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:529:        tenant,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:530:        client
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:548:  async updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:556:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:562:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:570:        UPDATE saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:596:  async updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:603:        UPDATE saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:613:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:623:  async getClientAudit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:624:    clientId: string,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:634:      FROM tenant_client_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:635:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115913.bak:637:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:18:      module: 'super-admin',
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:22:  async listClients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:31:      FROM saas_clients sc
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:38:  async getClientDetails(id: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:40:    const clientRows = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:42:      FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:46:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:48:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:52:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:58:    `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:64:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:65:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:72:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:79:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:85:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:91:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:95:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:107:  async getModules(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:113:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:114:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:116:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:121:  async getModuleAudit(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:130:      FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:131:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:133:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:138:    clientId: string,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:146:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:147:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:149:      `,[clientId,moduleCode]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:157:      UPDATE tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:159:       WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:161:    `,[clientId,moduleCode,enabled]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:164:      INSERT INTO tenant_module_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:165:        client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:175:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:179:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:183:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:194:    const clients =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:204:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:240:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:252:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:258:      clients: clients[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:276:  async getClientDashboard(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:278:    const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:281:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:283:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:285:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:287:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:291:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:298:      `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:304:        WHERE tenant_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:305:      `,[client.tenant_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:311:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:312:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:318:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:319:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:325:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:326:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:331:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:332:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:334:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:339:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:340:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:342:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:352:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:353:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:356:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:359:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:455:  async createClient(dto: any) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:465:      const tenantRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:467:          INSERT INTO tenants(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:482:      const tenant = tenantRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:484:      const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:486:          INSERT INTO saas_clients(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:487:            tenant_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:499:          tenant.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:507:      const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:511:          client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:520:        client.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:529:        tenant,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:530:        client
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:548:  async updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:556:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:562:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:570:        UPDATE saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:610:          INSERT INTO tenant_client_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:611:            client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:625:          'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:633:  async updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:641:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:647:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:655:        UPDATE saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:664:      INSERT INTO tenant_client_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:665:        client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:679:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:688:  async getClientAudit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:689:    clientId: string,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:699:      FROM tenant_client_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:700:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_120723.bak:702:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:18:      module: 'super-admin',
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:22:  async listClients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:31:      FROM saas_clients sc
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:38:  async getClientDetails(id: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:40:    const clientRows = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:42:      FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:46:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:48:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:52:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:58:    `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:64:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:65:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:72:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:79:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:85:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:91:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:95:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:107:  async getModules(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:113:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:114:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:116:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:121:  async getModuleAudit(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:130:      FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:131:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:133:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:138:    clientId: string,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:146:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:147:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:149:      `,[clientId,moduleCode]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:157:      UPDATE tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:159:       WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:161:    `,[clientId,moduleCode,enabled]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:164:      INSERT INTO tenant_module_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:165:        client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:175:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:179:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:183:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:194:    const clients =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:204:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:240:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:252:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:258:      clients: clients[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:276:  async getClientDashboard(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:278:    const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:281:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:283:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:285:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:287:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:291:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:298:      `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:304:        WHERE tenant_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:305:      `,[client.tenant_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:311:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:312:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:318:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:319:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:325:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:326:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:331:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:332:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:334:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:339:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:340:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:342:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:352:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:353:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:356:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:359:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:455:  async createClient(dto: any) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:465:      const tenantRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:467:          INSERT INTO tenants(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:482:      const tenant = tenantRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:484:      const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:486:          INSERT INTO saas_clients(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:487:            tenant_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:499:          tenant.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:507:      const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:511:          client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:520:        client.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:529:        tenant,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:530:        client
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:548:  async updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:556:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:562:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:570:        UPDATE saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:610:          INSERT INTO tenant_client_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:611:            client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:625:          'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:633:  async updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:641:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:647:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:655:        UPDATE saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:664:      INSERT INTO tenant_client_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:665:        client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:679:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:688:  async getClientAudit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:689:    clientId: string,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:699:      FROM tenant_client_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:700:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_130404.bak:702:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts:1:export class ClientDashboardDto {
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-dashboard.dto.ts:2:  client: any;
+/opt/rh-saas/backend/src/modules/super-admin/dto/create-client.dto.ts:6:export class CreateClientDto {
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-summary.dto.ts:1:export class ClientSummaryDto {
+/opt/rh-saas/backend/src/modules/super-admin/dto/dashboard.dto.ts:2:  clients: any;
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts:1:export class ClientDetailsDto {
+/opt/rh-saas/backend/src/modules/super-admin/dto/client-details.dto.ts:2:  client: any;
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client.dto.ts:7:export class UpdateClientDto {
+/opt/rh-saas/backend/src/modules/super-admin/dto/update-client-status.dto.ts:4:export class UpdateClientStatusDto {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:16:import { SuperAdminService } from './super-admin.service';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:20:import { CreateClientDto } from './dto/create-client.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:21:import { UpdateClientDto } from './dto/update-client.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:22:import { UpdateClientStatusDto } from './dto/update-client-status.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:32:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:38:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:40:  clients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:41:    return this.service.listClients();
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:44:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:49:    return this.service.getClientDetails(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:53:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:61:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:77:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:87:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:95:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:97:  tenantDashboard(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:100:    return this.service.getClientDashboard(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:105:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:111:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:119:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:130:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:132:  createClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:133:    @Body() dto: CreateClientDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:135:    return this.service.createClient(dto);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:140:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:142:  updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:144:    @Body() dto: UpdateClientDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:146:    return this.service.updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:152:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:154:  updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:156:    @Body() dto: UpdateClientStatusDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:158:    return this.service.updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:166:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:167:  @Get('clients/:id/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:168:  clientAudit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_120723.bak:171:    return this.service.getClientAudit(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:16:import { SuperAdminService } from './super-admin.service';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:20:import { CreateClientDto } from './dto/create-client.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:21:import { UpdateClientDto } from './dto/update-client.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:22:import { UpdateClientStatusDto } from './dto/update-client-status.dto';
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:24:@Controller('v1/super-admin')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:32:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:33:  @Get('health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:38:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:39:  @Get('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:40:  clients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:41:    return this.service.listClients();
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:44:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:45:  @Get('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:49:    return this.service.getClientDetails(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:53:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:54:  @Get('clients/:id/modules')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:61:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:62:  @Put('clients/:id/modules/:moduleCode')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:77:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:78:  @Get('clients/:id/modules/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:87:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:88:  @Get('dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:95:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:96:  @Get('clients/:id/dashboard')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:97:  tenantDashboard(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:100:    return this.service.getClientDashboard(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:105:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:106:  @Get('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:111:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:112:  @Post('plans')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:119:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:120:  @Put('plans/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:130:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:131:  @Post('clients')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:132:  createClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:133:    @Body() dto: CreateClientDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:135:    return this.service.createClient(dto);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:140:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:141:  @Put('clients/:id')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:142:  updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:144:    @Body() dto: UpdateClientDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:146:    return this.service.updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:152:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:153:  @Patch('clients/:id/status')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:154:  updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:156:    @Body() dto: UpdateClientStatusDto,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:158:    return this.service.updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:166:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:167:  @Get('clients/:id/audit')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:168:  clientAudit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:171:    return this.service.getClientAudit(id);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:176:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:177:  @Get('system/health')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:182:  @Roles('SUPER_ADMIN' as any)
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.controller.ts.20260703_130404.bak:183:  @Get('system/database')
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:18:      module: 'super-admin',
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:22:  async listClients() {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:31:      FROM saas_clients sc
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:38:  async getClientDetails(id: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:40:    const clientRows = await this.dataSource.query(`
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:42:      FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:46:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:48:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:52:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:58:    `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:64:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:65:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:72:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:79:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:85:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:91:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:95:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:107:  async getModules(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:113:      FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:114:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:116:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:121:  async getModuleAudit(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:130:      FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:131:      WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:133:    `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:138:    clientId: string,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:146:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:147:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:149:      `,[clientId,moduleCode]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:157:      UPDATE tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:159:       WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:161:    `,[clientId,moduleCode,enabled]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:164:      INSERT INTO tenant_module_audit(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:165:        client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:175:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:179:      'SUPER_ADMIN'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:183:      clientId,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:194:    const clients =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:204:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:240:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:252:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:258:      clients: clients[0],
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:276:  async getClientDashboard(clientId: string) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:278:    const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:281:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:283:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:285:    if (!clientRows.length) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:287:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:291:    const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:298:      `,[client.plan_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:304:        WHERE tenant_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:305:      `,[client.tenant_id]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:311:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:312:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:318:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:319:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:325:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:326:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:331:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:332:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:334:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:339:        FROM tenant_module_flags
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:340:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:342:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:352:        FROM tenant_module_audit
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:353:        WHERE client_id = $1
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:356:      `,[clientId]);
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:359:      client,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:455:  async createClient(dto: any) {
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:465:      const tenantRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:467:          INSERT INTO tenants(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:482:      const tenant = tenantRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:484:      const clientRows =
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:486:          INSERT INTO saas_clients(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:487:            tenant_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:499:          tenant.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:507:      const client = clientRows[0];
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:511:          client_id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:520:        client.id,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:529:        tenant,
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:530:        client
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:548:  async updateClient(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:556:        FROM saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:562:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:570:        UPDATE saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:596:  async updateClientStatus(
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:603:        UPDATE saas_clients
+/opt/rh-saas/backend/src/modules/super-admin/super-admin.service.ts.20260703_115537.bak:613:        'Cliente não encontrado'
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:5:import { Tenant } from './tenant.entity';
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:6:import { UpdateTenantDto } from './dto/update-tenant.dto';
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:10:export class TenantService {
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:13:    @InjectRepository(Tenant)
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:14:    private readonly tenantRepo: Repository<Tenant>,
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:19:  async findOne(tenantId: string) {
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:21:    const tenant =
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:22:      await this.tenantRepo.findOne({
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:23:        where: { id: tenantId },
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:26:    if (!tenant) {
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:28:        'Tenant não encontrado.',
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:32:    return tenant;
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:36:    tenantId: string,
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:37:    data: UpdateTenantDto,
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:40:    const tenant =
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:41:      await this.findOne(tenantId);
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:44:      tenant,
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:49:      await this.tenantRepo.save(tenant);
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:52:      tenantId,
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:53:      entityId: tenantId,
+/opt/rh-saas/backend/src/modules/tenant/tenant.service.ts:55:      entityType: 'Tenant',
+/opt/rh-saas/backend/src/modules/tenant/dto/update-tenant.dto.ts:1:export class UpdateTenantDto {
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:11:import { TenantService } from './tenant.service';
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:12:import { UpdateTenantDto } from './dto/update-tenant.dto';
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:14:@Controller('v1/tenant')
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:16:export class TenantController {
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:19:    private readonly tenantService: TenantService,
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:22:  @Get()
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:23:  async getTenant(
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:26:    return this.tenantService.findOne(
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:27:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:31:  @Put()
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:32:  async updateTenant(
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:34:    @Body() dto: UpdateTenantDto,
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:36:    return this.tenantService.update(
+/opt/rh-saas/backend/src/modules/tenant/tenant.controller.ts:37:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts:9:@Entity('tenants')
+/opt/rh-saas/backend/src/modules/tenant/tenant.entity.ts:10:export class Tenant {
+/opt/rh-saas/backend/src/modules/tenant/tenant.module.ts:4:import { Tenant } from './tenant.entity';
+/opt/rh-saas/backend/src/modules/tenant/tenant.module.ts:5:import { TenantService } from './tenant.service';
+/opt/rh-saas/backend/src/modules/tenant/tenant.module.ts:6:import { TenantController } from './tenant.controller';
+/opt/rh-saas/backend/src/modules/tenant/tenant.module.ts:14:      Tenant,
+/opt/rh-saas/backend/src/modules/tenant/tenant.module.ts:18:    TenantService,
+/opt/rh-saas/backend/src/modules/tenant/tenant.module.ts:21:    TenantController,
+/opt/rh-saas/backend/src/modules/tenant/tenant.module.ts:24:    TenantService,
+/opt/rh-saas/backend/src/modules/tenant/tenant.module.ts:27:export class TenantModule {}
+/opt/rh-saas/backend/src/modules/users/users.service.ts:40:      tenantId: data.tenantId,
+/opt/rh-saas/backend/src/modules/users/users.service.ts:50:      tenantId: savedUser.tenantId,
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:11:import { Tenant } from '../tenant/tenant.entity';
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:14:  SUPER_ADMIN = 'SUPER_ADMIN',
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:26:  @ManyToOne(() => Tenant)
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:27:  @JoinColumn({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:28:  tenant: Tenant;
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:30:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/users/user.entity.ts:31:  tenantId: string;
+/opt/rh-saas/backend/src/modules/users/dto/create-user.dto.ts:6:  tenantId: string;
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:18:@Controller('v1/users')
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:26:  @Post()
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:33:      tenantId: req.user.tenantId,
+/opt/rh-saas/backend/src/modules/users/users.controller.ts:37:  @Get()
+/opt/rh-saas/backend/src/modules/users/user-role.enum.ts:2:  SUPER_ADMIN = 'SUPER_ADMIN',
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts:9:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/schedules/employee-schedule.entity.ts:10:  tenantId: string;
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:21:@Controller('v1/schedules')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:29:  @Get()
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:34:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:38:  @Post('assign')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:44:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:49:  @Get('employee/:employeeId')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:55:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:59:@Get('employee/:employeeId/active')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:65:    req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:70:@Delete('assign/:id')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:76:    req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:81:@Patch('assign/:id/end')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:88:    req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:94:  @Get(':id')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:101:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:105:  @Post()
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:111:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:116:  @Put(':id')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:124:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:129:  @Delete(':id')
+/opt/rh-saas/backend/src/modules/schedules/schedule.controller.ts:136:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:23:  async findAll(tenantId: string) {
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:25:      where: { tenantId },
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:34:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:40:          tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:54:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:60:        tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:67:      tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:79:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:85:        tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:99:      tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:111:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:115:      tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:119:      tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:127:      tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:132:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:137:        tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:150:      tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:161:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:171:        'es.tenantId = :tenantId',
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:172:        { tenantId },
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:185:  tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:195:      'es.tenantId = :tenantId',
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:196:      { tenantId },
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:211:  tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:219:        tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:230:    tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:242:  tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:251:        tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:269:    tenantId,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:283:    tenantId: string,
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:304:          'es.tenantId = :tenantId',
+/opt/rh-saas/backend/src/modules/schedules/schedules.service.ts:305:          { tenantId },
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts:13:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/schedules/schedule.entity.ts:14:  tenantId: string;
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:48:      tenantId: user.tenantId,
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts:53:      tenantId: user.tenantId,
+/opt/rh-saas/backend/src/modules/auth/strategies/jwt.strategy.ts:23:      tenantId: payload.tenantId,
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:5:@Controller('v1/auth')
+/opt/rh-saas/backend/src/modules/auth/auth.controller.ts:9:  @Post('login')
+/opt/rh-saas/backend/src/modules/auth/auth.service.ts.20260704_002144.bak:46:      tenantId: user.tenantId,
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts:8:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/documents/document.entity.ts:9:  tenantId: string;
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:18:    tenantId: string,
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:25:      tenantId,
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:35:      tenantId,
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:46:    tenantId: string,
+/opt/rh-saas/backend/src/modules/documents/documents.service.ts:51:        tenantId,
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:6:@Controller('v1/documents')
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:11:  @Post('upload')
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:14:    return this.docsService.uploadDocument(req.user.tenantId, req.body.employeeId, file.originalname, file.path);
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:17:  @Get('my-docs')
+/opt/rh-saas/backend/src/modules/documents/documents.controller.ts:19:    return this.docsService.listForEmployee(req.user.tenantId, req.user.employeeId);
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts:8:  @Column({ name: 'tenant_id' })
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.entity.ts:9:  tenantId: string;
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:14:@Controller('v1/time-bank')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:22:  @Get()
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:27:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:31:  @Get(':employeeId')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:37:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:42:  @Get(':employeeId/details')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:48:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:53:  @Post('recalculate')
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.controller.ts:59:      req.user.tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:28:  tenantId: string,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:32:      tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:41:  tenantId: string,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:46:      tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:56:  tenantId: string,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:62:      tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:82:  async processDailyBalance(tenantId: string, employeeId: string, targetDate: string, expectedMinutes: number) {
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:90:        tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:118:      where: { tenantId, employeeId, date: targetDate }
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:123:        tenantId,
+/opt/rh-saas/backend/src/modules/time-bank/time-bank.service.ts:139:  tenantId,
+/opt/rh-saas/backend/src/app.controller.ts:4:@Controller()
+/opt/rh-saas/backend/src/app.controller.ts:8:  @Get()
+/opt/rh-saas/backend/src/app.module.ts:13:import { TenantModule } from './modules/tenant/tenant.module';
+/opt/rh-saas/backend/src/app.module.ts:15:import { Tenant } from './modules/tenant/tenant.entity';
+/opt/rh-saas/backend/src/app.module.ts:20:import { SuperAdminModule } from "./modules/super-admin/super-admin.module";
+/opt/rh-saas/backend/src/app.module.ts:36:    TenantModule,
+/opt/rh-saas/backend/src/app.module.ts:54:        entities: [Tenant, ClockEvent, User], // Traz as soltas (User é crucial pro Auth)

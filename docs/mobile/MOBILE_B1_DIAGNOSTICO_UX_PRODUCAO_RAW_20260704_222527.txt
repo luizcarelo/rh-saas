@@ -1,0 +1,1804 @@
+=================================================
+MOBILE-B1 - DIAGNOSTICO UX/PRODUCAO
+Data: 20260704_222527
+Pasta: /opt/rh-saas/mobile-app
+=================================================
+
+## Checks principais
+-------------------------------------------------
+TSC_STATUS=TSC_OK
+NPM_LS_STATUS=NPM_LS_OK
+EXPO_CONFIG_STATUS=EXPO_CONFIG_OK
+
+## Estrutura raiz
+-------------------------------------------------
+/opt/rh-saas/mobile-app
+/opt/rh-saas/mobile-app/AGENTS.md
+/opt/rh-saas/mobile-app/app.json
+/opt/rh-saas/mobile-app/app.json.tmp
+/opt/rh-saas/mobile-app/App.tsx
+/opt/rh-saas/mobile-app/assets
+/opt/rh-saas/mobile-app/assets/adaptive-icon.png
+/opt/rh-saas/mobile-app/assets/favicon.png
+/opt/rh-saas/mobile-app/assets/icone-app.png
+/opt/rh-saas/mobile-app/assets/icon.png
+/opt/rh-saas/mobile-app/assets/logo_rh.png
+/opt/rh-saas/mobile-app/assets/splash-icon.png
+/opt/rh-saas/mobile-app/.claude
+/opt/rh-saas/mobile-app/CLAUDE.md
+/opt/rh-saas/mobile-app/.claude/settings.json
+/opt/rh-saas/mobile-app/dist
+/opt/rh-saas/mobile-app/eas.json
+/opt/rh-saas/mobile-app/.env
+/opt/rh-saas/mobile-app/.expo
+/opt/rh-saas/mobile-app/expo.log
+/opt/rh-saas/mobile-app/.git
+/opt/rh-saas/mobile-app/.git/branches
+/opt/rh-saas/mobile-app/.git/COMMIT_EDITMSG
+/opt/rh-saas/mobile-app/.git/config
+/opt/rh-saas/mobile-app/.git/description
+/opt/rh-saas/mobile-app/.git/FETCH_HEAD
+/opt/rh-saas/mobile-app/.git/HEAD
+/opt/rh-saas/mobile-app/.git/hooks
+/opt/rh-saas/mobile-app/.gitignore
+/opt/rh-saas/mobile-app/.git/index
+/opt/rh-saas/mobile-app/.git/info
+/opt/rh-saas/mobile-app/.git/logs
+/opt/rh-saas/mobile-app/.git/objects
+/opt/rh-saas/mobile-app/.git/refs
+/opt/rh-saas/mobile-app/index.ts
+/opt/rh-saas/mobile-app/node_modules
+/opt/rh-saas/mobile-app/package.json
+/opt/rh-saas/mobile-app/package-lock.json
+/opt/rh-saas/mobile-app/set_env.sh
+/opt/rh-saas/mobile-app/src
+/opt/rh-saas/mobile-app/src/components
+/opt/rh-saas/mobile-app/src/screens
+/opt/rh-saas/mobile-app/src/services
+/opt/rh-saas/mobile-app/tsconfig.json
+
+## Arquivos principais
+-------------------------------------------------
+/opt/rh-saas/mobile-app/app.json
+/opt/rh-saas/mobile-app/App.tsx
+/opt/rh-saas/mobile-app/eas.json
+/opt/rh-saas/mobile-app/.env
+/opt/rh-saas/mobile-app/index.ts
+/opt/rh-saas/mobile-app/node_modules/abort-controller/package.json
+/opt/rh-saas/mobile-app/node_modules/accepts/package.json
+/opt/rh-saas/mobile-app/node_modules/acorn/package.json
+/opt/rh-saas/mobile-app/node_modules/agent-base/package.json
+/opt/rh-saas/mobile-app/node_modules/anser/package.json
+/opt/rh-saas/mobile-app/node_modules/ansi-escapes/package.json
+/opt/rh-saas/mobile-app/node_modules/ansi-regex/package.json
+/opt/rh-saas/mobile-app/node_modules/ansi-styles/package.json
+/opt/rh-saas/mobile-app/node_modules/anymatch/package.json
+/opt/rh-saas/mobile-app/node_modules/any-promise/package.json
+/opt/rh-saas/mobile-app/node_modules/arg/package.json
+/opt/rh-saas/mobile-app/node_modules/argparse/package.json
+/opt/rh-saas/mobile-app/node_modules/asap/package.json
+/opt/rh-saas/mobile-app/node_modules/asynckit/package.json
+/opt/rh-saas/mobile-app/node_modules/async-limiter/package.json
+/opt/rh-saas/mobile-app/node_modules/axios/package.json
+/opt/rh-saas/mobile-app/node_modules/babel-jest/package.json
+/opt/rh-saas/mobile-app/node_modules/babel-plugin-istanbul/package.json
+/opt/rh-saas/mobile-app/node_modules/babel-plugin-jest-hoist/package.json
+/opt/rh-saas/mobile-app/node_modules/babel-plugin-polyfill-corejs2/package.json
+/opt/rh-saas/mobile-app/node_modules/babel-plugin-polyfill-corejs3/package.json
+/opt/rh-saas/mobile-app/node_modules/babel-plugin-polyfill-regenerator/package.json
+/opt/rh-saas/mobile-app/node_modules/babel-plugin-react-compiler/package.json
+/opt/rh-saas/mobile-app/node_modules/babel-plugin-react-native-web/package.json
+/opt/rh-saas/mobile-app/node_modules/babel-plugin-syntax-hermes-parser/package.json
+/opt/rh-saas/mobile-app/node_modules/babel-plugin-transform-flow-enums/package.json
+/opt/rh-saas/mobile-app/node_modules/babel-preset-current-node-syntax/package.json
+/opt/rh-saas/mobile-app/node_modules/babel-preset-jest/package.json
+/opt/rh-saas/mobile-app/node_modules/balanced-match/package.json
+/opt/rh-saas/mobile-app/node_modules/base64-js/package.json
+/opt/rh-saas/mobile-app/node_modules/baseline-browser-mapping/package.json
+/opt/rh-saas/mobile-app/node_modules/better-opn/package.json
+/opt/rh-saas/mobile-app/node_modules/big-integer/package.json
+/opt/rh-saas/mobile-app/node_modules/big-integer/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/boolbase/package.json
+/opt/rh-saas/mobile-app/node_modules/bplist-creator/package.json
+/opt/rh-saas/mobile-app/node_modules/bplist-parser/package.json
+/opt/rh-saas/mobile-app/node_modules/brace-expansion/package.json
+/opt/rh-saas/mobile-app/node_modules/braces/package.json
+/opt/rh-saas/mobile-app/node_modules/browserslist/package.json
+/opt/rh-saas/mobile-app/node_modules/bser/package.json
+/opt/rh-saas/mobile-app/node_modules/buffer-from/package.json
+/opt/rh-saas/mobile-app/node_modules/buffer/package.json
+/opt/rh-saas/mobile-app/node_modules/bytes/package.json
+/opt/rh-saas/mobile-app/node_modules/cacheable-lookup/package.json
+/opt/rh-saas/mobile-app/node_modules/cacheable-request/package.json
+/opt/rh-saas/mobile-app/node_modules/call-bind-apply-helpers/package.json
+/opt/rh-saas/mobile-app/node_modules/call-bind-apply-helpers/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/camelcase/package.json
+/opt/rh-saas/mobile-app/node_modules/caniuse-lite/package.json
+/opt/rh-saas/mobile-app/node_modules/chalk/package.json
+/opt/rh-saas/mobile-app/node_modules/chownr/package.json
+/opt/rh-saas/mobile-app/node_modules/chrome-launcher/package.json
+/opt/rh-saas/mobile-app/node_modules/chrome-launcher/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/chromium-edge-launcher/package.json
+/opt/rh-saas/mobile-app/node_modules/chromium-edge-launcher/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/ci-info/package.json
+/opt/rh-saas/mobile-app/node_modules/cli-cursor/package.json
+/opt/rh-saas/mobile-app/node_modules/cli-spinners/package.json
+/opt/rh-saas/mobile-app/node_modules/cliui/package.json
+/opt/rh-saas/mobile-app/node_modules/clone/package.json
+/opt/rh-saas/mobile-app/node_modules/clone-response/package.json
+/opt/rh-saas/mobile-app/node_modules/color-convert/package.json
+/opt/rh-saas/mobile-app/node_modules/color-name/package.json
+/opt/rh-saas/mobile-app/node_modules/color/package.json
+/opt/rh-saas/mobile-app/node_modules/color-string/package.json
+/opt/rh-saas/mobile-app/node_modules/combined-stream/package.json
+/opt/rh-saas/mobile-app/node_modules/commander/package.json
+/opt/rh-saas/mobile-app/node_modules/compressible/package.json
+/opt/rh-saas/mobile-app/node_modules/compression/package.json
+/opt/rh-saas/mobile-app/node_modules/concat-map/package.json
+/opt/rh-saas/mobile-app/node_modules/connect/package.json
+/opt/rh-saas/mobile-app/node_modules/convert-source-map/package.json
+/opt/rh-saas/mobile-app/node_modules/core-js-compat/package.json
+/opt/rh-saas/mobile-app/node_modules/cross-fetch/package.json
+/opt/rh-saas/mobile-app/node_modules/cross-spawn/package.json
+/opt/rh-saas/mobile-app/node_modules/css-in-js-utils/package.json
+/opt/rh-saas/mobile-app/node_modules/css-select/package.json
+/opt/rh-saas/mobile-app/node_modules/css-tree/package.json
+/opt/rh-saas/mobile-app/node_modules/csstype/package.json
+/opt/rh-saas/mobile-app/node_modules/css-what/package.json
+/opt/rh-saas/mobile-app/node_modules/debug/package.json
+/opt/rh-saas/mobile-app/node_modules/decode-uri-component/package.json
+/opt/rh-saas/mobile-app/node_modules/decompress-response/package.json
+/opt/rh-saas/mobile-app/node_modules/deep-extend/package.json
+/opt/rh-saas/mobile-app/node_modules/deepmerge/package.json
+/opt/rh-saas/mobile-app/node_modules/defaults/package.json
+/opt/rh-saas/mobile-app/node_modules/defer-to-connect/package.json
+/opt/rh-saas/mobile-app/node_modules/define-lazy-prop/package.json
+/opt/rh-saas/mobile-app/node_modules/delayed-stream/package.json
+/opt/rh-saas/mobile-app/node_modules/depd/package.json
+/opt/rh-saas/mobile-app/node_modules/destroy/package.json
+/opt/rh-saas/mobile-app/node_modules/detect-libc/package.json
+/opt/rh-saas/mobile-app/node_modules/domelementtype/package.json
+/opt/rh-saas/mobile-app/node_modules/domhandler/package.json
+/opt/rh-saas/mobile-app/node_modules/dom-serializer/package.json
+/opt/rh-saas/mobile-app/node_modules/domutils/package.json
+/opt/rh-saas/mobile-app/node_modules/dotenv-expand/package.json
+/opt/rh-saas/mobile-app/node_modules/dotenv/package.json
+/opt/rh-saas/mobile-app/node_modules/dunder-proto/package.json
+/opt/rh-saas/mobile-app/node_modules/dunder-proto/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/ee-first/package.json
+/opt/rh-saas/mobile-app/node_modules/electron-to-chromium/package.json
+/opt/rh-saas/mobile-app/node_modules/emoji-regex/package.json
+/opt/rh-saas/mobile-app/node_modules/encodeurl/package.json
+/opt/rh-saas/mobile-app/node_modules/end-of-stream/package.json
+/opt/rh-saas/mobile-app/node_modules/entities/package.json
+/opt/rh-saas/mobile-app/node_modules/env-editor/package.json
+/opt/rh-saas/mobile-app/node_modules/error-stack-parser/package.json
+/opt/rh-saas/mobile-app/node_modules/escalade/package.json
+/opt/rh-saas/mobile-app/node_modules/escape-html/package.json
+/opt/rh-saas/mobile-app/node_modules/escape-string-regexp/package.json
+/opt/rh-saas/mobile-app/node_modules/es-define-property/package.json
+/opt/rh-saas/mobile-app/node_modules/es-define-property/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/es-errors/package.json
+/opt/rh-saas/mobile-app/node_modules/es-errors/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/es-object-atoms/package.json
+/opt/rh-saas/mobile-app/node_modules/es-object-atoms/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/esprima/package.json
+/opt/rh-saas/mobile-app/node_modules/es-set-tostringtag/package.json
+/opt/rh-saas/mobile-app/node_modules/es-set-tostringtag/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/etag/package.json
+/opt/rh-saas/mobile-app/node_modules/event-target-shim/package.json
+/opt/rh-saas/mobile-app/node_modules/expo-location/package.json
+/opt/rh-saas/mobile-app/node_modules/expo-location/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/expo-modules-autolinking/package.json
+/opt/rh-saas/mobile-app/node_modules/expo-modules-autolinking/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/expo-modules-core/package.json
+/opt/rh-saas/mobile-app/node_modules/expo-modules-core/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/exponential-backoff/package.json
+/opt/rh-saas/mobile-app/node_modules/expo/package.json
+/opt/rh-saas/mobile-app/node_modules/expo-server/package.json
+/opt/rh-saas/mobile-app/node_modules/expo-status-bar/package.json
+/opt/rh-saas/mobile-app/node_modules/expo-status-bar/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/fast-deep-equal/package.json
+/opt/rh-saas/mobile-app/node_modules/fast-json-stable-stringify/package.json
+/opt/rh-saas/mobile-app/node_modules/fbjs-css-vars/package.json
+/opt/rh-saas/mobile-app/node_modules/fbjs/package.json
+/opt/rh-saas/mobile-app/node_modules/fb-watchman/package.json
+/opt/rh-saas/mobile-app/node_modules/fill-range/package.json
+/opt/rh-saas/mobile-app/node_modules/filter-obj/package.json
+/opt/rh-saas/mobile-app/node_modules/finalhandler/package.json
+/opt/rh-saas/mobile-app/node_modules/find-up/package.json
+/opt/rh-saas/mobile-app/node_modules/flow-enums-runtime/package.json
+/opt/rh-saas/mobile-app/node_modules/follow-redirects/package.json
+/opt/rh-saas/mobile-app/node_modules/fontfaceobserver/package.json
+/opt/rh-saas/mobile-app/node_modules/form-data/package.json
+/opt/rh-saas/mobile-app/node_modules/freeport-async/package.json
+/opt/rh-saas/mobile-app/node_modules/fresh/package.json
+/opt/rh-saas/mobile-app/node_modules/fs.realpath/package.json
+/opt/rh-saas/mobile-app/node_modules/function-bind/package.json
+/opt/rh-saas/mobile-app/node_modules/gensync/package.json
+/opt/rh-saas/mobile-app/node_modules/get-caller-file/package.json
+/opt/rh-saas/mobile-app/node_modules/getenv/package.json
+/opt/rh-saas/mobile-app/node_modules/get-intrinsic/package.json
+/opt/rh-saas/mobile-app/node_modules/get-package-type/package.json
+/opt/rh-saas/mobile-app/node_modules/get-proto/package.json
+/opt/rh-saas/mobile-app/node_modules/get-proto/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/get-stream/package.json
+/opt/rh-saas/mobile-app/node_modules/glob/package.json
+/opt/rh-saas/mobile-app/node_modules/gopd/package.json
+/opt/rh-saas/mobile-app/node_modules/gopd/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/got/package.json
+/opt/rh-saas/mobile-app/node_modules/graceful-fs/package.json
+/opt/rh-saas/mobile-app/node_modules/has-flag/package.json
+/opt/rh-saas/mobile-app/node_modules/hasown/package.json
+/opt/rh-saas/mobile-app/node_modules/hasown/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/has-symbols/package.json
+/opt/rh-saas/mobile-app/node_modules/has-symbols/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/has-tostringtag/package.json
+/opt/rh-saas/mobile-app/node_modules/has-tostringtag/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/hermes-estree/package.json
+/opt/rh-saas/mobile-app/node_modules/hermes-parser/package.json
+/opt/rh-saas/mobile-app/node_modules/hosted-git-info/package.json
+/opt/rh-saas/mobile-app/node_modules/http2-wrapper/package.json
+/opt/rh-saas/mobile-app/node_modules/http-cache-semantics/package.json
+/opt/rh-saas/mobile-app/node_modules/http-errors/package.json
+/opt/rh-saas/mobile-app/node_modules/https-proxy-agent/package.json
+/opt/rh-saas/mobile-app/node_modules/hyphenate-style-name/package.json
+/opt/rh-saas/mobile-app/node_modules/ieee754/package.json
+/opt/rh-saas/mobile-app/node_modules/ignore/package.json
+/opt/rh-saas/mobile-app/node_modules/image-size/package.json
+/opt/rh-saas/mobile-app/node_modules/imurmurhash/package.json
+/opt/rh-saas/mobile-app/node_modules/inflight/package.json
+/opt/rh-saas/mobile-app/node_modules/inherits/package.json
+/opt/rh-saas/mobile-app/node_modules/ini/package.json
+/opt/rh-saas/mobile-app/node_modules/inline-style-prefixer/package.json
+/opt/rh-saas/mobile-app/node_modules/invariant/package.json
+/opt/rh-saas/mobile-app/node_modules/is-arrayish/package.json
+/opt/rh-saas/mobile-app/node_modules/is-core-module/package.json
+/opt/rh-saas/mobile-app/node_modules/is-docker/package.json
+/opt/rh-saas/mobile-app/node_modules/isexe/package.json
+/opt/rh-saas/mobile-app/node_modules/is-fullwidth-code-point/package.json
+/opt/rh-saas/mobile-app/node_modules/is-number/package.json
+/opt/rh-saas/mobile-app/node_modules/is-plain-obj/package.json
+/opt/rh-saas/mobile-app/node_modules/istanbul-lib-coverage/package.json
+/opt/rh-saas/mobile-app/node_modules/istanbul-lib-instrument/package.json
+/opt/rh-saas/mobile-app/node_modules/is-wsl/package.json
+/opt/rh-saas/mobile-app/node_modules/jest-environment-node/package.json
+/opt/rh-saas/mobile-app/node_modules/jest-get-type/package.json
+/opt/rh-saas/mobile-app/node_modules/jest-haste-map/package.json
+/opt/rh-saas/mobile-app/node_modules/jest-message-util/package.json
+/opt/rh-saas/mobile-app/node_modules/jest-mock/package.json
+/opt/rh-saas/mobile-app/node_modules/jest-regex-util/package.json
+/opt/rh-saas/mobile-app/node_modules/jest-util/package.json
+/opt/rh-saas/mobile-app/node_modules/jest-validate/package.json
+/opt/rh-saas/mobile-app/node_modules/jest-worker/package.json
+/opt/rh-saas/mobile-app/node_modules/jimp-compact/package.json
+/opt/rh-saas/mobile-app/node_modules/jsc-safe-url/package.json
+/opt/rh-saas/mobile-app/node_modules/jsesc/package.json
+/opt/rh-saas/mobile-app/node_modules/json5/package.json
+/opt/rh-saas/mobile-app/node_modules/json-buffer/package.json
+/opt/rh-saas/mobile-app/node_modules/js-tokens/package.json
+/opt/rh-saas/mobile-app/node_modules/js-yaml/package.json
+/opt/rh-saas/mobile-app/node_modules/keyv/package.json
+/opt/rh-saas/mobile-app/node_modules/kleur/package.json
+/opt/rh-saas/mobile-app/node_modules/lan-network/package.json
+/opt/rh-saas/mobile-app/node_modules/leven/package.json
+/opt/rh-saas/mobile-app/node_modules/lighthouse-logger/package.json
+/opt/rh-saas/mobile-app/node_modules/lightningcss-linux-x64-gnu/package.json
+/opt/rh-saas/mobile-app/node_modules/lightningcss-linux-x64-musl/package.json
+/opt/rh-saas/mobile-app/node_modules/lightningcss/package.json
+/opt/rh-saas/mobile-app/node_modules/lines-and-columns/package.json
+/opt/rh-saas/mobile-app/node_modules/locate-path/package.json
+/opt/rh-saas/mobile-app/node_modules/lodash.debounce/package.json
+/opt/rh-saas/mobile-app/node_modules/lodash.throttle/package.json
+/opt/rh-saas/mobile-app/node_modules/log-symbols/package.json
+/opt/rh-saas/mobile-app/node_modules/loose-envify/package.json
+/opt/rh-saas/mobile-app/node_modules/lowercase-keys/package.json
+/opt/rh-saas/mobile-app/node_modules/lru-cache/package.json
+/opt/rh-saas/mobile-app/node_modules/lucide-react-native/package.json
+/opt/rh-saas/mobile-app/node_modules/makeerror/package.json
+/opt/rh-saas/mobile-app/node_modules/marky/package.json
+/opt/rh-saas/mobile-app/node_modules/math-intrinsics/package.json
+/opt/rh-saas/mobile-app/node_modules/math-intrinsics/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/mdn-data/package.json
+/opt/rh-saas/mobile-app/node_modules/memoize-one/package.json
+/opt/rh-saas/mobile-app/node_modules/merge-options/package.json
+/opt/rh-saas/mobile-app/node_modules/merge-stream/package.json
+/opt/rh-saas/mobile-app/node_modules/metro-babel-transformer/package.json
+/opt/rh-saas/mobile-app/node_modules/metro-cache-key/package.json
+/opt/rh-saas/mobile-app/node_modules/metro-cache/package.json
+/opt/rh-saas/mobile-app/node_modules/metro-config/package.json
+/opt/rh-saas/mobile-app/node_modules/metro-core/package.json
+/opt/rh-saas/mobile-app/node_modules/metro-file-map/package.json
+/opt/rh-saas/mobile-app/node_modules/metro-minify-terser/package.json
+/opt/rh-saas/mobile-app/node_modules/metro/package.json
+/opt/rh-saas/mobile-app/node_modules/metro-resolver/package.json
+/opt/rh-saas/mobile-app/node_modules/metro-runtime/package.json
+/opt/rh-saas/mobile-app/node_modules/metro-source-map/package.json
+/opt/rh-saas/mobile-app/node_modules/metro-symbolicate/package.json
+/opt/rh-saas/mobile-app/node_modules/metro-transform-plugins/package.json
+/opt/rh-saas/mobile-app/node_modules/metro-transform-worker/package.json
+/opt/rh-saas/mobile-app/node_modules/micromatch/package.json
+/opt/rh-saas/mobile-app/node_modules/mime-db/package.json
+/opt/rh-saas/mobile-app/node_modules/mime/package.json
+/opt/rh-saas/mobile-app/node_modules/mime-types/package.json
+/opt/rh-saas/mobile-app/node_modules/mimic-fn/package.json
+/opt/rh-saas/mobile-app/node_modules/mimic-response/package.json
+/opt/rh-saas/mobile-app/node_modules/minimatch/package.json
+/opt/rh-saas/mobile-app/node_modules/minimist/package.json
+/opt/rh-saas/mobile-app/node_modules/minipass/package.json
+/opt/rh-saas/mobile-app/node_modules/minizlib/package.json
+/opt/rh-saas/mobile-app/node_modules/mkdirp/package.json
+/opt/rh-saas/mobile-app/node_modules/ms/package.json
+/opt/rh-saas/mobile-app/node_modules/mz/package.json
+/opt/rh-saas/mobile-app/node_modules/nanoid/package.json
+/opt/rh-saas/mobile-app/node_modules/negotiator/package.json
+/opt/rh-saas/mobile-app/node_modules/nested-error-stacks/package.json
+/opt/rh-saas/mobile-app/node_modules/node-fetch/package.json
+/opt/rh-saas/mobile-app/node_modules/node-forge/package.json
+/opt/rh-saas/mobile-app/node_modules/node-int64/package.json
+/opt/rh-saas/mobile-app/node_modules/node-releases/package.json
+/opt/rh-saas/mobile-app/node_modules/normalize-path/package.json
+/opt/rh-saas/mobile-app/node_modules/normalize-url/package.json
+/opt/rh-saas/mobile-app/node_modules/npm-package-arg/package.json
+/opt/rh-saas/mobile-app/node_modules/nth-check/package.json
+/opt/rh-saas/mobile-app/node_modules/nullthrows/package.json
+/opt/rh-saas/mobile-app/node_modules/ob1/package.json
+/opt/rh-saas/mobile-app/node_modules/object-assign/package.json
+/opt/rh-saas/mobile-app/node_modules/once/package.json
+/opt/rh-saas/mobile-app/node_modules/onetime/package.json
+/opt/rh-saas/mobile-app/node_modules/on-finished/package.json
+/opt/rh-saas/mobile-app/node_modules/on-headers/package.json
+/opt/rh-saas/mobile-app/node_modules/open/package.json
+/opt/rh-saas/mobile-app/node_modules/ora/package.json
+/opt/rh-saas/mobile-app/node_modules/parse-png/package.json
+/opt/rh-saas/mobile-app/node_modules/parseurl/package.json
+/opt/rh-saas/mobile-app/node_modules/path-exists/package.json
+/opt/rh-saas/mobile-app/node_modules/path-is-absolute/package.json
+/opt/rh-saas/mobile-app/node_modules/path-key/package.json
+/opt/rh-saas/mobile-app/node_modules/path-parse/package.json
+/opt/rh-saas/mobile-app/node_modules/path-scurry/package.json
+/opt/rh-saas/mobile-app/node_modules/p-cancelable/package.json
+/opt/rh-saas/mobile-app/node_modules/picocolors/package.json
+/opt/rh-saas/mobile-app/node_modules/picomatch/package.json
+/opt/rh-saas/mobile-app/node_modules/pirates/package.json
+/opt/rh-saas/mobile-app/node_modules/p-limit/package.json
+/opt/rh-saas/mobile-app/node_modules/plist/package.json
+/opt/rh-saas/mobile-app/node_modules/p-locate/package.json
+/opt/rh-saas/mobile-app/node_modules/pngjs/package.json
+/opt/rh-saas/mobile-app/node_modules/postcss/package.json
+/opt/rh-saas/mobile-app/node_modules/postcss-value-parser/package.json
+/opt/rh-saas/mobile-app/node_modules/pretty-bytes/package.json
+/opt/rh-saas/mobile-app/node_modules/pretty-format/package.json
+/opt/rh-saas/mobile-app/node_modules/proc-log/package.json
+/opt/rh-saas/mobile-app/node_modules/progress/package.json
+/opt/rh-saas/mobile-app/node_modules/promise/package.json
+/opt/rh-saas/mobile-app/node_modules/prompts/package.json
+/opt/rh-saas/mobile-app/node_modules/proxy-from-env/package.json
+/opt/rh-saas/mobile-app/node_modules/p-try/package.json
+/opt/rh-saas/mobile-app/node_modules/pump/package.json
+/opt/rh-saas/mobile-app/node_modules/punycode/package.json
+/opt/rh-saas/mobile-app/node_modules/qrcode-terminal/package.json
+/opt/rh-saas/mobile-app/node_modules/query-string/package.json
+/opt/rh-saas/mobile-app/node_modules/queue/package.json
+/opt/rh-saas/mobile-app/node_modules/quick-lru/package.json
+/opt/rh-saas/mobile-app/node_modules/range-parser/package.json
+/opt/rh-saas/mobile-app/node_modules/rc/package.json
+/opt/rh-saas/mobile-app/node_modules/react-devtools-core/package.json
+/opt/rh-saas/mobile-app/node_modules/react-dom/package.json
+/opt/rh-saas/mobile-app/node_modules/react-freeze/package.json
+/opt/rh-saas/mobile-app/node_modules/react-is/package.json
+/opt/rh-saas/mobile-app/node_modules/react-native-is-edge-to-edge/package.json
+/opt/rh-saas/mobile-app/node_modules/react-native/package.json
+/opt/rh-saas/mobile-app/node_modules/react-native-safe-area-context/package.json
+/opt/rh-saas/mobile-app/node_modules/react-native-screens/package.json
+/opt/rh-saas/mobile-app/node_modules/react-native-svg/package.json
+/opt/rh-saas/mobile-app/node_modules/react-native-web/package.json
+/opt/rh-saas/mobile-app/node_modules/react/package.json
+/opt/rh-saas/mobile-app/node_modules/react-refresh/package.json
+/opt/rh-saas/mobile-app/node_modules/regenerate/package.json
+/opt/rh-saas/mobile-app/node_modules/regenerate-unicode-properties/package.json
+/opt/rh-saas/mobile-app/node_modules/regenerator-runtime/package.json
+/opt/rh-saas/mobile-app/node_modules/regexpu-core/package.json
+/opt/rh-saas/mobile-app/node_modules/regjsgen/package.json
+/opt/rh-saas/mobile-app/node_modules/regjsparser/package.json
+/opt/rh-saas/mobile-app/node_modules/require-directory/package.json
+/opt/rh-saas/mobile-app/node_modules/require-from-string/package.json
+/opt/rh-saas/mobile-app/node_modules/requireg/package.json
+/opt/rh-saas/mobile-app/node_modules/resolve-alpn/package.json
+/opt/rh-saas/mobile-app/node_modules/resolve.exports/package.json
+/opt/rh-saas/mobile-app/node_modules/resolve-from/package.json
+/opt/rh-saas/mobile-app/node_modules/resolve/package.json
+/opt/rh-saas/mobile-app/node_modules/resolve-workspace-root/package.json
+/opt/rh-saas/mobile-app/node_modules/responselike/package.json
+/opt/rh-saas/mobile-app/node_modules/restore-cursor/package.json
+/opt/rh-saas/mobile-app/node_modules/rimraf/package.json
+/opt/rh-saas/mobile-app/node_modules/safe-buffer/package.json
+/opt/rh-saas/mobile-app/node_modules/sax/package.json
+/opt/rh-saas/mobile-app/node_modules/scheduler/package.json
+/opt/rh-saas/mobile-app/node_modules/semver/package.json
+/opt/rh-saas/mobile-app/node_modules/send/package.json
+/opt/rh-saas/mobile-app/node_modules/serialize-error/package.json
+/opt/rh-saas/mobile-app/node_modules/serve-static/package.json
+/opt/rh-saas/mobile-app/node_modules/setimmediate/package.json
+/opt/rh-saas/mobile-app/node_modules/setprototypeof/package.json
+/opt/rh-saas/mobile-app/node_modules/sf-symbols-typescript/package.json
+/opt/rh-saas/mobile-app/node_modules/shebang-command/package.json
+/opt/rh-saas/mobile-app/node_modules/shebang-regex/package.json
+/opt/rh-saas/mobile-app/node_modules/shell-quote/package.json
+/opt/rh-saas/mobile-app/node_modules/shell-quote/tsconfig.json
+/opt/rh-saas/mobile-app/node_modules/signal-exit/package.json
+/opt/rh-saas/mobile-app/node_modules/simple-plist/package.json
+/opt/rh-saas/mobile-app/node_modules/simple-swizzle/package.json
+/opt/rh-saas/mobile-app/node_modules/sisteransi/package.json
+/opt/rh-saas/mobile-app/node_modules/slash/package.json
+/opt/rh-saas/mobile-app/node_modules/slugify/package.json
+/opt/rh-saas/mobile-app/node_modules/source-map-js/package.json
+/opt/rh-saas/mobile-app/node_modules/source-map/package.json
+/opt/rh-saas/mobile-app/node_modules/source-map-support/package.json
+/opt/rh-saas/mobile-app/node_modules/split-on-first/package.json
+/opt/rh-saas/mobile-app/node_modules/sprintf-js/package.json
+/opt/rh-saas/mobile-app/node_modules/stackframe/package.json
+/opt/rh-saas/mobile-app/node_modules/stacktrace-parser/package.json
+/opt/rh-saas/mobile-app/node_modules/stack-utils/package.json
+/opt/rh-saas/mobile-app/node_modules/standard-navigation/package.json
+/opt/rh-saas/mobile-app/node_modules/statuses/package.json
+/opt/rh-saas/mobile-app/node_modules/stream-buffers/package.json
+/opt/rh-saas/mobile-app/node_modules/strict-uri-encode/package.json
+/opt/rh-saas/mobile-app/node_modules/string-width/package.json
+/opt/rh-saas/mobile-app/node_modules/strip-ansi/package.json
+/opt/rh-saas/mobile-app/node_modules/strip-json-comments/package.json
+/opt/rh-saas/mobile-app/node_modules/structured-headers/package.json
+/opt/rh-saas/mobile-app/node_modules/styleq/package.json
+/opt/rh-saas/mobile-app/node_modules/sucrase/package.json
+/opt/rh-saas/mobile-app/node_modules/supports-color/package.json
+/opt/rh-saas/mobile-app/node_modules/supports-hyperlinks/package.json
+/opt/rh-saas/mobile-app/node_modules/supports-preserve-symlinks-flag/package.json
+/opt/rh-saas/mobile-app/node_modules/tar/package.json
+/opt/rh-saas/mobile-app/node_modules/terminal-link/package.json
+/opt/rh-saas/mobile-app/node_modules/terser/package.json
+/opt/rh-saas/mobile-app/node_modules/test-exclude/package.json
+/opt/rh-saas/mobile-app/node_modules/thenify-all/package.json
+/opt/rh-saas/mobile-app/node_modules/thenify/package.json
+/opt/rh-saas/mobile-app/node_modules/throat/package.json
+/opt/rh-saas/mobile-app/node_modules/tinyglobby/package.json
+/opt/rh-saas/mobile-app/node_modules/tmpl/package.json
+/opt/rh-saas/mobile-app/node_modules/toidentifier/package.json
+/opt/rh-saas/mobile-app/node_modules/to-regex-range/package.json
+/opt/rh-saas/mobile-app/node_modules/tr46/package.json
+/opt/rh-saas/mobile-app/node_modules/ts-interface-checker/package.json
+/opt/rh-saas/mobile-app/node_modules/type-detect/package.json
+/opt/rh-saas/mobile-app/node_modules/type-fest/package.json
+/opt/rh-saas/mobile-app/node_modules/typescript/package.json
+/opt/rh-saas/mobile-app/node_modules/ua-parser-js/package.json
+/opt/rh-saas/mobile-app/node_modules/undici/package.json
+/opt/rh-saas/mobile-app/node_modules/undici-types/package.json
+/opt/rh-saas/mobile-app/node_modules/unicode-canonical-property-names-ecmascript/package.json
+/opt/rh-saas/mobile-app/node_modules/unicode-match-property-ecmascript/package.json
+/opt/rh-saas/mobile-app/node_modules/unicode-match-property-value-ecmascript/package.json
+/opt/rh-saas/mobile-app/node_modules/unicode-property-aliases-ecmascript/package.json
+/opt/rh-saas/mobile-app/node_modules/unpipe/package.json
+/opt/rh-saas/mobile-app/node_modules/update-browserslist-db/package.json
+/opt/rh-saas/mobile-app/node_modules/use-latest-callback/package.json
+/opt/rh-saas/mobile-app/node_modules/use-sync-external-store/package.json
+/opt/rh-saas/mobile-app/node_modules/utils-merge/package.json
+/opt/rh-saas/mobile-app/node_modules/uuid/package.json
+/opt/rh-saas/mobile-app/node_modules/validate-npm-package-name/package.json
+/opt/rh-saas/mobile-app/node_modules/vary/package.json
+/opt/rh-saas/mobile-app/node_modules/vlq/package.json
+/opt/rh-saas/mobile-app/node_modules/walker/package.json
+/opt/rh-saas/mobile-app/node_modules/warn-once/package.json
+/opt/rh-saas/mobile-app/node_modules/wcwidth/package.json
+/opt/rh-saas/mobile-app/node_modules/webidl-conversions/package.json
+/opt/rh-saas/mobile-app/node_modules/whatwg-fetch/package.json
+/opt/rh-saas/mobile-app/node_modules/whatwg-url/package.json
+/opt/rh-saas/mobile-app/node_modules/whatwg-url-without-unicode/package.json
+/opt/rh-saas/mobile-app/node_modules/which/package.json
+/opt/rh-saas/mobile-app/node_modules/wonka/package.json
+/opt/rh-saas/mobile-app/node_modules/wrap-ansi/package.json
+/opt/rh-saas/mobile-app/node_modules/wrappy/package.json
+/opt/rh-saas/mobile-app/node_modules/write-file-atomic/package.json
+/opt/rh-saas/mobile-app/node_modules/ws/package.json
+/opt/rh-saas/mobile-app/node_modules/xcode/package.json
+/opt/rh-saas/mobile-app/node_modules/xml2js/package.json
+/opt/rh-saas/mobile-app/node_modules/xmlbuilder/package.json
+/opt/rh-saas/mobile-app/node_modules/y18n/package.json
+/opt/rh-saas/mobile-app/node_modules/yallist/package.json
+/opt/rh-saas/mobile-app/node_modules/yaml/package.json
+/opt/rh-saas/mobile-app/node_modules/yargs/package.json
+/opt/rh-saas/mobile-app/node_modules/yargs-parser/package.json
+/opt/rh-saas/mobile-app/node_modules/yocto-queue/package.json
+/opt/rh-saas/mobile-app/package.json
+/opt/rh-saas/mobile-app/package-lock.json
+/opt/rh-saas/mobile-app/tsconfig.json
+
+## package.json
+-------------------------------------------------
+{
+  "name": "mobile-app",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-navigation/native": "^7.3.5",
+    "@react-navigation/native-stack": "^7.17.7",
+    "axios": "^1.18.1",
+    "expo": "~54.0.34",
+    "expo-location": "~19.0.8",
+    "expo-status-bar": "~3.0.9",
+    "lucide-react-native": "^1.23.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
+    "react-native-web": "^0.21.0"
+  },
+  "devDependencies": {
+    "@expo/ngrok": "^4.1.3",
+    "@types/react": "~19.1.0",
+    "typescript": "~5.9.2"
+  },
+  "private": true
+}
+
+## app.json
+-------------------------------------------------
+{
+  "expo": {
+    "name": "LH Solução RH",
+    "slug": "lh-rh",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icone-app.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/logo_rh.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      "expo-location"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icone-app.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.luizcarelo.lhrh"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d2933a18-0ca2-4799-bd2e-6ebc07bc923f"
+      }
+    }
+  }
+}
+
+## eas.json
+-------------------------------------------------
+{
+  "cli": {
+    "version": ">= 20.5.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
+
+## .env sanitizado
+-------------------------------------------------
+### /opt/rh-saas/mobile-app/.env
+EXPO_PUBLIC_API_URL=https://rh.lhsolucao.com.br
+
+## Assets
+-------------------------------------------------
+-rw-r--r-- 1 root root 18K jul  2 01:39 /opt/rh-saas/mobile-app/assets/adaptive-icon.png
+-rw-r--r-- 1 root root 126K jul  2 01:42 /opt/rh-saas/mobile-app/assets/favicon.png
+-rw-r--r-- 1 root root 255K jul  2 01:42 /opt/rh-saas/mobile-app/assets/icone-app.png
+-rw-r--r-- 1 root root 22K jul  2 01:39 /opt/rh-saas/mobile-app/assets/icon.png
+-rw-r--r-- 1 root root 122K jul  2 01:42 /opt/rh-saas/mobile-app/assets/logo_rh.png
+-rw-r--r-- 1 root root 18K jul  2 01:39 /opt/rh-saas/mobile-app/assets/splash-icon.png
+
+## Arquivos src
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx
+/opt/rh-saas/mobile-app/src/services/api.ts
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts
+
+## App.tsx
+-------------------------------------------------
+     1	import React from 'react';
+     2	import { NavigationContainer } from '@react-navigation/native';
+     3	import { createNativeStackNavigator } from '@react-navigation/native-stack';
+     4	import LoginScreen from './src/screens/LoginScreen';
+     5	import HomeScreen from './src/screens/HomeScreen';
+     6	import LiveTrackingScreen from './src/screens/LiveTrackingScreen';
+     7	
+     8	const Stack = createNativeStackNavigator();
+     9	
+    10	export default function App() {
+    11	  return (
+    12	    <NavigationContainer>
+    13	      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Login">
+    14	        <Stack.Screen name="Login" component={LoginScreen} />
+    15	        <Stack.Screen name="Home" component={HomeScreen} />
+    16	        <Stack.Screen name="LiveTracking" component={LiveTrackingScreen} />
+    17	      </Stack.Navigator>
+    18	    </NavigationContainer>
+    19	  );
+    20	}
+
+## LoginScreen.tsx
+-------------------------------------------------
+     1	import React, { useState } from 'react';
+     2	import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, ActivityIndicator } from 'react-native';
+     3	import AsyncStorage from '@react-native-async-storage/async-storage';
+     4	import api from '../services/api';
+     5	
+     6	export default function LoginScreen({ navigation }: any) {
+     7	  const [email, setEmail] = useState('');
+     8	  const [password, setPassword] = useState('');
+     9	  const [loading, setLoading] = useState(false);
+    10	
+    11	  const handleLogin = async () => {
+    12	    if (!email || !password) {
+    13	      Alert.alert('Erro', 'Preencha todos os campos.');
+    14	      return;
+    15	    }
+    16	    setLoading(true);
+    17	    try {
+    18	      const response = await api.post('/v1/auth/login', { email, password });
+    19	
+    20	      const accessToken =
+    21	        response.data?.access_token ||
+    22	        response.data?.accessToken ||
+    23	        response.data?.token ||
+    24	        response.data?.jwt;
+    25	
+    26	      if (!accessToken) {
+    27	        throw new Error('Token não retornado pela API.');
+    28	      }
+    29	
+    30	      await AsyncStorage.setItem('@LH_Token', accessToken);
+    31	      navigation.replace('Home');
+    32	    } catch (error) {
+    33	      Alert.alert('Falha no Login', 'Verifique suas credenciais.');
+    34	    } finally {
+    35	      setLoading(false);
+    36	    }
+    37	  };
+    38	
+    39	  return (
+    40	    <View style={styles.container}>
+    41	      <Image source={require('../../assets/logo_rh.png')} style={styles.logo} resizeMode="contain" />
+    42	      <Text style={styles.title}>Acesse sua conta</Text>
+    43	      
+    44	      <TextInput 
+    45	        style={styles.input} 
+    46	        placeholder="E-mail" 
+    47	        value={email} 
+    48	        onChangeText={setEmail}
+    49	        autoCapitalize="none"
+    50	        keyboardType="email-address"
+    51	      />
+    52	      
+    53	      <TextInput 
+    54	        style={styles.input} 
+    55	        placeholder="Senha" 
+    56	        secureTextEntry 
+    57	        value={password} 
+    58	        onChangeText={setPassword}
+    59	      />
+    60	
+    61	      <TouchableOpacity style={styles.button} onPress={handleLogin} disabled={loading}>
+    62	        {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>ENTRAR</Text>}
+    63	      </TouchableOpacity>
+    64	    </View>
+    65	  );
+    66	}
+    67	
+    68	const styles = StyleSheet.create({
+    69	  container: { flex: 1, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center', padding: 30 },
+    70	  logo: { width: 250, height: 100, marginBottom: 40 },
+    71	  title: { fontSize: 18, fontWeight: 'bold', color: '#334155', marginBottom: 20 },
+    72	  input: { width: '100%', height: 55, backgroundColor: '#f1f5f9', borderRadius: 10, paddingHorizontal: 15, marginBottom: 15, borderWidth: 1, borderColor: '#e2e8f0' },
+    73	  button: { width: '100%', height: 55, backgroundColor: '#0284c7', borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginTop: 10 },
+    74	  buttonText: { color: '#fff', fontSize: 16, fontWeight: 'bold' }
+    75	});
+
+## HomeScreen.tsx
+-------------------------------------------------
+     1	import React, { useState, useEffect } from 'react';
+     2	import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Alert, Image } from 'react-native';
+     3	import * as Location from 'expo-location';
+     4	import AsyncStorage from '@react-native-async-storage/async-storage';
+     5	import api from '../services/api';
+     6	import { LogOut, Clock, MapPin } from 'lucide-react-native';
+     7	
+     8	export default function HomeScreen({ navigation }: any) {
+     9	  const [loading, setLoading] = useState(false);
+    10	  const [currentTime, setCurrentTime] = useState(new Date());
+    11	
+    12	  useEffect(() => {
+    13	    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    14	    return () => clearInterval(timer);
+    15	  }, []);
+    16	
+    17	  const handleLogout = async () => {
+    18	    await AsyncStorage.removeItem('@LH_Token');
+    19	    navigation.replace('Login');
+    20	  };
+    21	
+    22	  const handleClockIn = async () => {
+    23	    setLoading(true);
+    24	    try {
+    25	      let { status } = await Location.requestForegroundPermissionsAsync();
+    26	      if (status !== 'granted') {
+    27	        Alert.alert('Erro', 'Acesso ao GPS é obrigatório.');
+    28	        setLoading(false);
+    29	        return;
+    30	      }
+    31	
+    32	      const location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High });
+    33	      const { latitude, longitude } = location.coords;
+    34	
+    35	      await api.post('/v1/time-records/clock-in', { latitude, longitude });
+    36	      
+    37	      Alert.alert('Sucesso', 'Ponto registrado com sucesso!');
+    38	    } catch (error) {
+    39	      Alert.alert('Erro', 'Não foi possível salvar o ponto.');
+    40	    } finally {
+    41	      setLoading(false);
+    42	    }
+    43	  };
+    44	
+    45	  return (
+    46	    <View style={styles.container}>
+    47	      <View style={styles.header}>
+    48	        <Image source={require('../../assets/logo_rh.png')} style={styles.miniLogo} resizeMode="contain" />
+    49	        <TouchableOpacity onPress={handleLogout}><LogOut color="#ef4444" size={24} /></TouchableOpacity>
+    50	      </View>
+    51	
+    52	      <View style={styles.clockContainer}>
+    53	        <Clock color="#059669" size={40} />
+    54	        <Text style={styles.timeText}>{currentTime.toLocaleTimeString('pt-BR')}</Text>
+    55	        <Text style={styles.dateText}>{currentTime.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })}</Text>
+    56	      </View>
+    57	
+    58	      <TouchableOpacity style={[styles.mainButton, loading && styles.disabled]} onPress={handleClockIn} disabled={loading}>
+    59	        {loading ? <ActivityIndicator color="#fff" size="large" /> : (
+    60	          <View style={{ alignItems: 'center' }}>
+    61	            <MapPin color="#fff" size={32} />
+    62	            <Text style={styles.mainButtonText}>REGISTRAR PONTO</Text>
+    63	          </View>
+    64	        )}
+    65	      </TouchableOpacity>
+    66	
+    67	      <TouchableOpacity
+    68	        style={styles.button}
+    69	        onPress={() => navigation.navigate('LiveTracking')}
+    70	      >
+    71	        <Text style={styles.buttonText}>Live Tracking</Text>
+    72	      </TouchableOpacity>
+    73	
+    74	    </View>
+    75	  );
+    76	}
+    77	
+    78	const styles = StyleSheet.create({
+    79	  container: { flex: 1, backgroundColor: '#f8fafc', padding: 20 },
+    80	  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 40, marginBottom: 40 },
+    81	  miniLogo: { width: 120, height: 40 },
+    82	  clockContainer: { alignItems: 'center', marginBottom: 60 },
+    83	  timeText: { fontSize: 54, fontWeight: 'bold', color: '#0f172a' },
+    84	  dateText: { fontSize: 16, color: '#64748b', textTransform: 'capitalize' },
+    85	  mainButton: { backgroundColor: '#059669', height: 200, borderRadius: 100, width: 200, alignSelf: 'center', justifyContent: 'center', alignItems: 'center', shadowColor: '#000', elevation: 10 },
+    86	  mainButtonText: { color: '#fff', fontSize: 18, fontWeight: 'bold', marginTop: 10 },
+    87	  disabled: { backgroundColor: '#94a3b8' },
+    88	
+    89	  button: {
+    90	    backgroundColor: '#0f172a',
+    91	    borderRadius: 12,
+    92	    padding: 14,
+    93	    alignItems: 'center',
+    94	    marginTop: 12,
+    95	  },
+    96	
+    97	  buttonText: {
+    98	    color: '#ffffff',
+    99	    fontSize: 15,
+   100	    fontWeight: '700',
+   101	  },
+   102	});
+
+## LiveTrackingScreen.tsx
+-------------------------------------------------
+     1	import React, { useEffect, useMemo, useState } from 'react';
+     2	import {
+     3	  ActivityIndicator,
+     4	  Alert,
+     5	  Platform,
+     6	  SafeAreaView,
+     7	  ScrollView,
+     8	  StyleSheet,
+     9	  Text,
+    10	  TouchableOpacity,
+    11	  View,
+    12	} from 'react-native';
+    13	
+    14	import * as Location from 'expo-location';
+    15	import { AxiosError } from 'axios';
+    16	
+    17	import {
+    18	  FoundationEmployee,
+    19	  LocationTrackingPointFoundation,
+    20	  MobileDeviceFoundation,
+    21	  getFoundationEmployees,
+    22	  getLatestLiveTrackingPoints,
+    23	  getOrCreateMobileDeviceUid,
+    24	  registerLiveTrackingDevice,
+    25	  sendLiveTrackingLocation,
+    26	} from '../services/liveTrackingApi';
+    27	
+    28	type UiStatus = 'idle' | 'loading' | 'success' | 'error';
+    29	
+    30	
+    31	function formatApiError(error: unknown) {
+    32	  if (error instanceof AxiosError) {
+    33	    const status = error.response?.status;
+    34	    const data = error.response?.data;
+    35	
+    36	    if (data && typeof data === 'object') {
+    37	      const apiData = data as {
+    38	        message?: string | string[];
+    39	        error?: string;
+    40	        statusCode?: number;
+    41	      };
+    42	
+    43	      const message = Array.isArray(apiData.message)
+    44	        ? apiData.message.join(', ')
+    45	        : apiData.message;
+    46	
+    47	      return [
+    48	        status ? `HTTP ${status}` : 'Erro HTTP',
+    49	        message || apiData.error || error.message,
+    50	      ].filter(Boolean).join(' - ');
+    51	    }
+    52	
+    53	    return status ? `HTTP ${status} - ${error.message}` : error.message;
+    54	  }
+    55	
+    56	  return error instanceof Error ? error.message : 'Erro inesperado.';
+    57	}
+    58	
+    59	function formatEmployeeName(employee: FoundationEmployee) {
+    60	  const firstName = employee.firstName || '';
+    61	  const lastName = employee.lastName || '';
+    62	  const fullName = `${firstName} ${lastName}`.trim();
+    63	
+    64	  if (fullName) {
+    65	    return fullName;
+    66	  }
+    67	
+    68	  return employee.email || employee.id;
+    69	}
+    70	
+    71	function formatDate(value?: string) {
+    72	  if (!value) {
+    73	    return '-';
+    74	  }
+    75	
+    76	  try {
+    77	    return new Intl.DateTimeFormat('pt-BR', {
+    78	      dateStyle: 'short',
+    79	      timeStyle: 'medium',
+    80	    }).format(new Date(value));
+    81	  } catch {
+    82	    return value;
+    83	  }
+    84	}
+    85	
+    86	export default function LiveTrackingScreen() {
+    87	  const [employees, setEmployees] = useState<FoundationEmployee[]>([]);
+    88	  const [selectedEmployeeId, setSelectedEmployeeId] = useState('');
+    89	  const [device, setDevice] = useState<MobileDeviceFoundation | null>(null);
+    90	  const [latestPoints, setLatestPoints] = useState<LocationTrackingPointFoundation[]>([]);
+    91	  const [status, setStatus] = useState<UiStatus>('idle');
+    92	  const [message, setMessage] = useState('Pronto para validar Live Tracking.');
+    93	  const [lastLocation, setLastLocation] = useState<{
+    94	    latitude: number;
+    95	    longitude: number;
+    96	    accuracy?: number | null;
+    97	  } | null>(null);
+    98	  const [lastDeviceId, setLastDeviceId] = useState('');
+    99	  const [lastPointId, setLastPointId] = useState('');
+   100	  const [lastApiStatus, setLastApiStatus] = useState('');
+   101	  const [lastApiError, setLastApiError] = useState('');
+   102	  const [lastApiResponse, setLastApiResponse] = useState('');
+   103	
+   104	
+   105	  const selectedEmployee = useMemo(
+   106	    () => employees.find((employee) => employee.id === selectedEmployeeId),
+   107	    [employees, selectedEmployeeId],
+   108	  );
+   109	
+   110	  async function loadEmployees() {
+   111	    setStatus('loading');
+   112	    setMessage('Carregando colaboradores Foundation...');
+   113	
+   114	    try {
+   115	      const data = await getFoundationEmployees();
+   116	
+   117	      setEmployees(data);
+   118	
+   119	      if (!selectedEmployeeId && data.length > 0) {
+   120	        setSelectedEmployeeId(data[0].id);
+   121	      }
+   122	
+   123	      setStatus('success');
+   124	      setMessage('Colaboradores carregados com sucesso.');
+   125	    } catch (error) {
+   126	      setStatus('error');
+   127	      setMessage(error instanceof Error ? error.message : 'Erro ao carregar colaboradores.');
+   128	    }
+   129	  }
+   130	
+   131	  async function refreshLatestPoints() {
+   132	    setStatus('loading');
+   133	    setMessage('Atualizando últimas localizações...');
+   134	
+   135	    try {
+   136	      const data = await getLatestLiveTrackingPoints();
+   137	
+   138	      setLatestPoints(data);
+   139	      setStatus('success');
+   140	      setMessage('Últimas localizações atualizadas.');
+   141	    } catch (error) {
+   142	      setStatus('error');
+   143	      setMessage(error instanceof Error ? error.message : 'Erro ao atualizar localizações.');
+   144	    }
+   145	  }
+   146	
+   147	  async function handleRegisterDevice() {
+   148	    if (!selectedEmployeeId) {
+   149	      setStatus('error');
+   150	      setMessage('Selecione um colaborador antes de registrar o dispositivo.');
+   151	      return null;
+   152	    }
+   153	
+   154	    setStatus('loading');
+   155	    setMessage('Registrando dispositivo mobile...');
+   156	
+   157	    try {
+   158	      const deviceUid = await getOrCreateMobileDeviceUid();
+   159	
+   160	      const registeredDevice = await registerLiveTrackingDevice({
+   161	        employeeProfileId: selectedEmployeeId,
+   162	        deviceUid,
+   163	        platform: Platform.OS,
+   164	        model: String(Platform.Version || 'mobile'),
+   165	        appVersion: 'mobile-validation',
+   166	      });
+   167	
+   168	      setDevice(registeredDevice);
+   169	      setLastDeviceId(registeredDevice.id);
+   170	      setLastApiStatus('DEVICE_REGISTERED');
+   171	      setLastApiError('');
+   172	      setLastApiResponse(
+   173	        JSON.stringify(
+   174	          {
+   175	            deviceId: registeredDevice.id,
+   176	            deviceUid: registeredDevice.deviceUid,
+   177	            employeeProfileId: registeredDevice.employeeProfileId,
+   178	          },
+   179	          null,
+   180	          2,
+   181	        ),
+   182	      );
+   183	
+   184	      setStatus('success');
+   185	      setMessage('Dispositivo mobile registrado com sucesso.');
+   186	
+   187	      return registeredDevice;
+   188	    } catch (error) {
+   189	      const detailedError = formatApiError(error);
+   190	
+   191	      setLastApiStatus('DEVICE_ERROR');
+   192	      setLastApiError(detailedError);
+   193	      setStatus('error');
+   194	      setMessage(detailedError || 'Erro ao registrar dispositivo.');
+   195	
+   196	      return null;
+   197	    }
+   198	  }
+   199	
+   200	  async function requestLocationPermission() {
+   201	    const permission = await Location.requestForegroundPermissionsAsync();
+   202	
+   203	    if (permission.status !== 'granted') {
+   204	      throw new Error('Permissão de localização não concedida.');
+   205	    }
+   206	  }
+   207	
+   208	  async function handleSendCurrentLocation() {
+   209	    if (!selectedEmployeeId) {
+   210	      setStatus('error');
+   211	      setMessage('Selecione um colaborador antes de enviar localização.');
+   212	      return;
+   213	    }
+   214	
+   215	    setStatus('loading');
+   216	    setMessage('Solicitando permissão de localização...');
+   217	
+   218	    try {
+   219	      await requestLocationPermission();
+   220	
+   221	      const activeDevice = device || (await handleRegisterDevice());
+   222	
+   223	      if (!activeDevice) {
+   224	        return;
+   225	      }
+   226	
+   227	      setMessage('Capturando localização atual...');
+   228	
+   229	      const current = await Location.getCurrentPositionAsync({
+   230	        accuracy: Location.Accuracy.High,
+   231	      });
+   232	
+   233	      const latitude = current.coords.latitude;
+   234	      const longitude = current.coords.longitude;
+   235	      const accuracy = current.coords.accuracy;
+   236	
+   237	      setLastLocation({
+   238	        latitude,
+   239	        longitude,
+   240	        accuracy,
+   241	      });
+   242	
+   243	      setMessage('Enviando ponto GPS para a Foundation...');
+   244	
+   245	      const createdPoint = await sendLiveTrackingLocation({
+   246	        employeeProfileId: selectedEmployeeId,
+   247	        deviceId: activeDevice.id,
+   248	        latitude,
+   249	        longitude,
+   250	        accuracyMeters: accuracy || undefined,
+   251	        source: 'MOBILE',
+   252	        trackedAt: new Date().toISOString(),
+   253	        metadata: {
+   254	          origem: 'mobile-app',
+   255	          tela: 'LiveTrackingScreen',
+   256	          platform: Platform.OS,
+   257	        },
+   258	      });
+   259	
+   260	      setLastDeviceId(activeDevice.id);
+   261	      setLastPointId(createdPoint.id);
+   262	      setLastApiStatus('LOCATION_SENT');
+   263	      setLastApiError('');
+   264	      setLastApiResponse(
+   265	        JSON.stringify(
+   266	          {
+   267	            pointId: createdPoint.id,
+   268	            employeeProfileId: createdPoint.employeeProfileId,
+   269	            deviceId: createdPoint.deviceId,
+   270	            trackedAt: createdPoint.trackedAt,
+   271	            source: createdPoint.source,
+   272	            latitude: createdPoint.latitude,
+   273	            longitude: createdPoint.longitude,
+   274	          },
+   275	          null,
+   276	          2,
+   277	        ),
+   278	      );
+   279	
+   280	      setStatus('success');
+   281	      setMessage(`Localização enviada com sucesso. Point ID: ${createdPoint.id}`);
+   282	
+   283	      await refreshLatestPoints();
+   284	    } catch (error) {
+   285	      const detailedError = formatApiError(error);
+   286	
+   287	      setLastApiStatus('LOCATION_ERROR');
+   288	      setLastApiError(detailedError);
+   289	      setStatus('error');
+   290	      setMessage(detailedError || 'Erro ao enviar localização.');
+   291	
+   292	      Alert.alert(
+   293	        'Live Tracking',
+   294	        detailedError || 'Erro ao enviar localização.',
+   295	      );
+   296	    }
+   297	  }
+   298	
+   299	  useEffect(() => {
+   300	    loadEmployees();
+   301	    refreshLatestPoints();
+   302	    // eslint-disable-next-line react-hooks/exhaustive-deps
+   303	  }, []);
+   304	
+   305	  const statusStyle =
+   306	    status === 'error'
+   307	      ? styles.statusError
+   308	      : status === 'success'
+   309	        ? styles.statusSuccess
+   310	        : status === 'loading'
+   311	          ? styles.statusLoading
+   312	          : styles.statusIdle;
+   313	
+   314	  return (
+   315	    <SafeAreaView style={styles.safe}>
+   316	      <ScrollView contentContainerStyle={styles.container}>
+   317	        <View style={styles.header}>
+   318	          <Text style={styles.kicker}>Foundation</Text>
+   319	          <Text style={styles.title}>Live Tracking</Text>
+   320	          <Text style={styles.subtitle}>
+   321	            Tela manual de validação mobile sem rastreamento em segundo plano.
+   322	          </Text>
+   323	        </View>
+   324	
+   325	        <View style={[styles.statusBox, statusStyle]}>
+   326	          {status === 'loading' ? <ActivityIndicator /> : null}
+   327	          <Text style={styles.statusText}>{message}</Text>
+   328	        </View>
+   329	
+   330	        <View style={styles.card}>
+   331	          <Text style={styles.cardTitle}>1. Selecionar colaborador</Text>
+   332	
+   333	          <TouchableOpacity style={styles.secondaryButton} onPress={loadEmployees}>
+   334	            <Text style={styles.secondaryButtonText}>Recarregar colaboradores</Text>
+   335	          </TouchableOpacity>
+   336	
+   337	          {employees.length === 0 ? (
+   338	            <Text style={styles.muted}>Nenhum colaborador carregado.</Text>
+   339	          ) : null}
+   340	
+   341	          {employees.map((employee) => {
+   342	            const selected = employee.id === selectedEmployeeId;
+   343	
+   344	            return (
+   345	              <TouchableOpacity
+   346	                key={employee.id}
+   347	                style={[styles.employeeItem, selected ? styles.employeeItemSelected : null]}
+   348	                onPress={() => {
+   349	                  setSelectedEmployeeId(employee.id);
+   350	                  setDevice(null);
+   351	                }}
+   352	              >
+   353	                <Text style={styles.employeeName}>{formatEmployeeName(employee)}</Text>
+   354	                <Text style={styles.employeeMeta}>{employee.email || employee.id}</Text>
+   355	                <Text style={styles.employeeMeta}>Status: {employee.status || '-'}</Text>
+   356	              </TouchableOpacity>
+   357	            );
+   358	          })}
+   359	        </View>
+   360	
+   361	        <View style={styles.card}>
+   362	          <Text style={styles.cardTitle}>2. Dispositivo</Text>
+   363	
+   364	          {selectedEmployee ? (
+   365	            <Text style={styles.muted}>
+   366	              Colaborador selecionado: {formatEmployeeName(selectedEmployee)}
+   367	            </Text>
+   368	          ) : (
+   369	            <Text style={styles.muted}>Selecione um colaborador.</Text>
+   370	          )}
+   371	
+   372	          <TouchableOpacity style={styles.primaryButton} onPress={handleRegisterDevice}>
+   373	            <Text style={styles.primaryButtonText}>Registrar dispositivo mobile</Text>
+   374	          </TouchableOpacity>
+   375	
+   376	          {device ? (
+   377	            <View style={styles.infoBox}>
+   378	              <Text style={styles.infoText}>Device ID: {device.id}</Text>
+   379	              <Text style={styles.infoText}>Device UID: {device.deviceUid}</Text>
+   380	            </View>
+   381	          ) : null}
+   382	        </View>
+   383	
+   384	        <View style={styles.card}>
+   385	          <Text style={styles.cardTitle}>3. Localização atual</Text>
+   386	
+   387	          <TouchableOpacity style={styles.dangerButton} onPress={handleSendCurrentLocation}>
+   388	            <Text style={styles.primaryButtonText}>Capturar e enviar localização</Text>
+   389	          </TouchableOpacity>
+   390	
+   391	          {lastLocation ? (
+   392	            <View style={styles.infoBox}>
+   393	              <Text style={styles.infoText}>Latitude: {lastLocation.latitude}</Text>
+   394	              <Text style={styles.infoText}>Longitude: {lastLocation.longitude}</Text>
+   395	              <Text style={styles.infoText}>Precisão: {lastLocation.accuracy ?? '-'} m</Text>
+   396	            </View>
+   397	          ) : null}
+   398	        </View>
+   399	
+   400	
+   401	        <View style={styles.card}>
+   402	          <Text style={styles.cardTitle}>Diagnóstico do envio</Text>
+   403	
+   404	          <View style={styles.infoBox}>
+   405	            <Text style={styles.infoText}>Status: {lastApiStatus || '-'}</Text>
+   406	            <Text style={styles.infoText}>Device ID: {lastDeviceId || '-'}</Text>
+   407	            <Text style={styles.infoText}>Point ID: {lastPointId || '-'}</Text>
+   408	          </View>
+   409	
+   410	          {lastApiError ? (
+   411	            <View style={styles.errorBox}>
+   412	              <Text style={styles.errorTitle}>Erro detalhado</Text>
+   413	              <Text style={styles.errorText}>{lastApiError}</Text>
+   414	            </View>
+   415	          ) : null}
+   416	
+   417	          {lastApiResponse ? (
+   418	            <View style={styles.responseBox}>
+   419	              <Text style={styles.responseTitle}>Última resposta</Text>
+   420	              <Text style={styles.responseText}>{lastApiResponse}</Text>
+   421	            </View>
+   422	          ) : null}
+   423	        </View>
+   424	
+   425	        <View style={styles.card}>
+   426	          <Text style={styles.cardTitle}>4. Últimas localizações</Text>
+   427	
+   428	          <TouchableOpacity style={styles.secondaryButton} onPress={refreshLatestPoints}>
+   429	            <Text style={styles.secondaryButtonText}>Atualizar últimas localizações</Text>
+   430	          </TouchableOpacity>
+   431	
+   432	          {latestPoints.length === 0 ? (
+   433	            <Text style={styles.muted}>Nenhuma localização encontrada.</Text>
+   434	          ) : null}
+   435	
+   436	          {latestPoints.map((point) => (
+   437	            <View key={point.id} style={styles.pointItem}>
+   438	              <Text style={styles.pointTitle}>{point.employeeProfileId || '-'}</Text>
+   439	              <Text style={styles.pointMeta}>
+   440	                {point.latitude}, {point.longitude}
+   441	              </Text>
+   442	              <Text style={styles.pointMeta}>Origem: {point.source || '-'}</Text>
+   443	              <Text style={styles.pointMeta}>Data: {formatDate(point.trackedAt)}</Text>
+   444	            </View>
+   445	          ))}
+   446	        </View>
+   447	      </ScrollView>
+   448	    </SafeAreaView>
+   449	  );
+   450	}
+   451	
+   452	const styles = StyleSheet.create({
+   453	  safe: {
+   454	    flex: 1,
+   455	    backgroundColor: '#0f172a',
+   456	  },
+   457	  container: {
+   458	    padding: 18,
+   459	    gap: 16,
+   460	  },
+   461	  header: {
+   462	    backgroundColor: '#ffffff',
+   463	    borderRadius: 18,
+   464	    padding: 18,
+   465	  },
+   466	  kicker: {
+   467	    color: '#64748b',
+   468	    fontSize: 12,
+   469	    fontWeight: '700',
+   470	    letterSpacing: 1,
+   471	    textTransform: 'uppercase',
+   472	  },
+   473	  title: {
+   474	    color: '#0f172a',
+   475	    fontSize: 26,
+   476	    fontWeight: '800',
+   477	    marginTop: 4,
+   478	  },
+   479	  subtitle: {
+   480	    color: '#475569',
+   481	    fontSize: 14,
+   482	    marginTop: 6,
+   483	  },
+   484	  statusBox: {
+   485	    borderRadius: 14,
+   486	    padding: 14,
+   487	    gap: 8,
+   488	  },
+   489	  statusIdle: {
+   490	    backgroundColor: '#f8fafc',
+   491	  },
+   492	  statusLoading: {
+   493	    backgroundColor: '#dbeafe',
+   494	  },
+   495	  statusSuccess: {
+   496	    backgroundColor: '#dcfce7',
+   497	  },
+   498	  statusError: {
+   499	    backgroundColor: '#fee2e2',
+   500	  },
+   501	  statusText: {
+   502	    color: '#0f172a',
+   503	    fontSize: 14,
+   504	    fontWeight: '600',
+   505	  },
+   506	  card: {
+   507	    backgroundColor: '#ffffff',
+   508	    borderRadius: 18,
+   509	    padding: 16,
+   510	    gap: 12,
+   511	  },
+   512	  cardTitle: {
+   513	    color: '#0f172a',
+   514	    fontSize: 18,
+   515	    fontWeight: '800',
+   516	  },
+   517	  muted: {
+   518	    color: '#64748b',
+   519	    fontSize: 13,
+   520	  },
+   521	  employeeItem: {
+   522	    borderColor: '#e2e8f0',
+   523	    borderRadius: 14,
+   524	    borderWidth: 1,
+   525	    padding: 12,
+   526	  },
+   527	  employeeItemSelected: {
+   528	    backgroundColor: '#e0f2fe',
+   529	    borderColor: '#0284c7',
+   530	  },
+   531	  employeeName: {
+   532	    color: '#0f172a',
+   533	    fontSize: 15,
+   534	    fontWeight: '800',
+   535	  },
+   536	  employeeMeta: {
+   537	    color: '#64748b',
+   538	    fontSize: 12,
+   539	    marginTop: 2,
+   540	  },
+   541	  primaryButton: {
+   542	    alignItems: 'center',
+   543	    backgroundColor: '#0f172a',
+   544	    borderRadius: 14,
+   545	    padding: 14,
+   546	  },
+   547	  dangerButton: {
+   548	    alignItems: 'center',
+   549	    backgroundColor: '#dc2626',
+   550	    borderRadius: 14,
+   551	    padding: 14,
+   552	  },
+   553	  primaryButtonText: {
+   554	    color: '#ffffff',
+   555	    fontSize: 14,
+   556	    fontWeight: '800',
+   557	  },
+   558	  secondaryButton: {
+   559	    alignItems: 'center',
+   560	    borderColor: '#cbd5e1',
+   561	    borderRadius: 14,
+   562	    borderWidth: 1,
+   563	    padding: 12,
+   564	  },
+   565	  secondaryButtonText: {
+   566	    color: '#0f172a',
+   567	    fontSize: 14,
+   568	    fontWeight: '700',
+   569	  },
+   570	  infoBox: {
+   571	    backgroundColor: '#f8fafc',
+   572	    borderRadius: 12,
+   573	    padding: 12,
+   574	  },
+   575	  infoText: {
+   576	    color: '#334155',
+   577	    fontSize: 12,
+   578	    marginBottom: 4,
+   579	  },
+   580	  pointItem: {
+   581	    borderTopColor: '#e2e8f0',
+   582	    borderTopWidth: 1,
+   583	    paddingTop: 10,
+   584	  },
+   585	  pointTitle: {
+   586	    color: '#0f172a',
+   587	    fontSize: 13,
+   588	    fontWeight: '800',
+   589	  },
+   590	  pointMeta: {
+   591	    color: '#64748b',
+   592	    fontSize: 12,
+   593	    marginTop: 2,
+   594	  },
+   595	
+   596	  errorBox: {
+   597	    backgroundColor: '#fee2e2',
+   598	    borderRadius: 12,
+   599	    padding: 12,
+   600	  },
+   601	  errorTitle: {
+   602	    color: '#991b1b',
+   603	    fontSize: 13,
+   604	    fontWeight: '800',
+   605	    marginBottom: 4,
+   606	  },
+   607	  errorText: {
+   608	    color: '#7f1d1d',
+   609	    fontSize: 12,
+   610	  },
+   611	  responseBox: {
+   612	    backgroundColor: '#ecfeff',
+   613	    borderRadius: 12,
+   614	    padding: 12,
+   615	  },
+   616	  responseTitle: {
+   617	    color: '#155e75',
+   618	    fontSize: 13,
+   619	    fontWeight: '800',
+   620	    marginBottom: 4,
+   621	  },
+   622	  responseText: {
+   623	    color: '#164e63',
+   624	    fontSize: 11,
+   625	  },
+   626	});
+
+## api.ts
+-------------------------------------------------
+     1	import axios from 'axios';
+     2	import AsyncStorage from '@react-native-async-storage/async-storage';
+     3	
+     4	const api = axios.create({
+     5	  baseURL: 'https://rh.lhsolucao.com.br',
+     6	});
+     7	
+     8	// Interceptor para injetar o Token em cada chamada automaticamente
+     9	api.interceptors.request.use(async (config) => {
+    10	  const token = await AsyncStorage.getItem('@LH_Token');
+    11	  if (token) {
+    12	    config.headers.Authorization = `Bearer ${token}`;
+    13	  }
+    14	  return config;
+    15	});
+    16	
+    17	export default api;
+
+## liveTrackingApi.ts
+-------------------------------------------------
+     1	import AsyncStorage from '@react-native-async-storage/async-storage';
+     2	
+     3	import api from './api';
+     4	
+     5	export type FoundationEmployee = {
+     6	  id: string;
+     7	  clientId?: string;
+     8	  employeeExternalRef?: string | null;
+     9	  firstName?: string;
+    10	  lastName?: string;
+    11	  cpf?: string | null;
+    12	  email?: string | null;
+    13	  departmentId?: string | null;
+    14	  jobPositionId?: string | null;
+    15	  jobFunctionId?: string | null;
+    16	  admissionDate?: string | null;
+    17	  status?: string;
+    18	  createdAt?: string;
+    19	  updatedAt?: string;
+    20	};
+    21	
+    22	export type RegisterMobileDevicePayload = {
+    23	  employeeProfileId?: string;
+    24	  deviceUid: string;
+    25	  platform?: string;
+    26	  model?: string;
+    27	  appVersion?: string;
+    28	};
+    29	
+    30	export type MobileDeviceFoundation = {
+    31	  id: string;
+    32	  clientId?: string;
+    33	  employeeProfileId?: string | null;
+    34	  deviceUid: string;
+    35	  platform?: string | null;
+    36	  model?: string | null;
+    37	  appVersion?: string | null;
+    38	  isActive?: boolean;
+    39	  lastSeenAt?: string | null;
+    40	  createdAt?: string;
+    41	  updatedAt?: string;
+    42	};
+    43	
+    44	export type CreateLocationTrackingPointPayload = {
+    45	  employeeProfileId: string;
+    46	  deviceId?: string;
+    47	  latitude: number;
+    48	  longitude: number;
+    49	  accuracyMeters?: number;
+    50	  address?: string;
+    51	  source?: string;
+    52	  trackedAt?: string;
+    53	  metadata?: Record<string, unknown>;
+    54	};
+    55	
+    56	export type LocationTrackingPointFoundation = {
+    57	  id: string;
+    58	  clientId?: string;
+    59	  employeeProfileId?: string | null;
+    60	  deviceId?: string | null;
+    61	  trackedAt?: string;
+    62	  latitude: string | number;
+    63	  longitude: string | number;
+    64	  accuracyMeters?: string | number | null;
+    65	  address?: string | null;
+    66	  source?: string;
+    67	  metadata?: Record<string, unknown>;
+    68	  createdAt?: string;
+    69	  updatedAt?: string;
+    70	};
+    71	
+    72	const LIVE_TRACKING_DEVICE_UID_KEY = '@LH_LiveTrackingDeviceUid';
+    73	
+    74	function generateDeviceUid() {
+    75	  return (
+    76	    'mobile-' +
+    77	    Date.now().toString(36) +
+    78	    '-' +
+    79	    Math.random().toString(36).slice(2, 10)
+    80	  );
+    81	}
+    82	
+    83	export async function getOrCreateMobileDeviceUid() {
+    84	  const existing = await AsyncStorage.getItem(LIVE_TRACKING_DEVICE_UID_KEY);
+    85	
+    86	  if (existing) {
+    87	    return existing;
+    88	  }
+    89	
+    90	  const generated = generateDeviceUid();
+    91	
+    92	  await AsyncStorage.setItem(LIVE_TRACKING_DEVICE_UID_KEY, generated);
+    93	
+    94	  return generated;
+    95	}
+    96	
+    97	export async function getFoundationEmployees() {
+    98	  const response = await api.get<FoundationEmployee[]>(
+    99	    '/v1/foundation/hr/employees',
+   100	  );
+   101	
+   102	  return response.data;
+   103	}
+   104	
+   105	export async function registerLiveTrackingDevice(
+   106	  payload: RegisterMobileDevicePayload,
+   107	) {
+   108	  const response = await api.post<MobileDeviceFoundation>(
+   109	    '/v1/foundation/live-tracking/device',
+   110	    payload,
+   111	  );
+   112	
+   113	  return response.data;
+   114	}
+   115	
+   116	export async function sendLiveTrackingLocation(
+   117	  payload: CreateLocationTrackingPointPayload,
+   118	) {
+   119	  const response = await api.post<LocationTrackingPointFoundation>(
+   120	    '/v1/foundation/live-tracking/location',
+   121	    payload,
+   122	  );
+   123	
+   124	  return response.data;
+   125	}
+   126	
+   127	export async function getLiveTrackingPoints() {
+   128	  const response = await api.get<LocationTrackingPointFoundation[]>(
+   129	    '/v1/foundation/live-tracking/points',
+   130	  );
+   131	
+   132	  return response.data;
+   133	}
+   134	
+   135	export async function getLatestLiveTrackingPoints() {
+   136	  const response = await api.get<LocationTrackingPointFoundation[]>(
+   137	    '/v1/foundation/live-tracking/latest',
+   138	  );
+   139	
+   140	  return response.data;
+   141	}
+
+## Busca por URL fixa/API/env
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/services/api.ts:4:const api = axios.create({
+/opt/rh-saas/mobile-app/src/services/api.ts:5:  baseURL: 'https://rh.lhsolucao.com.br',
+/opt/rh-saas/mobile-app/.env:1:EXPO_PUBLIC_API_URL=https://rh.lhsolucao.com.br
+/opt/rh-saas/mobile-app/set_env.sh:3:echo "EXPO_PUBLIC_API_URL=https://rh.lhsolucao.com.br" > /opt/rh-saas/mobile-app/.env
+
+## Busca por token/auth
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:18:    await AsyncStorage.removeItem('@LH_Token');
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:20:      const accessToken =
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:21:        response.data?.access_token ||
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:22:        response.data?.accessToken ||
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:23:        response.data?.token ||
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:24:        response.data?.jwt;
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:26:      if (!accessToken) {
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:30:      await AsyncStorage.setItem('@LH_Token', accessToken);
+/opt/rh-saas/mobile-app/src/services/api.ts:10:  const token = await AsyncStorage.getItem('@LH_Token');
+/opt/rh-saas/mobile-app/src/services/api.ts:11:  if (token) {
+/opt/rh-saas/mobile-app/src/services/api.ts:12:    config.headers.Authorization = `Bearer ${token}`;
+
+## Busca por geolocalizacao
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:3:import * as Location from 'expo-location';
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:25:      let { status } = await Location.requestForegroundPermissionsAsync();
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:32:      const location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High });
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:14:import * as Location from 'expo-location';
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:19:  LocationTrackingPointFoundation,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:25:  sendLiveTrackingLocation,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:90:  const [latestPoints, setLatestPoints] = useState<LocationTrackingPointFoundation[]>([]);
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:93:  const [lastLocation, setLastLocation] = useState<{
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:200:  async function requestLocationPermission() {
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:201:    const permission = await Location.requestForegroundPermissionsAsync();
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:208:  async function handleSendCurrentLocation() {
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:219:      await requestLocationPermission();
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:229:      const current = await Location.getCurrentPositionAsync({
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:230:        accuracy: Location.Accuracy.High,
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:237:      setLastLocation({
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:245:      const createdPoint = await sendLiveTrackingLocation({
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:387:          <TouchableOpacity style={styles.dangerButton} onPress={handleSendCurrentLocation}>
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:391:          {lastLocation ? (
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:393:              <Text style={styles.infoText}>Latitude: {lastLocation.latitude}</Text>
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:394:              <Text style={styles.infoText}>Longitude: {lastLocation.longitude}</Text>
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:395:              <Text style={styles.infoText}>Precisão: {lastLocation.accuracy ?? '-'} m</Text>
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:44:export type CreateLocationTrackingPointPayload = {
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:56:export type LocationTrackingPointFoundation = {
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:116:export async function sendLiveTrackingLocation(
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:117:  payload: CreateLocationTrackingPointPayload,
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:119:  const response = await api.post<LocationTrackingPointFoundation>(
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:128:  const response = await api.get<LocationTrackingPointFoundation[]>(
+/opt/rh-saas/mobile-app/src/services/liveTrackingApi.ts:136:  const response = await api.get<LocationTrackingPointFoundation[]>(
+/opt/rh-saas/mobile-app/app.json:18:      "expo-location"
+
+## Busca por mensagens/Alert
+-------------------------------------------------
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:27:        Alert.alert('Erro', 'Acesso ao GPS é obrigatório.');
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:37:      Alert.alert('Sucesso', 'Ponto registrado com sucesso!');
+/opt/rh-saas/mobile-app/src/screens/HomeScreen.tsx:39:      Alert.alert('Erro', 'Não foi possível salvar o ponto.');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:15:import { AxiosError } from 'axios';
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:31:function formatApiError(error: unknown) {
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:32:  if (error instanceof AxiosError) {
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:48:        status ? `HTTP ${status}` : 'Erro HTTP',
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:56:  return error instanceof Error ? error.message : 'Erro inesperado.';
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:101:  const [lastApiError, setLastApiError] = useState('');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:127:      setMessage(error instanceof Error ? error.message : 'Erro ao carregar colaboradores.');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:143:      setMessage(error instanceof Error ? error.message : 'Erro ao atualizar localizações.');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:171:      setLastApiError('');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:189:      const detailedError = formatApiError(error);
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:192:      setLastApiError(detailedError);
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:194:      setMessage(detailedError || 'Erro ao registrar dispositivo.');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:204:      throw new Error('Permissão de localização não concedida.');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:262:      setLastApiStatus('LOCATION_SENT');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:263:      setLastApiError('');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:285:      const detailedError = formatApiError(error);
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:287:      setLastApiStatus('LOCATION_ERROR');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:288:      setLastApiError(detailedError);
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:290:      setMessage(detailedError || 'Erro ao enviar localização.');
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:292:      Alert.alert(
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:294:        detailedError || 'Erro ao enviar localização.',
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:307:      ? styles.statusError
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:410:          {lastApiError ? (
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:412:              <Text style={styles.errorTitle}>Erro detalhado</Text>
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:413:              <Text style={styles.errorText}>{lastApiError}</Text>
+/opt/rh-saas/mobile-app/src/screens/LiveTrackingScreen.tsx:498:  statusError: {
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:13:      Alert.alert('Erro', 'Preencha todos os campos.');
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:27:        throw new Error('Token não retornado pela API.');
+/opt/rh-saas/mobile-app/src/screens/LoginScreen.tsx:33:      Alert.alert('Falha no Login', 'Verifique suas credenciais.');
+
+## Logs TypeScript
+-------------------------------------------------
+
+## npm ls
+-------------------------------------------------
+mobile-app@1.0.0 /opt/rh-saas/mobile-app
+├── @expo/ngrok@4.1.3
+├── @react-native-async-storage/async-storage@2.2.0
+├── @react-navigation/native-stack@7.17.7
+├── @react-navigation/native@7.3.5
+├── @types/react@19.1.17
+├── axios@1.18.1
+├── expo-location@19.0.8
+├── expo-status-bar@3.0.9
+├── expo@54.0.35
+├── lucide-react-native@1.23.0
+├── react-dom@19.1.0
+├── react-native-safe-area-context@5.6.2
+├── react-native-screens@4.16.0
+├── react-native-web@0.21.2
+├── react-native@0.81.5
+├── react@19.1.0
+└── typescript@5.9.3
+
+
+## Expo config
+-------------------------------------------------
+env: load .env
+env: export EXPO_PUBLIC_API_URL
+
+{
+  name: [32m'LH Solução RH'[39m,
+  slug: [32m'lh-rh'[39m,
+  version: [32m'1.0.0'[39m,
+  orientation: [32m'portrait'[39m,
+  icon: [32m'./assets/icone-app.png'[39m,
+  userInterfaceStyle: [32m'light'[39m,
+  assetBundlePatterns: [
+    [32m'**/*'[39m
+  ],
+  plugins: [
+    [32m'expo-location'[39m
+  ],
+  description: [90mundefined[39m,
+  sdkVersion: [32m'54.0.0'[39m,
+  platforms: [
+    [32m'ios'[39m,
+    [32m'android'[39m,
+    [32m'web'[39m
+  ],
+  splash: {
+    image: [32m'./assets/logo_rh.png'[39m,
+    resizeMode: [32m'contain'[39m,
+    backgroundColor: [32m'#ffffff'[39m
+  },
+  ios: {
+    supportsTablet: [33mtrue[39m
+  },
+  android: {
+    package: [32m'com.luizcarelo.lhrh'[39m,
+    permissions: [
+      [32m'android.permission.ACCESS_COARSE_LOCATION'[39m,
+      [32m'android.permission.ACCESS_FINE_LOCATION'[39m
+    ],
+    adaptiveIcon: {
+      foregroundImage: [32m'./assets/icone-app.png'[39m,
+      backgroundColor: [32m'#ffffff'[39m
+    }
+  },
+  web: {
+    favicon: [32m'./assets/favicon.png'[39m
+  },
+  extra: {
+    eas: {
+      projectId: [32m'd2933a18-0ca2-4799-bd2e-6ebc07bc923f'[39m
+    }
+  }
+}
+
+

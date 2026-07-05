@@ -1,0 +1,11 @@
+230:export type CreateSuperAdminClientPayload = {
+238:export type SuperAdminClientPlanOption = {
+247:const CLIENT_CREATE_ENDPOINT_CANDIDATES = [
+248:  '/v1/super-admin/clients',
+257:  payload: CreateSuperAdminClientPayload,
+307:  payload: CreateSuperAdminClientPayload,
+311:  for (const endpoint of CLIENT_CREATE_ENDPOINT_CANDIDATES) {
+330:): SuperAdminClientPlanOption[] {
+367:export async function listSuperAdminClientPlans(): Promise<
+368:  SuperAdminClientPlanOption[]
+409:  plans: listSuperAdminClientPlans,

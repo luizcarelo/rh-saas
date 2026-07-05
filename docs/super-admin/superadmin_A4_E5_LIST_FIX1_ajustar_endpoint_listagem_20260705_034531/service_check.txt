@@ -1,0 +1,10 @@
+58:const CLIENT_LIST_ENDPOINT_CANDIDATES = [
+59:  '/v1/super-admin/clients',
+60:  '/v1/super-admin/clientes',
+205:export async function listSuperAdminClients(): Promise<ListSuperAdminClientsResult> {
+208:  for (const endpoint of CLIENT_LIST_ENDPOINT_CANDIDATES) {
+248:const CLIENT_CREATE_ENDPOINT_CANDIDATES = [
+249:  '/v1/super-admin/clients',
+250:  '/v1/super-admin/clientes',
+312:  for (const endpoint of CLIENT_CREATE_ENDPOINT_CANDIDATES) {
+408:  list: listSuperAdminClients,

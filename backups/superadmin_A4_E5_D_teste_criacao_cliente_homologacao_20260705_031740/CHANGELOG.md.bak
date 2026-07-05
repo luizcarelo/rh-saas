@@ -1,0 +1,788 @@
+# CHANGELOG
+
+## 2026-07-03
+
+### Fase 1.1 V2
+
+- Diagnóstico do banco.
+- Normalização segura.
+- Correção da estrutura de migrations.
+- Correção de colunas updated_at.
+
+---
+
+### Fase 1.2A
+
+- Criação do cliente empresa-teste.
+- Criação do plano ENTERPRISE_TEST.
+- Ativação dos módulos SaaS.
+- Criação do Super Admin de teste.
+
+---
+
+### Fase 1.2B
+
+- Criação da empresa jurídica.
+- Criação dos departamentos.
+- Criação dos centros de custo.
+- Criação dos cargos.
+- Criação das funções.
+- Criação da geocerca.
+- Criação do local de trabalho.
+
+---
+
+### Fase 1.2C
+
+- Criação dos colaboradores:
+  - TESTE-001
+  - TESTE-002
+  - TESTE-003
+
+---
+
+### Fase 1.2D
+
+- Criação dos 18 tipos de batida.
+- Criação da Política Mobile Padrão.
+- Criação das configurações mobile.
+
+---
+
+### Fase 1.2E
+
+- Criação do documento teste.
+- Criação dos destinatários.
+- Criação do holerite fictício.
+- Criação dos saldos iniciais de banco de horas.
+- Criação da justificativa PROBLEMA_GPS.
+
+---
+
+### Fase 1.3
+
+- Validação consolidada da Fase 1.
+
+---
+
+### Fase 1.4
+
+- Normalização de nomenclaturas duplicadas.
+- Remoção dos registros com e sem acento.
+- Ajuste das referências dos colaboradores.
+
+---
+
+### Fase 1.5
+
+- Validação final pós-normalização.
+- Aprovação da Fase 1.
+
+Status final:
+
+Fase 1 concluída com sucesso.
+``
+
+
+## Fase 2.2B
+
+- Correção dos arquivos do módulo Super Admin.
+- Remoção de caracteres inválidos.
+- Build validado com sucesso.
+
+## Fase 2.2C
+
+- Rebuild da imagem da API.
+- Publicação do módulo Super Admin.
+- Validação de rotas.
+- Testes iniciais dos endpoints.
+
+## Fase 2.3
+
+- Criação do endpoint GET /v1/super-admin/clients/:id
+- Consulta consolidada de cliente SaaS
+- Publicação da API
+
+## Fase 2.4
+
+- Consulta de módulos por tenant
+- Habilitar/desabilitar módulo
+- Deploy do Super Admin
+
+## Fase 2.4A
+
+- Tabela tenant_module_audit
+- Auditoria de alterações
+- Endpoint de consulta da auditoria
+
+## Fase 2.5
+
+- Dashboard SUPER_ADMIN
+- Métricas globais SaaS
+- Últimas auditorias
+
+## Fase 2.6
+
+- Dashboard por tenant
+- Estatísticas individuais
+- Auditoria por cliente
+
+
+---
+
+## Fase 3.1A.1
+
+Dashboard SUPER_ADMIN inicial.
+
+Entregas:
+
+- Rota /super-admin
+- Menu Dashboard SaaS
+- Dashboard inicial
+- Integração dashboard
+- Integração health
+- Integração database
+
+
+---
+
+## Fase 3.1A.3
+
+Controle de acesso SUPER_ADMIN.
+
+Implementações:
+
+- Menu Dashboard SaaS apenas para SUPER_ADMIN
+- Proteção da rota /super-admin
+- Ocultação visual para ADMIN e EMPLOYEE
+- Redirecionamento para Dashboard padrão quando não autorizado
+
+
+---
+
+## Fase 3.1B.1
+
+Gestão de Clientes SaaS.
+
+Entregas:
+
+- Menu Clientes SaaS
+- Rota /super-admin/clientes
+- SuperAdminClientsPage
+- Listagem de clientes
+- Integração GET /v1/super-admin/clients
+
+
+---
+
+## Fase 3.1C.1
+
+Gestão de Planos SaaS.
+
+Entregas:
+
+- Menu Planos SaaS
+- Rota /super-admin/planos
+- SuperAdminPlansPage
+- Listagem de planos
+- Integração GET /v1/super-admin/plans
+
+
+---
+
+## Fase 3.1C.3
+
+Cadastro de Plano SaaS.
+
+Entregas:
+
+- SuperAdminPlanCreatePage
+- Rota /super-admin/planos/novo
+- Botão Novo Plano
+- POST /v1/super-admin/plans
+\n
+
+## Fase 3.2C
+
+Implementada gestão de usuários.
+
+Entregas:
+
+- UsersPage
+- Rota /usuarios
+- GET /v1/users
+- POST /v1/users
+
+## Sprint 4.6B-R - Foundation Read-Only - Fase 2B - 20260704_121956
+
+- Documentada oficialmente a integração Foundation Read-Only.
+- Confirmado o módulo `src/modules/foundation`.
+- Confirmado o registro do `FoundationModule` no `AppModule`.
+- Confirmado build OK na Fase 2A.
+- Documentados endpoints `/v1/foundation/*`.
+- Nenhuma tabela foi criada.
+- Nenhum dado foi alterado.
+
+## Sprint 4.6B-R - Fase 3A - Correção Tenant x SaaS Client - 20260704_123141
+
+- Corrigido vínculo entre  e .
+- O  foi ajustado para o tenant utilizado pelo usuário .
+- A correção permite que os endpoints  localizem o  correspondente ao tenant autenticado.
+- Criado backup lógico antes da alteração.
+- Criado SQL de rollback da alteração.
+
+## Sprint 4.6B-R - Fase 3 - Validacao endpoints Foundation - 20260704_123506
+
+- Login via API validado com sucesso.
+- JWT capturado e utilizado nos endpoints Foundation.
+- Todos os endpoints Foundation da Fase 3 retornaram HTTP 200.
+- FoundationModule confirmado no container da API.
+- Vinculo Tenant x SaaS Client validado.
+- Integracao Foundation Read-Only considerada operacional.
+
+## Sprint 4.6B-R - Fase 4D - Registro final Clock Foundation - 20260704_124456
+
+- Documentada oficialmente a Clock Foundation Read-Only.
+- Criado documento foundation/CLOCK_FOUNDATION_READONLY.md.
+- Confirmada validacao dos endpoints /v1/foundation/clock/* com HTTP 200.
+- Nenhuma tabela foi criada.
+- Nenhum dado foi alterado.
+
+## Sprint 4.6B-R - Fase 4E-D - Documents Foundation - 20260704_125604
+
+Documents Foundation Read-Only documentada. Endpoints documents validados com HTTP 200.
+
+## Sprint 4.6B-R - Fase 4F-D - TimeBank Foundation - 20260704_130325
+
+TimeBank Foundation Read-Only documentada. Endpoints timebank validados com HTTP 200.
+
+## Sprint 4.6B-R - Fase 4G-D - Payroll Foundation - 20260704_131533
+
+Payroll Foundation Read-Only documentada. Endpoints payroll validados com HTTP 200.
+
+## Roadmap de Migracao Foundation - 20260704_131705
+
+- Criado ROADMAP_MIGRACAO_FOUNDATION.md.
+- Consolidado plano de migracao Legacy para Foundation.
+- Registrada recomendacao de retomar Live Tracking sobre Foundation.
+- Documentadas prioridades para Clock, Documents, TimeBank e Payroll.
+
+## Sprint 4.6B-F-A - DTOs Live Tracking Foundation - 20260704_132024
+
+- Criados DTOs para Live Tracking Foundation.
+- Criado register-mobile-device.dto.ts.
+- Criado create-location-tracking-point.dto.ts.
+- Nenhum service, controller ou module foi alterado.
+- Nenhuma tabela foi criada.
+- Nenhum dado foi alterado.
+
+## Sprint 4.6B-F-B - Service Live Tracking Foundation - 20260704_132156
+
+- Adicionados métodos Live Tracking no FoundationService.
+- Adicionado registro/atualização de dispositivo móvel usando mobile_devices.
+- Adicionado registro de ponto GPS usando location_tracking_points.
+- Adicionada consulta de pontos GPS e última localização por colaborador.
+- Nenhum controller ou module foi alterado.
+- Nenhum banco foi alterado.
+- Build local executado com status: BUILD_OK.
+
+## Sprint 4.6B-F-C - Controller Live Tracking Foundation - 20260704_132314
+
+- Adicionados endpoints Live Tracking no FoundationController.
+- Criado endpoint POST /v1/foundation/live-tracking/device.
+- Criado endpoint POST /v1/foundation/live-tracking/location.
+- Criado endpoint GET /v1/foundation/live-tracking/points.
+- Criado endpoint GET /v1/foundation/live-tracking/latest.
+- Nenhum banco foi alterado.
+- Nenhuma tabela foi criada.
+- Build local executado com status: BUILD_OK.
+
+## Sprint 4.6B-F-D - Validacao Live Tracking Foundation - 20260704_160138
+
+- Publicado container da API com endpoints Live Tracking Foundation.
+- Validado POST /v1/foundation/live-tracking/device.
+- Validado POST /v1/foundation/live-tracking/location.
+- Validado GET /v1/foundation/live-tracking/points.
+- Validado GET /v1/foundation/live-tracking/latest.
+- Criados registros de validacao em mobile_devices e location_tracking_points.
+- Gerado SQL de rollback para os registros de validacao.
+
+## Sprint 4.6B-F-E - Documentacao final Live Tracking Foundation - 20260704_162651
+
+- Criado documento foundation/LIVE_TRACKING_FOUNDATION.md.
+- Registrada conclusao tecnica da Sprint 4.6B-F.
+- Documentados endpoints Live Tracking validados.
+- Registrados IDs dos dados de validacao.
+- Registrado caminho do rollback dos registros de validacao.
+
+## Sprint 4.6B-F-Frontend-A1 - Diagnostico frontend - 20260704_162941
+
+- Executado diagnostico da estrutura frontend.
+- Gerado relatorio em docs/frontend.
+- Nenhum arquivo frontend foi alterado.
+- Nenhum build foi executado.
+
+## Revisao detalhada frontend-web - 20260704_163353
+
+- Executada revisao detalhada de /opt/rh-saas/frontend-web.
+- Gerado relatorio em docs/frontend.
+- Nenhum arquivo frontend foi alterado.
+- Nenhum build foi executado.
+
+## Sprint 4.6B-F-Frontend-A2 - Service Live Tracking - 20260704_163552
+
+- Criado service frontend Live Tracking em frontend-web/src/lib/liveTrackingApi.ts.
+- Service usa apiRequest centralizado de src/lib/api.ts.
+- Adicionadas funcoes para colaboradores, dispositivo, envio de localizacao, pontos e ultimas localizacoes.
+- Nenhuma tela, rota ou menu foi alterado.
+
+## Sprint 4.6B-F-Frontend-A3 - Pagina Live Tracking sem mapa - 20260704_163926
+
+- Criada pagina LiveTrackingFoundationPage.tsx no frontend-web.
+- Tela permite selecionar colaborador, registrar dispositivo, enviar localizacao e listar pontos.
+- Nenhuma rota ou menu foi alterado.
+- Build do frontend-web executado com status: BUILD_OK.
+
+## Sprint 4.6B-F-Frontend-A4 - Rota e menu Live Tracking - 20260704_164154
+
+- Registrada rota /live-tracking-foundation no frontend-web.
+- Adicionado item Live Tracking no menu administrativo.
+- Build do frontend-web executado com status: BUILD_ERRO.
+
+## Sprint 4.6B-F-Frontend-A4-FIX - Correcao rota e menu Live Tracking - 20260704_164356
+
+- Corrigido item Live Tracking no menu administrativo usando path em vez de to.
+- Corrigida rota /live-tracking-foundation para ficar dentro do AdminLayout.
+- Build do frontend-web executado com status: BUILD_OK.
+
+## Sprint 4.6B-F-Frontend-A5 - Publicacao frontend-web - 20260704_164531
+
+- Executado build Docker do servico web.
+- Recriado container rh_saas_web.
+- Validada rota /live-tracking-foundation.
+- Status HTTP da validacao: 200.
+
+## Sprint 4.6B-F-Frontend-A6 - Validacao final frontend Live Tracking - 20260704_164806
+
+- Registrada validacao funcional visual da tela Live Tracking Foundation.
+- Criado documento docs/foundation/LIVE_TRACKING_FRONTEND_VALIDATION.md.
+- Status HTTP da rota: 200.
+- Resultado visual registrado via checklist manual.
+
+## Sprint 4.6B-F-Mobile-A1 - Diagnostico mobile-app - 20260704_165146
+
+- Executado diagnostico detalhado de /opt/rh-saas/mobile-app.
+- Gerado relatorio em docs/mobile.
+- Nenhum arquivo mobile foi alterado.
+- Nenhum build foi executado.
+
+## Sprint 4.6B-F-Mobile-A2 - Service Live Tracking - 20260704_165420
+
+- Criado service Live Tracking no mobile-app.
+- Criado arquivo mobile-app/src/services/liveTrackingApi.ts.
+- Service reutiliza src/services/api.ts e o interceptor JWT existente.
+- Criado deviceUid persistido em AsyncStorage na chave @LH_LiveTrackingDeviceUid.
+- Nenhuma tela ou navegacao foi alterada.
+
+## Sprint 4.6B-F-Mobile-A3 - Tela manual Live Tracking - 20260704_165609
+
+- Criada tela manual de validacao Live Tracking no mobile-app.
+- Criado arquivo mobile-app/src/screens/LiveTrackingScreen.tsx.
+- Tela permite carregar colaboradores, registrar dispositivo e enviar localizacao atual.
+- Nenhuma navegacao foi alterada.
+- Nenhum background tracking foi implementado.
+
+## Sprint 4.6B-F-Mobile-A4 - Navegacao Live Tracking - 20260704_165750
+
+- Registrada tela LiveTracking no Stack Navigator do mobile-app.
+- Adicionado botao Live Tracking na HomeScreen.
+- Validacao TypeScript executada com status: TSC_ERRO.
+- Nenhum backend ou banco foi alterado.
+
+## Sprint 4.6B-F-Mobile-A4-FIX - Estilos botao Live Tracking - 20260704_165913
+
+- Corrigidos estilos ausentes do botao Live Tracking na HomeScreen.
+- Adicionados styles.button e styles.buttonText quando inexistentes.
+- Validacao TypeScript executada com status: TSC_ERRO.
+
+## Sprint 4.6B-F-Mobile-A4-FIX2 - Correcao virgula StyleSheet - 20260704_170100
+
+- Corrigida virgula ausente no StyleSheet da HomeScreen.
+- Ajustada separacao dos estilos button e buttonText.
+- Validacao TypeScript executada com status: TSC_ERRO.
+
+## Sprint 4.6B-F-Mobile-A4-FIX3 - Virgula apos disabled - 20260704_170414
+
+- Corrigida virgula ausente apos o estilo disabled na HomeScreen.
+- Validacao TypeScript executada com status: TSC_OK.
+
+## Sprint 4.6B-F-Mobile-A5 - Validacao funcional mobile - 20260704_171256
+
+- Registrada validacao funcional do Live Tracking no mobile-app.
+- Criado documento docs/foundation/LIVE_TRACKING_MOBILE_VALIDATION.md.
+- Validacao TypeScript: TSC_OK.
+- Checklist funcional mobile registrado.
+
+## Sprint 4.6B-F-Mobile-A5-DIAG - Diagnostico abertura app - 20260704_171717
+
+- Executado diagnostico de abertura do mobile-app.
+- Coletados logs de TypeScript, npm ls, Expo config e tentativa de Expo start.
+- Nenhum codigo foi alterado.
+- Status TypeScript: TSC_OK.
+- Status Expo start: EXPO_START_ERRO_1.
+
+## Sprint 4.6B-F-Mobile-A5-FIX-TUNNEL - @expo/ngrok local - 20260704_172318
+
+- Instalado @expo/ngrok@^4.1.0 como devDependency local no mobile-app.
+- Executado teste de Expo Tunnel na porta 8083.
+- Status install: INSTALL_OK.
+- Status TypeScript: TSC_OK.
+- Status tunnel: EXPO_TUNNEL_APARENTA_INICIAR_TIMEOUT.
+
+## Sprint 4.6B-F-Mobile-A5-RETEST - Validacao via Expo Tunnel - 20260704_173037
+
+- Registrado reteste funcional do Live Tracking no mobile-app via Expo Tunnel.
+- Atualizado documento docs/foundation/LIVE_TRACKING_MOBILE_VALIDATION.md.
+- Validacao TypeScript: TSC_OK.
+- Expo Tunnel URL: exp://lqbnkre-luizcarelo-8083.exp.direct.
+- Checklist funcional mobile registrado.
+
+## Sprint 4.6B-F-Mobile-A5-LOGIN-DIAG - Diagnostico login mobile - 20260704_173404
+
+- Executado diagnostico de login mobile/API.
+- Testado POST /v1/auth/login em https://rh.lhsolucao.com.br.
+- HTTP status do login: 200.
+- Conclusao: API_LOGIN_OK_MAS_APP_NAO_TRATA_ACCESS_TOKEN.
+- Nenhum codigo foi alterado.
+
+## Sprint 4.6B-F-Mobile-A5-LOGIN-FIX - Corrigir access_token - 20260704_173549
+
+- Corrigido LoginScreen do mobile-app para aceitar access_token retornado pela API.
+- Mantida compatibilidade com accessToken, token e jwt.
+- Token continua sendo salvo em AsyncStorage na chave @LH_Token.
+- Validacao TypeScript executada com status: TSC_OK.
+
+## Sprint 4.6B-F-Mobile-A5-RETEST - Validacao via Expo Tunnel apos login fix - 20260704_173826
+
+- Registrado reteste funcional do Live Tracking no mobile-app via Expo Tunnel apos correcao do LoginScreen.
+- Atualizado documento docs/foundation/LIVE_TRACKING_MOBILE_VALIDATION.md.
+- Validacao TypeScript: TSC_OK.
+- Expo Tunnel URL: exp://lqbnkre-luizcarelo-8083.exp.direct.
+- Checklist funcional mobile registrado.
+
+## Sprint 4.6B-F-Mobile-A5-LOCATION-DIAG - Diagnostico envio localizacao - 20260704_174447
+
+- Executado diagnostico de envio de localizacao mobile.
+- Testado login, registro de dispositivo, envio de ponto GPS e consultas via API.
+- Conclusao: API_LOCATION_OK_VIA_CURL_PROBLEMA_PROVAVEL_NO_APP_OU_UI.
+- Nenhum codigo foi alterado.
+
+## Sprint 4.6B-F-Mobile-A5-LOCATION-FIX-UI - Diagnostico visual envio - 20260704_174633
+
+- Instrumentada tela LiveTrackingScreen para exibir status real do envio.
+- Adicionado painel visual com Device ID, Point ID, status, erro detalhado e ultima resposta.
+- Tratamento de erro Axios melhorado para exibir status HTTP e mensagem da API.
+- Validacao TypeScript executada com status: TSC_OK.
+
+## Sprint 4.6B-F-Mobile-A5-RETEST - Validacao via Expo Tunnel apos instrumentacao - 20260704_174811
+
+- Registrado reteste funcional do Live Tracking no mobile-app via Expo Tunnel apos instrumentacao da tela.
+- Atualizado documento docs/foundation/LIVE_TRACKING_MOBILE_VALIDATION.md.
+- Validacao TypeScript: TSC_OK.
+- Expo Tunnel URL: exp://lqbnkre-luizcarelo-8083.exp.direct.
+- Status informado no painel: .
+- Point ID informado: 4a6bba8f-79b7-4754-a5de-729e1bfbb311.
+
+## Sprint 4.6B-F-Mobile-A6 - Documentacao final Live Tracking Mobile - 20260704_175308
+
+- Criado documento final LIVE_TRACKING_MOBILE_APP.md.
+- Consolidada validação mobile manual do Live Tracking.
+- Registrados Device ID e Point ID finais do reteste.
+- Documentado que background tracking não foi implementado nesta sprint.
+
+## Sprint 4.6B-F-Mobile-A6-FIX-DOC - Correcao formatacao documento final - 20260704_175417
+
+- Corrigida formatação do documento LIVE_TRACKING_MOBILE_APP.md.
+- Ajustada seção de Status exibido no painel e Erro detalhado exibido.
+- Nenhum código mobile, backend ou banco foi alterado.
+
+## Sprint Mobile-B1 - Diagnostico UX producao mobile-app - 20260704_222527
+
+- Executado diagnostico UX/producao do mobile-app.
+- Gerado relatorio bruto e recomendacoes priorizadas.
+- Nenhum codigo mobile foi alterado.
+- TypeScript: TSC_OK.
+- npm ls: NPM_LS_OK.
+- Expo config: EXPO_CONFIG_OK.
+
+## Sprint Mobile-B2-A - API por EXPO_PUBLIC_API_URL e Login UX - 20260704_222706
+
+- Atualizado mobile-app/src/services/api.ts para usar EXPO_PUBLIC_API_URL com fallback.
+- Melhorado tratamento de erros no LoginScreen.
+- Mantido suporte a access_token, accessToken, token e jwt.
+- Validacao TypeScript executada com status: TSC_OK.
+
+## Sprint Mobile-B3-A - Auditoria funcional app profissional - 20260704_224142
+
+- Executada auditoria funcional para evolucao profissional do app mobile.
+- Mapeados recursos existentes no mobile, backend, frontend-web e documentacao.
+- Gerado plano funcional do app profissional.
+- Nenhum codigo foi alterado.
+- TypeScript: TSC_OK.
+
+## Sprint Mobile-B3-B - Catalogo oficial tipos de batida - 20260704_224455
+
+- Criado catalogo oficial de tipos de batida no mobile-app.
+- Arquivo: /opt/rh-saas/mobile-app/src/constants/timePunchTypes.ts.
+- Catalogo inclui tipos de jornada, intervalo, hora extra, atividade externa, sobreaviso, plantao, pausa tecnica, saida particular e viagem.
+- Validacao TypeScript executada com status: TSC_OK.
+
+## Sprint Mobile-B3-E-DIAG - Contrato endpoint batida - 20260704_224911
+
+- Executado diagnostico do contrato do endpoint /v1/time-records/clock-in.
+- Testados payloads com latitude/longitude e campos candidatos de tipo de batida.
+- Conclusao: ENDPOINT_ACEITA_PUNCHTYPE_MAS_PODE_IGNORAR_OU_NAO_VALIDAR.
+- Nenhum codigo foi alterado.
+
+## Sprint Backend-B3-E1-A - Diagnostico endpoint ponto - 20260704_225416
+
+- Executado diagnostico backend/banco do endpoint de ponto.
+- Mapeados controller/service/dto/entity candidatos.
+- Mapeadas tabelas e colunas relacionadas a ponto/batida.
+- Conclusao: BANCO_POSSUI_COLUNA_RELACIONADA_A_TIPO_MAS_BACKEND_NAO_EVIDENCIA_PUNCHTYPE.
+- Nenhum codigo ou banco foi alterado.
+
+## Sprint Backend-B3-E1-B1 - Suporte punchType tipos principais - 20260704_230152
+
+- Implementado suporte a punchType no endpoint /v1/time-records/clock-in para tipos principais.
+- Tipos suportados nesta fase: ENTRADA, INICIO_INTERVALO, FIM_INTERVALO e SAIDA.
+- punchType invalido ou ainda nao suportado retorna BadRequestException.
+- Payload antigo sem punchType permanece compativel como ENTRADA.
+- Build backend executado com status: BUILD_OK.
+
+## Sprint Backend-B3-E1-C - Validacao contrato punchType publicado - 20260704_230339
+
+- Publicada/recriada API para validar suporte a punchType no endpoint /v1/time-records/clock-in.
+- Testados payload antigo, ENTRADA, INICIO_INTERVALO, FIM_INTERVALO, SAIDA e tipos invalidos.
+- Conclusao: CONTRATO_PUNCHTYPE_PRINCIPAIS_VALIDADO.
+- Build API: BUILD_API_OK.
+- Recreate API: UP_API_OK.
+
+## Sprint Frontend-B1 - Auditoria frontend-web atual - 20260704_231234
+
+- Executada auditoria do frontend-web atual.
+- Mapeadas rotas, paginas, services, menu/layout e chamadas API.
+- Gerado plano inicial para preparar modulos futuros no frontend-web.
+- Nenhum codigo frontend foi alterado.
+- TypeScript: TSC_OK.
+
+## Sprint SuperAdmin-A1 - Diagnostico acesso Super Admin - 20260704_232110
+
+- Executado diagnostico de acesso ao Super Admin.
+- Mapeados frontend, backend, banco e login.
+- Conclusao: LOGIN_FALHOU_NAO_FOI_POSSIVEL_VALIDAR_ACESSO.
+- Nenhum codigo ou banco foi alterado.
+
+## Sprint SuperAdmin-A2-A - Diagnostico usuarios Super Admin - 20260704_232412
+
+- Executado diagnostico especifico de usuarios Super Admin.
+- Mapeadas tabelas de usuarios, roles e metadata de hash sem expor senha/hash completo.
+- Conclusao: ROLE_SUPER_ADMIN_EXISTE_MAS_NENHUM_USUARIO_SUPER_ADMIN_EVIDENTE.
+- Nenhum codigo, banco, usuario ou senha foi alterado.
+
+## Sprint SuperAdmin-A2-B-FIX-HASH - Reset senha bcrypt Super Admin - 20260704_233215
+
+- Resetada senha do usuario Super Admin existente usando bcrypt.
+- Usuario: superadmin@rh-saas.local.
+- Hash bcrypt gerado e gravado em public.users.passwordHash.
+- Login apos reset: 200.
+- Conclusao: RESET_SENHA_SUPER_ADMIN_OK_LOGIN_VALIDADO.
+- Senha e hash completo nao foram registrados em relatorio.
+
+## Sprint SuperAdmin-A3-A - Revisao codigo menu role - 20260704_233713
+
+- Executada revisao do codigo atual do frontend-web antes de alterar o menu por role.
+- Mapeados menus, rotas, auth/userInfo, Super Admin e roles backend.
+- Conclusao: FRONTEND_TEM_BASE_PARA_FILTRAR_MENU_POR_ROLE.
+- Nenhum codigo foi alterado.
+
+## Sprint SuperAdmin-A3-B - Filtrar menu por role SUPER_ADMIN - 20260704_234001
+
+- Ajustado AdminLayout para filtrar menu por role SUPER_ADMIN.
+- SUPER_ADMIN agora recebe somente menu SaaS/Super Admin.
+- Demais perfis continuam com menu operacional existente.
+- TypeScript: TSC_OK.
+- Build frontend: BUILD_OK.
+- Conclusao: MENU_SUPER_ADMIN_FILTRADO_COM_BUILD_OK.
+
+## Sprint SuperAdmin-A3-C - Publicar frontend e validar menu por perfil - 20260704_235010
+
+- Publicado/reiniciado frontend-web apos filtro de menu por SUPER_ADMIN.
+- Executado TypeScript e build frontend.
+- Validado login SUPER_ADMIN via API.
+- Registrada validacao visual manual do menu por perfil.
+- Conclusao: FRONTEND_PUBLICADO_SUPERADMIN_MENU_VALIDADO_TECNICAMENTE.
+
+## Sprint SuperAdmin-A4-A - Diagnostico rotas paginas services tabelas - 20260704_235939
+
+- Executado diagnostico das rotas, paginas, services e tabelas Super Admin.
+- Gerado plano para evolucao profissional do menu Super Admin.
+- Conclusao: ROTAS_BASICAS_SUPERADMIN_EXISTEM_MAPEAR_EXPANSAO.
+- Nenhum codigo ou banco foi alterado.
+
+## Sprint SuperAdmin-A4-B - Mapa oficial menu rotas - 20260705_000814
+
+- Criado mapa oficial do menu e rotas do Super Admin.
+- Documento: /opt/rh-saas/docs/super-admin/SUPERADMIN_MENU_MAP.md.
+- Consolidada estrutura profissional para clientes, empresas/filiais, planos, modulos, usuarios admin, auditoria e configuracoes.
+- Nenhum codigo ou banco foi alterado.
+
+## Sprint SuperAdmin-A4-C - Menu Super Admin profissional - 20260705_000957
+
+- Atualizado menu do Super Admin com estrutura profissional baseada no SUPERADMIN_MENU_MAP.md.
+- Incluidos itens para Dashboard, Clientes, Empresas/Filiais, Planos, Modulos, Usuarios Admin, Auditoria e Configuracoes.
+- Mantido filtro por role SUPER_ADMIN ja validado.
+- TypeScript: TSC_OK.
+- Build frontend: BUILD_OK.
+- Conclusao: MENU_SUPER_ADMIN_PROFISSIONAL_BUILD_OK.
+
+## Sprint SuperAdmin-A4-D-FIX - Placeholders rotas Super Admin - 20260705_001324
+
+- Corrigida insercao de rotas placeholder do Super Admin com deteccao robusta do App.tsx.
+- Criada/reutilizada pagina SuperAdminPlaceholderPage.
+- TypeScript: TSC_OK.
+- Build frontend: BUILD_ERRO.
+- Conclusao: PLACEHOLDERS_CRIADOS_MAS_BUILD_ERRO.
+
+## Sprint SuperAdmin-A4-D-FIX2 - Corrigir build placeholders Super Admin - 20260705_001639
+
+- Corrigido App.tsx apos placeholders terem sido inseridos dentro do ternario da rota /super-admin/planos/:id.
+- Placeholders foram removidos do local incorreto e reinseridos apos a rota de detalhes de plano.
+- TypeScript: TSC_OK.
+- Build frontend: BUILD_OK.
+- Conclusao: BUILD_OK_PLACEHOLDERS_CORRIGIDOS.
+
+## Sprint SuperAdmin-A4-D-VALIDATION - Publicar validar placeholders - 20260705_002817
+
+- Publicado/reiniciado frontend-web apos criacao dos placeholders Super Admin.
+- Validado TypeScript, build, HTTP e login SUPER_ADMIN.
+- Registrada validacao visual manual das rotas placeholder.
+- Conclusao: PLACEHOLDERS_PUBLICADOS_VALIDACAO_TECNICA_OK.
+
+## Sprint SuperAdmin-A4-E1 - Diagnostico CRUD Clientes SaaS - 20260705_003146
+
+- Executado diagnostico do CRUD real de Clientes SaaS.
+- Mapeados frontend, backend e banco relacionados a clientes/tenants.
+- Gerado plano para implementacao incremental do CRUD.
+- Conclusao: BASE_CRUD_CLIENTES_DETECTADA_DETALHAR_IMPLEMENTACAO.
+- Nenhum codigo ou banco foi alterado.
+
+## Sprint SuperAdmin-A4-E2 - Diagnostico detalhado tenant cliente - 20260705_003405
+
+- Executado diagnostico detalhado dos endpoints, campos, DTOs, entities e tabelas de tenant/cliente.
+- Gerado contrato diagnostico para orientar service frontend e listagem real.
+- Conclusao: CONTRATO_CRUD_CLIENTES_PARCIALMENTE_MAPEADO_IMPLEMENTAR_SERVICE_E_LISTAGEM.
+- Nenhum codigo ou banco foi alterado.
+
+## Sprint SuperAdmin-A4-E3 - Service frontend Clientes SaaS - 20260705_004234
+
+- Criado/ajustado service frontend para listagem de Clientes SaaS.
+- Service: /opt/rh-saas/frontend-web/src/services/superAdminClientsService.ts.
+- Incluidos tipos TypeScript, leitura de token, tratamento de 401 e normalizacao segura de array.
+- TypeScript: TSC_OK.
+- Build frontend: BUILD_OK.
+- Conclusao: SERVICE_CLIENTES_SAAS_BUILD_OK.
+
+## Verificacao erro SuperAdmin-A4-E4 - 20260705_005944
+
+- Executado script de verificacao do erro da listagem real de Clientes SaaS.
+- Nenhum codigo foi alterado.
+- TypeScript: TSC_OK.
+- Build frontend: BUILD_ERRO.
+- Conclusao: APP_NAO_CONTAMINADO_MAS_BUILD_ERRO.
+
+## SuperAdmin-A4-E4-FIX3 - 20260705_011334
+
+- Corrigida somente a pagina SuperAdminClientsPage.tsx.
+- App.tsx nao foi alterado.
+- TypeScript: TSC_OK.
+- Build frontend: BUILD_OK.
+- Conclusao: PAGINA_CLIENTES_CORRIGIDA_BUILD_OK.
+
+## SuperAdmin-A4-E4-VALIDATION - 20260705_011434
+
+- Publicado/reiniciado frontend-web para validar listagem real de Clientes SaaS.
+- Validado App.tsx, SuperAdminClientsPage.tsx, service, TypeScript, build, HTTP e login SUPER_ADMIN.
+- Conclusao: LISTAGEM_CLIENTES_PUBLICADA_VALIDACAO_TECNICA_OK.
+
+## SuperAdmin-A4-E4-FIX4 - Validar botão Atualizar - 20260705_012257
+
+- Validado botão Atualizar da tela Clientes SaaS.
+- Nenhum código foi alterado.
+- TypeScript: TSC_OK.
+- Build frontend: BUILD_OK.
+- Conclusão: BOTAO_ATUALIZAR_VALIDADO_TECNICAMENTE.
+
+## SuperAdmin-A4-E5-A - Diagnóstico payload criação Cliente SaaS - 20260705_012705
+
+- Executado diagnóstico do payload real de criação de Cliente SaaS.
+- Nenhum POST foi executado.
+- Nenhum código ou banco foi alterado.
+- Conclusão: PAYLOAD_CRIACAO_CLIENTE_MAPEAVEL_AVANCAR_FORMULARIO_CONTROLADO.
+
+## SuperAdmin-A4-E5-B - Service criação Cliente SaaS - 20260705_013745
+
+- Criado/ajustado service frontend para criação de Cliente SaaS.
+- Nenhum POST foi executado automaticamente.
+- TypeScript: TSC_OK.
+- Build frontend: BUILD_OK.
+- Conclusão: SERVICE_CREATE_CLIENTE_BUILD_OK.
+
+## SuperAdmin-A4-E5-C-VALIDATION - 20260705_015117
+
+- Publicado/reiniciado frontend-web para validar visualmente a tela Novo Cliente SaaS.
+- Validado App.tsx, SuperAdminClientCreatePage.tsx, service, TypeScript, build, HTTP e login SUPER_ADMIN.
+- Nenhum cliente real foi criado nesta fase.
+- Conclusao: FORM_NOVO_CLIENTE_PUBLICADO_VALIDACAO_TECNICA_OK.
+
+## SuperAdmin-A4-E5-D1 - Descobrir endpoint POST Cliente/Tenant - 20260705_020201
+
+- Executado diagnóstico para descobrir endpoint POST real de criação Cliente/Tenant.
+- Nenhum POST de criação foi executado.
+- Conclusão: NENHUM_POST_BACKEND_ENCONTRADO_PARA_CLIENTE_TENANT.
+
+## SuperAdmin-A4-E5-E1 - Mapear Tenant e endpoint backend - 20260705_020455
+
+- Executado diagnóstico da entidade Tenant e definição do endpoint backend de criação.
+- Nenhum código foi alterado.
+- Nenhum banco foi alterado.
+- Endpoint recomendado: POST /v1/super-admin/clientes.
+- Conclusão: TENANT_E_POST_EXISTEM_REVISAR_REGISTRO_ROTA.
+
+## SuperAdmin-A4-E5-E1B-FIX1-P1 - 20260705_030024
+
+- Preparados diretórios e backup documental para diagnóstico de rotas POST backend.
+- Nenhum código foi alterado.
+- Relatório: /opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_E1B_FIX1_P1_PREPARAR_BACKUP_20260705_030024.md
+
+## SuperAdmin-A4-E5-E1B-FIX1-P2 - 20260705_030024
+
+- Coletadas evidências brutas de main.ts, controllers, modules, DTOs e services.
+- Nenhum código foi alterado.
+- Relatório: /opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_E1B_FIX1_P2_COLETAR_BACKEND_20260705_030024.md
+
+## SuperAdmin-A4-E5-E1B-FIX1-P3D - 20260705_030024
+
+- Executado parser de rotas sem uso de group(1).
+- Gerados post_routes_detected.json e post_routes_detected.txt.
+- Nenhum código foi alterado.
+- Relatório: /opt/rh-saas/docs/super-admin/RELATORIO_SUPERADMIN_A4_E5_E1B_FIX1_P3D_PARSER_SEM_GROUP_20260705_030024.md
+
+## SuperAdmin-A4-E5-B-FIX1B - Ajustar endpoint create - 20260705_031416
+
+- Ajustado CLIENT_CREATE_ENDPOINT_CANDIDATES para priorizar /v1/super-admin/clients.
+- Mantidos fallbacks anteriores.
+- Nenhum POST foi executado.
+- TypeScript: TSC_OK.
+- Build frontend: BUILD_OK.
+- Conclusao: ENDPOINT_CREATE_CLIENT_AJUSTADO_BUILD_OK.
