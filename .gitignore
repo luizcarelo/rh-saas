@@ -1,19 +1,78 @@
-# Node
-node_modules
-dist
-build
-npm-debug.log
+# =========================
+# Node / Frontend
+# =========================
+node_modules/
+*/node_modules/
 
-# Envs
+dist/
+build/
+coverage/
+
+*.tsbuildinfo
+
+# =========================
+# Ambiente
+# =========================
 .env
 .env.local
 .env.*.local
+.env.production
+.env.development
 
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
 # Docker
+# =========================
 docker-compose.override.yml
 
-# Logs e outros
-*.log
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Sistema
+# =========================
 .DS_Store
-.idea
-.vscode
+Thumbs.db
+
+# =========================
+# Banco PostgreSQL
+# =========================
+data/postgres/
+pgdata/
+postgres-data/
+
+# =========================
+# Backups
+# =========================
+backup/
+backups/
+
+# =========================
+# Dumps e bancos
+# =========================
+*.sql
+*.dump
+*.backup
+
+# =========================
+# Arquivos temporários
+# =========================
+*.bak
+*.tmp
+*.old
+
+# =========================
+# Relatórios gerados
+# =========================
+BUILD_LOG.txt
+DATABASE_REVERSE_ENGINEERING.*
+MAPA_BANCO_DADOS.*
+MAPA_COMPLETO_PROJETO.*
